@@ -67,6 +67,378 @@
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ANIMATIONS - All 20 Effects */
+
+/* 1️⃣ Fade-in de secciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* 19️⃣ Intro Animation */
+@keyframes introAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.intro-animation {
+  animation: introAnimation 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 2️⃣ Cards con efecto hover lift */
+@keyframes liftHover {
+  to {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* 3️⃣ Producto con efecto tilt 3D */
+@keyframes tilt3d {
+  to {
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.05);
+  }
+}
+
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* 4️⃣ Parallax de fondo (manejado en JS) */
+@keyframes parallaxBg {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-50px); }
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 5️⃣ Texto que cambia con el scroll */
+@keyframes textScroll {
+  from {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-scroll {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 6️⃣ Contador de números animado */
+@keyframes countUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.counter-number {
+  font-variant-numeric: tabular-nums;
+  animation: countUp 0.6s ease-out forwards;
+  font-weight: 700;
+  color: var(--color-blue);
+}
+
+/* 7️⃣ Línea que se dibuja */
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw-line svg line,
+.draw-line svg path {
+  stroke-dasharray: 1000;
+  animation: drawLine 2s ease-in-out forwards;
+}
+
+/* 8️⃣ Reveal de imagen (wipe reveal) */
+@keyframes wipeReveal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.wipe-reveal {
+  animation: wipeReveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* 9️⃣ Glow al pasar el ratón */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(10, 132, 255, 0);
+  }
+}
+
+.glow-hover {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(10, 132, 255, 0.6), inset 0 0 20px rgba(10, 132, 255, 0.2);
+}
+
+.glow-pulse:hover {
+  animation: glowPulse 1.5s infinite;
+}
+
+/* 🔟 Scroll horizontal de secciones */
+@keyframes scrollHorizontal {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.scroll-horizontal {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-horizontal > * {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  animation: scrollHorizontal 0.6s ease-out forwards;
+}
+
+/* 1️⃣1️⃣ Texto letra por letra */
+@keyframes typeWriter {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid var(--color-blue);
+  white-space: nowrap;
+  animation: typeWriter 1.5s steps(40, end);
+}
+
+.typewriter-blink {
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { border-right-color: var(--color-blue); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+/* 1️⃣2️⃣ Imagen de producto con zoom entrada */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.zoom-in {
+  animation: zoomIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 1️⃣3️⃣ Producto fijo mientras haces scroll */
+.sticky-product {
+  position: sticky;
+  top: 100px;
+  z-index: 10;
+}
+
+/* 1️⃣4️⃣ Fondo que cambia entre secciones */
+@keyframes bgChange {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(10, 132, 255, 0.05);
+  }
+}
+
+.section-bg-change {
+  transition: background-color 0.6s ease-in-out;
+}
+
+/* 1️⃣5️⃣ Cursor personalizado interactivo */
+cursor-interactive {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-out;
+}
+
+.custom-cursor.active {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(10, 132, 255, 0.1);
+  border-color: var(--color-blue-light);
+}
+
+/* 1️⃣6️⃣ Botones con micro-animaciones (mejorado) */
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7); }
+  50% { box-shadow: 0 0 0 10px rgba(10, 132, 255, 0); }
+}
+
+.btn-micro-animation:hover {
+  animation: buttonPulse 1.5s infinite;
+}
+
+.btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* 1️⃣7️⃣ Cards que aparecen en cascada */
+@keyframes cascadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cascade-item {
+  animation: cascadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.cascade-item:nth-child(1) { animation-delay: 0s; }
+.cascade-item:nth-child(2) { animation-delay: 0.1s; }
+.cascade-item:nth-child(3) { animation-delay: 0.2s; }
+.cascade-item:nth-child(4) { animation-delay: 0.3s; }
+.cascade-item:nth-child(5) { animation-delay: 0.4s; }
+.cascade-item:nth-child(n+6) { animation-delay: 0.5s; }
+
+/* 1️⃣8️⃣ Imagen que se separa en capas (depth effect) */
+@keyframes depthLayer {
+  from {
+    transform: translateZ(0) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateZ(50px) translateY(0);
+    opacity: 1;
+  }
+}
+
+.depth-layer {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.depth-layer > * {
+  animation: depthLayer 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.depth-layer > img:nth-child(2) { animation-delay: 0.1s; }
+.depth-layer > img:nth-child(3) { animation-delay: 0.2s; }
+
+/* 2️⃣0️⃣ Aparición de elementos con stagger (mejorado) */
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-item {
+  animation: staggerFadeIn 0.6s ease-out both;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0s; }
+.stagger-item:nth-child(2) { animation-delay: 0.15s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.45s; }
+.stagger-item:nth-child(5) { animation-delay: 0.6s; }
+.stagger-item:nth-child(n+6) { animation-delay: 0.75s; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Base styles */
 *,
 *::before,
@@ -106,6 +478,13 @@ h6 { font-size: var(--font-size-lg); }
 p {
   margin: 0;
   color: var(--color-gray-600);
+}
+
+/* Reveal utility for scroll/GSAP animations */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
 }
 
 a {
@@ -206,6 +585,40 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
+}
+
+/* Mobile hamburger button (hidden by default) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* show/hide menu on narrow screens */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.95);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4) 0;
+    /* existing rule already hides; we keep for clarity */
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
 }
 
 /* Hero Section */
