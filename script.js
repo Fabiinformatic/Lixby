@@ -76,6 +76,22 @@ class LixbyApp {
         }
       });
     });
+
+    // mobile menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    if (navToggle && navLinksContainer) {
+      navToggle.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('open');
+      });
+
+      // close menu when a link is clicked (for single‑page anchors)
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinksContainer.classList.remove('open');
+        });
+      });
+    }
   }
 
   // Scroll effects
@@ -95,16 +111,39 @@ class LixbyApp {
     // Reveal animations on scroll
     const revealElements = document.querySelectorAll('[data-reveal]');
 
+    // ScrollTrigger based reveal (if available)
+    if (window.ScrollTrigger && window.gsap) {
+      revealElements.forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            once: true
+          }
+        });
+      });
+    }
+
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const element = entry.target;
-            const delay = element.dataset.revealDelay || 0;
+            const delay = parseFloat(element.dataset.revealDelay) || 0;
 
-            setTimeout(() => {
-              element.classList.add('revealed');
-            }, delay);
+            if (window.gsap && !Utils.prefersReducedMotion()) {
+              gsap.fromTo(element,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6, delay: delay / 1000 }
+              );
+            } else {
+              setTimeout(() => {
+                element.classList.add('revealed');
+              }, delay);
+            }
 
             revealObserver.unobserve(element);
           }
@@ -131,6 +170,30 @@ class LixbyApp {
 
   // Animations
   setupAnimations() {
+    // initialize SplitType if needed on text
+    if (window.SplitType) {
+      document.querySelectorAll('[data-split]').forEach(el => {
+        new SplitType(el, { types: 'words,chars' });
+      });
+    }
+
+    // register ScrollTrigger plugin
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
+    // Initialize all 20 animations
+    if (!Utils.prefersReducedMotion()) {
+      this.setup3DTilt();
+      this.setupCounterAnimation();
+      this.setupCustomCursor();
+      this.setupTextScroll();
+      this.setupGlowEffects();
+      this.setupScrollHorizontal();
+      this.setupCascadeCards();
+      this.setupBackgroundChange();
+    }
+
     // Micro-interactions for buttons
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
@@ -146,6 +209,38 @@ class LixbyApp {
         }
       });
     });
+
+    // GSAP entrance animations
+    if (window.gsap && !Utils.prefersReducedMotion()) {
+      // header cascade animation
+      const headerTl = gsap.timeline({ defaults: { opacity: 0, y: -20, ease: 'power2.out' } });
+      headerTl
+        .from('.nav-brand', { duration: 0.6 })
+        .from('.nav-link', { duration: 0.5, stagger: 0.1 }, '-=0.4')
+        .from('.nav-right', { duration: 0.4 }, '-=0.5');
+
+      // hero section (starts shortly after header)
+      headerTl
+        .from('.hero-title', { duration: 0.8, y: 30 }, '-=0.3')
+        .from('.hero-subtitle', { duration: 0.8 }, '-=0.6')
+        .from('.hero-ctas a', { duration: 0.8, stagger: 0.2 }, '-=0.6')
+        .from('.hero-image img', { duration: 1, scale: 1.1 }, '-=0.6');
+
+      // features cards
+      gsap.utils.toArray('.feature').forEach((el, i) => {
+        gsap.from(el, { opacity: 0, y: 30, duration: 0.6, delay: 1 + i * 0.15 });
+      });
+
+      // legal page headers
+      gsap.utils.toArray('.legal-header h1').forEach(el => {
+        gsap.from(el, { opacity: 0, y: -20, duration: 0.8, delay: 0.3 });
+      });
+
+      // fade-in for each major section (homepage/products/etc.)
+      gsap.utils.toArray('section').forEach((sec, i) => {
+        gsap.from(sec, { opacity: 0, y: 20, duration: 0.6, delay: 1 + i * 0.15 });
+      });
+    }
 
     // Hover effects for feature cards
     const features = document.querySelectorAll('.feature');
@@ -207,6 +302,20 @@ class LixbyApp {
     // Preload critical resources
     this.preloadCriticalResources();
 
+    // Lenis smooth scrolling
+    if (window.Lenis) {
+      this.lenis = new Lenis({
+        duration: 1.2,
+        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+      });
+      const raf = (time) => {
+        this.lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+    }
+
     // Service worker registration (if available)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -241,6 +350,156 @@ class LixbyApp {
       linkElement.href = link;
       document.head.appendChild(linkElement);
     });
+  }
+
+  // 3️⃣ Tilt 3D effect for products
+  setup3DTilt() {
+    const tiltElements = document.querySelectorAll('[data-tilt-3d]');
+    tiltElements.forEach(element => {
+      element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) * 0.1;
+        const rotateY = (centerX - x) * 0.1;
+        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      });
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+      });
+    });
+  }
+
+  // 6️⃣ Animated counter
+  setupCounterAnimation() {
+    const counters = document.querySelectorAll('[data-counter]');
+    counters.forEach(counter => {
+      const target = parseInt(counter.dataset.counter);
+      const duration = parseFloat(counter.dataset.duration) || 2;
+      const start = 0;
+      const increment = target / (duration * 60);
+      let current = start;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current >= target) {
+          counter.textContent = target;
+          return;
+        }
+        counter.textContent = Math.floor(current);
+        requestAnimationFrame(updateCounter);
+      };
+
+      // Trigger when element is visible
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              updateCounter();
+              observer.unobserve(counter);
+            }
+          });
+        });
+        observer.observe(counter);
+      } else {
+        updateCounter();
+      }
+    });
+  }
+
+  // 1️⃣5️⃣ Custom interactive cursor
+  setupCustomCursor() {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    const updateCursor = (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.clientY = e.clientY + 'px';
+    };
+
+    const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
+    document.addEventListener('mousemove', updateCursor, { passive: true });
+
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('active');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('active');
+      });
+    });
+  }
+
+  // 5️⃣ Text scroll effect
+  setupTextScroll() {
+    const textScrollElements = document.querySelectorAll('[data-text-scroll]');
+    if ('IntersectionObserver' in window) {
+      const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('text-scroll');
+            textObserver.unobserve(entry.target);
+          }
+        });
+      });
+      textScrollElements.forEach(el => textObserver.observe(el));
+    }
+  }
+
+  // 9️⃣ Glow effects on hover
+  setupGlowEffects() {
+    const glowElements = document.querySelectorAll('[data-glow]');
+    glowElements.forEach(element => {
+      element.classList.add('glow-hover');
+      if (element.dataset.glow === 'pulse') {
+        element.classList.add('glow-pulse');
+      }
+    });
+  }
+
+  // 🔟 Horizontal scroll
+  setupScrollHorizontal() {
+    const horizontalSections = document.querySelectorAll('[data-scroll-horizontal]');
+    horizontalSections.forEach(section => {
+      section.classList.add('scroll-horizontal');
+      const items = section.querySelectorAll('[data-scroll-item]');
+      items.forEach((item, index) => {
+        item.style.animationDelay = (index * 0.1) + 's';
+      });
+    });
+  }
+
+  // 1️⃣7️⃣ Cascade cards animation
+  setupCascadeCards() {
+    const cascadeContainers = document.querySelectorAll('[data-cascade]');
+    cascadeContainers.forEach(container => {
+      const cards = container.querySelectorAll('[data-cascade-item]');
+      cards.forEach((card, index) => {
+        card.classList.add('cascade-item');
+      });
+    });
+  }
+
+  // 1️⃣4️⃣ Background change on scroll
+  setupBackgroundChange() {
+    const sections = document.querySelectorAll('[data-bg-change]');
+    if ('IntersectionObserver' in window) {
+      const bgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-bg-change');
+            const bgColor = entry.target.dataset.bgChange;
+            if (bgColor) {
+              entry.target.style.backgroundColor = bgColor;
+            }
+          }
+        });
+      });
+      sections.forEach(section => bgObserver.observe(section));
+    }
   }
 
   // Utility methods
