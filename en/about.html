@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Lixby | Nuestra Historia y MisiÃ³n</title>
+  <meta name="description" content="Conoce la historia de Lixby. Una empresa espaÃ±ola dedicada a crear tecnologÃ­a que simplifica la vida de las personas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .about-hero p {
+      font-size: var(--font-size-xl);
+      color: var(--color-gray-600);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .mission-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .mission-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .mission-content h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-6);
+    }
+
+    .mission-content p {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .values-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    .values-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-8);
+    }
+
+    .value-card {
+      padding: var(--spacing-10);
+      background-color: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .value-card h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .timeline {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: var(--spacing-12);
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 60px;
+      width: 2px;
+      height: calc(100% + var(--spacing-12));
+      background-color: var(--color-blue);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-date {
+      width: 100px;
+      font-weight: 700;
+      color: var(--color-blue);
+      font-size: var(--font-size-lg);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-left: var(--spacing-8);
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: var(--color-blue);
+      border: 3px solid var(--color-white);
+      border-radius: 50%;
+      left: -20px;
+      top: 8px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .timeline-content h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-2);
+    }
+
+    .team-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero h1 {
+        font-size: var(--font-size-4xl);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">Lixby</a>
+      <div class="nav-links">
+        <a href="/#products" class="nav-link">Productos</a>
+        <a href="/#apps" class="nav-link">Apps</a>
+        <a href="./support.html" class="nav-link">Soporte</a>
+      </div>
+      <div class="nav-right"></div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div>
+      <h1>Sobre Lixby</h1>
+      <p>Creamos tecnologÃ­a para simplificar tu vida. DiseÃ±ado en EspaÃ±a, creado con pasiÃ³n.</p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission-section">
+    <div class="mission-grid">
+      <div class="mission-content">
+        <h2>Nuestra misiÃ³n</h2>
+        <p>En Lixby creemos que la tecnologÃ­a debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y Ãºtiles.</p>
+        <p>Desde nuestros inicios en 2022, hemos trabajado para ofrecer soluciones innovadoras que realmente marcan la diferencia en la vida de nuestros usuarios.</p>
+      </div>
+      <div style="background-color: var(--color-gray-100); border-radius: var(--radius-2xl); height: 300px;"></div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Nuestros valores</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">ðŸŽ¯</div>
+          <h3>Enfoque en usuario</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Todo lo que hacemos estÃ¡ pensado para mejorar la experiencia del usuario.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">âœ¨</div>
+          <h3>DiseÃ±o excelente</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Buscamos la perfecciÃ³n en cada detalle, desde lo visual hasta lo funcional.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">ðŸ”’</div>
+          <h3>Transparencia</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Creemos en la privacidad de nuestros usuarios y la seguridad de sus datos.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">â™»ï¸</div>
+          <h3>Sostenibilidad</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos comprometemos con prÃ¡cticas ecolÃ³gicas y responsables.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">ðŸ¤</div>
+          <h3>Comunidad</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Valoramos a nuestra comunidad y escuchamos sus sugerencias.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">ðŸš€</div>
+          <h3>InnovaciÃ³n</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos esforzamos por estar siempre a la vanguardia de la tecnologÃ­a.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline">
+    <div class="timeline-container">
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Nuestra historia</h2>
+      
+      <div class="timeline-item">
+        <div class="timeline-date">2022</div>
+        <div class="timeline-content">
+          <h3>FundaciÃ³n de Lixby</h3>
+          <p style="color: var(--color-gray-600);">NaciÃ³ Lixby como una startup enfocada en crear tecnologÃ­a que simplifica la vida.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Lanzamiento de LixBuds</h3>
+          <p style="color: var(--color-gray-600);">Presentamos nuestros primeros auriculares inalÃ¡mbricos con tecnologÃ­a premium.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Lanzamiento de Lixney</h3>
+          <p style="color: var(--color-gray-600);">Nuestras app de finanzas personales llega con revolucionarias caracterÃ­sticas.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>LixBuds One</h3>
+          <p style="color: var(--color-gray-600);">Presentamos la versiÃ³n mejorada de nuestros auriculares con baterÃ­a extendida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Ãšnete a nuestra comunidad</h2>
+      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Descubre cÃ³mo Lixby puede mejorar tu vida hoy mismo.</p>
+      <a href="/#products" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Explorar productos</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Productos</h3>
+        <ul class="footer-links">
+          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Apps</h3>
+        <ul class="footer-links">
+          <li><a href="pages/apps/lixney.html">Lixney</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Empresa</h3>
+        <ul class="footer-links">
+          <li><a href="./about.html">Sobre Lixby</a></li>
+          <li><a href="./support.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="pages/legal/privacy.html">Privacidad</a></li>
+          <li><a href="pages/legal/terms.html">TÃ©rminos</a></li>
+          <li><a href="pages/legal/cookies.html">Cookies</a></li>
+          <li><a href="pages/legal/legal-notice.html">Aviso Legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Â© 2024 Lixby. Todos los derechos reservados. DiseÃ±ado en EspaÃ±a.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
