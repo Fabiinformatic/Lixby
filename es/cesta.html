@@ -123,6 +123,22 @@
       gap: 10px;
     }
 
+    .cart-actions .btn {
+      width: 100%;
+      min-height: 48px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .cart-actions .btn:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .cart-actions .btn:focus-visible {
+      outline: 3px solid rgba(22, 167, 255, 0.35);
+      outline-offset: 2px;
+    }
+
     .cart-empty {
       color: var(--muted);
     }
@@ -177,14 +193,39 @@
     </section>
   </main>
 
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+      authDomain: "lixby0.firebaseapp.com",
+      projectId: "lixby0",
+      storageBucket: "lixby0.firebasestorage.app",
+      messagingSenderId: "1058088945026",
+      appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b",
+      measurementId: "G-689VDV93C2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let authReady = false;
+    let isAuthenticated = false;
+
+    onAuthStateChanged(auth, (user) => {
+      authReady = true;
+      isAuthenticated = Boolean(user);
+    });
+
     const CART_KEY = "lixbyCart";
 
     const productCatalog = {
       "lixbuds-one": {
         id: "lixbuds-one",
         name: "LixBuds One",
-        price: 129,
+        price: 99.99,
         image: "images/lixbuds-product.jpg"
       }
     };
@@ -294,7 +335,23 @@
     });
 
     checkoutBtn.addEventListener("click", () => {
-      alert("Checkout de demostracion completado.");
+      const cart = readCart();
+      if (cart.length === 0) {
+        alert("Tu cesta esta vacia.");
+        return;
+      }
+
+      if (!authReady) {
+        alert("Cargando sesion. Intenta de nuevo en unos segundos.");
+        return;
+      }
+
+      if (!isAuthenticated) {
+        window.location.href = "iniciar-sesion.html";
+        return;
+      }
+
+      window.location.href = STRIPE_PAYMENT_LINK;
     });
 
     renderCart();

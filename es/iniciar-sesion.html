@@ -176,6 +176,33 @@
       width: auto;
     }
 
+    .phone-verify {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .phone-verify #recaptcha-container,
+    .phone-verify .sms-row {
+      display: none;
+    }
+
+    .phone-verify.active #recaptcha-container {
+      display: block;
+    }
+
+    .phone-verify.active .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sms-row input {
+      flex: 1 1 180px;
+      min-width: 180px;
+    }
+
     .captcha-box {
       border: 1px dashed #94a3b8;
       border-radius: 10px;
@@ -281,22 +308,19 @@
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">Has olvidado la contrasena? Se abre en una ventana nueva.</a>
+            <a href="#" id="forgotPasswordLink" class="auth-link">¿Has olvidado la contrasena?</a>
 
             <button class="btn btn-primary" type="submit">Iniciar sesion</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
-              <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.5 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.7 3.5 14.6 2.6 12 2.6 6.9 2.6 2.8 6.7 2.8 11.9S6.9 21.2 12 21.2c6.9 0 9.1-4.8 9.1-7.3 0-.5-.1-.9-.1-1.2H12z"/>
-                <path fill="#34A853" d="M3.8 7.4l3.2 2.3C7.8 8.1 9.7 6.8 12 6.8c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.7 3.5 14.6 2.6 12 2.6c-3.6 0-6.7 2-8.2 4.8z"/>
-                <path fill="#4285F4" d="M12 21.2c2.5 0 4.6-.8 6.2-2.3l-2.9-2.4c-.8.5-1.8.9-3.3.9-3.9 0-5.2-2.5-5.4-3.8l-3.2 2.4c1.5 2.8 4.6 4.8 8.6 4.8z"/>
-                <path fill="#FBBC05" d="M6.6 13.6c-.2-.5-.3-1-.3-1.7s.1-1.2.3-1.7L3.4 7.8C2.9 8.9 2.8 10 2.8 11.9s.1 3 0.6 4.1l3.2-2.4z"/>
-              </svg>
+              <span class="google-badge" aria-hidden="true">
+                <img class="google-icon" src="images/google.png" alt="">
+              </span>
               Continuar con Google
             </button>
           </form>
           <p class="auth-note" style="margin-top: 10px;">
-            No tienes una cuenta de Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">Crear tu cuenta de Lixby, en crear cuenta</a>
+            ¿No tienes una cuenta de Lixby?
+            <a href="#" id="showRegisterLink" class="auth-link">Crear tu cuenta de Lixby</a>
           </p>
         </section>
 
@@ -305,8 +329,8 @@
             <h1>Crear tu cuenta de Lixby</h1>
             <p>Solo necesitas una cuenta de Lixby para acceder a todos los servicios de Lixby.</p>
             <p class="auth-note">
-              Ya tienes una cuenta de Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">Inicia sesion Se abre en una ventana nueva.</a>
+              ¿Ya tienes una cuenta de Lixby?
+              <a href="#" id="showLoginLink" class="auth-link">Inicia sesion</a>
             </p>
           </div>
 
@@ -327,6 +351,31 @@
                 <label for="country">Pais/region</label>
                 <select id="country" required>
                   <option value="ES" selected>Espana</option>
+                  <option value="MX">Mexico</option>
+                  <option value="AR">Argentina</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CL">Chile</option>
+                  <option value="PE">Peru</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BR">Brasil</option>
+                  <option value="DO">Republica Dominicana</option>
+                  <option value="PA">Panama</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="HN">Honduras</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="CA">Canada</option>
+                  <option value="US">Estados Unidos</option>
+                  <option value="PT">Portugal</option>
+                  <option value="FR">Francia</option>
+                  <option value="DE">Alemania</option>
+                  <option value="IT">Italia</option>
+                  <option value="GB">Reino Unido</option>
                 </select>
               </div>
               <div>
@@ -365,6 +414,29 @@
                 <label for="phoneCountry">Pais</label>
                 <select id="phoneCountry" required>
                   <option value="+34" selected>+34 (Espana)</option>
+                  <option value="+52">+52 (Mexico)</option>
+                  <option value="+54">+54 (Argentina)</option>
+                  <option value="+57">+57 (Colombia)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+51">+51 (Peru)</option>
+                  <option value="+593">+593 (Ecuador)</option>
+                  <option value="+58">+58 (Venezuela)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+591">+591 (Bolivia)</option>
+                  <option value="+55">+55 (Brasil)</option>
+                  <option value="+1">+1 (Estados Unidos/Canada)</option>
+                  <option value="+507">+507 (Panama)</option>
+                  <option value="+506">+506 (Costa Rica)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+503">+503 (El Salvador)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+351">+351 (Portugal)</option>
+                  <option value="+33">+33 (Francia)</option>
+                  <option value="+49">+49 (Alemania)</option>
+                  <option value="+39">+39 (Italia)</option>
+                  <option value="+44">+44 (Reino Unido)</option>
                 </select>
               </div>
               <div>
@@ -377,10 +449,16 @@
               Asegurate de introducir un numero de telefono al que puedas acceder en todo momento. Este numero se utilizara para verificar tu identidad cada vez que inicies sesion en un nuevo dispositivo o navegador web. Puede que se apliquen tarifas de datos o mensajeria.
             </p>
 
-            <label>Verificar con:</label>
-            <div class="verify-method">
-              <label><input type="radio" name="verifyMethod" value="sms" checked> SMS</label>
-              <label><input type="radio" name="verifyMethod" value="call"> Llamada telefonica</label>
+            <div class="phone-verify" id="phoneVerify">
+              <div id="recaptcha-container"></div>
+              <div class="sms-row">
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar codigo</button>
+                <span class="auth-note">Te enviaremos un SMS de verificacion.</span>
+              </div>
+              <div class="sms-row">
+                <input id="code" type="text" placeholder="Codigo SMS">
+                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
+              </div>
             </div>
 
             <label><input type="checkbox" id="adsOptIn"> Anuncios</label>
@@ -406,12 +484,9 @@
 
             <button class="btn btn-primary" type="submit">Crear cuenta</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
-              <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.5 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.7 3.5 14.6 2.6 12 2.6 6.9 2.6 2.8 6.7 2.8 11.9S6.9 21.2 12 21.2c6.9 0 9.1-4.8 9.1-7.3 0-.5-.1-.9-.1-1.2H12z"/>
-                <path fill="#34A853" d="M3.8 7.4l3.2 2.3C7.8 8.1 9.7 6.8 12 6.8c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.7 3.5 14.6 2.6 12 2.6c-3.6 0-6.7 2-8.2 4.8z"/>
-                <path fill="#4285F4" d="M12 21.2c2.5 0 4.6-.8 6.2-2.3l-2.9-2.4c-.8.5-1.8.9-3.3.9-3.9 0-5.2-2.5-5.4-3.8l-3.2 2.4c1.5 2.8 4.6 4.8 8.6 4.8z"/>
-                <path fill="#FBBC05" d="M6.6 13.6c-.2-.5-.3-1-.3-1.7s.1-1.2.3-1.7L3.4 7.8C2.9 8.9 2.8 10 2.8 11.9s.1 3 0.6 4.1l3.2-2.4z"/>
-              </svg>
+              <span class="google-badge" aria-hidden="true">
+                <img class="google-icon" src="images/google.png" alt="">
+              </span>
               Registrarse con Google
             </button>
           </form>
@@ -439,6 +514,8 @@
       signInWithEmailAndPassword,
       sendPasswordResetEmail,
       GoogleAuthProvider,
+      RecaptchaVerifier,
+      signInWithPhoneNumber,
       signInWithPopup,
       onAuthStateChanged,
       signOut
@@ -479,6 +556,10 @@
     const birthDay = document.getElementById("birthDay");
     const birthMonth = document.getElementById("birthMonth");
     const birthYear = document.getElementById("birthYear");
+    const phoneVerify = document.getElementById("phoneVerify");
+    const sendSmsBtn = document.getElementById("sendSmsBtn");
+    const verifySmsBtn = document.getElementById("verifySmsBtn");
+    const smsCodeInput = document.getElementById("code");
 
     function setStatus(text, type) {
       statusEl.textContent = text;
@@ -559,6 +640,31 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const googleProvider = new GoogleAuthProvider();
+      const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+        size: "invisible"
+      });
+      recaptchaVerifier.render();
+      let confirmationResult = null;
+
+      function buildPhoneNumber() {
+        const countryCode = document.getElementById("phoneCountry").value;
+        const rawNumber = document.getElementById("phoneNumber").value.trim();
+        if (!rawNumber) return "";
+        if (rawNumber.startsWith("+")) return rawNumber;
+        return `${countryCode}${rawNumber}`;
+      }
+
+      function togglePhoneVerify() {
+        const number = document.getElementById("phoneNumber").value.trim();
+        if (number) {
+          phoneVerify.classList.add("active");
+        } else {
+          phoneVerify.classList.remove("active");
+        }
+      }
+
+      document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
+      document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -612,7 +718,6 @@
         const birthYearValue = document.getElementById("birthYear").value;
         const phoneCountryValue = document.getElementById("phoneCountry").value;
         const phoneNumber = document.getElementById("phoneNumber").value.trim();
-        const verifyMethod = document.querySelector('input[name="verifyMethod"]:checked')?.value || "sms";
         const adsOptIn = document.getElementById("adsOptIn").checked;
         const mediaOptIn = document.getElementById("mediaOptIn").checked;
         const captchaValue = captchaInput.value.trim().toUpperCase();
@@ -640,7 +745,6 @@
             birthYear: birthYearValue,
             phoneCountry: phoneCountryValue,
             phoneNumber,
-            verifyMethod,
             adsOptIn,
             mediaOptIn
           }));
@@ -673,6 +777,41 @@
         }
       });
 
+      sendSmsBtn.addEventListener("click", async () => {
+        const phone = buildPhoneNumber();
+        if (!phone) {
+          setStatus("Introduce un numero de telefono antes de enviar el codigo.", "error");
+          return;
+        }
+        try {
+          sendSmsBtn.disabled = true;
+          confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+          setStatus("SMS enviado. Revisa tu telefono.", "success");
+        } catch (error) {
+          setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
+        } finally {
+          sendSmsBtn.disabled = false;
+        }
+      });
+
+      verifySmsBtn.addEventListener("click", async () => {
+        if (!confirmationResult) {
+          setStatus("Primero envia el codigo SMS.", "error");
+          return;
+        }
+        const code = smsCodeInput.value.trim();
+        if (!code) {
+          setStatus("Escribe el codigo SMS.", "error");
+          return;
+        }
+        try {
+          await confirmationResult.confirm(code);
+          setStatus("Telefono verificado correctamente.", "success");
+        } catch (error) {
+          setStatus("Codigo incorrecto. Intentalo de nuevo.", "error");
+        }
+      });
+
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
         setStatus("Sesion cerrada.", "info");
@@ -691,4 +830,3 @@
   </script>
 </body>
 </html>
-

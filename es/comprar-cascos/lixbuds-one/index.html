@@ -170,6 +170,21 @@
       object-fit: cover;
     }
 
+    .hero-actions .btn {
+      min-height: 48px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-actions .btn:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .hero-actions .btn:focus-visible {
+      outline: 3px solid rgba(22, 167, 255, 0.35);
+      outline-offset: 2px;
+    }
+
     @media (max-width: 980px) {
       .purchase-grid {
         grid-template-columns: 1fr;
@@ -273,7 +288,7 @@
             <span class="purchase-chip">LixBuds One</span>
             <div class="price">99,99 €</div>
             <div class="hero-actions">
-              <button class="btn btn-primary" type="button">Añadir a la bolsa</button>
+              <button id="addToCartBtn" class="btn btn-primary" type="button">Añadir a la bolsa</button>
             </div>
             <p class="purchase-meta">¿Necesitas un momento? Conserva todas tus selecciones guardando este dispositivo en Tus favoritos. Después, podrás volver cuando quieras y retomar todo donde lo dejaste.</p>
             <div class="hero-actions">
@@ -417,6 +432,37 @@
         window.location.href = url;
       });
     }
+
+    const addToCartBtn = document.getElementById("addToCartBtn");
+    const CART_KEY = "lixbyCart";
+
+    function readCart() {
+      return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    }
+
+    function writeCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    addToCartBtn.addEventListener("click", () => {
+      const cart = readCart();
+      const existing = cart.find((item) => item.id === "lixbuds-one");
+
+      if (existing) {
+        existing.qty = Number(existing.qty || 1) + 1;
+      } else {
+        cart.push({
+          id: "lixbuds-one",
+          name: "LixBuds One",
+          price: 99.99,
+          qty: 1,
+          image: "images/lixbuds-product.jpg"
+        });
+      }
+
+      writeCart(cart);
+      window.location.href = "../../cesta.html";
+    });
   </script>
 </body>
 </html>
