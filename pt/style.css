@@ -119,19 +119,20 @@ img {
   position: sticky;
   top: 0;
   z-index: 1200;
-  padding-top: 14px;
+  padding-top: 10px;
 }
 
 .nav-container {
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 999px;
+  border-radius: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 12px 18px;
+  gap: 14px;
+  padding: 4px 14px;
+  min-height: 40px;
   transition: box-shadow 0.35s ease, background 0.35s ease;
 }
 
@@ -143,15 +144,17 @@ img {
 .nav-brand {
   text-decoration: none;
   color: var(--text);
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   font-weight: 800;
   letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 24px;
+  min-height: 32px;
 }
 
 .nav-link {
@@ -160,6 +163,8 @@ img {
   font-weight: 600;
   position: relative;
   transition: color 0.25s ease;
+  line-height: 1;
+  padding: 4px 0;
 }
 
 .nav-link::after {
@@ -192,10 +197,11 @@ img {
   width: 160px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: 6px 12px;
   font-family: inherit;
   outline: none;
   background: #fff;
+  height: 32px;
 }
 
 .nav-action-link {
@@ -205,8 +211,8 @@ img {
 }
 
 .nav-icon-link {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--line);
   border-radius: 999px;
   display: inline-flex;
@@ -222,8 +228,8 @@ img {
 }
 
 .nav-icon-link img {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
 }
 
