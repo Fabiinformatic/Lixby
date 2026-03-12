@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lixby</title>
-  <meta name="description" content="Auriculares inalámbricos premium y una app de finanzas personales. Descubre Mixmax y Lixney, tecnología diseñada en España para simplificar tu vida.">
-  <meta name="keywords" content="auriculares inalámbricos, app de finanzas, Mixmax, Lixney, tecnología, audio premium, gestión de dinero, España">
+  <title>Lixby (English)</title>
+  <meta name="description" content="Premium wireless headphones and a personal finance app. Discover Mixmax and Lixney, technology designed in Spain to simplify your life.">
+  <meta name="keywords" content="wireless headphones, finance app, Mixmax, Lixney, technology, premium audio, money management, Spain">
   <meta name="author" content="Lixby">
   <link rel="canonical" href="https://fabiinformatic.github.io/Lixby/">
-  <meta property="og:title" content="Lixby - Tecnología diseñada en España">
-  <meta property="og:description" content="Auriculares premium y app de finanzas personales. Descubre Mixmax y Lixney.">
+  <meta property="og:title" content="Lixby - Technology designed in Spain">
+  <meta property="og:description" content="Premium headphones and personal finance app. Discover Mixmax and Lixney.">
   <meta property="og:image" content="https://fabiinformatic.github.io/Lixby/images/lixbuds-hero.jpg">
   <meta property="og:url" content="https://fabiinformatic.github.io/Lixby/">
   <meta property="og:type" content="website">
@@ -27,18 +27,21 @@
   <div class="background-orb orb-2" aria-hidden="true"></div>
 
   <div class="cookie-banner" id="cookieBanner">
-    <p>Usamos cookies para mejorar tu experiencia.</p>
-    <button type="button" id="acceptCookies">Aceptar</button>
+    <p>We use cookies to improve your experience. You can accept or reject them.</p>
+    <div class="cookie-actions">
+      <button type="button" id="acceptCookies">Accept</button>
+      <button type="button" id="rejectCookies" class="cookie-reject">Reject</button>
+    </div>
   </div>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="tienda.html" class="nav-link">Store</a>
+        <a href="#productos" class="nav-link">Products</a>
         <a href="#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
         <form id="navSearchForm" action="tienda.html" method="get">
@@ -47,15 +50,15 @@
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Search product..."
+            aria-label="Search product"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
     </div>
@@ -64,65 +67,65 @@
   <main>
     <section id="inicio" class="hero container reveal" data-delay="0s">
       <div class="hero-copy">
-        <p class="eyebrow">Tecnología pensada para ti</p>
-        <h1>Diseño limpio, sonido potente y control total de tu día.</h1>
+        <p class="eyebrow">Technology designed for you</p>
+        <h1>Clean design, powerful sound and full control of your day.</h1>
         <p class="hero-text">
-          En Lixby unimos hardware y software para que tengas una experiencia fluida:
-          auriculares premium y finanzas personales en una sola marca.
+          At Lixby we combine hardware and software so you have a smooth experience:
+          premium headphones and personal finance in one brand.
         </p>
         <div class="hero-actions">
-          <a href="#productos" class="btn btn-primary">Explorar productos</a>
-          <a href="#apps" class="btn btn-secondary">Conocer apps</a>
+          <a href="#productos" class="btn btn-primary">Explore products</a>
+          <a href="#apps" class="btn btn-secondary">Discover apps</a>
         </div>
       </div>
       <div class="hero-media reveal" data-delay="0.15s">
-        <img src="images/lixbuds-hero.jpg" alt="Auriculares Mixmax de Lixby" class="hero-image float-animation">
+        <img src="images/lixbuds-hero.jpg" alt="Lixby Mixmax headphones" class="hero-image float-animation">
       </div>
     </section>
 
     <section class="stats container">
       <article class="stat-card reveal" data-delay="0s">
         <span class="stat-number">98%</span>
-        <p>Satisfacción de usuarios</p>
+        <p>User satisfaction</p>
       </article>
       <article class="stat-card reveal" data-delay="0.1s">
         <span class="stat-number">30h</span>
-        <p>Autonomía de batería</p>
+        <p>Battery autonomy</p>
       </article>
       <article class="stat-card reveal" data-delay="0.2s">
         <span class="stat-number">24/7</span>
-        <p>Soporte técnico en español</p>
+        <p>Technical support in Spanish</p>
       </article>
     </section>
 
     <section id="productos" class="cards-section container">
       <div class="section-head reveal" data-delay="0s">
-        <p class="eyebrow">Productos</p>
-        <h2>Elige tu experiencia Lixby</h2>
+        <p class="eyebrow">Products</p>
+        <h2>Choose your Lixby experience</h2>
       </div>
 
       <div class="cards-grid">
         <article class="product-card reveal" data-delay="0.05s">
           <div class="card-media">
-            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Auriculares Mixmax">
+            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Mixmax headphones">
           </div>
           <h3>LixBuds One</h3>
-          <p>Auriculares inalámbricos con cancelación de ruido, sonido inmersivo y estuche de carga ultrarrápido.</p>
+          <p>Wireless headphones with noise cancellation, immersive sound and an ultra-fast charging case.</p>
           <div class="card-buttons">
-            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Ver más</a>
-            <a href="cesta.html" class="btn btn-primary add-to-cart" data-product-id="lixbuds-one">Comprar</a>
+            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">See more</a>
+            <a href="http://127.0.0.1:5500/es/comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Buy</a>
           </div>
         </article>
 
         <article id="apps" class="product-card reveal" data-delay="0.15s">
           <div class="card-media">
-            <img src="images/lixbuds-hero.jpg" loading="lazy" alt="Aplicación Lixney">
+            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Lixney application">
           </div>
           <h3>Lixney</h3>
-          <p>Tu app de finanzas personales: organiza gastos, crea presupuestos y entiende en qué se va tu dinero.</p>
+          <p>Your personal finance app: organize expenses, create budgets and understand where your money goes.</p>
           <div class="card-buttons">
-            <a href="pages/apps/lixney.html" class="btn btn-secondary">Ver más</a>
-            <a href="#" class="btn btn-primary">Descargar</a>
+            <a href="pages/apps/lixney.html" class="btn btn-secondary">See more</a>
+            <a href="#" class="btn btn-primary">Download</a>
           </div>
         </article>
       </div>
@@ -132,53 +135,53 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Browse and buy</h3>
         <ul>
-          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Store</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
-          <li><a href="pages/support.html">Soporte</a></li>
+          <li><a href="pages/support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="pages/support.html">Página inicial soporte</a></li>
-          <li><a href="pages/support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="pages/support.html">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="pages/support.html">Support homepage</a></li>
+          <li><a href="pages/support.html#faq">Online store FAQs</a></li>
+          <li><a href="pages/support.html">Warranty information</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Account</h3>
         <ul>
-          <li><a href="cesta.html">Pedidos</a></li>
-          <li><a href="cuenta.html">Mi cuenta</a></li>
-          <li><a href="cuenta.html">Cupones</a></li>
+          <li><a href="cesta.html">Orders</a></li>
+          <li><a href="cuenta.html">My account</a></li>
+          <li><a href="cuenta.html">Coupons</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>About Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="pages/support.html">Garantía</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="pages/support.html">Contacto</a></li>
+          <li><a href="pages/support.html">Warranty</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="pages/support.html">Contact</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Política de privacidad</a>
-        <a href="pages/legal/cookies.html">Uso de cookies</a>
-        <a href="pages/legal/terms.html">Condiciones de uso</a>
-        <a href="pages/support.html">Ventas y reembolsos</a>
-        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="pages/legal/privacy.html">Privacy policy</a>
+        <a href="pages/legal/cookies.html">Cookie policy</a>
+        <a href="pages/legal/terms.html">Terms of use</a>
+        <a href="pages/support.html">Sales and refunds</a>
+        <a href="pages/legal/legal-notice.html">Legal notices</a>
       </div>
     </div>
   </footer>
@@ -186,13 +189,20 @@
   <script>
     const cookieBanner = document.getElementById("cookieBanner");
     const acceptCookiesButton = document.getElementById("acceptCookies");
+    const rejectCookiesButton = document.getElementById("rejectCookies");
 
-    if (localStorage.getItem("cookiesAccepted") === "true") {
+    const cookieChoice = localStorage.getItem("cookiesChoice");
+    if (cookieChoice === "accepted" || cookieChoice === "rejected") {
       cookieBanner.style.display = "none";
     }
 
     acceptCookiesButton.addEventListener("click", () => {
-      localStorage.setItem("cookiesAccepted", "true");
+      localStorage.setItem("cookiesChoice", "accepted");
+      cookieBanner.style.display = "none";
+    });
+
+    rejectCookiesButton.addEventListener("click", () => {
+      localStorage.setItem("cookiesChoice", "rejected");
       cookieBanner.style.display = "none";
     });
 
@@ -277,4 +287,3 @@
   </script>
 </body>
 </html>
-
