@@ -129,13 +129,14 @@ img {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-xl);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  padding: 4px 14px;
-  min-height: 40px;
+  padding: 8px 16px;
+  min-height: 70px;
   transition: box-shadow 0.35s ease, background 0.35s ease;
   animation: nav-float-in 0.7s ease both;
   position: relative;
@@ -156,18 +157,19 @@ img {
   font-size: 1.28rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  grid-column: 1;
-  grid-row: 1;
   line-height: 1.1;
+  justify-self: start;
+  align-self: center;
+  flex-shrink: 0;
 }
 
 .nav-links {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
   min-width: 0;
-  grid-column: 2;
-  grid-row: 1;
+  align-self: center;
 }
 
 .nav-row {
@@ -180,8 +182,7 @@ img {
 
 .nav-panels {
   width: 100%;
-  grid-column: 1 / -1;
-  grid-row: 2;
+  flex-basis: 100%;
   margin-top: 0;
   position: relative;
   height: 0;
@@ -212,8 +213,8 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  line-height: 1;
-  padding: 4px 0;
+  line-height: 1.2;
+  padding: 6px 0;
 }
 
 .nav-link > a::after {
@@ -332,9 +333,8 @@ body.nav-open footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-self: end;
-  grid-column: 3;
-  grid-row: 1;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .nav-search {
