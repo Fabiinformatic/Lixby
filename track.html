@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rastrear pedido | Lixby</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f5f1;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #606060;
+        --accent: #0f62fe;
+        --border: #e4e0d8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+      }
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      form {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      input[type="text"] {
+        flex: 1 1 240px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font-size: 1rem;
+      }
+      button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .tracking {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .step {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        background: #fff;
+      }
+      .step.done {
+        background: #4caf50;
+        color: #fff;
+        border-color: #4caf50;
+      }
+      .result {
+        margin-top: 18px;
+        padding: 14px;
+        border-radius: 10px;
+        background: #f0f5ff;
+        border: 1px solid #d6e4ff;
+        display: none;
+      }
+      .error {
+        background: #fff1f0;
+        border: 1px solid #ffccc7;
+      }
+      .label {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Rastrea tu pedido</h1>
+        <p>Si llegaste desde un enlace, verás el estado automáticamente.</p>
+        <form id="track-form">
+          <input
+            id="order-id"
+            type="text"
+            placeholder="LXB-XXXXX"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">Consultar</button>
+        </form>
+        <div id="result" class="result"></div>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("track-form");
+      const input = document.getElementById("order-id");
+      const result = document.getElementById("result");
+      const statusSteps = [
+        "Pedido recibido",
+        "Preparando pedido",
+        "Enviado",
+        "En reparto",
+        "Entregado"
+      ];
+
+      const renderTracking = (data) => {
+        const currentIndex = statusSteps.indexOf(data.status);
+        const stepsHtml = statusSteps
+          .map((step, idx) => {
+            const doneClass = idx <= currentIndex ? "done" : "";
+            return `<div class="step ${doneClass}">${step}</div>`;
+          })
+          .join("");
+
+        const trackingExtra = data.trackingCarrier || data.trackingNumber
+          ? `<div><span class="label">Envío:</span> ${data.trackingCarrier || "-"} ${
+              data.trackingNumber || ""
+            }</div>`
+          : "";
+
+        result.innerHTML = `
+          <div><span class="label">Código:</span> ${data.id}</div>
+          <div><span class="label">Email:</span> ${data.email || "-"}</div>
+          <div><span class="label">Producto:</span> ${data.product}</div>
+          <div><span class="label">Estado:</span> ${data.status}</div>
+          ${trackingExtra}
+          <div class="tracking">${stepsHtml}</div>
+        `;
+      };
+
+      const fetchOrder = async (id) => {
+        result.style.display = "block";
+        result.classList.remove("error");
+        result.textContent = "Buscando tu pedido...";
+
+        try {
+          const res = await fetch(`/track-order/${encodeURIComponent(id)}`);
+          const data = await res.json();
+
+          if (!res.ok) {
+            result.classList.add("error");
+            result.textContent = data.error || "No se encontró el pedido.";
+            return;
+          }
+
+          renderTracking(data);
+        } catch (error) {
+          result.classList.add("error");
+          result.textContent = "Error consultando el pedido.";
+        }
+      };
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const id = input.value.trim();
+        if (!id) {
+          return;
+        }
+        fetchOrder(id);
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const paramId = params.get("id");
+      if (paramId) {
+        window.location.href = `/track/${encodeURIComponent(paramId)}`;
+      }
+
+      const pathMatch = window.location.pathname.match(/\/track\/(.+)$/);
+      if (pathMatch && pathMatch[1]) {
+        const orderId = decodeURIComponent(pathMatch[1]);
+        input.value = orderId;
+        fetchOrder(orderId);
+      }
+    </script>
+  </body>
+</html>
