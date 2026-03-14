@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lixby (English)</title>
+  <title>Lixby</title>
   <meta name="description" content="Premium wireless headphones and a personal finance app. Discover Mixmax and Lixney, technology designed in Spain to simplify your life.">
   <meta name="keywords" content="wireless headphones, finance app, Mixmax, Lixney, technology, premium audio, money management, Spain">
   <meta name="author" content="Lixby">
   <link rel="canonical" href="https://fabiinformatic.github.io/Lixby/">
   <meta property="og:title" content="Lixby - Technology designed in Spain">
-  <meta property="og:description" content="Premium headphones and personal finance app. Discover Mixmax and Lixney.">
+  <meta property="og:description" content="Premium headphones and a personal finance app. Discover Mixmax and Lixney.">
   <meta property="og:image" content="https://fabiinformatic.github.io/Lixby/images/lixbuds-hero.jpg">
   <meta property="og:url" content="https://fabiinformatic.github.io/Lixby/">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   <div class="background-orb orb-2" aria-hidden="true"></div>
 
   <div class="cookie-banner" id="cookieBanner">
-    <p>We use cookies to improve your experience. You can accept or reject them.</p>
+    <p>We use cookies to improve your experience. You can accept or reject.</p>
     <div class="cookie-actions">
       <button type="button" id="acceptCookies">Accept</button>
       <button type="button" id="rejectCookies" class="cookie-reject">Reject</button>
@@ -37,40 +37,80 @@
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="tienda.html" class="nav-link">Store</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="shop.html" class="nav-link">Shop</a>
         <a href="#productos" class="nav-link">Products</a>
         <a href="#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Support</a>
+        <a href="support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="shop.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
             placeholder="Search product..."
-            aria-label="Search product"
+            aria-label="Search producto"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
+        <a href="cart.html" class="nav-icon-link" aria-label="Cart">
           <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Search"
+          aria-label="Search producto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Close menu">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Primary móvil">
+      <a href="shop.html">Shop</a>
+      <a href="#productos">Products</a>
+      <a href="#apps">Apps</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="cart.html">Cart</a>
+      <a href="account.html">Account</a>
+    </div>
+  </div>
 
   <main>
     <section id="inicio" class="hero container reveal" data-delay="0s">
       <div class="hero-copy">
         <p class="eyebrow">Technology designed for you</p>
-        <h1>Clean design, powerful sound and full control of your day.</h1>
+        <h1>Clean design, powerful sound, and total control of your day.</h1>
         <p class="hero-text">
-          At Lixby we combine hardware and software so you have a smooth experience:
+          At Lixby, we combine hardware and software to deliver a seamless experience:
           premium headphones and personal finance in one brand.
         </p>
         <div class="hero-actions">
@@ -90,11 +130,11 @@
       </article>
       <article class="stat-card reveal" data-delay="0.1s">
         <span class="stat-number">30h</span>
-        <p>Battery autonomy</p>
+        <p>Battery life</p>
       </article>
       <article class="stat-card reveal" data-delay="0.2s">
         <span class="stat-number">24/7</span>
-        <p>Technical support in Spanish</p>
+        <p>Support técnico en español</p>
       </article>
     </section>
 
@@ -110,21 +150,21 @@
             <img src="images/lixbuds-product.jpg" loading="lazy" alt="Mixmax headphones">
           </div>
           <h3>LixBuds One</h3>
-          <p>Wireless headphones with noise cancellation, immersive sound and an ultra-fast charging case.</p>
+          <p>Wireless headphones with noise cancellation, immersive sound, and an ultra-fast charging case.</p>
           <div class="card-buttons">
-            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">See more</a>
-            <a href="/Lixby/es/comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Buy</a>
+            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">View more</a>
+            <a href="/Lixby/es/buy-headphones/lixbuds-one/index.html" class="btn btn-primary">Buy</a>
           </div>
         </article>
 
         <article id="apps" class="product-card reveal" data-delay="0.15s">
           <div class="card-media">
-            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Lixney application">
+            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Lixney app">
           </div>
           <h3>Lixney</h3>
-          <p>Your personal finance app: organize expenses, create budgets and understand where your money goes.</p>
+          <p>Your personal finance app: track spending, build budgets, and understand where your money goes.</p>
           <div class="card-buttons">
-            <a href="pages/apps/lixney.html" class="btn btn-secondary">See more</a>
+            <a href="pages/apps/lixney-support.html" class="btn btn-secondary">View more</a>
             <a href="#" class="btn btn-primary">Download</a>
           </div>
         </article>
@@ -135,21 +175,21 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Browse and buy</h3>
+        <h3>Shop and explore</h3>
         <ul>
-          <li><a href="#">Store</a></li>
+          <li><a href="#">Shop</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
-          <li><a href="pages/support.html">Support</a></li>
+          <li><a href="support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Support</h3>
         <ul>
-          <li><a href="pages/support.html">Support homepage</a></li>
-          <li><a href="pages/support.html#faq">Online store FAQs</a></li>
-          <li><a href="pages/support.html">Warranty information</a></li>
+          <li><a href="support.html">Support home</a></li>
+          <li><a href="support.html#faq">FAQs Shop online</a></li>
+          <li><a href="support.html">Warranty information</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
@@ -157,9 +197,9 @@
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="cesta.html">Orders</a></li>
-          <li><a href="cuenta.html">My account</a></li>
-          <li><a href="cuenta.html">Coupons</a></li>
+          <li><a href="../track.html">Orders</a></li>
+          <li><a href="account.html">My account</a></li>
+          <li><a href="account.html">Coupons</a></li>
         </ul>
       </section>
 
@@ -167,9 +207,9 @@
         <h3>About Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="pages/support.html">Warranty</a></li>
+          <li><a href="support.html">Warranty</a></li>
           <li><a href="#">Events</a></li>
-          <li><a href="pages/support.html">Contact</a></li>
+          <li><a href="support.html">Contact</a></li>
         </ul>
       </section>
     </div>
@@ -177,10 +217,10 @@
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Privacy policy</a>
-        <a href="pages/legal/cookies.html">Cookie policy</a>
-        <a href="pages/legal/terms.html">Terms of use</a>
-        <a href="pages/support.html">Sales and refunds</a>
+        <a href="pages/legal/privacy.html">Privacy Policy</a>
+        <a href="pages/legal/cookies.html">Cookie Policy</a>
+        <a href="pages/legal/terms.html">Terms of Use</a>
+        <a href="support.html">Sales and refunds</a>
         <a href="pages/legal/legal-notice.html">Legal notices</a>
       </div>
     </div>
@@ -256,10 +296,61 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
         window.location.href = url;
       });
     }
+
+    const mobileSearchForm = document.getElementById("navSearchFormMobile");
+    const mobileSearchInput = document.getElementById("navSearchMobile");
+    if (mobileSearchForm && mobileSearchInput) {
+      mobileSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = mobileSearchInput.value.trim();
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobilePanel = document.getElementById("navMobilePanel");
+    const searchToggle = document.querySelector(".nav-search-toggle");
+    const menuToggle = document.querySelector(".nav-menu-toggle");
+    const closeNav = () => {
+      document.body.classList.remove("nav-open", "menu-open");
+      nav.classList.remove("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "true");
+      searchToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    };
+
+    const openNav = (focusSearch = false) => {
+      document.body.classList.add("nav-open", "menu-open");
+      nav.classList.add("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "false");
+      searchToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      if (focusSearch && mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 80);
+      }
+    };
+
+    const toggleNav = (focusSearch = false) => {
+      if (nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav(focusSearch);
+      }
+    };
+
+    searchToggle?.addEventListener("click", () => toggleNav(true));
+    menuToggle?.addEventListener("click", () => toggleNav(false));
+
+    const mobileClose = document.querySelector(".nav-mobile-close");
+    mobileClose?.addEventListener("click", () => closeNav());
+
+    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+      link.addEventListener("click", () => closeNav());
+    });
 
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     addToCartButtons.forEach((button) => {
@@ -281,9 +372,13 @@
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cesta.html";
+        window.location.href = "cart.html";
       });
     });
   </script>
 </body>
 </html>
+
+
+
+

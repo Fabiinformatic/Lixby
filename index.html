@@ -9,16 +9,62 @@
 <body>
   <noscript>
     <p>JavaScript is required for automatic language redirect.</p>
-    <p><a href="./en/index.html">English</a> | <a href="./es/index.html">Espanol</a> | <a href="./pt/index.html">Portugues</a></p>
+    <p>
+      <a href="./de/index.html">Deutsch</a> |
+      <a href="./bg/index.html">Български</a> |
+      <a href="./cs/index.html">Čeština</a> |
+      <a href="./hr/index.html">Hrvatski</a> |
+      <a href="./da/index.html">Dansk</a> |
+      <a href="./sk/index.html">Slovenčina</a> |
+      <a href="./sl/index.html">Slovenščina</a> |
+      <a href="./es/index.html">Español</a> |
+      <a href="./et/index.html">Eesti</a> |
+      <a href="./fi/index.html">Suomi</a> |
+      <a href="./fr/index.html">Français</a> |
+      <a href="./el/index.html">Ελληνικά</a> |
+      <a href="./hu/index.html">Magyar</a> |
+      <a href="./en/index.html">English</a> |
+      <a href="./ga/index.html">Gaeilge</a> |
+      <a href="./it/index.html">Italiano</a> |
+      <a href="./lv/index.html">Latviešu</a> |
+      <a href="./lt/index.html">Lietuvių</a> |
+      <a href="./mt/index.html">Malti</a> |
+      <a href="./nl/index.html">Nederlands</a> |
+      <a href="./pl/index.html">Polski</a> |
+      <a href="./pt/index.html">Português</a> |
+      <a href="./ro/index.html">Română</a> |
+      <a href="./sv/index.html">Svenska</a>
+    </p>
   </noscript>
   <script>
     (function () {
       const lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
       let folder = "en";
 
-      if (lang.startsWith("es")) folder = "es";
-      else if (lang.startsWith("pt")) folder = "pt";
+      if (lang.startsWith("de")) folder = "de";
+      else if (lang.startsWith("bg")) folder = "bg";
+      else if (lang.startsWith("cs")) folder = "cs";
+      else if (lang.startsWith("hr")) folder = "hr";
+      else if (lang.startsWith("da")) folder = "da";
+      else if (lang.startsWith("sk")) folder = "sk";
+      else if (lang.startsWith("sl")) folder = "sl";
+      else if (lang.startsWith("es")) folder = "es";
+      else if (lang.startsWith("et")) folder = "et";
+      else if (lang.startsWith("fi")) folder = "fi";
+      else if (lang.startsWith("fr")) folder = "fr";
+      else if (lang.startsWith("el")) folder = "el";
+      else if (lang.startsWith("hu")) folder = "hu";
       else if (lang.startsWith("en")) folder = "en";
+      else if (lang.startsWith("ga")) folder = "ga";
+      else if (lang.startsWith("it")) folder = "it";
+      else if (lang.startsWith("lv")) folder = "lv";
+      else if (lang.startsWith("lt")) folder = "lt";
+      else if (lang.startsWith("mt")) folder = "mt";
+      else if (lang.startsWith("nl")) folder = "nl";
+      else if (lang.startsWith("pl")) folder = "pl";
+      else if (lang.startsWith("pt")) folder = "pt";
+      else if (lang.startsWith("ro")) folder = "ro";
+      else if (lang.startsWith("sv")) folder = "sv";
 
       window.location.replace(`./${folder}/index.html`);
     })();

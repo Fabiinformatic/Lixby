@@ -5,11 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte | Lixby</title>
   <meta name="description" content="Centro de soporte de Lixby. Encuentra respuestas, contacta con nuestro equipo y accede a recursos de ayuda.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lixby">
+  <meta property="og:title" content="Soporte | Lixby">
+  <meta property="og:description" content="Centro de ayuda de Lixby">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lixby.com/images/preview.jpg">
+  <meta property="og:url" content="https://lixby.com/support">
+  <meta property="og:site_name" content="Lixby">
+  <link rel="canonical" href="https://lixby.com/support">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Soporte | Lixby">
+  <meta name="twitter:description" content="Centro de ayuda de Lixby">
+  <meta name="twitter:image" content="https://lixby.com/images/preview.jpg">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://lixby.com",
+      "logo": "https://lixby.com/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+34900123456",
+        "contactType": "customer service",
+        "areaServed": "ES",
+        "availableLanguage": "Spanish"
+      }
+    }
+  </script>
   <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 20px;
+    }
+
+    .skip-link:focus {
+      left: 20px;
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      z-index: 1000;
+    }
+
     .support-hero {
       min-height: 60vh;
       display: flex;
@@ -18,8 +73,11 @@
       padding: var(--spacing-20) var(--spacing-6);
       background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
       color: var(--color-white);
-      margin-top: 4rem;
       text-align: center;
+    }
+
+    .support-hero-content {
+      margin-top: -24px;
     }
 
     .support-hero-content h1 {
@@ -42,28 +100,67 @@
 
     .support-grid {
       max-width: 1200px;
+      width: min(1200px, 92vw);
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--spacing-8);
     }
 
+    @media (min-width: 1024px) {
+      .support-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+
     .support-card {
       padding: var(--spacing-10);
-      background-color: var(--color-gray-50);
+      background-color: #ffffff !important;
       border-radius: var(--radius-2xl);
       border: 1px solid var(--color-gray-200);
+      box-shadow: var(--shadow-md);
       transition: all var(--transition-fast);
+      opacity: 1 !important;
+      filter: none !important;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      height: 100%;
+    }
+
+    .support-card * {
+      opacity: 1 !important;
+      filter: none !important;
+      color: inherit;
+    }
+
+    .support-card h3,
+    .support-card p,
+    .support-card a,
+    .support-card .btn {
+      opacity: 1 !important;
+      color: var(--text);
+    }
+
+    .support-card p {
+      color: var(--color-gray-600);
     }
 
     .support-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
 
     .support-card-icon {
       font-size: 3rem;
       margin-bottom: var(--spacing-4);
+    }
+
+    .support-card-icon i {
+      width: 3rem;
+      height: 3rem;
+      display: inline-block;
     }
 
     .support-card h3 {
@@ -75,6 +172,55 @@
     .support-card p {
       color: var(--color-gray-600);
       margin-bottom: var(--spacing-6);
+      flex: 1;
+    }
+
+    .support-card .btn {
+      background: #e9f1ff;
+      color: #1a4ed8;
+      border: 1px solid #cfe0ff;
+      box-shadow: none;
+    }
+
+    .support-card .btn:hover {
+      background: #dbe8ff;
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
+
+    .support-search {
+      margin-top: var(--spacing-6);
+      display: flex;
+      justify-content: center;
+    }
+
+    .support-search input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .support-status {
+      margin-top: var(--spacing-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-weight: 600;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #2ecc71;
+      box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.2);
     }
 
     .faq-section {
@@ -94,54 +240,97 @@
       text-align: center;
     }
 
-    .faq-item {
-      margin-bottom: var(--spacing-6);
+ .faq-item {
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 22px 26px;
+  width: 100%;
+  border: none;
+  background: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background: #f9fafb;
+}
+
+.faq-question::after {
+  content: "▾";
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+.faq-question[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 26px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    will-change: max-height, opacity;
+    transition:
+      max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.45s ease,
+      padding 0.45s ease,
+      transform 0.45s ease;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+.faq-answer.active {
+    padding: 18px 26px 24px;
+    max-height: 420px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .faq-item.open {
+    border-color: var(--color-blue);
+    box-shadow: var(--shadow-sm);
+  }
+
+    .support-hub {
+      padding: var(--spacing-24) var(--spacing-6);
       background-color: var(--color-white);
+    }
+
+    .support-hub-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-6);
+    }
+
+    .support-hub-card {
+      padding: var(--spacing-8);
       border-radius: var(--radius-2xl);
-      overflow: hidden;
+      border: 1px solid var(--color-gray-200);
+      background-color: var(--color-gray-50);
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .support-hub-card:hover {
+      transform: translateY(-4px);
       box-shadow: var(--shadow-md);
-    }
-
-    .faq-question {
-      padding: var(--spacing-6);
-      background-color: var(--color-white);
-      border: none;
-      width: 100%;
-      text-align: left;
-      font-size: var(--font-size-lg);
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color var(--transition-fast);
-    }
-
-    .faq-question:hover {
-      background-color: var(--color-gray-50);
-    }
-
-    .faq-question::after {
-      content: "â–¼";
-      transition: transform var(--transition-fast);
-      font-size: 0.75rem;
-    }
-
-    .faq-question[aria-expanded="true"]::after {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      padding: var(--spacing-6);
-      background-color: var(--color-gray-50);
-      border-top: 1px solid var(--color-gray-200);
-      display: none;
-      color: var(--color-gray-700);
-      line-height: 1.8;
-    }
-
-    .faq-answer.active {
-      display: block;
     }
 
     .contact-section {
@@ -173,6 +362,12 @@
       flex-shrink: 0;
     }
 
+    .contact-info-icon i {
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+    }
+
     .contact-info-content h3 {
       font-weight: 600;
       margin-bottom: var(--spacing-1);
@@ -196,12 +391,49 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       padding: var(--spacing-3) var(--spacing-4);
       border: 1px solid var(--color-gray-300);
       border-radius: var(--radius-lg);
       font-family: var(--font-family);
       font-size: var(--font-size-sm);
+    }
+
+    #form-status {
+      margin: 0;
+      color: var(--color-gray-600);
+    }
+
+    .form-status {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    .form-status.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-status.success {
+      color: #1f7a3a;
+    }
+
+    .form-status.error {
+      color: #b3261e;
+    }
+
+    .form-status.success::before {
+      content: "✔ ";
+      display: inline-block;
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .form-group textarea {
@@ -225,26 +457,91 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/#products" class="nav-link">Productos</a>
-        <a href="/#apps" class="nav-link">Apps</a>
-        <a href="./support.html" class="nav-link">Soporte</a>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="#productos" class="nav-link">Productos</a>
+        <a href="#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="tienda.html" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
+          >
+        </form>
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
+          <img src="images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+          <img src="images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
-      <div class="nav-right"></div>
     </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="support-hero">
-    <div class="support-hero-content">
-      <h1>Â¿CÃ³mo podemos ayudarte?</h1>
-      <p>Centro de soporte de Lixby. Encuentra respuestas y contacta con nuestro equipo.</p>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Buscar"
+          aria-label="Buscar producto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
-  </section>
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <a href="tienda.html">Tienda</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="support.html">Soporte</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="cesta.html">Cesta</a>
+      <a href="cuenta.html">Cuenta</a>
+    </div>
+  </div>
+  <main id="main">
+    <!-- Hero -->
+    <section class="support-hero">
+      <div class="support-hero-content">
+        <h1>¿Cómo podemos ayudarte?</h1>
+        <p>Centro de soporte de Lixby. Encuentra respuestas y contacta con nuestro equipo.</p>
+        <div class="support-search">
+          <input type="text" placeholder="Buscar en soporte..." aria-label="Buscar en soporte">
+        </div>
+        <div class="support-status" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Estado del servicio: Todo operativo</span>
+        </div>
+      </div>
+    </section>
 
   <!-- Support Options -->
   <section class="support-content">
@@ -253,203 +550,576 @@
     </div>
     <div class="support-grid">
       <div class="support-card">
-        <div class="support-card-icon">â“</div>
+        <div class="support-card-icon"><i data-lucide="help-circle"></i></div>
         <h3>Preguntas frecuentes</h3>
-        <p>Encuentra respuestas a las preguntas mÃ¡s comunes sobre nuestros productos y servicios.</p>
+        <p>Encuentra respuestas a las preguntas más comunes sobre nuestros productos y servicios.</p>
         <a href="#faq" class="btn btn-primary">Ver FAQ</a>
       </div>
       <div class="support-card">
-        <div class="support-card-icon">ðŸ“±</div>
-        <h3>GuÃ­a de usuario</h3>
+        <div class="support-card-icon"><i data-lucide="smartphone"></i></div>
+        <h3>Guía de usuario</h3>
         <p>Aprende a usar LixBuds One y Lixney con nuestros tutoriales paso a paso.</p>
         <a href="#" class="btn btn-primary">Descargar PDF</a>
       </div>
       <div class="support-card">
-        <div class="support-card-icon">â¬‡ï¸</div>
+        <div class="support-card-icon"><i data-lucide="download"></i></div>
         <h3>Descargas</h3>
         <p>Accede a manuales, drivers y otros recursos de descarga.</p>
-        <a href="#" class="btn btn-primary">MÃ¡s informaciÃ³n</a>
+        <a href="#" class="btn btn-primary">Más información</a>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="faq-section" id="faq">
-    <div class="faq-container">
-      <h2>Preguntas frecuentes</h2>
+    <section class="support-hub">
+      <div style="max-width: 1000px; margin: 0 auto; margin-bottom: var(--spacing-8); text-align: center;">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-4);">Centro de ayuda</h2>
+        <p style="color: var(--color-gray-600);">Accesos rápidos para resolver dudas frecuentes.</p>
+      </div>
+        <div class="support-hub-grid">
+          <a class="support-hub-card" href="centro-ayuda/index.html">
+            <h3>Inicio soporte</h3>
+            <p>Guías, preguntas frecuentes y contacto.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/lixbuds.html">
+            <h3>Soporte LixBuds</h3>
+            <p>Configuración, batería y conexión.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/lixney.html">
+            <h3>Soporte Lixney</h3>
+            <p>Cuenta, sincronización y seguridad.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/faq.html">
+            <h3>FAQ</h3>
+            <p>Respuestas rápidas a dudas comunes.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/garantia.html">
+            <h3>Garantía</h3>
+            <p>Condiciones y procesos.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/devoluciones.html">
+            <h3>Devoluciones</h3>
+            <p>Plazos, requisitos y pasos.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/solucion-problemas.html">
+            <h3>Solución de problemas</h3>
+            <p>Diagnóstico guiado.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/contacto.html">
+            <h3>Contacto</h3>
+            <p>Escríbenos o solicita ayuda.</p>
+          </a>
+        </div>
+      </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="faq-container">
+        <h2>Preguntas más frecuentes</h2>
+        <p style="text-align: center; color: var(--color-gray-600); margin-top: -12px; margin-bottom: var(--spacing-8);">
+          Respuestas rápidas a dudas comunes.
+        </p>
+        <p id="faq-results-count" style="text-align: center; color: var(--color-gray-600); margin-top: -6px; margin-bottom: var(--spacing-6);"></p>
       
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿CuÃ¡l es la duraciÃ³n de la baterÃ­a de LixBuds One?</span>
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq1" aria-labelledby="faq1-label">
+          <span id="faq1-label">Cuál es la duración de la batería de LixBuds One?</span>
         </button>
-        <div class="faq-answer">
-          LixBuds One tiene una baterÃ­a de hasta 8 horas de reproducciÃ³n continua. Con el estuche de carga, tienes hasta 30 horas de reproducciÃ³n total.
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
+          LixBuds One tiene una batería de hasta 6 horas de reproducción continua. Con el estuche de carga, tienes hasta 60 horas de reproducción total.
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿Son resistentes al agua los LixBuds One?</span>
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq2" aria-labelledby="faq2-label">
+          <span id="faq2-label">Son resistentes al agua los LixBuds One?</span>
         </button>
-        <div class="faq-answer">
-          SÃ­, LixBuds One tiene certificaciÃ³n IPX4, lo que significa que son resistentes al sudor y a salpicaduras de agua. No son completamente sumergibles.
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
+          Sí, LixBuds One tiene certificación IPX6, lo que significa que son resistentes al sudor y a salpicaduras de agua. No son completamente sumergibles.
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿Con quÃ© dispositivos es compatible Lixney?</span>
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq3" aria-labelledby="faq3-label">
+          <span id="faq3-label">Con qué dispositivos es compatible Lixney?</span>
         </button>
-        <div class="faq-answer">
-          Lixney estÃ¡ disponible en iOS 13+ y Android 6.0+. Puedes sincronizar tus datos entre mÃºltiples dispositivos usando tu cuenta Lixby.
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
+          Lixney funciona en Android 6.0 o superior. Puedes sincronizar tus datos entre múltiples dispositivos usando tu cuenta Lixby.
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿Mi informaciÃ³n estÃ¡ segura en Lixney?</span>
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq4" aria-labelledby="faq4-label">
+          <span id="faq4-label">Mi información está segura en Lixney?</span>
         </button>
-        <div class="faq-answer">
-          SÃ­, Lixney utiliza cifrado de extremo a extremo y cumple con todas las normativas RGPD. Tu informaciÃ³n financiera estÃ¡ completamente segura.
+        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
+          Sí, Lixney utiliza cifrado de extremo a extremo y cumple con todas las normativas RGPD. Tu información financiera está completamente segura.
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿Puedo devolver mi compra?</span>
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq5" aria-labelledby="faq5-label">
+          <span id="faq5-label">Puedo devolver mi compra?</span>
         </button>
-        <div class="faq-answer">
-          SÃ­, oferecemos 30 dÃ­as de perÃ­odo de devoluciÃ³n. Para mÃ¡s detalles, consulta nuestra polÃ­tica de devoluciones.
+        <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
+          Sí, ofrecemos 30 días de período de devolución. Para más detalles, consulta nuestra política de devoluciones.
         </div>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Â¿CÃ³mo reporto un problema tÃ©cnico?</span>
-        </button>
-        <div class="faq-answer">
-          Puedes contactar con nuestro equipo de soporte tÃ©cnico a travÃ©s del formulario de contacto abajo o enviando un email a support@lixby.com.
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq6" aria-labelledby="faq6-label">
+            <span id="faq6-label">Cómo reporto un problema técnico?</span>
+          </button>
+          <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-label">
+            Puedes contactar con nuestro equipo de soporte técnico a través del formulario de contacto abajo o enviando un email a lixbyinfo@gmail.com.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq7" aria-labelledby="faq7-label">
+            <span id="faq7-label">Cuánto tarda el envío?</span>
+          </button>
+          <div class="faq-answer" id="faq7" role="region" aria-labelledby="faq7-label">
+            El envío estándar tarda entre 5 y 7 días laborables. En períodos de alta demanda puede variar.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq8" aria-labelledby="faq8-label">
+            <span id="faq8-label">Qué cubre la garantía?</span>
+          </button>
+          <div class="faq-answer" id="faq8" role="region" aria-labelledby="faq8-label">
+            La garantía cubre defectos de fabricación durante 2 años. No cubre daños por uso indebido o accidentes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq9" aria-labelledby="faq9-label">
+            <span id="faq9-label">Qué métodos de pago aceptan?</span>
+          </button>
+          <div class="faq-answer" id="faq9" role="region" aria-labelledby="faq9-label">
+            Aceptamos tarjetas de crédito y débito, además de otros métodos disponibles en el checkout.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq10" aria-labelledby="faq10-label">
+            <span id="faq10-label">Cómo restablezco mis LixBuds?</span>
+          </button>
+          <div class="faq-answer" id="faq10" role="region" aria-labelledby="faq10-label">
+            Mantén presionado el botón de emparejamiento por 10 segundos hasta que el LED parpadee y vuelve a conectar.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq11" aria-labelledby="faq11-label">
+            <span id="faq11-label">Puedo cambiar la dirección de entrega?</span>
+          </button>
+          <div class="faq-answer" id="faq11" role="region" aria-labelledby="faq11-label">
+            Sí, puedes solicitar el cambio dentro de las primeras 12 horas tras la compra desde tu cuenta o contactando con soporte.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq12" aria-labelledby="faq12-label">
+            <span id="faq12-label">Qué hago si el pedido llega incompleto?</span>
+          </button>
+          <div class="faq-answer" id="faq12" role="region" aria-labelledby="faq12-label">
+            Escríbenos indicando el número de pedido y adjunta fotos del paquete. Lo resolvemos en 24-48 horas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq13" aria-labelledby="faq13-label">
+            <span id="faq13-label">Cómo activo la cancelación de ruido?</span>
+          </button>
+          <div class="faq-answer" id="faq13" role="region" aria-labelledby="faq13-label">
+            Mantén pulsado el panel táctil del auricular derecho durante 2 segundos o actívala desde la app Lixney.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq14" aria-labelledby="faq14-label">
+            <span id="faq14-label">Ofrecen factura para empresas?</span>
+          </button>
+          <div class="faq-answer" id="faq14" role="region" aria-labelledby="faq14-label">
+            Sí, durante el checkout puedes introducir los datos fiscales. También puedes solicitarla desde tu cuenta.
+          </div>
         </div>
       </div>
+    </section>
+  
+    <!-- Contact Form -->
+    <section class="contact-section">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Contacta con nosotros</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Información de contacto</h3>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="mail"></i></div>
+              <div class="contact-info-content">
+                <h3>Email</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">lixbyinfo@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="phone"></i></div>
+              <div class="contact-info-content">
+                <h3>Teléfono</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">+34 900 123 456</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="map-pin"></i></div>
+              <div class="contact-info-content">
+                <h3>Ubicación</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Tenerife, España</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="clock"></i></div>
+              <div class="contact-info-content">
+                <h3>Horario</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Lunes - Viernes: 8:00 - 20:00 UTC</p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" action="https://formspree.io/f/xaqpbjjo" method="POST" data-formspree-recaptcha>
+            <input type="text" name="_gotcha" style="display:none">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="type">Tipo de consulta</label>
+              <select id="type" name="type" required>
+                <option>Soporte técnico</option>
+                <option>Devoluciones</option>
+                <option>Garantía</option>
+                <option>Información general</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="subject">Asunto</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" required minlength="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer --><footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="#">Tienda</a></li>
+          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="support.html">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="support.html">Página inicial soporte</a></li>
+          <li><a href="support.html#faq">FAQs Tienda online</a></li>
+          <li><a href="support.html">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="../track.html">Pedidos</a></li>
+          <li><a href="cuenta.html">Mi cuenta</a></li>
+          <li><a href="cuenta.html">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="support.html">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="support.html">Contacto</a></li>
+        </ul>
+      </section>
     </div>
-  </section>
 
-  <!-- Contact Form -->
-  <section class="contact-section">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Contacta con nosotros</h2>
-      
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">InformaciÃ³n de contacto</h3>
-          
-          <div class="contact-info-item">
-            <div class="contact-info-icon">ðŸ“§</div>
-            <div class="contact-info-content">
-              <h3>Email</h3>
-              <p style="color: var(--color-gray-600); margin: 0;">lixbyinfo@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">ðŸ“±</div>
-            <div class="contact-info-content">
-              <h3>TelÃ©fono</h3>
-              <p style="color: var(--color-gray-600); margin: 0;">+34 900 123 456</p>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">ðŸ“</div>
-            <div class="contact-info-content">
-              <h3>UbicaciÃ³n</h3>
-              <p style="color: var(--color-gray-600); margin: 0;">Tenerife, EspaÃ±a</p>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">â°</div>
-            <div class="contact-info-content">
-              <h3>Horario</h3>
-              <p style="color: var(--color-gray-600); margin: 0;">Lunes - Viernes: 8:00 - 20:00 UTC</p>
-            </div>
-          </div>
-        </div>
-
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Asunto</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-        </form>
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="pages/legal/privacy.html">Política de privacidad</a>
+        <a href="pages/legal/cookies.html">Uso de cookies</a>
+        <a href="pages/legal/terms.html">Condiciones de uso</a>
+        <a href="support.html">Ventas y reembolsos</a>
+        <a href="pages/legal/legal-notice.html">Avisos legales</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Productos</h3>
-        <ul class="footer-links">
-          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Apps</h3>
-        <ul class="footer-links">
-          <li><a href="pages/apps/lixney.html">Lixney</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Empresa</h3>
-        <ul class="footer-links">
-          <li><a href="./about.html">Sobre Lixby</a></li>
-          <li><a href="./support.html">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul class="footer-links">
-          <li><a href="pages/legal/privacy.html">Privacidad</a></li>
-          <li><a href="pages/legal/terms.html">TÃ©rminos</a></li>
-          <li><a href="pages/legal/cookies.html">Cookies</a></li>
-          <li><a href="pages/legal/legal-notice.html">Aviso Legal</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Â© 2024 Lixby. Todos los derechos reservados. DiseÃ±ado en EspaÃ±a.</p>
     </div>
   </footer>
 
+  <script defer data-domain="lixby.com" src="https://plausible.io/js/script.js"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
   <script>
-    // FAQ Toggle
-    document.querySelectorAll('.faq-question').forEach(button => {
+    // FAQ Toggle (solo uno abierto)
+    const closeItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      const item = btn.closest('.faq-item');
+      btn.setAttribute('aria-expanded', 'false');
+      if (item) {
+        item.classList.remove('open');
+        item.style.background = '';
+      }
+      if (answer) {
+        answer.style.maxHeight = '0px';
+        answer.classList.remove('active');
+      }
+    };
+
+    const openItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      const item = btn.closest('.faq-item');
+      btn.setAttribute('aria-expanded', 'true');
+      if (item) item.classList.add('open');
+      if (answer) {
+        answer.classList.add('active');
+        answer.style.maxHeight = '0px';
+        requestAnimationFrame(() => {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        });
+      }
+    };
+
+    document.querySelectorAll('.faq-question').forEach((button) => {
       button.addEventListener('click', () => {
+        const allButtons = document.querySelectorAll('.faq-question');
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        const answer = button.nextElementSibling;
-        
-        button.setAttribute('aria-expanded', !isExpanded);
-        answer.classList.toggle('active');
+
+        if (isExpanded) {
+          closeItem(button);
+          return;
+        }
+
+        allButtons.forEach((btn) => closeItem(btn));
+        openItem(button);
       });
     });
+
+    const supportSearchInput = document.querySelector('.support-search input');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqCount = document.getElementById('faq-results-count');
+    if (supportSearchInput) {
+      supportSearchInput.addEventListener('input', () => {
+        const term = supportSearchInput.value.trim().toLowerCase();
+        let results = 0;
+        faqItems.forEach((faq) => {
+          const text = faq.innerText.toLowerCase();
+          const button = faq.querySelector('.faq-question');
+          if (!button) return;
+
+          if (!term || text.includes(term)) {
+            faq.style.display = 'block';
+            results += 1;
+            if (term) {
+              openItem(button);
+              faq.style.background = '#fff9c4';
+            } else {
+              closeItem(button);
+              faq.style.background = '';
+            }
+          } else {
+            faq.style.display = 'none';
+            closeItem(button);
+          }
+        });
+        if (faqCount) {
+          faqCount.textContent = term ? `${results} resultados encontrados` : '';
+        }
+      });
+    }
+
+    const form = document.querySelector('.contact-form');
+    const status = document.getElementById('form-status');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!status || !form) return;
+
+      const messageField = form.querySelector('#message');
+      if (messageField && messageField.value.trim().length < 10) {
+        status.classList.remove('success');
+        status.classList.add('visible', 'error');
+        status.textContent = 'Mensaje demasiado corto.';
+        return;
+      }
+
+      status.classList.remove('success', 'error');
+      status.classList.add('visible');
+      status.textContent = 'Enviando mensaje...';
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          status.classList.add('success');
+          status.textContent = 'Mensaje enviado con éxito. Te responderemos pronto.';
+          form.reset();
+        } else {
+          status.classList.add('error');
+          status.textContent = 'No se pudo enviar el mensaje. Inténtalo de nuevo.';
+        }
+      } catch (error) {
+        status.classList.add('error');
+        status.textContent = 'Error de conexión. Revisa tu red e inténtalo.';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+
+    const nav = document.getElementById("nav");
+    const progressBar = document.getElementById("scroll-progress");
+
+    const updateScrollUI = () => {
+      const top = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = height > 0 ? (top / height) * 100 : 0;
+
+      if (progressBar) progressBar.style.width = progress + "%";
+      if (nav) nav.classList.toggle("nav-scrolled", top > 20);
+    };
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    const searchForm = document.getElementById("navSearchForm");
+    const searchInput = document.getElementById("navSearch");
+    if (searchForm && searchInput) {
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = searchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobileSearchForm = document.getElementById("navSearchFormMobile");
+    const mobileSearchInput = document.getElementById("navSearchMobile");
+    if (mobileSearchForm && mobileSearchInput) {
+      mobileSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = mobileSearchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobilePanel = document.getElementById("navMobilePanel");
+    const searchToggle = document.querySelector(".nav-search-toggle");
+    const menuToggle = document.querySelector(".nav-menu-toggle");
+    const closeNav = () => {
+      document.body.classList.remove("nav-open", "menu-open");
+      nav?.classList.remove("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "true");
+      searchToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    };
+
+    const openNav = (focusSearch = false) => {
+      document.body.classList.add("nav-open", "menu-open");
+      nav?.classList.add("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "false");
+      searchToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      if (focusSearch && mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 80);
+      }
+    };
+
+    const toggleNav = (focusSearch = false) => {
+      if (nav?.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav(focusSearch);
+      }
+    };
+
+    searchToggle?.addEventListener("click", () => toggleNav(true));
+    menuToggle?.addEventListener("click", () => toggleNav(false));
+
+    const mobileClose = document.querySelector(".nav-mobile-close");
+    mobileClose?.addEventListener("click", () => closeNav());
+
+    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+      link.addEventListener("click", () => closeNav());
+    });
+
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target && target.classList.contains('faq-answer')) {
+        const btn = target.previousElementSibling;
+        if (btn && btn.classList.contains('faq-question')) {
+          openItem(btn);
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    }
+
+    window.addEventListener('load', () => {
+      if (window.lucide) lucide.createIcons();
+      if (window.gsap) {
+        gsap.from(".support-hero-content", { y: 40, opacity: 0, duration: 1 });
+        gsap.from(".support-card", { y: 30, opacity: 0, stagger: 0.1, duration: 0.8 });
+      }
+    });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="script.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Cuál es la duración de la batería de LixBuds One?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hasta 6 horas de reproducción continua y hasta 60 horas con el estuche."
+        }
+      }]
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+
+
 
