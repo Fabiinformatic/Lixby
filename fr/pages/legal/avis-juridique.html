@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions Légales | Lixby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .legal-header {
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+      margin-top: 4rem;
+    }
+
+    .legal-header h1 {
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .legal-header p {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+    }
+
+    .legal-content {
+      padding: var(--spacing-12) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .legal-section {
+      margin-bottom: var(--spacing-12);
+      padding-bottom: var(--spacing-12);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    .legal-section:last-child {
+      border-bottom: none;
+    }
+
+    .legal-section h2 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-4);
+      color: var(--color-black);
+    }
+
+    .legal-section p,
+    .legal-section li {
+      color: var(--color-gray-700);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .legal-section ul {
+      padding-left: var(--spacing-6);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .legal-section li {
+      margin-bottom: var(--spacing-2);
+    }
+
+    .highlight {
+      background-color: var(--color-gray-100);
+      padding: var(--spacing-6);
+      border-left: 4px solid var(--color-blue);
+      border-radius: var(--radius-lg);
+      margin: var(--spacing-6) 0;
+    }
+
+    @media (max-width: 768px) {
+      .legal-header {
+        padding: var(--spacing-12) var(--spacing-4);
+      }
+
+      .legal-header h1 {
+        font-size: var(--font-size-3xl);
+      }
+
+      .legal-content {
+        padding: var(--spacing-8) var(--spacing-4);
+      }
+    }
+
+    /* Styles pour le contenu légal */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .paper {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      padding: 3rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255,255,255,0.8);
+      position: relative;
+    }
+
+    .paper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .m-auto {
+      margin: 0 auto;
+    }
+
+    .blanc-space {
+      display: inline;
+      font-weight: 500;
+      color: #1d4ed8;
+    }
+
+    .ng-binding {
+      font-weight: normal;
+    }
+
+    .ng-hide {
+      display: none !important;
+    }
+
+    /* Typographie améliorée */
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #0f172a;
+      margin: 2.5rem 0 1.5rem 0;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #1e293b;
+      margin: 2rem 0 1rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #334155;
+      margin: 1.5rem 0 0.75rem 0;
+      letter-spacing: -0.015em;
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Styles pour les listes */
+    ul {
+      padding-left: 1.75rem;
+      margin: 1rem 0 1.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+      color: #475569;
+      position: relative;
+    }
+
+    li::marker {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+
+    /* Styles pour les liens */
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    a.text-body {
+      color: #475569;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    a.text-body:hover {
+      color: #3b82f6;
+      text-decoration: underline;
+    }
+
+    /* Espacement et mise en page */
+    .row {
+      margin: 0;
+    }
+
+    .col {
+      padding: 0 1rem;
+    }
+
+    .col-xl-10 {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    /* Design responsive */
+    @media (max-width: 768px) {
+      .paper {
+        padding: 2rem 1.5rem;
+        margin: 1rem 0;
+        border-radius: 12px;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        margin: 2rem 0 1rem 0;
+      }
+
+      h3 {
+        font-size: 1.375rem;
+      }
+
+      h4 {
+        font-size: 1.125rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      ul {
+        padding-left: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .paper {
+        padding: 1.5rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">Lixby</a>
+      <div class="nav-links">
+        <a href="/#products" class="nav-link">Produits</a>
+        <a href="/#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Assistance</a>
+      </div>
+      <div class="nav-right"></div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="legal-header">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h1>Mentions Légales</h1>
+      <p>Dernière mise à jour : Mars 2026</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="legal-content">
+    <div class="row"> <div class="col col-xl-10 mx-auto"> <div class="paper"> <header class="text-center"> <h2 class="m-auto">MENTIONS LÉGALES ET CONDITIONS GÉNÉRALES D'UTILISATION</h2> <h4><span class="blanc-space ng-binding">https://fabiinformatic.github.io/Lixby/</span></h4> </header> <div> <h3>I. INFORMATIONS GÉNÉRALES</h3> <p>Conformément à l'obligation d'information prévue par la loi 34/2002 du 11 juillet relative aux services de la société de l'information et au commerce électronique (LSSI-CE), les informations générales suivantes concernant ce site web sont fournies ci-dessous :</p> <p ng-show="data.claseTitular == 'persona'">La propriété de ce site web, <span class="blanc-space ng-binding">https://fabiinformatic.github.io/Lixby/</span>, (ci-après, le Site Web) est détenue par : <span class="blanc-space ng-binding">Fabian Casañas Gonzalez</span>, avec NIF : <span class="blanc-space ng-binding">49516412B</span>, et dont les coordonnées sont :</p> <p ng-show="data.claseTitular == 'empresa'" class="ng-hide">La propriété de ce site web, <span class="blanc-space ng-binding">https://fabiinformatic.github.io/Lixby/</span>, (ci-après, le Site Web) est détenue par : <span class="blanc-space ng-binding"></span>, avec NIF : <span class="blanc-space ng-binding"></span> et inscrite à : <span class="blanc-space ng-binding"></span> avec les données d'enregistrement suivantes : <span class="blanc-space ng-binding"></span>, dont le représentant est : <span class="blanc-space ng-binding"></span>, et dont les coordonnées sont :</p> <p>Adresse : <span class="blanc-space ng-binding">C. Garañaña, 87</span></p> <p>Téléphone de contact : <span class="blanc-space ng-binding">613269629</span></p> <p ng-show="faxTitular.length &gt; 0" class="ng-hide">Fax : <span class="blanc-space ng-binding"></span></p> <p>Email de contact : <span class="blanc-space ng-binding">lixbyinfo@gmail.com</span></p>   <h3>II. CONDITIONS GÉNÉRALES D'UTILISATION</h3> <h4>L'objet des conditions : Le Site Web</h4> <p>L'objet des présentes Conditions Générales d'Utilisation (ci-après, les Conditions) est de réglementer l'accès et l'utilisation du Site Web. Aux fins des présentes Conditions, le Site Web s'entend comme : l'apparence externe des interfaces d'écran, tant de manière statique que dynamique, c'est-à-dire l'arborescence de navigation ; et tous les éléments intégrés à la fois dans les interfaces d'écran et dans l'arborescence de navigation (ci-après, les Contenus) et tous les services ou ressources en ligne qu'il peut offrir aux Utilisateurs (ci-après, les Services).</p> <p><span class="blanc-space ng-binding">Lixby</span> se réserve le droit de modifier, à tout moment et sans préavis, la présentation et la configuration du Site Web ainsi que les Contenus et Services qui peuvent y être incorporés. L'Utilisateur reconnaît et accepte qu'à tout moment <span class="blanc-space ng-binding">Lixby</span> puisse interrompre, désactiver et/ou annuler l'un de ces éléments intégrés au Site Web ou l'accès à ceux-ci.</p> <p ng-show="data.accesoLibre == 'Sí'">L'accès au Site Web par l'Utilisateur est libre et, en règle générale, gratuit sans que l'Utilisateur ait à fournir une contrepartie pour en bénéficier, sauf en ce qui concerne le coût de connexion via le réseau de télécommunications fourni par le fournisseur d'accès que l'Utilisateur a contracté.</p> <p ng-show="data.accesoLibre == 'No'" class="ng-hide">Outre le coût de connexion via le réseau de télécommunications fourni par le fournisseur d'accès que l'Utilisateur a contracté, certains des Contenus ou Services offerts par <span class="blanc-space ng-binding">Lixby</span> ou, le cas échéant, par des tiers via le Site Web peuvent être soumis à une souscription préalable du Contenu ou du Service, auquel cas il sera clairement spécifié et/ou les Conditions Générales ou Particulières correspondantes régissant cela seront mises à la disposition de l'Utilisateur.</p> <p ng-show="data.registroLibre == 'Sí'" class="ng-hide">L'utilisation de certains Contenus ou Services du Site Web peut se faire via une souscription ou un enregistrement préalable de l'Utilisateur.</p> <p ng-show="data.registroLibre == 'No'" class="">L'utilisation des Contenus ne nécessite aucune souscription ou inscription préalable.</p> <h4>L'Utilisateur</h4> <p>L'accès, la navigation et l'utilisation du Site Web, <span ng-show="data.interaccionLibre == 'Sí'" class="ng-hide">ainsi que par les espaces habilités à interagir entre les Utilisateurs, et l'Utilisateur et <span class="blanc-space ng-binding">Lixby</span>, comme les commentaires et/ou les espaces de blog,</span> confèrent la qualité d'Utilisateur, par conséquent, dès le début de la navigation sur le Site Web, toutes les Conditions établies ici sont acceptées, ainsi que leurs modifications ultérieures, sans préjudice de l'application de la réglementation légale correspondante obligatoire selon le cas. Compte tenu de la pertinence de ce qui précède, il est recommandé à l'Utilisateur de les lire à chaque visite du Site Web.</p> <p>Le Site Web de <span class="blanc-space ng-binding">Lixby</span> fournit une grande diversité d'informations, de services et de données. L'Utilisateur assume la responsabilité d'une utilisation correcte du Site Web. Cette responsabilité s'étendra à :</p> <ul> <li>Une utilisation des informations, Contenus et/ou Services et données offerts par <span class="blanc-space ng-binding">Lixby</span> qui ne soit pas contraire aux dispositions des présentes Conditions, à la Loi, à la morale ou à l'ordre public, ou qui de toute autre manière pourrait porter atteinte aux droits de tiers ou au fonctionnement même du Site Web.</li> <li>La véracité et la licéité des informations fournies par l'Utilisateur dans les formulaires établis par <span class="blanc-space ng-binding">Lixby</span> pour l'accès à certains Contenus ou Services offerts par le Site Web. En tout état de cause, l'Utilisateur notifiera immédiatement à <span class="blanc-space ng-binding">Lixby</span> tout fait permettant l'utilisation abusive des informations enregistrées dans lesdits formulaires, tels que, mais sans s'y limiter, le vol, la perte ou l'accès non autorisé aux identifiants et/ou mots de passe, afin de procéder à leur annulation immédiate.</li> </ul> <p ng-show="data.interaccionLibre == 'Sí'" class="ng-hide"><span class="blanc-space ng-binding">Lixby</span> se réserve le droit de retirer tous les commentaires et contributions qui violent la loi, le respect de la dignité de la personne, qui sont discriminatoires, xénophobes, racistes, pornographiques, spammant, qui menacent la jeunesse ou l'enfance, l'ordre ou la sécurité publique ou qui, à son avis, ne seraient pas appropriés pour publication.</p> <p ng-show="data.interaccionLibre == 'Sí'" class="ng-hide">En tout état de cause, <span class="blanc-space ng-binding">Lixby</span> ne sera pas responsable des opinions exprimées par les Utilisateurs à travers des commentaires ou d'autres outils de blog ou de participation qui pourraient exister.</p> <p>Le simple accès à ce Site Web n'implique l'établissement d'aucune relation de caractère commercial entre <span class="blanc-space ng-binding">Lixby</span> et l'Utilisateur.</p> <p ng-show="data.mayorEdad == 'Sí'" class="ng-hide">L'Utilisateur déclare être majeur et disposer de la capacité juridique suffisante pour être lié par les présentes Conditions. Par conséquent, ce Site Web de <span class="blanc-space ng-binding">Lixby</span> ne s'adresse pas aux mineurs. <span class="blanc-space ng-binding">Lixby</span> décline toute responsabilité en cas de non-respect de cette exigence.</p> <p ng-show="data.mayorEdad == 'No'" class="">Toujours dans le respect de la législation en vigueur, ce Site Web de <span class="blanc-space ng-binding">Lixby</span> s'adresse à toutes les personnes, quel que soit leur âge, qui peuvent accéder et/ou naviguer sur les pages du Site Web.</p> <p ng-show="data.paisParticular == 'Sí'" class="ng-hide">Le Site Web est principalement destiné aux Utilisateurs résidant en <span class="blanc-space ng-binding">Espagne</span>. <span class="blanc-space ng-binding">Lixby</span> ne garantit pas que le Site Web soit conforme aux législations d'autres pays, que ce soit totalement ou partiellement. Si l'Utilisateur réside ou est domicilié ailleurs et décide d'accéder et/ou de naviguer sur le Site Web, il le fera sous sa propre responsabilité, il doit s'assurer que cet accès et cette navigation sont conformes à la législation locale qui lui est applicable, et <span class="blanc-space ng-binding">Lixby</span> n'assume aucune responsabilité pouvant découler de cet accès.</p> <h3>III. ACCÈS ET NAVIGATION SUR LE SITE WEB : EXCLUSION DE GARANTIES ET DE RESPONSABILITÉ</h3> <p><span class="blanc-space ng-binding">Lixby</span> ne garantit pas la continuité, la disponibilité et l'utilité du Site Web, ni des Contenus ou Services. <span class="blanc-space ng-binding">Lixby</span> fera tout son possible pour le bon fonctionnement du Site Web, cependant, il n'est pas responsable ni ne garantit que l'accès à ce Site Web sera ininterrompu ou exempt d'erreurs.</p> <p>Il n'est pas non plus responsable ni ne garantit que le contenu ou le logiciel auquel on peut accéder via ce Site Web soit exempt d'erreurs ou cause des dommages au système informatique (logiciel et matériel) de l'Utilisateur. En aucun cas <span class="blanc-space ng-binding">Lixby</span> ne sera responsable des pertes, dommages ou préjudices de quelque nature que ce soit découlant de l'accès, de la navigation et de l'utilisation du Site Web, y compris, mais sans s'y limiter, ceux causés aux systèmes informatiques ou ceux provoqués par l'introduction de virus.</p> <p><span class="blanc-space ng-binding">Lixby</span> n'est pas non plus responsable des dommages qui pourraient être causés aux utilisateurs par une utilisation inappropriée de ce Site Web. En particulier, il n'est en aucun cas responsable des pannes, interruptions, manques ou défauts de télécommunications qui pourraient survenir.</p> <h3>IV. POLITIQUE DE LIENS</h3> <p ng-show="data.enlacesTerceros == 'Sí'" class="ng-hide">Il est signalé que le Site Web de <span class="blanc-space ng-binding">Lixby</span> met ou peut mettre à la disposition des Utilisateurs des moyens de lien (tels que, entre autres, des liens, bannières, boutons), des annuaires et des moteurs de recherche permettant aux Utilisateurs d'accéder à des sites web appartenant à et/ou gérés par des tiers.</p> <p ng-show="data.enlacesTerceros == 'Sí'" class="ng-hide">L'installation de ces liens, annuaires et moteurs de recherche sur le Site Web a pour objet de faciliter la recherche et l'accès des Utilisateurs aux informations disponibles sur Internet, sans que cela puisse être considéré comme une suggestion, recommandation ou invitation à les visiter.</p> <p ng-show="data.enlacesTerceros == 'Sí' &amp;&amp; data.enlacesAfiliacion == 'No'" class="ng-hide"><span class="blanc-space ng-binding">Lixby</span> n'offre ni ne commercialise, par elle-même ou par l'intermédiaire de tiers, les produits et/ou services disponibles sur lesdits sites liés.</p> <p ng-show="data.enlacesTerceros == 'Sí' &amp;&amp; data.enlacesAfiliacion == 'Sí'" class="ng-hide"><span class="blanc-space ng-binding">Lixby</span> propose des contenus sponsorisés, des publicités et/ou des liens d'affiliation. Les informations apparaissant dans ces liens d'affiliation ou les publicités insérées sont fournies par les annonceurs eux-mêmes, par conséquent <span class="blanc-space ng-binding">Lixby</span> n'est pas responsable d'éventuelles inexactitudes ou erreurs que les publicités pourraient contenir, ni ne garantit en aucune manière l'expérience, l'intégrité ou la responsabilité des annonceurs ou la qualité de leurs produits et/ou services.</p> <p ng-show="data.enlacesTerceros == 'Sí'" class="ng-hide">De même, il ne garantira pas la disponibilité technique, l'exactitude, la véracité, la validité ou la légalité de sites ne lui appartenant pas auxquels on pourrait accéder via les liens.</p> <p ng-show="data.enlacesTerceros == 'Sí'" class="ng-hide"><span class="blanc-space ng-binding">Lixby</span> ne révisera ni ne contrôlera en aucun cas le contenu d'autres sites web, et n'approuve, n'examine ni ne fait siens les produits et services, contenus, fichiers et tout autre matériel existant sur lesdits sites liés.</p> <p ng-show="data.enlacesTerceros == 'Sí'" class="ng-hide"><span class="blanc-space ng-binding">Lixby</span> n'assume aucune responsabilité pour les dommages et préjudices qui pourraient survenir du fait de l'accès, de l'utilisation, de la qualité ou de la licéité des contenus, communications, opinions, produits et services des sites web non gérés par <span class="blanc-space ng-binding">Lixby</span> et qui sont liés sur ce Site Web.</p> <p>L'Utilisateur ou le tiers qui crée un hyperlien à partir d'une page web d'un autre site web différent vers le Site Web de <span class="blanc-space ng-binding">Lixby</span> doit savoir que :</p> <p>La reproduction — totale ou partielle — de l'un des Contenus et/ou Services du Site Web n'est pas autorisée sans l'autorisation expresse de <span class="blanc-space ng-binding">Lixby</span>.</p> <p>Aucune déclaration fausse, inexacte ou incorrecte sur le Site Web de <span class="blanc-space ng-binding">Lixby</span>, ni sur ses Contenus et/ou Services, n'est non plus autorisée.</p> <p>À l'exception de l'hyperlien, le site web sur lequel ledit hyperlien est établi ne contiendra aucun élément de ce Site Web, protégé en tant que propriété intellectuelle par l'ordre juridique espagnol, sauf autorisation expresse de <span class="blanc-space ng-binding">Lixby</span>.</p> <p>L'établissement de l'hyperlien n'impliquera pas l'existence de relations entre <span class="blanc-space ng-binding">Lixby</span> et le propriétaire du site web à partir duquel il est fait, ni la connaissance et l'acceptation par <span class="blanc-space ng-binding">Lixby</span> des contenus, services et/ou activités offerts sur ledit site web, et vice versa.</p> <h3>V. PROPRIÉTÉ INTELLECTUELLE ET INDUSTRIELLE</h3> <p><span class="blanc-space ng-binding">Lixby</span> par elle-même ou comme cessionnaire, est titulaire de tous les droits de propriété intellectuelle et industrielle du Site Web, ainsi que des éléments contenus dans celui-ci (à titre énonciatif et non exhaustif, images, son, audio, vidéo, logiciels ou textes, marques ou logos, combinaisons de couleurs, structure et design, sélection de matériaux utilisés, programmes informatiques nécessaires à son fonctionnement, accès et utilisation, etc.). Ils seront, par conséquent, des œuvres protégées en tant que propriété intellectuelle par l'ordre juridique espagnol, les réglementations espagnoles et communautaires dans ce domaine, ainsi que les traités internationaux relatifs à la matière et signés par l'Espagne, leur étant applicables.</p> <p>Tous droits réservés. En vertu des dispositions de la Loi sur la Propriété Intellectuelle, la reproduction, la distribution et la communication publique, y compris sa modalité de mise à disposition, de tout ou partie des contenus de cette page web, à des fins commerciales, sur tout support et par tout moyen technique, sans l'autorisation de <span class="blanc-space ng-binding">Lixby</span>, sont expressément interdites.</p> <p>L'Utilisateur s'engage à respecter les droits de propriété intellectuelle et industrielle de <span class="blanc-space ng-binding">Lixby</span>. Il peut visualiser les éléments du Site Web ou même les imprimer, les copier et les stocker sur le disque dur de son ordinateur ou sur tout autre support physique à condition que ce soit, exclusivement, pour son usage personnel. L'Utilisateur, cependant, ne peut pas supprimer, altérer ou manipuler tout dispositif de protection ou système de sécurité installé sur le Site Web.</p> <p>Dans le cas où l'Utilisateur ou un tiers considère que l'un des Contenus du Site Web constitue une violation des droits de protection de la propriété intellectuelle, il doit en informer immédiatement <span class="blanc-space ng-binding">Lixby</span> via les coordonnées de la section INFORMATIONS GÉNÉRALES des présentes Mentions Légales et Conditions Générales d'Utilisation.</p> <h3>VI. ACTIONS LÉGALES, LÉGISLATION APPLICABLE ET JURIDICTION</h3> <p><span class="blanc-space ng-binding">Lixby</span> se réserve le droit d'engager les actions civiles ou pénales qu'elle juge nécessaires pour une utilisation abusive du Site Web et des Contenus, ou pour le non-respect des présentes Conditions.</p> <p>La relation entre l'Utilisateur et <span class="blanc-space ng-binding">Lixby</span> sera régie par la réglementation en vigueur et applicable sur le territoire espagnol. En cas de litige concernant l'interprétation et/ou l'application de ces Conditions, les parties soumettront leurs conflits à la juridiction ordinaire, se soumettant aux juges et tribunaux qui correspondent conformément à la loi.</p> <p>Ce document de Mentions Légales et Conditions Générales d'utilisation du site web a été créé à l'aide du <a class="text-body text-decoration-none" href="https://textos-legales.edgartamarit.com/">générateur de modèle de mentions légales et conditions d'utilisation</a> en ligne le 06/03/2026.</p> </div> </div> </div> </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Produits</h3>
+        <ul class="footer-links">
+          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Apps</h3>
+        <ul class="footer-links">
+          <li><a href="pages/apps/lixney.html">Lixney</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Entreprise</h3>
+        <ul class="footer-links">
+          <li><a href="pages/about.html">À propos de Lixby</a></li>
+          <li><a href="pages/support.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Légal</h3>
+        <ul class="footer-links">
+          <li><a href="./privacy.html">Confidentialité</a></li>
+          <li><a href="./terms.html">Conditions</a></li>
+          <li><a href="./cookies.html">Cookies</a></li>
+          <li><a href="./legal-notice.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lixby. Tous droits réservés. Conçu en Espagne.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

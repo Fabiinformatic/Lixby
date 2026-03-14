@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificacion en 2 pasos | Lixby</title>
+  <title>Vérification en 2 étapes | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -120,33 +120,33 @@
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="#productos" class="nav-link">Productos</a>
+        <a href="magasin.html" class="nav-link">Boutique</a>
+        <a href="#productos" class="nav-link">Produits</a>
         <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Soporte</a>
+        <a href="support.html" class="nav-link">Assistance</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Rechercher" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="magasin.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Rechercher un produit..."
+            aria-label="Rechercher un produit"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="panier.html" class="nav-icon-link" aria-label="Panier">
+          <img src="images/Bolsa.png" alt="Panier">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="compte.html" class="nav-icon-link" aria-label="Compte">
+          <img src="images/cuenta.png" alt="Compte">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -160,29 +160,29 @@
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="magasin.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
+          placeholder="Rechercher"
+          aria-label="Rechercher un produit"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menu">
+      <button type="button" class="nav-mobile-close" aria-label="Fermer le menu">
         <span aria-hidden="true">x</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal movil">
-      <a href="tienda.html">Tienda</a>
-      <a href="#productos">Productos</a>
+    <nav class="nav-mobile-links" aria-label="Principal mobile">
+      <a href="magasin.html">Boutique</a>
+      <a href="#productos">Produits</a>
       <a href="#apps">Apps</a>
-      <a href="support.html">Soporte</a>
+      <a href="support.html">Assistance</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cesta</a>
-      <a href="cuenta.html">Cuenta</a>
+      <a href="panier.html">Panier</a>
+      <a href="compte.html">Compte</a>
     </div>
   </div>
 
@@ -190,33 +190,33 @@
     <div id="statusMsg" class="status-msg"></div>
 
     <section class="twofa-card">
-      <h1>Verificacion en 2 pasos</h1>
-      <p class="helper">Activa una capa extra de seguridad para tu cuenta con SMS.</p>
+      <h1>Vérification en 2 étapes</h1>
+      <p class="helper">Ajoutez une couche de sécurité supplémentaire à votre compte avec SMS.</p>
 
       <div class="field-grid">
         <div class="field">
-          <label for="phoneNumber">Numero de telefono</label>
-          <input id="phoneNumber" type="tel" placeholder="+34 600 000 000">
+          <label for="phoneNumber">Numéro de téléphone</label>
+          <input id="phoneNumber" type="tel" placeholder="+33 6 00 00 00 00">
         </div>
         <div class="field">
-          <label for="currentPassword">Contrasena actual</label>
+          <label for="currentPassword">Mot de passe actuel</label>
           <input id="currentPassword" type="password" autocomplete="current-password">
         </div>
         <div class="field">
-          <label for="smsCode">Codigo SMS</label>
+          <label for="smsCode">Code SMS</label>
           <input id="smsCode" type="text" inputmode="numeric" maxlength="6" placeholder="123456">
         </div>
       </div>
 
       <div class="recaptcha-wrap">
         <div id="recaptcha-container"></div>
-        <p class="inline-note">Necesitas resolver el reCAPTCHA para enviar el SMS.</p>
+        <p class="inline-note">Vous devez résoudre le reCAPTCHA pour envoyer le SMS.</p>
       </div>
 
       <div class="actions">
-        <button id="sendCodeBtn" class="btn btn-secondary" type="button">Enviar codigo</button>
-        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">Verificar y activar</button>
-        <a class="btn btn-secondary" href="cuenta.html">Volver a mi cuenta</a>
+        <button id="sendCodeBtn" class="btn btn-secondary" type="button">Envoyer le code</button>
+        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">Vérifier et activer</button>
+        <a class="btn btn-secondary" href="compte.html">Retour à mon compte</a>
       </div>
     </section>
   </main>
@@ -278,11 +278,11 @@
     async function reauthUser(user) {
       const password = currentPassword.value.trim();
       if (!password) {
-        showStatus("Introduce tu contrasena actual para continuar.", "error");
+        showStatus("Entrez votre mot de passe actuel pour continuer.", "error");
         throw new Error("missing-password");
       }
       if (!user.email) {
-        showStatus("El usuario no tiene email para reautenticacion.", "error");
+        showStatus("L'utilisateur n'a pas d'email pour la réauthentification.", "error");
         throw new Error("missing-email");
       }
       const credential = EmailAuthProvider.credential(user.email, password);
@@ -297,20 +297,20 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "iniciar-sesion.html";
+        window.location.href = "se-connecter.html";
         return;
       }
       initRecaptcha();
       if (!user.emailVerified) {
-        showStatus("Verifica tu email antes de activar 2FA.", "error");
+        showStatus("Vérifiez votre email avant d'activer la 2FA.", "error");
         sendCodeBtn.disabled = true;
         verifyEnrollBtn.disabled = true;
       }
       const factor = getPhoneFactor(user);
       if (factor) {
-        showStatus(`2FA activo con ${factor.phoneNumber || "telefono"}.`, "success");
+        showStatus(`2FA active avec ${factor.phoneNumber || "téléphone"}.`, "success");
       } else {
-        showStatus("2FA no esta activado en esta cuenta.");
+        showStatus("La 2FA n'est pas activée sur ce compte.");
       }
     });
 
@@ -325,26 +325,26 @@
     sendCodeBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Session invalide.", "error");
         return;
       }
 
       if (!user.emailVerified) {
-        showStatus("Verifica tu email antes de activar 2FA.", "error");
+        showStatus("Vérifiez votre email avant d'activer la 2FA.", "error");
         return;
       }
 
       const phone = normalizePhone(phoneNumber.value);
       if (!phone) {
-        showStatus("Introduce un numero en formato internacional (+34...).", "error");
+        showStatus("Entrez un numéro au format international (+33...).", "error");
         return;
       }
 
       try {
         sendCodeBtn.disabled = true;
         const originalText = sendCodeBtn.textContent;
-        sendCodeBtn.textContent = "Enviando...";
-        showStatus("Enviando codigo...", "info");
+        sendCodeBtn.textContent = "Envoi en cours...";
+        showStatus("Envoi du code...", "info");
         await reauthUser(user);
         const multiFactorSession = await multiFactor(user).getSession();
         const phoneInfoOptions = {
@@ -353,64 +353,64 @@
         };
         const phoneAuthProvider = new PhoneAuthProvider(auth);
         verificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, recaptchaVerifier);
-        showStatus("Codigo enviado por SMS.", "success");
+        showStatus("Code envoyé par SMS.", "success");
       } catch (error) {
         recaptchaVerifier?.clear();
         recaptchaVerifier = null;
         initRecaptcha();
         const message = error?.message || error?.code || String(error);
         console.error("SMS error:", error);
-        showStatus(`No se pudo enviar el SMS: ${message}`, "error");
+        showStatus(`Impossible d'envoyer le SMS : ${message}`, "error");
       } finally {
         sendCodeBtn.disabled = false;
-        sendCodeBtn.textContent = "Enviar codigo";
+        sendCodeBtn.textContent = "Envoyer le code";
       }
     });
 
     verifyEnrollBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Session invalide.", "error");
         return;
       }
 
       if (!verificationId) {
-        showStatus("Primero envia el codigo SMS.", "error");
+        showStatus("Envoyez d'abord le code SMS.", "error");
         return;
       }
 
       const code = smsCode.value.trim();
       if (!code) {
-        showStatus("Introduce el codigo SMS.", "error");
+        showStatus("Entrez le code SMS.", "error");
         return;
       }
 
       try {
         verifyEnrollBtn.disabled = true;
         const originalText = verifyEnrollBtn.textContent;
-        verifyEnrollBtn.textContent = "Verificando...";
-        showStatus("Verificando codigo...", "info");
+        verifyEnrollBtn.textContent = "Vérification...";
+        showStatus("Vérification du code...", "info");
         const cred = PhoneAuthProvider.credential(verificationId, code);
         const assertion = PhoneMultiFactorGenerator.assertion(cred);
-        await multiFactor(user).enroll(assertion, "Telefono");
-        showStatus("Verificacion en 2 pasos activada.", "success");
+        await multiFactor(user).enroll(assertion, "Téléphone");
+        showStatus("Vérification en 2 étapes activée.", "success");
         verificationId = "";
         smsCode.value = "";
         toggleVerifyButton();
         setTimeout(() => {
-          window.location.href = "cuenta.html";
+          window.location.href = "compte.html";
         }, 900);
       } catch (error) {
         const message = error?.message || error?.code || String(error);
         console.error("2FA enroll error:", error);
-        showStatus(`No se pudo activar 2FA: ${message}`, "error");
+        showStatus(`Impossible d'activer la 2FA : ${message}`, "error");
       } finally {
         verifyEnrollBtn.disabled = false;
-        verifyEnrollBtn.textContent = "Verificar y activar";
+        verifyEnrollBtn.textContent = "Vérifier et activer";
       }
     });
 
-    // Boton de desactivar eliminado por solicitud.
+    // Bouton de désactivation supprimé à la demande.
   </script>
 </body>
 </html>
