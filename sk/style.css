@@ -588,8 +588,7 @@ body.menu-open {
 
 .hero-media,
 .feature-media {
-  background: linear-gradient(160deg, #e8f3ff, #ffffff);
-  background-size: 140% 140%;
+  background: #ffffff;
   border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   padding: 20px;
@@ -605,7 +604,7 @@ body.menu-open {
   border-radius: var(--radius-lg);
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .stats {
@@ -691,8 +690,67 @@ body.menu-open {
   transition: transform 0.45s ease;
 }
 
+.swap-media {
+  position: relative;
+}
+
+.swap-media .swap-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.45s ease;
+  object-fit: contain;
+}
+
+.swap-media .swap-image.swap-black {
+  transform: scale(1.06);
+}
+
+.swap-media .swap-image.is-active.swap-black {
+  transform: scale(1.06);
+}
+
+.swap-media .swap-image.swap-white {
+  transform: scale(1);
+}
+
+.swap-media .swap-image.is-active {
+  opacity: 1;
+  position: relative;
+}
+
+.swap-dots {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.swap-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #cbd5f5;
+  opacity: 0.8;
+}
+
+.swap-dot.active {
+  background: var(--primary);
+  opacity: 1;
+}
+
+.card-media .app-logo {
+  object-fit: contain;
+  padding: 14px;
+  background: #ffffff;
+}
+
 .product-card:hover .card-media img {
   transform: scale(1.05);
+}
+
+.product-card:hover .card-media .app-logo {
+  transform: scale(1.02);
 }
 
 .product-card h3 {

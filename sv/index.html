@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="images/cuenta.png">
-  <link rel="preload" as="image" href="images/lixbuds-hero.jpg">
+  <link rel="preload" as="image" href="images/lixbuds-one-white.png">
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -122,7 +122,7 @@
         </div>
       </div>
       <div class="hero-media reveal" data-delay="0.15s">
-        <img src="images/lixbuds-hero.jpg" alt="Auriculares Mixmax de Lixby" class="hero-image float-animation">
+        <img src="images/lixbuds-one-white.png" alt="Auriculares Mixmax de Lixby" class="hero-image float-animation">
       </div>
     </section>
 
@@ -149,8 +149,13 @@
 
       <div class="cards-grid">
         <article class="product-card reveal" data-delay="0.05s">
-          <div class="card-media">
-            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Auriculares Mixmax">
+          <div class="card-media swap-media">
+            <img src="images/lixbuds-one-black.png" loading="lazy" alt="Auriculares Mixmax" class="app-logo swap-image is-active swap-black">
+            <img src="images/lixbuds-one-white.png" loading="lazy" alt="Auriculares Mixmax en blanco" class="app-logo swap-image swap-white">
+            <div class="swap-dots" aria-hidden="true">
+              <span class="swap-dot active" data-dot="0"></span>
+              <span class="swap-dot" data-dot="1"></span>
+            </div>
           </div>
           <h3>LixBuds One</h3>
           <p>Auriculares inalámbricos con cancelación de ruido, sonido inmersivo y estuche de carga ultrarrápido.</p>
@@ -162,7 +167,7 @@
 
         <article id="apps" class="product-card reveal" data-delay="0.15s">
           <div class="card-media">
-            <img src="images/lixbuds-product.jpg" loading="lazy" alt="Aplicación Lixney">
+            <img src="images/lixney1.png" loading="lazy" alt="Aplicación Lixney" class="app-logo">
           </div>
           <h3>Lixney</h3>
           <p>Tu app de finanzas personales: organiza gastos, crea presupuestos y entiende en qué se va tu dinero.</p>
@@ -371,6 +376,21 @@
     }
 
     typeNext();
+
+    const swapImages = document.querySelectorAll(".swap-media .swap-image");
+    if (swapImages.length) {
+      let imgIndex = 0;
+      setInterval(() => {
+        imgIndex = (imgIndex + 1) % swapImages.length;
+        swapImages.forEach((img, idx) => {
+          img.classList.toggle("is-active", idx === imgIndex);
+        });
+        const dots = document.querySelectorAll(".swap-dot");
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle("active", idx === imgIndex);
+        });
+      }, 3000);
+    }
     addToCartButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
         event.preventDefault();
