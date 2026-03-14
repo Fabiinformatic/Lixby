@@ -25,6 +25,9 @@
 
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
 
   <div class="cookie-banner" id="cookieBanner">
     <p>Usamos cookies para mejorar tu experiencia. Puedes aceptar o rechazar.</p>
@@ -108,7 +111,7 @@
     <section id="inicio" class="hero container reveal" data-delay="0s">
       <div class="hero-copy">
         <p class="eyebrow">Tecnología pensada para ti</p>
-        <h1>Diseño limpio, sonido potente y control total de tu día.</h1>
+        <h1><span id="texto"></span></h1>
         <p class="hero-text">
           En Lixby unimos hardware y software para que tengas una experiencia fluida:
           auriculares premium y finanzas personales en una sola marca.
@@ -353,6 +356,21 @@
     });
 
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+    const texto = document.getElementById("texto");
+    const typedString = "Diseño limpio,\nsonido potente y\ncontrol total de tu día.";
+    let typedIndex = 0;
+
+    function typeNext() {
+      if (!texto) return;
+      if (typedIndex > typedString.length) return;
+      const next = typedString.slice(0, typedIndex);
+      texto.textContent = next;
+      typedIndex += 1;
+      setTimeout(typeNext, 25);
+    }
+
+    typeNext();
     addToCartButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
         event.preventDefault();

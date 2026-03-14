@@ -146,6 +146,27 @@
       font-size: 0.92rem;
     }
 
+    .mfa-panel {
+      margin-top: 12px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      display: none;
+      gap: 10px;
+    }
+
+    .mfa-panel.active {
+      display: grid;
+    }
+
+    .mfa-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     .register-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -318,6 +339,16 @@
               Continuar con Google
             </button>
           </form>
+          <div id="mfaPanel" class="mfa-panel" aria-live="polite">
+            <strong>Verificacion en 2 pasos requerida</strong>
+            <p id="mfaHint" class="auth-note">Enviaremos un codigo SMS al telefono asociado.</p>
+            <div class="mfa-row">
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar codigo</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Codigo SMS">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
+            </div>
+            <div id="mfa-recaptcha-container"></div>
+          </div>
           <p class="auth-note" style="margin-top: 10px;">
             ¿No tienes una cuenta de Lixby?
             <a href="#" id="showRegisterLink" class="auth-link">Crear tu cuenta de Lixby</a>
@@ -483,6 +514,7 @@
             </p>
 
             <button class="btn btn-primary" type="submit">Crear cuenta</button>
+            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verificar email</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -515,10 +547,14 @@
       sendPasswordResetEmail,
       GoogleAuthProvider,
       RecaptchaVerifier,
+      PhoneAuthProvider,
+      PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
       signInWithPopup,
       onAuthStateChanged,
-      signOut
+      signOut,
+      sendEmailVerification,
+      getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     const firebaseConfig = {
@@ -544,6 +580,12 @@
     const forgotPasswordLink = document.getElementById("forgotPasswordLink");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
+    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const mfaPanel = document.getElementById("mfaPanel");
+    const mfaHint = document.getElementById("mfaHint");
+    const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
+    const mfaVerifyBtn = document.getElementById("mfaVerifyBtn");
+    const mfaCodeInput = document.getElementById("mfaCodeInput");
 
     const userPanel = document.getElementById("userPanel");
     const userEmail = document.getElementById("userEmail");
@@ -644,7 +686,13 @@
         size: "invisible"
       });
       recaptchaVerifier.render();
+      const mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
+        size: "invisible"
+      });
+      mfaRecaptchaVerifier.render();
       let confirmationResult = null;
+      let mfaResolver = null;
+      let mfaVerificationId = "";
 
       function buildPhoneNumber() {
         const countryCode = document.getElementById("phoneCountry").value;
@@ -685,6 +733,14 @@
           loginForm.reset();
           window.location.href = "cuenta.html";
         } catch (error) {
+          if (error.code === "auth/multi-factor-auth-required") {
+            mfaResolver = getMultiFactorResolver(auth, error);
+            const hint = mfaResolver.hints[0];
+            mfaHint.textContent = `Enviaremos un codigo SMS a ${hint.phoneNumber || "tu telefono"}.`;
+            mfaPanel.classList.add("active");
+            setStatus("Se requiere verificacion en 2 pasos.", "info");
+            return;
+          }
           setStatus(`Error al iniciar sesion: ${error.message}`, "error");
         }
       });
@@ -703,6 +759,64 @@
           setStatus(`No se pudo enviar el correo: ${error.message}`, "error");
         }
       });
+
+      mfaSendCodeBtn.addEventListener("click", async () => {
+        if (!mfaResolver) {
+          setStatus("No hay verificacion en 2 pasos pendiente.", "error");
+          return;
+        }
+
+        try {
+          const hint = mfaResolver.hints[0];
+          const phoneInfoOptions = {
+            multiFactorHint: hint,
+            session: mfaResolver.session
+          };
+          const phoneAuthProvider = new PhoneAuthProvider(auth);
+          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
+          setStatus("Codigo SMS enviado.", "success");
+        } catch (error) {
+          mfaRecaptchaVerifier.clear();
+          setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
+        }
+      });
+
+      mfaVerifyBtn.addEventListener("click", async () => {
+        if (!mfaResolver) {
+          setStatus("No hay verificacion en 2 pasos pendiente.", "error");
+          return;
+        }
+
+        if (!mfaVerificationId) {
+          setStatus("Primero envia el codigo SMS.", "error");
+          return;
+        }
+
+        const code = mfaCodeInput.value.trim();
+        if (!code) {
+          setStatus("Introduce el codigo SMS.", "error");
+          return;
+        }
+
+        try {
+          const cred = PhoneAuthProvider.credential(mfaVerificationId, code);
+          const assertion = PhoneMultiFactorGenerator.assertion(cred);
+          await mfaResolver.resolveSignIn(assertion);
+          mfaPanel.classList.remove("active");
+          mfaResolver = null;
+          mfaVerificationId = "";
+          mfaCodeInput.value = "";
+          setStatus("Sesion iniciada correctamente.", "success");
+          window.location.href = "cuenta.html";
+        } catch (error) {
+          setStatus(`Codigo invalido: ${error.message}`, "error");
+        }
+      });
+
+      const emailActionSettings = {
+        url: `${window.location.origin}/es/verificado.html`,
+        handleCodeInApp: false
+      };
 
       registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -735,6 +849,9 @@
 
         try {
           await createUserWithEmailAndPassword(auth, email, password);
+          if (auth.currentUser) {
+            await sendEmailVerification(auth.currentUser, emailActionSettings);
+          }
           localStorage.setItem("lixbyProfile", JSON.stringify({
             firstName,
             lastName,
@@ -757,12 +874,30 @@
         }
       });
 
+      verifyEmailBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) {
+          setStatus("Inicia sesion para verificar tu email.", "error");
+          return;
+        }
+        try {
+          await sendEmailVerification(user, emailActionSettings);
+          setStatus("Email enviado. Revisa Spam y Promociones.", "success");
+        } catch (error) {
+          setStatus(`No se pudo enviar: ${error.message}`, "error");
+        }
+      });
+
       googleAuthBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
           setStatus("Sesion iniciada con Google.", "success");
           window.location.href = "cuenta.html";
         } catch (error) {
+          if (error.code === "auth/popup-closed-by-user") {
+            setStatus("Inicio con Google cancelado.", "error");
+            return;
+          }
           setStatus(`Error con Google: ${error.message}`, "error");
         }
       });
@@ -773,6 +908,10 @@
           setStatus("Registro completado con Google.", "success");
           window.location.href = "cuenta.html";
         } catch (error) {
+          if (error.code === "auth/popup-closed-by-user") {
+            setStatus("Inicio con Google cancelado.", "error");
+            return;
+          }
           setStatus(`Error con Google: ${error.message}`, "error");
         }
       });
