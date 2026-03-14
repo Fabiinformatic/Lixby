@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cesta | Lixby</title>
+  <title>Cart | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -154,18 +154,18 @@
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="shop.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <a href="cart.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="cart.html" class="nav-icon-link" aria-label="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
     </div>
@@ -173,21 +173,21 @@
 
   <main class="container cart-page">
     <section class="cart-head">
-      <h1>Tu cesta</h1>
-      <p>Revisa tus productos antes de finalizar la compra.</p>
+      <h1>Your cart</h1>
+      <p>Review your products before completing the purchase.</p>
     </section>
 
     <section class="cart-layout">
       <div class="cart-list" id="cartList"></div>
 
       <aside class="cart-summary">
-        <h2>Resumen</h2>
+        <h2>Summary</h2>
         <div class="cart-row"><span>Subtotal</span><span id="subtotal">0 EUR</span></div>
-        <div class="cart-row"><span>Envio</span><span>Gratis</span></div>
+        <div class="cart-row"><span>Shipping</span><span>Free</span></div>
         <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Vaciar cesta</button>
+          <button id="checkoutBtn" class="btn btn-primary" type="button">Checkout</button>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">Clear cart</button>
         </div>
       </aside>
     </section>
@@ -274,7 +274,7 @@
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Tu cesta esta vacia. <a href="shop.html">Ir a tienda</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="shop.html">Go to shop</a>.</p>`;
         subtotalEl.textContent = "0 EUR";
         totalEl.textContent = "0 EUR";
         return;
@@ -285,7 +285,7 @@
       cartListEl.innerHTML = cart.map((entry) => {
         const product = productCatalog[entry.id] || {
           id: entry.id,
-          name: entry.name || "Producto",
+          name: entry.name || "Product",
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
@@ -299,13 +299,13 @@
             <img class="cart-item-image" src="${product.image}" alt="${product.name}">
             <div>
               <h3>${product.name}</h3>
-              <p>${money(product.price)} / unidad</p>
+              <p>${money(product.price)} / unit</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${product.id}">-</button>
                 <span>${qty}</span>
                 <button type="button" data-action="plus" data-id="${product.id}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Quitar</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Remove</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -337,12 +337,12 @@
     checkoutBtn.addEventListener("click", () => {
       const cart = readCart();
       if (cart.length === 0) {
-        alert("Tu cesta esta vacia.");
+        alert("Your cart is empty.");
         return;
       }
 
       if (!authReady) {
-        alert("Cargando sesion. Intenta de nuevo en unos segundos.");
+        alert("Loading session. Try again in a few seconds.");
         return;
       }
 
