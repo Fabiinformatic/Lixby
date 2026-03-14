@@ -128,15 +128,15 @@
 
     <section class="stats container">
       <article class="stat-card reveal" data-delay="0s">
-        <span class="stat-number">98%</span>
+        <span class="stat-number" data-target="98" data-suffix="%">0%</span>
         <p>Satisfacción de usuarios</p>
       </article>
       <article class="stat-card reveal" data-delay="0.1s">
-        <span class="stat-number">30h</span>
+        <span class="stat-number" data-target="30" data-suffix="h">0h</span>
         <p>Autonomía de batería</p>
       </article>
       <article class="stat-card reveal" data-delay="0.2s">
-        <span class="stat-number">24/7</span>
+        <span class="stat-number" data-target="24" data-suffix="/7">0/7</span>
         <p>Soporte técnico en español</p>
       </article>
     </section>
@@ -390,6 +390,38 @@
           dot.classList.toggle("active", idx === imgIndex);
         });
       }, 3000);
+    }
+
+    const statNumbers = document.querySelectorAll(".stat-number[data-target]");
+    const animateStat = (el) => {
+      const target = Number(el.dataset.target || "0");
+      const suffix = el.dataset.suffix || "";
+      const duration = 1200;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = Math.round(target * progress);
+        el.textContent = `${value}${suffix}`;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    if (statNumbers.length) {
+      const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      statNumbers.forEach((el) => statsObserver.observe(el));
     }
     addToCartButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
