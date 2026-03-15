@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
+﻿<!DOCTYPE html>
+<html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soporte LixBuds | Lixby</title>
-  <meta name="description" content="Guías de configuración y mantenimiento para LixBuds.">
+  <title>Център за помощ | Lixby</title>
+  <meta name="description" content="Достъп до ръководства, поддръжка и ресурси на Lixby.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,7 +92,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .faq-question::after { content: "?"; transition: transform 0.25s ease; }
+    .faq-question::after { content: "❓"; transition: transform 0.25s ease; }
     .faq-question[aria-expanded="true"]::after { transform: rotate(180deg); }
     .faq-answer {
       max-height: 0;
@@ -114,14 +114,14 @@
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="../index.html" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="../tienda.html" class="nav-link">Tienda</a>
-        <a href="../index.html#productos" class="nav-link">Productos</a>
-        <a href="../index.html#apps" class="nav-link">Apps</a>
-        <a href="../support.html" class="nav-link">Soporte</a>
+      <nav class="nav-links" aria-label="Основна">
+        <a href="../tienda.html" class="nav-link">Магазин</a>
+        <a href="../index.html#productos" class="nav-link">Продукти</a>
+        <a href="../index.html#apps" class="nav-link">Приложения</a>
+        <a href="../support.html" class="nav-link">Поддръжка</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Търсене" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
@@ -133,17 +133,17 @@
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Търси продукт..."
+            aria-label="Търси продукт"
           >
         </form>
-        <a href="../cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="../images/Bolsa.png" alt="Cesta">
+        <a href="../cesta.html" class="nav-icon-link" aria-label="Кошница">
+          <img src="../images/Bolsa.png" alt="Кошница">
         </a>
-        <a href="../cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="../images/cuenta.png" alt="Cuenta">
+        <a href="../cuenta.html" class="nav-icon-link" aria-label="Профил">
+          <img src="../images/cuenta.png" alt="Профил">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Меню" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -161,114 +161,128 @@
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
+          placeholder="Търсене"
+          aria-label="Търси продукт"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
-        <span aria-hidden="true">×</span>
+      <button type="button" class="nav-mobile-close" aria-label="Затвори меню">
+        <span aria-hidden="true">✕</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
-      <a href="../tienda.html">Tienda</a>
-      <a href="../index.html#productos">Productos</a>
-      <a href="../index.html#apps">Apps</a>
-      <a href="../support.html">Soporte</a>
+    <nav class="nav-mobile-links" aria-label="Основно мобилно">
+      <a href="../tienda.html">Магазин</a>
+      <a href="../index.html#productos">Продукти</a>
+      <a href="../index.html#apps">Приложения</a>
+      <a href="../support.html">Поддръжка</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cesta.html">Cesta</a>
-      <a href="../cuenta.html">Cuenta</a>
+      <a href="../cesta.html">Кошница</a>
+      <a href="../cuenta.html">Профил</a>
     </div>
   </div>
   <section class="help-hero">
     <div>
-      <span class="badge">Centro de ayuda</span>
-      <h1>Soporte LixBuds</h1>
-      <p>Configura, optimiza el audio y prolonga la vida de tus LixBuds con estas guías.</p>
+      <span class="badge">Център за помощ</span>
+      <h1>Център за помощ на Lixby</h1>
+      <p>Намери ръководства, отстраняване на проблеми и директен контакт с нашия екип.</p>
     </div>
   </section>
   <section class="help-section">
     <div class="help-container">
-      <h2>Primeros pasos</h2>
-      <div class="step-list">
-        <div class="step-item">
-          <strong>1. Emparejamiento rápido</strong>
-          <p>Abre el estuche, mantén pulsado el botón lateral 3 segundos y selecciona “LixBuds One” en Bluetooth.</p>
-        </div>
-        <div class="step-item">
-          <strong>2. Ajuste de sonido</strong>
-          <p>En la app Lixney, activa el ecualizador y elige entre música, podcast o modo equilibrio.</p>
-        </div>
-        <div class="step-item">
-          <strong>3. Actualizaciones</strong>
-          <p>Conecta los auriculares a la app para instalar mejoras de batería y estabilidad.</p>
-        </div>
-      </div>
+      <h2>Бързи достъпи</h2>
+      <p>Избери темата, която най-добре отговаря на твоя въпрос, и ние ще те насочим стъпка по стъпка.</p>
       <div class="help-grid">
-        <div class="help-card">
-          <h3>Problemas de conexión</h3>
-          <p>Restablece el Bluetooth del teléfono y reinicia los auriculares manteniendo el botón 10 segundos.</p>
-        </div>
-        <div class="help-card">
-          <h3>Calidad de audio</h3>
-          <p>Limpia las rejillas con un paño seco y ajusta el balance desde la app.</p>
-        </div>
-        <div class="help-card">
-          <h3>Batería</h3>
-          <p>Desactiva la cancelación activa cuando no sea necesaria para ganar autonomía.</p>
-        </div>
+        <a class="help-card" href="lixbuds.html">
+          <h3>Поддръжка на LixBuds</h3>
+          <p>Сдвояване, батерия, звук и почистване.</p>
+          <span class="btn btn-primary">Виж ръководствата</span>
+        </a>
+        <a class="help-card" href="lixney.html">
+          <h3>Поддръжка на Lixney</h3>
+          <p>Профил, синхронизация и поверителност.</p>
+          <span class="btn btn-primary">Управлявай</span>
+        </a>
+        <a class="help-card" href="faq.html">
+          <h3>Често задавани въпроси</h3>
+          <p>Бързи отговори на чести запитвания.</p>
+          <span class="btn btn-primary">Към ЧЗВ</span>
+        </a>
+        <a class="help-card" href="solucion-problemas.html">
+          <h3>Решаване на проблеми</h3>
+          <p>Насочени диагностики за минути.</p>
+          <span class="btn btn-primary">Започни</span>
+        </a>
       </div>
       <div class="note-box">
-        ¿Necesitas repuestos? Solicítalos desde la página de <a href="contacto.html">contacto</a>.
+        <strong>Състояние на услугата:</strong> Всичко работи. Обичайно време за отговор под 24 часа.
+      </div>
+    </div>
+  </section>
+  <section class="help-section" style="background: var(--color-gray-50);">
+    <div class="help-container">
+      <h2>Също можем да ти помогнем с</h2>
+      <div class="help-grid">
+        <a class="help-card" href="garantia.html">
+          <h3>Гаранция</h3>
+          <p>Условия, покритие и стъпки за изпълнение.</p>
+        </a>
+        <a class="help-card" href="връщания.html">
+          <h3>Връщания</h3>
+          <p>Срокове, изисквания и проследяване.</p>
+        </a>
+        <a class="help-card" href="контакт.html">
+          <h3>Контакт</h3>
+          <p>Пиши ни или поискай персонализирана поддръжка.</p>
+        </a>
       </div>
     </div>
   </section>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Разгледай и пазарувай</h3>
         <ul>
-          <li><a href="../tienda.html">Tienda</a></li>
+          <li><a href="../tienda.html">Магазин</a></li>
           <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../index.html#apps">Apps</a></li>
-          <li><a href="../support.html">Soporte</a></li>
+          <li><a href="../index.html#apps">Приложения</a></li>
+          <li><a href="../support.html">Поддръжка</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Поддръжка</h3>
         <ul>
-          <li><a href="../support.html">Página inicial soporte</a></li>
-          <li><a href="../support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="../pages/legal/returns.html">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email</a></li>
+          <li><a href="../support.html">Начална страница - поддръжка</a></li>
+          <li><a href="../support.html#faq">Често задавани въпроси (онлайн магазин)</a></li>
+          <li><a href="../pages/legal/returns.html">Информация за гаранцията</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Имейл</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Профил</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="../cuenta.html">Mi cuenta</a></li>
-          <li><a href="../cuenta.html">Cupones</a></li>
+          <li><a href="../track.html">Поръчки</a></li>
+          <li><a href="../cuenta.html">Моят профил</a></li>
+          <li><a href="../cuenta.html">Купони</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>За Lixby</h3>
         <ul>
-          <li><a href="../about.html">Newsroom</a></li>
-          <li><a href="../pages/legal/returns.html">Garantía</a></li>
-          <li><a href="../about.html">Eventos</a></li>
-          <li><a href="../support.html">Contacto</a></li>
+          <li><a href="../nosotros.html">Новини</a></li>
+          <li><a href="../pages/legal/returns.html">Гаранция</a></li>
+          <li><a href="../nosotros.html">Събития</a></li>
+          <li><a href="../support.html">Контакт</a></li>
         </ul>
       </section>
     </div>
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Авторско право © 2026 Lixby. Всички права запазени.</p>
       <div class="footer-legal-links">
-        <a href="../pages/legal/privacy.html">Política de privacidad</a>
-        <a href="../pages/legal/cookies.html">Uso de cookies</a>
-        <a href="../pages/legal/terms.html">Condiciones de uso</a>
-        <a href="../support.html">Ventas y reembolsos</a>
-        <a href="../pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="../pages/legal/privacy.html">Политика за поверителност</a>
+        <a href="../pages/legal/cookies.html">Използване на бисквитки</a>
+        <a href="../pages/legal/terms.html">Условия за ползване</a>
+        <a href="../support.html">Продажби и възстановявания</a>
+        <a href="../pages/legal/legal-notice.html">Правна информация</a>
       </div>
     </div>
   </footer>
@@ -340,6 +354,3 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
-
-

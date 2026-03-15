@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
+﻿<!DOCTYPE html>
+<html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cambiar contrasena | Lixby</title>
+  <title>Смяна на парола | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -84,36 +84,36 @@
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="#productos" class="nav-link">Productos</a>
-        <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Soporte</a>
+      <nav class="nav-links" aria-label="Основна">
+        <a href="магазин.html" class="nav-link">Магазин</a>
+        <a href="#productos" class="nav-link">Продукти</a>
+        <a href="#apps" class="nav-link">Приложения</a>
+        <a href="поддръжка.html" class="nav-link">Поддръжка</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Търсене" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="магазин.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Търси продукт..."
+            aria-label="Търси продукт"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="кошница.html" class="nav-icon-link" aria-label="Кошница">
+          <img src="images/Bolsa.png" alt="Кошница">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="профил.html" class="nav-icon-link" aria-label="Профил">
+          <img src="images/cuenta.png" alt="Профил">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="MenÃº" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Меню" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -125,29 +125,29 @@
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="магазин.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
+          placeholder="Търсене"
+          aria-label="Търси продукт"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menÃº">
-        <span aria-hidden="true">Ã—</span>
+      <button type="button" class="nav-mobile-close" aria-label="Затвори меню">
+        <span aria-hidden="true">✕</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal mÃ³vil">
-      <a href="tienda.html">Tienda</a>
-      <a href="#productos">Productos</a>
-      <a href="#apps">Apps</a>
-      <a href="support.html">Soporte</a>
+    <nav class="nav-mobile-links" aria-label="Основно мобилно">
+      <a href="магазин.html">Магазин</a>
+      <a href="#productos">Продукти</a>
+      <a href="#apps">Приложения</a>
+      <a href="поддръжка.html">Поддръжка</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cesta</a>
-      <a href="cuenta.html">Cuenta</a>
+      <a href="кошница.html">Кошница</a>
+      <a href="профил.html">Профил</a>
     </div>
   </div>
 
@@ -155,25 +155,25 @@
     <div id="statusMsg" class="status-msg"></div>
 
     <section class="password-card">
-      <h1>Cambiar contrasena</h1>
-      <p class="helper">Por seguridad, te pedimos tu contrasena actual.</p>
+      <h1>Смяна на парола</h1>
+      <p class="helper">За вашата сигурност, моля въведете текущата си парола.</p>
 
       <div class="field">
-        <label for="currentPassword">Contrasena actual</label>
+        <label for="currentPassword">Текуща парола</label>
         <input id="currentPassword" type="password" autocomplete="current-password">
       </div>
       <div class="field">
-        <label for="newPassword">Nueva contrasena</label>
+        <label for="newPassword">Нова парола</label>
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Confirmar nueva contrasena</label>
+        <label for="confirmPassword">Потвърди новата парола</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
       <div class="actions">
-        <button id="savePasswordBtn" class="btn btn-primary" type="button">Guardar cambios</button>
-        <a class="btn btn-secondary" href="cuenta.html">Volver a mi cuenta</a>
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">Запази промените</button>
+        <a class="btn btn-secondary" href="профил.html">Обратно към профила</a>
       </div>
     </section>
   </main>
@@ -218,14 +218,14 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "iniciar-sesion.html";
+        window.location.href = "вход.html";
       }
     });
 
     savePasswordBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user || !user.email) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Невалидна сесия.", "error");
         return;
       }
 
@@ -234,17 +234,17 @@
       const confirm = confirmPassword.value.trim();
 
       if (!current) {
-        showStatus("Introduce la contrasena actual.", "error");
+        showStatus("Въведи текуща парола.", "error");
         return;
       }
 
       if (!isStrongEnough(next)) {
-        showStatus("La nueva contrasena debe tener al menos 8 caracteres.", "error");
+        showStatus("Новата парола трябва да съдържа поне 8 символа.", "error");
         return;
       }
 
       if (next !== confirm) {
-        showStatus("Las contrasenas no coinciden.", "error");
+        showStatus("Паролите не съвпадат.", "error");
         return;
       }
 
@@ -253,14 +253,11 @@
         await reauthenticateWithCredential(user, credential);
         await updatePassword(user, next);
         clearInputs();
-        showStatus("Contrasena actualizada correctamente.", "success");
+        showStatus("Паролата е актуализирана успешно.", "success");
       } catch (error) {
-        showStatus(`No se pudo actualizar: ${error.message}`, "error");
+        showStatus(`Неуспешна актуализация: ${error.message}`, "error");
       }
     });
   </script>
 </body>
 </html>
-
-
-

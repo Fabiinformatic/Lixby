@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podpora | Lixby</title>
+  <meta name="description" content="Centrum podpory Lixby. Najděte odpovědi, kontaktujte náš tým a získejte přístup k zdrojům pomoci.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lixby">
+  <meta property="og:title" content="Podpora | Lixby">
+  <meta property="og:description" content="Centrum nápovědy Lixby">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.lixby.es/images/preview.jpg">
+  <meta property="og:url" content="https://www.lixby.es/support">
+  <meta property="og:site_name" content="Lixby">
+  <link rel="canonical" href="https://www.lixby.es/support">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Podpora | Lixby">
+  <meta name="twitter:description" content="Centrum nápovědy Lixby">
+  <meta name="twitter:image" content="https://www.lixby.es/images/preview.jpg">
+  <link rel="icon" type="image/png" href="images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://www.lixby.es",
+      "logo": "https://www.lixby.es/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+34900123456",
+        "contactType": "customer service",
+        "areaServed": "ES",
+        "availableLanguage": "Czech"
+      }
+    }
+  </script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 20px;
+    }
+
+    .skip-link:focus {
+      left: 20px;
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      z-index: 1000;
+    }
+
+    .support-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
+      color: var(--color-white);
+      text-align: center;
+    }
+
+    .support-hero-content {
+      margin-top: -24px;
+    }
+
+    .support-hero-content h1 {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .support-hero-content p {
+      font-size: var(--font-size-xl);
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .support-content {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .support-grid {
+      max-width: 1200px;
+      width: min(1200px, 92vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-8);
+    }
+
+    @media (min-width: 1024px) {
+      .support-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+
+    .support-card {
+      padding: var(--spacing-10);
+      background-color: #ffffff !important;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-gray-200);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+      opacity: 1 !important;
+      filter: none !important;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      height: 100%;
+    }
+
+    .support-card * {
+      opacity: 1 !important;
+      filter: none !important;
+      color: inherit;
+    }
+
+    .support-card h3,
+    .support-card p,
+    .support-card a,
+    .support-card .btn {
+      opacity: 1 !important;
+      color: var(--text);
+    }
+
+    .support-card p {
+      color: var(--color-gray-600);
+    }
+
+    .support-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .support-card-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .support-card-icon i {
+      width: 3rem;
+      height: 3rem;
+      display: inline-block;
+    }
+
+    .support-card h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .support-card p {
+      color: var(--color-gray-600);
+      margin-bottom: var(--spacing-6);
+      flex: 1;
+    }
+
+    .support-card .btn {
+      background: #e9f1ff;
+      color: #1a4ed8;
+      border: 1px solid #cfe0ff;
+      box-shadow: none;
+    }
+
+    .support-card .btn:hover {
+      background: #dbe8ff;
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
+
+    .support-search {
+      margin-top: var(--spacing-6);
+      display: flex;
+      justify-content: center;
+    }
+
+    .support-search input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .support-status {
+      margin-top: var(--spacing-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-weight: 600;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #2ecc71;
+      box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.2);
+    }
+
+    .faq-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-container h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-12);
+      text-align: center;
+    }
+
+ .faq-item {
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 22px 26px;
+  width: 100%;
+  border: none;
+  background: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background: #f9fafb;
+}
+
+.faq-question::after {
+  content: "?";
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+.faq-question[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 26px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    will-change: max-height, opacity;
+    transition:
+      max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.45s ease,
+      padding 0.45s ease,
+      transform 0.45s ease;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+.faq-answer.active {
+    padding: 18px 26px 24px;
+    max-height: 420px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .faq-item.open {
+    border-color: var(--color-blue);
+    box-shadow: var(--shadow-sm);
+  }
+
+    .support-hub {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .support-hub-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-6);
+    }
+
+    .support-hub-card {
+      padding: var(--spacing-8);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-gray-200);
+      background-color: var(--color-gray-50);
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .support-hub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: var(--spacing-8);
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: var(--spacing-4);
+    }
+
+    .contact-info-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-icon i {
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+    }
+
+    .contact-info-content h3 {
+      font-weight: 600;
+      margin-bottom: var(--spacing-1);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--color-gray-700);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: var(--spacing-3) var(--spacing-4);
+      border: 1px solid var(--color-gray-300);
+      border-radius: var(--radius-lg);
+      font-family: var(--font-family);
+      font-size: var(--font-size-sm);
+    }
+
+    #form-status {
+      margin: 0;
+      color: var(--color-gray-600);
+    }
+
+    .form-status {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    .form-status.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-status.success {
+      color: #1f7a3a;
+    }
+
+    .form-status.error {
+      color: #b3261e;
+    }
+
+    .form-status.success::before {
+      content: "✓ ";
+      display: inline-block;
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    @media (max-width: 768px) {
+      .support-hero {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Přeskočit na obsah</a>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Hlavní navigace">
+        <a href="tienda.html" class="nav-link">Obchod</a>
+        <a href="#productos" class="nav-link">Produkty</a>
+        <a href="#apps" class="nav-link">Aplikace</a>
+        <a href="support.html" class="nav-link">Podpora</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Hledat" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="tienda.html" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Hledat produkt..."
+            aria-label="Hledat produkt"
+          >
+        </form>
+        <a href="cesta.html" class="nav-icon-link" aria-label="Košík">
+          <img src="images/Bolsa.png" alt="Košík">
+        </a>
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Účet">
+          <img src="images/cuenta.png" alt="Účet">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Hledat"
+          aria-label="Hledat produkt"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Zavřít menu">
+        <span aria-hidden="true">✕</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Hlavní navigace - mobil">
+      <a href="tienda.html">Obchod</a>
+      <a href="index.html#productos">Produkty</a>
+      <a href="index.html#apps">Aplikace</a>
+      <a href="support.html">Podpora</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="cesta.html">Košík</a>
+      <a href="cuenta.html">Účet</a>
+    </div>
+  </div>
+  <main id="main">
+    <!-- Hero -->
+    <section class="support-hero">
+      <div class="support-hero-content">
+        <h1>Jak vám můžeme pomoci?</h1>
+        <p>Centrum podpory Lixby. Najděte odpovědi a kontaktujte náš tým.</p>
+        <div class="support-search">
+          <input type="text" placeholder="Hledat v podpoře..." aria-label="Hledat v podpoře">
+        </div>
+        <div class="support-status" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Stav služby: Vše v provozu</span>
+        </div>
+      </div>
+    </section>
+
+  <!-- Support Options -->
+  <section class="support-content">
+    <div style="max-width: 1200px; margin: 0 auto; margin-bottom: var(--spacing-12);">
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-8); text-align: center;">Možnosti podpory</h2>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-card-icon"><i data-lucide="help-circle"></i></div>
+        <h3>Často kladené otázky</h3>
+        <p>Najděte odpovědi na nejčastější dotazy týkající se našich produktů a služeb.</p>
+        <a href="#faq" class="btn btn-primary">Zobrazit FAQ</a>
+      </div>
+      <div class="support-card">
+        <div class="support-card-icon"><i data-lucide="smartphone"></i></div>
+        <h3>Uživatelská příručka</h3>
+        <p>Naučte se používat LixBuds One a Lixney s našimi podrobnými návody.</p>
+        <a href="#" class="btn btn-primary">Stáhnout PDF</a>
+      </div>
+      <div class="support-card">
+        <div class="support-card-icon"><i data-lucide="download"></i></div>
+        <h3>Ke stažení</h3>
+        <p>Přístup k manuálům, ovladačům a dalším zdrojům ke stažení.</p>
+        <a href="#" class="btn btn-primary">Více informací</a>
+      </div>
+    </div>
+    </section>
+
+    <section class="support-hub">
+      <div style="max-width: 1000px; margin: 0 auto; margin-bottom: var(--spacing-8); text-align: center;">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-4);">Centrum nápovědy</h2>
+        <p style="color: var(--color-gray-600);">Rychlý přístup k řešení častých dotazů.</p>
+      </div>
+        <div class="support-hub-grid">
+          <a class="support-hub-card" href="centro-ayuda/index.html">
+            <h3>Úvod podpory</h3>
+            <p>Průvodci, FAQ a kontakt.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/lixbuds.html">
+            <h3>Podpora LixBuds</h3>
+            <p>Nastavení, baterie a připojení.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/lixney.html">
+            <h3>Podpora Lixney</h3>
+            <p>Účet, synchronizace a zabezpečení.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/faq.html">
+            <h3>FAQ</h3>
+            <p>Rychlé odpovědi na běžné dotazy.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/garantia.html">
+            <h3>Záruka</h3>
+            <p>Podmínky a postupy.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/devoluciones.html">
+            <h3>Vrácení zboží</h3>
+            <p>Lhůty, požadavky a postup.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/solucion-problemas.html">
+            <h3>Řešení problémů</h3>
+            <p>Průvodce diagnostikou.</p>
+          </a>
+          <a class="support-hub-card" href="centro-ayuda/contacto.html">
+            <h3>Kontakt</h3>
+            <p>Napište nám nebo požádejte o pomoc.</p>
+          </a>
+        </div>
+      </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="faq-container">
+        <h2>Nejčastější dotazy</h2>
+        <p style="text-align: center; color: var(--color-gray-600); margin-top: -12px; margin-bottom: var(--spacing-8);">
+          Rychlé odpovědi na běžné otázky.
+        </p>
+        <p id="faq-results-count" style="text-align: center; color: var(--color-gray-600); margin-top: -6px; margin-bottom: var(--spacing-6);"></p>
+      
+      <div class="faq-item">
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq1" aria-labelledby="faq1-label">
+          <span id="faq1-label">Jaká je výdrž baterie LixBuds One?</span>
+        </button>
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
+          LixBuds One mají výdrž baterie až 6 hodin nepřetržitého přehrávání. S nabíjecím pouzdrem získáte až 60 hodin celkového přehrávání.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq2" aria-labelledby="faq2-label">
+          <span id="faq2-label">Jsou LixBuds One odolné vůči vodě?</span>
+        </button>
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
+          Ano, LixBuds One mají certifikaci IPX6, což znamená, že jsou odolné vůči potu a stříkající vodě. Nejsou zcela ponořitelné.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq3" aria-labelledby="faq3-label">
+          <span id="faq3-label">S jakými zařízeními je Lixney kompatibilní?</span>
+        </button>
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
+          Lixney funguje na Androidu 6.0 nebo vyšším. Svá data můžete synchronizovat mezi více zařízeními pomocí svého účtu Lixby.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq4" aria-labelledby="faq4-label">
+          <span id="faq4-label">Jsou moje informace v Lixney v bezpečí?</span>
+        </button>
+        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
+          Ano, Lixney používá end-to-end šifrování a je v souladu se všemi předpisy GDPR. Vaše finanční informace jsou zcela v bezpečí.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq5" aria-labelledby="faq5-label">
+          <span id="faq5-label">Mohu vrátit svůj nákup?</span>
+        </button>
+        <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
+          Ano, nabízíme 30denní lhůtu pro vrácení zboží. Další podrobnosti naleznete v našich zásadách vrácení.
+        </div>
+      </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq6" aria-labelledby="faq6-label">
+            <span id="faq6-label">Jak nahlásím technický problém?</span>
+          </button>
+          <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-label">
+            Můžete kontaktovat náš tým technické podpory prostřednictvím kontaktního formuláře níže nebo zasláním e-mailu na adresu lixbyinfo@gmail.com.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq7" aria-labelledby="faq7-label">
+            <span id="faq7-label">Jak dlouho trvá doručení?</span>
+          </button>
+          <div class="faq-answer" id="faq7" role="region" aria-labelledby="faq7-label">
+            Standardní doručení trvá 5-7 pracovních dnů. V obdobích vysoké poptávky se může lišit.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq8" aria-labelledby="faq8-label">
+            <span id="faq8-label">Co kryje záruka?</span>
+          </button>
+          <div class="faq-answer" id="faq8" role="region" aria-labelledby="faq8-label">
+            Záruka se vztahuje na výrobní vady po dobu 2 let. Nevztahuje se na škody způsobené nesprávným používáním nebo nehodami.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq9" aria-labelledby="faq9-label">
+            <span id="faq9-label">Jaké platební metody přijímáte?</span>
+          </button>
+          <div class="faq-answer" id="faq9" role="region" aria-labelledby="faq9-label">
+            Přijímáme kreditní a debetní karty, stejně jako další metody dostupné v pokladně.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq10" aria-labelledby="faq10-label">
+            <span id="faq10-label">Jak resetuji svá LixBuds sluchátka?</span>
+          </button>
+          <div class="faq-answer" id="faq10" role="region" aria-labelledby="faq10-label">
+            Podržte tlačítko párování po dobu 10 sekund, dokud LED nezačne blikat, a poté je znovu připojte.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq11" aria-labelledby="faq11-label">
+            <span id="faq11-label">Mohu změnit doručovací adresu?</span>
+          </button>
+          <div class="faq-answer" id="faq11" role="region" aria-labelledby="faq11-label">
+            Ano, změnu můžete požádat do 12 hodin od nákupu ve svém účtu nebo kontaktováním podpory.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq12" aria-labelledby="faq12-label">
+            <span id="faq12-label">Co mám dělat, když objednávka dorazí neúplná?</span>
+          </button>
+          <div class="faq-answer" id="faq12" role="region" aria-labelledby="faq12-label">
+            Napište nám s číslem objednávky a přiložte fotografie balíku. Vyřešíme to do 24-48 hodin.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq13" aria-labelledby="faq13-label">
+            <span id="faq13-label">Jak aktivuji potlačení hluku?</span>
+          </button>
+          <div class="faq-answer" id="faq13" role="region" aria-labelledby="faq13-label">
+            Podržte dotykový panel na pravém sluchátku po dobu 2 sekund nebo jej aktivujte v aplikaci Lixney.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq14" aria-labelledby="faq14-label">
+            <span id="faq14-label">Poskytujete faktury pro firmy?</span>
+          </button>
+          <div class="faq-answer" id="faq14" role="region" aria-labelledby="faq14-label">
+            Ano, při placení můžete zadat daňové údaje. Můžete si ji také vyžádat ve svém účtu.
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Contact Form -->
+    <section class="contact-section">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Kontaktujte nás</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Kontaktní informace</h3>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="mail"></i></div>
+              <div class="contact-info-content">
+                <h3>Email</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">lixbyinfo@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="phone"></i></div>
+              <div class="contact-info-content">
+                <h3>Telefon</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">+34 900 123 456</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="map-pin"></i></div>
+              <div class="contact-info-content">
+                <h3>Lokace</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Tenerife, Španělsko</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i data-lucide="clock"></i></div>
+              <div class="contact-info-content">
+                <h3>Provozní doba</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Pondělí - Pátek: 8:00 - 20:00 UTC</p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" action="https://formspree.io/f/xaqpbjjo" method="POST" data-formspree-recaptcha>
+            <input type="text" name="_gotcha" style="display:none">
+            <div class="form-group">
+              <label for="name">Jméno</label>
+              <input type="text" id="name" name="name" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="type">Typ dotazu</label>
+              <select id="type" name="type" required>
+                <option>Technická podpora</option>
+                <option>Vrácení zboží</option>
+                <option>Záruka</option>
+                <option>Obecné informace</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="subject">Předmět</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Zpráva</label>
+              <textarea id="message" name="message" required minlength="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer --><footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Prohlížet a nakupovat</h3>
+        <ul>
+          <li><a href="#">Obchod</a></li>
+          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="#apps">Aplikace</a></li>
+          <li><a href="support.html">Podpora</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Podpora</h3>
+        <ul>
+          <li><a href="support.html">Hlavní stránka podpory</a></li>
+          <li><a href="support.html#faq">FAQ - online obchod</a></li>
+          <li><a href="support.html">Informace o záruce</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">E-mail CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Účet</h3>
+        <ul>
+          <li><a href="../track.html">Objednávky</a></li>
+          <li><a href="cuenta.html">Můj účet</a></li>
+          <li><a href="cuenta.html">Kupóny</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>O společnosti Lixby</h3>
+        <ul>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="support.html">Záruka</a></li>
+          <li><a href="#">Události</a></li>
+          <li><a href="support.html">Kontakt</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Všechna práva vyhrazena.</p>
+      <div class="footer-legal-links">
+        <a href="pages/legal/privacy.html">Zásady ochrany osobních údajů</a>
+        <a href="pages/legal/cookies.html">Používání cookies</a>
+        <a href="pages/legal/terms.html">Podmínky použití</a>
+        <a href="support.html">Prodej a vrácení zboží</a>
+        <a href="pages/legal/legal-notice.html">Právní upozornění</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer data-domain="www.lixby.es" src="https://plausible.io/js/script.js"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script>
+    // FAQ Toggle (pouze jeden otevřený)
+    const closeItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      const item = btn.closest('.faq-item');
+      btn.setAttribute('aria-expanded', 'false');
+      if (item) {
+        item.classList.remove('open');
+        item.style.background = '';
+      }
+      if (answer) {
+        answer.style.maxHeight = '0px';
+        answer.classList.remove('active');
+      }
+    };
+
+    const openItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      const item = btn.closest('.faq-item');
+      btn.setAttribute('aria-expanded', 'true');
+      if (item) item.classList.add('open');
+      if (answer) {
+        answer.classList.add('active');
+        answer.style.maxHeight = '0px';
+        requestAnimationFrame(() => {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        });
+      }
+    };
+
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const allButtons = document.querySelectorAll('.faq-question');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          closeItem(button);
+          return;
+        }
+
+        allButtons.forEach((btn) => closeItem(btn));
+        openItem(button);
+      });
+    });
+
+    const supportSearchInput = document.querySelector('.support-search input');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqCount = document.getElementById('faq-results-count');
+    if (supportSearchInput) {
+      supportSearchInput.addEventListener('input', () => {
+        const term = supportSearchInput.value.trim().toLowerCase();
+        let results = 0;
+        faqItems.forEach((faq) => {
+          const text = faq.innerText.toLowerCase();
+          const button = faq.querySelector('.faq-question');
+          if (!button) return;
+
+          if (!term || text.includes(term)) {
+            faq.style.display = 'block';
+            results += 1;
+            if (term) {
+              openItem(button);
+              faq.style.background = '#fff9c4';
+            } else {
+              closeItem(button);
+              faq.style.background = '';
+            }
+          } else {
+            faq.style.display = 'none';
+            closeItem(button);
+          }
+        });
+        if (faqCount) {
+          faqCount.textContent = term ? `${results} nalezených výsledků` : '';
+        }
+      });
+    }
+
+    const form = document.querySelector('.contact-form');
+    const status = document.getElementById('form-status');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!status || !form) return;
+
+      const messageField = form.querySelector('#message');
+      if (messageField && messageField.value.trim().length < 10) {
+        status.classList.remove('success');
+        status.classList.add('visible', 'error');
+        status.textContent = 'Zpráva je příliš krátká.';
+        return;
+      }
+
+      status.classList.remove('success', 'error');
+      status.classList.add('visible');
+      status.textContent = 'Odesílání zprávy...';
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          status.classList.add('success');
+          status.textContent = 'Zpráva byla úspěšně odeslána. Brzy vám odpovíme.';
+          form.reset();
+        } else {
+          status.classList.add('error');
+          status.textContent = 'Zprávu se nepodařilo odeslat. Zkuste to znovu.';
+        }
+      } catch (error) {
+        status.classList.add('error');
+        status.textContent = 'Chyba připojení. Zkontrolujte síť a zkuste to znovu.';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+
+    const nav = document.getElementById("nav");
+    const progressBar = document.getElementById("scroll-progress");
+
+    const updateScrollUI = () => {
+      const top = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = height > 0 ? (top / height) * 100 : 0;
+
+      if (progressBar) progressBar.style.width = progress + "%";
+      if (nav) nav.classList.toggle("nav-scrolled", top > 20);
+    };
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    const searchForm = document.getElementById("navSearchForm");
+    const searchInput = document.getElementById("navSearch");
+    if (searchForm && searchInput) {
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = searchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobileSearchForm = document.getElementById("navSearchFormMobile");
+    const mobileSearchInput = document.getElementById("navSearchMobile");
+    if (mobileSearchForm && mobileSearchInput) {
+      mobileSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = mobileSearchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobilePanel = document.getElementById("navMobilePanel");
+    const searchToggle = document.querySelector(".nav-search-toggle");
+    const menuToggle = document.querySelector(".nav-menu-toggle");
+    const closeNav = () => {
+      document.body.classList.remove("nav-open", "menu-open");
+      nav?.classList.remove("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "true");
+      searchToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    };
+
+    const openNav = (focusSearch = false) => {
+      document.body.classList.add("nav-open", "menu-open");
+      nav?.classList.add("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "false");
+      searchToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      if (focusSearch && mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 80);
+      }
+    };
+
+    const toggleNav = (focusSearch = false) => {
+      if (nav?.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav(focusSearch);
+      }
+    };
+
+    searchToggle?.addEventListener("click", () => toggleNav(true));
+    menuToggle?.addEventListener("click", () => toggleNav(false));
+
+    const mobileClose = document.querySelector(".nav-mobile-close");
+    mobileClose?.addEventListener("click", () => closeNav());
+
+    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+      link.addEventListener("click", () => closeNav());
+    });
+
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target && target.classList.contains('faq-answer')) {
+        const btn = target.previousElementSibling;
+        if (btn && btn.classList.contains('faq-question')) {
+          openItem(btn);
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    }
+
+    window.addEventListener('load', () => {
+      if (window.lucide) lucide.createIcons();
+      if (window.gsap) {
+        gsap.from(".support-hero-content", { y: 40, opacity: 0, duration: 1 });
+        gsap.from(".support-card", { y: 30, opacity: 0, stagger: 0.1, duration: 0.8 });
+      }
+    });
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Jaká je výdrž baterie LixBuds One?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Až 6 hodin nepřetržitého přehrávání a až 60 hodin s nabíjecím pouzdrem."
+        }
+      }]
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

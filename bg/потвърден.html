@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Имейлът е потвърден | Lixby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .verify-page {
+      padding: 40px 0 84px;
+      min-height: 70vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .verify-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+      max-width: 520px;
+      text-align: center;
+      display: grid;
+      gap: 12px;
+    }
+
+    .verify-card p {
+      color: var(--muted);
+    }
+
+    .verify-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Основна навигация">
+        <a href="tienda.html" class="nav-link">Магазин</a>
+        <a href="index.html#productos" class="nav-link">Продукти</a>
+        <a href="index.html#apps" class="nav-link">Приложения</a>
+        <a href="support.html" class="nav-link">Поддръжка</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Количка">
+          <img src="images/Bolsa.png" alt="Количка">
+        </a>
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Профил">
+          <img src="images/cuenta.png" alt="Профил">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container verify-page">
+    <section class="verify-card">
+      <h1>Имейлът е потвърден</h1>
+      <p>Вашият имейл беше потвърден успешно.</p>
+      <div class="verify-actions">
+        <a class="btn btn-primary" href="cuenta.html">Към моя профил</a>
+        <a class="btn btn-secondary" href="iniciar-sesion.html">Вход</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

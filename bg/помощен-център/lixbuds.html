@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
+﻿<!DOCTYPE html>
+<html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preguntas frecuentes | Lixby</title>
-  <meta name="description" content="Respuestas rápidas a las dudas más comunes de Lixby.">
+  <title>Често задавани въпроси | Lixby</title>
+  <meta name="description" content="Бързи отговори на най-честите въпроси за Lixby.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
       background: #f9fafb;
     }
     .faq-question::after {
-      content: "?";
+      content: "❓";
       font-size: 20px;
       transition: transform 0.25s ease;
     }
@@ -100,36 +100,36 @@
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="../index.html" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="../tienda.html" class="nav-link">Tienda</a>
-        <a href="../index.html#productos" class="nav-link">Productos</a>
-        <a href="../index.html#apps" class="nav-link">Apps</a>
-        <a href="../support.html" class="nav-link">Soporte</a>
+      <nav class="nav-links" aria-label="Основна">
+        <a href="../магазин.html" class="nav-link">Магазин</a>
+        <a href="../index.html#productos" class="nav-link">Продукти</a>
+        <a href="../index.html#apps" class="nav-link">Приложения</a>
+        <a href="../поддръжка.html" class="nav-link">Поддръжка</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Търсене" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="../tienda.html" method="get">
+        <form id="navSearchForm" action="../магазин.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Търси продукт..."
+            aria-label="Търси продукт"
           >
         </form>
-        <a href="../cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="../images/Bolsa.png" alt="Cesta">
+        <a href="../кошница.html" class="nav-icon-link" aria-label="Кошница">
+          <img src="../images/Bolsa.png" alt="Кошница">
         </a>
-        <a href="../cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="../images/cuenta.png" alt="Cuenta">
+        <a href="../профил.html" class="nav-icon-link" aria-label="Профил">
+          <img src="../images/cuenta.png" alt="Профил">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Меню" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -141,165 +141,165 @@
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../магазин.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
+          placeholder="Търсене"
+          aria-label="Търси продукт"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
-        <span aria-hidden="true">×</span>
+      <button type="button" class="nav-mobile-close" aria-label="Затвори меню">
+        <span aria-hidden="true">✕</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
-      <a href="../tienda.html">Tienda</a>
-      <a href="../index.html#productos">Productos</a>
-      <a href="../index.html#apps">Apps</a>
-      <a href="../support.html">Soporte</a>
+    <nav class="nav-mobile-links" aria-label="Основно мобилно">
+      <a href="../магазин.html">Магазин</a>
+      <a href="../index.html#productos">Продукти</a>
+      <a href="../index.html#apps">Приложения</a>
+      <a href="../поддръжка.html">Поддръжка</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cesta.html">Cesta</a>
-      <a href="../cuenta.html">Cuenta</a>
+      <a href="../кошница.html">Кошница</a>
+      <a href="../профил.html">Профил</a>
     </div>
   </div>
   <section class="help-hero">
     <div>
-      <span class="badge">Centro de ayuda</span>
-      <h1>Preguntas frecuentes</h1>
-      <p>Consulta las dudas más habituales sobre productos, envíos y garantías.</p>
+      <span class="badge">Център за помощ</span>
+      <h1>Често задавани въпроси</h1>
+      <p>Виж най-честите въпроси относно продукти, доставки и гаранции.</p>
     </div>
   </section>
   <section class="faq-section" id="faq">
     <div class="faq-container">
-      <h2>Preguntas frecuentes</h2>
+      <h2>Често задавани въпроси</h2>
       <p style="text-align: center; color: var(--color-gray-600); margin-top: -12px; margin-bottom: var(--spacing-8);">
-        Respuestas rápidas a dudas comunes.
+        Бързи отговори на чести запитвания.
       </p>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
-          <span>¿Cuál es la duración de la batería?</span>
+          <span>Какъв е животът на батерията?</span>
         </button>
-        <div class="faq-answer" id="faq-a1">LixBuds ofrece hasta 6 horas de reproducción y 60 horas con el estuche de carga.</div>
+        <div class="faq-answer" id="faq-a1">LixBuds предлага до 6 часа възпроизвеждане и 60 часа с кутията за зареждане.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
-          <span>¿Cuánto tarda el envío?</span>
+          <span>Колко време отнема доставката?</span>
         </button>
-        <div class="faq-answer" id="faq-a2">El envío estándar tarda entre 5 y 7 días laborables.</div>
+        <div class="faq-answer" id="faq-a2">Стандартната доставка отнема между 5 и 7 работни дни.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
-          <span>¿Cómo tramito una devolución?</span>
+          <span>Как да започна връщане?</span>
         </button>
-        <div class="faq-answer" id="faq-a3">Inicia el proceso desde la página de devoluciones y adjunta el número de pedido.</div>
+        <div class="faq-answer" id="faq-a3">Започни процеса от страницата за връщания и приложи номера на поръчката.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
-          <span>¿Qué cubre la garantía?</span>
+          <span>Какво покрива гаранцията?</span>
         </button>
-        <div class="faq-answer" id="faq-a4">Cubre defectos de fabricación durante 2 años desde la compra.</div>
+        <div class="faq-answer" id="faq-a4">Покрива фабрични дефекти за 2 години от датата на закупуване.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
-          <span>¿Son resistentes al agua los LixBuds?</span>
+          <span>Устойчиви ли са LixBuds на вода?</span>
         </button>
-        <div class="faq-answer" id="faq-a5">Sí, cuentan con certificación IPX6 para sudor y salpicaduras. No son sumergibles.</div>
+        <div class="faq-answer" id="faq-a5">Да, имат сертификат IPX6 за пот и пръски. Не са водоустойчиви за потапяне.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
-          <span>¿Con qué dispositivos es compatible Lixney?</span>
+          <span>С кои устройства е съвместим Lixney?</span>
         </button>
-        <div class="faq-answer" id="faq-a6">Funciona en Android 6.0+. Puedes sincronizar varios dispositivos con tu cuenta.</div>
+        <div class="faq-answer" id="faq-a6">Работи на Android 6.0+. Можеш да синхронизираш няколко устройства с твоя профил.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
-          <span>¿Cómo reporto un problema técnico?</span>
+          <span>Как да докладвам технически проблем?</span>
         </button>
-        <div class="faq-answer" id="faq-a7">Usa la página de contacto y describe el problema con el número de pedido si aplica.</div>
+        <div class="faq-answer" id="faq-a7">Използвай страницата за контакт и опиши проблема с номера на поръчката, ако е приложимо.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">
-          <span>¿Qué métodos de pago aceptan?</span>
+          <span>Какви методи на плащане приемате?</span>
         </button>
-        <div class="faq-answer" id="faq-a8">Aceptamos tarjetas de crédito y débito, además de otros métodos disponibles en el checkout.</div>
+        <div class="faq-answer" id="faq-a8">Приемаме кредитни и дебитни карти, както и други методи, налични при плащане.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a9">
-          <span>¿Cómo restablezco mis LixBuds?</span>
+          <span>Как да нулирам моите LixBuds?</span>
         </button>
-        <div class="faq-answer" id="faq-a9">Mantén presionado el botón de emparejamiento por 10 segundos hasta que el LED parpadee.</div>
+        <div class="faq-answer" id="faq-a9">Задръж натиснат бутона за сдвояване за 10 секунди, докато LED светне мига.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a10">
-          <span>¿Puedo cambiar la dirección de entrega?</span>
+          <span>Мога ли да променя адреса за доставка?</span>
         </button>
-        <div class="faq-answer" id="faq-a10">Sí, puedes solicitar el cambio dentro de las primeras 12 horas desde tu cuenta o con soporte.</div>
+        <div class="faq-answer" id="faq-a10">Да, можеш да поискаш промяна в първите 12 часа от твоя профил или чрез поддръжка.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a11">
-          <span>¿Cómo activo la cancelación de ruido?</span>
+          <span>Как да активирам шумопотискането?</span>
         </button>
-        <div class="faq-answer" id="faq-a11">Mantén pulsado el panel táctil derecho 2 segundos o actívala desde la app Lixney.</div>
+        <div class="faq-answer" id="faq-a11">Задръж натиснат десния сензорен панел за 2 секунди или го активирай от приложението Lixney.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a12">
-          <span>¿Se puede usar un solo auricular?</span>
+          <span>Може ли да се използва само една слушалка?</span>
         </button>
-        <div class="faq-answer" id="faq-a12">Sí, puedes usar el izquierdo o el derecho de forma independiente en modo mono.</div>
+        <div class="faq-answer" id="faq-a12">Да, можеш да използваш лявата или дясната самостоятелно в моно режим.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a13">
-          <span>¿Cuánto tarda el reembolso?</span>
+          <span>Колко време отнема възстановяването на средства?</span>
         </button>
-        <div class="faq-answer" id="faq-a13">Los reembolsos se procesan en 2-3 días laborables tras recibir el producto.</div>
+        <div class="faq-answer" id="faq-a13">Възстановяванията се обработват за 2-3 работни дни след получаване на продукта.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a14">
-          <span>¿Qué hago si el pedido llega incompleto?</span>
+          <span>Какво правя, ако поръчката пристигне непълна?</span>
         </button>
-        <div class="faq-answer" id="faq-a14">Escríbenos con el número de pedido y fotos del paquete. Lo resolvemos en 24-48 horas.</div>
+        <div class="faq-answer" id="faq-a14">Пиши ни с номера на поръчката и снимки на пратката. Решаваме го за 24-48 часа.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a15">
-          <span>¿Puedo cancelar un pedido?</span>
+          <span>Мога ли да отменя поръчка?</span>
         </button>
-        <div class="faq-answer" id="faq-a15">Puedes cancelarlo si aún no ha sido enviado. Escríbenos lo antes posible.</div>
+        <div class="faq-answer" id="faq-a15">Можеш да я отмениш, ако все още не е изпратена. Пиши ни възможно най-скоро.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a16">
-          <span>¿Cómo actualizo el firmware?</span>
+          <span>Как да актуализирам фърмуера?</span>
         </button>
-        <div class="faq-answer" id="faq-a16">Abre la app Lixby y sigue el aviso de actualización cuando los auriculares estén conectados.</div>
+        <div class="faq-answer" id="faq-a16">Отвори приложението Lixby и следвай известието за актуализация, когато слушалките са свързани.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a17">
-          <span>¿Hay descuentos para estudiantes?</span>
+          <span>Има ли отстъпки за студенти?</span>
         </button>
-        <div class="faq-answer" id="faq-a17">Sí, ofrecemos descuentos puntuales. Consulta la newsletter o promociones activas.</div>
+        <div class="faq-answer" id="faq-a17">Да, предлагаме временни отстъпки. Следи нашия бюлетин или активни промоции.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a18">
-          <span>¿Cómo limpio mis LixBuds?</span>
+          <span>Как да почистя моите LixBuds?</span>
         </button>
-        <div class="faq-answer" id="faq-a18">Usa un paño seco y un bastoncillo suave. Evita líquidos directos.</div>
+        <div class="faq-answer" id="faq-a18">Използвай суха кърпа и мек памучен тампон. Избягвай директни течности.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a19">
-          <span>¿Puedo usar LixBuds para llamadas?</span>
+          <span>Мога ли да използвам LixBuds за разговори?</span>
         </button>
-        <div class="faq-answer" id="faq-a19">Sí, incorporan micrófonos con reducción de ruido para llamadas claras.</div>
+        <div class="faq-answer" id="faq-a19">Да, имат вградени микрофони с намаляване на шума за ясни разговори.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a20">
-          <span>¿Dónde puedo descargar el manual?</span>
+          <span>Къде мога да изтегля ръководството?</span>
         </button>
-        <div class="faq-answer" id="faq-a20">Solicítalo desde la página de contacto y te enviaremos el PDF actualizado.</div>
+        <div class="faq-answer" id="faq-a20">Поискай го от страницата за контакт и ние ще ти изпратим актуализирания PDF.</div>
       </div>
     </div>
   </section>
@@ -316,49 +316,49 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Разгледай и пазарувай</h3>
         <ul>
-          <li><a href="../tienda.html">Tienda</a></li>
+          <li><a href="../магазин.html">Магазин</a></li>
           <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../index.html#apps">Apps</a></li>
-          <li><a href="../support.html">Soporte</a></li>
+          <li><a href="../index.html#apps">Приложения</a></li>
+          <li><a href="../поддръжка.html">Поддръжка</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Поддръжка</h3>
         <ul>
-          <li><a href="../support.html">Página inicial soporte</a></li>
-          <li><a href="../support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="../pages/legal/returns.html">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email</a></li>
+          <li><a href="../поддръжка.html">Начална страница - поддръжка</a></li>
+          <li><a href="../поддръжка.html#faq">Често задавани въпроси (онлайн магазин)</a></li>
+          <li><a href="../pages/legal/returns.html">Информация за гаранцията</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Имейл</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Профил</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="../cuenta.html">Mi cuenta</a></li>
-          <li><a href="../cuenta.html">Cupones</a></li>
+          <li><a href="../track.html">Поръчки</a></li>
+          <li><a href="../профил.html">Моят профил</a></li>
+          <li><a href="../профил.html">Купони</a></li>
         </ul>
       </section>
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>За Lixby</h3>
         <ul>
-          <li><a href="../about.html">Newsroom</a></li>
-          <li><a href="../pages/legal/returns.html">Garantía</a></li>
-          <li><a href="../about.html">Eventos</a></li>
-          <li><a href="../support.html">Contacto</a></li>
+          <li><a href="../относно.html">Новини</a></li>
+          <li><a href="../pages/legal/returns.html">Гаранция</a></li>
+          <li><a href="../относно.html">Събития</a></li>
+          <li><a href="../поддръжка.html">Контакт</a></li>
         </ul>
       </section>
     </div>
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Авторско право © 2026 Lixby. Всички права запазени.</p>
       <div class="footer-legal-links">
-        <a href="../pages/legal/privacy.html">Política de privacidad</a>
-        <a href="../pages/legal/cookies.html">Uso de cookies</a>
-        <a href="../pages/legal/terms.html">Condiciones de uso</a>
-        <a href="../support.html">Ventas y reembolsos</a>
-        <a href="../pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="../pages/legal/privacy.html">Политика за поверителност</a>
+        <a href="../pages/legal/cookies.html">Използване на бисквитки</a>
+        <a href="../pages/legal/terms.html">Условия за ползване</a>
+        <a href="../поддръжка.html">Продажби и възстановявания</a>
+        <a href="../pages/legal/legal-notice.html">Правна информация</a>
       </div>
     </div>
   </footer>
@@ -413,7 +413,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `../магазин.html?q=${encodeURIComponent(query)}` : "../магазин.html";
         window.location.href = url;
       });
     }
@@ -422,7 +422,7 @@
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `../магазин.html?q=${encodeURIComponent(query)}` : "../магазин.html";
         window.location.href = url;
       });
     }
@@ -430,6 +430,3 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
-
-
