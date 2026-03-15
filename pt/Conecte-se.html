@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sessão | Lixby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .account-page {
+      padding: 40px 0 80px;
+    }
+
+    .account-wrap {
+      width: min(860px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .account-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .account-head h1 {
+      font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .account-head p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .auth-status {
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .auth-status.info {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .auth-status.error {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .auth-status.success {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .auth-config-hint {
+      font-size: 0.92rem;
+      color: #7c2d12;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .auth-section {
+      display: none;
+    }
+
+    .auth-section.active {
+      display: block;
+    }
+
+    .account-form {
+      display: grid;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #f8fafc;
+    }
+
+    .account-form h2 {
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+
+    .account-form label {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .account-form input,
+    .account-form select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .auth-inline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .auth-inline label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .auth-inline input[type="checkbox"] {
+      width: auto;
+    }
+
+    .auth-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+
+    .auth-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mfa-panel {
+      margin-top: 12px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      display: none;
+      gap: 10px;
+    }
+
+    .mfa-panel.active {
+      display: grid;
+    }
+
+    .mfa-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .register-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .birth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .verify-method {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .verify-method label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .verify-method input[type="radio"] {
+      width: auto;
+    }
+
+    .phone-verify {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .phone-verify #recaptcha-container,
+    .phone-verify .sms-row {
+      display: none;
+    }
+
+    .phone-verify.active #recaptcha-container {
+      display: block;
+    }
+
+    .phone-verify.active .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sms-row input {
+      flex: 1 1 180px;
+      min-width: 180px;
+    }
+
+    .captcha-box {
+      border: 1px dashed #94a3b8;
+      border-radius: 10px;
+      background: #fff;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .captcha-image {
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      background: repeating-linear-gradient(45deg, #e2e8f0, #e2e8f0 6px, #f8fafc 6px, #f8fafc 12px);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .google-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .google-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+    }
+
+    .user-panel {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      margin-top: 10px;
+    }
+
+    .user-panel.show {
+      display: flex;
+    }
+
+    @media (max-width: 760px) {
+      .register-grid,
+      .birth-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="tienda.html" class="nav-link">Loja</a>
+        <a href="index.html#productos" class="nav-link">Produtos</a>
+        <a href="index.html#apps" class="nav-link">Apps</a>
+        <a href="pages/support.html" class="nav-link">Suporte</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Carrinho">
+          <img src="images/Bolsa.png" alt="Carrinho">
+        </a>
+        <a href="conta.html" class="nav-icon-link" aria-label="Conta">
+          <img src="images/cuenta.png" alt="Conta">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container account-page">
+    <section class="account-wrap">
+      <article class="account-card">
+        <div id="authStatus" class="auth-status info">Pronto para autenticar.</div>
+        <div id="authConfigHint" class="auth-config-hint">
+          Falta configurar o Firebase. Edita o objeto <code>firebaseConfig</code> em <code>Conecte-se.html</code> com as credenciais do teu projeto.
+        </div>
+
+        <section id="loginSection" class="auth-section active">
+          <div class="account-head">
+            <h1>Inicia sessão na Lixby</h1>
+          </div>
+          <form id="loginForm" class="account-form">
+            <label for="loginIdentifier">Email ou número de telefone</label>
+            <input id="loginIdentifier" type="text" required placeholder="nome@exemplo.com">
+
+            <label for="loginPassword">Palavra-passe</label>
+            <input id="loginPassword" type="password" required placeholder="********">
+
+            <div class="auth-inline">
+              <label>
+                <input type="checkbox" id="rememberMe">
+                Lembrar-me
+              </label>
+            </div>
+
+            <a href="#" id="forgotPasswordLink" class="auth-link">Esqueceu-se da palavra-passe?</a>
+
+            <button class="btn btn-primary" type="submit">Iniciar sessão</button>
+            <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
+              <span class="google-badge" aria-hidden="true">
+                <img class="google-icon" src="images/google.png" alt="">
+              </span>
+              Continuar com Google
+            </button>
+          </form>
+          <div id="mfaPanel" class="mfa-panel" aria-live="polite">
+            <strong>Verificação em 2 passos necessária</strong>
+            <p id="mfaHint" class="auth-note">Enviaremos um código SMS para o telefone associado.</p>
+            <div class="mfa-row">
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar código</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Código SMS">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
+            </div>
+            <div id="mfa-recaptcha-container"></div>
+          </div>
+          <p class="auth-note" style="margin-top: 10px;">
+            Não tem uma conta Lixby?
+            <a href="#" id="showRegisterLink" class="auth-link">Criar a sua conta Lixby</a>
+          </p>
+        </section>
+
+        <section id="registerSection" class="auth-section">
+          <div class="account-head">
+            <h1>Criar a sua conta Lixby</h1>
+            <p>Só precisa de uma conta Lixby para aceder a todos os serviços Lixby.</p>
+            <p class="auth-note">
+              Já tem uma conta Lixby?
+              <a href="#" id="showLoginLink" class="auth-link">Inicie sessão</a>
+            </p>
+          </div>
+
+          <form id="registerForm" class="account-form">
+            <div class="register-grid">
+              <div>
+                <label for="firstName">Nome</label>
+                <input id="firstName" type="text" required>
+              </div>
+              <div>
+                <label for="lastName">Apelidos</label>
+                <input id="lastName" type="text" required>
+              </div>
+            </div>
+
+            <div class="register-grid">
+              <div>
+                <label for="country">País/região</label>
+                <select id="country" required>
+                  <option value="PT" selected>Portugal</option>
+                  <option value="BR">Brasil</option>
+                  <option value="ES">Espanha</option>
+                  <option value="MX">México</option>
+                  <option value="AR">Argentina</option>
+                  <option value="CO">Colômbia</option>
+                  <option value="CL">Chile</option>
+                  <option value="PE">Peru</option>
+                  <option value="EC">Equador</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="UY">Uruguai</option>
+                  <option value="PY">Paraguai</option>
+                  <option value="BO">Bolívia</option>
+                  <option value="DO">República Dominicana</option>
+                  <option value="PA">Panamá</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="HN">Honduras</option>
+                  <option value="NI">Nicarágua</option>
+                  <option value="CA">Canadá</option>
+                  <option value="US">Estados Unidos</option>
+                  <option value="FR">França</option>
+                  <option value="DE">Alemanha</option>
+                  <option value="IT">Itália</option>
+                  <option value="GB">Reino Unido</option>
+                </select>
+              </div>
+              <div>
+                <label for="birthHelp">Ajuda (aniversário)</label>
+                <input id="birthHelp" type="text" placeholder="Data de nascimento">
+              </div>
+            </div>
+
+            <label>Data de nascimento</label>
+            <div class="birth-grid">
+              <div>
+                <label for="birthDay">Dia</label>
+                <select id="birthDay" required></select>
+              </div>
+              <div>
+                <label for="birthMonth">Mês</label>
+                <select id="birthMonth" required></select>
+              </div>
+              <div>
+                <label for="birthYear">Ano</label>
+                <select id="birthYear" required></select>
+              </div>
+            </div>
+
+            <label for="registerEmail">nome@exemplo.com</label>
+            <input id="registerEmail" type="email" required>
+
+            <label for="registerPassword">Palavra-passe</label>
+            <input id="registerPassword" type="password" required minlength="6">
+
+            <label for="registerPasswordConfirm">Confirmar palavra-passe</label>
+            <input id="registerPasswordConfirm" type="password" required minlength="6">
+
+            <div class="register-grid">
+              <div>
+                <label for="phoneCountry">País</label>
+                <select id="phoneCountry" required>
+                  <option value="+351" selected>+351 (Portugal)</option>
+                  <option value="+55">+55 (Brasil)</option>
+                  <option value="+34">+34 (Espanha)</option>
+                  <option value="+52">+52 (México)</option>
+                  <option value="+54">+54 (Argentina)</option>
+                  <option value="+57">+57 (Colômbia)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+51">+51 (Peru)</option>
+                  <option value="+593">+593 (Equador)</option>
+                  <option value="+58">+58 (Venezuela)</option>
+                  <option value="+598">+598 (Uruguai)</option>
+                  <option value="+595">+595 (Paraguai)</option>
+                  <option value="+591">+591 (Bolívia)</option>
+                  <option value="+1">+1 (Estados Unidos/Canadá)</option>
+                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+506">+506 (Costa Rica)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+503">+503 (El Salvador)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+505">+505 (Nicarágua)</option>
+                  <option value="+33">+33 (França)</option>
+                  <option value="+49">+49 (Alemanha)</option>
+                  <option value="+39">+39 (Itália)</option>
+                  <option value="+44">+44 (Reino Unido)</option>
+                </select>
+              </div>
+              <div>
+                <label for="phoneNumber">Número de telefone</label>
+                <input id="phoneNumber" type="tel" required>
+              </div>
+            </div>
+
+            <p class="auth-note">
+              Certifique-se de que introduz um número de telefone ao qual possa aceder em qualquer momento. Este número será utilizado para verificar a sua identidade sempre que iniciar sessão num novo dispositivo ou navegador web. Poderão ser aplicadas tarifas de dados ou mensagens.
+            </p>
+
+            <div class="phone-verify" id="phoneVerify">
+              <div id="recaptcha-container"></div>
+              <div class="sms-row">
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar código</button>
+                <span class="auth-note">Enviaremos um SMS de verificação.</span>
+              </div>
+              <div class="sms-row">
+                <input id="code" type="text" placeholder="Código SMS">
+                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
+              </div>
+            </div>
+
+            <label><input type="checkbox" id="adsOptIn"> Anúncios</label>
+            <p class="auth-note">Receba emails e comunicações da Lixby, como anúncios, marketing, recomendações e atualizações sobre os produtos, serviços e software da Lixby.</p>
+
+            <label><input type="checkbox" id="mediaOptIn"> Apps, música, TV e muito mais</label>
+            <p class="auth-note">Receba emails e comunicações da Lixby, como novos lançamentos, conteúdo exclusivo e ofertas especiais.</p>
+
+            <div class="captcha-box">
+              <label>Imagem de verificação</label>
+              <div id="captchaImage" class="captcha-image">------</div>
+              <label for="captchaInput">Introduza o código da imagem</label>
+              <input id="captchaInput" type="text" required>
+              <div class="auth-inline">
+                <a href="#" id="newCaptchaLink" class="auth-link">Novo código</a>
+                <span class="auth-note">Visão limitada</span>
+              </div>
+            </div>
+
+            <p class="auth-note">
+              Ícone de Privacidade: As informações da sua conta Lixby são utilizadas para que possa iniciar sessão de forma segura e aceder aos seus dados. A Lixby regista certos dados de utilização para fins relacionados com segurança, suporte e geração de relatórios. Se aceitar, a Lixby poderá utilizar as informações da sua conta para lhe enviar comunicações e emails de marketing. Consulte como os seus dados são geridos.
+            </p>
+
+            <button class="btn btn-primary" type="submit">Criar conta</button>
+            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verificar email</button>
+            <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
+              <span class="google-badge" aria-hidden="true">
+                <img class="google-icon" src="images/google.png" alt="">
+              </span>
+              Registar com Google
+            </button>
+          </form>
+        </section>
+
+        <div id="userPanel" class="user-panel">
+          <span id="userEmail"></span>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <a href="conta.html" class="btn btn-primary">Ir para a minha conta</a>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Terminar sessão</button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getAuth,
+      setPersistence,
+      browserLocalPersistence,
+      browserSessionPersistence,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      sendPasswordResetEmail,
+      GoogleAuthProvider,
+      RecaptchaVerifier,
+      PhoneAuthProvider,
+      PhoneMultiFactorGenerator,
+      signInWithPhoneNumber,
+      signInWithPopup,
+      onAuthStateChanged,
+      signOut,
+      sendEmailVerification,
+      getMultiFactorResolver
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+      authDomain: "lixby0.firebaseapp.com",
+      projectId: "lixby0",
+      storageBucket: "lixby0.firebasestorage.app",
+      messagingSenderId: "1058088945026",
+      appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b",
+      measurementId: "G-689VDV93C2"
+    };
+
+    const statusEl = document.getElementById("authStatus");
+    const configHintEl = document.getElementById("authConfigHint");
+    const loginSection = document.getElementById("loginSection");
+    const registerSection = document.getElementById("registerSection");
+    const showRegisterLink = document.getElementById("showRegisterLink");
+    const showLoginLink = document.getElementById("showLoginLink");
+
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const rememberMe = document.getElementById("rememberMe");
+    const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+    const googleAuthBtn = document.getElementById("googleAuthBtn");
+    const googleRegisterBtn = document.getElementById("googleRegisterBtn");
+    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const mfaPanel = document.getElementById("mfaPanel");
+    const mfaHint = document.getElementById("mfaHint");
+    const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
+    const mfaVerifyBtn = document.getElementById("mfaVerifyBtn");
+    const mfaCodeInput = document.getElementById("mfaCodeInput");
+
+    const userPanel = document.getElementById("userPanel");
+    const userEmail = document.getElementById("userEmail");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    const captchaImage = document.getElementById("captchaImage");
+    const captchaInput = document.getElementById("captchaInput");
+    const newCaptchaLink = document.getElementById("newCaptchaLink");
+
+    const birthDay = document.getElementById("birthDay");
+    const birthMonth = document.getElementById("birthMonth");
+    const birthYear = document.getElementById("birthYear");
+    const phoneVerify = document.getElementById("phoneVerify");
+    const sendSmsBtn = document.getElementById("sendSmsBtn");
+    const verifySmsBtn = document.getElementById("verifySmsBtn");
+    const smsCodeInput = document.getElementById("code");
+
+    function setStatus(text, type) {
+      statusEl.textContent = text;
+      statusEl.className = `auth-status ${type}`;
+    }
+
+    function openLogin(event) {
+      if (event) event.preventDefault();
+      loginSection.classList.add("active");
+      registerSection.classList.remove("active");
+    }
+
+    function openRegister(event) {
+      if (event) event.preventDefault();
+      registerSection.classList.add("active");
+      loginSection.classList.remove("active");
+    }
+
+    showRegisterLink.addEventListener("click", openRegister);
+    showLoginLink.addEventListener("click", openLogin);
+
+    function populateBirthSelectors() {
+      for (let day = 1; day <= 31; day += 1) {
+        const option = document.createElement("option");
+        option.value = String(day);
+        option.textContent = String(day);
+        birthDay.appendChild(option);
+      }
+
+      const months = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+      ];
+      months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = String(index + 1);
+        option.textContent = month;
+        birthMonth.appendChild(option);
+      });
+
+      const yearNow = new Date().getFullYear();
+      for (let year = yearNow; year >= 1900; year -= 1) {
+        const option = document.createElement("option");
+        option.value = String(year);
+        option.textContent = String(year);
+        birthYear.appendChild(option);
+      }
+    }
+
+    function generateCaptcha() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let code = "";
+      for (let i = 0; i < 6; i += 1) {
+        code += chars[Math.floor(Math.random() * chars.length)];
+      }
+      captchaImage.textContent = code;
+      return code;
+    }
+
+    populateBirthSelectors();
+    let currentCaptcha = generateCaptcha();
+
+    newCaptchaLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      currentCaptcha = generateCaptcha();
+    });
+
+    const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
+
+    if (!hasConfig) {
+      setStatus("Configure o Firebase para ativar registo e início de sessão.", "error");
+      configHintEl.style.display = "block";
+      loginForm.querySelector("button").disabled = true;
+      registerForm.querySelector("button").disabled = true;
+      googleAuthBtn.disabled = true;
+      googleRegisterBtn.disabled = true;
+    } else {
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const googleProvider = new GoogleAuthProvider();
+      const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+        size: "invisible"
+      });
+      recaptchaVerifier.render();
+      const mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
+        size: "invisible"
+      });
+      mfaRecaptchaVerifier.render();
+      let confirmationResult = null;
+      let mfaResolver = null;
+      let mfaVerificationId = "";
+
+      function buildPhoneNumber() {
+        const countryCode = document.getElementById("phoneCountry").value;
+        const rawNumber = document.getElementById("phoneNumber").value.trim();
+        if (!rawNumber) return "";
+        if (rawNumber.startsWith("+")) return rawNumber;
+        return `${countryCode}${rawNumber}`;
+      }
+
+      function togglePhoneVerify() {
+        const number = document.getElementById("phoneNumber").value.trim();
+        if (number) {
+          phoneVerify.classList.add("active");
+        } else {
+          phoneVerify.classList.remove("active");
+        }
+      }
+
+      document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
+      document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const identifier = document.getElementById("loginIdentifier").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
+
+        if (!identifier.includes("@")) {
+          setStatus("Para iniciar sessão utilize um email válido.", "error");
+          return;
+        }
+
+        try {
+          await setPersistence(auth, persistence);
+          await signInWithEmailAndPassword(auth, identifier, password);
+          setStatus("Sessão iniciada com sucesso.", "success");
+          loginForm.reset();
+          window.location.href = "conta.html";
+        } catch (error) {
+          if (error.code === "auth/multi-factor-auth-required") {
+            mfaResolver = getMultiFactorResolver(auth, error);
+            const hint = mfaResolver.hints[0];
+            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "o seu telefone"}.`;
+            mfaPanel.classList.add("active");
+            setStatus("É necessária verificação em 2 passos.", "info");
+            return;
+          }
+          setStatus(`Erro ao iniciar sessão: ${error.message}`, "error");
+        }
+      });
+
+      forgotPasswordLink.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const identifier = document.getElementById("loginIdentifier").value.trim();
+        if (!identifier.includes("@")) {
+          setStatus("Escreva o seu email no campo de correio para recuperar a palavra-passe.", "error");
+          return;
+        }
+        try {
+          await sendPasswordResetEmail(auth, identifier);
+          setStatus("Enviámos um email para redefinir a sua palavra-passe.", "success");
+        } catch (error) {
+          setStatus(`Não foi possível enviar o email: ${error.message}`, "error");
+        }
+      });
+
+      mfaSendCodeBtn.addEventListener("click", async () => {
+        if (!mfaResolver) {
+          setStatus("Não há verificação em 2 passos pendente.", "error");
+          return;
+        }
+
+        try {
+          const hint = mfaResolver.hints[0];
+          const phoneInfoOptions = {
+            multiFactorHint: hint,
+            session: mfaResolver.session
+          };
+          const phoneAuthProvider = new PhoneAuthProvider(auth);
+          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
+          setStatus("Código SMS enviado.", "success");
+        } catch (error) {
+          mfaRecaptchaVerifier.clear();
+          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+        }
+      });
+
+      mfaVerifyBtn.addEventListener("click", async () => {
+        if (!mfaResolver) {
+          setStatus("Não há verificação em 2 passos pendente.", "error");
+          return;
+        }
+
+        if (!mfaVerificationId) {
+          setStatus("Primeiro envie o código SMS.", "error");
+          return;
+        }
+
+        const code = mfaCodeInput.value.trim();
+        if (!code) {
+          setStatus("Introduza o código SMS.", "error");
+          return;
+        }
+
+        try {
+          const cred = PhoneAuthProvider.credential(mfaVerificationId, code);
+          const assertion = PhoneMultiFactorGenerator.assertion(cred);
+          await mfaResolver.resolveSignIn(assertion);
+          mfaPanel.classList.remove("active");
+          mfaResolver = null;
+          mfaVerificationId = "";
+          mfaCodeInput.value = "";
+          setStatus("Sessão iniciada com sucesso.", "success");
+          window.location.href = "conta.html";
+        } catch (error) {
+          setStatus(`Código inválido: ${error.message}`, "error");
+        }
+      });
+
+      const emailActionSettings = {
+        url: `${window.location.origin}/pt/verificado.html`,
+        handleCodeInApp: false
+      };
+
+      registerForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("registerEmail").value.trim();
+        const password = document.getElementById("registerPassword").value;
+        const confirm = document.getElementById("registerPasswordConfirm").value;
+        const country = document.getElementById("country").value;
+        const birthDayValue = document.getElementById("birthDay").value;
+        const birthMonthValue = document.getElementById("birthMonth").value;
+        const birthYearValue = document.getElementById("birthYear").value;
+        const phoneCountryValue = document.getElementById("phoneCountry").value;
+        const phoneNumber = document.getElementById("phoneNumber").value.trim();
+        const adsOptIn = document.getElementById("adsOptIn").checked;
+        const mediaOptIn = document.getElementById("mediaOptIn").checked;
+        const captchaValue = captchaInput.value.trim().toUpperCase();
+
+        if (password !== confirm) {
+          setStatus("As palavras-passe não coincidem.", "error");
+          return;
+        }
+
+        if (captchaValue !== currentCaptcha) {
+          setStatus("O código da imagem não coincide.", "error");
+          currentCaptcha = generateCaptcha();
+          return;
+        }
+
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          if (auth.currentUser) {
+            await sendEmailVerification(auth.currentUser, emailActionSettings);
+          }
+          localStorage.setItem("lixbyProfile", JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            country,
+            birthDay: birthDayValue,
+            birthMonth: birthMonthValue,
+            birthYear: birthYearValue,
+            phoneCountry: phoneCountryValue,
+            phoneNumber,
+            adsOptIn,
+            mediaOptIn
+          }));
+          setStatus("Conta criada com sucesso.", "success");
+          registerForm.reset();
+          currentCaptcha = generateCaptcha();
+          window.location.href = "conta.html";
+        } catch (error) {
+          setStatus(`Erro ao registar: ${error.message}`, "error");
+        }
+      });
+
+      verifyEmailBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) {
+          setStatus("Inicie sessão para verificar o seu email.", "error");
+          return;
+        }
+        try {
+          await sendEmailVerification(user, emailActionSettings);
+          setStatus("Email enviado. Verifique o Spam e Promoções.", "success");
+        } catch (error) {
+          setStatus(`Não foi possível enviar: ${error.message}`, "error");
+        }
+      });
+
+      googleAuthBtn.addEventListener("click", async () => {
+        try {
+          await signInWithPopup(auth, googleProvider);
+          setStatus("Sessão iniciada com Google.", "success");
+          window.location.href = "conta.html";
+        } catch (error) {
+          if (error.code === "auth/popup-closed-by-user") {
+            setStatus("Início de sessão com Google cancelado.", "error");
+            return;
+          }
+          setStatus(`Erro com Google: ${error.message}`, "error");
+        }
+      });
+
+      googleRegisterBtn.addEventListener("click", async () => {
+        try {
+          await signInWithPopup(auth, googleProvider);
+          setStatus("Registo concluído com Google.", "success");
+          window.location.href = "conta.html";
+        } catch (error) {
+          if (error.code === "auth/popup-closed-by-user") {
+            setStatus("Início de sessão com Google cancelado.", "error");
+            return;
+          }
+          setStatus(`Erro com Google: ${error.message}`, "error");
+        }
+      });
+
+      sendSmsBtn.addEventListener("click", async () => {
+        const phone = buildPhoneNumber();
+        if (!phone) {
+          setStatus("Introduza um número de telefone antes de enviar o código.", "error");
+          return;
+        }
+        try {
+          sendSmsBtn.disabled = true;
+          confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+          setStatus("SMS enviado. Verifique o seu telefone.", "success");
+        } catch (error) {
+          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+        } finally {
+          sendSmsBtn.disabled = false;
+        }
+      });
+
+      verifySmsBtn.addEventListener("click", async () => {
+        if (!confirmationResult) {
+          setStatus("Primeiro envie o código SMS.", "error");
+          return;
+        }
+        const code = smsCodeInput.value.trim();
+        if (!code) {
+          setStatus("Escreva o código SMS.", "error");
+          return;
+        }
+        try {
+          await confirmationResult.confirm(code);
+          setStatus("Telefone verificado com sucesso.", "success");
+        } catch (error) {
+          setStatus("Código incorreto. Tente novamente.", "error");
+        }
+      });
+
+      logoutBtn.addEventListener("click", async () => {
+        await signOut(auth);
+        setStatus("Sessão terminada.", "info");
+      });
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          userPanel.classList.add("show");
+          userEmail.textContent = `Conectado como ${user.email}`;
+        } else {
+          userPanel.classList.remove("show");
+          userEmail.textContent = "";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
