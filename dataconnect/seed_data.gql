@@ -1,0 +1,102 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Seed data mutation for development purposes.") {
+  user1: user_insert(data: {
+    id: "550e8400-e29b-41d4-a716-446655440000",
+    username: "future_thinker_1",
+    email: "future1@example.com",
+    createdAt: "2024-01-15T10:00:00Z",
+    bio: "Passionate about sustainable futures.",
+    avatarUrl: "https://example.com/avatars/ft1.png",
+    interests: ["sustainability", "technology", "community"]
+  })
+  user2: user_insert(data: {
+    id: "550e8400-e29b-41d4-a716-446655440001",
+    username: "vision_builder_2",
+    email: "vision2@example.com",
+    createdAt: "2024-01-15T10:05:00Z",
+    bio: "Building a better tomorrow, one vision at a time.",
+    avatarUrl: "https://example.com/avatars/vb2.png",
+    interests: ["innovation", "social impact", "design"]
+  })
+  user3: user_insert(data: {
+    id: "550e8400-e29b-41d4-a716-446655440002",
+    username: "community_leader_3",
+    email: "leader3@example.com",
+    createdAt: "2024-01-15T10:10:00Z",
+    bio: "Fostering connections and collaboration.",
+    avatarUrl: "https://example.com/avatars/cl3.png",
+    interests: ["leadership", "collaboration", "local initiatives"]
+  })
+  futureCircle1: futureCircle_insert(data: {
+    id: "650e8400-e29b-41d4-a716-446655440000",
+    creator: {id: "550e8400-e29b-41d4-a716-446655440000"},
+    name: "Sustainable Tech Innovations",
+    description: "A circle dedicated to exploring and developing sustainable technological solutions.",
+    createdAt: "2024-01-16T09:00:00Z",
+    isPublic: true,
+    imageUrl: "https://example.com/circles/sti.png",
+    rules: "Be respectful, share innovative ideas, focus on sustainability."
+  })
+  futureCircle2: futureCircle_insert(data: {
+    id: "650e8400-e29b-41d4-a716-446655440001",
+    creator: {id: "550e8400-e29b-41d4-a716-446655440001"},
+    name: "Urban Farming Future",
+    description: "Discussing and implementing future urban farming solutions for food security.",
+    createdAt: "2024-01-16T09:30:00Z",
+    isPublic: true,
+    imageUrl: "https://example.com/circles/uff.png",
+    rules: "Promote healthy eating, share knowledge, contribute actively."
+  })
+  membership1: membership_insert(data: {
+    user: {id: "550e8400-e29b-41d4-a716-446655440000"},
+    futureCircle: {id: "650e8400-e29b-41d4-a716-446655440000"},
+    joinedAt: "2024-01-16T10:00:00Z",
+    role: "Admin"
+  })
+  membership2: membership_insert(data: {
+    user: {id: "550e8400-e29b-41d4-a716-446655440002"},
+    futureCircle: {id: "650e8400-e29b-41d4-a716-446655440000"},
+    joinedAt: "2024-01-16T10:15:00Z",
+    role: "Member"
+  })
+  futureVision1: futureVision_insert(data: {
+    id: "750e8400-e29b-41d4-a716-446655440000",
+    user: {id: "550e8400-e29b-41d4-a716-446655440000"},
+    title: "AI-Powered Waste Management",
+    content: "A future where AI optimizes waste collection and recycling processes, leading to zero landfill.",
+    createdAt: "2024-01-17T11:00:00Z",
+    isPublic: true,
+    tags: ["AI", "sustainability", "waste management"],
+    imageUrl: "https://example.com/visions/ai_waste.png"
+  })
+  futureVision2: futureVision_insert(data: {
+    id: "750e8400-e29b-41d4-a716-446655440001",
+    user: {id: "550e8400-e29b-41d4-a716-446655440001"},
+    title: "Vertical Farms in Every City",
+    content: "Imagine cities where fresh produce is grown locally in vertical farms, cutting down transportation costs and emissions.",
+    createdAt: "2024-01-17T11:30:00Z",
+    isPublic: true,
+    tags: ["urban farming", "food security", "innovation"],
+    imageUrl: "https://example.com/visions/vertical_farms.png"
+  })
+  comment1: comment_insert(data: {
+    id: "850e8400-e29b-41d4-a716-446655440000",
+    user: {id: "550e8400-e29b-41d4-a716-446655440002"},
+    futureVision: {id: "750e8400-e29b-41d4-a716-446655440000"},
+    content: "This is a brilliant idea! I'd love to see this implemented in my city.",
+    createdAt: "2024-01-18T12:00:00Z"
+  })
+  reaction1: reaction_insert(data: {
+    id: "950e8400-e29b-41d4-a716-446655440000",
+    user: {id: "550e8400-e29b-41d4-a716-446655440000"},
+    futureVision: {id: "750e8400-e29b-41d4-a716-446655440000"},
+    reactionType: "like",
+    createdAt: "2024-01-18T12:30:00Z"
+  })
+  reaction2: reaction_insert(data: {
+    id: "950e8400-e29b-41d4-a716-446655440001",
+    user: {id: "550e8400-e29b-41d4-a716-446655440002"},
+    comment: {id: "850e8400-e29b-41d4-a716-446655440000"},
+    reactionType: "heart",
+    createdAt: "2024-01-18T12:45:00Z"
+  })
+}

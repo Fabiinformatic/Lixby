@@ -1,0 +1,50 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  bio: String
+  avatarUrl: String
+  interests: [String]
+}
+
+type FutureVision @table {
+  user: User!
+  title: String!
+  content: String!
+  createdAt: Timestamp!
+  isPublic: Boolean!
+  tags: [String]
+  imageUrl: String
+}
+
+type FutureCircle @table {
+  creator: User!
+  name: String!
+  description: String!
+  createdAt: Timestamp!
+  isPublic: Boolean!
+  imageUrl: String
+  rules: String
+}
+
+type Membership @table(key: ["user", "futureCircle"]) {
+  user: User!
+  futureCircle: FutureCircle!
+  joinedAt: Timestamp!
+  role: String!
+}
+
+type Comment @table {
+  user: User!
+  futureVision: FutureVision!
+  content: String!
+  createdAt: Timestamp!
+}
+
+type Reaction @table {
+  user: User!
+  futureVision: FutureVision
+  comment: Comment
+  reactionType: String!
+  createdAt: Timestamp!
+}

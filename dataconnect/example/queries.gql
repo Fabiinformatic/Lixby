@@ -1,0 +1,50 @@
+query ListPublicFutureVisions @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it only retrieves public FutureVisions.") {
+  futureVisions(where: {isPublic: {eq: true}}) {
+    id
+    title
+    content
+    imageUrl
+    user {
+      username
+      avatarUrl
+    }
+    tags
+    createdAt
+  }
+}
+
+mutation CreateFutureVision($title: String!, $content: String!, $isPublic: Boolean!, $tags: [String!], $imageUrl: String) @auth(level: USER, insecureReason: "This operation allows any logged-in user to create a FutureVision, which is intended.") {
+  futureVision_insert(data: {
+    userId_expr: "auth.uid",
+    title: $title,
+    content: $content,
+    isPublic: $isPublic,
+    tags: $tags,
+    imageUrl: $imageUrl
+  })
+}
+
+query MyFutureCircles @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users as it fetches only the user's own FutureCircles.") {
+  futureCircles(where: {creatorId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    description
+    isPublic
+    createdAt
+    memberships_on_futureCircle {
+      user {
+        username
+      }
+      role
+    }
+  }
+}
+
+mutation AddCommentToFutureVision($futureVisionId: UUID!, $content: String!) @auth(level: USER, insecureReason: "This operation allows any logged-in user to add comments to FutureVisions, which is intended functionality.") {
+  comment_insert(data: {
+    userId_expr: "auth.uid",
+    futureVisionId: $futureVisionId,
+    content: $content,
+    createdAt_expr: "request.time"
+  })
+}
