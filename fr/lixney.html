@@ -1,1 +1,333 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lixney - App de Finances Personnelles | Lixby</title>
+  <meta name="description" content="Lixney : Application de finances personnelles qui vous aide à gérer votre argent, suivre vos dépenses et épargner intelligemment. Disponible sur iOS et Android.">
+  <meta name="keywords" content="app finances, gestionnaire de dépenses, budget personnel, épargne, argent, Lixney">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .app-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+      margin-top: 4rem;
+    }
+
+    .app-hero-content {
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .app-info h1 {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+      line-height: 1.1;
+    }
+
+    .app-downloads {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-8);
+      flex-wrap: wrap;
+    }
+
+    .download-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-3) var(--spacing-6);
+      background-color: var(--color-black);
+      color: var(--color-white);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      transition: all var(--transition-fast);
+    }
+
+    .download-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .features-detail {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .features-detail h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-12);
+      text-align: center;
+    }
+
+    .feature-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: var(--spacing-16);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .feature-row:nth-child(even) .feature-image {
+      order: -1;
+    }
+
+    .feature-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-content h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .feature-content p {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+      line-height: 1.8;
+    }
+
+    .security-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    .security-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-8);
+    }
+
+    .security-item {
+      padding: var(--spacing-8);
+      background-color: var(--color-white);
+      border-radius: var(--radius-2xl);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .security-item-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .security-item h3 {
+      font-weight: 600;
+      margin-bottom: var(--spacing-2);
+    }
+
+    @media (max-width: 768px) {
+      .app-hero {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .app-hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .app-info h1 {
+        font-size: var(--font-size-4xl);
+      }
+
+      .app-downloads {
+        flex-direction: column;
+      }
+
+      .download-badge {
+        justify-content: center;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row:nth-child(even) .feature-image {
+        order: 0;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">Lixby</a>
+      <div class="nav-links">
+        <a href="/#products" class="nav-link">Produits</a>
+        <a href="/#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Support</a>
+      </div>
+      <div class="nav-right"></div>
+    </div>
+  </nav>
+
+  <!-- App Hero -->
+  <section class="app-hero">
+    <div class="app-hero-content">
+      <div class="app-info">
+        <h1>Lixney</h1>
+        <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);">Contrôlez votre argent simplement et intelligemment.</p>
+        <p style="font-size: var(--font-size-lg); color: var(--color-gray-700); margin-bottom: var(--spacing-6); line-height: 1.8;">Lixney vous aide à gérer vos finances personnelles avec des outils puissants et une interface intuitive. Suivez vos dépenses, établissez des budgets et atteignez vos objectifs financiers.</p>
+        <div class="app-downloads">
+          <a href="#" class="download-badge">
+            <span>🍎</span>
+            <span>App Store</span>
+          </a>
+          <a href="#" class="download-badge">
+            <span>🤖</span>
+            <span>Google Play</span>
+          </a>
+        </div>
+      </div>
+      <div style="width: 100%;">
+        <picture>
+          <img src="images/lixbuds-hero.jpg" alt="Application Lixney" style="width: 100%; max-width: 300px; margin: 0 auto; display: block;">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Detail -->
+  <section class="features-detail">
+    <h2>Fonctionnalités principales</h2>
+
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3>📊 Suivi des dépenses</h3>
+        <p>Enregistrez automatiquement vos dépenses et catégorisez-les. Visualisez où va votre argent avec des graphiques détaillés et des rapports.</p>
+      </div>
+      <div class="feature-image">
+        <img src="images/lixbuds-hero.jpg" alt="Suivi des dépenses">
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3>💰 Gestion des budgets</h3>
+        <p>Créez des budgets personnalisés et recevez des alertes lorsque vous approchez de la limite. Contrôlez vos dépenses de manière proactive.</p>
+      </div>
+      <div class="feature-image">
+        <img src="images/lixbuds-hero.jpg" alt="Gestion des budgets">
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3>📈 Analyse financière</h3>
+        <p>Obtenez des informations approfondies sur vos habitudes de dépense. Identifiez des schémas et améliorez vos décisions financières.</p>
+      </div>
+      <div class="feature-image">
+        <img src="images/lixbuds-hero.jpg" alt="Analyse financière">
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3>🎯 Objectifs d'épargne</h3>
+        <p>Fixez des objectifs d'épargne et suivez vos progrès. Lixney vous motive à atteindre vos objectifs financiers.</p>
+      </div>
+      <div class="feature-image">
+        <img src="images/lixbuds-hero.jpg" alt="Objectifs d'épargne">
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section class="security-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Votre sécurité est prioritaire</h2>
+      <div class="security-grid">
+        <div class="security-item">
+          <div class="security-item-icon">🔒</div>
+          <h3>Chiffrement de bout en bout</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Vos données sont protégées avec une confidentialité maximale.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-item-icon">🛡️</div>
+          <h3>Authentification à deux facteurs</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Protection supplémentaire pour votre compte.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-item-icon">✅</div>
+          <h3>Certifié RGPD</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Conforme aux réglementations européennes sur la confidentialité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Commencez à épargner dès aujourd'hui</h2>
+      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Téléchargez Lixney gratuitement sur votre téléphone</p>
+      <div class="app-downloads">
+        <a href="#" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Télécharger Lixney</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Produits</h3>
+        <ul class="footer-links">
+          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Apps</h3>
+        <ul class="footer-links">
+          <li><a href="./lixney.html">Lixney</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Entreprise</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">À propos de Lixby</a></li>
+          <li><a href="support.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Légal</h3>
+        <ul class="footer-links">
+          <li><a href="pages/legal/privacy.html">Confidentialité</a></li>
+          <li><a href="pages/legal/terms.html">Termes</a></li>
+          <li><a href="pages/legal/cookies.html">Cookies</a></li>
+          <li><a href="pages/legal/legal-notice.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lixby. Tous droits réservés. Conçu en Espagne.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

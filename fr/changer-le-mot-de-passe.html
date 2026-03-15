@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changer le mot de passe | Lixby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .password-page {
+      padding: 34px 0 84px;
+      min-height: 70vh;
+    }
+
+    .password-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      max-width: 520px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .status-msg {
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .status-msg.error {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .status-msg.success {
+      border-color: #a7f3d0;
+      background: #ecfdf5;
+      color: #047857;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .field input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 11px;
+      font: inherit;
+      background: #f8fafc;
+      color: #111827;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="tienda.html" class="nav-link">Boutique</a>
+        <a href="#productos" class="nav-link">Produits</a>
+        <a href="#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Rechercher" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="tienda.html" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Rechercher un produit..."
+            aria-label="Rechercher un produit"
+          >
+        </form>
+        <a href="cesta.html" class="nav-icon-link" aria-label="Panier">
+          <img src="images/Bolsa.png" alt="Panier">
+        </a>
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Compte">
+          <img src="images/cuenta.png" alt="Compte">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Rechercher"
+          aria-label="Rechercher un produit"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Fermer le menu">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Principal mobile">
+      <a href="tienda.html">Boutique</a>
+      <a href="#productos">Produits</a>
+      <a href="#apps">Apps</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="cesta.html">Panier</a>
+      <a href="cuenta.html">Compte</a>
+    </div>
+  </div>
+
+  <main class="container password-page">
+    <div id="statusMsg" class="status-msg"></div>
+
+    <section class="password-card">
+      <h1>Changer le mot de passe</h1>
+      <p class="helper">Pour des raisons de sécurité, nous avons besoin de votre mot de passe actuel.</p>
+
+      <div class="field">
+        <label for="currentPassword">Mot de passe actuel</label>
+        <input id="currentPassword" type="password" autocomplete="current-password">
+      </div>
+      <div class="field">
+        <label for="newPassword">Nouveau mot de passe</label>
+        <input id="newPassword" type="password" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
+        <input id="confirmPassword" type="password" autocomplete="new-password">
+      </div>
+
+      <div class="actions">
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">Enregistrer les modifications</button>
+        <a class="btn btn-secondary" href="cuenta.html">Retour à mon compte</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+      authDomain: "lixby0.firebaseapp.com",
+      projectId: "lixby0",
+      storageBucket: "lixby0.firebasestorage.app",
+      messagingSenderId: "1058088945026",
+      appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b",
+      measurementId: "G-689VDV93C2"
+    };
+
+    const statusMsg = document.getElementById("statusMsg");
+    const currentPassword = document.getElementById("currentPassword");
+    const newPassword = document.getElementById("newPassword");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const savePasswordBtn = document.getElementById("savePasswordBtn");
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    function showStatus(text, type = "") {
+      statusMsg.textContent = text;
+      statusMsg.className = `status-msg ${type}`.trim();
+    }
+
+    function clearInputs() {
+      currentPassword.value = "";
+      newPassword.value = "";
+      confirmPassword.value = "";
+    }
+
+    function isStrongEnough(value) {
+      return value.length >= 8;
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "iniciar-sesion.html";
+      }
+    });
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) {
+        showStatus("Session non valide.", "error");
+        return;
+      }
+
+      const current = currentPassword.value.trim();
+      const next = newPassword.value.trim();
+      const confirm = confirmPassword.value.trim();
+
+      if (!current) {
+        showStatus("Veuillez saisir le mot de passe actuel.", "error");
+        return;
+      }
+
+      if (!isStrongEnough(next)) {
+        showStatus("Le nouveau mot de passe doit comporter au moins 8 caractères.", "error");
+        return;
+      }
+
+      if (next !== confirm) {
+        showStatus("Les mots de passe ne correspondent pas.", "error");
+        return;
+      }
+
+      try {
+        const credential = EmailAuthProvider.credential(user.email, current);
+        await reauthenticateWithCredential(user, credential);
+        await updatePassword(user, next);
+        clearInputs();
+        showStatus("Mot de passe mis à jour avec succès.", "success");
+      } catch (error) {
+        showStatus(`Impossible de mettre à jour : ${error.message}`, "error");
+      }
+    });
+  </script>
+</body>
+</html>

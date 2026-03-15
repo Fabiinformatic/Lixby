@@ -1,4 +1,5 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://lixby.com/sitemap.xml
+Sitemap: https://www.lixby.es/sitemap.xml
+
