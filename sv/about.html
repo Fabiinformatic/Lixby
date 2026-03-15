@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Lixby | Nuestra Historia y Misión</title>
-  <meta name="description" content="Conoce la historia de Lixby. Una empresa española dedicada a crear tecnología que simplifica la vida de las personas.">
+  <title>Sobre Lixby | Nuestra Historia y MisiÃ³n</title>
+  <meta name="description" content="Conoce la historia de Lixby. Una empresa espaÃ±ola dedicada a crear tecnologÃ­a que simplifica la vida de las personas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -94,6 +94,9 @@
     }
 
     .timeline {
+      --timeline-date-width: 110px;
+      --timeline-gap: var(--spacing-8);
+      --timeline-dot: 16px;
       padding: var(--spacing-24) var(--spacing-6);
       background-color: var(--color-white);
     }
@@ -109,22 +112,8 @@
       position: relative;
     }
 
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: 24px;
-      top: 60px;
-      width: 2px;
-      height: calc(100% + var(--spacing-12));
-      background-color: var(--color-blue);
-    }
-
-    .timeline-item:last-child::before {
-      display: none;
-    }
-
     .timeline-date {
-      width: 100px;
+      width: var(--timeline-date-width);
       font-weight: 700;
       color: var(--color-blue);
       font-size: var(--font-size-lg);
@@ -132,19 +121,19 @@
 
     .timeline-content {
       flex: 1;
-      padding-left: var(--spacing-8);
+      padding-left: var(--timeline-gap);
       position: relative;
     }
 
     .timeline-content::before {
       content: '';
       position: absolute;
-      width: 16px;
-      height: 16px;
+      width: var(--timeline-dot);
+      height: var(--timeline-dot);
       background-color: var(--color-blue);
       border: 3px solid var(--color-white);
       border-radius: 50%;
-      left: -20px;
+      left: calc(-1 * (var(--timeline-dot) / 2));
       top: 8px;
       box-shadow: var(--shadow-lg);
     }
@@ -173,28 +162,103 @@
         font-size: var(--font-size-4xl);
       }
     }
+  .fade-scale {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-scale.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .wipe-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .wipe-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-item {
+      transition-delay: var(--delay, 0s);
+    }
   </style>
   <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/#products" class="nav-link">Productos</a>
-        <a href="/#apps" class="nav-link">Apps</a>
-        <a href="./support.html" class="nav-link">Soporte</a>
+  <div id="scroll-progress"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="#productos" class="nav-link">Productos</a>
+        <a href="#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="tienda.html" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
+          >
+        </form>
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
+          <img src="images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+          <img src="images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="MenÃº" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
-      <div class="nav-right"></div>
     </div>
-  </nav>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Buscar"
+          aria-label="Buscar producto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menÃº">
+        <span aria-hidden="true">Ã—</span>
+      </button>
+    </div>
+  <!-- Navigation -->
+  
 
   <!-- Hero -->
   <section class="about-hero">
     <div>
       <h1>Sobre Lixby</h1>
-      <p>Creamos tecnología para simplificar tu vida. Diseñado en España, creado con pasión.</p>
+      <p>Creamos tecnologÃ­a para simplificar tu vida. DiseÃ±ado en EspaÃ±a, creado con pasiÃ³n.</p>
     </div>
   </section>
 
@@ -202,8 +266,8 @@
   <section class="mission-section">
     <div class="mission-grid">
       <div class="mission-content">
-        <h2>Nuestra misión</h2>
-        <p>En Lixby creemos que la tecnología debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y útiles.</p>
+        <h2>Nuestra misiÃ³n</h2>
+        <p>En Lixby creemos que la tecnologÃ­a debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y Ãºtiles.</p>
         <p>Desde nuestros inicios en 2022, hemos trabajado para ofrecer soluciones innovadoras que realmente marcan la diferencia en la vida de nuestros usuarios.</p>
       </div>
       <div style="background-color: var(--color-gray-100); border-radius: var(--radius-2xl); height: 300px;"></div>
@@ -216,34 +280,34 @@
       <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Nuestros valores</h2>
       <div class="values-grid">
         <div class="value-card">
-          <div class="value-icon">🎯</div>
+          <div class="value-icon">ðŸŽ¯</div>
           <h3>Enfoque en usuario</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Todo lo que hacemos está pensado para mejorar la experiencia del usuario.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Todo lo que hacemos estÃ¡ pensado para mejorar la experiencia del usuario.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">✨</div>
-          <h3>Diseño excelente</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Buscamos la perfección en cada detalle, desde lo visual hasta lo funcional.</p>
+          <div class="value-icon">âœ¨</div>
+          <h3>DiseÃ±o excelente</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Buscamos la perfecciÃ³n en cada detalle, desde lo visual hasta lo funcional.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">🔒</div>
+          <div class="value-icon">ðŸ”’</div>
           <h3>Transparencia</h3>
           <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Creemos en la privacidad de nuestros usuarios y la seguridad de sus datos.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">♻️</div>
+          <div class="value-icon">â™»ï¸</div>
           <h3>Sostenibilidad</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos comprometemos con prácticas ecológicas y responsables.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos comprometemos con prÃ¡cticas ecolÃ³gicas y responsables.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">🤝</div>
+          <div class="value-icon">ðŸ¤</div>
           <h3>Comunidad</h3>
           <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Valoramos a nuestra comunidad y escuchamos sus sugerencias.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">🚀</div>
-          <h3>Innovación</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos esforzamos por estar siempre a la vanguardia de la tecnología.</p>
+          <div class="value-icon">ðŸš€</div>
+          <h3>InnovaciÃ³n</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos esforzamos por estar siempre a la vanguardia de la tecnologÃ­a.</p>
         </div>
       </div>
     </div>
@@ -257,8 +321,8 @@
       <div class="timeline-item">
         <div class="timeline-date">2022</div>
         <div class="timeline-content">
-          <h3>Fundación de Lixby</h3>
-          <p style="color: var(--color-gray-600);">Nació Lixby como una startup enfocada en crear tecnología que simplifica la vida.</p>
+          <h3>FundaciÃ³n de Lixby</h3>
+          <p style="color: var(--color-gray-600);">NaciÃ³ Lixby como una startup enfocada en crear tecnologÃ­a que simplifica la vida.</p>
         </div>
       </div>
 
@@ -266,7 +330,7 @@
         <div class="timeline-date">2023</div>
         <div class="timeline-content">
           <h3>Lanzamiento de LixBuds</h3>
-          <p style="color: var(--color-gray-600);">Presentamos nuestros primeros auriculares inalámbricos con tecnología premium.</p>
+          <p style="color: var(--color-gray-600);">Presentamos nuestros primeros auriculares inalÃ¡mbricos con tecnologÃ­a premium.</p>
         </div>
       </div>
 
@@ -274,7 +338,7 @@
         <div class="timeline-date">2023</div>
         <div class="timeline-content">
           <h3>Lanzamiento de Lixney</h3>
-          <p style="color: var(--color-gray-600);">Nuestras app de finanzas personales llega con revolucionarias características.</p>
+          <p style="color: var(--color-gray-600);">Nuestras app de finanzas personales llega con revolucionarias caracterÃ­sticas.</p>
         </div>
       </div>
 
@@ -282,7 +346,7 @@
         <div class="timeline-date">2024</div>
         <div class="timeline-content">
           <h3>LixBuds One</h3>
-          <p style="color: var(--color-gray-600);">Presentamos la versión mejorada de nuestros auriculares con batería extendida.</p>
+          <p style="color: var(--color-gray-600);">Presentamos la versiÃ³n mejorada de nuestros auriculares con baterÃ­a extendida.</p>
         </div>
       </div>
     </div>
@@ -291,52 +355,176 @@
   <!-- CTA -->
   <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Únete a nuestra comunidad</h2>
-      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Descubre cómo Lixby puede mejorar tu vida hoy mismo.</p>
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Ãšnete a nuestra comunidad</h2>
+      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Descubre cÃ³mo Lixby puede mejorar tu vida hoy mismo.</p>
       <a href="/#products" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Explorar productos</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Productos</h3>
-        <ul class="footer-links">
-          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="#">Tienda</a></li>
+          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="support.html">Soporte</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Apps</h3>
-        <ul class="footer-links">
-          <li><a href="pages/apps/lixney.html">Lixney</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="support.html">PÃ¡gina inicial soporte</a></li>
+          <li><a href="support.html#faq">FAQs Tienda online</a></li>
+          <li><a href="support.html">InformaciÃ³n de GarantÃ­a</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Empresa</h3>
-        <ul class="footer-links">
-          <li><a href="./about.html">Sobre Lixby</a></li>
-          <li><a href="./support.html">Contacto</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="../track.html">Pedidos</a></li>
+          <li><a href="cuenta.html">Mi cuenta</a></li>
+          <li><a href="cuenta.html">Cupones</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul class="footer-links">
-          <li><a href="pages/legal/privacy.html">Privacidad</a></li>
-          <li><a href="pages/legal/terms.html">Términos</a></li>
-          <li><a href="pages/legal/cookies.html">Cookies</a></li>
-          <li><a href="pages/legal/legal-notice.html">Aviso Legal</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="about.html">Nosotros</a></li>
+          <li><a href="support.html">GarantÃ­a</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="support.html">Contacto</a></li>
         </ul>
-      </div>
+      </section>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 Lixby. Todos los derechos reservados. Diseñado en España.</p>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright Â© 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="pages/legal/privacy.html">PolÃ­tica de privacidad</a>
+        <a href="pages/legal/cookies.html">Uso de cookies</a>
+        <a href="pages/legal/terms.html">Condiciones de uso</a>
+        <a href="support.html">Ventas y reembolsos</a>
+        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+      </div>
     </div>
   </footer>
 
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".fade-scale, .wipe-reveal").forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    const nav = document.getElementById("nav");
+    const progressBar = document.getElementById("scroll-progress");
+
+    const updateScrollUI = () => {
+      const top = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = height > 0 ? (top / height) * 100 : 0;
+
+      if (progressBar) progressBar.style.width = progress + "%";
+      if (nav) nav.classList.toggle("nav-scrolled", top > 20);
+    };
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    const searchForm = document.getElementById("navSearchForm");
+    const searchInput = document.getElementById("navSearch");
+    if (searchForm && searchInput) {
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = searchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobileSearchForm = document.getElementById("navSearchFormMobile");
+    const mobileSearchInput = document.getElementById("navSearchMobile");
+    if (mobileSearchForm && mobileSearchInput) {
+      mobileSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = mobileSearchInput.value.trim();
+        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        window.location.href = url;
+      });
+    }
+
+    const mobilePanel = document.getElementById("navMobilePanel");
+    const searchToggle = document.querySelector(".nav-search-toggle");
+    const menuToggle = document.querySelector(".nav-menu-toggle");
+    const closeNav = () => {
+      document.body.classList.remove("nav-open", "menu-open");
+      nav?.classList.remove("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "true");
+      searchToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    };
+
+    const openNav = (focusSearch = false) => {
+      document.body.classList.add("nav-open", "menu-open");
+      nav?.classList.add("nav-open");
+      mobilePanel?.setAttribute("aria-hidden", "false");
+      searchToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      if (focusSearch && mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 80);
+      }
+    };
+
+    const toggleNav = (focusSearch = false) => {
+      if (nav?.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav(focusSearch);
+      }
+    };
+
+    searchToggle?.addEventListener("click", () => toggleNav(true));
+    menuToggle?.addEventListener("click", () => toggleNav(false));
+
+    const mobileClose = document.querySelector(".nav-mobile-close");
+    mobileClose?.addEventListener("click", () => closeNav());
+
+    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+      link.addEventListener("click", () => closeNav());
+    });
+
+    window.addEventListener("load", () => {
+      if (window.gsap) {
+        gsap.from(".about-hero h1", { y: 20, opacity: 0, duration: 0.8 });
+        gsap.from(".about-hero p", { y: 16, opacity: 0, duration: 0.8, delay: 0.1 });
+      }
+    });
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
