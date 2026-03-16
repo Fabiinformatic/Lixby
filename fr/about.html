@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>À propos de Lixby | Notre Histoire et Mission</title>
   <meta name="description" content="Découvrez l'histoire de Lixby. Une entreprise espagnole dédiée à la création de technologies qui simplifient la vie des gens.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .about-hero {
@@ -188,8 +188,20 @@
       transition-delay: var(--delay, 0s);
     }
   </style>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://www.lixby.es",
+      "logo": "https://www.lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -519,6 +531,10 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 
