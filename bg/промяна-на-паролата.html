@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Смяна на парола | Lixby</title>
+  <title>????? ?? ?????? | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -78,42 +78,43 @@
       flex-wrap: wrap;
     }
   </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Основна">
-        <a href="магазин.html" class="nav-link">Магазин</a>
-        <a href="#productos" class="nav-link">Продукти</a>
-        <a href="#apps" class="nav-link">Приложения</a>
-        <a href="поддръжка.html" class="nav-link">Поддръжка</a>
+      <nav class="nav-links" aria-label="???????">
+        <a href="???????.html" class="nav-link">???????</a>
+        <a href="#productos" class="nav-link">????????</a>
+        <a href="#apps" class="nav-link">??????????</a>
+        <a href="?????????.html" class="nav-link">?????????</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Търсене" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="???????" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="магазин.html" method="get">
+        <form id="navSearchForm" action="???????.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Търси продукт..."
-            aria-label="Търси продукт"
+            placeholder="????? ???????..."
+            aria-label="????? ???????"
           >
         </form>
-        <a href="кошница.html" class="nav-icon-link" aria-label="Кошница">
-          <img src="images/Bolsa.png" alt="Кошница">
+        <a href="???????.html" class="nav-icon-link" aria-label="???????">
+          <img src="images/Bolsa.png" alt="???????">
         </a>
-        <a href="профил.html" class="nav-icon-link" aria-label="Профил">
-          <img src="images/cuenta.png" alt="Профил">
+        <a href="??????.html" class="nav-icon-link" aria-label="??????">
+          <img src="images/cuenta.png" alt="??????">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Меню" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="????" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -125,29 +126,29 @@
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="магазин.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="???????.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Търсене"
-          aria-label="Търси продукт"
+          placeholder="???????"
+          aria-label="????? ???????"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Затвори меню">
-        <span aria-hidden="true">✕</span>
+      <button type="button" class="nav-mobile-close" aria-label="??????? ????">
+        <span aria-hidden="true">?</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Основно мобилно">
-      <a href="магазин.html">Магазин</a>
-      <a href="#productos">Продукти</a>
-      <a href="#apps">Приложения</a>
-      <a href="поддръжка.html">Поддръжка</a>
+    <nav class="nav-mobile-links" aria-label="??????? ???????">
+      <a href="???????.html">???????</a>
+      <a href="#productos">????????</a>
+      <a href="#apps">??????????</a>
+      <a href="?????????.html">?????????</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="кошница.html">Кошница</a>
-      <a href="профил.html">Профил</a>
+      <a href="???????.html">???????</a>
+      <a href="??????.html">??????</a>
     </div>
   </div>
 
@@ -155,25 +156,25 @@
     <div id="statusMsg" class="status-msg"></div>
 
     <section class="password-card">
-      <h1>Смяна на парола</h1>
-      <p class="helper">За вашата сигурност, моля въведете текущата си парола.</p>
+      <h1>????? ?? ??????</h1>
+      <p class="helper">?? ?????? ?????????, ???? ???????? ???????? ?? ??????.</p>
 
       <div class="field">
-        <label for="currentPassword">Текуща парола</label>
+        <label for="currentPassword">?????? ??????</label>
         <input id="currentPassword" type="password" autocomplete="current-password">
       </div>
       <div class="field">
-        <label for="newPassword">Нова парола</label>
+        <label for="newPassword">???? ??????</label>
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Потвърди новата парола</label>
+        <label for="confirmPassword">???????? ?????? ??????</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
       <div class="actions">
-        <button id="savePasswordBtn" class="btn btn-primary" type="button">Запази промените</button>
-        <a class="btn btn-secondary" href="профил.html">Обратно към профила</a>
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">?????? ?????????</button>
+        <a class="btn btn-secondary" href="??????.html">??????? ??? ???????</a>
       </div>
     </section>
   </main>
@@ -218,14 +219,14 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "вход.html";
+        window.location.href = "????.html";
       }
     });
 
     savePasswordBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user || !user.email) {
-        showStatus("Невалидна сесия.", "error");
+        showStatus("????????? ?????.", "error");
         return;
       }
 
@@ -234,17 +235,17 @@
       const confirm = confirmPassword.value.trim();
 
       if (!current) {
-        showStatus("Въведи текуща парола.", "error");
+        showStatus("?????? ?????? ??????.", "error");
         return;
       }
 
       if (!isStrongEnough(next)) {
-        showStatus("Новата парола трябва да съдържа поне 8 символа.", "error");
+        showStatus("?????? ?????? ?????? ?? ??????? ???? 8 ???????.", "error");
         return;
       }
 
       if (next !== confirm) {
-        showStatus("Паролите не съвпадат.", "error");
+        showStatus("???????? ?? ????????.", "error");
         return;
       }
 
@@ -253,9 +254,9 @@
         await reauthenticateWithCredential(user, credential);
         await updatePassword(user, next);
         clearInputs();
-        showStatus("Паролата е актуализирана успешно.", "success");
+        showStatus("???????? ? ????????????? ???????.", "success");
       } catch (error) {
-        showStatus(`Неуспешна актуализация: ${error.message}`, "error");
+        showStatus(`????????? ????????????: ${error.message}`, "error");
       }
     });
   </script>

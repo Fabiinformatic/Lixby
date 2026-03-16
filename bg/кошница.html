@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кошница | Lixby</title>
+  <title>??????? | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -149,24 +149,25 @@
       }
     }
   </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Основна">
-        <a href="магазин.html" class="nav-link">Магазин</a>
-        <a href="index.html#productos" class="nav-link">Продукти</a>
-        <a href="index.html#apps" class="nav-link">Приложения</a>
-        <a href="поддръжка.html" class="nav-link">Поддръжка</a>
+      <nav class="nav-links" aria-label="???????">
+        <a href="???????.html" class="nav-link">???????</a>
+        <a href="index.html#productos" class="nav-link">????????</a>
+        <a href="index.html#apps" class="nav-link">??????????</a>
+        <a href="?????????.html" class="nav-link">?????????</a>
       </nav>
       <div class="nav-actions">
-        <a href="кошница.html" class="nav-icon-link" aria-label="Кошница">
-          <img src="images/Bolsa.png" alt="Кошница">
+        <a href="???????.html" class="nav-icon-link" aria-label="???????">
+          <img src="images/Bolsa.png" alt="???????">
         </a>
-        <a href="профил.html" class="nav-icon-link" aria-label="Профил">
-          <img src="images/cuenta.png" alt="Профил">
+        <a href="??????.html" class="nav-icon-link" aria-label="??????">
+          <img src="images/cuenta.png" alt="??????">
         </a>
       </div>
     </div>
@@ -174,21 +175,21 @@
 
   <main class="container cart-page">
     <section class="cart-head">
-      <h1>Твоята кошница</h1>
-      <p>Прегледай продуктите си преди завършване на поръчката.</p>
+      <h1>?????? ???????</h1>
+      <p>????????? ?????????? ?? ????? ?????????? ?? ?????????.</p>
     </section>
 
     <section class="cart-layout">
       <div class="cart-list" id="cartList"></div>
 
       <aside class="cart-summary">
-        <h2>Резюме</h2>
-        <div class="cart-row"><span>Междинна сума</span><span id="subtotal">0 EUR</span></div>
-        <div class="cart-row"><span>Доставка</span><span>Безплатна</span></div>
-        <div class="cart-row cart-total"><span>Общо</span><span id="total">0 EUR</span></div>
+        <h2>??????</h2>
+        <div class="cart-row"><span>???????? ????</span><span id="subtotal">0 EUR</span></div>
+        <div class="cart-row"><span>????????</span><span>?????????</span></div>
+        <div class="cart-row cart-total"><span>????</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Завърши поръчката</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Изпразни кошницата</button>
+          <button id="checkoutBtn" class="btn btn-primary" type="button">??????? ?????????</button>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">???????? ?????????</button>
         </div>
       </aside>
     </section>
@@ -275,7 +276,7 @@
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Твоята кошница е празна. <a href="магазин.html">Към магазина</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">?????? ??????? ? ??????. <a href="???????.html">??? ????????</a>.</p>`;
         subtotalEl.textContent = "0 EUR";
         totalEl.textContent = "0 EUR";
         return;
@@ -286,7 +287,7 @@
       cartListEl.innerHTML = cart.map((entry) => {
         const product = productCatalog[entry.id] || {
           id: entry.id,
-          name: entry.name || "Продукт",
+          name: entry.name || "???????",
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
@@ -300,13 +301,13 @@
             <img class="cart-item-image" src="${product.image}" alt="${product.name}">
             <div>
               <h3>${product.name}</h3>
-              <p>${money(product.price)} / бр.</p>
+              <p>${money(product.price)} / ??.</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${product.id}">-</button>
                 <span>${qty}</span>
                 <button type="button" data-action="plus" data-id="${product.id}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Премахни</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">????????</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -338,17 +339,17 @@
     checkoutBtn.addEventListener("click", () => {
       const cart = readCart();
       if (cart.length === 0) {
-        alert("Твоята кошница е празна.");
+        alert("?????? ??????? ? ??????.");
         return;
       }
 
       if (!authReady) {
-        alert("Зареждане на сесия. Опитай отново след няколко секунди.");
+        alert("????????? ?? ?????. ?????? ?????? ???? ??????? ???????.");
         return;
       }
 
       if (!isAuthenticated) {
-        window.location.href = "вход.html";
+        window.location.href = "????.html";
         return;
       }
 

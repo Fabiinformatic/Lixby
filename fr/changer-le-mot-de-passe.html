@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -78,7 +78,8 @@
       flex-wrap: wrap;
     }
   </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
   <header class="nav" id="nav">
@@ -136,7 +137,7 @@
         >
       </form>
       <button type="button" class="nav-mobile-close" aria-label="Fermer le menu">
-        <span aria-hidden="true">Ã—</span>
+        <span aria-hidden="true">×</span>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principal mobile">
@@ -156,7 +157,7 @@
 
     <section class="password-card">
       <h1>Changer le mot de passe</h1>
-      <p class="helper">Pour des raisons de sÃ©curitÃ©, nous avons besoin de votre mot de passe actuel.</p>
+      <p class="helper">Pour des raisons de sécurité, nous avons besoin de votre mot de passe actuel.</p>
 
       <div class="field">
         <label for="currentPassword">Mot de passe actuel</label>
@@ -173,7 +174,7 @@
 
       <div class="actions">
         <button id="savePasswordBtn" class="btn btn-primary" type="button">Enregistrer les modifications</button>
-        <a class="btn btn-secondary" href="cuenta.html">Retour Ã  mon compte</a>
+        <a class="btn btn-secondary" href="cuenta.html">Retour à mon compte</a>
       </div>
     </section>
   </main>
@@ -239,7 +240,7 @@
       }
 
       if (!isStrongEnough(next)) {
-        showStatus("Le nouveau mot de passe doit comporter au moins 8 caractÃ¨res.", "error");
+        showStatus("Le nouveau mot de passe doit comporter au moins 8 caractères.", "error");
         return;
       }
 
@@ -253,9 +254,9 @@
         await reauthenticateWithCredential(user, credential);
         await updatePassword(user, next);
         clearInputs();
-        showStatus("Mot de passe mis Ã  jour avec succÃ¨s.", "success");
+        showStatus("Mot de passe mis à jour avec succès.", "success");
       } catch (error) {
-        showStatus(`Impossible de mettre Ã  jour : ${error.message}`, "error");
+        showStatus(`Impossible de mettre à jour : ${error.message}`, "error");
       }
     });
   </script>

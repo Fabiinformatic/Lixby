@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -424,7 +424,8 @@
       }
     }
   </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
   <div class="background-orb orb-1" aria-hidden="true"></div>
@@ -546,7 +547,7 @@
         <section class="account-section">
           <h2>Seguridad</h2>
           <div class="action-list">
-            <div class="action-item"><span>Cambiar contraseÃ±a</span><a class="btn btn-secondary" href="cambiar-contrasena.html">Gestionar</a></div>
+            <div class="action-item"><span>Cambiar contraseña</span><a class="btn btn-secondary" href="cambiar-contrasena.html">Gestionar</a></div>
             <div class="action-item"><span>Ver sesiones activas</span><button class="btn btn-secondary" type="button">Ver</button></div>
             <div class="action-item"><span>Cerrar sesion en otros dispositivos</span><button class="btn btn-secondary" type="button">Cerrar</button></div>
             <div class="action-item"><span>Activar verificacion en 2 pasos</span><a id="twoFactorBtn" class="btn btn-secondary" href="verificacion-2-pasos.html">Configurar</a></div>
@@ -683,9 +684,9 @@
       <section class="footer-section">
         <h3>Soporte</h3>
         <ul>
-          <li><a href="support.html">PÃ¡gina inicial soporte</a></li>
+          <li><a href="support.html">Página inicial soporte</a></li>
           <li><a href="support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="support.html">InformaciÃ³n de GarantÃ­a</a></li>
+          <li><a href="support.html">Información de Garantía</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -703,7 +704,7 @@
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="support.html">GarantÃ­a</a></li>
+          <li><a href="support.html">Garantía</a></li>
           <li><a href="#">Eventos</a></li>
           <li><a href="support.html">Contacto</a></li>
         </ul>
@@ -711,9 +712,9 @@
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright Â© 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">PolÃ­tica de privacidad</a>
+        <a href="pages/legal/privacy.html">Política de privacidad</a>
         <a href="pages/legal/cookies.html">Uso de cookies</a>
         <a href="pages/legal/terms.html">Condiciones de uso</a>
         <a href="support.html">Ventas y reembolsos</a>
@@ -1303,7 +1304,7 @@
     });
 
     deleteAccountBtn.addEventListener("click", async () => {
-      const confirmed = window.confirm("Â¿Seguro que quieres eliminar tu cuenta? Esta accion no se puede deshacer.");
+      const confirmed = window.confirm("¿Seguro que quieres eliminar tu cuenta? Esta accion no se puede deshacer.");
       if (!confirmed) return;
 
       const user = auth.currentUser;
@@ -1323,6 +1324,7 @@
   </script>
 </body>
 </html>
+
 
 
 

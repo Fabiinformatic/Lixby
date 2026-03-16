@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Вход | Lixby</title>
+  <title>???? | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -281,24 +281,25 @@
       }
     }
   </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Основна навигация">
-        <a href="tienda.html" class="nav-link">Магазин</a>
-        <a href="index.html#productos" class="nav-link">Продукти</a>
-        <a href="index.html#apps" class="nav-link">Приложения</a>
-        <a href="support.html" class="nav-link">Поддръжка</a>
+      <nav class="nav-links" aria-label="??????? ?????????">
+        <a href="tienda.html" class="nav-link">???????</a>
+        <a href="index.html#productos" class="nav-link">????????</a>
+        <a href="index.html#apps" class="nav-link">??????????</a>
+        <a href="support.html" class="nav-link">?????????</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Количка">
-          <img src="images/Bolsa.png" alt="Количка">
+        <a href="cesta.html" class="nav-icon-link" aria-label="???????">
+          <img src="images/Bolsa.png" alt="???????">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Профил">
-          <img src="images/cuenta.png" alt="Профил">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="??????">
+          <img src="images/cuenta.png" alt="??????">
         </a>
       </div>
     </div>
@@ -307,226 +308,226 @@
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
-        <div id="authStatus" class="auth-status info">Готово за удостоверяване.</div>
+        <div id="authStatus" class="auth-status info">?????? ?? ??????????????.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Не е конфигуриран Firebase. Редактирай обекта <code>firebaseConfig</code> в <code>iniciar-sesion.html</code> с данните на твоя проект.
+          ?? ? ???????????? Firebase. ?????????? ?????? <code>firebaseConfig</code> ? <code>iniciar-sesion.html</code> ? ??????? ?? ???? ??????.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Влез в Lixby</h1>
+            <h1>???? ? Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">Имейл или телефонен номер</label>
+            <label for="loginIdentifier">????? ??? ????????? ?????</label>
             <input id="loginIdentifier" type="text" required placeholder="ivan@example.com">
 
-            <label for="loginPassword">Парола</label>
+            <label for="loginPassword">??????</label>
             <input id="loginPassword" type="password" required placeholder="********">
 
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                Запомни ме
+                ??????? ??
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">Забравена парола?</a>
+            <a href="#" id="forgotPasswordLink" class="auth-link">????????? ???????</a>
 
-            <button class="btn btn-primary" type="submit">Вход</button>
+            <button class="btn btn-primary" type="submit">????</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Продължи с Google
+              ???????? ? Google
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Изисква се двуетапна верификация</strong>
-            <p id="mfaHint" class="auth-note">Ще изпратим SMS код на свързания телефон.</p>
+            <strong>??????? ?? ????????? ???????????</strong>
+            <p id="mfaHint" class="auth-note">?? ???????? SMS ??? ?? ????????? ???????.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Изпрати код</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="SMS код">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Потвърди</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">??????? ???</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="SMS ???">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">????????</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            Нямаш акаунт в Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">Създай своя акаунт</a>
+            ????? ?????? ? Lixby?
+            <a href="#" id="showRegisterLink" class="auth-link">?????? ???? ??????</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
-            <h1>Създай своя акаунт в Lixby</h1>
-            <p>Нужен е само един акаунт за достъп до всички услуги на Lixby.</p>
+            <h1>?????? ???? ?????? ? Lixby</h1>
+            <p>????? ? ???? ???? ?????? ?? ?????? ?? ?????? ?????? ?? Lixby.</p>
             <p class="auth-note">
-              Вече имаш акаунт?
-              <a href="#" id="showLoginLink" class="auth-link">Вход</a>
+              ???? ???? ???????
+              <a href="#" id="showLoginLink" class="auth-link">????</a>
             </p>
           </div>
 
           <form id="registerForm" class="account-form">
             <div class="register-grid">
               <div>
-                <label for="firstName">Име</label>
+                <label for="firstName">???</label>
                 <input id="firstName" type="text" required>
               </div>
               <div>
-                <label for="lastName">Фамилия</label>
+                <label for="lastName">???????</label>
                 <input id="lastName" type="text" required>
               </div>
             </div>
 
             <div class="register-grid">
               <div>
-                <label for="country">Държава/регион</label>
+                <label for="country">???????/??????</label>
                 <select id="country" required>
-                  <option value="ES" selected>Испания</option>
-                  <option value="MX">Мексико</option>
-                  <option value="AR">Аржентина</option>
-                  <option value="CO">Колумбия</option>
-                  <option value="CL">Чили</option>
-                  <option value="PE">Перу</option>
-                  <option value="EC">Еквадор</option>
-                  <option value="VE">Венецуела</option>
-                  <option value="UY">Уругвай</option>
-                  <option value="PY">Парагвай</option>
-                  <option value="BO">Боливия</option>
-                  <option value="BR">Бразилия</option>
-                  <option value="DO">Доминиканска република</option>
-                  <option value="PA">Панама</option>
-                  <option value="CR">Коста Рика</option>
-                  <option value="GT">Гватемала</option>
-                  <option value="SV">Ел Салвадор</option>
-                  <option value="HN">Хондурас</option>
-                  <option value="NI">Никарагуа</option>
-                  <option value="CA">Канада</option>
-                  <option value="US">САЩ</option>
-                  <option value="PT">Португалия</option>
-                  <option value="FR">Франция</option>
-                  <option value="DE">Германия</option>
-                  <option value="IT">Италия</option>
-                  <option value="GB">Великобритания</option>
-                  <option value="BG">България</option>
-                  <option value="RO">Румъния</option>
-                  <option value="GR">Гърция</option>
+                  <option value="ES" selected>???????</option>
+                  <option value="MX">???????</option>
+                  <option value="AR">?????????</option>
+                  <option value="CO">????????</option>
+                  <option value="CL">????</option>
+                  <option value="PE">????</option>
+                  <option value="EC">???????</option>
+                  <option value="VE">?????????</option>
+                  <option value="UY">???????</option>
+                  <option value="PY">????????</option>
+                  <option value="BO">???????</option>
+                  <option value="BR">????????</option>
+                  <option value="DO">???????????? ?????????</option>
+                  <option value="PA">??????</option>
+                  <option value="CR">????? ????</option>
+                  <option value="GT">?????????</option>
+                  <option value="SV">?? ????????</option>
+                  <option value="HN">????????</option>
+                  <option value="NI">?????????</option>
+                  <option value="CA">??????</option>
+                  <option value="US">???</option>
+                  <option value="PT">??????????</option>
+                  <option value="FR">???????</option>
+                  <option value="DE">????????</option>
+                  <option value="IT">??????</option>
+                  <option value="GB">??????????????</option>
+                  <option value="BG">????????</option>
+                  <option value="RO">???????</option>
+                  <option value="GR">??????</option>
                 </select>
               </div>
               <div>
-                <label for="birthHelp">Помощ (рожден ден)</label>
-                <input id="birthHelp" type="text" placeholder="Дата на раждане">
+                <label for="birthHelp">????? (?????? ???)</label>
+                <input id="birthHelp" type="text" placeholder="???? ?? ???????">
               </div>
             </div>
 
-            <label>Дата на раждане</label>
+            <label>???? ?? ???????</label>
             <div class="birth-grid">
               <div>
-                <label for="birthDay">Ден</label>
+                <label for="birthDay">???</label>
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">Месец</label>
+                <label for="birthMonth">?????</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">Година</label>
+                <label for="birthYear">??????</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
 
-            <label for="registerEmail">Имейл</label>
+            <label for="registerEmail">?????</label>
             <input id="registerEmail" type="email" required placeholder="ivan@example.com">
 
-            <label for="registerPassword">Парола</label>
+            <label for="registerPassword">??????</label>
             <input id="registerPassword" type="password" required minlength="6">
 
-            <label for="registerPasswordConfirm">Потвърди паролата</label>
+            <label for="registerPasswordConfirm">???????? ????????</label>
             <input id="registerPasswordConfirm" type="password" required minlength="6">
 
             <div class="register-grid">
               <div>
-                <label for="phoneCountry">Държава</label>
+                <label for="phoneCountry">???????</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (Испания)</option>
-                  <option value="+52">+52 (Мексико)</option>
-                  <option value="+54">+54 (Аржентина)</option>
-                  <option value="+57">+57 (Колумбия)</option>
-                  <option value="+56">+56 (Чили)</option>
-                  <option value="+51">+51 (Перу)</option>
-                  <option value="+593">+593 (Еквадор)</option>
-                  <option value="+58">+58 (Венецуела)</option>
-                  <option value="+598">+598 (Уругвай)</option>
-                  <option value="+595">+595 (Парагвай)</option>
-                  <option value="+591">+591 (Боливия)</option>
-                  <option value="+55">+55 (Бразилия)</option>
-                  <option value="+1">+1 (САЩ/Канада)</option>
-                  <option value="+507">+507 (Панама)</option>
-                  <option value="+506">+506 (Коста Рика)</option>
-                  <option value="+502">+502 (Гватемала)</option>
-                  <option value="+503">+503 (Ел Салвадор)</option>
-                  <option value="+504">+504 (Хондурас)</option>
-                  <option value="+505">+505 (Никарагуа)</option>
-                  <option value="+351">+351 (Португалия)</option>
-                  <option value="+33">+33 (Франция)</option>
-                  <option value="+49">+49 (Германия)</option>
-                  <option value="+39">+39 (Италия)</option>
-                  <option value="+44">+44 (Великобритания)</option>
-                  <option value="+359">+359 (България)</option>
-                  <option value="+40">+40 (Румъния)</option>
-                  <option value="+30">+30 (Гърция)</option>
+                  <option value="+34" selected>+34 (???????)</option>
+                  <option value="+52">+52 (???????)</option>
+                  <option value="+54">+54 (?????????)</option>
+                  <option value="+57">+57 (????????)</option>
+                  <option value="+56">+56 (????)</option>
+                  <option value="+51">+51 (????)</option>
+                  <option value="+593">+593 (???????)</option>
+                  <option value="+58">+58 (?????????)</option>
+                  <option value="+598">+598 (???????)</option>
+                  <option value="+595">+595 (????????)</option>
+                  <option value="+591">+591 (???????)</option>
+                  <option value="+55">+55 (????????)</option>
+                  <option value="+1">+1 (???/??????)</option>
+                  <option value="+507">+507 (??????)</option>
+                  <option value="+506">+506 (????? ????)</option>
+                  <option value="+502">+502 (?????????)</option>
+                  <option value="+503">+503 (?? ????????)</option>
+                  <option value="+504">+504 (????????)</option>
+                  <option value="+505">+505 (?????????)</option>
+                  <option value="+351">+351 (??????????)</option>
+                  <option value="+33">+33 (???????)</option>
+                  <option value="+49">+49 (????????)</option>
+                  <option value="+39">+39 (??????)</option>
+                  <option value="+44">+44 (??????????????)</option>
+                  <option value="+359">+359 (????????)</option>
+                  <option value="+40">+40 (???????)</option>
+                  <option value="+30">+30 (??????)</option>
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">Телефонен номер</label>
+                <label for="phoneNumber">????????? ?????</label>
                 <input id="phoneNumber" type="tel" required placeholder="888 123 456">
               </div>
             </div>
 
             <p class="auth-note">
-              Увери се, че въвеждаш телефонен номер, до който имаш достъп по всяко време. Този номер ще се използва за потвърждаване на самоличността ти при всяко влизане от ново устройство или браузър. Може да се прилагат такси за данни или съобщения.
+              ????? ??, ?? ???????? ????????? ?????, ?? ????? ???? ?????? ?? ????? ?????. ???? ????? ?? ?? ???????? ?? ????????????? ?? ????????????? ?? ??? ????? ??????? ?? ???? ?????????? ??? ???????. ???? ?? ?? ???????? ????? ?? ????? ??? ?????????.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Изпрати код</button>
-                <span class="auth-note">Ще ти изпратим SMS за потвърждение.</span>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">??????? ???</button>
+                <span class="auth-note">?? ?? ???????? SMS ?? ????????????.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="SMS код">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Потвърди</button>
+                <input id="code" type="text" placeholder="SMS ???">
+                <button id="verifySmsBtn" class="btn btn-primary" type="button">????????</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Реклами</label>
-            <p class="auth-note">Получавай имейли и комуникации от Lixby, като реклами, маркетинг, препоръки и актуализации за продуктите, услугите и софтуера на Lixby.</p>
+            <label><input type="checkbox" id="adsOptIn"> ???????</label>
+            <p class="auth-note">????????? ?????? ? ??????????? ?? Lixby, ???? ???????, ?????????, ????????? ? ???????????? ?? ??????????, ???????? ? ???????? ?? Lixby.</p>
 
-            <label><input type="checkbox" id="mediaOptIn"> Приложения, музика, ТВ и още</label>
-            <p class="auth-note">Получавай имейли и комуникации от Lixby за нови издания, ексклузивно съдържание и специални оферти.</p>
+            <label><input type="checkbox" id="mediaOptIn"> ??????????, ??????, ?? ? ???</label>
+            <p class="auth-note">????????? ?????? ? ??????????? ?? Lixby ?? ???? ???????, ??????????? ?????????? ? ????????? ??????.</p>
 
             <div class="captcha-box">
-              <label>Проверка на изображение</label>
+              <label>???????? ?? ???????????</label>
               <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Въведи кода от изображението</label>
+              <label for="captchaInput">?????? ???? ?? ?????????????</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">Нов код</a>
-                <span class="auth-note">Ограничена видимост</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">??? ???</a>
+                <span class="auth-note">?????????? ????????</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Икона за поверителност: Информацията от твоя Lixby акаунт се използва за сигурен вход и достъп до данните ти. Lixby записва определени данни за използване с цели, свързани със сигурността, поддръжката и изготвянето на отчети. Ако приемеш, Lixby може да използва информацията от акаунта ти за изпращане на маркетингови комуникации и имейли. Виж как се управляват данните ти.
+              ????? ?? ?????????????: ???????????? ?? ???? Lixby ?????? ?? ???????? ?? ??????? ???? ? ?????? ?? ??????? ??. Lixby ??????? ?????????? ????? ?? ?????????? ? ????, ???????? ??? ???????????, ??????????? ? ??????????? ?? ??????. ??? ???????, Lixby ???? ?? ???????? ???????????? ?? ??????? ?? ?? ????????? ?? ???????????? ??????????? ? ??????. ??? ??? ?? ?????????? ??????? ??.
             </p>
 
-            <button class="btn btn-primary" type="submit">Създай акаунт</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Потвърди имейл</button>
+            <button class="btn btn-primary" type="submit">?????? ??????</button>
+            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">???????? ?????</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Регистрация с Google
+              ??????????? ? Google
             </button>
           </form>
         </section>
@@ -534,8 +535,8 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="cuenta.html" class="btn btn-primary">Към профила</a>
-            <button id="logoutBtn" class="btn btn-secondary" type="button">Изход</button>
+            <a href="cuenta.html" class="btn btn-primary">??? ???????</a>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">?????</button>
           </div>
         </div>
       </article>
@@ -639,8 +640,8 @@
       }
 
       const months = [
-        "Януари", "Февруари", "Март", "Април", "Май", "Юни",
-        "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"
+        "??????", "????????", "????", "?????", "???", "???",
+        "???", "??????", "?????????", "????????", "???????", "????????"
       ];
       months.forEach((month, index) => {
         const option = document.createElement("option");
@@ -679,7 +680,7 @@
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Конфигурирай Firebase за активиране на регистрация и вход.", "error");
+      setStatus("???????????? Firebase ?? ?????????? ?? ??????????? ? ????.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -729,26 +730,26 @@
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("За вход използвай валиден имейл адрес.", "error");
+          setStatus("?? ???? ????????? ??????? ????? ?????.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Вписването е успешно.", "success");
+          setStatus("?????????? ? ???????.", "success");
           loginForm.reset();
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Ще изпратим SMS код на ${hint.phoneNumber || "твоя телефон"}.`;
+            mfaHint.textContent = `?? ???????? SMS ??? ?? ${hint.phoneNumber || "???? ???????"}.`;
             mfaPanel.classList.add("active");
-            setStatus("Изисква се двуетапна верификация.", "info");
+            setStatus("??????? ?? ????????? ???????????.", "info");
             return;
           }
-          setStatus(`Грешка при вписване: ${error.message}`, "error");
+          setStatus(`?????? ??? ????????: ${error.message}`, "error");
         }
       });
 
@@ -756,20 +757,20 @@
         event.preventDefault();
         const identifier = document.getElementById("loginIdentifier").value.trim();
         if (!identifier.includes("@")) {
-          setStatus("Въведи имейл в полето за възстановяване на парола.", "error");
+          setStatus("?????? ????? ? ?????? ?? ?????????????? ?? ??????.", "error");
           return;
         }
         try {
           await sendPasswordResetEmail(auth, identifier);
-          setStatus("Изпратихме имейл за възстановяване на паролата.", "success");
+          setStatus("?????????? ????? ?? ?????????????? ?? ????????.", "success");
         } catch (error) {
-          setStatus(`Неуспешно изпращане: ${error.message}`, "error");
+          setStatus(`????????? ?????????: ${error.message}`, "error");
         }
       });
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Няма чакаща двуетапна верификация.", "error");
+          setStatus("???? ?????? ????????? ???????????.", "error");
           return;
         }
 
@@ -781,27 +782,27 @@
           };
           const phoneAuthProvider = new PhoneAuthProvider(auth);
           mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
-          setStatus("SMS кодът е изпратен.", "success");
+          setStatus("SMS ????? ? ????????.", "success");
         } catch (error) {
           mfaRecaptchaVerifier.clear();
-          setStatus(`Неуспешно изпращане на SMS: ${error.message}`, "error");
+          setStatus(`????????? ????????? ?? SMS: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Няма чакаща двуетапна верификация.", "error");
+          setStatus("???? ?????? ????????? ???????????.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Първо изпрати SMS кода.", "error");
+          setStatus("????? ??????? SMS ????.", "error");
           return;
         }
 
         const code = mfaCodeInput.value.trim();
         if (!code) {
-          setStatus("Въведи SMS кода.", "error");
+          setStatus("?????? SMS ????.", "error");
           return;
         }
 
@@ -813,10 +814,10 @@
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Вписването е успешно.", "success");
+          setStatus("?????????? ? ???????.", "success");
           window.location.href = "cuenta.html";
         } catch (error) {
-          setStatus(`Невалиден код: ${error.message}`, "error");
+          setStatus(`????????? ???: ${error.message}`, "error");
         }
       });
 
@@ -844,12 +845,12 @@
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("Паролите не съвпадат.", "error");
+          setStatus("???????? ?? ????????.", "error");
           return;
         }
 
         if (captchaValue !== currentCaptcha) {
-          setStatus("Кодът от изображението не съвпада.", "error");
+          setStatus("????? ?? ????????????? ?? ???????.", "error");
           currentCaptcha = generateCaptcha();
           return;
         }
@@ -872,69 +873,69 @@
             adsOptIn,
             mediaOptIn
           }));
-          setStatus("Акаунтът е създаден успешно.", "success");
+          setStatus("???????? ? ???????? ???????.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
           window.location.href = "cuenta.html";
         } catch (error) {
-          setStatus(`Грешка при регистрация: ${error.message}`, "error");
+          setStatus(`?????? ??? ???????????: ${error.message}`, "error");
         }
       });
 
       verifyEmailBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Влез, за да потвърдиш имейла си.", "error");
+          setStatus("????, ?? ?? ????????? ?????? ??.", "error");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Имейлът е изпратен. Провери спам и промоции.", "success");
+          setStatus("??????? ? ????????. ??????? ???? ? ????????.", "success");
         } catch (error) {
-          setStatus(`Неуспешно изпращане: ${error.message}`, "error");
+          setStatus(`????????? ?????????: ${error.message}`, "error");
         }
       });
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Вписването с Google е успешно.", "success");
+          setStatus("?????????? ? Google ? ???????.", "success");
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Входът с Google е отменен.", "error");
+            setStatus("?????? ? Google ? ???????.", "error");
             return;
           }
-          setStatus(`Грешка с Google: ${error.message}`, "error");
+          setStatus(`?????? ? Google: ${error.message}`, "error");
         }
       });
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Регистрацията с Google е успешна.", "success");
+          setStatus("????????????? ? Google ? ???????.", "success");
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Входът с Google е отменен.", "error");
+            setStatus("?????? ? Google ? ???????.", "error");
             return;
           }
-          setStatus(`Грешка с Google: ${error.message}`, "error");
+          setStatus(`?????? ? Google: ${error.message}`, "error");
         }
       });
 
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Въведи телефонен номер преди да изпратиш кода.", "error");
+          setStatus("?????? ????????? ????? ????? ?? ???????? ????.", "error");
           return;
         }
         try {
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
-          setStatus("SMS е изпратен. Провери телефона си.", "success");
+          setStatus("SMS ? ????????. ??????? ???????? ??.", "success");
         } catch (error) {
-          setStatus(`Неуспешно изпращане на SMS: ${error.message}`, "error");
+          setStatus(`????????? ????????? ?? SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -942,31 +943,31 @@
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Първо изпрати SMS кода.", "error");
+          setStatus("????? ??????? SMS ????.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Въведи SMS кода.", "error");
+          setStatus("?????? SMS ????.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
-          setStatus("Телефонът е потвърден успешно.", "success");
+          setStatus("????????? ? ????????? ???????.", "success");
         } catch (error) {
-          setStatus("Грешен код. Опитай отново.", "error");
+          setStatus("?????? ???. ?????? ??????.", "error");
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Излязохте от профила си.", "info");
+        setStatus("????????? ?? ??????? ??.", "info");
       });
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Влезли сте като ${user.email}`;
+          userEmail.textContent = `?????? ??? ???? ${user.email}`;
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
