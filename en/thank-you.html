@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank you | Lixby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thank-you {
+      padding: 64px 0 80px;
+    }
+
+    .thank-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .thank-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .order-pill {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      font-weight: 700;
+      margin: 10px 0 18px;
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .order-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .order-total {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+    }
+
+    .thank-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="index.html#productos" class="nav-link">Products</a>
+        <a href="index.html#apps" class="nav-link">Apps</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-icon-link" aria-label="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
+        </a>
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container thank-you">
+    <section class="thank-card">
+      <p class="eyebrow">Order confirmed</p>
+      <h1 class="thank-title">Thank you for your purchase</h1>
+      <p id="thankMessage">We are preparing your order and will email you the confirmation shortly.</p>
+      <div class="order-pill" id="orderIdPill" hidden>
+        <span>Order</span>
+        <strong id="orderIdValue">LX-XXXX</strong>
+      </div>
+      <div id="orderItems" class="order-list"></div>
+      <div id="orderTotal" class="order-total" hidden>
+        <span>Total</span>
+        <span id="orderTotalValue">0 EUR</span>
+      </div>
+      <div class="thank-actions">
+        <a class="btn btn-primary" href="shop.html">Continue shopping</a>
+        <a class="btn btn-secondary" href="../track.html">Track order</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const LAST_ORDER_KEY = "lixbyLastOrder";
+    const orderIdEl = document.getElementById("orderIdValue");
+    const orderPill = document.getElementById("orderIdPill");
+    const orderItems = document.getElementById("orderItems");
+    const orderTotal = document.getElementById("orderTotal");
+    const orderTotalValue = document.getElementById("orderTotalValue");
+
+    const params = new URLSearchParams(window.location.search);
+    const orderOverride = params.get("orderId") || params.get("order");
+
+    function money(value) {
+      return `${value} EUR`;
+    }
+
+    function renderOrder(order) {
+      if (!order) return;
+      orderPill.hidden = false;
+      orderIdEl.textContent = order.orderId || orderOverride || "LX";
+
+      if (Array.isArray(order.items) && order.items.length) {
+        orderItems.innerHTML = order.items.map((item) => `
+          <div class="order-item">
+            <span>${item.name} × ${item.qty}</span>
+            <strong>${money(item.lineTotal)}</strong>
+          </div>
+        `).join("");
+        orderTotal.hidden = false;
+        orderTotalValue.textContent = money(order.subtotal || 0);
+      }
+    }
+
+    try {
+      const cached = JSON.parse(localStorage.getItem(LAST_ORDER_KEY) || "null");
+      if (cached) {
+        renderOrder(cached);
+      } else if (orderOverride) {
+        renderOrder({ orderId: orderOverride, items: [] });
+      }
+    } catch (error) {
+      if (orderOverride) {
+        renderOrder({ orderId: orderOverride, items: [] });
+      }
+    }
+  </script>
+</body>
+</html>

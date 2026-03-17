@@ -210,8 +210,12 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
+    const CHECKOUT_ENDPOINT = "/create-checkout-session";
+    const SUCCESS_URL = new URL("merci.html", window.location.href).toString();
+    const CANCEL_URL = window.location.href;
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -225,6 +229,7 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
     let authReady = false;
     let isAuthenticated = false;
 
@@ -234,6 +239,7 @@
     });
 
     const CART_KEY = "lixbyCart";
+    const LAST_ORDER_KEY = "lixbyLastOrder";
 
     const productCatalog = {
       "lixbuds-one": {
@@ -260,6 +266,40 @@
 
     function money(value) {
       return `${value} EUR`;
+    }
+
+    function generateOrderId() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      const dd = String(now.getDate()).padStart(2, "0");
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      return `LX-${yyyy}${mm}${dd}-${rand}`;
+    }
+
+    function calculateSummary(cart) {
+      let subtotal = 0;
+      const items = cart.map((entry) => {
+        const product = productCatalog[entry.id] || {
+          id: entry.id,
+          name: entry.name || "Produit",
+          price: Number(entry.price) || 0,
+          image: "images/lixbuds-hero.jpg"
+        };
+        const qty = Number(entry.qty) || 1;
+        const lineTotal = product.price * qty;
+        subtotal += lineTotal;
+
+        return {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          qty,
+          lineTotal
+        };
+      });
+
+      return { items, subtotal };
     }
 
     function updateQuantity(productId, delta) {
@@ -348,7 +388,7 @@
       renderCart();
     });
 
-    checkoutBtn.addEventListener("click", () => {
+    checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
       if (cart.length === 0) {
         alert("Votre panier est vide.");
@@ -365,6 +405,52 @@
         return;
       }
 
+      const orderId = generateOrderId();
+      const summary = calculateSummary(cart);
+      const orderPayload = {
+        orderId,
+        status: "pending_payment",
+        paymentStatus: "pending",
+        currency: "EUR",
+        subtotal: Number(summary.subtotal.toFixed(2)),
+        items: summary.items,
+        createdAt: serverTimestamp(),
+        uid: auth.currentUser?.uid || null
+      };
+
+      localStorage.setItem(LAST_ORDER_KEY, JSON.stringify({
+        orderId,
+        status: orderPayload.status,
+        currency: orderPayload.currency,
+        subtotal: orderPayload.subtotal,
+        items: orderPayload.items
+      }));
+
+      try {
+        await addDoc(collection(db, "orders"), orderPayload);
+      } catch (error) {
+        console.log("Order save failed", error);
+      }
+
+      try {
+        const response = await fetch(CHECKOUT_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            orderId,
+            successUrl: SUCCESS_URL,
+            cancelUrl: CANCEL_URL
+          })
+        });
+        const data = await response.json();
+        if (response.ok && data.url) {
+          window.location.href = data.url;
+          return;
+        }
+      } catch (error) {
+        console.log("Checkout session failed", error);
+      }
+
       window.location.href = STRIPE_PAYMENT_LINK;
     });
 
@@ -372,6 +458,7 @@
   </script>
 </body>
 </html>
+
 
 
 

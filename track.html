@@ -160,11 +160,16 @@
             }</div>`
           : "";
 
+        const paymentLine = data.paymentStatus
+          ? `<div><span class="label">Pago:</span> ${data.paymentStatus}</div>`
+          : "";
+
         result.innerHTML = `
           <div><span class="label">Código:</span> ${data.id}</div>
           <div><span class="label">Email:</span> ${data.email || "-"}</div>
           <div><span class="label">Producto:</span> ${data.product}</div>
           <div><span class="label">Estado:</span> ${data.status}</div>
+          ${paymentLine}
           ${trackingExtra}
           <div class="tracking">${stepsHtml}</div>
         `;

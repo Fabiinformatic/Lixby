@@ -247,7 +247,27 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
+    (function () {
+      if (window.emailjs) {
+        emailjs.init("TU_PUBLIC_KEY");
+      }
+    })();
+
+    function enviarPedido() {
+      emailjs.send("service_be50cuf", "template_dv1ozep", {
+        name: "Cliente",
+        order_id: "LX12345",
+        email: "lixbyinfo@gmail.com"
+      })
+        .then(function (response) {
+          console.log("Email enviado", response);
+        }, function (error) {
+          console.log("Error", error);
+        });
+    }
+
     const cookieBanner = document.getElementById("cookieBanner");
     const acceptCookiesButton = document.getElementById("acceptCookies");
     const rejectCookiesButton = document.getElementById("rejectCookies");
