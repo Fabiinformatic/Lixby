@@ -112,6 +112,7 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
       orderId
     },
     client_reference_id: orderId,
+    locale: "auto",
     success_url: successWithOrder,
     cancel_url: cancelWithOrder
   });
@@ -263,4 +264,3 @@ app.get("/admin/orders", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Servidor funcionando"));
-

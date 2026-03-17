@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.lixby.es/bg/??????">
+  <link rel="alternate" href="https://www.lixby.es/bg/??????" hreflang="bg-BG">
+  <link rel="alternate" href="https://www.lixby.es/bg/??????" hreflang="x-default">
+
+  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi cuenta | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -258,7 +262,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-
     .payment-field {
       display: grid;
       gap: 5px;
@@ -446,6 +449,10 @@
   <div class="background-orb orb-4" aria-hidden="true"></div>
   <div class="background-orb orb-5" aria-hidden="true"></div>
   <header class="nav" id="nav">
+  <link rel="canonical" href="https://www.lixby.es/bg/??????">
+  <link rel="alternate" href="https://www.lixby.es/bg/??????" hreflang="bg-BG">
+  <link rel="alternate" href="https://www.lixby.es/bg/??????" hreflang="x-default">
+
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
@@ -841,7 +848,6 @@
       localStorage.setItem(getScopedKey(BILLING_KEY), JSON.stringify(value));
     }
 
-
     function onlyDigits(value) {
       return String(value || "").replace(/\D/g, "");
     }
@@ -972,7 +978,6 @@
         </div>
       `;
     }
-
 
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
@@ -1196,7 +1201,6 @@
       showStatus("Dirección de facturación guardada.", "success");
     });
 
-
     billingSummaryEl.addEventListener("click", (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
@@ -1336,7 +1340,4 @@
   </script>
 </body>
 </html>
-
-
-
 
