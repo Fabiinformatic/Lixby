@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="es">
 <head>
   <link rel="canonical" href="https://www.lixby.es/it/iniciar-sesion">
@@ -347,16 +347,16 @@
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="negozio.html" class="nav-link">Tienda</a>
         <a href="index.html#productos" class="nav-link">Productos</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
         <a href="pages/support.html" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
+        <a href="cestino.html" class="nav-icon-link" aria-label="Cesta">
           <img src="images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+        <a href="account.html" class="nav-icon-link" aria-label="Cuenta">
           <img src="images/cuenta.png" alt="Cuenta">
         </a>
       </div>
@@ -368,7 +368,7 @@
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Listo para autenticar.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Falta configurar Firebase. Edita el objeto <code>firebaseConfig</code> en <code>iniciar-sesion.html</code> con tus credenciales del proyecto.
+          Falta configurar Firebase. Edita el objeto <code>firebaseConfig</code> en <code>login.html</code> con tus credenciales del proyecto.
         </div>
 
         <section id="loginSection" class="auth-section active">
@@ -389,7 +389,7 @@
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">¿Has olvidado la contrasena?</a>
+            <a href="#" id="forgotPasswordLink" class="auth-link">Â¿Has olvidado la contrasena?</a>
 
             <button class="btn btn-primary" type="submit">Iniciar sesion</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
@@ -410,7 +410,7 @@
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            ¿No tienes una cuenta de Lixby?
+            Â¿No tienes una cuenta de Lixby?
             <a href="#" id="showRegisterLink" class="auth-link">Crear tu cuenta de Lixby</a>
           </p>
         </section>
@@ -420,7 +420,7 @@
             <h1>Crear tu cuenta de Lixby</h1>
             <p>Solo necesitas una cuenta de Lixby para acceder a todos los servicios de Lixby.</p>
             <p class="auth-note">
-              ¿Ya tienes una cuenta de Lixby?
+              Â¿Ya tienes una cuenta de Lixby?
               <a href="#" id="showLoginLink" class="auth-link">Inicia sesion</a>
             </p>
           </div>
@@ -587,7 +587,7 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="cuenta.html" class="btn btn-primary">Ir a mi cuenta</a>
+            <a href="account.html" class="btn btn-primary">Ir a mi cuenta</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Cerrar sesion</button>
           </div>
         </div>
@@ -791,7 +791,7 @@
           await signInWithEmailAndPassword(auth, identifier, password);
           setStatus("Sesion iniciada correctamente.", "success");
           loginForm.reset();
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
@@ -867,7 +867,7 @@
           mfaVerificationId = "";
           mfaCodeInput.value = "";
           setStatus("Sesion iniciada correctamente.", "success");
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Codigo invalido: ${error.message}`, "error");
         }
@@ -928,7 +928,7 @@
           setStatus("Cuenta creada correctamente.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Error al registrar: ${error.message}`, "error");
         }
@@ -952,7 +952,7 @@
         try {
           await signInWithPopup(auth, googleProvider);
           setStatus("Sesion iniciada con Google.", "success");
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Inicio con Google cancelado.", "error");
@@ -966,7 +966,7 @@
         try {
           await signInWithPopup(auth, googleProvider);
           setStatus("Registro completado con Google.", "success");
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Inicio con Google cancelado.", "error");

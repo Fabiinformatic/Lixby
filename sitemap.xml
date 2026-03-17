@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ï»¿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lixby.es/bg/</loc>
@@ -2053,13 +2053,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lixby.es/fr/vérification-en-deux-étapes.html</loc>
+    <loc>https://lixby.es/fr/vÃ©rification-en-deux-Ã©tapes.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/fr/vérifié.html</loc>
+    <loc>https://lixby.es/fr/vÃ©rifiÃ©.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -2725,7 +2725,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/cambiar-contrasena.html</loc>
+    <loc>https://lixby.es/it/cambiare-la-password.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -2779,13 +2779,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/cesta.html</loc>
+    <loc>https://lixby.es/it/cestino.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/comprar.html</loc>
+    <loc>https://lixby.es/it/acquistare.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -2803,7 +2803,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/cuenta.html</loc>
+    <loc>https://lixby.es/it/account.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -2911,19 +2911,19 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/tienda.html</loc>
+    <loc>https://lixby.es/it/negozio.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/verificacion-2-pasos.html</loc>
+    <loc>https://lixby.es/it/verifica-in-due-passaggi.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lixby.es/it/verificado.html</loc>
+    <loc>https://lixby.es/it/Verificato.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

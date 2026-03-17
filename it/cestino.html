@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
+﻿<!DOCTYPE html>
+<html lang="it">
 <head>
   <link rel="canonical" href="https://www.lixby.es/it/cesta">
   <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
@@ -25,9 +25,9 @@
   <link rel="alternate" href="https://www.lixby.es/sv/cesta" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/es/cesta" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cesta | Lixby</title>
+  <title>Carrello | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -216,18 +216,18 @@
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
-        <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+      <nav class="nav-links" aria-label="Principale">
+        <a href="negozio.html" class="nav-link">Negozio</a>
+        <a href="index.html#productos" class="nav-link">Prodotti</a>
+        <a href="index.html#apps" class="nav-link">App</a>
+        <a href="pages/support.html" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Carrello">
+          <img src="images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
     </div>
@@ -235,21 +235,21 @@
 
   <main class="container cart-page">
     <section class="cart-head">
-      <h1>Tu cesta</h1>
-      <p>Revisa tus productos antes de finalizar la compra.</p>
+      <h1>Il tuo carrello</h1>
+      <p>Rivedi i tuoi prodotti prima di completare l'acquisto.</p>
     </section>
 
     <section class="cart-layout">
       <div class="cart-list" id="cartList"></div>
 
       <aside class="cart-summary">
-        <h2>Resumen</h2>
-        <div class="cart-row"><span>Subtotal</span><span id="subtotal">0 EUR</span></div>
-        <div class="cart-row"><span>Envio</span><span>Gratis</span></div>
-        <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
+        <h2>Riepilogo</h2>
+        <div class="cart-row"><span>Subtotale</span><span id="subtotal">0 EUR</span></div>
+        <div class="cart-row"><span>Spedizione</span><span>Gratuita</span></div>
+        <div class="cart-row cart-total"><span>Totale</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Vaciar cesta</button>
+          <button id="checkoutBtn" class="btn btn-primary" type="button">Completa acquisto</button>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">Svuota carrello</button>
         </div>
       </aside>
     </section>
@@ -348,7 +348,7 @@
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Tu cesta esta vacia. <a href="tienda.html">Ir a tienda</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Il tuo carrello è vuoto. <a href="negozio.html">Vai al negozio</a>.</p>`;
         subtotalEl.textContent = "0 EUR";
         totalEl.textContent = "0 EUR";
         return;
@@ -359,7 +359,7 @@
       cartListEl.innerHTML = cart.map((entry) => {
         const product = productCatalog[entry.id] || {
           id: entry.id,
-          name: entry.name || "Producto",
+          name: entry.name || "Prodotto",
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
@@ -373,13 +373,13 @@
             <img class="cart-item-image" src="${product.image}" alt="${product.name}">
             <div>
               <h3>${product.name}</h3>
-              <p>${money(product.price)} / unidad</p>
+              <p>${money(product.price)} / unità</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${product.id}">-</button>
                 <span>${qty}</span>
                 <button type="button" data-action="plus" data-id="${product.id}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Quitar</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Rimuovi</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -411,17 +411,17 @@
     checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
       if (cart.length === 0) {
-        alert("Tu cesta esta vacia.");
+        alert("Il tuo carrello è vuoto.");
         return;
       }
 
       if (!authReady) {
-        alert("Cargando sesion. Intenta de nuevo en unos segundos.");
+        alert("Caricamento sessione. Riprova tra qualche secondo.");
         return;
       }
 
       if (!isAuthenticated) {
-        window.location.href = "iniciar-sesion.html";
+        window.location.href = "login.html";
         return;
       }
 
@@ -453,4 +453,3 @@
   </script>
 </body>
 </html>
-
