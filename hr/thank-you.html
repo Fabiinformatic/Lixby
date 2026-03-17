@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="hr">
 <head>
   <link rel="canonical" href="https://www.lixby.es/hr/thank-you">
@@ -25,7 +25,7 @@
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hvala | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,11 +130,11 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Narudžba potvrdena</p>
+      <p class="eyebrow">Narudï¿½ba potvrdena</p>
       <h1 class="thank-title">Hvala na kupnji</h1>
-      <p id="thankMessage">Pripremamo vašu narudžbu i uskoro cemo vam poslati potvrdu e-poštom.</p>
+      <p id="thankMessage">Pripremamo vaï¿½u narudï¿½bu i uskoro cemo vam poslati potvrdu e-poï¿½tom.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Narudžba</span>
+        <span>Narudï¿½ba</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
@@ -144,7 +144,7 @@
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Pocetna</a>
-        <a class="btn btn-secondary" href="../track.html">Prati narudžbu</a>
+        <a class="btn btn-secondary" href="../track.html">Prati narudï¿½bu</a>
       </div>
     </section>
   </main>
@@ -172,7 +172,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} ï¿½ ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");

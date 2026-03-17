@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="cs">
 <head>
   <link rel="canonical" href="https://www.lixby.es/cs/thank-you">
@@ -25,7 +25,7 @@
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dekujeme | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,11 +130,11 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Objednávka potvrzena</p>
-      <h1 class="thank-title">Dekujeme za váš nákup</h1>
-      <p id="thankMessage">Vaši objednávku pripravujeme a brzy vám zašleme potvrzení e-mailem.</p>
+      <p class="eyebrow">Objednï¿½vka potvrzena</p>
+      <h1 class="thank-title">Dekujeme za vï¿½ nï¿½kup</h1>
+      <p id="thankMessage">Vaï¿½i objednï¿½vku pripravujeme a brzy vï¿½m zaï¿½leme potvrzenï¿½ e-mailem.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Objednávka</span>
+        <span>Objednï¿½vka</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
@@ -144,7 +144,7 @@
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Domu</a>
-        <a class="btn btn-secondary" href="../track.html">Sledovat objednávku</a>
+        <a class="btn btn-secondary" href="../track.html">Sledovat objednï¿½vku</a>
       </div>
     </section>
   </main>
@@ -172,7 +172,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} ï¿½ ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");

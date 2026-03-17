@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="da">
 <head>
   <link rel="canonical" href="https://www.lixby.es/da/thank-you">
@@ -25,7 +25,7 @@
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tak | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,9 +130,9 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Ordre bekræftet</p>
-      <h1 class="thank-title">Tak for dit køb</h1>
-      <p id="thankMessage">Vi forbereder din ordre og sender dig en bekræftelse via e-mail snart.</p>
+      <p class="eyebrow">Ordre bekrï¿½ftet</p>
+      <h1 class="thank-title">Tak for dit kï¿½b</h1>
+      <p id="thankMessage">Vi forbereder din ordre og sender dig en bekrï¿½ftelse via e-mail snart.</p>
       <div class="order-pill" id="orderIdPill" hidden>
         <span>Ordre</span>
         <strong id="orderIdValue">LX-XXXX</strong>
@@ -172,7 +172,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} ï¿½ ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");

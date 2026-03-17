@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="hu">
 <head>
   <link rel="canonical" href="https://www.lixby.es/hu/thank-you">
@@ -25,9 +25,9 @@
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Köszönjük | Lixby</title>
+  <title>Kï¿½szï¿½njï¿½k | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -130,21 +130,21 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">A rendelés megerosítve</p>
-      <h1 class="thank-title">Köszönjük a vásárlást</h1>
-      <p id="thankMessage">Felkészítjük a rendelését, és hamarosan e-mailben küldünk visszaigazolást.</p>
+      <p class="eyebrow">A rendelï¿½s megerosï¿½tve</p>
+      <h1 class="thank-title">Kï¿½szï¿½njï¿½k a vï¿½sï¿½rlï¿½st</h1>
+      <p id="thankMessage">Felkï¿½szï¿½tjï¿½k a rendelï¿½sï¿½t, ï¿½s hamarosan e-mailben kï¿½ldï¿½nk visszaigazolï¿½st.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Rendelés</span>
+        <span>Rendelï¿½s</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
       <div id="orderTotal" class="order-total" hidden>
-        <span>Összesen</span>
+        <span>ï¿½sszesen</span>
         <span id="orderTotalValue">0 EUR</span>
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Kezdolap</a>
-        <a class="btn btn-secondary" href="../track.html">Rendelés követése</a>
+        <a class="btn btn-secondary" href="../track.html">Rendelï¿½s kï¿½vetï¿½se</a>
       </div>
     </section>
   </main>
@@ -172,7 +172,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} ï¿½ ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");

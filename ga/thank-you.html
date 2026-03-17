@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="ga">
 <head>
   <link rel="canonical" href="https://www.lixby.es/ga/thank-you">
@@ -25,7 +25,7 @@
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
 
-  `r`n  `r`n  `r`n  `r`n  <meta charset="UTF-8">
+          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Go raibh maith agat | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,21 +130,21 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Ordú deimhnithe</p>
+      <p class="eyebrow">Ordï¿½ deimhnithe</p>
       <h1 class="thank-title">Go raibh maith agat as do cheannach</h1>
-      <p id="thankMessage">Táimid ag ullmhú d’ordú agus seolfaimid an deimhniú chugat go luath trí ríomhphost.</p>
+      <p id="thankMessage">Tï¿½imid ag ullmhï¿½ dï¿½ordï¿½ agus seolfaimid an deimhniï¿½ chugat go luath trï¿½ rï¿½omhphost.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Ordú</span>
+        <span>Ordï¿½</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
       <div id="orderTotal" class="order-total" hidden>
-        <span>Iomlán</span>
+        <span>Iomlï¿½n</span>
         <span id="orderTotalValue">0 EUR</span>
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Baile</a>
-        <a class="btn btn-secondary" href="../track.html">Rianaigh ordú</a>
+        <a class="btn btn-secondary" href="../track.html">Rianaigh ordï¿½</a>
       </div>
     </section>
   </main>
@@ -172,7 +172,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} ï¿½ ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");
