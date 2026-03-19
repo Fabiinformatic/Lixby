@@ -1,13 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/pt/Conecte-se">
   <link rel="alternate" href="https://www.lixby.es/pt/Conecte-se" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/pt/Conecte-se" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
         <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sessão | Lixby</title>
+  <title>Iniciar sess�o | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -301,10 +308,14 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
   <link rel="canonical" href="https://www.lixby.es/pt/Conecte-se">
   <link rel="alternate" href="https://www.lixby.es/pt/Conecte-se" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/pt/Conecte-se" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
@@ -335,10 +346,10 @@
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Inicia sessão na Lixby</h1>
+            <h1>Inicia sess�o na Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">Email ou número de telefone</label>
+            <label for="loginIdentifier">Email ou n�mero de telefone</label>
             <input id="loginIdentifier" type="text" required placeholder="nome@exemplo.com">
 
             <label for="loginPassword">Palavra-passe</label>
@@ -353,7 +364,7 @@
 
             <a href="#" id="forgotPasswordLink" class="auth-link">Esqueceu-se da palavra-passe?</a>
 
-            <button class="btn btn-primary" type="submit">Iniciar sessão</button>
+            <button class="btn btn-primary" type="submit">Iniciar sess�o</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -362,17 +373,17 @@
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Verificação em 2 passos necessária</strong>
-            <p id="mfaHint" class="auth-note">Enviaremos um código SMS para o telefone associado.</p>
+            <strong>Verifica��o em 2 passos necess�ria</strong>
+            <p id="mfaHint" class="auth-note">Enviaremos um c�digo SMS para o telefone associado.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar código</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Código SMS">
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar c�digo</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="C�digo SMS">
               <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            Não tem uma conta Lixby?
+            N�o tem uma conta Lixby?
             <a href="#" id="showRegisterLink" class="auth-link">Criar a sua conta Lixby</a>
           </p>
         </section>
@@ -380,10 +391,10 @@
         <section id="registerSection" class="auth-section">
           <div class="account-head">
             <h1>Criar a sua conta Lixby</h1>
-            <p>Só precisa de uma conta Lixby para aceder a todos os serviços Lixby.</p>
+            <p>S� precisa de uma conta Lixby para aceder a todos os servi�os Lixby.</p>
             <p class="auth-note">
-              Já tem uma conta Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">Inicie sessão</a>
+              J� tem uma conta Lixby?
+              <a href="#" id="showLoginLink" class="auth-link">Inicie sess�o</a>
             </p>
           </div>
 
@@ -401,38 +412,38 @@
 
             <div class="register-grid">
               <div>
-                <label for="country">País/região</label>
+                <label for="country">Pa�s/regi�o</label>
                 <select id="country" required>
                   <option value="PT" selected>Portugal</option>
                   <option value="BR">Brasil</option>
                   <option value="ES">Espanha</option>
-                  <option value="MX">México</option>
+                  <option value="MX">M�xico</option>
                   <option value="AR">Argentina</option>
-                  <option value="CO">Colômbia</option>
+                  <option value="CO">Col�mbia</option>
                   <option value="CL">Chile</option>
                   <option value="PE">Peru</option>
                   <option value="EC">Equador</option>
                   <option value="VE">Venezuela</option>
                   <option value="UY">Uruguai</option>
                   <option value="PY">Paraguai</option>
-                  <option value="BO">Bolívia</option>
-                  <option value="DO">República Dominicana</option>
-                  <option value="PA">Panamá</option>
+                  <option value="BO">Bol�via</option>
+                  <option value="DO">Rep�blica Dominicana</option>
+                  <option value="PA">Panam�</option>
                   <option value="CR">Costa Rica</option>
                   <option value="GT">Guatemala</option>
                   <option value="SV">El Salvador</option>
                   <option value="HN">Honduras</option>
-                  <option value="NI">Nicarágua</option>
-                  <option value="CA">Canadá</option>
+                  <option value="NI">Nicar�gua</option>
+                  <option value="CA">Canad�</option>
                   <option value="US">Estados Unidos</option>
-                  <option value="FR">França</option>
+                  <option value="FR">Fran�a</option>
                   <option value="DE">Alemanha</option>
-                  <option value="IT">Itália</option>
+                  <option value="IT">It�lia</option>
                   <option value="GB">Reino Unido</option>
                 </select>
               </div>
               <div>
-                <label for="birthHelp">Ajuda (aniversário)</label>
+                <label for="birthHelp">Ajuda (anivers�rio)</label>
                 <input id="birthHelp" type="text" placeholder="Data de nascimento">
               </div>
             </div>
@@ -444,7 +455,7 @@
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">Mês</label>
+                <label for="birthMonth">M�s</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
@@ -464,75 +475,75 @@
 
             <div class="register-grid">
               <div>
-                <label for="phoneCountry">País</label>
+                <label for="phoneCountry">Pa�s</label>
                 <select id="phoneCountry" required>
                   <option value="+351" selected>+351 (Portugal)</option>
                   <option value="+55">+55 (Brasil)</option>
                   <option value="+34">+34 (Espanha)</option>
-                  <option value="+52">+52 (México)</option>
+                  <option value="+52">+52 (M�xico)</option>
                   <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colômbia)</option>
+                  <option value="+57">+57 (Col�mbia)</option>
                   <option value="+56">+56 (Chile)</option>
                   <option value="+51">+51 (Peru)</option>
                   <option value="+593">+593 (Equador)</option>
                   <option value="+58">+58 (Venezuela)</option>
                   <option value="+598">+598 (Uruguai)</option>
                   <option value="+595">+595 (Paraguai)</option>
-                  <option value="+591">+591 (Bolívia)</option>
-                  <option value="+1">+1 (Estados Unidos/Canadá)</option>
-                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+591">+591 (Bol�via)</option>
+                  <option value="+1">+1 (Estados Unidos/Canad�)</option>
+                  <option value="+507">+507 (Panam�)</option>
                   <option value="+506">+506 (Costa Rica)</option>
                   <option value="+502">+502 (Guatemala)</option>
                   <option value="+503">+503 (El Salvador)</option>
                   <option value="+504">+504 (Honduras)</option>
-                  <option value="+505">+505 (Nicarágua)</option>
-                  <option value="+33">+33 (França)</option>
+                  <option value="+505">+505 (Nicar�gua)</option>
+                  <option value="+33">+33 (Fran�a)</option>
                   <option value="+49">+49 (Alemanha)</option>
-                  <option value="+39">+39 (Itália)</option>
+                  <option value="+39">+39 (It�lia)</option>
                   <option value="+44">+44 (Reino Unido)</option>
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">Número de telefone</label>
+                <label for="phoneNumber">N�mero de telefone</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
 
             <p class="auth-note">
-              Certifique-se de que introduz um número de telefone ao qual possa aceder em qualquer momento. Este número será utilizado para verificar a sua identidade sempre que iniciar sessão num novo dispositivo ou navegador web. Poderão ser aplicadas tarifas de dados ou mensagens.
+              Certifique-se de que introduz um n�mero de telefone ao qual possa aceder em qualquer momento. Este n�mero ser� utilizado para verificar a sua identidade sempre que iniciar sess�o num novo dispositivo ou navegador web. Poder�o ser aplicadas tarifas de dados ou mensagens.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar código</button>
-                <span class="auth-note">Enviaremos um SMS de verificação.</span>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar c�digo</button>
+                <span class="auth-note">Enviaremos um SMS de verifica��o.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="Código SMS">
+                <input id="code" type="text" placeholder="C�digo SMS">
                 <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Anúncios</label>
-            <p class="auth-note">Receba emails e comunicações da Lixby, como anúncios, marketing, recomendações e atualizações sobre os produtos, serviços e software da Lixby.</p>
+            <label><input type="checkbox" id="adsOptIn"> An�ncios</label>
+            <p class="auth-note">Receba emails e comunica��es da Lixby, como an�ncios, marketing, recomenda��es e atualiza��es sobre os produtos, servi�os e software da Lixby.</p>
 
-            <label><input type="checkbox" id="mediaOptIn"> Apps, música, TV e muito mais</label>
-            <p class="auth-note">Receba emails e comunicações da Lixby, como novos lançamentos, conteúdo exclusivo e ofertas especiais.</p>
+            <label><input type="checkbox" id="mediaOptIn"> Apps, m�sica, TV e muito mais</label>
+            <p class="auth-note">Receba emails e comunica��es da Lixby, como novos lan�amentos, conte�do exclusivo e ofertas especiais.</p>
 
             <div class="captcha-box">
-              <label>Imagem de verificação</label>
+              <label>Imagem de verifica��o</label>
               <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Introduza o código da imagem</label>
+              <label for="captchaInput">Introduza o c�digo da imagem</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">Novo código</a>
-                <span class="auth-note">Visão limitada</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">Novo c�digo</a>
+                <span class="auth-note">Vis�o limitada</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Ícone de Privacidade: As informações da sua conta Lixby são utilizadas para que possa iniciar sessão de forma segura e aceder aos seus dados. A Lixby regista certos dados de utilização para fins relacionados com segurança, suporte e geração de relatórios. Se aceitar, a Lixby poderá utilizar as informações da sua conta para lhe enviar comunicações e emails de marketing. Consulte como os seus dados são geridos.
+              �cone de Privacidade: As informa��es da sua conta Lixby s�o utilizadas para que possa iniciar sess�o de forma segura e aceder aos seus dados. A Lixby regista certos dados de utiliza��o para fins relacionados com seguran�a, suporte e gera��o de relat�rios. Se aceitar, a Lixby poder� utilizar as informa��es da sua conta para lhe enviar comunica��es e emails de marketing. Consulte como os seus dados s�o geridos.
             </p>
 
             <button class="btn btn-primary" type="submit">Criar conta</button>
@@ -550,7 +561,7 @@
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
             <a href="conta.html" class="btn btn-primary">Ir para a minha conta</a>
-            <button id="logoutBtn" class="btn btn-secondary" type="button">Terminar sessão</button>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Terminar sess�o</button>
           </div>
         </div>
       </article>
@@ -654,7 +665,7 @@
       }
 
       const months = [
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Janeiro", "Fevereiro", "Mar�o", "Abril", "Maio", "Junho",
         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
       ];
       months.forEach((month, index) => {
@@ -694,7 +705,7 @@
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Configure o Firebase para ativar registo e início de sessão.", "error");
+      setStatus("Configure o Firebase para ativar registo e in�cio de sess�o.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -744,26 +755,26 @@
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Para iniciar sessão utilize um email válido.", "error");
+          setStatus("Para iniciar sess�o utilize um email v�lido.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Sessão iniciada com sucesso.", "success");
+          setStatus("Sess�o iniciada com sucesso.", "success");
           loginForm.reset();
           window.location.href = "conta.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "o seu telefone"}.`;
+            mfaHint.textContent = `Enviaremos um c�digo SMS para ${hint.phoneNumber || "o seu telefone"}.`;
             mfaPanel.classList.add("active");
-            setStatus("É necessária verificação em 2 passos.", "info");
+            setStatus("� necess�ria verifica��o em 2 passos.", "info");
             return;
           }
-          setStatus(`Erro ao iniciar sessão: ${error.message}`, "error");
+          setStatus(`Erro ao iniciar sess�o: ${error.message}`, "error");
         }
       });
 
@@ -776,15 +787,15 @@
         }
         try {
           await sendPasswordResetEmail(auth, identifier);
-          setStatus("Enviámos um email para redefinir a sua palavra-passe.", "success");
+          setStatus("Envi�mos um email para redefinir a sua palavra-passe.", "success");
         } catch (error) {
-          setStatus(`Não foi possível enviar o email: ${error.message}`, "error");
+          setStatus(`N�o foi poss�vel enviar o email: ${error.message}`, "error");
         }
       });
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Não há verificação em 2 passos pendente.", "error");
+          setStatus("N�o h� verifica��o em 2 passos pendente.", "error");
           return;
         }
 
@@ -796,27 +807,27 @@
           };
           const phoneAuthProvider = new PhoneAuthProvider(auth);
           mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
-          setStatus("Código SMS enviado.", "success");
+          setStatus("C�digo SMS enviado.", "success");
         } catch (error) {
           mfaRecaptchaVerifier.clear();
-          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+          setStatus(`N�o foi poss�vel enviar o SMS: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Não há verificação em 2 passos pendente.", "error");
+          setStatus("N�o h� verifica��o em 2 passos pendente.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Primeiro envie o código SMS.", "error");
+          setStatus("Primeiro envie o c�digo SMS.", "error");
           return;
         }
 
         const code = mfaCodeInput.value.trim();
         if (!code) {
-          setStatus("Introduza o código SMS.", "error");
+          setStatus("Introduza o c�digo SMS.", "error");
           return;
         }
 
@@ -828,10 +839,10 @@
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Sessão iniciada com sucesso.", "success");
+          setStatus("Sess�o iniciada com sucesso.", "success");
           window.location.href = "conta.html";
         } catch (error) {
-          setStatus(`Código inválido: ${error.message}`, "error");
+          setStatus(`C�digo inv�lido: ${error.message}`, "error");
         }
       });
 
@@ -859,12 +870,12 @@
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("As palavras-passe não coincidem.", "error");
+          setStatus("As palavras-passe n�o coincidem.", "error");
           return;
         }
 
         if (captchaValue !== currentCaptcha) {
-          setStatus("O código da imagem não coincide.", "error");
+          setStatus("O c�digo da imagem n�o coincide.", "error");
           currentCaptcha = generateCaptcha();
           return;
         }
@@ -899,25 +910,25 @@
       verifyEmailBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Inicie sessão para verificar o seu email.", "error");
+          setStatus("Inicie sess�o para verificar o seu email.", "error");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email enviado. Verifique o Spam e Promoções.", "success");
+          setStatus("Email enviado. Verifique o Spam e Promo��es.", "success");
         } catch (error) {
-          setStatus(`Não foi possível enviar: ${error.message}`, "error");
+          setStatus(`N�o foi poss�vel enviar: ${error.message}`, "error");
         }
       });
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Sessão iniciada com Google.", "success");
+          setStatus("Sess�o iniciada com Google.", "success");
           window.location.href = "conta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Início de sessão com Google cancelado.", "error");
+            setStatus("In�cio de sess�o com Google cancelado.", "error");
             return;
           }
           setStatus(`Erro com Google: ${error.message}`, "error");
@@ -927,11 +938,11 @@
       googleRegisterBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Registo concluído com Google.", "success");
+          setStatus("Registo conclu�do com Google.", "success");
           window.location.href = "conta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Início de sessão com Google cancelado.", "error");
+            setStatus("In�cio de sess�o com Google cancelado.", "error");
             return;
           }
           setStatus(`Erro com Google: ${error.message}`, "error");
@@ -941,7 +952,7 @@
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Introduza um número de telefone antes de enviar o código.", "error");
+          setStatus("Introduza um n�mero de telefone antes de enviar o c�digo.", "error");
           return;
         }
         try {
@@ -949,7 +960,7 @@
           confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
           setStatus("SMS enviado. Verifique o seu telefone.", "success");
         } catch (error) {
-          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+          setStatus(`N�o foi poss�vel enviar o SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -957,25 +968,25 @@
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Primeiro envie o código SMS.", "error");
+          setStatus("Primeiro envie o c�digo SMS.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Escreva o código SMS.", "error");
+          setStatus("Escreva o c�digo SMS.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
           setStatus("Telefone verificado com sucesso.", "success");
         } catch (error) {
-          setStatus("Código incorreto. Tente novamente.", "error");
+          setStatus("C�digo incorreto. Tente novamente.", "error");
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Sessão terminada.", "info");
+        setStatus("Sess�o terminada.", "info");
       });
 
       onAuthStateChanged(auth, (user) => {
@@ -991,4 +1002,5 @@
   </script>
 </body>
 </html>
+
 

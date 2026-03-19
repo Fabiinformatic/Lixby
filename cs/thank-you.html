@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/cs/thank-you">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/thank-you" hreflang="da-DK">
@@ -23,7 +30,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/thank-you" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/thank-you" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +105,10 @@
   <link rel="apple-touch-icon" href="/icon.png">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
   <link rel="canonical" href="https://www.lixby.es/cs/thank-you">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="cs-CZ">
@@ -121,7 +132,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/thank-you" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/thank-you" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
@@ -130,11 +141,11 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Objedn�vka potvrzena</p>
-      <h1 class="thank-title">Dekujeme za v� n�kup</h1>
-      <p id="thankMessage">Va�i objedn�vku pripravujeme a brzy v�m za�leme potvrzen� e-mailem.</p>
+      <p class="eyebrow">Objedn?vka potvrzena</p>
+      <h1 class="thank-title">Dekujeme za v? n?kup</h1>
+      <p id="thankMessage">Va?i objedn?vku pripravujeme a brzy v?m za?leme potvrzen? e-mailem.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Objedn�vka</span>
+        <span>Objedn?vka</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
@@ -144,7 +155,7 @@
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Domu</a>
-        <a class="btn btn-secondary" href="../track.html">Sledovat objedn�vku</a>
+        <a class="btn btn-secondary" href="../track.html">Sledovat objedn?vku</a>
       </div>
     </section>
   </main>
@@ -172,7 +183,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} � ${item.qty}</span>
+            <span>${item.name} ? ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");
@@ -196,4 +207,5 @@
   </script>
 </body>
 </html>
+
 

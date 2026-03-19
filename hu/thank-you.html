@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="hu">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/hu/thank-you">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/thank-you" hreflang="da-DK">
@@ -23,11 +30,11 @@
   <link rel="alternate" href="https://www.lixby.es/sk/thank-you" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/thank-you" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>K�sz�nj�k | Lixby</title>
+  <title>K?sz?nj?k | Lixby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -98,6 +105,10 @@
   <link rel="apple-touch-icon" href="/icon.png">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
   <link rel="canonical" href="https://www.lixby.es/hu/thank-you">
   <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="cs-CZ">
@@ -121,7 +132,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/thank-you" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/thank-you" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
@@ -130,21 +141,21 @@
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">A rendel�s megeros�tve</p>
-      <h1 class="thank-title">K�sz�nj�k a v�s�rl�st</h1>
-      <p id="thankMessage">Felk�sz�tj�k a rendel�s�t, �s hamarosan e-mailben k�ld�nk visszaigazol�st.</p>
+      <p class="eyebrow">A rendel?s megeros?tve</p>
+      <h1 class="thank-title">K?sz?nj?k a v?s?rl?st</h1>
+      <p id="thankMessage">Felk?sz?tj?k a rendel?s?t, ?s hamarosan e-mailben k?ld?nk visszaigazol?st.</p>
       <div class="order-pill" id="orderIdPill" hidden>
-        <span>Rendel�s</span>
+        <span>Rendel?s</span>
         <strong id="orderIdValue">LX-XXXX</strong>
       </div>
       <div id="orderItems" class="order-list"></div>
       <div id="orderTotal" class="order-total" hidden>
-        <span>�sszesen</span>
+        <span>?sszesen</span>
         <span id="orderTotalValue">0 EUR</span>
       </div>
       <div class="thank-actions">
         <a class="btn btn-primary" href="./">Kezdolap</a>
-        <a class="btn btn-secondary" href="../track.html">Rendel�s k�vet�se</a>
+        <a class="btn btn-secondary" href="../track.html">Rendel?s k?vet?se</a>
       </div>
     </section>
   </main>
@@ -172,7 +183,7 @@
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} � ${item.qty}</span>
+            <span>${item.name} ? ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");
@@ -196,4 +207,5 @@
   </script>
 </body>
 </html>
+
 

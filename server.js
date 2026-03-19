@@ -48,10 +48,13 @@ function sendEmailJsEmail(order) {
     user_id: emailjsPublicKey,
     template_params: {
       order_id: order.id,
+      order_number: order.orderNumber,
       email: order.email,
       status: order.paymentStatus || order.status,
       amount: order.amountTotal,
-      currency: order.currency || "EUR"
+      currency: order.currency || "EUR",
+      product: order.product,
+      address: order.address || "No aplica"
     }
   };
 
@@ -87,6 +90,31 @@ function sendEmailJsEmail(order) {
       resolve(false);
     }
   });
+}
+
+function formatOrderNumber(sessionId) {
+  const seed = sessionId ? sessionId.replace(/[^a-zA-Z0-9]/g, "") : "";
+  const tail = seed.slice(-8).toUpperCase().padStart(8, "0");
+  return `LX-${tail}`;
+}
+
+function formatAmount(amountTotal, currency) {
+  if (typeof amountTotal !== "number") return null;
+  const normalized = amountTotal.toFixed(2);
+  return `${normalized} ${currency || "EUR"}`;
+}
+
+function formatAddress(address) {
+  if (!address) return null;
+  const parts = [
+    address.line1,
+    address.line2,
+    address.postal_code,
+    address.city,
+    address.state,
+    address.country
+  ].filter(Boolean);
+  return parts.length ? parts.join(", ") : null;
 }
 
 app.post("/create-checkout-session", express.json(), async (req, res) => {
@@ -140,15 +168,50 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
     const orderId =
       (session.metadata && session.metadata.orderId) || session.client_reference_id;
 
+    let lineItems = [];
+    try {
+      const items = await stripe.checkout.sessions.listLineItems(session.id, {
+        limit: 10
+      });
+      lineItems = items && items.data ? items.data : [];
+    } catch (error) {
+      console.warn("No se pudieron cargar los line items:", error.message);
+    }
+
+    const product =
+      lineItems.length > 0
+        ? lineItems
+            .map((item) => {
+              const name =
+                (item.price && item.price.product && item.price.product.name) ||
+                item.description ||
+                "Producto";
+              const qty = item.quantity ? `x${item.quantity}` : "";
+              return `${name} ${qty}`.trim();
+            })
+            .join(", ")
+        : "Cascos Lixby";
+
+    const address = formatAddress(
+      (session.shipping_details && session.shipping_details.address) ||
+        (session.customer_details && session.customer_details.address)
+    );
+
     const order = {
       id: orderId || `LXB-${Math.floor(Math.random() * 100000)}`,
+      orderNumber: formatOrderNumber(session.id),
       email: session.customer_details && session.customer_details.email,
-      product: "Cascos Lixby",
+      product,
       status: "Pedido recibido",
       paymentStatus: "paid",
       sessionId: session.id,
       amountTotal: session.amount_total ? session.amount_total / 100 : null,
       currency: session.currency ? session.currency.toUpperCase() : "EUR",
+      amountLabel: formatAmount(
+        session.amount_total ? session.amount_total / 100 : null,
+        session.currency ? session.currency.toUpperCase() : "EUR"
+      ),
+      address,
       paidAt: new Date().toISOString(),
       createdAt: new Date().toISOString()
     };
@@ -178,7 +241,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
           from: resendFrom,
           to: order.email,
           subject: "Tu pedido en Lixby",
-          text: `Tu pedido en Lixby\n\nCódigo: ${order.id}\n\nRastrea aquí:\n${trackUrl}`
+          text: `Tu pedido en Lixby\n\nNumero de pedido: ${order.orderNumber}\nID interno: ${order.id}\nProducto: ${order.product}\nTotal: ${order.amountLabel || order.amountTotal || ""}\nDireccion: ${order.address || "No aplica"}\n\nRastrea aqui:\n${trackUrl}`
         });
       } catch (error) {
         console.warn("No se pudo enviar el email:", error.message);
@@ -206,11 +269,21 @@ app.get("/track-order/:orderId", async (req, res) => {
   }
 
   const doc = await db.collection("orders").doc(orderId).get();
-  if (!doc.exists) {
+  if (doc.exists) {
+    return res.json(doc.data());
+  }
+
+  const snapshot = await db
+    .collection("orders")
+    .where("orderNumber", "==", orderId)
+    .limit(1)
+    .get();
+
+  if (snapshot.empty) {
     return res.status(404).json({ error: "Pedido no encontrado." });
   }
 
-  return res.json(doc.data());
+  return res.json(snapshot.docs[0].data());
 });
 
 app.post("/admin/update-order", async (req, res) => {

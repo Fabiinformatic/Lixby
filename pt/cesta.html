@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/pt/cesta">
   <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/cesta" hreflang="da-DK">
@@ -23,7 +30,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/cesta" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/cesta" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/cesta" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/es/cesta" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
         <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,6 +196,10 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
   <link rel="canonical" href="https://www.lixby.es/pt/cesta">
   <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
@@ -212,7 +223,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/cesta" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/cesta" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/cesta" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/es/cesta" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
@@ -245,7 +256,7 @@
       <aside class="cart-summary">
         <h2>Resumo</h2>
         <div class="cart-row"><span>Subtotal</span><span id="subtotal">0 EUR</span></div>
-        <div class="cart-row"><span>Envio</span><span>Grátis</span></div>
+        <div class="cart-row"><span>Envio</span><span>Gr�tis</span></div>
         <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
           <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
@@ -348,7 +359,7 @@
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">O teu carrinho está vazio. <a href="tienda.html">Ir para a loja</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">O teu carrinho est� vazio. <a href="tienda.html">Ir para a loja</a>.</p>`;
         subtotalEl.textContent = "0 EUR";
         totalEl.textContent = "0 EUR";
         return;
@@ -411,12 +422,12 @@
     checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
       if (cart.length === 0) {
-        alert("O teu carrinho está vazio.");
+        alert("O teu carrinho est� vazio.");
         return;
       }
 
       if (!authReady) {
-        alert("A carregar sessão. Tenta novamente em alguns segundos.");
+        alert("A carregar sess�o. Tenta novamente em alguns segundos.");
         return;
       }
 
@@ -453,4 +464,5 @@
   </script>
 </body>
 </html>
+
 

@@ -1,2 +1,6 @@
 bulgaro hasta returns
-italiano todo menos carpetas
+español 100%
+ingles 100%
+frances 100%
+portugues 100%
+italiano 100%

@@ -1,0 +1,388 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Track order | Lixby</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f5f1;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #606060;
+        --accent: #0f62fe;
+        --border: #e4e0d8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+      }
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      form {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .input-group {
+        flex: 1 1 240px;
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .input-prefix {
+        padding: 12px 10px 12px 14px;
+        font-weight: 600;
+        color: var(--muted);
+        background: #f7f5f0;
+        border-right: 1px solid var(--border);
+        letter-spacing: 0.04em;
+      }
+      input[type="text"] {
+        flex: 1 1 auto;
+        padding: 12px 14px;
+        border: none;
+        font-size: 1rem;
+        outline: none;
+      }
+      button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .tracking {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .step {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        background: #fff;
+      }
+      .step.done {
+        background: #4caf50;
+        color: #fff;
+        border-color: #4caf50;
+      }
+      .result {
+        margin-top: 18px;
+        padding: 14px;
+        border-radius: 10px;
+        background: #f0f5ff;
+        border: 1px solid #d6e4ff;
+        display: none;
+      }
+      .error {
+        background: #fff1f0;
+        border: 1px solid #ffccc7;
+      }
+      .label {
+        font-weight: 600;
+      }
+    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://www.lixby.es",
+      "logo": "https://www.lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <header class="nav" id="nav">
+    
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="shop.html" class="nav-link">Store</a>
+        <a href="#productos" class="nav-link">Products</a>
+        <a href="#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="shop.html" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Search product..."
+            aria-label="Search product"
+          >
+        </form>
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
+        </a>
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Search"
+          aria-label="Search product"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Close menu">
+        <span aria-hidden="true">�</span> 
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Main mobile">
+      <a href="shop.html">Store</a>
+      <a href="#productos">Products</a>
+      <a href="#apps">Apps</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="cesta.html">Cart</a>
+      <a href="account.html">Account</a>
+    </div>
+  </div>
+  <div class="wrap">
+      <div class="card">
+        <h1>Track your order</h1>
+        <p>If you arrived from a link, you will see the status automatically.</p>
+        <form id="track-form">
+          <div class="input-group">
+            <span class="input-prefix">LX-</span>
+            <input
+              id="order-id"
+              type="text"
+              placeholder="XXXXXXXX"
+              autocomplete="off"
+              required
+              inputmode="text"
+              aria-label="Order code"
+            />
+          </div>
+          <button type="submit">Check</button>
+        </form>
+        <div id="result" class="result"></div>
+      </div>
+    </div>
+  <script>
+      const form = document.getElementById("track-form");
+      const input = document.getElementById("order-id");
+      const result = document.getElementById("result");
+      const statusSteps = [
+        "Order received",
+        "Preparing order",
+        "Shipped",
+        "Out for delivery",
+        "Delivered"
+      ];
+
+      const renderTracking = (data) => {
+        const currentIndex = statusSteps.indexOf(data.status);
+        const stepsHtml = statusSteps
+          .map((step, idx) => {
+            const doneClass = idx <= currentIndex ? "done" : "";
+            return `<div class="step ${doneClass}">${step}</div>`;
+          })
+          .join("");
+
+        const trackingExtra = data.trackingCarrier || data.trackingNumber
+          ? `<div><span class="label">Shipping:</span> ${data.trackingCarrier || "-"} ${
+              data.trackingNumber || ""
+            }</div>`
+          : "";
+
+        const paymentLine = data.paymentStatus
+          ? `<div><span class="label">Payment:</span> ${data.paymentStatus}</div>`
+          : "";
+
+        result.innerHTML = `
+          <div><span class="label">Order number:</span> ${data.orderNumber || data.id}</div>
+          <div><span class="label">Internal ID:</span> ${data.id}</div>
+          <div><span class="label">Email:</span> ${data.email || "-"}</div>
+          <div><span class="label">Product:</span> ${data.product}</div>
+          <div><span class="label">Status:</span> ${data.status}</div>
+          ${paymentLine}
+          ${trackingExtra}
+          <div class="tracking">${stepsHtml}</div>
+        `;
+      };
+
+      const fetchOrder = async (id) => {
+        result.style.display = "block";
+        result.classList.remove("error");
+        result.textContent = "Searching for your order...";
+
+        try {
+          const res = await fetch(`/track-order/${encodeURIComponent(id)}`);
+          const data = await res.json();
+
+          if (!res.ok) {
+            result.classList.add("error");
+            result.textContent = data.error || "Order not found.";
+            return;
+          }
+
+          renderTracking(data);
+        } catch (error) {
+          result.classList.add("error");
+          result.textContent = "Error checking the order.";
+        }
+      };
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        let id = input.value.trim().toUpperCase();
+        if (!id) {
+          return;
+        }
+        if (!id.startsWith("LX-") && /^[A-Z0-9]+$/.test(id)) {
+          id = `LX-${id}`;
+        }
+        fetchOrder(id);
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const paramId = params.get("id");
+      if (paramId) {
+        window.location.href = `/track/${encodeURIComponent(paramId)}`;
+      }
+
+      const pathMatch = window.location.pathname.match(/\/track\/(.+)$/);
+      if (pathMatch && pathMatch[1]) {
+        const orderId = decodeURIComponent(pathMatch[1]);
+        input.value = orderId;
+        fetchOrder(orderId);
+      }
+    </script>
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>View and buy</h3>
+        <ul>
+          <li><a href="#">Store</a></li>
+          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="support.html">Support home page</a></li>
+          <li><a href="support.html#faq">Online Store FAQs</a></li>
+          <li><a href="support.html">Warranty Information</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Account</h3>
+        <ul>
+          <li><a href="../track.html">Orders</a></li>
+          <li><a href="account.html">My account</a></li>
+          <li><a href="account.html">Coupons</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>About Lixby</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li> 
+          <li><a href="support.html">Warranty</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="support.html">Contact</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright � 2026 Lixby. All rights reserved.</p> 
+      <div class="footer-legal-links">
+        <a href="pages/legal/privacy.html">Privacy Policy</a>
+        <a href="pages/legal/cookies.html">Cookie Usage</a>
+        <a href="pages/legal/terms.html">Terms of Use</a>
+        <a href="support.html">Sales and Refunds</a>
+        <a href="pages/legal/legal-notice.html">Legal Notices</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+

@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/es/cambiar-contrasena">
   <link rel="alternate" href="https://www.lixby.es/cs/cambiar-contrasena" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/cambiar-contrasena" hreflang="da-DK">
@@ -22,11 +29,11 @@
   <link rel="alternate" href="https://www.lixby.es/sk/cambiar-contrasena" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/cambiar-contrasena" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/cambiar-contrasena" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/es/cambiar-contrasena" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cambiar contrasena | Lixby</title>
+  <title>Cambiar contraseña | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -117,6 +124,10 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
   <link rel="canonical" href="https://www.lixby.es/es/cambiar-contrasena">
   <link rel="alternate" href="https://www.lixby.es/cs/cambiar-contrasena" hreflang="cs-CZ">
@@ -139,7 +150,7 @@
   <link rel="alternate" href="https://www.lixby.es/sk/cambiar-contrasena" hreflang="sk-SK">
   <link rel="alternate" href="https://www.lixby.es/sl/cambiar-contrasena" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/cambiar-contrasena" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/es/cambiar-contrasena" hreflang="x-default">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
@@ -195,7 +206,7 @@
         >
       </form>
       <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
-        <span aria-hidden="true">×</span>
+        <span aria-hidden="true">✕</span>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principal móvil">
@@ -214,19 +225,19 @@
     <div id="statusMsg" class="status-msg"></div>
 
     <section class="password-card">
-      <h1>Cambiar contrasena</h1>
-      <p class="helper">Por seguridad, te pedimos tu contrasena actual.</p>
+      <h1>Cambiar contraseña</h1>
+      <p class="helper">Por seguridad, te pedimos tu contraseña actual.</p>
 
       <div class="field">
-        <label for="currentPassword">Contrasena actual</label>
+        <label for="currentPassword">Contraseña actual</label>
         <input id="currentPassword" type="password" autocomplete="current-password">
       </div>
       <div class="field">
-        <label for="newPassword">Nueva contrasena</label>
+        <label for="newPassword">Nueva contraseña</label>
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Confirmar nueva contrasena</label>
+        <label for="confirmPassword">Confirmar nueva contraseña</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
@@ -284,7 +295,7 @@
     savePasswordBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user || !user.email) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Sesión no válida.", "error");
         return;
       }
 
@@ -293,17 +304,17 @@
       const confirm = confirmPassword.value.trim();
 
       if (!current) {
-        showStatus("Introduce la contrasena actual.", "error");
+        showStatus("Introduce la contraseña actual.", "error");
         return;
       }
 
       if (!isStrongEnough(next)) {
-        showStatus("La nueva contrasena debe tener al menos 8 caracteres.", "error");
+        showStatus("La nueva contraseña debe tener al menos 8 caracteres.", "error");
         return;
       }
 
       if (next !== confirm) {
-        showStatus("Las contrasenas no coinciden.", "error");
+        showStatus("Las contraseñas no coinciden.", "error");
         return;
       }
 
@@ -312,7 +323,7 @@
         await reauthenticateWithCredential(user, credential);
         await updatePassword(user, next);
         clearInputs();
-        showStatus("Contrasena actualizada correctamente.", "success");
+        showStatus("Contraseña actualizada correctamente.", "success");
       } catch (error) {
         showStatus(`No se pudo actualizar: ${error.message}`, "error");
       }
@@ -320,4 +331,3 @@
   </script>
 </body>
 </html>
-

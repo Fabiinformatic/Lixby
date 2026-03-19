@@ -1,6 +1,13 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rastrear pedido | Lixby</title>
@@ -48,12 +55,29 @@
         gap: 12px;
         flex-wrap: wrap;
       }
-      input[type="text"] {
+      .input-group {
         flex: 1 1 240px;
-        padding: 12px 14px;
-        border-radius: 10px;
+        display: flex;
+        align-items: center;
         border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .input-prefix {
+        padding: 12px 10px 12px 14px;
+        font-weight: 600;
+        color: var(--muted);
+        background: #f7f5f0;
+        border-right: 1px solid var(--border);
+        letter-spacing: 0.04em;
+      }
+      input[type="text"] {
+        flex: 1 1 auto;
+        padding: 12px 14px;
+        border: none;
         font-size: 1rem;
+        outline: none;
       }
       button {
         padding: 12px 18px;
@@ -114,26 +138,36 @@
       ]
     }
   </script>
+  <link rel="stylesheet" href="style.css">
 </head>
   <body>
-    <div class="wrap">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="wrap">
       <div class="card">
         <h1>Rastrea tu pedido</h1>
         <p>Si llegaste desde un enlace, verás el estado automáticamente.</p>
         <form id="track-form">
-          <input
-            id="order-id"
-            type="text"
-            placeholder="LXB-XXXXX"
-            autocomplete="off"
-            required
-          />
+          <div class="input-group">
+            <span class="input-prefix">LX-</span>
+            <input
+              id="order-id"
+              type="text"
+              placeholder="XXXXXXXX"
+              autocomplete="off"
+              required
+              inputmode="text"
+              aria-label="Código de pedido"
+            />
+          </div>
           <button type="submit">Consultar</button>
         </form>
         <div id="result" class="result"></div>
       </div>
     </div>
-    <script>
+  <script>
       const form = document.getElementById("track-form");
       const input = document.getElementById("order-id");
       const result = document.getElementById("result");
@@ -165,7 +199,8 @@
           : "";
 
         result.innerHTML = `
-          <div><span class="label">Código:</span> ${data.id}</div>
+          <div><span class="label">Número de pedido:</span> ${data.orderNumber || data.id}</div>
+          <div><span class="label">ID interno:</span> ${data.id}</div>
           <div><span class="label">Email:</span> ${data.email || "-"}</div>
           <div><span class="label">Producto:</span> ${data.product}</div>
           <div><span class="label">Estado:</span> ${data.status}</div>
@@ -199,9 +234,12 @@
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        const id = input.value.trim();
+        let id = input.value.trim().toUpperCase();
         if (!id) {
           return;
+        }
+        if (!id.startsWith("LX-") && /^[A-Z0-9]+$/.test(id)) {
+          id = `LX-${id}`;
         }
         fetchOrder(id);
       });
@@ -219,9 +257,8 @@
         fetchOrder(orderId);
       }
     </script>
-  </body>
+</body>
 </html>
-
 
 
 
