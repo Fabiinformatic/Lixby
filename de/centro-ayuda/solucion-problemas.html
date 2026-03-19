@@ -187,7 +187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="../index.html" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="../tienda.html" class="nav-link">Tienda</a>
+        <a href="../speichern.html" class="nav-link">Tienda</a>
         <a href="../index.html#productos" class="nav-link">Productos</a>
         <a href="../index.html#apps" class="nav-link">Apps</a>
         <a href="../support.html" class="nav-link">Soporte</a>
@@ -199,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="../tienda.html" method="get">
+        <form id="navSearchForm" action="../speichern.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -209,10 +209,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Buscar producto"
           >
         </form>
-        <a href="../cesta.html" class="nav-icon-link" aria-label="Cesta">
+        <a href="../Korb.html" class="nav-icon-link" aria-label="Cesta">
           <img src="../images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="../cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+        <a href="../Konto.html" class="nav-icon-link" aria-label="Cuenta">
           <img src="../images/cuenta.png" alt="Cuenta">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Men?" aria-controls="navMobilePanel" aria-expanded="false">
@@ -227,7 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../speichern.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -242,14 +242,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principal m?vil">
-      <a href="../tienda.html">Tienda</a>
+      <a href="../speichern.html">Tienda</a>
       <a href="../index.html#productos">Productos</a>
       <a href="../index.html#apps">Apps</a>
       <a href="../support.html">Soporte</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cesta.html">Cesta</a>
-      <a href="../cuenta.html">Cuenta</a>
+      <a href="../Korb.html">Cesta</a>
+      <a href="../Konto.html">Cuenta</a>
     </div>
   </div>
   <section class="help-hero">
@@ -286,7 +286,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Ver y comprar</h3>
         <ul>
-          <li><a href="../tienda.html">Tienda</a></li>
+          <li><a href="../speichern.html">Tienda</a></li>
           <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="../index.html#apps">Apps</a></li>
           <li><a href="../support.html">Soporte</a></li>
@@ -305,8 +305,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Cuenta</h3>
         <ul>
           <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="../cuenta.html">Mi cuenta</a></li>
-          <li><a href="../cuenta.html">Cupones</a></li>
+          <li><a href="../Konto.html">Mi cuenta</a></li>
+          <li><a href="../Konto.html">Cupones</a></li>
         </ul>
       </section>
       <section class="footer-section">
@@ -381,7 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `../speichern.html?q=${encodeURIComponent(query)}` : "../speichern.html";
         window.location.href = url;
       });
     }
@@ -390,7 +390,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `../speichern.html?q=${encodeURIComponent(query)}` : "../speichern.html";
         window.location.href = url;
       });
     }

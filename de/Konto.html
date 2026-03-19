@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi cuenta | Lixby</title>
+  <title>Mein Konto | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -506,158 +506,158 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="speichern.html" class="nav-link">Shop</a>
+        <a href="index.html#productos" class="nav-link">Produkte</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="Korb.html" class="nav-icon-link" aria-label="Warenkorb">
+          <img src="images/Bolsa.png" alt="Warenkorb">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Konto">
+          <img src="images/cuenta.png" alt="Konto">
         </a>
       </div>
     </div>
   </header>
 
   <main class="container account-page">
-    <div id="statusMsg" class="status-msg">Comprobando sesion...</div>
+    <div id="statusMsg" class="status-msg">Sitzung wird überprüft...</div>
 
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
-        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Foto de perfil">
-        <h1 id="sideName">Tu cuenta Lixby</h1>
+        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Profilbild">
+        <h1 id="sideName">Dein Lixby-Konto</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
-          <button id="editBtn" class="btn btn-secondary" type="button">Editar datos</button>
-          <a class="btn btn-secondary" href="cesta.html">Ver pedidos</a>
-          <button id="logoutBtn" class="btn btn-primary" type="button">Cerrar sesion</button>
+          <button id="editBtn" class="btn btn-secondary" type="button">Daten bearbeiten</button>
+          <a class="btn btn-secondary" href="Korb.html">Bestellungen ansehen</a>
+          <button id="logoutBtn" class="btn btn-primary" type="button">Abmelden</button>
         </div>
       </aside>
 
       <section id="profileForm" class="account-main readonly">
         <section class="account-section">
-          <h2>Datos personales</h2>
+          <h2>Persönliche Daten</h2>
           <div class="field-grid">
             <div class="field">
-              <label for="firstName">Nombre</label>
+              <label for="firstName">Vorname</label>
               <input id="firstName" type="text">
             </div>
             <div class="field">
-              <label for="lastName">Apellidos</label>
+              <label for="lastName">Nachname</label>
               <input id="lastName" type="text">
             </div>
             <div class="field">
-              <label for="region">Pais / Region</label>
+              <label for="region">Land / Region</label>
               <input id="region" type="text">
             </div>
             <div class="field">
-              <label for="birthDate">Fecha de nacimiento</label>
+              <label for="birthDate">Geburtsdatum</label>
               <input id="birthDate" type="text">
             </div>
             <div class="field">
-              <label for="language">Idioma</label>
+              <label for="language">Sprache</label>
               <input id="language" type="text">
             </div>
             <div class="field">
-              <label for="timezone">Zona horaria</label>
+              <label for="timezone">Zeitzone</label>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label for="photoUrl">Foto de perfil</label>
+              <label for="photoUrl">Profilbild-URL</label>
               <input id="photoUrl" type="text">
             </div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Contacto</h2>
+          <h2>Kontakt</h2>
           <div class="field-grid three">
             <div class="field">
-              <label for="email">Email</label>
+              <label for="email">E-Mail</label>
               <input id="email" type="email">
             </div>
             <div class="field">
-              <label for="phone">Numero de telefono</label>
+              <label for="phone">Telefonnummer</label>
               <input id="phone" type="text">
             </div>
             <div class="field">
-              <label for="countryContact">Pais</label>
+              <label for="countryContact">Land</label>
               <input id="countryContact" type="text">
             </div>
             <div class="field full">
-              <label for="address">Direccion</label>
+              <label for="address">Adresse</label>
               <textarea id="address"></textarea>
             </div>
             <div class="field">
-              <label for="city">Ciudad</label>
+              <label for="city">Stadt</label>
               <input id="city" type="text">
             </div>
             <div class="field">
-              <label for="postalCode">Codigo postal</label>
+              <label for="postalCode">Postleitzahl</label>
               <input id="postalCode" type="text">
             </div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Preferencias</h2>
+          <h2>Einstellungen</h2>
           <div class="check-list">
-            <label class="check-row"><input id="prefAds" type="checkbox"> Recibir anuncios y marketing</label>
-            <label class="check-row"><input id="prefNews" type="checkbox"> Noticias y novedades</label>
-            <label class="check-row"><input id="prefUpdates" type="checkbox"> Actualizaciones de software</label>
-            <label class="check-row"><input id="prefOffers" type="checkbox"> Ofertas especiales</label>
-            <label class="check-row"><input id="prefSupport" type="checkbox"> Emails de soporte</label>
+            <label class="check-row"><input id="prefAds" type="checkbox"> Werbung und Marketing erhalten</label>
+            <label class="check-row"><input id="prefNews" type="checkbox"> News und Neuigkeiten</label>
+            <label class="check-row"><input id="prefUpdates" type="checkbox"> Software-Updates</label>
+            <label class="check-row"><input id="prefOffers" type="checkbox"> Sonderangebote</label>
+            <label class="check-row"><input id="prefSupport" type="checkbox"> Support-E-Mails</label>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Seguridad</h2>
+          <h2>Sicherheit</h2>
           <div class="action-list">
-            <div class="action-item"><span>Cambiar contrase?a</span><a class="btn btn-secondary" href="cambiar-contrasena.html">Gestionar</a></div>
-            <div class="action-item"><span>Ver sesiones activas</span><button class="btn btn-secondary" type="button">Ver</button></div>
-            <div class="action-item"><span>Cerrar sesion en otros dispositivos</span><button class="btn btn-secondary" type="button">Cerrar</button></div>
-            <div class="action-item"><span>Activar verificacion en 2 pasos</span><a id="twoFactorBtn" class="btn btn-secondary" href="verificacion-2-pasos.html">Configurar</a></div>
-            <div class="action-item"><span>Verificar email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Enviar</button></div>
-            <div class="action-item"><span>Historial de inicio de sesion</span><button class="btn btn-secondary" type="button">Ver historial</button></div>
+            <div class="action-item"><span>Passwort ändern</span><a class="btn btn-secondary" href="cambiar-contrasena.html">Verwalten</a></div>
+            <div class="action-item"><span>Aktive Sitzungen anzeigen</span><button class="btn btn-secondary" type="button">Anzeigen</button></div>
+            <div class="action-item"><span>Auf anderen Geräten abmelden</span><button class="btn btn-secondary" type="button">Abmelden</button></div>
+            <div class="action-item"><span>2-Faktor-Authentifizierung aktivieren</span><a id="twoFactorBtn" class="btn btn-secondary" href="Zwei-Schritt-Verifizierung.html">Einrichten</a></div>
+            <div class="action-item"><span>E-Mail bestätigen</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Senden</button></div>
+            <div class="action-item"><span>Anmeldeverlauf</span><button class="btn btn-secondary" type="button">Verlauf anzeigen</button></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Pedidos</h2>
+          <h2>Bestellungen</h2>
           <article class="order-card">
-            <strong>LixBuds One - Pedido #1482</strong>
-            <span>Estado: Enviado</span>
-            <span>Fecha: 10 marzo 2026</span>
+            <strong>LixBuds One - Bestellung #1482</strong>
+            <span>Status: Versendet</span>
+            <span>Datum: 10. März 2026</span>
             <div class="order-actions">
-              <button class="btn btn-secondary" type="button">Ver pedido</button>
-              <button class="btn btn-secondary" type="button">Descargar factura</button>
-              <button class="btn btn-primary" type="button">Seguimiento envio</button>
+              <button class="btn btn-secondary" type="button">Bestellung anzeigen</button>
+              <button class="btn btn-secondary" type="button">Rechnung herunterladen</button>
+              <button class="btn btn-primary" type="button">Sendungsverfolgung</button>
             </div>
           </article>
         </section>
 
         <section class="account-section">
-          <h2>Pagos</h2>
+          <h2>Zahlungen</h2>
           <div class="payment-panel" id="paymentsSection">
-            <h3>Tarjetas guardadas</h3>
+            <h3>Gespeicherte Karten</h3>
             <div class="payment-grid">
               <div class="payment-field">
-                <label for="payCardholder">Titular</label>
-                <input id="payCardholder" type="text" placeholder="Nombre y apellidos">
+                <label for="payCardholder">Karteninhaber</label>
+                <input id="payCardholder" type="text" placeholder="Vor- und Nachname">
               </div>
             <div class="payment-field">
-              <label for="payCardNumber">Numero de tarjeta</label>
+              <label for="payCardNumber">Kartennummer</label>
               <div class="card-input">
-                <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Tarjeta">
+                <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Karte">
                 <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
               </div>
             </div>
               <div class="payment-field">
-                <label for="payExpiry">Caducidad (MM/AA)</label>
+                <label for="payExpiry">Gültig bis (MM/JJ)</label>
                 <input id="payExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="08/29">
               </div>
               <div class="payment-field">
@@ -666,68 +666,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="order-actions">
-              <button id="addPaymentBtn" class="btn btn-primary" type="button">Anadir metodo de pago</button>
+              <button id="addPaymentBtn" class="btn btn-primary" type="button">Zahlungsmethode hinzufügen</button>
             </div>
             <div id="paymentMethods" class="payment-methods"></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Direccion de facturacion</h2>
+          <h2>Rechnungsadresse</h2>
           <div class="payment-panel">
-            <h3>Datos de facturacion</h3>
+            <h3>Rechnungsdaten</h3>
             <div class="payment-grid two">
               <div class="payment-field">
-                <label for="billName">Nombre fiscal</label>
-                <input id="billName" type="text" placeholder="Nombre completo">
+                <label for="billName">Rechnungsname</label>
+                <input id="billName" type="text" placeholder="Vollständiger Name">
               </div>
               <div class="payment-field">
-                <label for="billCountry">Pais</label>
-                <input id="billCountry" type="text" placeholder="Espana">
+                <label for="billCountry">Land</label>
+                <input id="billCountry" type="text" placeholder="Deutschland">
               </div>
               <div class="payment-field full">
-                <label for="billAddress">Direccion</label>
-                <input id="billAddress" type="text" placeholder="Calle, numero, ciudad">
+                <label for="billAddress">Adresse</label>
+                <input id="billAddress" type="text" placeholder="Straße, Hausnummer, Stadt">
               </div>
               <div class="payment-field">
-                <label for="billCity">Ciudad</label>
-                <input id="billCity" type="text" placeholder="Madrid">
+                <label for="billCity">Stadt</label>
+                <input id="billCity" type="text" placeholder="Berlin">
               </div>
               <div class="payment-field">
-                <label for="billPostal">Codigo postal</label>
-                <input id="billPostal" type="text" placeholder="28001">
+                <label for="billPostal">Postleitzahl</label>
+                <input id="billPostal" type="text" placeholder="10115">
               </div>
             </div>
             <div class="order-actions">
-              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Guardar direccion de facturacion</button>
+              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Rechnungsadresse speichern</button>
             </div>
             <div id="billingSummary" class="billing-summary"></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Soporte</h2>
+          <h2>Support</h2>
           <div class="action-list">
-            <div class="action-item"><span>Contactar soporte</span><a class="btn btn-primary" href="pages/support.html">Abrir</a></div>
-            <div class="action-item"><span>Reportar problema</span><a class="btn btn-secondary" href="pages/support.html">Reportar</a></div>
-            <div class="action-item"><span>Manual de usuario</span><a class="btn btn-secondary" href="pages/support.html">Ver</a></div>
-            <div class="action-item"><span>Garantia del producto</span><a class="btn btn-secondary" href="pages/support.html">Consultar</a></div>
+            <div class="action-item"><span>Support kontaktieren</span><a class="btn btn-primary" href="pages/support.html">Öffnen</a></div>
+            <div class="action-item"><span>Problem melden</span><a class="btn btn-secondary" href="pages/support.html">Melden</a></div>
+            <div class="action-item"><span>Benutzerhandbuch</span><a class="btn btn-secondary" href="pages/support.html">Ansehen</a></div>
+            <div class="action-item"><span>Produktgarantie</span><a class="btn btn-secondary" href="pages/support.html">Anfragen</a></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Privacidad</h2>
+          <h2>Datenschutz</h2>
             <div class="action-list">
-            <div class="action-item"><span>Politica de privacidad</span><a class="btn btn-secondary" href="pages/legal/privacy.html">Ver</a></div>
-            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="pages/legal/cookies.html">Ver</a></div>
+            <div class="action-item"><span>Datenschutzrichtlinie</span><a class="btn btn-secondary" href="pages/legal/privacy.html">Ansehen</a></div>
+            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="pages/legal/cookies.html">Ansehen</a></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Cuenta</h2>
+          <h2>Konto</h2>
           <div class="action-list">
-            <div class="action-item"><span>Cerrar sesion</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Cerrar</button></div>
-            <div class="action-item"><span>Eliminar cuenta</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Eliminar</button></div>
+            <div class="action-item"><span>Abmelden</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Abmelden</button></div>
+            <div class="action-item"><span>Konto löschen</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Löschen</button></div>
           </div>
         </section>
       </section>
@@ -735,60 +735,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
   <div id="saveBar" class="save-bar" aria-live="polite">
-    <span>Cambios detectados</span>
-    <button id="saveChangesBtn" class="btn btn-primary" type="button">Guardar cambios</button>
+    <span>Änderungen erkannt</span>
+    <button id="saveChangesBtn" class="btn btn-primary" type="button">Änderungen speichern</button>
   </div>
 
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Ansehen & kaufen</h3>
         <ul>
-          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Shop</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
-          <li><a href="support.html">Soporte</a></li>
+          <li><a href="support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="support.html">P?gina inicial soporte</a></li>
-          <li><a href="support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="support.html">Informaci?n de Garant?a</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="support.html">Support-Startseite</a></li>
+          <li><a href="support.html#faq">FAQ Online-Shop</a></li>
+          <li><a href="support.html">Garantieinformationen</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">E-Mail an den CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Konto</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="cuenta.html">Mi cuenta</a></li>
-          <li><a href="cuenta.html">Cupones</a></li>
+          <li><a href="../track.html">Bestellungen</a></li>
+          <li><a href="cuenta.html">Mein Konto</a></li>
+          <li><a href="cuenta.html">Gutscheine</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>Über Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="support.html">Garant?a</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="support.html">Contacto</a></li>
+          <li><a href="support.html">Garantie</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="support.html">Kontakt</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright ? 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle Rechte vorbehalten.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Pol?tica de privacidad</a>
-        <a href="pages/legal/cookies.html">Uso de cookies</a>
-        <a href="pages/legal/terms.html">Condiciones de uso</a>
-        <a href="support.html">Ventas y reembolsos</a>
-        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="pages/legal/privacy.html">Datenschutzrichtlinie</a>
+        <a href="pages/legal/cookies.html">Cookie-Richtlinie</a>
+        <a href="pages/legal/terms.html">Nutzungsbedingungen</a>
+        <a href="support.html">Verkauf & Rückgabe</a>
+        <a href="pages/legal/legal-notice.html">Impressum</a>
       </div>
     </div>
   </footer>
@@ -933,7 +933,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     function detectBrand(cardNumber) {
       const digits = onlyDigits(cardNumber);
-      if (!digits) return { brand: "Tarjeta", icon: "card.svg" };
+      if (!digits) return { brand: "Karte", icon: "card.svg" };
 
       const first1 = digits.slice(0, 1);
       const first2 = digits.slice(0, 2);
@@ -954,7 +954,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (first4 === "9792") return { brand: "Troy", icon: "troy.svg" };
       if (n4 >= 2200 && n4 <= 2204) return { brand: "MIR", icon: "mir.svg" };
       if (first2 === "50" || (n2 >= 56 && n2 <= 69)) return { brand: "Maestro", icon: "maestro.svg" };
-      return { brand: "Tarjeta", icon: "card.svg" };
+      return { brand: "Karte", icon: "card.svg" };
     }
 
     function maskCard(cardNumber) {
@@ -971,7 +971,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function renderPaymentMethods() {
       const state = readPayments();
       if (!state.methods.length) {
-        paymentMethodsEl.innerHTML = `<p style="color:var(--muted);">No hay tarjetas guardadas.</p>`;
+        paymentMethodsEl.innerHTML = `<p style="color:var(--muted);">Keine gespeicherten Karten.</p>`;
         return;
       }
 
@@ -980,12 +980,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return `
           <article class="payment-item">
             <div>
-              <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Predeterminada</span>' : ""}</strong>
-              <small>Titular: ${method.cardholder} - Caduca ${method.expiry}</small>
+              <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Standard</span>' : ""}</strong>
+              <small>Inhaber: ${method.cardholder} - Gültig bis ${method.expiry}</small>
             </div>
             <div class="payment-item-actions">
-              <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Predeterminada</button>
-              <button class="btn btn-secondary" type="button" data-payment-action="remove" data-id="${method.id}">Eliminar</button>
+              <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Standard</button>
+              <button class="btn btn-secondary" type="button" data-payment-action="remove" data-id="${method.id}">Entfernen</button>
             </div>
           </article>
         `;
@@ -1006,11 +1006,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!billing.name && !billing.address && !billing.country && !billing.city && !billing.postalCode) {
         billingSummaryEl.innerHTML = `
           <div class="billing-summary-details">
-            <p>No hay direccion guardada.</p>
+            <p>Keine Adresse gespeichert.</p>
           </div>
           <div class="billing-summary-actions">
-            <button id="editBillingBtn" class="btn btn-secondary" type="button" disabled>Editar datos</button>
-            <button id="deleteBillingBtn" class="btn btn-secondary" type="button" disabled>Eliminar</button>
+            <button id="editBillingBtn" class="btn btn-secondary" type="button" disabled>Daten bearbeiten</button>
+            <button id="deleteBillingBtn" class="btn btn-secondary" type="button" disabled>Löschen</button>
           </div>
         `;
         return;
@@ -1018,14 +1018,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       billingSummaryEl.innerHTML = `
         <div class="billing-summary-details">
-          <strong>${billing.name || "Nombre fiscal"}</strong>
-          <span>${billing.address || "Direccion"}</span>
-          <span>${billing.city || "Ciudad"} ${billing.postalCode || ""}</span>
-          <span>${billing.country || "Pais"}</span>
+          <strong>${billing.name || "Rechnungsname"}</strong>
+          <span>${billing.address || "Adresse"}</span>
+          <span>${billing.city || "Stadt"} ${billing.postalCode || ""}</span>
+          <span>${billing.country || "Land"}</span>
         </div>
         <div class="billing-summary-actions">
-          <button id="editBillingBtn" class="btn btn-secondary" type="button">Editar datos</button>
-          <button id="deleteBillingBtn" class="btn btn-secondary" type="button">Eliminar</button>
+          <button id="editBillingBtn" class="btn btn-secondary" type="button">Daten bearbeiten</button>
+          <button id="deleteBillingBtn" class="btn btn-secondary" type="button">Löschen</button>
         </div>
       `;
     }
@@ -1044,7 +1044,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           el.readOnly = true;
         }
       });
-      editBtn.textContent = "Editar datos";
+      editBtn.textContent = "Daten bearbeiten";
       editMode = false;
       dirty = false;
       saveBar.classList.remove("show");
@@ -1059,7 +1059,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           el.readOnly = false;
         }
       });
-      editBtn.textContent = "Cancelar edicion";
+      editBtn.textContent = "Bearbeitung abbrechen";
       editMode = true;
       dirty = false;
       saveBar.classList.remove("show");
@@ -1068,7 +1068,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function mapBirth(profile) {
       if (profile.birthDate) return profile.birthDate;
       if (profile.birthYear && profile.birthMonth && profile.birthDay) {
-        return `${profile.birthDay}/${profile.birthMonth}/${profile.birthYear}`;
+        return `${profile.birthDay}.${profile.birthMonth}.${profile.birthYear}`;
       }
       return "";
     }
@@ -1076,17 +1076,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function fillProfile(user, profile) {
       inputs.firstName.value = profile.firstName || "";
       inputs.lastName.value = profile.lastName || "";
-      inputs.region.value = profile.country || "Espana";
+      inputs.region.value = profile.country || "Deutschland";
       inputs.birthDate.value = mapBirth(profile);
-      inputs.language.value = profile.language || navigator.language || "es-ES";
-      inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+      inputs.language.value = profile.language || navigator.language || "de-DE";
+      inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Berlin";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
       inputs.email.value = user.email || profile.email || "";
       inputs.phone.value = profile.phone || profile.phoneNumber || "";
       inputs.address.value = profile.address || "";
       inputs.city.value = profile.city || "";
       inputs.postalCode.value = profile.postalCode || "";
-      inputs.countryContact.value = profile.countryContact || profile.country || "Espana";
+      inputs.countryContact.value = profile.countryContact || profile.country || "Deutschland";
       inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
       inputs.prefNews.checked = Boolean(profile.prefNews);
       inputs.prefUpdates.checked = Boolean(profile.prefUpdates);
@@ -1094,8 +1094,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       inputs.prefSupport.checked = Boolean(profile.prefSupport);
 
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
-      sideName.textContent = fullName || "Tu cuenta Lixby";
-      sideEmail.textContent = inputs.email.value || "Sin email";
+      sideName.textContent = fullName || "Dein Lixby-Konto";
+      sideEmail.textContent = inputs.email.value || "Keine E-Mail";
       profilePhoto.src = inputs.photoUrl.value || "images/cuenta.png";
     }
 
@@ -1155,22 +1155,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cvv = onlyDigits(paymentInputs.cvv.value);
 
       if (!cardholder) {
-        showStatus("El titular de la tarjeta es obligatorio.", "error");
+        showStatus("Der Karteninhaber ist erforderlich.", "error");
         return;
       }
 
       if (!isValidCardNumber(cardNumber)) {
-        showStatus("Numero de tarjeta invalido.", "error");
+        showStatus("Ungültige Kartennummer.", "error");
         return;
       }
 
       if (!isValidExpiry(expiry)) {
-        showStatus("Fecha de caducidad invalida.", "error");
+        showStatus("Ungültiges Ablaufdatum.", "error");
         return;
       }
 
       if (cvv.length < 3 || cvv.length > 4) {
-        showStatus("CVV invalido.", "error");
+        showStatus("Ungültiger CVV.", "error");
         return;
       }
 
@@ -1197,9 +1197,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       paymentInputs.expiry.value = "";
       paymentInputs.cvv.value = "";
       cardBrandIcon.src = "images/icono-de.tarjeta/card.svg";
-      cardBrandIcon.alt = "Tarjeta";
+      cardBrandIcon.alt = "Karte";
 
-      showStatus("Metodo de pago guardado correctamente.", "success");
+      showStatus("Zahlungsmethode erfolgreich gespeichert.", "success");
     });
 
     paymentMethodsEl.addEventListener("click", (event) => {
@@ -1225,7 +1225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       writePayments(state);
       renderPaymentMethods();
-      showStatus("Pagos actualizados.", "success");
+      showStatus("Zahlungsmethoden aktualisiert.", "success");
     });
 
     saveBillingBtn.addEventListener("click", () => {
@@ -1238,7 +1238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       };
 
       if (!billing.name || !billing.country || !billing.address) {
-        showStatus("Completa nombre, pais y direccion de facturacion.", "error");
+        showStatus("Bitte fülle Name, Land und Adresse für die Rechnungsadresse aus.", "error");
         return;
       }
 
@@ -1249,7 +1249,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       billingInputs.address.value = "";
       billingInputs.city.value = "";
       billingInputs.postalCode.value = "";
-      showStatus("Direccion de facturacion guardada.", "success");
+      showStatus("Rechnungsadresse gespeichert.", "success");
     });
 
     billingSummaryEl.addEventListener("click", (event) => {
@@ -1259,7 +1259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (target.id === "editBillingBtn") {
         fillBilling();
         billingInputs.name.focus();
-        showStatus("Puedes editar la direccion de facturacion.", "success");
+        showStatus("Du kannst die Rechnungsadresse jetzt bearbeiten.", "success");
         return;
       }
 
@@ -1267,13 +1267,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         writeBilling({});
         fillBilling();
         renderBillingSummary();
-        showStatus("Direccion de facturacion eliminada.", "success");
+        showStatus("Rechnungsadresse gelöscht.", "success");
       }
     });
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "iniciar-sesion.html";
+        window.location.href = "einloggen.html";
         return;
       }
 
@@ -1282,18 +1282,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       fillBilling();
       renderBillingSummary();
       renderPaymentMethods();
-      showStatus("Cuenta cargada correctamente.", "success");
+      showStatus("Konto erfolgreich geladen.", "success");
       accountLayout.classList.remove("hidden");
       setReadonlyMode();
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
-        verifyEmailBtn.textContent = user.emailVerified ? "Verificado" : "Enviar";
+        verifyEmailBtn.textContent = user.emailVerified ? "Bestätigt" : "Senden";
         verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
       }
       if (twoFactorBtn) {
         const has2fa = multiFactor(user).enrolledFactors
           .some((factor) => factor.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
-        twoFactorBtn.textContent = has2fa ? "Verificado" : "Configurar";
+        twoFactorBtn.textContent = has2fa ? "Aktiviert" : "Einrichten";
         twoFactorBtn.classList.toggle("btn-verified", has2fa);
       }
     });
@@ -1312,7 +1312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     saveChangesBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Sitzung ungültig.", "error");
         return;
       }
 
@@ -1330,66 +1330,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         writeProfile(next);
         fillProfile(user, next);
         setReadonlyMode();
-        showStatus("Cambio realizado. Datos guardados.", "success");
+        showStatus("Änderungen gespeichert.", "success");
       } catch (error) {
-        showStatus(`No se pudo guardar: ${error.message}`, "error");
+        showStatus(`Speichern fehlgeschlagen: ${error.message}`, "error");
       }
     });
 
     async function doLogout() {
       await signOut(auth);
-      window.location.href = "iniciar-sesion.html";
+      window.location.href = "einloggen.html";
     }
 
     logoutBtn.addEventListener("click", doLogout);
     logoutBtnSecondary.addEventListener("click", doLogout);
 
     const emailActionSettings = {
-      url: `${window.location.origin}/es/verificado.html`,
+      url: `${window.location.origin}/de/verifiziert.html`,
       handleCodeInApp: false
     };
 
     verifyEmailBtn?.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Sitzung ungültig.", "error");
         return;
       }
       try {
-        showStatus("Enviando correo de verificacion...", "info");
+        showStatus("Sende Bestätigungs-E-Mail...", "info");
         await sendEmailVerification(user, emailActionSettings);
         await reload(user);
         if (verifyEmailBtn) {
           verifyEmailBtn.disabled = user.emailVerified;
-          verifyEmailBtn.textContent = user.emailVerified ? "Verificado" : "Enviar";
+          verifyEmailBtn.textContent = user.emailVerified ? "Bestätigt" : "Senden";
           verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
         }
-        showStatus("Email enviado. Revisa Spam y Promociones.", "success");
+        showStatus("E-Mail gesendet. Bitte prüfe auch deinen Spam-Ordner.", "success");
       } catch (error) {
-        showStatus(`No se pudo enviar: ${error.message || error.code}`, "error");
+        showStatus(`Senden fehlgeschlagen: ${error.message || error.code}`, "error");
       }
     });
 
     deleteAccountBtn.addEventListener("click", async () => {
-      const confirmed = window.confirm("?Seguro que quieres eliminar tu cuenta? Esta accion no se puede deshacer.");
+      const confirmed = window.confirm("Bist du sicher, dass du dein Konto löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.");
       if (!confirmed) return;
 
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesion no valida.", "error");
+        showStatus("Sitzung ungültig.", "error");
         return;
       }
 
       try {
         await deleteUser(user);
-        showStatus("Cuenta eliminada correctamente.", "success");
-        window.location.href = "iniciar-sesion.html";
+        showStatus("Konto erfolgreich gelöscht.", "success");
+        window.location.href = "einloggen.html";
       } catch (error) {
-        showStatus(`No se pudo eliminar la cuenta: ${error.message}`, "error");
+        showStatus(`Konto konnte nicht gelöscht werden: ${error.message}`, "error");
       }
     });
   </script>
 </body>
 </html>
-
-

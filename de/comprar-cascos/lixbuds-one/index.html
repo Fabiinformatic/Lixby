@@ -731,13 +731,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="../../index.html" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="../../tienda.html" class="nav-link">Tienda</a>
+        <a href="../../speichern.html" class="nav-link">Tienda</a>
         <a href="../../index.html#productos" class="nav-link">Productos</a>
         <a href="../../index.html#apps" class="nav-link">Apps</a>
         <a href="../../pages/support.html" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../tienda.html" method="get">
+        <form id="navSearchForm" action="../../speichern.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -747,10 +747,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Buscar producto"
           >
         </form>
-        <a href="../../cesta.html" class="nav-icon-link" aria-label="Cesta">
+        <a href="../../Korb.html" class="nav-icon-link" aria-label="Cesta">
           <img src="../../images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="../../cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+        <a href="../../Konto.html" class="nav-icon-link" aria-label="Cuenta">
           <img src="../../images/cuenta.png" alt="Cuenta">
         </a>
       </div>
@@ -934,7 +934,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Ver y comprar</h3>
         <ul>
-          <li><a href="../../tienda.html">Tienda</a></li>
+          <li><a href="../../speichern.html">Tienda</a></li>
           <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="../../index.html#apps">Apps</a></li>
           <li><a href="../../pages/support.html">Soporte</a></li>
@@ -954,9 +954,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Cuenta</h3>
         <ul>
-          <li><a href="../../cesta.html">Pedidos</a></li>
-          <li><a href="../../cuenta.html">Mi cuenta</a></li>
-          <li><a href="../../cuenta.html">Cupones</a></li>
+          <li><a href="../../Korb.html">Pedidos</a></li>
+          <li><a href="../../Konto.html">Mi cuenta</a></li>
+          <li><a href="../../Konto.html">Cupones</a></li>
         </ul>
       </section>
 
@@ -1031,7 +1031,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../tienda.html?q=${encodeURIComponent(query)}` : "../../tienda.html";
+        const url = query ? `../../speichern.html?q=${encodeURIComponent(query)}` : "../../speichern.html";
         window.location.href = url;
       });
     }
@@ -1075,7 +1075,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         writeCart(cart);
-        window.location.href = "../../cesta.html";
+        window.location.href = "../../Korb.html";
       });
     }
 

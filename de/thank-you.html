@@ -141,9 +141,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="container thank-you">
     <section class="thank-card">
-      <p class="eyebrow">Bestellung best?tigt</p>
-      <h1 class="thank-title">Danke f?r deinen Kauf</h1>
-      <p id="thankMessage">Wir bereiten deine Bestellung vor und schicken dir in K?rze die Best?tigung per E-Mail.</p>
+      <p class="eyebrow">Bestellung bestätigt</p>
+      <h1 class="thank-title">Danke für deinen Kauf</h1>
+      <p id="thankMessage">Wir bereiten deine Bestellung vor und schicken dir in Kürze die Bestätigung per E-Mail.</p>
       <div class="order-pill" id="orderIdPill" hidden>
         <span>Bestellung</span>
         <strong id="orderIdValue">LX-XXXX</strong>
@@ -154,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span id="orderTotalValue">0 EUR</span>
       </div>
       <div class="thank-actions">
-        <a class="btn btn-primary" href="./">Start</a>
+        <a class="btn btn-primary" href="./">Startseite</a>
         <a class="btn btn-secondary" href="../track.html">Bestellung verfolgen</a>
       </div>
     </section>
@@ -183,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (Array.isArray(order.items) && order.items.length) {
         orderItems.innerHTML = order.items.map((item) => `
           <div class="order-item">
-            <span>${item.name} ? ${item.qty}</span>
+            <span>${item.name} × ${item.qty}</span>
             <strong>${money(item.lineTotal)}</strong>
           </div>
         `).join("");
@@ -207,5 +207,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-

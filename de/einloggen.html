@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesion | Lixby</title>
+  <title>Anmelden | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -357,18 +357,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="speichern.html" class="nav-link">Shop</a>
+        <a href="index.html#productos" class="nav-link">Produkte</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="Korb.html" class="nav-icon-link" aria-label="Warenkorb">
+          <img src="images/Bolsa.png" alt="Warenkorb">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="Konto.html" class="nav-icon-link" aria-label="Konto">
+          <img src="images/cuenta.png" alt="Konto">
         </a>
       </div>
     </div>
@@ -377,157 +377,162 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
-        <div id="authStatus" class="auth-status info">Listo para autenticar.</div>
+        <div id="authStatus" class="auth-status info">Bereit zur Authentifizierung.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Falta configurar Firebase. Edita el objeto <code>firebaseConfig</code> en <code>iniciar-sesion.html</code> con tus credenciales del proyecto.
+          Firebase-Konfiguration fehlt. Bearbeite das Objekt <code>firebaseConfig</code> in <code>iniciar-sesion.html</code> mit den Anmeldedaten deines Projekts.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Inicia sesion en Lixby</h1>
+            <h1>Bei Lixby anmelden</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">Correo o numero de telefono</label>
-            <input id="loginIdentifier" type="text" required placeholder="nombre@example.com">
+            <label for="loginIdentifier">E-Mail oder Telefonnummer</label>
+            <input id="loginIdentifier" type="text" required placeholder="name@example.com">
 
-            <label for="loginPassword">Contrasena</label>
+            <label for="loginPassword">Passwort</label>
             <input id="loginPassword" type="password" required placeholder="********">
 
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                Recordarme
+                Angemeldet bleiben
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">?Has olvidado la contrasena?</a>
+            <a href="#" id="forgotPasswordLink" class="auth-link">Passwort vergessen?</a>
 
-            <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+            <button class="btn btn-primary" type="submit">Anmelden</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Continuar con Google
+              Mit Google fortfahren
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Verificacion en 2 pasos requerida</strong>
-            <p id="mfaHint" class="auth-note">Enviaremos un codigo SMS al telefono asociado.</p>
+            <strong>2-Faktor-Authentifizierung erforderlich</strong>
+            <p id="mfaHint" class="auth-note">Wir senden einen SMS-Code an die hinterlegte Telefonnummer.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar codigo</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Codigo SMS">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Code senden</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="SMS-Code">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verifizieren</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            ?No tienes una cuenta de Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">Crear tu cuenta de Lixby</a>
+            Du hast noch kein Lixby-Konto?
+            <a href="#" id="showRegisterLink" class="auth-link">Lixby-Konto erstellen</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
-            <h1>Crear tu cuenta de Lixby</h1>
-            <p>Solo necesitas una cuenta de Lixby para acceder a todos los servicios de Lixby.</p>
+            <h1>Dein Lixby-Konto erstellen</h1>
+            <p>Du benötigst nur ein Lixby-Konto, um auf alle Dienste von Lixby zuzugreifen.</p>
             <p class="auth-note">
-              ?Ya tienes una cuenta de Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">Inicia sesion</a>
+              Du hast bereits ein Lixby-Konto?
+              <a href="#" id="showLoginLink" class="auth-link">Anmelden</a>
             </p>
           </div>
 
           <form id="registerForm" class="account-form">
             <div class="register-grid">
               <div>
-                <label for="firstName">Nombre</label>
+                <label for="firstName">Vorname</label>
                 <input id="firstName" type="text" required>
               </div>
               <div>
-                <label for="lastName">Apellidos</label>
+                <label for="lastName">Nachname</label>
                 <input id="lastName" type="text" required>
               </div>
             </div>
 
             <div class="register-grid">
               <div>
-                <label for="country">Pais/region</label>
+                <label for="country">Land/Region</label>
                 <select id="country" required>
-                  <option value="ES" selected>Espana</option>
-                  <option value="MX">Mexico</option>
-                  <option value="AR">Argentina</option>
-                  <option value="CO">Colombia</option>
+                  <option value="DE" selected>Deutschland</option>
+                  <option value="AT">Österreich</option>
+                  <option value="CH">Schweiz</option>
+                  <option value="ES">Spanien</option>
+                  <option value="MX">Mexiko</option>
+                  <option value="AR">Argentinien</option>
+                  <option value="CO">Kolumbien</option>
                   <option value="CL">Chile</option>
                   <option value="PE">Peru</option>
                   <option value="EC">Ecuador</option>
                   <option value="VE">Venezuela</option>
                   <option value="UY">Uruguay</option>
                   <option value="PY">Paraguay</option>
-                  <option value="BO">Bolivia</option>
-                  <option value="BR">Brasil</option>
-                  <option value="DO">Republica Dominicana</option>
+                  <option value="BO">Bolivien</option>
+                  <option value="BR">Brasilien</option>
+                  <option value="DO">Dominikanische Republik</option>
                   <option value="PA">Panama</option>
                   <option value="CR">Costa Rica</option>
                   <option value="GT">Guatemala</option>
                   <option value="SV">El Salvador</option>
                   <option value="HN">Honduras</option>
                   <option value="NI">Nicaragua</option>
-                  <option value="CA">Canada</option>
-                  <option value="US">Estados Unidos</option>
+                  <option value="CA">Kanada</option>
+                  <option value="US">Vereinigte Staaten</option>
                   <option value="PT">Portugal</option>
-                  <option value="FR">Francia</option>
-                  <option value="DE">Alemania</option>
-                  <option value="IT">Italia</option>
-                  <option value="GB">Reino Unido</option>
+                  <option value="FR">Frankreich</option>
+                  <option value="IT">Italien</option>
+                  <option value="GB">Vereinigtes Königreich</option>
                 </select>
               </div>
               <div>
-                <label for="birthHelp">Ayuda (cumpleanos)</label>
-                <input id="birthHelp" type="text" placeholder="Fecha de nacimiento">
+                <label for="birthHelp">Hilfe (Geburtstag)</label>
+                <input id="birthHelp" type="text" placeholder="Geburtsdatum">
               </div>
             </div>
 
-            <label>Fecha de nacimiento</label>
+            <label>Geburtsdatum</label>
             <div class="birth-grid">
               <div>
-                <label for="birthDay">Dia</label>
+                <label for="birthDay">Tag</label>
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">Mes</label>
+                <label for="birthMonth">Monat</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">Ano</label>
+                <label for="birthYear">Jahr</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
 
-            <label for="registerEmail">nombre@example.com</label>
+            <label for="registerEmail">name@example.com</label>
             <input id="registerEmail" type="email" required>
 
-            <label for="registerPassword">Contrasena</label>
+            <label for="registerPassword">Passwort</label>
             <input id="registerPassword" type="password" required minlength="6">
 
-            <label for="registerPasswordConfirm">Confirmar contrasena</label>
+            <label for="registerPasswordConfirm">Passwort bestätigen</label>
             <input id="registerPasswordConfirm" type="password" required minlength="6">
 
             <div class="register-grid">
               <div>
-                <label for="phoneCountry">Pais</label>
+                <label for="phoneCountry">Land</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (Espana)</option>
-                  <option value="+52">+52 (Mexico)</option>
-                  <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colombia)</option>
+                  <option value="+49" selected>+49 (Deutschland)</option>
+                  <option value="+43">+43 (Österreich)</option>
+                  <option value="+41">+41 (Schweiz)</option>
+                  <option value="+34">+34 (Spanien)</option>
+                  <option value="+52">+52 (Mexiko)</option>
+                  <option value="+54">+54 (Argentinien)</option>
+                  <option value="+57">+57 (Kolumbien)</option>
                   <option value="+56">+56 (Chile)</option>
                   <option value="+51">+51 (Peru)</option>
                   <option value="+593">+593 (Ecuador)</option>
                   <option value="+58">+58 (Venezuela)</option>
                   <option value="+598">+598 (Uruguay)</option>
                   <option value="+595">+595 (Paraguay)</option>
-                  <option value="+591">+591 (Bolivia)</option>
-                  <option value="+55">+55 (Brasil)</option>
-                  <option value="+1">+1 (Estados Unidos/Canada)</option>
+                  <option value="+591">+591 (Bolivien)</option>
+                  <option value="+55">+55 (Brasilien)</option>
+                  <option value="+1">+1 (USA/Kanada)</option>
                   <option value="+507">+507 (Panama)</option>
                   <option value="+506">+506 (Costa Rica)</option>
                   <option value="+502">+502 (Guatemala)</option>
@@ -535,62 +540,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <option value="+504">+504 (Honduras)</option>
                   <option value="+505">+505 (Nicaragua)</option>
                   <option value="+351">+351 (Portugal)</option>
-                  <option value="+33">+33 (Francia)</option>
-                  <option value="+49">+49 (Alemania)</option>
-                  <option value="+39">+39 (Italia)</option>
-                  <option value="+44">+44 (Reino Unido)</option>
+                  <option value="+33">+33 (Frankreich)</option>
+                  <option value="+39">+39 (Italien)</option>
+                  <option value="+44">+44 (Vereinigtes Königreich)</option>
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">Numero de telefono</label>
+                <label for="phoneNumber">Telefonnummer</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
 
             <p class="auth-note">
-              Asegurate de introducir un numero de telefono al que puedas acceder en todo momento. Este numero se utilizara para verificar tu identidad cada vez que inicies sesion en un nuevo dispositivo o navegador web. Puede que se apliquen tarifas de datos o mensajeria.
+              Stelle sicher, dass du eine Telefonnummer angibst, unter der du jederzeit erreichbar bist. Diese Nummer wird verwendet, um deine Identität zu überprüfen, wenn du dich auf einem neuen Gerät oder in einem neuen Webbrowser anmeldest. Es können Daten- oder Nachrichtengebühren anfallen.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar codigo</button>
-                <span class="auth-note">Te enviaremos un SMS de verificacion.</span>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Code senden</button>
+                <span class="auth-note">Wir senden dir einen Bestätigungs-SMS.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="Codigo SMS">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
+                <input id="code" type="text" placeholder="SMS-Code">
+                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verifizieren</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Anuncios</label>
-            <p class="auth-note">Recibe correos electronicos y comunicaciones de Lixby, como anuncios, marketing, recomendaciones y actualizaciones sobre los productos, los servicios y el software de Lixby.</p>
+            <label><input type="checkbox" id="adsOptIn"> Werbung</label>
+            <p class="auth-note">Erhalte E-Mails und Mitteilungen von Lixby, z. B. zu Ankündigungen, Marketing, Empfehlungen und Updates zu Produkten, Dienstleistungen und Software von Lixby.</p>
 
-            <label><input type="checkbox" id="mediaOptIn"> Apps, musica, TV y mucho mas</label>
-            <p class="auth-note">Recibe correos electronicos y comunicaciones de Lixby, como nuevos lanzamientos, contenido exclusivo y ofertas especiales.</p>
+            <label><input type="checkbox" id="mediaOptIn"> Apps, Musik, TV und mehr</label>
+            <p class="auth-note">Erhalte E-Mails und Mitteilungen von Lixby, z. B. zu Neuerscheinungen, exklusiven Inhalten und Sonderangeboten.</p>
 
             <div class="captcha-box">
-              <label>Imagen de verificacion</label>
+              <label>Verifizierungsbild</label>
               <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Introduce el codigo de la imagen</label>
+              <label for="captchaInput">Gib den Code aus dem Bild ein</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">Codigo nuevo</a>
-                <span class="auth-note">Vision limitada</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">Neuer Code</a>
+                <span class="auth-note">Eingeschränkte Sicht</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Privacy Icon: La informacion de tu cuenta de Lixby se utiliza para que puedas iniciar sesion de manera segura y acceder a tus datos. Lixby registra ciertos datos de uso para fines relacionados con la seguridad, el soporte y la generacion de informes. Si aceptas, Lixby podria utilizar la informacion de tu cuenta para enviarte comunicaciones y correos electronicos de marketing. Consulta como se gestionan tus datos.
+              Datenschutzsymbol: Die Informationen deines Lixby-Kontos werden verwendet, damit du dich sicher anmelden und auf deine Daten zugreifen kannst. Lixby zeichnet bestimmte Nutzungsdaten für Sicherheits-, Support- und Berichtszwecke auf. Wenn du zustimmst, kann Lixby die Informationen deines Kontos verwenden, um dir Marketingmitteilungen und E-Mails zu senden. Erfahre, wie mit deinen Daten umgegangen wird.
             </p>
 
-            <button class="btn btn-primary" type="submit">Crear cuenta</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verificar email</button>
+            <button class="btn btn-primary" type="submit">Konto erstellen</button>
+            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">E-Mail bestätigen</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Registrarse con Google
+              Mit Google registrieren
             </button>
           </form>
         </section>
@@ -598,8 +602,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="cuenta.html" class="btn btn-primary">Ir a mi cuenta</a>
-            <button id="logoutBtn" class="btn btn-secondary" type="button">Cerrar sesion</button>
+            <a href="Konto.html" class="btn btn-primary">Zu meinem Konto</a>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Abmelden</button>
           </div>
         </div>
       </article>
@@ -703,8 +707,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       const months = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        "Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"
       ];
       months.forEach((month, index) => {
         const option = document.createElement("option");
@@ -743,7 +747,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Configura Firebase para activar registro e inicio de sesion.", "error");
+      setStatus("Konfiguriere Firebase, um Registrierung und Anmeldung zu aktivieren.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -793,26 +797,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Para iniciar sesion usa un correo electronico valido.", "error");
+          setStatus("Bitte gib eine gültige E-Mail-Adresse ein.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Sesion iniciada correctamente.", "success");
+          setStatus("Erfolgreich angemeldet.", "success");
           loginForm.reset();
-          window.location.href = "cuenta.html";
+          window.location.href = "Konto.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Enviaremos un codigo SMS a ${hint.phoneNumber || "tu telefono"}.`;
+            mfaHint.textContent = `Wir senden einen SMS-Code an ${hint.phoneNumber || "dein Telefon"}.`;
             mfaPanel.classList.add("active");
-            setStatus("Se requiere verificacion en 2 pasos.", "info");
+            setStatus("2-Faktor-Authentifizierung erforderlich.", "info");
             return;
           }
-          setStatus(`Error al iniciar sesion: ${error.message}`, "error");
+          setStatus(`Fehler bei der Anmeldung: ${error.message}`, "error");
         }
       });
 
@@ -820,20 +824,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         event.preventDefault();
         const identifier = document.getElementById("loginIdentifier").value.trim();
         if (!identifier.includes("@")) {
-          setStatus("Escribe tu email en el campo de correo para recuperar contrasena.", "error");
+          setStatus("Bitte gib deine E-Mail-Adresse ein, um das Passwort zurückzusetzen.", "error");
           return;
         }
         try {
           await sendPasswordResetEmail(auth, identifier);
-          setStatus("Hemos enviado un correo para restablecer tu contrasena.", "success");
+          setStatus("Wir haben eine E-Mail zum Zurücksetzen deines Passworts gesendet.", "success");
         } catch (error) {
-          setStatus(`No se pudo enviar el correo: ${error.message}`, "error");
+          setStatus(`E-Mail konnte nicht gesendet werden: ${error.message}`, "error");
         }
       });
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("No hay verificacion en 2 pasos pendiente.", "error");
+          setStatus("Keine 2-Faktor-Authentifizierung ausstehend.", "error");
           return;
         }
 
@@ -845,27 +849,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           };
           const phoneAuthProvider = new PhoneAuthProvider(auth);
           mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
-          setStatus("Codigo SMS enviado.", "success");
+          setStatus("SMS-Code gesendet.", "success");
         } catch (error) {
           mfaRecaptchaVerifier.clear();
-          setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
+          setStatus(`SMS konnte nicht gesendet werden: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("No hay verificacion en 2 pasos pendiente.", "error");
+          setStatus("Keine 2-Faktor-Authentifizierung ausstehend.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Primero envia el codigo SMS.", "error");
+          setStatus("Sende zuerst den SMS-Code.", "error");
           return;
         }
 
         const code = mfaCodeInput.value.trim();
         if (!code) {
-          setStatus("Introduce el codigo SMS.", "error");
+          setStatus("Gib den SMS-Code ein.", "error");
           return;
         }
 
@@ -877,15 +881,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Sesion iniciada correctamente.", "success");
-          window.location.href = "cuenta.html";
+          setStatus("Erfolgreich angemeldet.", "success");
+          window.location.href = "Konto.html";
         } catch (error) {
-          setStatus(`Codigo invalido: ${error.message}`, "error");
+          setStatus(`Ungültiger Code: ${error.message}`, "error");
         }
       });
 
       const emailActionSettings = {
-        url: `${window.location.origin}/es/verificado.html`,
+        url: `${window.location.origin}/de/verifiziert.html`,
         handleCodeInApp: false
       };
 
@@ -908,12 +912,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("Las contrasenas no coinciden.", "error");
+          setStatus("Die Passwörter stimmen nicht überein.", "error");
           return;
         }
 
         if (captchaValue !== currentCaptcha) {
-          setStatus("El codigo de la imagen no coincide.", "error");
+          setStatus("Der Bildcode stimmt nicht überein.", "error");
           currentCaptcha = generateCaptcha();
           return;
         }
@@ -936,69 +940,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             adsOptIn,
             mediaOptIn
           }));
-          setStatus("Cuenta creada correctamente.", "success");
+          setStatus("Konto erfolgreich erstellt.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
-          window.location.href = "cuenta.html";
+          window.location.href = "Konto.html";
         } catch (error) {
-          setStatus(`Error al registrar: ${error.message}`, "error");
+          setStatus(`Fehler bei der Registrierung: ${error.message}`, "error");
         }
       });
 
       verifyEmailBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Inicia sesion para verificar tu email.", "error");
+          setStatus("Melde dich an, um deine E-Mail zu bestätigen.", "error");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email enviado. Revisa Spam y Promociones.", "success");
+          setStatus("E-Mail gesendet. Überprüfe auch Spam und Werbung.", "success");
         } catch (error) {
-          setStatus(`No se pudo enviar: ${error.message}`, "error");
+          setStatus(`Konnte nicht gesendet werden: ${error.message}`, "error");
         }
       });
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Sesion iniciada con Google.", "success");
-          window.location.href = "cuenta.html";
+          setStatus("Mit Google angemeldet.", "success");
+          window.location.href = "Konto.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Inicio con Google cancelado.", "error");
+            setStatus("Anmeldung mit Google abgebrochen.", "error");
             return;
           }
-          setStatus(`Error con Google: ${error.message}`, "error");
+          setStatus(`Fehler mit Google: ${error.message}`, "error");
         }
       });
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
           await signInWithPopup(auth, googleProvider);
-          setStatus("Registro completado con Google.", "success");
-          window.location.href = "cuenta.html";
+          setStatus("Registrierung mit Google abgeschlossen.", "success");
+          window.location.href = "Konto.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Inicio con Google cancelado.", "error");
+            setStatus("Registrierung mit Google abgebrochen.", "error");
             return;
           }
-          setStatus(`Error con Google: ${error.message}`, "error");
+          setStatus(`Fehler mit Google: ${error.message}`, "error");
         }
       });
 
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Introduce un numero de telefono antes de enviar el codigo.", "error");
+          setStatus("Gib eine Telefonnummer ein, bevor du den Code sendest.", "error");
           return;
         }
         try {
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
-          setStatus("SMS enviado. Revisa tu telefono.", "success");
+          setStatus("SMS gesendet. Überprüfe dein Telefon.", "success");
         } catch (error) {
-          setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
+          setStatus(`SMS konnte nicht gesendet werden: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -1006,31 +1010,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Primero envia el codigo SMS.", "error");
+          setStatus("Sende zuerst den SMS-Code.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Escribe el codigo SMS.", "error");
+          setStatus("Gib den SMS-Code ein.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
-          setStatus("Telefono verificado correctamente.", "success");
+          setStatus("Telefon erfolgreich verifiziert.", "success");
         } catch (error) {
-          setStatus("Codigo incorrecto. Intentalo de nuevo.", "error");
+          setStatus("Falscher Code. Bitte versuche es erneut.", "error");
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Sesion cerrada.", "info");
+        setStatus("Abgemeldet.", "info");
       });
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Conectado como ${user.email}`;
+          userEmail.textContent = `Angemeldet als ${user.email}`;
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
@@ -1040,5 +1044,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-

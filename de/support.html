@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -35,12 +35,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soporte | Lixby</title>
-  <meta name="description" content="Centro de soporte de Lixby. Encuentra respuestas, contacta con nuestro equipo y accede a recursos de ayuda.">
+  <title>Support | Lixby</title>
+  <meta name="description" content="Lixby Support-Center. Finden Sie Antworten, kontaktieren Sie unser Team und greifen Sie auf Hilfsressourcen zu.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
-  <meta property="og:title" content="Soporte | Lixby">
-  <meta property="og:description" content="Centro de ayuda de Lixby">
+  <meta property="og:title" content="Support | Lixby">
+  <meta property="og:description" content="Lixby Hilfecenter">
   <meta property="og:locale" content="de_DE">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:type" content="website">
@@ -48,430 +48,78 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:url" content="https://www.lixby.es/de/support">
   <meta property="og:site_name" content="Lixby">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Soporte | Lixby">
-  <meta name="twitter:description" content="Centro de ayuda de Lixby">
+  <meta name="twitter:title" content="Support | Lixby">
+  <meta name="twitter:description" content="Lixby Hilfecenter">
   <meta name="twitter:image" content="https://www.lixby.es/images/preview.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-    <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 20px;
-    }
-
-    .skip-link:focus {
-      left: 20px;
-      background: #000;
-      color: #fff;
-      padding: 10px 14px;
-      z-index: 1000;
-    }
-
-    .support-hero {
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
-      color: var(--color-white);
-      text-align: center;
-    }
-
-    .support-hero-content {
-      margin-top: -24px;
-    }
-
-    .support-hero-content h1 {
-      font-size: var(--font-size-5xl);
-      font-weight: 700;
-      margin-bottom: var(--spacing-4);
-    }
-
-    .support-hero-content p {
-      font-size: var(--font-size-xl);
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .support-content {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
-    }
-
-    .support-grid {
-      max-width: 1200px;
-      width: min(1200px, 92vw);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-8);
-    }
-
-    @media (min-width: 1024px) {
-      .support-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      }
-    }
-
-    .support-card {
-      padding: var(--spacing-10);
-      background-color: #ffffff !important;
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--color-gray-200);
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-fast);
-      opacity: 1 !important;
-      filter: none !important;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-4);
-      height: 100%;
-    }
-
-    .support-card * {
-      opacity: 1 !important;
-      filter: none !important;
-      color: inherit;
-    }
-
-    .support-card h3,
-    .support-card p,
-    .support-card a,
-    .support-card .btn {
-      opacity: 1 !important;
-      color: var(--text);
-    }
-
-    .support-card p {
-      color: var(--color-gray-600);
-    }
-
-    .support-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .support-card-icon {
-      font-size: 3rem;
-      margin-bottom: var(--spacing-4);
-    }
-
-    .support-card-icon i {
-      width: 3rem;
-      height: 3rem;
-      display: inline-block;
-    }
-
-    .support-card h3 {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-4);
-    }
-
-    .support-card p {
-      color: var(--color-gray-600);
-      margin-bottom: var(--spacing-6);
-      flex: 1;
-    }
-
-    .support-card .btn {
-      background: #e9f1ff;
-      color: #1a4ed8;
-      border: 1px solid #cfe0ff;
-      box-shadow: none;
-    }
-
-    .support-card .btn:hover {
-      background: #dbe8ff;
-      box-shadow: none;
-      transform: translateY(-2px);
-    }
-
-    .support-search {
-      margin-top: var(--spacing-6);
-      display: flex;
-      justify-content: center;
-    }
-
-    .support-search input {
-      width: 100%;
-      max-width: 500px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      box-shadow: var(--shadow-md);
-    }
-
-    .support-status {
-      margin-top: var(--spacing-4);
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-2);
-      font-weight: 600;
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 8px 12px;
-      border-radius: 999px;
-    }
-
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #2ecc71;
-      box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.2);
-    }
-
-    .faq-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
-    }
-
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-container h2 {
-      font-size: var(--font-size-4xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-12);
-      text-align: center;
-    }
-
- .faq-item {
-  margin-bottom: 16px;
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 22px 26px;
-  width: 100%;
-  border: none;
-  background: white;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.faq-question:hover {
-  background: #f9fafb;
-}
-
-.faq-question::after {
-  content: "?";
-  font-size: 20px;
-  transition: transform 0.25s ease;
-}
-
-.faq-question[aria-expanded="true"]::after {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-    padding: 0 26px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-4px);
-    will-change: max-height, opacity;
-    transition:
-      max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 0.45s ease,
-      padding 0.45s ease,
-      transform 0.45s ease;
-    color: #4b5563;
-    line-height: 1.7;
-  }
-
-.faq-answer.active {
-    padding: 18px 26px 24px;
-    max-height: 420px;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .faq-item.open {
-    border-color: var(--color-blue);
-    box-shadow: var(--shadow-sm);
-  }
-
-    .support-hub {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
-    }
-
-    .support-hub-grid {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: var(--spacing-6);
-    }
-
-    .support-hub-card {
-      padding: var(--spacing-8);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--color-gray-200);
-      background-color: var(--color-gray-50);
-      text-decoration: none;
-      color: inherit;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .support-hub-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .contact-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
-    }
-
-    .contact-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-12);
-      align-items: center;
-    }
-
-    .contact-info {
-      display: grid;
-      gap: var(--spacing-8);
-    }
-
-    .contact-info-item {
-      display: flex;
-      gap: var(--spacing-4);
-    }
-
-    .contact-info-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-
-    .contact-info-icon i {
-      width: 2rem;
-      height: 2rem;
-      display: inline-block;
-    }
-
-    .contact-info-content h3 {
-      font-weight: 600;
-      margin-bottom: var(--spacing-1);
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-4);
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-2);
-    }
-
-    .form-group label {
-      font-weight: 600;
-      color: var(--color-gray-700);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: var(--spacing-3) var(--spacing-4);
-      border: 1px solid var(--color-gray-300);
-      border-radius: var(--radius-lg);
-      font-family: var(--font-family);
-      font-size: var(--font-size-sm);
-    }
-
-    #form-status {
-      margin: 0;
-      color: var(--color-gray-600);
-    }
-
-    .form-status {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-
-    .form-status.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .form-status.success {
-      color: #1f7a3a;
-    }
-
-    .form-status.error {
-      color: #b3261e;
-    }
-
-    .form-status.success::before {
-      content: "? ";
-      display: inline-block;
-      animation: pop 0.4s ease;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0.6); opacity: 0; }
-      60% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .form-group textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    @media (max-width: 768px) {
-      .support-hero {
-        padding: var(--spacing-16) var(--spacing-4);
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .support-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); }
+    .skip-link { position: absolute; left: -999px; top: 20px; }
+    .skip-link:focus { left: 20px; background: #000; color: #fff; padding: 10px 14px; z-index: 1000; }
+    .support-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: var(--spacing-20) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); color: var(--color-white); text-align: center; }
+    .support-hero-content { margin-top: -24px; }
+    .support-hero-content h1 { font-size: var(--font-size-5xl); font-weight: 700; margin-bottom: var(--spacing-4); }
+    .support-hero-content p { font-size: var(--font-size-xl); opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    .support-content { padding: var(--spacing-24) var(--spacing-6); background-color: var(--color-white); }
+    .support-grid { max-width: 1200px; width: min(1200px, 92vw); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-8); }
+    @media (min-width: 1024px) { .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
+    .support-card { padding: var(--spacing-10); background-color: #ffffff !important; border-radius: var(--radius-2xl); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transition: all var(--transition-fast); opacity: 1 !important; filter: none !important; color: var(--text); display: flex; flex-direction: column; gap: var(--spacing-4); height: 100%; }
+    .support-card * { opacity: 1 !important; filter: none !important; color: inherit; }
+    .support-card h3, .support-card p, .support-card a, .support-card .btn { opacity: 1 !important; color: var(--text); }
+    .support-card p { color: var(--color-gray-600); }
+    .support-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .support-card-icon { font-size: 3rem; margin-bottom: var(--spacing-4); }
+    .support-card-icon i { width: 3rem; height: 3rem; display: inline-block; }
+    .support-card h3 { font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-4); }
+    .support-card p { color: var(--color-gray-600); margin-bottom: var(--spacing-6); flex: 1; }
+    .support-card .btn { background: #e9f1ff; color: #1a4ed8; border: 1px solid #cfe0ff; box-shadow: none; }
+    .support-card .btn:hover { background: #dbe8ff; box-shadow: none; transform: translateY(-2px); }
+    .support-search { margin-top: var(--spacing-6); display: flex; justify-content: center; }
+    .support-search input { width: 100%; max-width: 500px; padding: 12px 16px; border-radius: 12px; border: none; outline: none; box-shadow: var(--shadow-md); }
+    .support-status { margin-top: var(--spacing-4); display: inline-flex; align-items: center; gap: var(--spacing-2); font-weight: 600; background-color: rgba(255,255,255,0.15); padding: 8px 12px; border-radius: 999px; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; background-color: #2ecc71; box-shadow: 0 0 0 4px rgba(46,204,113,0.2); }
+    .faq-section { padding: var(--spacing-24) var(--spacing-6); background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%); }
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .faq-container h2 { font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center; }
+    .faq-item { margin-bottom: 16px; background: white; border-radius: 16px; border: 1px solid #e5e7eb; overflow: hidden; }
+    .faq-question { padding: 22px 26px; width: 100%; border: none; background: white; font-size: 18px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { background: #f9fafb; }
+    .faq-question::after { content: "?"; font-size: 20px; transition: transform 0.25s ease; }
+    .faq-question[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .faq-answer { padding: 0 26px; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-4px); will-change: max-height, opacity; transition: max-height 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.45s ease, padding 0.45s ease, transform 0.45s ease; color: #4b5563; line-height: 1.7; }
+    .faq-answer.active { padding: 18px 26px 24px; max-height: 420px; opacity: 1; transform: translateY(0); }
+    .faq-item.open { border-color: var(--color-blue); box-shadow: var(--shadow-sm); }
+    .support-hub { padding: var(--spacing-24) var(--spacing-6); background-color: var(--color-white); }
+    .support-hub-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--spacing-6); }
+    .support-hub-card { padding: var(--spacing-8); border-radius: var(--radius-2xl); border: 1px solid var(--color-gray-200); background-color: var(--color-gray-50); text-decoration: none; color: inherit; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+    .support-hub-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .contact-section { padding: var(--spacing-24) var(--spacing-6); background-color: var(--color-white); }
+    .contact-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-12); align-items: center; }
+    .contact-info { display: grid; gap: var(--spacing-8); }
+    .contact-info-item { display: flex; gap: var(--spacing-4); }
+    .contact-info-icon { font-size: 2rem; flex-shrink: 0; }
+    .contact-info-icon i { width: 2rem; height: 2rem; display: inline-block; }
+    .contact-info-content h3 { font-weight: 600; margin-bottom: var(--spacing-1); }
+    .contact-form { display: flex; flex-direction: column; gap: var(--spacing-4); }
+    .form-group { display: flex; flex-direction: column; gap: var(--spacing-2); }
+    .form-group label { font-weight: 600; color: var(--color-gray-700); }
+    .form-group input, .form-group textarea, .form-group select { padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-lg); font-family: var(--font-family); font-size: var(--font-size-sm); }
+    #form-status { margin: 0; color: var(--color-gray-600); }
+    .form-status { opacity: 0; transform: translateY(6px); }
+    .form-status.visible { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
+    .form-status.success { color: #1f7a3a; }
+    .form-status.error { color: #b3261e; }
+    .form-status.success::before { content: "✓ "; display: inline-block; animation: pop 0.4s ease; }
+    @keyframes pop { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    @media (max-width: 768px) { .support-hero { padding: var(--spacing-16) var(--spacing-4); } .contact-grid { grid-template-columns: 1fr; } .support-grid { grid-template-columns: 1fr; } }
   </style>
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
@@ -482,76 +130,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Lixby",
       "url": "https://www.lixby.es",
       "logo": "https://www.lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
+      "sameAs": ["https://github.com/lixby"]
     }
   </script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="nav" id="nav">
-  <link rel="canonical" href="https://www.lixby.es/de/support">
-  <link rel="alternate" href="https://www.lixby.es/da/support" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/support" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/support" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/support" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/support" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/support" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/support" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/support" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/support" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/support" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/support" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/support" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/support" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/support" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/support" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/support" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/support" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/support" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/support" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/support" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/support" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/support" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
-
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="tienda.html" class="nav-link">Shop</a>
+        <a href="#productos" class="nav-link">Produkte</a>
         <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Soporte</a>
+        <a href="support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Suchen" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
         <form id="navSearchForm" action="tienda.html" method="get">
-          <input
-            type="search"
-            id="navSearch"
-            name="q"
-            class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
-          >
+          <input type="search" id="navSearch" name="q" class="nav-search" placeholder="Produkt suchen..." aria-label="Produkt suchen">
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="Korb.html" class="nav-icon-link" aria-label="Warenkorb">
+          <img src="images/Bolsa.png" alt="Warenkorb">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="Konto.html" class="nav-icon-link" aria-label="Konto">
+          <img src="images/cuenta.png" alt="Konto">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Men�" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menü" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -564,244 +177,238 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
       <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
-        >
+        <input type="search" id="navSearchMobile" name="q" class="nav-search-mobile" placeholder="Suchen" aria-label="Produkt suchen">
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar men�">
-        <span aria-hidden="true">�</span>
+      <button type="button" class="nav-mobile-close" aria-label="Menü schließen">
+        <span aria-hidden="true">×</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal m�vil">
-      <a href="tienda.html">Tienda</a>
-      <a href="index.html#productos">Productos</a>
+    <nav class="nav-mobile-links" aria-label="Mobile Hauptnavigation">
+      <a href="tienda.html">Shop</a>
+      <a href="index.html#productos">Produkte</a>
       <a href="index.html#apps">Apps</a>
-      <a href="support.html">Soporte</a>
+      <a href="support.html">Support</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cesta</a>
-      <a href="cuenta.html">Cuenta</a>
+      <a href="Korb.html">Warenkorb</a>
+      <a href="Konto.html">Konto</a>
     </div>
   </div>
+
   <main id="main">
-    
+
     <section class="support-hero">
       <div class="support-hero-content">
-        <h1>�C�mo podemos ayudarte?</h1>
-        <p>Centro de soporte de Lixby. Encuentra respuestas y contacta con nuestro equipo.</p>
+        <h1>Wie können wir Ihnen helfen?</h1>
+        <p>Lixby Support-Center. Finden Sie Antworten und kontaktieren Sie unser Team.</p>
         <div class="support-search">
-          <input type="text" placeholder="Buscar en soporte..." aria-label="Buscar en soporte">
+          <input type="text" placeholder="Im Support suchen..." aria-label="Im Support suchen">
         </div>
         <div class="support-status" role="status" aria-live="polite">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Estado del servicio: Todo operativo</span>
+          <span>Dienststatus: Alles in Ordnung</span>
         </div>
       </div>
     </section>
 
-  <section class="support-content">
-    <div style="max-width: 1200px; margin: 0 auto; margin-bottom: var(--spacing-12);">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-8); text-align: center;">Opciones de soporte</h2>
-    </div>
-    <div class="support-grid">
-      <div class="support-card">
-        <div class="support-card-icon"><i data-lucide="help-circle"></i></div>
-        <h3>Preguntas frecuentes</h3>
-        <p>Encuentra respuestas a las preguntas m�s comunes sobre nuestros productos y servicios.</p>
-        <a href="#faq" class="btn btn-primary">Ver FAQ</a>
+    <section class="support-content">
+      <div style="max-width: 1200px; margin: 0 auto; margin-bottom: var(--spacing-12);">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-8); text-align: center;">Support-Optionen</h2>
       </div>
-      <div class="support-card">
-        <div class="support-card-icon"><i data-lucide="smartphone"></i></div>
-        <h3>Gu�a de usuario</h3>
-        <p>Aprende a usar LixBuds One y Lixney con nuestros tutoriales paso a paso.</p>
-        <a href="#" class="btn btn-primary">Descargar PDF</a>
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="support-card-icon"><i data-lucide="help-circle"></i></div>
+          <h3>Häufige Fragen</h3>
+          <p>Finden Sie Antworten auf die häufigsten Fragen zu unseren Produkten und Diensten.</p>
+          <a href="#faq" class="btn btn-primary">FAQ ansehen</a>
+        </div>
+        <div class="support-card">
+          <div class="support-card-icon"><i data-lucide="smartphone"></i></div>
+          <h3>Benutzerhandbuch</h3>
+          <p>Lernen Sie, LixBuds One und Lixney mit unseren Schritt-für-Schritt-Anleitungen zu verwenden.</p>
+          <a href="#" class="btn btn-primary">PDF herunterladen</a>
+        </div>
+        <div class="support-card">
+          <div class="support-card-icon"><i data-lucide="download"></i></div>
+          <h3>Downloads</h3>
+          <p>Greifen Sie auf Handbücher, Treiber und andere Download-Ressourcen zu.</p>
+          <a href="#" class="btn btn-primary">Mehr erfahren</a>
+        </div>
       </div>
-      <div class="support-card">
-        <div class="support-card-icon"><i data-lucide="download"></i></div>
-        <h3>Descargas</h3>
-        <p>Accede a manuales, drivers y otros recursos de descarga.</p>
-        <a href="#" class="btn btn-primary">M�s informaci�n</a>
-      </div>
-    </div>
     </section>
 
     <section class="support-hub">
       <div style="max-width: 1000px; margin: 0 auto; margin-bottom: var(--spacing-8); text-align: center;">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-4);">Centro de ayuda</h2>
-        <p style="color: var(--color-gray-600);">Accesos r�pidos para resolver dudas frecuentes.</p>
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-4);">Hilfecenter</h2>
+        <p style="color: var(--color-gray-600);">Schnellzugriffe zur Lösung häufiger Fragen.</p>
       </div>
-        <div class="support-hub-grid">
-          <a class="support-hub-card" href="centro-ayuda/index.html">
-            <h3>Inicio soporte</h3>
-            <p>Gu�as, preguntas frecuentes y contacto.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/lixbuds.html">
-            <h3>Soporte LixBuds</h3>
-            <p>Configuraci�n, bater�a y conexi�n.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/lixney.html">
-            <h3>Soporte Lixney</h3>
-            <p>Cuenta, sincronizaci�n y seguridad.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/faq.html">
-            <h3>FAQ</h3>
-            <p>Respuestas r�pidas a dudas comunes.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/garantia.html">
-            <h3>Garant�a</h3>
-            <p>Condiciones y procesos.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/devoluciones.html">
-            <h3>Devoluciones</h3>
-            <p>Plazos, requisitos y pasos.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/solucion-problemas.html">
-            <h3>Soluci�n de problemas</h3>
-            <p>Diagn�stico guiado.</p>
-          </a>
-          <a class="support-hub-card" href="centro-ayuda/contacto.html">
-            <h3>Contacto</h3>
-            <p>Escr�benos o solicita ayuda.</p>
-          </a>
-        </div>
-      </section>
+      <div class="support-hub-grid">
+        <a class="support-hub-card" href="centro-ayuda/index.html">
+          <h3>Support-Startseite</h3>
+          <p>Anleitungen, FAQ und Kontakt.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/lixbuds.html">
+          <h3>LixBuds-Support</h3>
+          <p>Einrichtung, Akku und Verbindung.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/lixney.html">
+          <h3>Lixney-Support</h3>
+          <p>Konto, Synchronisierung und Sicherheit.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/faq.html">
+          <h3>FAQ</h3>
+          <p>Schnelle Antworten auf häufige Fragen.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/garantia.html">
+          <h3>Garantie</h3>
+          <p>Bedingungen und Prozesse.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/devoluciones.html">
+          <h3>Rückgaben</h3>
+          <p>Fristen, Anforderungen und Schritte.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/solucion-problemas.html">
+          <h3>Fehlerbehebung</h3>
+          <p>Geführte Diagnose.</p>
+        </a>
+        <a class="support-hub-card" href="centro-ayuda/contacto.html">
+          <h3>Kontakt</h3>
+          <p>Schreiben Sie uns oder fordern Sie Hilfe an.</p>
+        </a>
+      </div>
+    </section>
 
     <section class="faq-section" id="faq">
       <div class="faq-container">
-        <h2>Preguntas m�s frecuentes</h2>
+        <h2>Häufig gestellte Fragen</h2>
         <p style="text-align: center; color: var(--color-gray-600); margin-top: -12px; margin-bottom: var(--spacing-8);">
-          Respuestas r�pidas a dudas comunes.
+          Schnelle Antworten auf häufige Fragen.
         </p>
         <p id="faq-results-count" style="text-align: center; color: var(--color-gray-600); margin-top: -6px; margin-bottom: var(--spacing-6);"></p>
-      
-      <div class="faq-item">
-        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq1" aria-labelledby="faq1-label">
-          <span id="faq1-label">Cu�l es la duraci�n de la bater�a de LixBuds One?</span>
-        </button>
-        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
-          LixBuds One tiene una bater�a de hasta 6 horas de reproducci�n continua. Con el estuche de carga, tienes hasta 60 horas de reproducci�n total.
-        </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq2" aria-labelledby="faq2-label">
-          <span id="faq2-label">Son resistentes al agua los LixBuds One?</span>
-        </button>
-        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
-          S�, LixBuds One tiene certificaci�n IPX6, lo que significa que son resistentes al sudor y a salpicaduras de agua. No son completamente sumergibles.
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq1" aria-labelledby="faq1-label">
+            <span id="faq1-label">Wie lange hält der Akku der LixBuds One?</span>
+          </button>
+          <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
+            Die LixBuds One bieten bis zu 6 Stunden ununterbrochene Wiedergabe. Mit dem Ladecase haben Sie insgesamt bis zu 60 Stunden Wiedergabezeit.
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq3" aria-labelledby="faq3-label">
-          <span id="faq3-label">Con qu� dispositivos es compatible Lixney?</span>
-        </button>
-        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
-          Lixney funciona en Android 6.0 o superior. Puedes sincronizar tus datos entre m�ltiples dispositivos usando tu cuenta Lixby.
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq2" aria-labelledby="faq2-label">
+            <span id="faq2-label">Sind die LixBuds One wasserfest?</span>
+          </button>
+          <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
+            Ja, die LixBuds One haben eine IPX6-Zertifizierung, was bedeutet, dass sie schweißresistent und gegen Wasserspritzer geschützt sind. Sie sind jedoch nicht vollständig wasserdicht.
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq4" aria-labelledby="faq4-label">
-          <span id="faq4-label">Mi informaci�n est� segura en Lixney?</span>
-        </button>
-        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
-          S�, Lixney utiliza cifrado de extremo a extremo y cumple con todas las normativas RGPD. Tu informaci�n financiera est� completamente segura.
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq3" aria-labelledby="faq3-label">
+            <span id="faq3-label">Mit welchen Geräten ist Lixney kompatibel?</span>
+          </button>
+          <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
+            Lixney funktioniert mit Android 6.0 oder höher. Sie können Ihre Daten über mehrere Geräte hinweg mit Ihrem Lixby-Konto synchronisieren.
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq5" aria-labelledby="faq5-label">
-          <span id="faq5-label">Puedo devolver mi compra?</span>
-        </button>
-        <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
-          S�, ofrecemos 30 d�as de per�odo de devoluci�n. Para m�s detalles, consulta nuestra pol�tica de devoluciones.
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq4" aria-labelledby="faq4-label">
+            <span id="faq4-label">Sind meine Daten in Lixney sicher?</span>
+          </button>
+          <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
+            Ja, Lixney verwendet Ende-zu-Ende-Verschlüsselung und erfüllt alle DSGVO-Vorschriften. Ihre Finanzdaten sind vollständig sicher.
+          </div>
         </div>
-      </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq5" aria-labelledby="faq5-label">
+            <span id="faq5-label">Kann ich meinen Kauf zurückgeben?</span>
+          </button>
+          <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
+            Ja, wir bieten eine 30-tägige Rückgabefrist. Weitere Einzelheiten finden Sie in unserer Rückgaberichtlinie.
+          </div>
+        </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq6" aria-labelledby="faq6-label">
-            <span id="faq6-label">C�mo reporto un problema t�cnico?</span>
+            <span id="faq6-label">Wie melde ich ein technisches Problem?</span>
           </button>
           <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-label">
-            Puedes contactar con nuestro equipo de soporte t�cnico a trav�s del formulario de contacto abajo o enviando un email a lixbyinfo@gmail.com.
+            Sie können unser technisches Support-Team über das Kontaktformular unten oder per E-Mail an lixbyinfo@gmail.com erreichen.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq7" aria-labelledby="faq7-label">
-            <span id="faq7-label">Cu�nto tarda el env�o?</span>
+            <span id="faq7-label">Wie lange dauert der Versand?</span>
           </button>
           <div class="faq-answer" id="faq7" role="region" aria-labelledby="faq7-label">
-            El env�o est�ndar tarda entre 5 y 7 d�as laborables. En per�odos de alta demanda puede variar.
+            Der Standardversand dauert zwischen 5 und 7 Werktagen. In Zeiten hoher Nachfrage kann es zu Abweichungen kommen.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq8" aria-labelledby="faq8-label">
-            <span id="faq8-label">Qu� cubre la garant�a?</span>
+            <span id="faq8-label">Was deckt die Garantie ab?</span>
           </button>
           <div class="faq-answer" id="faq8" role="region" aria-labelledby="faq8-label">
-            La garant�a cubre defectos de fabricaci�n durante 2 a�os. No cubre da�os por uso indebido o accidentes.
+            Die Garantie deckt Herstellungsfehler für 2 Jahre ab. Sie deckt keine Schäden durch unsachgemäßen Gebrauch oder Unfälle.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq9" aria-labelledby="faq9-label">
-            <span id="faq9-label">Qu� m�todos de pago aceptan?</span>
+            <span id="faq9-label">Welche Zahlungsmethoden werden akzeptiert?</span>
           </button>
           <div class="faq-answer" id="faq9" role="region" aria-labelledby="faq9-label">
-            Aceptamos tarjetas de cr�dito y d�bito, adem�s de otros m�todos disponibles en el checkout.
+            Wir akzeptieren Kredit- und Debitkarten sowie weitere im Checkout verfügbare Zahlungsmethoden.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq10" aria-labelledby="faq10-label">
-            <span id="faq10-label">C�mo restablezco mis LixBuds?</span>
+            <span id="faq10-label">Wie setze ich meine LixBuds zurück?</span>
           </button>
           <div class="faq-answer" id="faq10" role="region" aria-labelledby="faq10-label">
-            Mant�n presionado el bot�n de emparejamiento por 10 segundos hasta que el LED parpadee y vuelve a conectar.
+            Halten Sie die Pairing-Taste 10 Sekunden gedrückt, bis die LED blinkt, und verbinden Sie die Kopfhörer erneut.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq11" aria-labelledby="faq11-label">
-            <span id="faq11-label">Puedo cambiar la direcci�n de entrega?</span>
+            <span id="faq11-label">Kann ich die Lieferadresse ändern?</span>
           </button>
           <div class="faq-answer" id="faq11" role="region" aria-labelledby="faq11-label">
-            S�, puedes solicitar el cambio dentro de las primeras 12 horas tras la compra desde tu cuenta o contactando con soporte.
+            Ja, Sie können die Änderung innerhalb der ersten 12 Stunden nach dem Kauf über Ihr Konto oder durch Kontaktaufnahme mit dem Support beantragen.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq12" aria-labelledby="faq12-label">
-            <span id="faq12-label">Qu� hago si el pedido llega incompleto?</span>
+            <span id="faq12-label">Was tue ich, wenn meine Bestellung unvollständig ankommt?</span>
           </button>
           <div class="faq-answer" id="faq12" role="region" aria-labelledby="faq12-label">
-            Escr�benos indicando el n�mero de pedido y adjunta fotos del paquete. Lo resolvemos en 24-48 horas.
+            Schreiben Sie uns mit der Bestellnummer und fügen Sie Fotos des Pakets bei. Wir lösen das Problem innerhalb von 24–48 Stunden.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq13" aria-labelledby="faq13-label">
-            <span id="faq13-label">C�mo activo la cancelaci�n de ruido?</span>
+            <span id="faq13-label">Wie aktiviere ich die Geräuschunterdrückung?</span>
           </button>
           <div class="faq-answer" id="faq13" role="region" aria-labelledby="faq13-label">
-            Mant�n pulsado el panel t�ctil del auricular derecho durante 2 segundos o act�vala desde la app Lixney.
+            Halten Sie das Touch-Panel am rechten Ohrhörer 2 Sekunden gedrückt oder aktivieren Sie es über die Lixney-App.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq14" aria-labelledby="faq14-label">
-            <span id="faq14-label">Ofrecen factura para empresas?</span>
+            <span id="faq14-label">Bieten Sie Rechnungen für Unternehmen an?</span>
           </button>
           <div class="faq-answer" id="faq14" role="region" aria-labelledby="faq14-label">
-            S�, durante el checkout puedes introducir los datos fiscales. Tambi�n puedes solicitarla desde tu cuenta.
+            Ja, während des Checkouts können Sie Ihre Steuerdaten eingeben. Sie können die Rechnung auch über Ihr Konto anfordern.
           </div>
         </div>
       </div>
@@ -809,16 +416,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section class="contact-section">
       <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Contacta con nosotros</h2>
+        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Kontaktieren Sie uns</h2>
 
         <div class="contact-grid">
           <div class="contact-info">
-            <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Informaci�n de contacto</h3>
+            <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Kontaktinformationen</h3>
 
             <div class="contact-info-item">
               <div class="contact-info-icon"><i data-lucide="mail"></i></div>
               <div class="contact-info-content">
-                <h3>Email</h3>
+                <h3>E-Mail</h3>
                 <p style="color: var(--color-gray-600); margin: 0;">lixbyinfo@gmail.com</p>
               </div>
             </div>
@@ -826,7 +433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="contact-info-item">
               <div class="contact-info-icon"><i data-lucide="phone"></i></div>
               <div class="contact-info-content">
-                <h3>Tel�fono</h3>
+                <h3>Telefon</h3>
                 <p style="color: var(--color-gray-600); margin: 0;">+34 900 123 456</p>
               </div>
             </div>
@@ -834,16 +441,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="contact-info-item">
               <div class="contact-info-icon"><i data-lucide="map-pin"></i></div>
               <div class="contact-info-content">
-                <h3>Ubicaci�n</h3>
-                <p style="color: var(--color-gray-600); margin: 0;">Tenerife, Espa�a</p>
+                <h3>Standort</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Teneriffa, Spanien</p>
               </div>
             </div>
 
             <div class="contact-info-item">
               <div class="contact-info-icon"><i data-lucide="clock"></i></div>
               <div class="contact-info-content">
-                <h3>Horario</h3>
-                <p style="color: var(--color-gray-600); margin: 0;">Lunes - Viernes: 8:00 - 20:00 UTC</p>
+                <h3>Öffnungszeiten</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Montag – Freitag: 8:00 – 20:00 UTC</p>
               </div>
             </div>
           </div>
@@ -851,31 +458,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <form class="contact-form" action="https://formspree.io/f/xaqpbjjo" method="POST" data-formspree-recaptcha>
             <input type="text" name="_gotcha" style="display:none">
             <div class="form-group">
-              <label for="name">Nombre</label>
+              <label for="name">Name</label>
               <input type="text" id="name" name="name" required minlength="2">
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email">E-Mail</label>
               <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-              <label for="type">Tipo de consulta</label>
+              <label for="type">Art der Anfrage</label>
               <select id="type" name="type" required>
-                <option>Soporte t�cnico</option>
-                <option>Devoluciones</option>
-                <option>Garant�a</option>
-                <option>Informaci�n general</option>
+                <option>Technischer Support</option>
+                <option>Rückgaben</option>
+                <option>Garantie</option>
+                <option>Allgemeine Informationen</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="subject">Asunto</label>
+              <label for="subject">Betreff</label>
               <input type="text" id="subject" name="subject" required>
             </div>
             <div class="form-group">
-              <label for="message">Mensaje</label>
+              <label for="message">Nachricht</label>
               <textarea id="message" name="message" required minlength="10"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <button type="submit" class="btn btn-primary">Nachricht senden</button>
             <p id="form-status" class="form-status" aria-live="polite"></p>
           </form>
         </div>
@@ -886,53 +493,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Ansehen und kaufen</h3>
         <ul>
-          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Shop</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
-          <li><a href="support.html">Soporte</a></li>
+          <li><a href="support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="support.html">P�gina inicial soporte</a></li>
-          <li><a href="support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="support.html">Informaci�n de Garant�a</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="support.html">Support-Startseite</a></li>
+          <li><a href="support.html#faq">Online-Shop FAQ</a></li>
+          <li><a href="support.html">Garantieinformationen</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">E-Mail an den CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Konto</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="cuenta.html">Mi cuenta</a></li>
-          <li><a href="cuenta.html">Cupones</a></li>
+          <li><a href="../track.html">Bestellungen</a></li>
+          <li><a href="Konto.html">Mein Konto</a></li>
+          <li><a href="Konto.html">Gutscheine</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>Über Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="support.html">Garant�a</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="support.html">Contacto</a></li>
+          <li><a href="support.html">Garantie</a></li>
+          <li><a href="#">Veranstaltungen</a></li>
+          <li><a href="support.html">Kontakt</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright � 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle Rechte vorbehalten.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Pol�tica de privacidad</a>
-        <a href="pages/legal/cookies.html">Uso de cookies</a>
-        <a href="pages/legal/terms.html">Condiciones de uso</a>
-        <a href="support.html">Ventas y reembolsos</a>
-        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="pages/legal/privacy.html">Datenschutzrichtlinie</a>
+        <a href="pages/legal/cookies.html">Cookie-Nutzung</a>
+        <a href="pages/legal/terms.html">Nutzungsbedingungen</a>
+        <a href="support.html">Verkauf und Rückerstattungen</a>
+        <a href="pages/legal/legal-notice.html">Rechtliche Hinweise</a>
       </div>
     </div>
   </footer>
@@ -940,19 +547,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script defer data-domain="www.lixby.es" src="https://plausible.io/js/script.js"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script>
-    // FAQ Toggle (solo uno abierto)
     const closeItem = (btn) => {
       const answer = btn.nextElementSibling;
       const item = btn.closest('.faq-item');
       btn.setAttribute('aria-expanded', 'false');
-      if (item) {
-        item.classList.remove('open');
-        item.style.background = '';
-      }
-      if (answer) {
-        answer.style.maxHeight = '0px';
-        answer.classList.remove('active');
-      }
+      if (item) { item.classList.remove('open'); item.style.background = ''; }
+      if (answer) { answer.style.maxHeight = '0px'; answer.classList.remove('active'); }
     };
 
     const openItem = (btn) => {
@@ -963,23 +563,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (answer) {
         answer.classList.add('active');
         answer.style.maxHeight = '0px';
-        requestAnimationFrame(() => {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        });
+        requestAnimationFrame(() => { answer.style.maxHeight = answer.scrollHeight + 'px'; });
       }
     };
 
     document.querySelectorAll('.faq-question').forEach((button) => {
       button.addEventListener('click', () => {
-        const allButtons = document.querySelectorAll('.faq-question');
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-        if (isExpanded) {
-          closeItem(button);
-          return;
-        }
-
-        allButtons.forEach((btn) => closeItem(btn));
+        if (isExpanded) { closeItem(button); return; }
+        document.querySelectorAll('.faq-question').forEach((btn) => closeItem(btn));
         openItem(button);
       });
     });
@@ -995,25 +587,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const text = faq.innerText.toLowerCase();
           const button = faq.querySelector('.faq-question');
           if (!button) return;
-
           if (!term || text.includes(term)) {
-            faq.style.display = 'block';
-            results += 1;
-            if (term) {
-              openItem(button);
-              faq.style.background = '#fff9c4';
-            } else {
-              closeItem(button);
-              faq.style.background = '';
-            }
-          } else {
-            faq.style.display = 'none';
-            closeItem(button);
-          }
+            faq.style.display = 'block'; results += 1;
+            if (term) { openItem(button); faq.style.background = '#fff9c4'; }
+            else { closeItem(button); faq.style.background = ''; }
+          } else { faq.style.display = 'none'; closeItem(button); }
         });
-        if (faqCount) {
-          faqCount.textContent = term ? `${results} resultados encontrados` : '';
-        }
+        if (faqCount) { faqCount.textContent = term ? `${results} Ergebnis${results !== 1 ? 'se' : ''} gefunden` : ''; }
       });
     }
 
@@ -1023,57 +603,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     form?.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!status || !form) return;
-
       const messageField = form.querySelector('#message');
       if (messageField && messageField.value.trim().length < 10) {
-        status.classList.remove('success');
-        status.classList.add('visible', 'error');
-        status.textContent = 'Mensaje demasiado corto.';
-        return;
+        status.classList.remove('success'); status.classList.add('visible', 'error');
+        status.textContent = 'Nachricht zu kurz.'; return;
       }
-
-      status.classList.remove('success', 'error');
-      status.classList.add('visible');
-      status.textContent = 'Enviando mensaje...';
-
+      status.classList.remove('success', 'error'); status.classList.add('visible');
+      status.textContent = 'Nachricht wird gesendet...';
       const submitButton = form.querySelector('button[type="submit"]');
       if (submitButton) submitButton.disabled = true;
-
       try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          status.classList.add('success');
-          status.textContent = 'Mensaje enviado con �xito. Te responderemos pronto.';
-          form.reset();
-        } else {
-          status.classList.add('error');
-          status.textContent = 'No se pudo enviar el mensaje. Int�ntalo de nuevo.';
-        }
-      } catch (error) {
-        status.classList.add('error');
-        status.textContent = 'Error de conexi�n. Revisa tu red e int�ntalo.';
-      } finally {
-        if (submitButton) submitButton.disabled = false;
-      }
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (response.ok) { status.classList.add('success'); status.textContent = 'Nachricht erfolgreich gesendet. Wir werden uns bald bei Ihnen melden.'; form.reset(); }
+        else { status.classList.add('error'); status.textContent = 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.'; }
+      } catch (error) { status.classList.add('error'); status.textContent = 'Verbindungsfehler. Überprüfen Sie Ihr Netzwerk und versuchen Sie es erneut.'; }
+      finally { if (submitButton) submitButton.disabled = false; }
     });
 
     const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
-
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = height > 0 ? (top / height) * 100 : 0;
-
       if (progressBar) progressBar.style.width = progress + "%";
       if (nav) nav.classList.toggle("nav-scrolled", top > 20);
     };
-
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
 
@@ -1083,8 +638,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
-        window.location.href = url;
+        window.location.href = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
       });
     }
 
@@ -1094,8 +648,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
-        window.location.href = url;
+        window.location.href = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
       });
     }
 
@@ -1109,45 +662,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchToggle?.setAttribute("aria-expanded", "false");
       menuToggle?.setAttribute("aria-expanded", "false");
     };
-
     const openNav = (focusSearch = false) => {
       document.body.classList.add("nav-open", "menu-open");
       nav?.classList.add("nav-open");
       mobilePanel?.setAttribute("aria-hidden", "false");
       searchToggle?.setAttribute("aria-expanded", "true");
       menuToggle?.setAttribute("aria-expanded", "true");
-      if (focusSearch && mobileSearchInput) {
-        setTimeout(() => mobileSearchInput.focus(), 80);
-      }
+      if (focusSearch && mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), 80);
     };
-
     const toggleNav = (focusSearch = false) => {
-      if (nav?.classList.contains("nav-open")) {
-        closeNav();
-      } else {
-        openNav(focusSearch);
-      }
+      if (nav?.classList.contains("nav-open")) closeNav(); else openNav(focusSearch);
     };
-
     searchToggle?.addEventListener("click", () => toggleNav(true));
     menuToggle?.addEventListener("click", () => toggleNav(false));
-
-    const mobileClose = document.querySelector(".nav-mobile-close");
-    mobileClose?.addEventListener("click", () => closeNav());
-
-    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
-      link.addEventListener("click", () => closeNav());
-    });
+    document.querySelector(".nav-mobile-close")?.addEventListener("click", () => closeNav());
+    document.querySelectorAll(".nav-mobile-links a").forEach((link) => { link.addEventListener("click", () => closeNav()); });
 
     const hash = window.location.hash;
     if (hash) {
       const target = document.querySelector(hash);
       if (target && target.classList.contains('faq-answer')) {
         const btn = target.previousElementSibling;
-        if (btn && btn.classList.contains('faq-question')) {
-          openItem(btn);
-          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        if (btn && btn.classList.contains('faq-question')) { openItem(btn); btn.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
       }
     }
 
@@ -1159,9 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
   </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
-
-
