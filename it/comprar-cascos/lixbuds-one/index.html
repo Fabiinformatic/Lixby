@@ -8,7 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/it/acquistare-cascos/lixbuds-one/">
+  <link rel="canonical" href="https://www.lixby.es/it/comprar-cascos/lixbuds-one/">
   <link rel="alternate" href="https://www.lixby.es/bg/comprar-cascos/lixbuds-one/" hreflang="bg-BG">
   <link rel="alternate" href="https://www.lixby.es/cs/comprar-cascos/lixbuds-one/" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/comprar-cascos/lixbuds-one/" hreflang="da-DK">
@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/ga/comprar-cascos/lixbuds-one/" hreflang="ga-IE">
   <link rel="alternate" href="https://www.lixby.es/hr/comprar-cascos/lixbuds-one/" hreflang="hr-HR">
   <link rel="alternate" href="https://www.lixby.es/hu/comprar-cascos/lixbuds-one/" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/acquistare-cascos/lixbuds-one/" hreflang="it-IT">
+  <link rel="alternate" href="https://www.lixby.es/it/comprar-cascos/lixbuds-one/" hreflang="it-IT">
   <link rel="alternate" href="https://www.lixby.es/lt/comprar-cascos/lixbuds-one/" hreflang="lt-LT">
   <link rel="alternate" href="https://www.lixby.es/lv/comprar-cascos/lixbuds-one/" hreflang="lv-LV">
   <link rel="alternate" href="https://www.lixby.es/mt/comprar-cascos/lixbuds-one/" hreflang="mt-MT">
@@ -34,204 +34,644 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/sv/comprar-cascos/lixbuds-one/" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acquista LixBuds One | Lixby</title>
-  <meta name="description" content="Acquista e dettagli di LixBuds One.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="description" content="Acquista LixBuds One e personalizza gratuitamente la tua incisione.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-<style>
+  <style>
+    :root {
+      --buy-ink: #0b0c0f;
+      --buy-muted: #6b7280;
+      --buy-line: #e6e7eb;
+      --buy-surface: #ffffff;
+      --buy-soft: #f4f5f9;
+      --buy-accent: #0b5fff;
+      --buy-accent-soft: rgba(11, 95, 255, 0.12);
+      --buy-gold: #c8b38c;
+      --buy-slate: #1f2937;
+      --buy-night: #0f172a;
+    }
+
+    body {
+      color: var(--buy-ink);
+      font-family: "Inter", "Manrope", sans-serif;
+    }
+
     .purchase-hero {
       padding: 72px 0 32px;
+      --hero-sticky-top: 96px;
     }
 
-    .purchase-grid {
+    .purchase-details {
+      padding: 20px 0 56px;
+    }
+
+    .nav {
+      position: static;
+      padding-top: 0;
+    }
+
+    .nav-container {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid var(--buy-line);
+      box-shadow: none;
+      background: #fff;
+      padding: 10px 32px;
+    }
+
+    .nav .container.nav-container {
+      max-width: none;
+      width: 100%;
+    }
+
+    .product-subnav {
+      border-bottom: 1px solid var(--buy-line);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+    }
+
+    .product-subnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      font-weight: 600;
+    }
+
+    .product-subnav-title {
+      font-size: 1.1rem;
+    }
+
+    .product-subnav-badge {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #0b5fff;
+    }
+
+    .product-subnav-links {
+      display: inline-flex;
+      gap: 18px;
+      font-size: 0.95rem;
+      color: var(--buy-muted);
+    }
+
+    .product-subnav-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product-subnav-links a:hover {
+      color: var(--buy-ink);
+    }
+
+    .product-info {
+      color: #0b0c0f;
+    }
+
+    .product-info .hero-text,
+    .product-info p,
+    .product-info li {
+      color: #0b0c0f;
+    }
+
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
+      gap: 36px;
       align-items: start;
-      margin-top: 28px;
     }
 
-    .purchase-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 24px;
-      box-shadow: var(--shadow-soft);
+    .hero-copy h1 {
+      font-family: "Inter", "Manrope", sans-serif;
+      font-size: clamp(2.2rem, 3vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      font-weight: 800;
     }
 
-    .purchase-left {
-      display: grid;
-      gap: 18px;
+    .hero-title {
+      font-weight: 800;
+      color: var(--buy-ink);
     }
 
-    .product-hero {
-      background: linear-gradient(160deg, #f1f5ff, #ffffff);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      padding: 24px;
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      gap: 14px;
-      place-items: center;
-      text-align: center;
+    .hero-description {
+      color: var(--buy-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-top: 6px;
     }
 
-    .product-hero img {
-      width: min(360px, 78vw);
-      height: auto;
-      filter: drop-shadow(0 18px 30px rgba(15, 23, 42, 0.12));
+    .hero-copy p {
+      color: var(--buy-muted);
+      font-size: 1.05rem;
     }
 
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+    .hero-text {
+      color: var(--buy-muted);
+      font-size: 0.98rem;
     }
 
-    .benefit {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
+    .reveal {
+      opacity: 1;
+      transform: none;
     }
 
-    .benefit strong {
-      display: block;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-
-    .purchase-right {
-      display: grid;
-      gap: 16px;
-      position: sticky;
-      top: 96px;
-    }
-
-    .purchase-list {
-      list-style: none;
-      display: grid;
+    .hero-price {
+      display: flex;
+      align-items: center;
       gap: 10px;
-      margin-top: 12px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-top: 14px;
     }
 
-    .purchase-list li {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px 12px;
-      background: #fff;
+    .hero-price-strong {
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
     }
 
-    .purchase-chip {
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
-      font-size: 0.82rem;
+      border: 1px solid var(--buy-line);
+      background: var(--buy-surface);
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      color: var(--buy-slate);
     }
 
-    .purchase-meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 10px;
-    }
-
-    .price {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-top: 8px;
-    }
-
-    .selection-card {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #fff;
+    .hero-card {
+      background: var(--buy-surface);
+      border: 1px solid var(--buy-line);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
       display: grid;
-      gap: 8px;
+      gap: 14px;
     }
 
-    .selection-card.active {
-      border-color: var(--primary);
-      box-shadow: 0 12px 26px rgba(15, 61, 255, 0.16);
+    .hero-card small {
+      color: var(--buy-muted);
     }
 
-    .selection-card .small {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .mini-gallery {
+    .hero-media {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 22px;
+      gap: 20px;
+      place-items: center;
+      position: sticky;
+      top: var(--hero-sticky-top);
+      align-self: start;
+      background: transparent;
     }
 
-    .mini-tile {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
+    .hero-slider {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      padding: 18px 10px;
+    }
+
+    .hero-image {
+      width: min(420px, 90%);
+      height: auto;
+      filter: drop-shadow(0 26px 36px rgba(15, 23, 42, 0.14));
+      background: transparent;
       padding: 0;
+      border-radius: 0;
+      position: relative;
+      z-index: 1;
+      mix-blend-mode: normal;
+    }
+
+    .hero-slider {
+      position: relative;
+      width: min(680px, 100%);
+      min-height: 440px;
       display: grid;
       place-items: center;
-      min-height: 72px;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 56px 40px;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04);
+      isolation: isolate;
     }
 
-    .mini-tile img {
+    .hero-slider::before {
+      display: none;
+    }
+
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: none;
+      background: #e5e7eb;
+      color: #6b7280;
+      box-shadow: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .hero-arrow.left {
+      left: 20px;
+    }
+
+    .hero-arrow.right {
+      right: 20px;
+    }
+
+    .hero-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #b5c6ff;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .hero-dot.active {
+      background: #0b5fff;
+      opacity: 1;
+    }
+
+    .hero-arrow:hover {
+      background: #d8dbe1;
+      transform: translateY(-50%) scale(1.03);
+    }
+
+    .hero-slider:hover .hero-arrow,
+    .hero-slider:focus-within .hero-arrow,
+    .hero-slider:hover .hero-dots,
+    .hero-slider:focus-within .hero-dots {
+      opacity: 1;
+    }
+
+    .section-block {
+      border-top: 1px solid var(--buy-line);
+      padding: 28px 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-block h2 {
+      font-family: "Inter", "Manrope", sans-serif;
+      font-size: 1.5rem;
+    }
+
+    .finish-title {
+      font-weight: 700;
+    }
+
+    .finish-label {
+      color: var(--buy-muted);
+      font-size: 0.95rem;
+    }
+
+    .color-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .color-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px var(--buy-line);
+      cursor: pointer;
+    }
+
+    .color-swatch.active {
+      box-shadow: 0 0 0 2px var(--buy-accent);
+    }
+
+    .muted-title {
+      color: var(--buy-muted);
+      font-weight: 600;
+    }
+
+    .details-toggle {
+      color: var(--buy-accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .summary-box {
+      border: 1px solid var(--buy-line);
+      border-radius: 20px;
+      padding: 22px;
+      background: var(--buy-surface);
+      display: grid;
+      gap: 12px;
+    }
+
+    .summary-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .summary-divider {
+      height: 1px;
+      background: var(--buy-line);
       width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
-    .hero-actions .btn {
+    .summary-section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--buy-ink);
+    }
+
+    .summary-row-inline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--buy-muted);
+    }
+
+    .summary-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--buy-ink);
+      letter-spacing: -0.01em;
+    }
+
+    .summary-link {
+      color: var(--buy-accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    .summary-upsell {
+      border-radius: 14px;
+      background: #f7f7fb;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .summary-actions .btn {
       min-height: 48px;
       font-size: 1rem;
       letter-spacing: 0.01em;
     }
 
-    .hero-actions .btn:active {
+    .summary-actions .btn:active {
       transform: translateY(1px) scale(0.99);
     }
 
-    .hero-actions .btn:focus-visible {
-      outline: 3px solid rgba(22, 167, 255, 0.35);
-      outline-offset: 2px;
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--buy-muted);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-top: 28px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .service-card {
+      border-radius: 16px;
+      padding: 14px;
+      background: var(--buy-surface);
+      border: 1px solid var(--buy-line);
+      display: grid;
+      gap: 6px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .faq-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111827;
+      text-align: center;
+    }
+
+    .faq-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 18px;
+    }
+
+    .faq-card {
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .faq-item {
+      list-style: none;
+      padding: 18px 20px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 700;
+      color: #111827;
+      cursor: pointer;
+    }
+
+    .faq-item::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #6b7280;
+      font-size: 1.1rem;
+      font-weight: 800;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .faq-card[open] .faq-icon {
+      transform: rotate(45deg);
+      color: #111827;
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      color: #4b5563;
+      border-top: 1px solid #eef0f4;
+      font-size: 0.95rem;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(-4px);
+      transition:
+        max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.45s ease,
+        padding 0.45s ease,
+        transform 0.45s ease;
+    }
+
+    .faq-card[open] .faq-answer {
+      padding: 16px 20px 20px;
+      max-height: 420px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-sep {
+      margin: 18px 0 22px;
+    }
+
+    .care-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .care-card {
+      border-radius: 18px;
+      padding: 18px;
+      background: var(--buy-soft);
+      border: 1px solid var(--buy-line);
+      display: grid;
+      gap: 8px;
+    }
+
+    .care-price {
+      font-weight: 700;
+      color: var(--buy-ink);
+    }
+
+    .care-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--buy-muted);
+      display: grid;
+      gap: 6px;
+      font-size: 0.95rem;
+    }
+
+    .care-details {
+      border: 1px solid var(--buy-line);
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .care-summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--buy-ink);
+    }
+
+    .care-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .care-details::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      border: 2px solid transparent;
+      pointer-events: none;
+      transition: border-color 0.25s ease;
+    }
+
+    .care-details[open]::before {
+      border-color: var(--buy-accent);
+    }
+
+    .care-body {
+      display: grid;
+      gap: 10px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    }
+
+    .care-details[open] .care-body {
+      max-height: 500px;
+      opacity: 1;
     }
 
     @media (max-width: 980px) {
-      .purchase-grid {
+      .hero-grid,
+      .content-grid {
         grid-template-columns: 1fr;
       }
 
-      .purchase-right {
+      .buy-summary {
         position: static;
-      }
-
-      .benefits {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .mini-gallery {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
   </style>
@@ -240,12 +680,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Lixby",
+          "url": "https://www.lixby.es",
+          "logo": "https://www.lixby.es/logo.png",
+          "sameAs": [
+            "https://github.com/lixby"
+          ]
+        },
+        {
+          "@type": "Product",
+          "name": "LixBuds One",
+          "description": "Acquista LixBuds One e personalizza gratuitamente la tua incisione.",
+          "image": "https://www.lixby.es/images/lixbuds-one-white.png",
+          "brand": {
+            "@type": "Brand",
+            "name": "Lixby"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "99.99",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.lixby.es/it/comprar-cascos/lixbuds-one/"
+          }
+        }
       ]
     }
   </script>
@@ -266,42 +727,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <header class="nav" id="nav">
-  <link rel="canonical" href="https://www.lixby.es/it/acquistare-cascos/lixbuds-one/">
-  <link rel="alternate" href="https://www.lixby.es/bg/comprar-cascos/lixbuds-one/" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/comprar-cascos/lixbuds-one/" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/comprar-cascos/lixbuds-one/" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/comprar-cascos/lixbuds-one/" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/comprar-cascos/lixbuds-one/" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/es/comprar-cascos/lixbuds-one/" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/comprar-cascos/lixbuds-one/" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/comprar-cascos/lixbuds-one/" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/comprar-cascos/lixbuds-one/" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/comprar-cascos/lixbuds-one/" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/comprar-cascos/lixbuds-one/" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/comprar-cascos/lixbuds-one/" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/acquistare-cascos/lixbuds-one/" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/comprar-cascos/lixbuds-one/" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/comprar-cascos/lixbuds-one/" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/comprar-cascos/lixbuds-one/" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/comprar-cascos/lixbuds-one/" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/comprar-cascos/lixbuds-one/" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/comprar-cascos/lixbuds-one/" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/comprar-cascos/lixbuds-one/" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/comprar-cascos/lixbuds-one/" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/comprar-cascos/lixbuds-one/" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/comprar-cascos/lixbuds-one/" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
-
     <div class="container nav-container">
       <a href="../../index.html" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="../../negozio.html" class="nav-link">Negozio</a>
+        <a href="../../tienda.html" class="nav-link">Negozio</a>
         <a href="../../index.html#prodotti" class="nav-link">Prodotti</a>
-        <a href="../../index.html#app" class="nav-link">App</a>
+        <a href="../../index.html#apps" class="nav-link">App</a>
         <a href="../../pages/support.html" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../negozio.html" method="get">
+        <form id="navSearchForm" action="../../tienda.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -311,10 +746,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Cerca prodotto"
           >
         </form>
-        <a href="../../cestino.html" class="nav-icon-link" aria-label="Carrello">
+        <a href="../../cesta.html" class="nav-icon-link" aria-label="Carrello">
           <img src="../../images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="../../account.html" class="nav-icon-link" aria-label="Account">
+        <a href="../../cuenta.html" class="nav-icon-link" aria-label="Account">
           <img src="../../images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -322,82 +757,173 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <main>
+    <div class="product-subnav">
+      <div class="container product-subnav-inner">
+        <div class="product-subnav-title"><span class="product-subnav-badge">Nuovo</span> LixBuds One</div>
+        <div class="product-subnav-links">
+          <a href="#descrizione">Descrizione</a>
+          <a href="../../pages/products/lixbuds-one.html">Specifiche</a>
+        </div>
+      </div>
+    </div>
+
     <section class="section container purchase-hero reveal" data-delay="0s">
-      <div class="purchase-grid">
-        <div class="purchase-left">
-          <div class="product-hero reveal" data-delay="0.05s">
-            <span class="eyebrow">Incisione gratuita</span>
-            <h1>Acquista LixBuds One</h1>
-            <p class="hero-text">Ora con la migliore cancellazione attiva del rumore al mondo per auricolari in-ear, nuovo monitoraggio della frequenza cardiaca e fino a 8 ore di autonomia.<sup>1</sup></p>
-            <img src="../../images/lixbuds-product.jpg" alt="AirPods Pro 3 nella custodia">
+      <div class="hero-grid">
+        <div class="hero-media">
+          <div class="hero-slider">
+            <button class="hero-arrow left" type="button" aria-label="Immagine precedente">‹</button>
+            <img id="lixbudsHeroImage" class="hero-image" src="../../images/lixbuds-one-white.png" alt="LixBuds One nella custodia di ricarica">
+            <button class="hero-arrow right" type="button" aria-label="Immagine successiva">›</button>
+            <div class="hero-dots" id="heroDots"></div>
           </div>
-
-          <div class="benefits reveal" data-delay="0.1s">
-            <div class="benefit"><strong>Consegna gratuita</strong> il giorno successivo</div>
-            <div class="benefit"><strong>Fino a 3 mesi</strong> di Apple Music*</div>
-            <div class="benefit"><strong>Resi facili</strong> e gratuiti</div>
-            <div class="benefit"><strong>Assistenza</strong> per il tuo acquisto</div>
-          </div>
-
-          <article class="purchase-card reveal" data-delay="0.15s">
-            <span class="purchase-chip">Dettagli prodotto</span>
-            <h2 style="margin-top:12px;">Informazioni sul prodotto</h2>
-            <p class="purchase-meta">Goditi un audio magistrale con la migliore cancellazione attiva del rumore al mondo per auricolari in-ear.<sup>1</sup> Controlla la frequenza cardiaca e le calorie bruciate durante l'allenamento grazie al monitoraggio della frequenza cardiaca.<sup>2</sup> E prenditi cura del tuo udito con i grandi progressi nella salute auditiva di LixBuds One.</p>
-            <p class="purchase-meta" style="margin-top:12px;">Traduzione in tempo reale ti permette di comunicare in altre lingue grazie ad Apple Intelligence.<sup>20</sup> Disponibile in tedesco (Germania), cinese mandarino (semplificato e tradizionale), coreano (Corea del Sud), spagnolo (Spagna), francese (Francia), inglese (Stati Uniti e Regno Unito), italiano (Italia), giapponese (Giappone) e portoghese (Brasile).</p>
-            <p class="purchase-meta" style="margin-top:12px;">La sua architettura interna è stata completamente ridisegnata per migliorare le prestazioni acustiche, e la sua geometria esterna è stata rinnovata per perfezionare la vestibilità. Fino a 8 ore di riproduzione con ANC con una singola carica.<sup>11</sup> Certificazione IP57 per la resistenza a polvere, sudore e acqua.<sup>19</sup></p>
-          </article>
-
-          <article class="purchase-card reveal" data-delay="0.2s">
-            <span class="purchase-chip">Contenuto della confezione</span>
-            <ul class="purchase-list">
-              <li>LixBuds One</li>
-              <li>Custodia di ricarica MagSafe (USB-C) con altoparlante e gancio per cinghia<sup>15</sup></li>
-              <li>Gommini in silicone (cinque misure: XXS, XS, S, M e L)</li>
-              <li>Documentazione</li>
-            </ul>
-            <p class="purchase-meta">LixBuds One non includono cavo di ricarica USB-C né adattatore di corrente. Puoi utilizzare qualsiasi cavo di ricarica USB-C o adattatore di corrente compatibile che possiedi, oppure acquistarne uno nuovo.</p>
-          </article>
         </div>
 
-        <aside class="purchase-right">
-          <article class="purchase-card reveal" data-delay="0.05s">
-            <span class="purchase-chip">LixBuds One</span>
-            <div class="price">99,99 €</div>
-            <div class="hero-actions">
+        <div class="hero-copy">
+          <h1 class="hero-title">Acquista i LixBuds One</h1>
+          <p class="hero-description">Immergiti nel suono come mai prima d'ora: cancellazione attiva del rumore di ultima generazione, audio potente e cristallino, e fino a 8 ore di autonomia per accompagnarti senza sosta. Progettati per farti dimenticare il mondo… e ascoltare solo ciò che conta.</p>
+          <div class="summary-divider hero-sep"></div>
+
+          <div class="section-block" style="border-top:none; padding-top:0;">
+            <h2>Colore. <span class="muted-title">Scegli il tuo preferito.</span></h2>
+            <div class="finish-label" id="colorLabel">Colore - Bianco</div>
+            <div class="color-row">
+              <button class="color-swatch active" type="button" data-color="Bianco" data-image="../../images/lixbuds-one-white.png" aria-label="Colore bianco" style="background:#f4f4f5;"></button>
+              <button class="color-swatch" type="button" data-color="Nero" data-image="../../images/lixbuds-one-black.png" aria-label="Colore nero" style="background:#111827;"></button>
+            </div>
+          </div>
+
+          <div class="section-block" id="lixsafe">
+            <h2>LixSafe. Proteggi i tuoi LixBuds One.</h2>
+            <div class="care-grid">
+              <details class="care-details" data-plan="LixSafe+" data-price="69,00 €">
+                <summary class="care-summary">
+                  <span>LixSafe+ con copertura per smarrimento</span>
+                  <span class="care-price">69,00 €</span>
+                </summary>
+                <div class="care-body">
+                  <ul class="care-list">
+                    <li>Tutti i vantaggi di LixSafe.</li>
+                    <li>Copertura in caso di smarrimento di uno o entrambi gli auricolari.</li>
+                    <li>Sostituzione rapida ovunque tu sia.</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="care-details" data-plan="LixSafe" data-price="49,00 €">
+                <summary class="care-summary">
+                  <span>LixSafe</span>
+                  <span class="care-price">49,00 €</span>
+                </summary>
+                <div class="care-body">
+                  <ul class="care-list">
+                    <li>Riparazioni illimitate per danni accidentali.</li>
+                    <li>Servizio tecnico ufficiale con ricambi originali LixBuds.</li>
+                    <li>Sostituzione rapida per non restare mai senza musica.</li>
+                    <li>Supporto prioritario quando ne hai bisogno.</li>
+                    <li>Include tasse e spese di gestione.</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="care-details" data-plan="Senza LixSafe" data-price="">
+                <summary class="care-summary">
+                  <span>Senza LixSafe</span>
+                </summary>
+              </details>
+            </div>
+          </div>
+
+          <div class="summary-section-title">Riepilogo</div>
+          <div class="summary-divider" style="margin: 6px 0 8px;"></div>
+          <div class="summary-box">
+            <div class="summary-title">LixBuds One</div>
+            <div class="summary-divider"></div>
+            <div class="summary-section-title">LixSafe</div>
+            <div class="summary-row-inline" id="summaryProtection">Protezione: Senza LixSafe</div>
+            <div class="summary-upsell" id="summaryUpsell">
+              <strong>Ultima occasione</strong>
+              <span class="hero-text">Aggiungi LixSafe e proteggi i tuoi LixBuds One.</span>
+              <a class="summary-link" href="#lixsafe" id="addLixSafeLink">Aggiungi LixSafe</a>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-price" id="summaryPrice">99,99 €</div>
+            <div class="summary-actions">
               <button id="addToCartBtn" class="btn btn-primary" type="button">Aggiungi al carrello</button>
             </div>
-            <p class="purchase-meta">Hai bisogno di tempo? Conserva tutte le tue selezioni salvando questo dispositivo nei Preferiti. Dopo potrai tornare quando vuoi e riprendere da dove avevi lasciato.</p>
-            <div class="hero-actions">
-              <button class="btn btn-secondary" type="button">Salva per dopo</button>
-            </div>
-          </article>
+            <div class="hero-text">Hai bisogno di un momento? Conserva tutte le tue selezioni salvando questo dispositivo nei tuoi preferiti.</div>
+            <a class="summary-link" href="#">Salva per dopo</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <article class="purchase-card reveal" data-delay="0.1s">
-            <span class="purchase-chip">Consegna e ritiro</span>
-            <p class="purchase-meta">Ordina entro le 23:00. Consegna in 38640.</p>
-            <p class="purchase-meta">Domani – Gratuita</p>
-            <p class="purchase-meta">Ritiro: <a href="#">Verifica disponibilità</a></p>
-          </article>
-
-          <article class="purchase-card reveal" data-delay="0.15s">
-            <span class="purchase-chip">Aggiungi LixbyCare</span>
-            <p class="purchase-meta">LixbyCare per auricolari</p>
-            <p class="purchase-meta">45,00 €</p>
-            <p class="purchase-meta">Fino a due anni di riparazioni illimitate per danni accidentali e assistenza tecnica aggiuntiva.<sup>**</sup></p>
-            <div class="hero-actions">
-              <button class="btn btn-secondary" type="button">Aggiungi</button>
-            </div>
-            <p class="purchase-meta">Include l'imposta sui premi assicurativi e i sovrapprezzi del Consorcio de Compensación de Seguros.</p>
-          </article>
-        </aside>
+    <section class="section container purchase-details">
+      <div class="content-grid product-info" id="descrizione">
+        <div class="section-block">
+          <h2>Informazioni sul prodotto</h2>
+          <p class="hero-text"><strong>Descrizione generale</strong></p>
+          <p class="hero-text"><strong>LixBuds One</strong></p>
+          <p class="hero-text">Goditi un suono spettacolare con la cancellazione attiva del rumore avanzata in auricolari in-ear progettati per la vita di tutti i giorni. Immergiti nella tua musica, nelle chiamate e nei contenuti senza distrazioni, con una qualità audio nitida e potente.</p>
+          <p class="hero-text">Allenati in modo più intelligente grazie al monitoraggio dell'attività, con dati come frequenza cardiaca e calorie in tempo reale.</p>
+          <p class="hero-text">Il design è stato completamente ottimizzato per offrire una vestibilità più comoda e sicura, mentre l'architettura interna migliora le prestazioni acustiche per un'esperienza più immersiva.</p>
+          <p class="hero-text">Goditi fino a 8 ore di autonomia con la cancellazione attiva del rumore attiva in una singola carica. Inoltre, sono resistenti ad acqua, sudore e polvere per accompagnarti in qualsiasi situazione.</p>
+        </div>
+        <div class="section-block">
+          <h2>Contenuto della confezione</h2>
+          <ul class="care-list">
+            <li>LixBuds One</li>
+            <li>Custodia di ricarica USB-C</li>
+            <li>Gommini in silicone (cinque misure: XXS, XS, S, M e L)</li>
+            <li>Documentazione</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="mini-gallery reveal" data-delay="0.25s">
-        <div class="mini-tile"><img src="../../images/lixbuds-hero.jpg" alt="LixBuds One"></div>
-        <div class="mini-tile"><img src="../../images/lixbuds-product.jpg" alt="LixBuds One"></div>
-        <div class="mini-tile"><img src="../../images/lixbuds-hero.jpg" alt="LixBuds One"></div>
-        <div class="mini-tile"><img src="../../images/lixbuds-product.jpg" alt="LixBuds One"></div>
-        <div class="mini-tile"><img src="../../images/lixbuds-hero.jpg" alt="LixBuds One"></div>
+      <div class="section-block">
+        <h2 class="faq-title">Domande frequenti</h2>
+        <p class="faq-subtitle">Risposte rapide ai dubbi più comuni.</p>
+        <div class="faq-list">
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>Qual è la durata della batteria dei LixBuds One?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">Fino a 8 ore con la cancellazione attiva del rumore in una singola carica, più carica aggiuntiva con la custodia.</div>
+          </details>
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>I LixBuds One sono resistenti all'acqua?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">Sì, sono resistenti ad acqua, sudore e polvere per l'uso quotidiano.</div>
+          </details>
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>Con quali dispositivi sono compatibili i LixBuds One?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">Funzionano con iOS e Android tramite Bluetooth.</div>
+          </details>
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>Le mie informazioni sono al sicuro con i LixBuds One?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">I tuoi dati vengono elaborati in modo sicuro e seguendo le migliori pratiche di privacy.</div>
+          </details>
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>Posso restituire il mio acquisto?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">Sì, puoi richiedere il reso entro il termine indicato nella politica di vendita.</div>
+          </details>
+          <details class="faq-card">
+            <summary class="faq-item">
+              <span>Come segnalo un problema tecnico?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">Contatta il supporto dalla pagina di aiuto o dal tuo account.</div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
@@ -405,11 +931,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Esplora e acquista</h3>
+        <h3>Scopri e acquista</h3>
         <ul>
-          <li><a href="../../negozio.html">Negozio</a></li>
+          <li><a href="../../tienda.html">Negozio</a></li>
           <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../../index.html#app">App</a></li>
+          <li><a href="../../index.html#apps">App</a></li>
           <li><a href="../../pages/support.html">Supporto</a></li>
         </ul>
       </section>
@@ -417,9 +943,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Supporto</h3>
         <ul>
-          <li><a href="../../pages/support.html">Pagina iniziale supporto</a></li>
+          <li><a href="../../pages/support.html">Pagina iniziale del supporto</a></li>
           <li><a href="../../pages/support.html#faq">FAQ Negozio online</a></li>
-          <li><a href="../../pages/support.html">Informazioni sulla Garanzia</a></li>
+          <li><a href="../../pages/support.html">Informazioni sulla garanzia</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -427,14 +953,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="../../cestino.html">Ordini</a></li>
-          <li><a href="../../account.html">Il mio account</a></li>
-          <li><a href="../../account.html">Coupon</a></li>
+          <li><a href="../../cesta.html">Ordini</a></li>
+          <li><a href="../../cuenta.html">Il mio account</a></li>
+          <li><a href="../../cuenta.html">Coupon</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Chi siamo</h3>
+        <h3>Informazioni su Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
           <li><a href="../../pages/support.html">Garanzia</a></li>
@@ -447,9 +973,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
       <div class="footer-legal-links">
-        <a href="../../pages/legal/privacy.html">Privacy Policy</a>
+        <a href="../../pages/legal/privacy.html">Informativa sulla privacy</a>
         <a href="../../pages/legal/cookies.html">Utilizzo dei cookie</a>
-        <a href="../../pages/legal/terms.html">Condizioni d'uso</a>
+        <a href="../../pages/legal/terms.html">Condizioni di utilizzo</a>
         <a href="../../pages/support.html">Vendite e rimborsi</a>
         <a href="../../pages/legal/legal-notice.html">Note legali</a>
       </div>
@@ -504,7 +1030,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../negozio.html?q=${encodeURIComponent(query)}` : "../../negozio.html";
+        const url = query ? `../../tienda.html?q=${encodeURIComponent(query)}` : "../../tienda.html";
         window.location.href = url;
       });
     }
@@ -520,25 +1046,170 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    addToCartBtn.addEventListener("click", () => {
-      const cart = readCart();
-      const existing = cart.find((item) => item.id === "lixbuds-one");
+    let selectedImageForCart = "../../images/lixbuds-one-white.png";
+    let selectedColorName = "Bianco";
+    let selectedLixSafePlan = "Senza LixSafe";
+    let selectedLixSafePrice = 0;
 
-      if (existing) {
-        existing.qty = Number(existing.qty || 1) + 1;
-      } else {
-        cart.push({
-          id: "lixbuds-one",
-          name: "LixBuds One",
-          price: 99.99,
-          qty: 1,
-          image: "images/lixbuds-product.jpg"
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener("click", () => {
+        const cart = readCart();
+        const existing = cart.find((item) => item.id === "lixbuds-one");
+        const colorLabel = document.getElementById("colorLabel");
+        const selectedColor = colorLabel ? colorLabel.textContent.replace("Colore - ", "") : "Bianco";
+
+        if (existing) {
+          existing.qty = Number(existing.qty || 1) + 1;
+        } else {
+          cart.push({
+            id: "lixbuds-one",
+            name: `LixBuds One (${selectedColor})`,
+            price: 99.99 + selectedLixSafePrice,
+            color: selectedColor,
+            insurancePlan: selectedLixSafePlan,
+            insurancePrice: selectedLixSafePrice,
+            qty: 1,
+            image: selectedImageForCart.replace("../../", "").replace("../../", "")
+          });
+        }
+
+        writeCart(cart);
+        window.location.href = "../../cesta.html";
+      });
+    }
+
+    const colorLabel = document.getElementById("colorLabel");
+    const heroImage = document.getElementById("lixbudsHeroImage");
+    const heroDots = document.getElementById("heroDots");
+    const heroImages = [
+      "../../images/lixbuds-one-white.png",
+      "../../images/lixbuds-one-black.png",
+      "../../images/lixbuds-hero.jpg",
+      "../../images/lixbuds-product.jpg"
+    ];
+    let heroIndex = 0;
+
+    function renderHeroDots() {
+      if (!heroDots) return;
+      heroDots.innerHTML = "";
+      heroImages.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `hero-dot${index === heroIndex ? " active" : ""}`;
+        dot.addEventListener("click", () => {
+          heroIndex = index;
+          updateHeroImage();
         });
-      }
+        heroDots.appendChild(dot);
+      });
+    }
 
-      writeCart(cart);
-      window.location.href = "../../cestino.html";
+    function updateHeroImage() {
+      if (!heroImage) return;
+      heroImage.src = heroImages[heroIndex];
+      renderHeroDots();
+    }
+
+    const prevBtn = document.querySelector(".hero-arrow.left");
+    const nextBtn = document.querySelector(".hero-arrow.right");
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", () => {
+        heroIndex = (heroIndex - 1 + heroImages.length) % heroImages.length;
+        updateHeroImage();
+      });
+      nextBtn.addEventListener("click", () => {
+        heroIndex = (heroIndex + 1) % heroImages.length;
+        updateHeroImage();
+      });
+    }
+
+    updateHeroImage();
+
+    document.querySelectorAll(".color-swatch").forEach((swatch) => {
+      swatch.addEventListener("mouseenter", () => {
+        if (colorLabel && swatch.dataset.color) {
+          colorLabel.textContent = `Colore - ${swatch.dataset.color}`;
+        }
+      });
+
+      swatch.addEventListener("mouseleave", () => {
+        if (colorLabel) {
+          colorLabel.textContent = `Colore - ${selectedColorName}`;
+        }
+      });
+
+      swatch.addEventListener("click", () => {
+        document.querySelectorAll(".color-swatch").forEach((el) => el.classList.remove("active"));
+        swatch.classList.add("active");
+        if (colorLabel) {
+          selectedColorName = swatch.dataset.color || "Bianco";
+          colorLabel.textContent = `Colore - ${selectedColorName}`;
+        }
+        if (heroImage && swatch.dataset.image) {
+          heroImage.src = swatch.dataset.image;
+          const foundIndex = heroImages.indexOf(swatch.dataset.image);
+          if (foundIndex >= 0) {
+            heroIndex = foundIndex;
+            renderHeroDots();
+          }
+          selectedImageForCart = swatch.dataset.image;
+        }
+      });
     });
+
+    const careDetails = document.querySelectorAll(".care-details");
+    const summaryProtection = document.getElementById("summaryProtection");
+    const summaryUpsell = document.getElementById("summaryUpsell");
+    const summaryPrice = document.getElementById("summaryPrice");
+    const addLixSafeLink = document.getElementById("addLixSafeLink");
+    const BASE_PRICE = 99.99;
+
+    function parsePrice(value) {
+      if (!value) return 0;
+      const normalized = value.replace("€", "").trim().replace(".", "").replace(",", ".");
+      const num = Number(normalized);
+      return Number.isFinite(num) ? num : 0;
+    }
+
+    function setLixSafeSummary(plan, priceText) {
+      if (!summaryProtection || !summaryUpsell || !summaryPrice) return;
+      summaryProtection.textContent = `Protezione: ${plan}`;
+      summaryUpsell.style.display = plan === "Senza LixSafe" ? "grid" : "none";
+      const addon = plan === "Senza LixSafe" ? 0 : parsePrice(priceText);
+      selectedLixSafePlan = plan;
+      selectedLixSafePrice = addon;
+      const total = (BASE_PRICE + addon).toFixed(2).replace(".", ",");
+      summaryPrice.textContent = `${total} €`;
+    }
+
+    setLixSafeSummary("Senza LixSafe", "");
+
+    careDetails.forEach((detail) => {
+      detail.addEventListener("toggle", () => {
+        if (detail.open) {
+          careDetails.forEach((other) => {
+            if (other !== detail) {
+              other.removeAttribute("open");
+            }
+          });
+          const plan = detail.dataset.plan || "Senza LixSafe";
+          const priceText = detail.dataset.price || "";
+          setLixSafeSummary(plan, priceText);
+        }
+      });
+    });
+
+    if (addLixSafeLink) {
+      addLixSafeLink.addEventListener("click", () => {
+        const preferred = document.querySelector('.care-details[data-plan="LixSafe"]');
+        if (preferred) {
+          preferred.setAttribute("open", "");
+          const plan = preferred.dataset.plan || "LixSafe";
+          const priceText = preferred.dataset.price || "";
+          setLixSafeSummary(plan, priceText);
+        }
+      });
+    }
   </script>
 </body>
 </html>

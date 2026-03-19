@@ -94,12 +94,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: #f9fafb;
     }
     .faq-question::after {
-      content: "?";
+      content: "+";
       font-size: 20px;
       transition: transform 0.25s ease;
     }
     .faq-question[aria-expanded="true"]::after {
-      transform: rotate(180deg);
+      content: "×";
+      transform: rotate(0deg);
     }
     .faq-answer {
       padding: 0 26px;
@@ -253,122 +254,122 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1">
           <span>?Cu?l es la duraci?n de la bater?a?</span>
         </button>
         <div class="faq-answer" id="faq-a1">LixBuds ofrece hasta 6 horas de reproducci?n y 60 horas con el estuche de carga.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2">
           <span>?Cu?nto tarda el env?o?</span>
         </button>
         <div class="faq-answer" id="faq-a2">El env?o est?ndar tarda entre 5 y 7 d?as laborables.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3">
           <span>?C?mo tramito una devoluci?n?</span>
         </button>
         <div class="faq-answer" id="faq-a3">Inicia el proceso desde la p?gina de devoluciones y adjunta el n?mero de pedido.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4">
           <span>?Qu? cubre la garant?a?</span>
         </button>
         <div class="faq-answer" id="faq-a4">Cubre defectos de fabricaci?n durante 2 a?os desde la compra.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5">
           <span>?Son resistentes al agua los LixBuds?</span>
         </button>
         <div class="faq-answer" id="faq-a5">S?, cuentan con certificaci?n IPX6 para sudor y salpicaduras. No son sumergibles.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6">
           <span>?Con qu? dispositivos es compatible Lixney?</span>
         </button>
         <div class="faq-answer" id="faq-a6">Funciona en Android 6.0+. Puedes sincronizar varios dispositivos con tu cuenta.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a7">
           <span>?C?mo reporto un problema t?cnico?</span>
         </button>
         <div class="faq-answer" id="faq-a7">Usa la p?gina de contacto y describe el problema con el n?mero de pedido si aplica.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a8">
           <span>?Qu? m?todos de pago aceptan?</span>
         </button>
         <div class="faq-answer" id="faq-a8">Aceptamos tarjetas de cr?dito y d?bito, adem?s de otros m?todos disponibles en el checkout.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a9">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a9">
           <span>?C?mo restablezco mis LixBuds?</span>
         </button>
         <div class="faq-answer" id="faq-a9">Mant?n presionado el bot?n de emparejamiento por 10 segundos hasta que el LED parpadee.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a10">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a10">
           <span>?Puedo cambiar la direcci?n de entrega?</span>
         </button>
         <div class="faq-answer" id="faq-a10">S?, puedes solicitar el cambio dentro de las primeras 12 horas desde tu cuenta o con soporte.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a11">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a11">
           <span>?C?mo activo la cancelaci?n de ruido?</span>
         </button>
         <div class="faq-answer" id="faq-a11">Mant?n pulsado el panel t?ctil derecho 2 segundos o act?vala desde la app Lixney.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a12">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a12">
           <span>?Se puede usar un solo auricular?</span>
         </button>
         <div class="faq-answer" id="faq-a12">S?, puedes usar el izquierdo o el derecho de forma independiente en modo mono.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a13">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a13">
           <span>?Cu?nto tarda el reembolso?</span>
         </button>
         <div class="faq-answer" id="faq-a13">Los reembolsos se procesan en 2-3 d?as laborables tras recibir el producto.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a14">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a14">
           <span>?Qu? hago si el pedido llega incompleto?</span>
         </button>
         <div class="faq-answer" id="faq-a14">Escr?benos con el n?mero de pedido y fotos del paquete. Lo resolvemos en 24-48 horas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a15">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a15">
           <span>?Puedo cancelar un pedido?</span>
         </button>
         <div class="faq-answer" id="faq-a15">Puedes cancelarlo si a?n no ha sido enviado. Escr?benos lo antes posible.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a16">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a16">
           <span>?C?mo actualizo el firmware?</span>
         </button>
         <div class="faq-answer" id="faq-a16">Abre la app Lixby y sigue el aviso de actualizaci?n cuando los auriculares est?n conectados.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a17">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a17">
           <span>?Hay descuentos para estudiantes?</span>
         </button>
         <div class="faq-answer" id="faq-a17">S?, ofrecemos descuentos puntuales. Consulta la newsletter o promociones activas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a18">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a18">
           <span>?C?mo limpio mis LixBuds?</span>
         </button>
         <div class="faq-answer" id="faq-a18">Usa un pa?o seco y un bastoncillo suave. Evita l?quidos directos.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a19">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a19">
           <span>?Puedo usar LixBuds para llamadas?</span>
         </button>
         <div class="faq-answer" id="faq-a19">S?, incorporan micr?fonos con reducci?n de ruido para llamadas claras.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-a20">
+        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a20">
           <span>?D?nde puedo descargar el manual?</span>
         </button>
         <div class="faq-answer" id="faq-a20">Solic?talo desde la p?gina de contacto y te enviaremos el PDF actualizado.</div>
@@ -502,5 +503,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="../script.js"></script>
 </body>
 </html>
-
 

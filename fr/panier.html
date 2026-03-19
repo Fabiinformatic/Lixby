@@ -9,12 +9,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/fr/panier">
+  <link rel="alternate" href="https://www.lixby.es/cs/panier" hreflang="cs-CZ">
+  <link rel="alternate" href="https://www.lixby.es/da/panier" hreflang="da-DK">
+  <link rel="alternate" href="https://www.lixby.es/de/panier" hreflang="de-DE">
+  <link rel="alternate" href="https://www.lixby.es/el/panier" hreflang="el-GR">
+  <link rel="alternate" href="https://www.lixby.es/es/panier" hreflang="es-ES">
+  <link rel="alternate" href="https://www.lixby.es/et/panier" hreflang="et-EE">
+  <link rel="alternate" href="https://www.lixby.es/fi/panier" hreflang="fi-FI">
   <link rel="alternate" href="https://www.lixby.es/fr/panier" hreflang="fr-FR">
+  <link rel="alternate" href="https://www.lixby.es/ga/panier" hreflang="ga-IE">
+  <link rel="alternate" href="https://www.lixby.es/hr/panier" hreflang="hr-HR">
+  <link rel="alternate" href="https://www.lixby.es/hu/panier" hreflang="hu-HU">
+  <link rel="alternate" href="https://www.lixby.es/it/panier" hreflang="it-IT">
+  <link rel="alternate" href="https://www.lixby.es/lt/panier" hreflang="lt-LT">
+  <link rel="alternate" href="https://www.lixby.es/lv/panier" hreflang="lv-LV">
+  <link rel="alternate" href="https://www.lixby.es/mt/panier" hreflang="mt-MT">
+  <link rel="alternate" href="https://www.lixby.es/nl/panier" hreflang="nl-NL">
+  <link rel="alternate" href="https://www.lixby.es/pl/panier" hreflang="pl-PL">
+  <link rel="alternate" href="https://www.lixby.es/pt/panier" hreflang="pt-PT">
+  <link rel="alternate" href="https://www.lixby.es/ro/panier" hreflang="ro-RO">
+  <link rel="alternate" href="https://www.lixby.es/sk/panier" hreflang="sk-SK">
+  <link rel="alternate" href="https://www.lixby.es/sl/panier" hreflang="sl-SI">
+  <link rel="alternate" href="https://www.lixby.es/sv/panier" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panier | Lixby</title>
+  <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -74,6 +96,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .cart-item h3 {
       margin-bottom: 4px;
       font-size: 1.15rem;
+    }
+
+    .cart-item-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
     }
 
     .cart-controls {
@@ -181,24 +209,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
-  <link rel="canonical" href="https://www.lixby.es/fr/panier">
-  <link rel="alternate" href="https://www.lixby.es/fr/panier" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
-
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="magasin.html" class="nav-link">Boutique</a>
+        <a href="boutique.html" class="nav-link">Boutique</a>
         <a href="index.html#produits" class="nav-link">Produits</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Assistance</a>
+        <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
         <a href="panier.html" class="nav-icon-link" aria-label="Panier">
-          <img src="images/Bolsa.png" alt="Panier">
+          <img src="images/Sac.png" alt="Panier">
         </a>
         <a href="compte.html" class="nav-icon-link" aria-label="Compte">
-          <img src="images/cuenta.png" alt="Compte">
+          <img src="images/compte.png" alt="Compte">
         </a>
       </div>
     </div>
@@ -284,7 +308,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function money(value) {
-      return `${value} EUR`;
+      const amount = Number(value) || 0;
+      return `${amount.toFixed(2).replace(".", ",")} €`;
+    }
+
+    function normalizeImagePath(path) {
+      if (!path) return "";
+      return path.replace(/^(\.\.\/)+/, "");
     }
 
     function generateOrderId() {
@@ -305,16 +335,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
+        const basePrice = Number(entry.price) || product.price || 0;
+        const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
-        const lineTotal = product.price * qty;
+        const unitPrice = basePrice + insurancePrice;
+        const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
 
         return {
           id: product.id,
           name: product.name,
-          price: product.price,
+          price: basePrice,
           qty,
-          lineTotal
+          lineTotal,
+          insurancePlan: entry.insurancePlan || "Sans LixSafe",
+          insurancePrice
         };
       });
 
@@ -347,9 +382,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Votre panier est vide. <a href="magasin.html">Aller à la boutique</a>.</p>`;
-        subtotalEl.textContent = "0 EUR";
-        totalEl.textContent = "0 EUR";
+        cartListEl.innerHTML = `<p class="cart-empty">Votre panier est vide. <a href="boutique.html">Aller à la boutique</a>.</p>`;
+        subtotalEl.textContent = money(0);
+        totalEl.textContent = money(0);
         return;
       }
 
@@ -363,16 +398,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           image: "images/lixbuds-hero.jpg"
         };
 
+        const basePrice = Number(entry.price) || product.price || 0;
+        const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
-        const lineTotal = product.price * qty;
+        const unitPrice = basePrice + insurancePrice;
+        const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
+
+        const insurancePlan = entry.insurancePlan || "Sans LixSafe";
+        const color = entry.color || "—";
+        const insuranceLabel = insurancePlan === "Sans LixSafe" ? "Sans LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const baseName = entry.name || product.name || "Produit";
+        let displayName = baseName;
+        if (color !== "—") {
+          const escapedColor = color.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          displayName = baseName
+            .replace(new RegExp(`\\s*\\(${escapedColor}\\)\\s*$`, "i"), "")
+            .replace(new RegExp(`\\s+${escapedColor}\\s*$`, "i"), "")
+            .trim();
+        }
+        if (!displayName) {
+          displayName = baseName;
+        }
+        const productImage = normalizeImagePath(entry.image || product.image);
 
         return `
           <article class="cart-item">
-            <img class="cart-item-image" src="${product.image}" alt="${product.name}">
+            <img class="cart-item-image" src="${productImage}" alt="${displayName}">
             <div>
-              <h3>${product.name}</h3>
-              <p>${money(product.price)} / unité</p>
+              <h3>${displayName}</h3>
+              <p>${money(unitPrice)} / unité</p>
+              <p class="cart-item-meta">Couleur: ${color}</p>
+              <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${product.id}">-</button>
                 <span>${qty}</span>
@@ -414,13 +471,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
+      checkoutBtn.disabled = true;
+      const originalCheckoutLabel = checkoutBtn.textContent;
+      checkoutBtn.textContent = "Traitement en cours...";
+
       if (!authReady) {
-        alert("Chargement de la session. Réessayez dans quelques secondes.");
+        alert("Chargement de la session. Veuillez réessayer dans quelques instants.");
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = originalCheckoutLabel;
         return;
       }
 
       if (!isAuthenticated) {
-        window.location.href = "se-connecter.html";
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = originalCheckoutLabel;
+        window.location.href = "connexion.html";
         return;
       }
 
@@ -470,6 +535,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.log("Checkout session failed", error);
       }
 
+      checkoutBtn.disabled = false;
+      checkoutBtn.textContent = originalCheckoutLabel;
       window.location.href = STRIPE_PAYMENT_LINK;
     });
 

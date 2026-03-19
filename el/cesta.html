@@ -8,7 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/el/cesta">
+  <link rel="canonical" href="https://www.lixby.es/es/cesta">
   <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/cesta" hreflang="da-DK">
   <link rel="alternate" href="https://www.lixby.es/de/cesta" hreflang="de-DE">
@@ -32,9 +32,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/sv/cesta" hreflang="sv-SE">
   <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
 
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cesta | Lixby</title>
+  <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -94,6 +95,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .cart-item h3 {
       margin-bottom: 4px;
       font-size: 1.15rem;
+    }
+
+    .cart-item-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
     }
 
     .cart-controls {
@@ -201,30 +208,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
-  <link rel="canonical" href="https://www.lixby.es/el/cesta">
-  <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/cesta" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/cesta" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/cesta" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/es/cesta" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/cesta" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/cesta" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/ga/cesta" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/cesta" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/cesta" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/cestino" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/cesta" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/cesta" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/cesta" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/cesta" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/cesta" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/cesta" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/cesta" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/cesta" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/cesta" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/cesta" hreflang="sv-SE">
-  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
-
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
@@ -269,10 +252,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
     const CHECKOUT_ENDPOINT = "/create-checkout-session";
-    const SUCCESS_URL = new URL("thank-you.html", window.location.href).toString();
+    const SUCCESS_URL = new URL("gracias.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
 
     const firebaseConfig = {
@@ -287,6 +271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
     let authReady = false;
     let isAuthenticated = false;
 
@@ -296,6 +281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     const CART_KEY = "lixbyCart";
+    const LAST_ORDER_KEY = "lixbyLastOrder";
 
     const productCatalog = {
       "lixbuds-one": {
@@ -321,7 +307,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function money(value) {
-      return `${value} EUR`;
+      const amount = Number(value) || 0;
+      return `${amount.toFixed(2).replace(".", ",")} €`;
+    }
+
+    function normalizeImagePath(path) {
+      if (!path) return "";
+      return path.replace(/^(\.\.\/)+/, "");
     }
 
     function generateOrderId() {
@@ -331,6 +323,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const dd = String(now.getDate()).padStart(2, "0");
       const rand = Math.floor(1000 + Math.random() * 9000);
       return `LX-${yyyy}${mm}${dd}-${rand}`;
+    }
+
+    function calculateSummary(cart) {
+      let subtotal = 0;
+      const items = cart.map((entry) => {
+        const product = productCatalog[entry.id] || {
+          id: entry.id,
+          name: entry.name || "Producto",
+          price: Number(entry.price) || 0,
+          image: "images/lixbuds-hero.jpg"
+        };
+        const basePrice = Number(entry.price) || product.price || 0;
+        const insurancePrice = Number(entry.insurancePrice) || 0;
+        const qty = Number(entry.qty) || 1;
+        const unitPrice = basePrice + insurancePrice;
+        const lineTotal = unitPrice * qty;
+        subtotal += lineTotal;
+
+        return {
+          id: product.id,
+          name: product.name,
+          price: basePrice,
+          qty,
+          lineTotal,
+          insurancePlan: entry.insurancePlan || "Sin LixSafe",
+          insurancePrice
+        };
+      });
+
+      return { items, subtotal };
     }
 
     function updateQuantity(productId, delta) {
@@ -360,8 +382,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       if (cart.length === 0) {
         cartListEl.innerHTML = `<p class="cart-empty">Tu cesta esta vacia. <a href="tienda.html">Ir a tienda</a>.</p>`;
-        subtotalEl.textContent = "0 EUR";
-        totalEl.textContent = "0 EUR";
+        subtotalEl.textContent = money(0);
+        totalEl.textContent = money(0);
         return;
       }
 
@@ -375,16 +397,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           image: "images/lixbuds-hero.jpg"
         };
 
+        const basePrice = Number(entry.price) || product.price || 0;
+        const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
-        const lineTotal = product.price * qty;
+        const unitPrice = basePrice + insurancePrice;
+        const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
+
+        const insurancePlan = entry.insurancePlan || "Sin LixSafe";
+        const color = entry.color || "—";
+        const insuranceLabel = insurancePlan === "Sin LixSafe" ? "Sin LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const baseName = entry.name || product.name || "Producto";
+        let displayName = baseName;
+        if (color !== "—") {
+          const escapedColor = color.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          displayName = baseName
+            .replace(new RegExp(`\\s*\\(${escapedColor}\\)\\s*$`, "i"), "")
+            .replace(new RegExp(`\\s+${escapedColor}\\s*$`, "i"), "")
+            .trim();
+        }
+        if (!displayName) {
+          displayName = baseName;
+        }
+        const productImage = normalizeImagePath(entry.image || product.image);
 
         return `
           <article class="cart-item">
-            <img class="cart-item-image" src="${product.image}" alt="${product.name}">
+            <img class="cart-item-image" src="${productImage}" alt="${displayName}">
             <div>
-              <h3>${product.name}</h3>
-              <p>${money(product.price)} / unidad</p>
+              <h3>${displayName}</h3>
+              <p>${money(unitPrice)} / unidad</p>
+              <p class="cart-item-meta">Color: ${color}</p>
+              <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${product.id}">-</button>
                 <span>${qty}</span>
@@ -426,19 +470,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
+      checkoutBtn.disabled = true;
+      const originalCheckoutLabel = checkoutBtn.textContent;
+      checkoutBtn.textContent = "Procesando...";
+
       if (!authReady) {
         alert("Cargando sesion. Intenta de nuevo en unos segundos.");
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = originalCheckoutLabel;
         return;
       }
 
       if (!isAuthenticated) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = originalCheckoutLabel;
         window.location.href = "iniciar-sesion.html";
         return;
       }
 
       const orderId = generateOrderId();
+      const summary = calculateSummary(cart);
+      const orderPayload = {
+        orderId,
+        status: "pending_payment",
+        paymentStatus: "pending",
+        currency: "EUR",
+        subtotal: Number(summary.subtotal.toFixed(2)),
+        items: summary.items,
+        createdAt: serverTimestamp(),
+        uid: auth.currentUser?.uid || null
+      };
 
-            try {
+      localStorage.setItem(LAST_ORDER_KEY, JSON.stringify({
+        orderId,
+        status: orderPayload.status,
+        currency: orderPayload.currency,
+        subtotal: orderPayload.subtotal,
+        items: orderPayload.items
+      }));
+
+      try {
+        await addDoc(collection(db, "orders"), orderPayload);
+      } catch (error) {
+        console.log("Order save failed", error);
+      }
+
+      try {
         const response = await fetch(CHECKOUT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -457,6 +534,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.log("Checkout session failed", error);
       }
 
+      checkoutBtn.disabled = false;
+      checkoutBtn.textContent = originalCheckoutLabel;
       window.location.href = STRIPE_PAYMENT_LINK;
     });
 
@@ -464,5 +543,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
 
