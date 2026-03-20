@@ -259,6 +259,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const SUCCESS_URL = new URL("gracias.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
 
+    const PRICES = {
+      negro: "price_1T9gzS4JmdPA7hphzMXa8s7T",
+      blanco: "price_1TD6xx4JmdPA7hphNSWAJLJM",
+      lixsafe: "price_1TD70q4JmdPA7hphQ9KJNOXV",
+      lixsafe_plus: "price_1TD71L4JmdPA7hphdYbs0z0i"
+    };
+
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
       authDomain: "lixby0.firebaseapp.com",
@@ -356,6 +363,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const dd = String(now.getDate()).padStart(2, "0");
       const rand = Math.floor(1000 + Math.random() * 9000);
       return `LX-${yyyy}${mm}${dd}-${rand}`;
+    }
+
+    function normalizeColorKey(value) {
+      if (!value) return null;
+      const normalized = String(value).toLowerCase();
+      if (normalized.includes("negro") || normalized.includes("black")) return "negro";
+      if (normalized.includes("blanco") || normalized.includes("white")) return "blanco";
+      return null;
+    }
+
+    function resolveProductPriceId(item) {
+      const colorKey =
+        normalizeColorKey(item.color) ||
+        normalizeColorKey(item.name) ||
+        normalizeColorKey(item.id);
+      return PRICES[colorKey || "blanco"];
+    }
+
+    function resolveInsurancePriceId(plan) {
+      if (!plan) return null;
+      const normalized = String(plan).toLowerCase().trim();
+      if (normalized === "sin lixsafe" || normalized === "sin seguro") return null;
+      if (normalized.includes("lixsafe+") || normalized.includes("plus")) {
+        return PRICES.lixsafe_plus;
+      }
+      if (normalized === "lixsafe") {
+        return PRICES.lixsafe;
+      }
+      return null;
+    }
+
+    function buildCheckoutItems(items) {
+      if (!Array.isArray(items)) return [];
+      const lineItems = [];
+      items.forEach((item) => {
+        const quantity = Math.max(1, Number(item.qty) || 1);
+        const productPriceId = resolveProductPriceId(item);
+        if (productPriceId) {
+          lineItems.push({ priceId: productPriceId, quantity });
+        }
+        const insurancePriceId = resolveInsurancePriceId(item.insurancePlan);
+        if (insurancePriceId) {
+          lineItems.push({ priceId: insurancePriceId, quantity });
+        }
+      });
+      return lineItems;
     }
 
     function calculateSummary(cart) {
@@ -552,6 +605,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       try {
+        const checkoutItems = buildCheckoutItems(summary.items);
+        const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -559,7 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             orderId,
             successUrl: SUCCESS_URL,
             cancelUrl: CANCEL_URL,
-            items: summary.items
+            items: itemsForCheckout
           })
         });
         const data = await response.json();

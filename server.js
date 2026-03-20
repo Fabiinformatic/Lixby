@@ -20,7 +20,7 @@ const emailjsPrivateKey = process.env.EMAILJS_PRIVATE_KEY;
 const emailjsApiUrl =
   process.env.EMAILJS_API_URL || "https://api.emailjs.com/api/v1.0/email/send";
 
-const serviceAccount = require("./firebase-service-account.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
@@ -169,6 +169,7 @@ function buildStripeLineItems(items) {
 }
 
 app.post("/create-checkout-session", express.json(), async (req, res) => {
+  console.log("📦 BODY RECIBIDO:", JSON.stringify(req.body, null, 2));
   const { orderId: rawOrderId, successUrl, cancelUrl, items } = req.body || {};
   const orderId = rawOrderId || `LXB-${Math.floor(Math.random() * 100000)}`;
   const successWithOrder = appendQueryParam(
@@ -178,29 +179,46 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
   );
   const cancelWithOrder =
     cancelUrl || process.env.STRIPE_CANCEL_URL || "https://tusitio.com/cancel";
-  const dynamicLineItems = buildStripeLineItems(items);
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    mode: "payment",
-    line_items:
-      dynamicLineItems.length > 0
-        ? dynamicLineItems
-        : [
-            {
-              price: process.env.STRIPE_PRICE_ID || "TU_PRICE_ID",
-              quantity: 1
-            }
-          ],
-    metadata: {
-      orderId
-    },
-    client_reference_id: orderId,
-    locale: "auto",
-    success_url: successWithOrder,
-    cancel_url: cancelWithOrder
-  });
+  try {
+    const priceIdLineItems = Array.isArray(items)
+      ? items
+          .map((item) => ({
+            price: item && item.priceId ? item.priceId : null,
+            quantity: Math.max(1, Number((item && (item.quantity || item.qty)) || 1))
+          }))
+          .filter((item) => Boolean(item.price))
+      : [];
 
-  res.json({ id: session.id, url: session.url, orderId });
+    const dynamicLineItems =
+      priceIdLineItems.length > 0 ? priceIdLineItems : buildStripeLineItems(items);
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items:
+        dynamicLineItems.length > 0
+          ? dynamicLineItems
+          : [
+              {
+                price: process.env.STRIPE_PRICE_ID || "TU_PRICE_ID",
+                quantity: 1
+              }
+            ],
+      metadata: {
+        orderId,
+        items: JSON.stringify(items || [])
+      },
+      client_reference_id: orderId,
+      locale: "auto",
+      success_url: successWithOrder,
+      cancel_url: cancelWithOrder
+    });
+
+    res.json({ id: session.id, url: session.url, orderId });
+  } catch (error) {
+    console.error("Stripe error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
@@ -226,23 +244,36 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
     let lineItems = [];
     try {
       const items = await stripe.checkout.sessions.listLineItems(session.id, {
-        limit: 10
+        limit: 10,
+        expand: ["data.price.product"]
       });
       lineItems = items && items.data ? items.data : [];
     } catch (error) {
       console.warn("No se pudieron cargar los line items:", error.message);
     }
 
+    const orderItems = lineItems.map((item) => {
+      const productName =
+        (item.price &&
+          item.price.product &&
+          typeof item.price.product === "object" &&
+          item.price.product.name) ||
+        item.description ||
+        "Producto";
+      return {
+        productName,
+        priceId: item.price ? item.price.id : null,
+        quantity: item.quantity || 1,
+        unitAmount: item.price ? item.price.unit_amount : null
+      };
+    });
+
     const product =
-      lineItems.length > 0
-        ? lineItems
+      orderItems.length > 0
+        ? orderItems
             .map((item) => {
-              const name =
-                (item.price && item.price.product && item.price.product.name) ||
-                item.description ||
-                "Producto";
               const qty = item.quantity ? `x${item.quantity}` : "";
-              return `${name} ${qty}`.trim();
+              return `${item.productName} ${qty}`.trim();
             })
             .join(", ")
         : "Cascos Lixby";
@@ -257,6 +288,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
       orderNumber: formatOrderNumber(session.id),
       email: session.customer_details && session.customer_details.email,
       product,
+      items: orderItems,
       status: "Pedido recibido",
       paymentStatus: "paid",
       sessionId: session.id,
