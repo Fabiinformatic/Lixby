@@ -487,7 +487,8 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         event.preventDefault();
 
         const cart = JSON.parse(localStorage.getItem("lixbyCart") || "[]");
-        const existing = cart.find((item) => item.id === "lixbuds-one");
+        const lineId = "lixbuds-one|—|Sin LixSafe|0";
+        const existing = cart.find((item) => (item.lineId || `${item.id}|${item.color || "—"}|${item.insurancePlan || "Sin LixSafe"}|${Number(item.insurancePrice) || 0}`) === lineId);
 
         if (existing) {
           existing.qty += 1;
@@ -496,6 +497,10 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
             id: "lixbuds-one",
             name: "LixBuds One",
             price: 129,
+            color: "—",
+            insurancePlan: "Sin LixSafe",
+            insurancePrice: 0,
+            lineId,
             qty: 1
           });
         }

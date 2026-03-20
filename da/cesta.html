@@ -299,11 +299,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const checkoutBtn = document.getElementById("checkoutBtn");
 
     function readCart() {
-      return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      let changed = false;
+      const normalized = cart.map((entry) => {
+        const lineId = entry.lineId || buildLineId(entry);
+        if (!entry.lineId || entry.lineId !== lineId) {
+          changed = true;
+        }
+        return { ...entry, lineId };
+      });
+      if (changed) {
+        writeCart(normalized);
+      }
+      return normalized;
     }
 
     function writeCart(cart) {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function buildLineId(entry) {
+      const id = entry.id || "item";
+      const color = entry.color || "—";
+      const plan = entry.insurancePlan || "Sin LixSafe";
+      const price = Number(entry.insurancePrice) || 0;
+      return `${id}|${color}|${plan}|${price}`;
+    }
+
+    function resolveBasePrice(entry, product) {
+      const raw = Number(entry.price);
+      const productPrice = Number(product.price) || 0;
+      const insurancePrice = Number(entry.insurancePrice) || 0;
+      if (!Number.isNaN(raw) && raw > 0) {
+        if (insurancePrice > 0 && Math.abs(raw - (productPrice + insurancePrice)) < 0.01) {
+          return raw - insurancePrice;
+        }
+        return raw;
+      }
+      return productPrice;
     }
 
     function money(value) {
@@ -334,7 +367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
@@ -345,7 +378,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           id: product.id,
           name: product.name,
           price: basePrice,
+          lineId: entry.lineId || buildLineId(entry),
+          color: entry.color || "—",
           qty,
+          unitPrice,
           lineTotal,
           insurancePlan: entry.insurancePlan || "Sin LixSafe",
           insurancePrice
@@ -355,14 +391,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return { items, subtotal };
     }
 
-    function updateQuantity(productId, delta) {
+    function updateQuantity(lineId, delta) {
       const cart = readCart();
-      const item = cart.find((entry) => entry.id === productId);
+      const item = cart.find((entry) => (entry.lineId || buildLineId(entry)) === lineId);
       if (!item) return;
 
       item.qty += delta;
       if (item.qty <= 0) {
-        const next = cart.filter((entry) => entry.id !== productId);
+        const next = cart.filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
         writeCart(next);
       } else {
         writeCart(cart);
@@ -371,8 +407,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       renderCart();
     }
 
-    function removeItem(productId) {
-      const next = readCart().filter((entry) => entry.id !== productId);
+    function removeItem(lineId) {
+      const next = readCart().filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
       writeCart(next);
       renderCart();
     }
@@ -397,7 +433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           image: "images/lixbuds-hero.jpg"
         };
 
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
@@ -430,11 +466,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="cart-item-meta">Color: ${color}</p>
               <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
               <div class="cart-controls">
-                <button type="button" data-action="minus" data-id="${product.id}">-</button>
+                <button type="button" data-action="minus" data-id="${entry.lineId}">-</button>
                 <span>${qty}</span>
-                <button type="button" data-action="plus" data-id="${product.id}">+</button>
+                <button type="button" data-action="plus" data-id="${entry.lineId}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Quitar</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${entry.lineId}">Quitar</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -450,12 +486,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!(target instanceof HTMLElement)) return;
 
       const action = target.getAttribute("data-action");
-      const productId = target.getAttribute("data-id");
-      if (!action || !productId) return;
+      const lineId = target.getAttribute("data-id");
+      if (!action || !lineId) return;
 
-      if (action === "plus") updateQuantity(productId, 1);
-      if (action === "minus") updateQuantity(productId, -1);
-      if (action === "remove") removeItem(productId);
+      if (action === "plus") updateQuantity(lineId, 1);
+      if (action === "minus") updateQuantity(lineId, -1);
+      if (action === "remove") removeItem(lineId);
     });
 
     clearCartBtn.addEventListener("click", () => {
@@ -522,7 +558,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           body: JSON.stringify({
             orderId,
             successUrl: SUCCESS_URL,
-            cancelUrl: CANCEL_URL
+            cancelUrl: CANCEL_URL,
+            items: summary.items
           })
         });
         const data = await response.json();
@@ -543,4 +580,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-

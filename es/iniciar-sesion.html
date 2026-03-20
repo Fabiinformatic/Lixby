@@ -630,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
      const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
-      authDomain: "lixby.es",
+      authDomain: "lixby0.firebaseapp.com",
       projectId: "lixby0",
       storageBucket: "lixby0.firebasestorage.app",
       messagingSenderId: "1058088945026",
@@ -753,14 +753,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const googleProvider = new GoogleAuthProvider();
-      const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-        size: "invisible"
-      });
-      recaptchaVerifier.render();
-      const mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
-        size: "invisible"
-      });
-      mfaRecaptchaVerifier.render();
+      let recaptchaVerifier = null;
+      let mfaRecaptchaVerifier = null;
+
+      function getRecaptcha() {
+        if (!recaptchaVerifier) {
+          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+            size: "invisible"
+          });
+        }
+        return recaptchaVerifier;
+      }
+
+      function getMfaRecaptcha() {
+        if (!mfaRecaptchaVerifier) {
+          mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
+            size: "invisible"
+          });
+        }
+        return mfaRecaptchaVerifier;
+      }
       let confirmationResult = null;
       let mfaResolver = null;
       let mfaVerificationId = "";
@@ -844,10 +856,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             session: mfaResolver.session
           };
           const phoneAuthProvider = new PhoneAuthProvider(auth);
-          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
+          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, getMfaRecaptcha());
           setStatus("Código SMS enviado.", "success");
         } catch (error) {
-          mfaRecaptchaVerifier.clear();
+          getMfaRecaptcha().clear();
           setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
         }
       });
@@ -995,7 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         try {
           sendSmsBtn.disabled = true;
-          confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+          confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
           setStatus("SMS enviado. Revisa tu teléfono.", "success");
         } catch (error) {
           setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");

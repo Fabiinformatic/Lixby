@@ -117,8 +117,59 @@ function formatAddress(address) {
   return parts.length ? parts.join(", ") : null;
 }
 
+function buildStripeLineItems(items) {
+  if (!Array.isArray(items)) return [];
+  const lineItems = [];
+  items.forEach((item) => {
+    const qty = Math.max(1, Number(item.qty) || 1);
+    const basePrice = Number(item.price) || 0;
+    const insurancePrice = Number(item.insurancePrice) || 0;
+    const color = item.color || "—";
+    const plan = item.insurancePlan || "Sin LixSafe";
+    const baseName = item.name || "Producto";
+    const displayName =
+      color !== "—" && !baseName.includes(color) ? `${baseName} (${color})` : baseName;
+    if (basePrice > 0) {
+      lineItems.push({
+        price_data: {
+          currency: "eur",
+          unit_amount: Math.round(basePrice * 100),
+          product_data: {
+            name: displayName,
+            metadata: {
+              item_id: item.lineId || item.id || "",
+              color,
+              plan
+            }
+          }
+        },
+        quantity: qty
+      });
+    }
+    if (insurancePrice > 0 && plan !== "Sin LixSafe") {
+      lineItems.push({
+        price_data: {
+          currency: "eur",
+          unit_amount: Math.round(insurancePrice * 100),
+          product_data: {
+            name: `LixSafe ${plan} (${displayName})`,
+            metadata: {
+              item_id: item.lineId || item.id || "",
+              type: "insurance",
+              plan,
+              color
+            }
+          }
+        },
+        quantity: qty
+      });
+    }
+  });
+  return lineItems;
+}
+
 app.post("/create-checkout-session", express.json(), async (req, res) => {
-  const { orderId: rawOrderId, successUrl, cancelUrl } = req.body || {};
+  const { orderId: rawOrderId, successUrl, cancelUrl, items } = req.body || {};
   const orderId = rawOrderId || `LXB-${Math.floor(Math.random() * 100000)}`;
   const successWithOrder = appendQueryParam(
     successUrl || process.env.STRIPE_SUCCESS_URL || "https://tusitio.com/success",
@@ -127,15 +178,19 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
   );
   const cancelWithOrder =
     cancelUrl || process.env.STRIPE_CANCEL_URL || "https://tusitio.com/cancel";
+  const dynamicLineItems = buildStripeLineItems(items);
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    line_items: [
-      {
-        price: process.env.STRIPE_PRICE_ID || "TU_PRICE_ID",
-        quantity: 1
-      }
-    ],
+    line_items:
+      dynamicLineItems.length > 0
+        ? dynamicLineItems
+        : [
+            {
+              price: process.env.STRIPE_PRICE_ID || "TU_PRICE_ID",
+              quantity: 1
+            }
+          ],
     metadata: {
       orderId
     },

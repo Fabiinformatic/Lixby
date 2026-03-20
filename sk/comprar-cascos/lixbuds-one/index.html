@@ -59,11 +59,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     body {
       color: var(--buy-ink);
       font-family: "Inter", "Manrope", sans-serif;
+      padding-top: 112px;
     }
 
     .purchase-hero {
       padding: 72px 0 32px;
       --hero-sticky-top: 96px;
+      animation: hero-enter 0.5s ease both;
     }
 
     .purchase-details {
@@ -71,30 +73,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .nav {
-      position: static;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-radius: 0;
       padding-top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px) saturate(170%);
+      -webkit-backdrop-filter: blur(16px) saturate(170%);
+      border-bottom: 1px solid #e6e7eb;
+      z-index: 1200;
     }
 
     .nav-container {
+      max-width: 1120px;
+      width: min(1120px, 92vw);
       border-radius: 0;
       border: none;
-      border-bottom: 1px solid var(--buy-line);
       box-shadow: none;
-      background: #fff;
-      padding: 10px 32px;
+      background: transparent;
+      padding: 12px 0;
+      margin: 0 auto;
     }
 
-    .nav .container.nav-container {
-      max-width: none;
-      width: 100%;
+    .nav.nav-scrolled .nav-container {
+      display: none;
+    }
+
+    .nav.nav-scrolled .product-subnav {
+      border-top: none;
     }
 
     .product-subnav {
-      border-bottom: 1px solid var(--buy-line);
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1100;
+      border-top: 1px solid #e6e7eb;
+      background: transparent;
+      position: static;
+      z-index: auto;
+    }
+
+    .nav.nav-scrolled .product-subnav {
+      border-top-color: var(--buy-line);
     }
 
     .product-subnav-inner {
@@ -102,8 +122,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 18px 0;
+      padding: 10px 0;
       font-weight: 600;
+      max-width: 1120px;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
     }
 
     .product-subnav-title {
@@ -244,6 +267,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       top: var(--hero-sticky-top);
       align-self: start;
       background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      height: auto;
+      max-width: none;
+      isolation: isolate;
     }
 
     .hero-slider {
@@ -254,8 +283,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .hero-image {
-      width: min(420px, 90%);
+      width: min(420px, 85%);
       height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      object-position: center;
       filter: drop-shadow(0 26px 36px rgba(15, 23, 42, 0.14));
       background: transparent;
       padding: 0;
@@ -263,17 +295,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: relative;
       z-index: 1;
       mix-blend-mode: normal;
+      transition: opacity 0.35s ease;
     }
 
     .hero-slider {
       position: relative;
       width: min(680px, 100%);
-      min-height: 440px;
+      min-height: unset;
       display: grid;
       place-items: center;
       background: #ffffff;
       border-radius: 28px;
-      padding: 56px 40px;
+      padding: 44px 32px;
       box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04);
       isolation: isolate;
     }
@@ -357,6 +390,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 16px;
     }
 
+    .hero-copy .section-block {
+      margin-top: 18px;
+    }
+
     .section-block h2 {
       font-family: "Inter", "Manrope", sans-serif;
       font-size: 1.5rem;
@@ -427,6 +464,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--buy-ink);
     }
 
+    .hero-copy .summary-section-title {
+      margin-top: 18px;
+    }
+
     .summary-row-inline {
       display: flex;
       align-items: center;
@@ -441,6 +482,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-weight: 800;
       color: var(--buy-ink);
       letter-spacing: -0.01em;
+    }
+
+    .summary-price.price-flash {
+      animation: price-flash 0.35s ease;
     }
 
     .summary-link {
@@ -463,6 +508,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       min-height: 48px;
       font-size: 1rem;
       letter-spacing: 0.01em;
+    }
+
+    .summary-actions .btn.btn-bounce {
+      animation: btn-bounce 0.28s ease;
     }
 
     .summary-actions .btn:active {
@@ -524,6 +573,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
     }
 
+    .buy-faq .faq-card {
+      border: 1px solid var(--buy-line);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 0;
+      background: #ffffff;
+    }
+
     .faq-item {
       list-style: none;
       padding: 18px 20px;
@@ -535,6 +592,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-weight: 700;
       color: #111827;
       cursor: pointer;
+    }
+
+    .buy-faq .faq-item {
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      margin-bottom: 0;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
     .faq-item::-webkit-details-marker {
@@ -553,19 +618,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: transform 0.2s ease, color 0.2s ease;
     }
 
+    .buy-faq .faq-card[open] .faq-item {
+      background: #f8fafc;
+    }
+
     .faq-card[open] .faq-icon {
       transform: rotate(45deg);
       color: #111827;
     }
 
-    .faq-answer {
-      padding: 0 20px;
-      color: #4b5563;
-      border-top: 1px solid #eef0f4;
-      font-size: 0.95rem;
+    .buy-faq .faq-answer {
+      display: block !important;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
+      padding: 0 20px;
       transform: translateY(-4px);
       transition:
         max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
@@ -574,10 +641,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         transform 0.45s ease;
     }
 
-    .faq-card[open] .faq-answer {
-      padding: 16px 20px 20px;
+    .buy-faq .faq-card[open] .faq-answer {
       max-height: 420px;
       opacity: 1;
+      padding: 16px 20px 20px;
       transform: translateY(0);
     }
 
@@ -665,6 +732,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 1;
     }
 
+    @keyframes hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes price-flash {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes btn-bounce {
+      0% { transform: scale(0.96); }
+      60% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
     @media (max-width: 980px) {
       .hero-grid,
       .content-grid {
@@ -674,7 +769,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .buy-summary {
         position: static;
       }
+
+      .hero-media {
+        position: static !important;
+        top: auto;
+      }
+
+      .hero-slider {
+        min-height: unset;
+      }
     }
+
+    @media (max-width: 768px) {
+      .hero-image {
+        filter: none !important;
+      }
+
+      .hero-slider {
+        box-shadow: none;
+      }
+    }
+
   </style>
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
@@ -755,9 +870,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
     </div>
-  </header>
-
-  <main>
     <div class="product-subnav">
       <div class="container product-subnav-inner">
         <div class="product-subnav-title"><span class="product-subnav-badge">Nuevo</span> LixBuds One</div>
@@ -767,12 +879,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+  </header>
+
+  <main>
     <section class="section container purchase-hero reveal" data-delay="0s">
       <div class="hero-grid">
         <div class="hero-media">
           <div class="hero-slider">
             <button class="hero-arrow left" type="button" aria-label="Imagen anterior">‹</button>
-            <img id="lixbudsHeroImage" class="hero-image" src="../../images/lixbuds-one-white.png" alt="LixBuds One en estuche de carga">
+            <img id="lixbudsHeroImage" class="hero-image" src="../../images/comprar/lixbuds-one-whitebase.png" alt="LixBuds One en estuche de carga">
             <button class="hero-arrow right" type="button" aria-label="Imagen siguiente">›</button>
             <div class="hero-dots" id="heroDots"></div>
           </div>
@@ -787,8 +902,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2>Color. <span class="muted-title">Elige tu favorito.</span></h2>
             <div class="finish-label" id="colorLabel">Color - Blanco</div>
             <div class="color-row">
-              <button class="color-swatch active" type="button" data-color="Blanco" data-image="../../images/lixbuds-one-white.png" aria-label="Color blanco" style="background:#f4f4f5;"></button>
-              <button class="color-swatch" type="button" data-color="Negro" data-image="../../images/lixbuds-one-black.png" aria-label="Color negro" style="background:#111827;"></button>
+              <button class="color-swatch active" type="button" data-color="Blanco" data-image="../../images/comprar/lixbuds-one-whitebase.png" aria-label="Color blanco" style="background:#f4f4f5;"></button>
+              <button class="color-swatch" type="button" data-color="Negro" data-image="../../images/comprar/lixbuds-one-blackbase.png" aria-label="Color negro" style="background:#111827;"></button>
             </div>
           </div>
 
@@ -881,7 +996,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="section-block">
         <h2 class="faq-title">Preguntas más frecuentes</h2>
         <p class="faq-subtitle">Respuestas rápidas a dudas comunes.</p>
-        <div class="faq-list">
+        <div class="faq-list buy-faq">
           <details class="faq-card">
             <summary class="faq-item">
               <span>¿Cuál es la duración de la batería de LixBuds One?</span>
@@ -996,16 +1111,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       cookieBanner.style.display = "none";
     });
 
-    const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
+    const nav = document.getElementById("nav");
 
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = height > 0 ? (top / height) * 100 : 0;
-
       progressBar.style.width = progress + "%";
-      nav.classList.toggle("nav-scrolled", top > 20);
+      if (top > 24) {
+        nav.classList.add("nav-scrolled");
+      } else {
+        nav.classList.remove("nav-scrolled");
+      }
     };
 
     window.addEventListener("scroll", updateScrollUI, { passive: true });
@@ -1038,6 +1156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const addToCartBtn = document.getElementById("addToCartBtn");
     const CART_KEY = "lixbyCart";
+    let isAddingToCart = false;
 
     function readCart() {
       return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -1047,17 +1166,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    let selectedImageForCart = "../../images/lixbuds-one-white.png";
+    function buildLineId(color, plan, planPrice) {
+      return `lixbuds-one|${color}|${plan}|${Number(planPrice) || 0}`;
+    }
+
+    let selectedImageForCart = "../../images/comprar/lixbuds-one-whitebase.png";
     let selectedColorName = "Blanco";
     let selectedLixSafePlan = "Sin LixSafe";
     let selectedLixSafePrice = 0;
 
     if (addToCartBtn) {
       addToCartBtn.addEventListener("click", () => {
+        if (isAddingToCart) return;
+        isAddingToCart = true;
+        addToCartBtn.classList.add("btn-bounce");
+        addToCartBtn.textContent = "✓ Añadido";
+        addToCartBtn.disabled = true;
         const cart = readCart();
-        const existing = cart.find((item) => item.id === "lixbuds-one");
         const colorLabel = document.getElementById("colorLabel");
         const selectedColor = colorLabel ? colorLabel.textContent.replace("Color - ", "") : "Blanco";
+        const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice);
+        const existing = cart.find((item) => (item.lineId || buildLineId(
+          item.color || "Blanco",
+          item.insurancePlan || "Sin LixSafe",
+          item.insurancePrice || 0
+        )) === lineId);
 
         if (existing) {
           existing.qty = Number(existing.qty || 1) + 1;
@@ -1065,29 +1198,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           cart.push({
             id: "lixbuds-one",
             name: `LixBuds One (${selectedColor})`,
-            price: 99.99 + selectedLixSafePrice,
+            price: 99.99,
             color: selectedColor,
             insurancePlan: selectedLixSafePlan,
             insurancePrice: selectedLixSafePrice,
+            lineId,
             qty: 1,
             image: selectedImageForCart.replace("../../", "").replace("../../", "")
           });
         }
 
         writeCart(cart);
-        window.location.href = "../../cesta.html";
+        setTimeout(() => {
+          window.location.href = "../../cesta.html";
+        }, 1200);
       });
     }
 
     const colorLabel = document.getElementById("colorLabel");
     const heroImage = document.getElementById("lixbudsHeroImage");
     const heroDots = document.getElementById("heroDots");
-    const heroImages = [
-      "../../images/lixbuds-one-white.png",
-      "../../images/lixbuds-one-black.png",
-      "../../images/lixbuds-hero.jpg",
-      "../../images/lixbuds-product.jpg"
-    ];
+    let fadePending = false;
+    const heroImageSets = {
+      Blanco: [
+        "../../images/comprar/lixbuds-one-whitebase.png"
+      ],
+      Negro: [
+        "../../images/comprar/lixbuds-one-blackbase.png",
+        "../../images/comprar/lixbuds-one-black1.png",
+        "../../images/comprar/lixbuds-one-black2.png",
+        "../../images/comprar/lixbuds-one-black3.png"
+      ]
+    };
+    let heroImages = heroImageSets.Blanco.slice();
     let heroIndex = 0;
 
     function renderHeroDots() {
@@ -1107,8 +1250,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     function updateHeroImage() {
       if (!heroImage) return;
+      heroImage.style.opacity = "0";
+      fadePending = true;
       heroImage.src = heroImages[heroIndex];
       renderHeroDots();
+    }
+
+    function setHeroImagesForColor(color, preferredImage) {
+      const nextSet = heroImageSets[color] || heroImageSets.Blanco;
+      heroImages = nextSet.slice();
+      if (preferredImage) {
+        const preferredIndex = heroImages.indexOf(preferredImage);
+        heroIndex = preferredIndex >= 0 ? preferredIndex : 0;
+      } else {
+        heroIndex = 0;
+      }
+      updateHeroImage();
     }
 
     const prevBtn = document.querySelector(".hero-arrow.left");
@@ -1124,6 +1281,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
+    if (heroImage) {
+      heroImage.addEventListener("load", () => {
+        if (fadePending) {
+          heroImage.style.opacity = "1";
+          fadePending = false;
+        }
+      });
+    }
     updateHeroImage();
     document.querySelectorAll(".color-swatch").forEach((swatch) => {
       swatch.addEventListener("mouseenter", () => {
@@ -1145,15 +1310,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           selectedColorName = swatch.dataset.color || "Blanco";
           colorLabel.textContent = `Color - ${selectedColorName}`;
         }
-        if (heroImage && swatch.dataset.image) {
-          heroImage.src = swatch.dataset.image;
-          const foundIndex = heroImages.indexOf(swatch.dataset.image);
-          if (foundIndex >= 0) {
-            heroIndex = foundIndex;
-            renderHeroDots();
-          }
+        if (swatch.dataset.image) {
           selectedImageForCart = swatch.dataset.image;
         }
+        setHeroImagesForColor(selectedColorName, swatch.dataset.image);
       });
     });
 
@@ -1180,6 +1340,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       selectedLixSafePrice = addon;
       const total = (BASE_PRICE + addon).toFixed(2).replace(".", ",");
       summaryPrice.textContent = `${total} €`;
+      summaryPrice.classList.remove("price-flash");
+      void summaryPrice.offsetWidth;
+      summaryPrice.classList.add("price-flash");
     }
 
     setLixSafeSummary("Sin LixSafe", "");
@@ -1209,6 +1372,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
     }
+
   </script>
 </body>
 </html>
