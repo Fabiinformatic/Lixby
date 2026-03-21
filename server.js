@@ -281,7 +281,6 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
       priceIdLineItems.length > 0 ? priceIdLineItems : buildStripeLineItems(items);
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
       mode: "payment",
       shipping_address_collection: {
         allowed_countries: ["ES", "PT", "FR", "DE", "IT", "NL", "BE", "AT", "PL", "SE"]
