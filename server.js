@@ -20,7 +20,13 @@ const emailjsPrivateKey = process.env.EMAILJS_PRIVATE_KEY;
 const emailjsApiUrl =
   process.env.EMAILJS_API_URL || "https://api.emailjs.com/api/v1.0/email/send";
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}");
+let serviceAccount;
+try {
+  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} catch (e) {
+  console.error("Error parsing FIREBASE_SERVICE_ACCOUNT:", e.message);
+  process.exit(1);
+}
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
