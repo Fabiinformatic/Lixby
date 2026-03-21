@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <!-- Google Tag Manager -->
@@ -255,7 +255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
-    const CHECKOUT_ENDPOINT = "http://localhost:3000/create-checkout-session";
+    const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
     const SUCCESS_URL = new URL("gracias.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
 
@@ -635,3 +635,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
+
