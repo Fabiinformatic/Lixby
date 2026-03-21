@@ -247,6 +247,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </aside>
     </section>
+
+    <!-- Botón de prueba - ELIMINAR EN PRODUCCIÓN -->
+    <div style="margin-top: 32px; padding: 16px; background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 14px; text-align: center;">
+      <p style="margin: 0 0 10px; font-size: 0.85rem; color: #92400e; font-weight: 700;">🧪 MODO PRUEBA — Eliminar antes de publicar</p>
+      <button id="testBtn" type="button" class="btn btn-secondary" style="font-size:0.9rem">
+        Comprar producto de prueba (0,01 €)
+      </button>
+    </div>
   </main>
 
   <script type="module">
@@ -632,6 +640,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     renderCart();
+  </script>
+
+  <script>
+    document.getElementById('testBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('testBtn');
+      btn.disabled = true;
+      btn.textContent = 'Procesando...';
+
+      try {
+        const res = await fetch('https://lixby-production.up.railway.app/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: 'TEST-' + Math.random().toString(36).slice(2, 8).toUpperCase(),
+            successUrl: window.location.origin + '/es/gracias.html',
+            cancelUrl: window.location.href,
+            items: [{ priceId: 'price_1TDPOV4JmdPA7hphYnhz6s2R', quantity: 1 }]
+          })
+        });
+        const data = await res.json();
+        if (data.url) window.location.href = data.url;
+      } catch (e) {
+        alert('Error al iniciar el pago de prueba.');
+        btn.disabled = false;
+        btn.textContent = 'Comprar producto de prueba (0,01 €)';
+      }
+    });
   </script>
 </body>
 </html>
