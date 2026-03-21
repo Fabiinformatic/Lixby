@@ -48,19 +48,26 @@ function sendEmailJsEmail(order) {
     return Promise.resolve(false);
   }
 
+  const orders = (order.items || []).map((item) => ({
+    name: item.productName,
+    units: item.quantity || 1,
+    price: item.unitAmount ? (item.unitAmount / 100).toFixed(2) : "0.00",
+    image_url: "https://lixby.es/images/lixbuds-product.jpg"
+  }));
+
   const payload = {
     service_id: emailjsServiceId,
     template_id: emailjsTemplateId,
     user_id: emailjsPublicKey,
     template_params: {
-      order_id: order.id,
-      order_number: order.orderNumber,
+      order_id: order.orderNumber,
       email: order.email,
-      status: order.paymentStatus || order.status,
-      amount: order.amountTotal,
-      currency: order.currency || "EUR",
-      product: order.product,
-      address: order.address || "No aplica"
+      orders,
+      cost: {
+        shipping: order.shippingAmount ? (order.shippingAmount / 100).toFixed(2) : "0.00",
+        tax: "0.00",
+        total: order.amountTotal ? order.amountTotal.toFixed(2) : "0.00"
+      }
     }
   };
 
@@ -85,11 +92,17 @@ function sendEmailJsEmail(order) {
         (res) => {
           const ok = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
           res.on("data", () => {});
-          res.on("end", () => resolve(ok));
+          res.on("end", () => {
+            console.log(ok ? "✅ Email enviado a:" : "❌ Email fallido:", order.email);
+            resolve(ok);
+          });
         }
       );
 
-      req.on("error", () => resolve(false));
+      req.on("error", (e) => {
+        console.error("Email error:", e.message);
+        resolve(false);
+      });
       req.write(body);
       req.end();
     } catch (error) {
@@ -101,7 +114,7 @@ function sendEmailJsEmail(order) {
 function formatOrderNumber(sessionId) {
   const seed = sessionId ? sessionId.replace(/[^a-zA-Z0-9]/g, "") : "";
   const tail = seed.slice(-8).toUpperCase().padStart(8, "0");
-  return `LX-${tail}`;
+  return `LXB-${tail}`;
 }
 
 function formatAmount(amountTotal, currency) {
