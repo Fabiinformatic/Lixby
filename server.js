@@ -111,6 +111,75 @@ function sendEmailJsEmail(order) {
   });
 }
 
+function sendAdminEmail(order) {
+  const adminTemplateId = process.env.EMAILJS_ADMIN_TEMPLATE_ID;
+  if (!emailjsServiceId || !adminTemplateId || !emailjsPublicKey) {
+    return Promise.resolve(false);
+  }
+
+  const orders = (order.items || []).map((item) => ({
+    name: item.productName,
+    units: item.quantity || 1,
+    price: item.unitAmount ? (item.unitAmount / 100).toFixed(2) : "0.00",
+    image_url: "https://lixby.es/images/lixbuds-product.jpg"
+  }));
+
+  const payload = {
+    service_id: emailjsServiceId,
+    template_id: adminTemplateId,
+    user_id: emailjsPublicKey,
+    template_params: {
+      order_number: order.orderNumber,
+      customer_name: order.customerName || "No disponible",
+      customer_email: order.email,
+      customer_address: order.address || "No disponible",
+      orders,
+      cost: {
+        shipping: order.shippingAmount ? (order.shippingAmount / 100).toFixed(2) : "0.00",
+        total: order.amountTotal ? order.amountTotal.toFixed(2) : "0.00"
+      }
+    }
+  };
+
+  if (emailjsPrivateKey) {
+    payload.accessToken = emailjsPrivateKey;
+  }
+
+  return new Promise((resolve) => {
+    try {
+      const url = new URL(emailjsApiUrl);
+      const body = JSON.stringify(payload);
+      const req = https.request(
+        {
+          method: "POST",
+          hostname: url.hostname,
+          path: url.pathname + url.search,
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": Buffer.byteLength(body)
+          }
+        },
+        (res) => {
+          const ok = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
+          res.on("data", () => {});
+          res.on("end", () => {
+            console.log(ok ? "✅ Email admin enviado" : "❌ Email admin fallido");
+            resolve(ok);
+          });
+        }
+      );
+      req.on("error", (e) => {
+        console.error("Admin email error:", e.message);
+        resolve(false);
+      });
+      req.write(body);
+      req.end();
+    } catch (error) {
+      resolve(false);
+    }
+  });
+}
+
 function formatOrderNumber(sessionId) {
   const seed = sessionId ? sessionId.replace(/[^a-zA-Z0-9]/g, "") : "";
   const tail = seed.slice(-8).toUpperCase().padStart(8, "0");
@@ -338,6 +407,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
 
     await db.collection("orders").doc(order.id).set(order, { merge: true });
     const emailSent = await sendEmailJsEmail(order);
+    await sendAdminEmail(order);
 
     if (resend && resendFrom && order.email) {
       if (emailSent) {
