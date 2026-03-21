@@ -283,8 +283,59 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       shipping_address_collection: {
-        allowed_countries: ["ES", "PT", "FR", "DE", "IT", "NL", "BE", "AT", "PL", "SE"]
+        allowed_countries: [
+          "ES",
+          "PT",
+          "FR",
+          "DE",
+          "IT",
+          "NL",
+          "BE",
+          "AT",
+          "PL",
+          "SE",
+          "DK",
+          "FI",
+          "IE",
+          "GR",
+          "CZ",
+          "SK",
+          "HU",
+          "RO",
+          "BG",
+          "HR",
+          "SI",
+          "EE",
+          "LV",
+          "LT",
+          "LU",
+          "MT",
+          "CY",
+          "GB",
+          "CH",
+          "NO"
+        ]
       },
+      phone_number_collection: {
+        enabled: true
+      },
+      custom_fields: [
+        {
+          key: "full_name",
+          label: { type: "custom", custom: "Nombre completo" },
+          type: "text"
+        },
+        {
+          key: "nif_dni",
+          label: { type: "custom", custom: "NIF / DNI" },
+          type: "text"
+        },
+        {
+          key: "fecha_nacimiento",
+          label: { type: "custom", custom: "Fecha de nacimiento (DD/MM/AAAA)" },
+          type: "text"
+        }
+      ],
       line_items:
         dynamicLineItems.length > 0
           ? dynamicLineItems
@@ -376,7 +427,28 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
     const order = {
       id: orderId || `LXB-${Math.floor(Math.random() * 100000)}`,
       orderNumber: formatOrderNumber(session.id),
-      email: session.customer_details && session.customer_details.email,
+      email: (session.customer_details && session.customer_details.email) || null,
+      customerName:
+        (session.custom_fields &&
+          session.custom_fields.find((f) => f.key === "full_name") &&
+          session.custom_fields.find((f) => f.key === "full_name").text &&
+          session.custom_fields.find((f) => f.key === "full_name").text.value) ||
+        (session.customer_details && session.customer_details.name) ||
+        null,
+      customerPhone:
+        (session.customer_details && session.customer_details.phone) || null,
+      customerNif:
+        (session.custom_fields &&
+          session.custom_fields.find((f) => f.key === "nif_dni") &&
+          session.custom_fields.find((f) => f.key === "nif_dni").text &&
+          session.custom_fields.find((f) => f.key === "nif_dni").text.value) ||
+        null,
+      customerDob:
+        (session.custom_fields &&
+          session.custom_fields.find((f) => f.key === "fecha_nacimiento") &&
+          session.custom_fields.find((f) => f.key === "fecha_nacimiento").text &&
+          session.custom_fields.find((f) => f.key === "fecha_nacimiento").text.value) ||
+        null,
       product,
       items: orderItems,
       status: "Pedido recibido",
