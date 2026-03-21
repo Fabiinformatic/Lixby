@@ -132,6 +132,9 @@ function sendAdminEmail(order) {
       order_number: order.orderNumber,
       customer_name: order.customerName || "No disponible",
       customer_email: order.email,
+      customer_phone: order.customerPhone || "No disponible",
+      customer_nif: order.customerNif || "No disponible",
+      customer_dob: order.customerDob || "No disponible",
       customer_address: order.address || "No disponible",
       orders,
       cost: {
