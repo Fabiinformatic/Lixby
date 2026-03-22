@@ -543,8 +543,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label for="photoUrl">Foto de perfil</label>
-              <input id="photoUrl" type="text">
+              <label>Foto de perfil</label>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+                <img id="photoPreview" src="images/cuenta.png" alt="Vista previa"
+                  style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
+                <div>
+                  <input id="photoFile" type="file" accept="image/*" style="display:none">
+                  <button id="uploadPhotoBtn" class="btn btn-secondary" type="button" style="font-size:0.85rem">
+                    Subir foto
+                  </button>
+                  <div id="uploadPhotoMsg" style="font-size:0.78rem;color:var(--muted);margin-top:4px"></div>
+                </div>
+              </div>
+              <input id="photoUrl" type="text" style="display:none">
             </div>
           </div>
         </section>
@@ -604,13 +615,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="account-section">
           <h2>Pedidos</h2>
-          <article class="order-card">
-            <strong>Consulta el estado de tu pedido</strong>
-            <span>Introduce tu código en seguimiento.</span>
-            <div class="order-actions">
-              <a class="btn btn-primary" href="track.html">Ir a seguimiento</a>
-            </div>
-          </article>
+          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">Cargando pedidos...</div>
+          <div id="ordersList" style="display:none;display:grid;gap:10px"></div>
+          <div id="ordersEmpty" style="display:none">
+            <article class="order-card">
+              <strong>No tienes pedidos aún</strong>
+              <span>Cuando realices una compra aparecerá aquí.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="tienda.html">Ir a la tienda</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Tarjetas regalo</h2>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Cargando tarjetas...</div>
+          <div id="giftCardsList" style="display:none;gap:10px"></div>
+          <div id="giftCardsEmpty" style="display:none">
+            <article class="order-card">
+              <strong>No tienes tarjetas regalo</strong>
+              <span>Compra una tarjeta regalo para ti o para alguien especial.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="regalo.html">Ver tarjetas regalo</a>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section class="account-section">
@@ -769,6 +799,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -1054,6 +1085,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       inputs.language.value = profile.language || navigator.language || "es-ES";
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
+      document.getElementById("photoPreview").src =
+        inputs.photoUrl.value || user.photoURL || "images/cuenta.png";
       inputs.email.value = user.email || profile.email || "";
       inputs.phone.value = profile.phone || profile.phoneNumber || "";
       inputs.address.value = profile.address || "";
@@ -1120,6 +1153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const storage = getStorage(app);
 
     addPaymentBtn.addEventListener("click", () => {
       const cardholder = paymentInputs.cardholder.value.trim();
@@ -1244,6 +1278,195 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
+    const RAILWAY_URL = "https://lixby-production.up.railway.app";
+    const ACCOUNT_API_KEY = "lixby-admin-2026";
+
+    function statusBadge(status) {
+      const map = {
+        "Pedido recibido": { bg: "#eff6ff", color: "#1d4ed8", border: "#bfdbfe" },
+        "Preparando pedido": { bg: "#fefce8", color: "#854d0e", border: "#fde047" },
+        Enviado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
+        "En reparto": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
+        Entregado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+      };
+      const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
+      return `<span style="background:${s.bg};color:${s.color};border:1px solid ${s.border};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">${status || "Pedido recibido"}</span>`;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return "—";
+      return new Date(iso).toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    async function loadOrders(email) {
+      const loadingEl = document.getElementById("ordersLoading");
+      const listEl = document.getElementById("ordersList");
+      const emptyEl = document.getElementById("ordersEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/orders-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const orders = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!orders.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = orders
+          .map(
+            (o) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${o.orderNumber || o.id}</strong>
+          ${statusBadge(o.status)}
+        </div>
+        <span style="color:var(--muted);font-size:0.85rem">${formatDate(
+          o.createdAt
+        )}</span>
+        <span style="font-size:0.9rem">${o.product || "—"}</span>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${
+            o.amountTotal
+              ? Number(o.amountTotal).toFixed(2).replace(".", ",") + " €"
+              : "—"
+          }</strong>
+          ${
+            o.trackingNumber
+              ? `<span style="font-size:0.8rem;color:var(--muted)">🚚 ${
+                  o.trackingCarrier || ""
+                } ${o.trackingNumber}</span>`
+              : ""
+          }
+        </div>
+        <div class="order-actions">
+          <a class="btn btn-secondary" href="track.html?orderId=${o.id}" style="font-size:0.85rem">Seguir pedido</a>
+        </div>
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Error cargando pedidos.";
+      }
+    }
+
+    async function loadGiftCards(email) {
+      const loadingEl = document.getElementById("giftCardsLoading");
+      const listEl = document.getElementById("giftCardsList");
+      const emptyEl = document.getElementById("giftCardsEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/gift-cards-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const cards = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!cards.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = cards
+          .map(
+            (c) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${c.code}</strong>
+          <span style="background:${c.used ? "#f3f4f6" : "#f0fdf4"};color:${
+              c.used ? "#6b7280" : "#166534"
+            };border:1px solid ${c.used ? "#e5e7eb" : "#86efac"};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">
+            ${c.used ? "Usada" : "Activa"}
+          </span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:0.85rem;color:var(--muted)">Saldo restante</span>
+          <strong style="color:#458500">${Number(c.balance || 0)
+            .toFixed(2)
+            .replace(".", ",")} €</strong>
+        </div>
+        ${
+          c.recipientName
+            ? `<span style="font-size:0.82rem;color:var(--muted)">Para: ${c.recipientName}</span>`
+            : ""
+        }
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Error cargando tarjetas.";
+      }
+    }
+
+    document.getElementById("uploadPhotoBtn").addEventListener("click", () => {
+      document.getElementById("photoFile").click();
+    });
+
+    document.getElementById("photoFile").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const msg = document.getElementById("uploadPhotoMsg");
+      const btn = document.getElementById("uploadPhotoBtn");
+      const user = auth.currentUser;
+      if (!user) return;
+
+      // Validar tamaño máx 2MB
+      if (file.size > 2 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "La imagen no puede superar 2MB";
+        return;
+      }
+
+      btn.disabled = true;
+      msg.style.color = "var(--muted)";
+      msg.textContent = "Subiendo...";
+
+      try {
+        const storageRef = ref(storage, `avatars/${user.uid}`);
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+
+        // Actualizar preview y campo oculto
+        document.getElementById("photoPreview").src = url;
+        document.getElementById("photoUrl").value = url;
+        profilePhoto.src = url;
+
+        // Guardar en perfil
+        const profile = readProfile();
+        profile.photoUrl = url;
+        writeProfile(profile);
+
+        msg.style.color = "#458500";
+        msg.textContent = "Foto actualizada";
+        showStatus("Foto de perfil actualizada.", "success");
+      } catch (err) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "Error al subir la foto";
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "iniciar-sesion.html";
@@ -1258,6 +1481,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Cuenta cargada correctamente.", "success");
       accountLayout.classList.remove("hidden");
       setReadonlyMode();
+
+      // Cargar pedidos y tarjetas regalo
+      const userEmail = user.email;
+      if (userEmail) {
+        loadOrders(userEmail);
+        loadGiftCards(userEmail);
+      }
+
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
         verifyEmailBtn.textContent = user.emailVerified ? "Verificado" : "Enviar";
