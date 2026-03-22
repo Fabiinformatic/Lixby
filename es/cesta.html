@@ -680,7 +680,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       try {
+        // Leer perfil guardado
         const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
+        const customerName = profile.firstName
+          ? `${profile.firstName} ${profile.lastName || ""}`.trim()
+          : null;
+
         const checkoutItems = buildCheckoutItems(summary.items);
         const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
@@ -692,10 +697,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             cancelUrl: CANCEL_URL,
             items: itemsForCheckout,
             giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
-            customerName: profile.firstName
-              ? `${profile.firstName} ${profile.lastName || ""}`.trim()
-              : null,
-            customerEmail: profile.email || null,
+            customerEmail: profile.email || auth.currentUser?.email || null,
+            customerName,
             customerPhone: profile.phone || null
           })
         });
