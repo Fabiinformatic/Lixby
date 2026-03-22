@@ -20,6 +20,13 @@ const emailjsPrivateKey = process.env.EMAILJS_PRIVATE_KEY;
 const emailjsApiUrl =
   process.env.EMAILJS_API_URL || "https://api.emailjs.com/api/v1.0/email/send";
 
+function generateGiftCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const part = () =>
+    Array.from({ length: 4 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+  return `LIXBY-${part()}-${part()}`;
+}
+
 let serviceAccount;
 try {
   serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
@@ -109,6 +116,101 @@ function sendEmailJsEmail(order) {
       resolve(false);
     }
   });
+}
+
+async function sendGiftCardEmail(giftCard, role) {
+  if (!resend || !resendFrom) return false;
+
+  const isRecipient = role === "recipient";
+  const toEmail = isRecipient ? giftCard.recipientEmail : giftCard.senderEmail;
+  const toName = isRecipient
+    ? giftCard.recipientName || "Cliente"
+    : giftCard.senderName || "Cliente";
+
+  if (!toEmail) return false;
+
+  const subject = isRecipient
+    ? `🎁 ${giftCard.senderName || "Alguien"} te ha enviado una tarjeta regalo Lixby`
+    : `✅ Tu tarjeta regalo Lixby de ${giftCard.amount
+        .toFixed(2)
+        .replace(".", ",")} €`;
+
+  const messageHtml = giftCard.message
+    ? `<div style="background:#f0f7e6;border-left:4px solid #458500;padding:14px 18px;border-radius:8px;margin:20px 0;font-style:italic;color:#374151">"${giftCard.message}"</div>`
+    : "";
+
+  const html = `
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f5f7fa;font-family:'Helvetica Neue',Arial,sans-serif">
+  <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#1a3a00,#458500);padding:40px 40px 32px;text-align:center">
+      <div style="font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.02em">Lixby</div>
+      <div style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px">Tarjeta Regalo Digital</div>
+    </div>
+
+    <!-- Body -->
+    <div style="padding:36px 40px">
+      <p style="font-size:1.05rem;color:#111827;margin:0 0 8px">Hola, <strong>${toName}</strong> 👋</p>
+      <p style="color:#6b7280;line-height:1.6;margin:0 0 24px">
+        ${
+          isRecipient
+            ? `<strong>${giftCard.senderName || "Alguien especial"}</strong> te ha enviado una tarjeta regalo Lixby.`
+            : "Tu tarjeta regalo Lixby está lista. Aquí tienes tu código."
+        }
+      </p>
+
+      ${messageHtml}
+
+      <!-- Gift Card -->
+      <div style="background:linear-gradient(135deg,#f0f7e6,#fff);border:1.5px solid #d4edba;border-radius:16px;padding:28px;text-align:center;margin-bottom:24px">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-bottom:8px">Importe</div>
+        <div style="font-size:2.4rem;font-weight:800;color:#111827;letter-spacing:-0.03em;margin-bottom:16px">${giftCard.amount
+          .toFixed(2)
+          .replace(".", ",")} €</div>
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-bottom:8px">Tu código</div>
+        <div style="font-size:1.4rem;font-weight:800;font-family:monospace;color:#458500;background:#fff;border:2px dashed #c3e6a0;border-radius:10px;padding:12px 20px;letter-spacing:0.08em">${giftCard.code}</div>
+      </div>
+
+      <!-- How to use -->
+      <div style="background:#f9fafb;border-radius:12px;padding:20px 24px;margin-bottom:24px">
+        <div style="font-weight:700;color:#111827;margin-bottom:12px;font-size:0.9rem">¿Cómo usar tu tarjeta regalo?</div>
+        <ol style="margin:0;padding-left:18px;color:#6b7280;font-size:0.875rem;line-height:2">
+          <li>Añade los LixBuds al carrito en <a href="https://lixby.es" style="color:#458500">lixby.es</a></li>
+          <li>En el carrito, introduce tu código en el campo de descuento</li>
+          <li>¡El descuento se aplica automáticamente!</li>
+        </ol>
+      </div>
+
+      <a href="https://lixby.es/es/tienda.html" style="display:block;background:#458500;color:#fff;text-decoration:none;text-align:center;padding:16px;border-radius:12px;font-weight:700;font-size:1rem">
+        Ir a la tienda →
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">La tarjeta no tiene fecha de caducidad · <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">Soporte</a></p>
+    </div>
+  </div>
+</body>
+</html>`;
+
+  try {
+    await resend.emails.send({
+      from: resendFrom,
+      to: toEmail,
+      subject,
+      html
+    });
+    console.log("✅ Gift card email enviado a:", toEmail);
+    return true;
+  } catch (err) {
+    console.error("❌ Gift card email error:", err.message);
+    return false;
+  }
 }
 
 function sendAdminEmail(order) {
@@ -259,6 +361,114 @@ function buildStripeLineItems(items) {
   return lineItems;
 }
 
+app.post("/create-gift-card-session", express.json(), async (req, res) => {
+  const {
+    amount,
+    senderName,
+    senderEmail,
+    recipientName,
+    recipientEmail,
+    message,
+    successUrl,
+    cancelUrl
+  } = req.body || {};
+
+  if (!amount || amount < 10 || amount > 200) {
+    return res.status(400).json({ error: "Importe no válido" });
+  }
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            unit_amount: Math.round(amount * 100),
+            product_data: {
+              name: `Tarjeta Regalo Lixby — ${Number(amount).toFixed(2)} €`,
+              description: recipientName
+                ? `Para: ${recipientName}`
+                : "Tarjeta regalo digital"
+            }
+          },
+          quantity: 1
+        }
+      ],
+      customer_email: senderEmail,
+      metadata: {
+        type: "gift_card",
+        amount: String(amount),
+        senderName: senderName || "",
+        senderEmail: senderEmail || "",
+        recipientName: recipientName || "",
+        recipientEmail: recipientEmail || "",
+        message: message || ""
+      },
+      success_url: `${successUrl}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: cancelUrl
+    });
+
+    return res.json({ url: session.url });
+  } catch (err) {
+    console.error("Gift card session error:", err.message);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/redeem-gift-card", express.json(), async (req, res) => {
+  const { code } = req.body || {};
+  if (!code) return res.status(400).json({ error: "Falta el código" });
+
+  const normalized = code.trim().toUpperCase();
+
+  try {
+    const doc = await db.collection("giftCards").doc(normalized).get();
+    if (!doc.exists) return res.status(404).json({ error: "Código no válido" });
+
+    const card = doc.data();
+    if (card.used || card.balance <= 0) {
+      return res.status(400).json({ error: "Esta tarjeta ya ha sido usada" });
+    }
+
+    return res.json({
+      valid: true,
+      code: card.code,
+      balance: card.balance,
+      amount: card.amount
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/use-gift-card", express.json(), async (req, res) => {
+  const { code, amountUsed } = req.body || {};
+  if (!code || !amountUsed) return res.status(400).json({ error: "Faltan datos" });
+
+  const normalized = code.trim().toUpperCase();
+
+  try {
+    const ref = db.collection("giftCards").doc(normalized);
+    const doc = await ref.get();
+    if (!doc.exists) return res.status(404).json({ error: "Código no encontrado" });
+
+    const card = doc.data();
+    const newBalance = Math.max(0, card.balance - amountUsed);
+
+    await ref.update({
+      balance: newBalance,
+      used: newBalance === 0,
+      lastUsedAt: new Date().toISOString()
+    });
+
+    return res.json({ ok: true, remainingBalance: newBalance });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 app.post("/create-checkout-session", express.json(), async (req, res) => {
   console.log("📦 BODY RECIBIDO:", JSON.stringify(req.body, null, 2));
   const { orderId: rawOrderId, successUrl, cancelUrl, items } = req.body || {};
@@ -382,6 +592,36 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
+
+    if (session.metadata && session.metadata.type === "gift_card") {
+      const code = generateGiftCode();
+      const amount = Number(session.metadata.amount);
+
+      const giftCard = {
+        code,
+        amount,
+        balance: amount,
+        used: false,
+        senderName: session.metadata.senderName || null,
+        senderEmail: session.metadata.senderEmail || null,
+        recipientName: session.metadata.recipientName || null,
+        recipientEmail: session.metadata.recipientEmail || null,
+        message: session.metadata.message || null,
+        sessionId: session.id,
+        createdAt: new Date().toISOString()
+      };
+
+      await db.collection("giftCards").doc(code).set(giftCard);
+      console.log("🎁 Tarjeta regalo creada:", code);
+
+      await sendGiftCardEmail(giftCard, "sender");
+      if (giftCard.recipientEmail) {
+        await sendGiftCardEmail(giftCard, "recipient");
+      }
+
+      return res.sendStatus(200);
+    }
+
     const orderId =
       (session.metadata && session.metadata.orderId) || session.client_reference_id;
 
@@ -484,20 +724,75 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
     await sendAdminEmail(order);
 
     if (resend && resendFrom && order.email) {
-      if (emailSent) {
-        return res.sendStatus(200);
-      }
       try {
-        const baseUrl = process.env.PUBLIC_BASE_URL || "http://localhost:3000";
-        const trackUrl = `${baseUrl}/track/${order.id}`;
+        const trackUrl = `https://lixby.es/track.html?orderId=${order.id}`;
+        const itemsHtml = order.items
+          .map(
+            (item) => `
+      <div style="display:flex;justify-content:space-between;padding:10px 14px;background:#f9fafb;border-radius:10px;margin-bottom:6px;font-size:0.875rem">
+        <div>
+          <div style="font-weight:700">${item.productName}</div>
+          <div style="color:#6b7280">x${item.quantity}</div>
+        </div>
+        <div style="font-weight:800">${item.unitAmount ? (item.unitAmount / 100).toFixed(2).replace(".", ",") + " €" : "—"}</div>
+      </div>
+    `
+          )
+          .join("");
+
         await resend.emails.send({
           from: resendFrom,
           to: order.email,
-          subject: "Tu pedido en Lixby",
-          text: `Tu pedido en Lixby\n\nNumero de pedido: ${order.orderNumber}\nID interno: ${order.id}\nProducto: ${order.product}\nTotal: ${order.amountLabel || order.amountTotal || ""}\nDireccion: ${order.address || "No aplica"}\n\nRastrea aqui:\n${trackUrl}`
+          subject: `✅ Pedido ${order.orderNumber} confirmado — Lixby`,
+          html: `
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f5f7fa;font-family:'Helvetica Neue',Arial,sans-serif">
+  <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
+    <div style="background:linear-gradient(135deg,#1a3a00,#458500);padding:36px 40px;text-align:center">
+      <div style="font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.02em">Lixby</div>
+      <div style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px">Confirmación de pedido</div>
+    </div>
+    <div style="padding:36px 40px">
+      <p style="font-size:1.05rem;color:#111827;margin:0 0 8px">Hola, <strong>${order.customerName || "Cliente"}</strong> 👋</p>
+      <p style="color:#6b7280;line-height:1.6;margin:0 0 24px">Tu pedido ha sido confirmado y lo estamos preparando.</p>
+
+      <div style="background:#f0f7e6;border:1px solid #d4edba;border-radius:12px;padding:16px 20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:4px">Número de pedido</div>
+          <div style="font-size:1.1rem;font-weight:800;color:#458500;font-family:monospace">${order.orderNumber}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:4px">Total</div>
+          <div style="font-size:1.1rem;font-weight:800;color:#111827">${order.amountLabel || order.amountTotal + " €"}</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:24px">
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:10px">Productos</div>
+        ${itemsHtml}
+      </div>
+
+      <div style="background:#f9fafb;border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:0.875rem">
+        <div style="font-weight:700;margin-bottom:6px;color:#111827">Dirección de entrega</div>
+        <div style="color:#6b7280;line-height:1.6">${order.address || "No disponible"}</div>
+      </div>
+
+      <a href="${trackUrl}" style="display:block;background:#458500;color:#fff;text-decoration:none;text-align:center;padding:16px;border-radius:12px;font-weight:700;font-size:1rem;margin-bottom:16px">
+        Seguir mi pedido →
+      </a>
+    </div>
+    <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">¿Alguna pregunta? <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">lixbyinfo@gmail.com</a></p>
+    </div>
+  </div>
+</body>
+</html>`
         });
+        console.log("✅ Email Resend enviado a:", order.email);
       } catch (error) {
-        console.warn("No se pudo enviar el email:", error.message);
+        console.warn("No se pudo enviar el email Resend:", error.message);
       }
     }
   }

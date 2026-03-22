@@ -242,6 +242,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cart-row"><span>Envio</span><span>Gratis</span></div>
         <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
+          <div id="giftCardSection" style="margin-bottom:12px">
+            <div style="display:flex;gap:8px">
+              <input type="text" id="giftCodeInput" placeholder="Código regalo (LIXBY-XXXX-XXXX)"
+                style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.9rem;outline:none">
+              <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
+                Aplicar
+              </button>
+            </div>
+            <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
+          </div>
           <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
           <button id="clearCartBtn" class="btn btn-secondary" type="button">Vaciar cesta</button>
         </div>
@@ -312,6 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const totalEl = document.getElementById("total");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const checkoutBtn = document.getElementById("checkoutBtn");
+    let appliedGiftCard = null;
 
     function readCart() {
       const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -449,6 +460,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         };
       });
 
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        subtotal = Math.max(0, subtotal - discount);
+      }
+
       return { items, subtotal };
     }
 
@@ -539,7 +555,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).join("");
 
       subtotalEl.textContent = money(subtotal);
-      totalEl.textContent = money(subtotal);
+      let total = subtotal;
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        total = Math.max(0, subtotal - discount);
+      }
+      totalEl.textContent = money(total);
     }
 
     cartListEl.addEventListener("click", (event) => {
@@ -559,6 +580,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.removeItem(CART_KEY);
       renderCart();
     });
+
+    const applyGiftBtn = document.getElementById("applyGiftBtn");
+    if (applyGiftBtn) {
+      applyGiftBtn.addEventListener("click", async () => {
+        const codeInput = document.getElementById("giftCodeInput");
+        const msg = document.getElementById("giftCardMsg");
+        if (!codeInput || !msg) return;
+
+        const code = codeInput.value.trim().toUpperCase();
+        if (!code) return;
+
+        applyGiftBtn.disabled = true;
+        applyGiftBtn.textContent = "...";
+
+        try {
+          const res = await fetch("https://lixby-production.up.railway.app/redeem-gift-card", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code })
+          });
+          const data = await res.json();
+
+          if (!res.ok || !data.valid) {
+            msg.style.color = "#ef4444";
+            msg.textContent = "❌ " + (data.error || "Código no válido");
+            msg.style.display = "block";
+            appliedGiftCard = null;
+          } else {
+            appliedGiftCard = data;
+            msg.style.color = "#458500";
+            msg.textContent = `✅ Tarjeta regalo aplicada — ${data.balance
+              .toFixed(2)
+              .replace(".", ",")} € de saldo`;
+            msg.style.display = "block";
+            renderCart();
+          }
+        } catch (e) {
+          msg.style.color = "#ef4444";
+          msg.textContent = "❌ Error al verificar el código";
+          msg.style.display = "block";
+        } finally {
+          applyGiftBtn.disabled = false;
+          applyGiftBtn.textContent = "Aplicar";
+        }
+      });
+    }
 
     checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
@@ -622,7 +689,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             orderId,
             successUrl: SUCCESS_URL,
             cancelUrl: CANCEL_URL,
-            items: itemsForCheckout
+            items: itemsForCheckout,
+            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null
           })
         });
         const data = await response.json();
@@ -670,4 +738,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
