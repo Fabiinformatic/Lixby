@@ -680,6 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       try {
+        const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
         const checkoutItems = buildCheckoutItems(summary.items);
         const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
@@ -690,7 +691,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             successUrl: SUCCESS_URL,
             cancelUrl: CANCEL_URL,
             items: itemsForCheckout,
-            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null
+            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
+            customerName: profile.firstName
+              ? `${profile.firstName} ${profile.lastName || ""}`.trim()
+              : null,
+            customerEmail: profile.email || null,
+            customerPhone: profile.phone || null
           })
         });
         const data = await response.json();

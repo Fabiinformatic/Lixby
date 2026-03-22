@@ -471,7 +471,15 @@ app.post("/use-gift-card", express.json(), async (req, res) => {
 
 app.post("/create-checkout-session", express.json(), async (req, res) => {
   console.log("📦 BODY RECIBIDO:", JSON.stringify(req.body, null, 2));
-  const { orderId: rawOrderId, successUrl, cancelUrl, items } = req.body || {};
+  const {
+    orderId: rawOrderId,
+    successUrl,
+    cancelUrl,
+    items,
+    customerEmail,
+    customerName,
+    customerPhone
+  } = req.body || {};
   const orderId = rawOrderId || `LXB-${Math.floor(Math.random() * 100000)}`;
   const successWithOrder = appendQueryParam(
     successUrl || process.env.STRIPE_SUCCESS_URL || "https://tusitio.com/success",
@@ -549,6 +557,7 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
           type: "text"
         }
       ],
+      customer_email: customerEmail || undefined,
       line_items:
         dynamicLineItems.length > 0
           ? dynamicLineItems
@@ -882,6 +891,50 @@ app.get("/admin/orders", async (req, res) => {
   });
 
   return res.json(orders);
+});
+
+app.get("/orders-by-email/:email", async (req, res) => {
+  const apiKey = req.headers["x-api-key"];
+  if (!adminApiKey || apiKey !== adminApiKey) {
+    return res.status(401).json({ error: "No autorizado" });
+  }
+
+  const email = decodeURIComponent(req.params.email);
+  try {
+    const snapshot = await db
+      .collection("orders")
+      .where("email", "==", email)
+      .where("paymentStatus", "==", "paid")
+      .orderBy("createdAt", "desc")
+      .get();
+
+    const orders = [];
+    snapshot.forEach((doc) => orders.push({ id: doc.id, ...doc.data() }));
+    return res.json(orders);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/gift-cards-by-email/:email", async (req, res) => {
+  const apiKey = req.headers["x-api-key"];
+  if (!adminApiKey || apiKey !== adminApiKey) {
+    return res.status(401).json({ error: "No autorizado" });
+  }
+
+  const email = decodeURIComponent(req.params.email);
+  try {
+    const snapshot = await db
+      .collection("giftCards")
+      .where("senderEmail", "==", email)
+      .get();
+
+    const cards = [];
+    snapshot.forEach((doc) => cards.push({ id: doc.id, ...doc.data() }));
+    return res.json(cards);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 });
 
 app.listen(3000, () => console.log("Servidor funcionando"));
