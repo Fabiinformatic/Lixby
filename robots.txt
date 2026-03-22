@@ -1,9 +1,5 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
+Disallow: /create-checkout-session
 
-Sitemap: https://lixby.es/sitemap.xml
-
-
-
-
-
+Sitemap: https://www.lixby.es/sitemap.xml

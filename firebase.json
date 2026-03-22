@@ -1,30 +1,877 @@
 {
-  "hosting": {
-    "public": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "disallowLegacyRuntimeConfig": true,
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
-    }
-  ]
+    "hosting":  {
+                    "public":  ".",
+                    "ignore":  [
+                                   "firebase.json",
+                                   "**/.*",
+                                   "**/node_modules/**"
+                               ],
+                    "rewrites":  [
+                                     {
+                                         "source":  "**",
+                                         "destination":  "/index.html"
+                                     }
+                                 ],
+                    "redirects":  [
+                                      {
+                                          "source":  "/bg/cookies.html",
+                                          "destination":  "/bg/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/legal-notice.html",
+                                          "destination":  "/bg/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/lixbuds-one.html",
+                                          "destination":  "/bg/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/lixney.html",
+                                          "destination":  "/bg/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/privacy.html",
+                                          "destination":  "/bg/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/returns.html",
+                                          "destination":  "/bg/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/bg/terms.html",
+                                          "destination":  "/bg/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/cookies.html",
+                                          "destination":  "/cs/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/legal-notice.html",
+                                          "destination":  "/cs/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/lixbuds-one.html",
+                                          "destination":  "/cs/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/lixney.html",
+                                          "destination":  "/cs/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/privacy.html",
+                                          "destination":  "/cs/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/returns.html",
+                                          "destination":  "/cs/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cs/terms.html",
+                                          "destination":  "/cs/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/cookies.html",
+                                          "destination":  "/da/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/legal-notice.html",
+                                          "destination":  "/da/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/lixbuds-one.html",
+                                          "destination":  "/da/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/lixney.html",
+                                          "destination":  "/da/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/privacy.html",
+                                          "destination":  "/da/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/returns.html",
+                                          "destination":  "/da/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/da/terms.html",
+                                          "destination":  "/da/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/cookies.html",
+                                          "destination":  "/de/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/legal-notice.html",
+                                          "destination":  "/de/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/lixbuds-one.html",
+                                          "destination":  "/de/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/lixney.html",
+                                          "destination":  "/de/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/privacy.html",
+                                          "destination":  "/de/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/returns.html",
+                                          "destination":  "/de/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/de/terms.html",
+                                          "destination":  "/de/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/cookies.html",
+                                          "destination":  "/el/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/legal-notice.html",
+                                          "destination":  "/el/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/lixbuds-one.html",
+                                          "destination":  "/el/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/lixney.html",
+                                          "destination":  "/el/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/privacy.html",
+                                          "destination":  "/el/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/returns.html",
+                                          "destination":  "/el/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/el/terms.html",
+                                          "destination":  "/el/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/Cart.html",
+                                          "destination":  "/en/cesta.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/cookies.html",
+                                          "destination":  "/en/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/legal-notice.html",
+                                          "destination":  "/en/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/lixbuds-one.html",
+                                          "destination":  "/en/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/lixney.html",
+                                          "destination":  "/en/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/privacy.html",
+                                          "destination":  "/en/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/returns.html",
+                                          "destination":  "/en/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/en/terms.html",
+                                          "destination":  "/en/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/cookies.html",
+                                          "destination":  "/es/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/legal-notice.html",
+                                          "destination":  "/es/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/lixbuds-one.html",
+                                          "destination":  "/es/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/lixney.html",
+                                          "destination":  "/es/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/privacy.html",
+                                          "destination":  "/es/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/returns.html",
+                                          "destination":  "/es/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/es/terms.html",
+                                          "destination":  "/es/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/cookies.html",
+                                          "destination":  "/et/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/legal-notice.html",
+                                          "destination":  "/et/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/lixbuds-one.html",
+                                          "destination":  "/et/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/lixney.html",
+                                          "destination":  "/et/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/privacy.html",
+                                          "destination":  "/et/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/returns.html",
+                                          "destination":  "/et/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/et/terms.html",
+                                          "destination":  "/et/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/cookies.html",
+                                          "destination":  "/fi/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/legal-notice.html",
+                                          "destination":  "/fi/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/lixbuds-one.html",
+                                          "destination":  "/fi/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/lixney.html",
+                                          "destination":  "/fi/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/privacy.html",
+                                          "destination":  "/fi/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/returns.html",
+                                          "destination":  "/fi/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fi/terms.html",
+                                          "destination":  "/fi/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/cookies.html",
+                                          "destination":  "/fr/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/legal-notice.html",
+                                          "destination":  "/fr/pages/legal/avis-juridique.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/lixbuds-one.html",
+                                          "destination":  "/fr/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/lixney.html",
+                                          "destination":  "/fr/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/privacy.html",
+                                          "destination":  "/fr/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/returns.html",
+                                          "destination":  "/fr/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/fr/terms.html",
+                                          "destination":  "/fr/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/cookies.html",
+                                          "destination":  "/ga/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/legal-notice.html",
+                                          "destination":  "/ga/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/lixbuds-one.html",
+                                          "destination":  "/ga/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/lixney.html",
+                                          "destination":  "/ga/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/privacy.html",
+                                          "destination":  "/ga/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/returns.html",
+                                          "destination":  "/ga/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ga/terms.html",
+                                          "destination":  "/ga/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/cookies.html",
+                                          "destination":  "/hr/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/legal-notice.html",
+                                          "destination":  "/hr/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/lixbuds-one.html",
+                                          "destination":  "/hr/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/lixney.html",
+                                          "destination":  "/hr/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/privacy.html",
+                                          "destination":  "/hr/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/returns.html",
+                                          "destination":  "/hr/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hr/terms.html",
+                                          "destination":  "/hr/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/cookies.html",
+                                          "destination":  "/hu/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/legal-notice.html",
+                                          "destination":  "/hu/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/lixbuds-one.html",
+                                          "destination":  "/hu/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/lixney.html",
+                                          "destination":  "/hu/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/privacy.html",
+                                          "destination":  "/hu/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/returns.html",
+                                          "destination":  "/hu/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hu/terms.html",
+                                          "destination":  "/hu/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/cookies.html",
+                                          "destination":  "/it/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/legal-notice.html",
+                                          "destination":  "/it/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/lixbuds-one.html",
+                                          "destination":  "/it/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/lixney.html",
+                                          "destination":  "/it/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/privacy.html",
+                                          "destination":  "/it/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/returns.html",
+                                          "destination":  "/it/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/it/terms.html",
+                                          "destination":  "/it/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/cookies.html",
+                                          "destination":  "/lt/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/legal-notice.html",
+                                          "destination":  "/lt/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/lixbuds-one.html",
+                                          "destination":  "/lt/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/lixney.html",
+                                          "destination":  "/lt/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/privacy.html",
+                                          "destination":  "/lt/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/returns.html",
+                                          "destination":  "/lt/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lt/terms.html",
+                                          "destination":  "/lt/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/cookies.html",
+                                          "destination":  "/lv/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/legal-notice.html",
+                                          "destination":  "/lv/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/lixbuds-one.html",
+                                          "destination":  "/lv/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/lixney.html",
+                                          "destination":  "/lv/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/privacy.html",
+                                          "destination":  "/lv/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/returns.html",
+                                          "destination":  "/lv/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/lv/terms.html",
+                                          "destination":  "/lv/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/cookies.html",
+                                          "destination":  "/mt/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/legal-notice.html",
+                                          "destination":  "/mt/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/lixbuds-one.html",
+                                          "destination":  "/mt/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/lixney.html",
+                                          "destination":  "/mt/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/privacy.html",
+                                          "destination":  "/mt/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/returns.html",
+                                          "destination":  "/mt/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/mt/terms.html",
+                                          "destination":  "/mt/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/cookies.html",
+                                          "destination":  "/nl/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/legal-notice.html",
+                                          "destination":  "/nl/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/lixbuds-one.html",
+                                          "destination":  "/nl/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/lixney.html",
+                                          "destination":  "/nl/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/privacy.html",
+                                          "destination":  "/nl/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/returns.html",
+                                          "destination":  "/nl/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/nl/terms.html",
+                                          "destination":  "/nl/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/cookies.html",
+                                          "destination":  "/pl/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/legal-notice.html",
+                                          "destination":  "/pl/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/lixbuds-one.html",
+                                          "destination":  "/pl/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/lixney.html",
+                                          "destination":  "/pl/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/privacy.html",
+                                          "destination":  "/pl/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/returns.html",
+                                          "destination":  "/pl/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pl/terms.html",
+                                          "destination":  "/pl/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/cookies.html",
+                                          "destination":  "/pt/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/legal-notice.html",
+                                          "destination":  "/pt/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/lixbuds-one.html",
+                                          "destination":  "/pt/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/lixney.html",
+                                          "destination":  "/pt/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/privacy.html",
+                                          "destination":  "/pt/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/returns.html",
+                                          "destination":  "/pt/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pt/terms.html",
+                                          "destination":  "/pt/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/cookies.html",
+                                          "destination":  "/ro/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/legal-notice.html",
+                                          "destination":  "/ro/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/lixbuds-one.html",
+                                          "destination":  "/ro/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/lixney.html",
+                                          "destination":  "/ro/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/privacy.html",
+                                          "destination":  "/ro/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/returns.html",
+                                          "destination":  "/ro/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/ro/terms.html",
+                                          "destination":  "/ro/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/cookies.html",
+                                          "destination":  "/sk/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/legal-notice.html",
+                                          "destination":  "/sk/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/lixbuds-one.html",
+                                          "destination":  "/sk/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/lixney.html",
+                                          "destination":  "/sk/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/privacy.html",
+                                          "destination":  "/sk/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/returns.html",
+                                          "destination":  "/sk/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sk/terms.html",
+                                          "destination":  "/sk/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/cookies.html",
+                                          "destination":  "/sl/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/legal-notice.html",
+                                          "destination":  "/sl/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/lixbuds-one.html",
+                                          "destination":  "/sl/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/lixney.html",
+                                          "destination":  "/sl/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/privacy.html",
+                                          "destination":  "/sl/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/returns.html",
+                                          "destination":  "/sl/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sl/terms.html",
+                                          "destination":  "/sl/pages/legal/terms.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/cookies.html",
+                                          "destination":  "/sv/pages/legal/cookies.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/legal-notice.html",
+                                          "destination":  "/sv/pages/legal/legal-notice.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/lixbuds-one.html",
+                                          "destination":  "/sv/pages/products/lixbuds-one.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/lixney.html",
+                                          "destination":  "/sv/pages/apps/lixney.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/privacy.html",
+                                          "destination":  "/sv/pages/legal/privacy.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/returns.html",
+                                          "destination":  "/sv/pages/legal/returns.html",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/sv/terms.html",
+                                          "destination":  "/sv/pages/legal/terms.html",
+                                          "type":  301
+                                      }
+                                  ]
+                },
+    "functions":  [
+                      {
+                          "source":  "functions",
+                          "codebase":  "default",
+                          "disallowLegacyRuntimeConfig":  true,
+                          "ignore":  [
+                                         "node_modules",
+                                         ".git",
+                                         "firebase-debug.log",
+                                         "firebase-debug.*.log",
+                                         "*.local"
+                                     ]
+                      }
+                  ]
 }
