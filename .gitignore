@@ -4,3 +4,4 @@ firebase-service-account.json.json
 .env
 *.env
 secrets/
+admin.html

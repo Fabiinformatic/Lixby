@@ -1,6 +1,6 @@
-﻿<!doctype html>
-<html lang="fr">
-  <head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,177 +8,499 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Suivre ma commande | Lixby</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f5f1;
-        --card: #ffffff;
-        --text: #1a1a1a;
-        --muted: #606060;
-        --accent: #0f62fe;
-        --border: #e4e0d8;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "Inter", "Manrope", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
-      .wrap {
-        max-width: 780px;
-        margin: 40px auto;
-        padding: 0 16px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 28px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      }
-      h1 {
-        margin: 0 0 8px;
-        font-size: 2rem;
-      }
-      p {
-        margin: 0 0 16px;
-        color: var(--muted);
-      }
-      form {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      .input-group {
-        flex: 1 1 240px;
-        display: flex;
-        align-items: center;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: #fff;
-        overflow: hidden;
-      }
-      .input-prefix {
-        padding: 12px 10px 12px 14px;
-        font-weight: 600;
-        color: var(--muted);
-        background: #f7f5f0;
-        border-right: 1px solid var(--border);
-        letter-spacing: 0.04em;
-      }
-      input[type="text"] {
-        flex: 1 1 auto;
-        padding: 12px 14px;
-        border: none;
-        font-size: 1rem;
-        outline: none;
-      }
-      button {
-        padding: 12px 18px;
-        border: none;
-        border-radius: 10px;
-        background: var(--accent);
-        color: #fff;
-        font-size: 1rem;
-        cursor: pointer;
-      }
-      .tracking {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 16px;
-      }
-      .step {
-        padding: 10px 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 0.95rem;
-        background: #fff;
-      }
-      .step.done {
-        background: #4caf50;
-        color: #fff;
-        border-color: #4caf50;
-      }
-      .result {
-        margin-top: 18px;
-        padding: 14px;
-        border-radius: 10px;
-        background: #f0f5ff;
-        border: 1px solid #d6e4ff;
-        display: none;
-      }
-      .error {
-        background: #fff1f0;
-        border: 1px solid #ffccc7;
-      }
-      .label {
-        font-weight: 600;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguimiento de pedido | Lixby</title>
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
+
+  <style>
+    :root {
+      --green: #458500;
+      --green-light: #f0f7e6;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --shadow-soft: 0 2px 16px rgba(0,0,0,0.07);
     }
-  </script>
-  <link rel="stylesheet" href="style.css">
+
+    body {
+      background: #f5f7fa;
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 48px 16px 80px;
+      flex: 1;
+    }
+
+    /* Search card */
+    .search-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      animation: slideUp 0.4s ease both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(16px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .search-card h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0 0 6px;
+    }
+
+    .search-card p {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: var(--green);
+    }
+
+    .search-prefix {
+      padding: 12px 10px 12px 16px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green);
+      background: var(--green-light);
+      border-right: 1.5px solid #c3e6a0;
+      white-space: nowrap;
+    }
+
+    .search-input-wrap input {
+      flex: 1;
+      padding: 12px 14px;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Manrope', sans-serif;
+      outline: none;
+      min-width: 0;
+    }
+
+    .btn-search {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 12px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Manrope', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-search:hover { background: #366a00; }
+    .btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Result card */
+    .result-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-soft);
+      animation: slideUp 0.4s ease both;
+      display: none;
+    }
+
+    /* Error */
+    .error-card {
+      background: #fff5f5;
+      border-color: #fecaca;
+      color: #b91c1c;
+      text-align: center;
+      padding: 28px;
+      display: none;
+    }
+
+    /* Order header */
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .order-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--green);
+    }
+
+    .order-number-badge span { font-weight: 400; color: #555; }
+
+    .order-date {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .payment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    /* Progress bar */
+    .progress-section {
+      margin-bottom: 28px;
+    }
+
+    .progress-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .progress-steps {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .progress-line {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      height: 3px;
+      background: var(--line);
+      z-index: 0;
+    }
+
+    .progress-line-fill {
+      height: 100%;
+      background: var(--green);
+      transition: width 0.8s ease;
+      border-radius: 999px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 3px solid var(--line);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      font-size: 0.8rem;
+    }
+
+    .step-dot.done {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .step-dot.active {
+      border-color: var(--green);
+      background: var(--green-light);
+      box-shadow: 0 0 0 4px rgba(69,133,0,0.15);
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+      max-width: 70px;
+      line-height: 1.3;
+    }
+
+    .step-label.active { color: var(--green); font-weight: 700; }
+    .step-label.done { color: #374151; }
+
+    /* Info sections */
+    .info-section {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .info-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+    }
+
+    .info-item label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Tracking number */
+    .tracking-info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tracking-icon {
+      width: 40px;
+      height: 40px;
+      background: #2563eb;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tracking-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .tracking-details label {
+      font-size: 0.78rem;
+      color: #3b82f6;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .tracking-details strong {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    /* Products */
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+
+    .product-item-name { font-weight: 600; font-size: 0.92rem; }
+    .product-item-sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .product-item-price { font-weight: 800; white-space: nowrap; }
+
+    /* Total */
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .total-row span { font-weight: 700; }
+    .total-row strong { font-size: 1.1rem; font-weight: 800; color: var(--green); }
+
+    /* Actions */
+    .track-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .track-actions a {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover { background: #366a00; }
+
+    .btn-secondary {
+      background: #fff;
+      color: #374151;
+      border: 1.5px solid var(--line);
+    }
+
+    .btn-secondary:hover { border-color: #9ca3af; }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--line);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      .search-card, .result-card { padding: 20px 16px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .step-label { font-size: 0.65rem; max-width: 55px; }
+    }
+  </style>
 </head>
-  <body>
+<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
+  <div id="scroll-progress"></div>
+
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
   <header class="nav" id="nav">
-    
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="magasin.html" class="nav-link">Boutique</a>
-        <a href="#productos" class="nav-link">Produits</a>
-        <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Assistance</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="index.html#productos" class="nav-link">Productos</a>
+        <a href="index.html#apps" class="nav-link">Apps</a>
+        <a href="support.html" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Rechercher" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="magasin.html" method="get">
+        <form id="navSearchForm" action="tienda.html" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Rechercher un produit..."
-            aria-label="Rechercher un produit"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
           >
         </form>
-        <a href="panier.html" class="nav-icon-link" aria-label="Panier">
-          <img src="images/Bolsa.png" alt="Panier">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
+          <img src="images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="compte.html" class="nav-icon-link" aria-label="Compte">
-          <img src="images/cuenta.png" alt="Compte">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+          <img src="images/cuenta.png" alt="Cuenta">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -190,195 +512,387 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="magasin.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Rechercher"
-          aria-label="Rechercher un produit"
+          placeholder="Buscar"
+          aria-label="Buscar producto"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Fermer le menu">
-        <span aria-hidden="true">✕</span> 
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+        <span aria-hidden="true">×</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal mobile">
-      <a href="magasin.html">Boutique</a>
-      <a href="#productos">Produits</a>
-      <a href="#apps">Apps</a>
-      <a href="support.html">Assistance</a>
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <a href="tienda.html">Tienda</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="support.html">Soporte</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="panier.html">Panier</a>
-      <a href="compte.html">Compte</a>
+      <a href="cesta.html">Cesta</a>
+      <a href="cuenta.html">Cuenta</a>
     </div>
   </div>
-  <div class="wrap">
-      <div class="card">
-        <h1>Suivez votre commande</h1>
-        <p>Si vous êtes arrivé via un lien, l'état s'affichera automatiquement.</p>
-        <form id="track-form">
-          <div class="input-group">
-            <span class="input-prefix">LX-</span>
-            <input
-              id="order-id"
-              type="text"
-              placeholder="XXXXXXXX"
-              autocomplete="off"
-              required
-              inputmode="text"
-              aria-label="Code de commande"
-            />
-          </div>
-          <button type="submit">Consulter</button>
-        </form>
-        <div id="result" class="result"></div>
+
+<div class="track-page">
+
+  <!-- Búsqueda -->
+  <div class="search-card">
+    <h1>Seguimiento de pedido</h1>
+    <p>Introduce tu número de pedido para ver el estado de tu envío.</p>
+    <div class="search-row">
+      <div class="search-input-wrap">
+        <span class="search-prefix">LXB-</span>
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Número de pedido">
+      </div>
+      <button class="btn-search" id="searchBtn" type="button">Consultar</button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div id="loadingEl" style="display:none">
+    <div class="result-card" style="display:block">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Buscando tu pedido...</p>
       </div>
     </div>
-  <script>
-      const form = document.getElementById("track-form");
-      const input = document.getElementById("order-id");
-      const result = document.getElementById("result");
-      const statusSteps = [
-        "Commande reçue",
-        "Préparation de la commande",
-        "Expédiée",
-        "En cours de livraison",
-        "Livrée"
-      ];
+  </div>
 
-      const renderTracking = (data) => {
-        const currentIndex = statusSteps.indexOf(data.status);
-        const stepsHtml = statusSteps
-          .map((step, idx) => {
-            const doneClass = idx <= currentIndex ? "done" : "";
-            return `<div class="step ${doneClass}">${step}</div>`;
-          })
-          .join("");
+  <!-- Error -->
+  <div class="result-card error-card" id="errorCard">
+    <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Pedido no encontrado</p>
+    <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
+      No hemos encontrado ningún pedido con ese número.<br>
+      Comprueba que el número es correcto — lo encontrarás en el email de confirmación.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <a href="mailto:lixbyinfo@gmail.com" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Contactar soporte
+      </a>
+      <a href="es/tienda.html" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Volver a la tienda
+      </a>
+    </div>
+  </div>
 
-        const trackingExtra = data.trackingCarrier || data.trackingNumber
-          ? `<div><span class="label">Expédition:</span> ${data.trackingCarrier || "-"} ${
-              data.trackingNumber || ""
-            }</div>`
-          : "";
+  <!-- Resultado -->
+  <div class="result-card" id="resultCard">
 
-        const paymentLine = data.paymentStatus
-          ? `<div><span class="label">Paiement:</span> ${data.paymentStatus}</div>`
-          : "";
+    <!-- Header -->
+    <div class="order-header">
+      <div>
+        <div class="order-number-badge">
+          <span>Pedido</span>
+          <strong id="resOrderNumber">—</strong>
+        </div>
+        <div class="order-date" id="resDate"></div>
+      </div>
+      <div class="payment-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Pago confirmado
+      </div>
+    </div>
 
-        result.innerHTML = `
-          <div><span class="label">Numéro de commande:</span> ${data.orderNumber || data.id}</div>
-          <div><span class="label">ID interne:</span> ${data.id}</div>
-          <div><span class="label">E-mail:</span> ${data.email || "-"}</div>
-          <div><span class="label">Produit:</span> ${data.product}</div>
-          <div><span class="label">Statut:</span> ${data.status}</div>
-          ${paymentLine}
-          ${trackingExtra}
-          <div class="tracking">${stepsHtml}</div>
-        `;
-      };
+    <!-- Progreso -->
+    <div class="progress-section">
+      <h3>Estado del envío</h3>
+      <div class="progress-steps" id="progressSteps">
+        <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
+      </div>
+    </div>
 
-      const fetchOrder = async (id) => {
-        result.style.display = "block";
-        result.classList.remove("error");
-        result.textContent = "Recherche de votre commande...";
+    <!-- Número de seguimiento -->
+    <div class="tracking-info" id="trackingInfo" style="display:none">
+      <div class="tracking-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="tracking-details">
+        <label>Número de seguimiento</label>
+        <strong id="trackingNumber">—</strong>
+        <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
+      </div>
+    </div>
 
-        try {
-          const res = await fetch(`/track-order/${encodeURIComponent(id)}`);
-          const data = await res.json();
+    <!-- Info cliente -->
+    <div class="info-section" id="resCustomerSection" style="display:none">
+      <h3>Información de entrega</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Nombre</label>
+          <strong id="resName">—</strong>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <strong id="resEmail">—</strong>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1">
+          <label>Dirección de envío</label>
+          <strong id="resAddress">—</strong>
+        </div>
+      </div>
+    </div>
 
-          if (!res.ok) {
-            result.classList.add("error");
-            result.textContent = data.error || "Commande introuvable.";
-            return;
-          }
+    <!-- Productos -->
+    <div id="resProductsSection" style="display:none">
+      <div class="info-section" style="background:#fff">
+        <h3>Productos</h3>
+        <div id="resProductsList"></div>
+        <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
+          <span>Total pagado</span>
+          <strong id="resTotalValue">—</strong>
+        </div>
+      </div>
+    </div>
 
-          renderTracking(data);
-        } catch (error) {
-          result.classList.add("error");
-          result.textContent = "Erreur lors de la consultation de la commande.";
-        }
-      };
+    <!-- Acciones -->
+    <div class="track-actions" style="margin-top:20px">
+      <a href="es/tienda.html" class="btn-primary">Seguir comprando</a>
+      <a href="mailto:lixbyinfo@gmail.com" class="btn-secondary">Contactar soporte</a>
+    </div>
+  </div>
+</div>
 
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        let id = input.value.trim().toUpperCase();
-        if (!id) {
-          return;
-        }
-        if (!id.startsWith("LX-") && /^[A-Z0-9]+$/.test(id)) {
-          id = `LX-${id}`;
-        }
-        fetchOrder(id);
-      });
-
-      const params = new URLSearchParams(window.location.search);
-      const paramId = params.get("id");
-      if (paramId) {
-        window.location.href = `/track/${encodeURIComponent(paramId)}`;
-      }
-
-      const pathMatch = window.location.pathname.match(/\/track\/(.+)$/);
-      if (pathMatch && pathMatch[1]) {
-        const orderId = decodeURIComponent(pathMatch[1]);
-        input.value = orderId;
-        fetchOrder(orderId);
-      }
-    </script>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Voir et acheter</h3>
+        <h3>Ver y comprar</h3>
         <ul>
-          <li><a href="#">Boutique</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="#apps">Apps</a></li>
-          <li><a href="support.html">Assistance</a></li>
+          <li><a href="index.html#apps">Apps</a></li>
+          <li><a href="support.html">Soporte</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Assistance</h3>
+        <h3>Soporte</h3>
         <ul>
-          <li><a href="support.html">Page d'accueil d'assistance</a></li>
-          <li><a href="support.html#faq">FAQ Boutique en ligne</a></li>
-          <li><a href="support.html">Informations sur la garantie</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email au PDG</a></li>
+          <li><a href="support.html">Página inicial soporte</a></li>
+          <li><a href="support.html#faq">FAQs Tienda online</a></li>
+          <li><a href="support.html">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Compte</h3>
+        <h3>Cuenta</h3>
         <ul>
-          <li><a href="../track.html">Commandes</a></li>
-          <li><a href="compte.html">Mon compte</a></li>
-          <li><a href="compte.html">Coupons</a></li>
+          <li><a href="../track.html">Pedidos</a></li>
+          <li><a href="cuenta.html">Mi cuenta</a></li>
+          <li><a href="cuenta.html">Cupones</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>À propos de Lixby</h3> 
+        <h3>Acerca de Lixby</h3>
         <ul>
-          <li><a href="about.html">Notre entreprise</a></li> 
-          <li><a href="support.html">Garantie</a></li>
-          <li><a href="#">Événements</a></li> 
-          <li><a href="support.html">Contact</a></li>
+          <li><a href="about.html">Nosotros</a></li>
+          <li><a href="support.html">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="support.html">Contacto</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Tous droits réservés.</p> 
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Politique de confidentialité</a> 
-        <a href="pages/legal/cookies.html">Utilisation des cookies</a>
-        <a href="pages/legal/terms.html">Conditions d'utilisation</a> 
-        <a href="support.html">Ventes et remboursements</a>
-        <a href="avis-juridique.html">Mentions légales</a> 
+        <a href="pages/legal/privacy.html">Política de privacidad</a>
+        <a href="pages/legal/cookies.html">Uso de cookies</a>
+        <a href="pages/legal/terms.html">Condiciones de uso</a>
+        <a href="support.html">Ventas y reembolsos</a>
+        <a href="pages/legal/legal-notice.html">Avisos legales</a>
       </div>
     </div>
   </footer>
+
+<script>
+  const RAILWAY_URL = 'https://lixby-production.up.railway.app';
+
+  const STATUS_STEPS = [
+    { key: 'Pedido recibido',   label: 'Recibido',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'Preparando', icon: '🔧' },
+    { key: 'Enviado',           label: 'Enviado',     icon: '🚚' },
+    { key: 'En reparto',        label: 'En reparto',  icon: '📍' },
+    { key: 'Entregado',         label: 'Entregado',   icon: '✅' }
+  ];
+
+  function money(v) {
+    return Number(v).toFixed(2).replace('.', ',') + ' €';
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function show(id, display = 'block') { document.getElementById(id).style.display = display; }
+  function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+  function renderProgress(status) {
+    const currentIndex = STATUS_STEPS.findIndex(s => s.key === status);
+    const container = document.getElementById('progressSteps');
+    const fill = document.getElementById('progressFill');
+
+    // Mantener la línea
+    const line = container.querySelector('.progress-line');
+
+    // Limpiar pasos anteriores
+    container.querySelectorAll('.step-item').forEach(el => el.remove());
+
+    STATUS_STEPS.forEach((step, idx) => {
+      const isDone = idx < currentIndex;
+      const isActive = idx === currentIndex;
+
+      const item = document.createElement('div');
+      item.className = 'step-item';
+
+      const dot = document.createElement('div');
+      dot.className = 'step-dot' + (isDone ? ' done' : isActive ? ' active' : '');
+      dot.textContent = isDone ? '✓' : step.icon;
+
+      const label = document.createElement('div');
+      label.className = 'step-label' + (isDone ? ' done' : isActive ? ' active' : '');
+      label.textContent = step.label;
+
+      item.appendChild(dot);
+      item.appendChild(label);
+      container.appendChild(item);
+    });
+
+    // Animar la línea de progreso
+    const pct = currentIndex <= 0 ? 0 : (currentIndex / (STATUS_STEPS.length - 1)) * 100;
+    setTimeout(() => { fill.style.width = pct + '%'; }, 100);
+  }
+
+  function renderOrder(data) {
+    // Número y fecha
+    document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
+    const dateEl = document.getElementById('resDate');
+    if (data.paidAt || data.createdAt) {
+      dateEl.textContent = 'Realizado el ' + formatDate(data.paidAt || data.createdAt);
+    }
+
+    // Progreso
+    renderProgress(data.status || 'Pedido recibido');
+
+    // Número de seguimiento
+    if (data.trackingNumber) {
+      document.getElementById('trackingNumber').textContent = data.trackingNumber;
+      if (data.trackingCarrier) {
+        document.getElementById('trackingCarrier').textContent = data.trackingCarrier;
+      }
+      show('trackingInfo', 'flex');
+    }
+
+    // Cliente
+    const name = data.customerName;
+    const email = data.email;
+    const address = data.address;
+    if (name || email || address) {
+      if (name) document.getElementById('resName').textContent = name;
+      if (email) document.getElementById('resEmail').textContent = email;
+      if (address) document.getElementById('resAddress').textContent = address;
+      show('resCustomerSection', 'block');
+    }
+
+    // Productos
+    const items = data.items || [];
+    if (items.length) {
+      const list = document.getElementById('resProductsList');
+      list.innerHTML = items.map(item => {
+        const name = item.productName || item.name || 'Producto';
+        const qty = item.quantity || item.qty || 1;
+        const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
+        return `
+          <div class="product-item">
+            <div>
+              <div class="product-item-name">${name}</div>
+              <div class="product-item-sub">Cantidad: ${qty}</div>
+            </div>
+            <div class="product-item-price">${price}</div>
+          </div>
+        `;
+      }).join('');
+
+      if (data.amountTotal) {
+        document.getElementById('resTotalValue').textContent = money(data.amountTotal);
+        show('resTotalRow', 'flex');
+      }
+      show('resProductsSection', 'block');
+    }
+
+    hide('loadingEl');
+    hide('errorCard');
+    show('resultCard', 'block');
+  }
+
+  async function fetchOrder(id) {
+    hide('resultCard');
+    hide('errorCard');
+    show('loadingEl', 'block');
+
+    // Normalizar ID — acepta con o sin LXB-
+    let normalized = id.trim().toUpperCase();
+    if (!normalized.startsWith('LXB-') && !normalized.startsWith('LX-') && !normalized.startsWith('TEST-')) {
+      normalized = 'LXB-' + normalized;
+    }
+
+    try {
+      const res = await fetch(`${RAILWAY_URL}/track-order/${encodeURIComponent(normalized)}`);
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        hide('loadingEl');
+        show('errorCard', 'block');
+        return;
+      }
+
+      renderOrder(data);
+    } catch (e) {
+      hide('loadingEl');
+      show('errorCard', 'block');
+    }
+  }
+
+  // Botón buscar
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    const val = document.getElementById('orderInput').value.trim();
+    if (val) fetchOrder(val);
+  });
+
+  document.getElementById('orderInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = e.target.value.trim();
+      if (val) fetchOrder(val);
+    }
+  });
+
+  // Auto-buscar si viene orderId en la URL
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const autoId = params.get('orderId') || params.get('id');
+    if (autoId) {
+      document.getElementById('orderInput').value = autoId;
+      fetchOrder(autoId);
+    }
+  });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
