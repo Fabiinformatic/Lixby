@@ -373,7 +373,7 @@ app.post("/create-gift-card-session", express.json(), async (req, res) => {
     cancelUrl
   } = req.body || {};
 
-  if (!amount || amount < 10 || amount > 200) {
+  if (!amount || amount < 5 || amount > 200) {
     return res.status(400).json({ error: "Importe no válido" });
   }
 
