@@ -789,10 +789,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         try {
           await setPersistence(auth, persistence);
-          await signInWithEmailAndPassword(auth, identifier, password);
+          const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
           setStatus("Sesión iniciada correctamente.", "success");
           loginForm.reset();
-          await transferSessionToApp(auth);
+          await transferSessionToApp(userCredential.user);
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
@@ -863,13 +863,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           const cred = PhoneAuthProvider.credential(mfaVerificationId, code);
           const assertion = PhoneMultiFactorGenerator.assertion(cred);
-          await mfaResolver.resolveSignIn(assertion);
+          const userCredential = await mfaResolver.resolveSignIn(assertion);
           mfaPanel.classList.remove("active");
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
           setStatus("Sesión iniciada correctamente.", "success");
-          await transferSessionToApp(auth);
+          await transferSessionToApp(userCredential.user);
           window.location.href = "cuenta.html";
         } catch (error) {
           setStatus(`Código inválido: ${error.message}`, "error");
@@ -911,9 +911,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         try {
-          await createUserWithEmailAndPassword(auth, email, password);
-          if (auth.currentUser) {
-            await sendEmailVerification(auth.currentUser, emailActionSettings);
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          if (userCredential.user) {
+            await sendEmailVerification(userCredential.user, emailActionSettings);
           }
           localStorage.setItem("lixbyProfile", JSON.stringify({
             firstName,
@@ -931,7 +931,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           setStatus("Cuenta creada correctamente.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
-          await transferSessionToApp(auth);
+          await transferSessionToApp(userCredential.user);
           window.location.href = "cuenta.html";
         } catch (error) {
           setStatus(`Error al registrar: ${error.message}`, "error");
@@ -954,9 +954,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
-          await signInWithPopup(auth, googleProvider);
+          const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Sesión iniciada con Google.", "success");
-          await transferSessionToApp(auth);
+          await transferSessionToApp(userCredential.user);
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
@@ -969,9 +969,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
-          await signInWithPopup(auth, googleProvider);
+          const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Registro completado con Google.", "success");
-          await transferSessionToApp(auth);
+          await transferSessionToApp(userCredential.user);
           window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
