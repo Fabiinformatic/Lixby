@@ -937,4 +937,24 @@ app.get("/gift-cards-by-email/:email", async (req, res) => {
   }
 });
 
+// Genera un custom token para transferir sesión a la app nativa
+app.post("/auth/custom-token", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization || "";
+    const idToken = authHeader.replace("Bearer ", "");
+
+    if (!idToken) {
+      return res.status(401).json({ error: "Token requerido" });
+    }
+
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    const customToken = await admin.auth().createCustomToken(decoded.uid);
+
+    return res.json({ customToken });
+  } catch (err) {
+    console.error("Error generando custom token:", err.message);
+    return res.status(401).json({ error: "Token inválido" });
+  }
+});
+
 app.listen(3000, () => console.log("Servidor funcionando"));
