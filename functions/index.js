@@ -5,7 +5,7 @@ const admin = require("firebase-admin");
 const Stripe = require("stripe");
 const { Resend } = require("resend");
 const cors = require("cors")({
-  origin: ["https://lixby.es"],
+  origin: ["https://lixby.es", "http://127.0.0.1:5500"],
 });
 
 admin.initializeApp();
