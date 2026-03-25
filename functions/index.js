@@ -4,9 +4,6 @@ const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const Stripe = require("stripe");
 const { Resend } = require("resend");
-const cors = require("cors")({
-  origin: ["https://lixby.es", "http://127.0.0.1:5500"],
-});
 
 admin.initializeApp();
 
@@ -36,48 +33,50 @@ exports.stripeWebhook = functions.https.onRequest((req, res) => {
 });
 
 // ✅ Nueva función para resetear contraseña con Resend
-exports.sendPasswordReset = functions.https.onRequest((req, res) => {
-  cors(req, res, async () => {
-    if (req.method === "OPTIONS") {
-      res.status(204).send("");
-      return;
-    }
+exports.sendPasswordReset = functions.https.onRequest(async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "https://lixby.es");
+  res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.set("Access-Control-Allow-Headers", "Content-Type");
 
-    if (req.method !== "POST") {
-      res.status(405).send("Method Not Allowed");
-      return;
-    }
+  if (req.method === "OPTIONS") {
+    res.status(204).send("");
+    return;
+  }
 
-    const { email } = req.body || {};
-    if (!email) {
-      res.status(400).json({ error: "Email requerido" });
-      return;
-    }
+  if (req.method !== "POST") {
+    res.status(405).send("Method Not Allowed");
+    return;
+  }
 
-    try {
-      const resetLink = await admin.auth().generatePasswordResetLink(email, {
-        url: "https://lixby.com/reset-password",
-        handleCodeInApp: false,
-      });
+  const { email } = req.body || {};
+  if (!email) {
+    res.status(400).json({ error: "Email requerido" });
+    return;
+  }
 
-      const resend = new Resend(RESEND_API_KEY.value());
+  try {
+    const resetLink = await admin.auth().generatePasswordResetLink(email, {
+      url: "https://lixby.com/reset-password",
+      handleCodeInApp: false,
+    });
 
-      await resend.emails.send({
-        from: "Lixby <no-reply@lixby.com>",
-        to: email,
-        subject: "Restablece tu contraseña",
-        html: `
+    const resend = new Resend(RESEND_API_KEY.value());
+
+    await resend.emails.send({
+      from: "Lixby <no-reply@lixby.com>",
+      to: email,
+      subject: "Restablece tu contraseña",
+      html: `
           <h2>Restablecer contraseña</h2>
           <p>Haz clic aquí:</p>
           <a href="${resetLink}">Cambiar contraseña</a>
           <p>Si no fuiste tú, ignora este mensaje.</p>
         `,
-      });
+    });
 
-      res.status(200).json({ success: true });
-    } catch (error) {
-      console.error("Error:", error);
-      res.status(500).json({ error: "No se pudo enviar el correo" });
-    }
-  });
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Error interno" });
+  }
 });
