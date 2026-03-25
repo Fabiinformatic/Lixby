@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <!-- Google Tag Manager -->
@@ -815,7 +815,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
         try {
-          await sendPasswordResetEmail(auth, identifier);
+                    await sendPasswordResetEmail(auth, identifier, {
+            url: "https://lixby.com/reset-password",
+            handleCodeInApp: false
+          });
           setStatus("Hemos enviado un correo para restablecer tu contraseña.", "success");
         } catch (error) {
           setStatus(`No se pudo enviar el correo: ${error.message}`, "error");

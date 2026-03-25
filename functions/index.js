@@ -48,22 +48,14 @@ exports.sendPasswordReset = onCall(
       const resend = new Resend(RESEND_API_KEY.value());
 
       await resend.emails.send({
-        from: "noreply@lixby.es",
+        from: "Lixby <no-reply@lixby.com>",
         to: email,
-        subject: "Restablece tu contraseña - Lixby",
+        subject: "Restablece tu contraseña",
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto;">
-            <h2>Restablecer contraseña</h2>
-            <p>Hola, recibimos una solicitud para restablecer tu contraseña.</p>
-            <a href="${resetLink}" 
-               style="background:#4F46E5; color:white; padding:12px 24px; 
-                      border-radius:6px; text-decoration:none; display:inline-block;">
-              Restablecer contraseña
-            </a>
-            <p style="color:#888; margin-top:20px; font-size:13px;">
-              Si no lo solicitaste, ignora este correo.
-            </p>
-          </div>
+          <h2>Restablecer contraseña</h2>
+          <p>Haz clic aquí:</p>
+          <a href="${resetLink}">Cambiar contraseña</a>
+          <p>Si no fuiste tú, ignora este mensaje.</p>
         `,
       });
 

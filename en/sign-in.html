@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -726,7 +726,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
         try {
-          await sendPasswordResetEmail(auth, identifier);
+                    await sendPasswordResetEmail(auth, identifier, {
+            url: "https://lixby.com/reset-password",
+            handleCodeInApp: false
+          });
           setStatus("We've sent an email to reset your password.", "success");
         } catch (error) {
           setStatus(`Could not send email: ${error.message}`, "error");
@@ -859,5 +862,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
+
 
 

@@ -805,7 +805,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
         try {
-          await sendPasswordResetEmail(auth, identifier);
+                    await sendPasswordResetEmail(auth, identifier, {
+            url: "https://lixby.com/reset-password",
+            handleCodeInApp: false
+          });
           setStatus("Wir haben eine E-Mail zum Zurücksetzen deines Passworts gesendet.", "success");
         } catch (error) {
           setStatus(`E-Mail konnte nicht gesendet werden: ${error.message}`, "error");
