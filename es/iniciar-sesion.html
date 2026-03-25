@@ -377,7 +377,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">¿Has olvidado la contraseña?</a>
+            <a href="olvidar-contrasena.html" class="auth-link">¿Has olvidado la contraseña?</a>
 
             <button class="btn btn-primary" type="submit">Iniciar sesión</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
@@ -592,7 +592,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       browserSessionPersistence,
       createUserWithEmailAndPassword,
       signInWithEmailAndPassword,
-      sendPasswordResetEmail,
       GoogleAuthProvider,
       RecaptchaVerifier,
       PhoneAuthProvider,
@@ -626,7 +625,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
     const rememberMe = document.getElementById("rememberMe");
-    const forgotPasswordLink = document.getElementById("forgotPasswordLink");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
     const verifyEmailBtn = document.getElementById("verifyEmailBtn");
@@ -807,23 +805,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
 
-      forgotPasswordLink.addEventListener("click", async (event) => {
-        event.preventDefault();
-        const identifier = document.getElementById("loginIdentifier").value.trim();
-        if (!identifier.includes("@")) {
-          setStatus("Escribe tu email en el campo de correo para recuperar contraseña.", "error");
-          return;
-        }
-        try {
-                    await sendPasswordResetEmail(auth, identifier, {
-            url: "https://lixby.com/reset-password",
-            handleCodeInApp: false
-          });
-          setStatus("Hemos enviado un correo para restablecer tu contraseña.", "success");
-        } catch (error) {
-          setStatus(`No se pudo enviar el correo: ${error.message}`, "error");
-        }
-      });
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {

@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const { onCall } = require("firebase-functions/v2/https");
+const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const Stripe = require("stripe");
@@ -39,11 +39,14 @@ exports.sendPasswordReset = onCall(
     const { email } = request.data;
 
     if (!email) {
-      throw new Error("Email requerido");
+      throw new HttpsError("invalid-argument", "Email requerido");
     }
 
     try {
-      const resetLink = await admin.auth().generatePasswordResetLink(email);
+      const resetLink = await admin.auth().generatePasswordResetLink(email, {
+        url: "https://lixby.com/reset-password",
+        handleCodeInApp: false
+      });
 
       const resend = new Resend(RESEND_API_KEY.value());
 
@@ -63,7 +66,7 @@ exports.sendPasswordReset = onCall(
 
     } catch (error) {
       console.error("Error:", error);
-      throw new Error("No se pudo enviar el correo");
+      throw new HttpsError("internal", "No se pudo enviar el correo");
     }
   }
 );
