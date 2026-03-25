@@ -4,6 +4,9 @@ const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const Stripe = require("stripe");
 const { Resend } = require("resend");
+const cors = require("cors")({
+  origin: ["https://lixby.es"],
+});
 
 admin.initializeApp();
 
@@ -33,19 +36,28 @@ exports.stripeWebhook = functions.https.onRequest((req, res) => {
 });
 
 // ✅ Nueva función para resetear contraseña con Resend
-exports.sendPasswordReset = onCall(
-  { secrets: [RESEND_API_KEY] },
-  async (request) => {
-    const { email } = request.data;
+exports.sendPasswordReset = functions.https.onRequest((req, res) => {
+  cors(req, res, async () => {
+    if (req.method === "OPTIONS") {
+      res.status(204).send("");
+      return;
+    }
 
+    if (req.method !== "POST") {
+      res.status(405).send("Method Not Allowed");
+      return;
+    }
+
+    const { email } = req.body || {};
     if (!email) {
-      throw new HttpsError("invalid-argument", "Email requerido");
+      res.status(400).json({ error: "Email requerido" });
+      return;
     }
 
     try {
       const resetLink = await admin.auth().generatePasswordResetLink(email, {
         url: "https://lixby.com/reset-password",
-        handleCodeInApp: false
+        handleCodeInApp: false,
       });
 
       const resend = new Resend(RESEND_API_KEY.value());
@@ -62,11 +74,10 @@ exports.sendPasswordReset = onCall(
         `,
       });
 
-      return { success: true };
-
+      res.status(200).json({ success: true });
     } catch (error) {
       console.error("Error:", error);
-      throw new HttpsError("internal", "No se pudo enviar el correo");
+      res.status(500).json({ error: "No se pudo enviar el correo" });
     }
-  }
-);
+  });
+});

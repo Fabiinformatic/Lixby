@@ -207,7 +207,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -225,8 +224,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const functions = getFunctions(app);
-    const sendPasswordReset = httpsCallable(functions, "sendPasswordReset");
 
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
@@ -246,7 +243,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       try {
         sendResetBtn.disabled = true;
-        await sendPasswordReset({ email });
+        const response = await fetch("https://sendpasswordreset-dtoucjpwkq-uc.a.run.app", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          throw new Error(data.error || "No se pudo enviar el correo");
+        }
         showStatus("Te hemos enviado un correo. Revisa tu bandeja de entrada.", "success");
       } catch (error) {
         showStatus(`No se pudo enviar el correo: ${error.message}`, "error");
