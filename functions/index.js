@@ -68,12 +68,10 @@ exports.sendPasswordReset = onRequest(
         from: "Lixby <no-reply@lixby.com>",
         to: email,
         subject: "Restablece tu contraseña",
-        html: `
-          <h2>Restablecer contraseña</h2>
-          <p>Haz clic aquí:</p>
-          <a href="${resetLink}">Cambiar contraseña</a>
-          <p>Si no fuiste tú, ignora este mensaje.</p>
-        `,
+        template: "167fe7df-2a0f-42af-b27a-45ca54a0fcb0",
+        variables: {
+          resetLink,
+        },
       });
 
       return res.status(200).json({ success: true });
