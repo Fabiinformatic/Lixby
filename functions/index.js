@@ -35,9 +35,14 @@ exports.stripeWebhook = functions.https.onRequest((req, res) => {
 // ✅ Nueva función para resetear contraseña con Resend
 exports.sendPasswordReset = onRequest(
   {
-    cors: ["https://lixby.es"],
+    cors: ["https://lixby.es", "http://127.0.0.1:5500"],
   },
   async (req, res) => {
+    // Explicit headers to ensure preflight succeeds on Cloud Run.
+    res.set("Access-Control-Allow-Origin", "https://lixby.es");
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+
     if (req.method === "OPTIONS") {
       return res.status(204).send("");
     }
