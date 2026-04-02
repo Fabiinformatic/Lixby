@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seguimiento de pedido | Lixby</title>
+  <title>Order Tracking | Lixby</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -471,14 +471,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="tienda.html" class="nav-link">Store</a>
+        <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Soporte</a>
+        <a href="support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
@@ -490,17 +490,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Search product..."
+            aria-label="Search product"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -518,38 +518,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           id="navSearchMobile"
           name="q"
           class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
+          placeholder="Search"
+          aria-label="Search product"
         >
       </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+      <button type="button" class="nav-mobile-close" aria-label="Close menu">
         <span aria-hidden="true">×</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
-      <a href="tienda.html">Tienda</a>
-      <a href="index.html#productos">Productos</a>
+    <nav class="nav-mobile-links" aria-label="Mobile main">
+      <a href="tienda.html">Store</a>
+      <a href="index.html#productos">Products</a>
       <a href="index.html#apps">Apps</a>
-      <a href="support.html">Soporte</a>
+      <a href="support.html">Support</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cesta</a>
-      <a href="cuenta.html">Cuenta</a>
+      <a href="cesta.html">Cart</a>
+      <a href="cuenta.html">Account</a>
     </div>
   </div>
 
 <div class="track-page">
 
-  <!-- Búsqueda -->
+  <!-- Search -->
   <div class="search-card">
-    <h1>Seguimiento de pedido</h1>
-    <p>Introduce tu número de pedido para ver el estado de tu envío.</p>
+    <h1>Order tracking</h1>
+    <p>Enter your order number to check your shipping status.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
-        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Número de pedido">
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Order number">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">Consultar</button>
+      <button class="btn-search" id="searchBtn" type="button">Track</button>
     </div>
   </div>
 
@@ -558,7 +558,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Buscando tu pedido...</p>
+        <p>Looking for your order...</p>
       </div>
     </div>
   </div>
@@ -566,65 +566,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
-    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Pedido no encontrado</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Order not found</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
-      No hemos encontrado ningún pedido con ese número.<br>
-      Comprueba que el número es correcto — lo encontrarás en el email de confirmación.
+      We couldn't find any order with that number.<br>
+      Please check that the number is correct — you'll find it in your confirmation email.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:lixbyinfo@gmail.com" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Contactar soporte
+        Contact support
       </a>
-      <a href="es/tienda.html" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Volver a la tienda
+      <a href="en/tienda.html" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Back to shop
       </a>
     </div>
   </div>
 
-  <!-- Resultado -->
+  <!-- Result -->
   <div class="result-card" id="resultCard">
 
     <!-- Header -->
     <div class="order-header">
       <div>
         <div class="order-number-badge">
-          <span>Pedido</span>
+          <span>Order</span>
           <strong id="resOrderNumber">—</strong>
         </div>
         <div class="order-date" id="resDate"></div>
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        Pago confirmado
+        Payment confirmed
       </div>
     </div>
 
-    <!-- Progreso -->
+    <!-- Progress -->
     <div class="progress-section">
-      <h3>Estado del envío</h3>
+      <h3>Shipping status</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
     </div>
 
-    <!-- Número de seguimiento -->
+    <!-- Tracking number -->
     <div class="tracking-info" id="trackingInfo" style="display:none">
       <div class="tracking-icon">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div class="tracking-details">
-        <label>Número de seguimiento</label>
+        <label>Tracking number</label>
         <strong id="trackingNumber">—</strong>
         <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
       </div>
     </div>
 
-    <!-- Info cliente -->
+    <!-- Customer info -->
     <div class="info-section" id="resCustomerSection" style="display:none">
-      <h3>Información de entrega</h3>
+      <h3>Delivery information</h3>
       <div class="info-grid">
         <div class="info-item">
-          <label>Nombre</label>
+          <label>Name</label>
           <strong id="resName">—</strong>
         </div>
         <div class="info-item">
@@ -632,28 +632,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Dirección de envío</label>
+          <label>Shipping address</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Productos -->
+    <!-- Products -->
     <div id="resProductsSection" style="display:none">
       <div class="info-section" style="background:#fff">
-        <h3>Productos</h3>
+        <h3>Products</h3>
         <div id="resProductsList"></div>
         <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
-          <span>Total pagado</span>
+          <span>Total paid</span>
           <strong id="resTotalValue">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Acciones -->
+    <!-- Actions -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="es/tienda.html" class="btn-primary">Seguir comprando</a>
-      <a href="mailto:lixbyinfo@gmail.com" class="btn-secondary">Contactar soporte</a>
+      <a href="en/tienda.html" class="btn-primary">Continue shopping</a>
+      <a href="mailto:lixbyinfo@gmail.com" class="btn-secondary">Contact support</a>
     </div>
   </div>
 </div>
@@ -661,53 +661,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>View & buy</h3>
         <ul>
-          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="tienda.html">Store</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="index.html#apps">Apps</a></li>
-          <li><a href="support.html">Soporte</a></li>
+          <li><a href="support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="support.html">Página inicial soporte</a></li>
-          <li><a href="support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="support.html">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="support.html">Support home</a></li>
+          <li><a href="support.html#faq">Online store FAQs</a></li>
+          <li><a href="support.html">Warranty information</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Account</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="cuenta.html">Mi cuenta</a></li>
-          <li><a href="cuenta.html">Cupones</a></li>
+          <li><a href="../track.html">Orders</a></li>
+          <li><a href="cuenta.html">My account</a></li>
+          <li><a href="cuenta.html">Coupons</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>About Lixby</h3>
         <ul>
-          <li><a href="about.html">Nosotros</a></li>
-          <li><a href="support.html">Garantía</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="support.html">Contacto</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="support.html">Warranty</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="support.html">Contact</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Política de privacidad</a>
-        <a href="pages/legal/cookies.html">Uso de cookies</a>
-        <a href="pages/legal/terms.html">Condiciones de uso</a>
-        <a href="support.html">Ventas y reembolsos</a>
-        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="pages/legal/privacy.html">Privacy policy</a>
+        <a href="pages/legal/cookies.html">Cookie policy</a>
+        <a href="pages/legal/terms.html">Terms of use</a>
+        <a href="support.html">Sales & refunds</a>
+        <a href="pages/legal/legal-notice.html">Legal notice</a>
       </div>
     </div>
   </footer>
@@ -716,11 +716,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Recibido',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Preparando', icon: '🔧' },
-    { key: 'Enviado',           label: 'Enviado',     icon: '🚚' },
-    { key: 'En reparto',        label: 'En reparto',  icon: '📍' },
-    { key: 'Entregado',         label: 'Entregado',   icon: '✅' }
+    { key: 'Pedido recibido',   label: 'Received',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'Preparing', icon: '🔧' },
+    { key: 'Enviado',           label: 'Shipped',     icon: '🚚' },
+    { key: 'En reparto',        label: 'Out for delivery',  icon: '📍' },
+    { key: 'Entregado',         label: 'Delivered',   icon: '✅' }
   ];
 
   function money(v) {
@@ -730,7 +730,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso);
-    return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   function show(id, display = 'block') { document.getElementById(id).style.display = display; }
@@ -741,10 +741,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const container = document.getElementById('progressSteps');
     const fill = document.getElementById('progressFill');
 
-    // Mantener la línea
+    // Keep the line
     const line = container.querySelector('.progress-line');
 
-    // Limpiar pasos anteriores
+    // Clear previous steps
     container.querySelectorAll('.step-item').forEach(el => el.remove());
 
     STATUS_STEPS.forEach((step, idx) => {
@@ -767,23 +767,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       container.appendChild(item);
     });
 
-    // Animar la línea de progreso
+    // Animate the progress line
     const pct = currentIndex <= 0 ? 0 : (currentIndex / (STATUS_STEPS.length - 1)) * 100;
     setTimeout(() => { fill.style.width = pct + '%'; }, 100);
   }
 
   function renderOrder(data) {
-    // Número y fecha
+    // Number and date
     document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
     const dateEl = document.getElementById('resDate');
     if (data.paidAt || data.createdAt) {
-      dateEl.textContent = 'Realizado el ' + formatDate(data.paidAt || data.createdAt);
+      dateEl.textContent = 'Placed on ' + formatDate(data.paidAt || data.createdAt);
     }
 
-    // Progreso
+    // Progress
     renderProgress(data.status || 'Pedido recibido');
 
-    // Número de seguimiento
+    // Tracking number
     if (data.trackingNumber) {
       document.getElementById('trackingNumber').textContent = data.trackingNumber;
       if (data.trackingCarrier) {
@@ -792,7 +792,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       show('trackingInfo', 'flex');
     }
 
-    // Cliente
+    // Customer
     const name = data.customerName;
     const email = data.email;
     const address = data.address;
@@ -803,19 +803,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       show('resCustomerSection', 'block');
     }
 
-    // Productos
+    // Products
     const items = data.items || [];
     if (items.length) {
       const list = document.getElementById('resProductsList');
       list.innerHTML = items.map(item => {
-        const name = item.productName || item.name || 'Producto';
+        const name = item.productName || item.name || 'Product';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
         return `
           <div class="product-item">
             <div>
               <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Cantidad: ${qty}</div>
+              <div class="product-item-sub">Quantity: ${qty}</div>
             </div>
             <div class="product-item-price">${price}</div>
           </div>
@@ -839,7 +839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     hide('errorCard');
     show('loadingEl', 'block');
 
-    // Normalizar ID — acepta con o sin LXB-
+    // Normalize ID — accept with or without LXB-
     let normalized = id.trim().toUpperCase();
     if (!normalized.startsWith('LXB-') && !normalized.startsWith('LX-') && !normalized.startsWith('TEST-')) {
       normalized = 'LXB-' + normalized;
@@ -862,7 +862,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
-  // Botón buscar
+  // Search button
   document.getElementById('searchBtn').addEventListener('click', () => {
     const val = document.getElementById('orderInput').value.trim();
     if (val) fetchOrder(val);
@@ -875,7 +875,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 
-  // Auto-buscar si viene orderId en la URL
+  // Auto-search if orderId comes in URL
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const autoId = params.get('orderId') || params.get('id');
@@ -887,12 +887,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

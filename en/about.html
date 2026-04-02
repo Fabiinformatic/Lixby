@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -36,7 +36,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Lixby | Our Story and Mission</title>
+  <title>About Lixby | Our Story & Mission</title>
   <meta name="description" content="Learn about Lixby's story. A Spanish company dedicated to creating technology that simplifies people's lives.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,9 +127,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .timeline {
-      --timeline-date-width: 110px;
-      --timeline-gap: var(--spacing-8);
-      --timeline-dot: 16px;
       padding: var(--spacing-24) var(--spacing-6);
       background-color: var(--color-white);
     }
@@ -145,8 +142,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: relative;
     }
 
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 60px;
+      width: 2px;
+      height: calc(100% + var(--spacing-12));
+      background-color: var(--color-blue);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
     .timeline-date {
-      width: var(--timeline-date-width);
+      width: 100px;
       font-weight: 700;
       color: var(--color-blue);
       font-size: var(--font-size-lg);
@@ -154,19 +165,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .timeline-content {
       flex: 1;
-      padding-left: var(--timeline-gap);
+      padding-left: var(--spacing-8);
       position: relative;
     }
 
     .timeline-content::before {
       content: '';
       position: absolute;
-      width: var(--timeline-dot);
-      height: var(--timeline-dot);
+      width: 16px;
+      height: 16px;
       background-color: var(--color-blue);
       border: 3px solid var(--color-white);
       border-radius: 50%;
-      left: calc(-1 * (var(--timeline-dot) / 2));
+      left: -20px;
       top: 8px;
       box-shadow: var(--shadow-lg);
     }
@@ -195,31 +206,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         font-size: var(--font-size-4xl);
       }
     }
-  .fade-scale {
-      opacity: 0;
-      transform: translateY(18px) scale(0.98);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-scale.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .wipe-reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .wipe-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stagger-item {
-      transition-delay: var(--delay, 0s);
-    }
   </style>
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
@@ -241,66 +227,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  <div id="scroll-progress"></div>
-
-  <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="shop.html" class="nav-link">Store</a>
-        <a href="#productos" class="nav-link">Products</a>
-        <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Support</a>
-      </nav>
-      <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-          </svg>
-        </button>
-        <form id="navSearchForm" action="shop.html" method="get">
-          <input
-            type="search"
-            id="navSearch"
-            name="q"
-            class="nav-search"
-            placeholder="Search product..."
-            aria-label="Search product"
-          >
-        </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
-          <img src="images/Bolsa.png" alt="Cart">
-        </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Account">
-          <img src="images/cuenta.png" alt="Account">
-        </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">Lixby</a>
+      <div class="nav-links">
+        <a href="/#products" class="nav-link">Products</a>
+        <a href="/#apps" class="nav-link">Apps</a>
+        <a href="./support.html" class="nav-link">Support</a>
       </div>
+      <div class="nav-right"></div>
     </div>
-  </header>
-  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Search"
-          aria-label="Search product"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Close menu">
-        <span aria-hidden="true">�</span>
-      </button>
-    </div>
+  </nav>
 
   <section class="about-hero">
     <div>
@@ -313,8 +251,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="mission-grid">
       <div class="mission-content">
         <h2>Our mission</h2>
-        <p>At Lixby we believe that technology should simplify life, not complicate it. Our goal is to create products and services that are intuitive, beautiful, and useful.</p>
-        <p>Since our beginnings in 2022, we have worked to offer innovative solutions that truly make a difference in the lives of our users.</p>
+        <p>At Lixby, we believe technology should simplify life, not complicate it. Our goal is to create products and services that are intuitive, beautiful, and useful.</p>
+        <p>Since our beginnings in 2022, we have worked to deliver innovative solutions that truly make a difference in our users' lives.</p>
       </div>
       <div style="background-color: var(--color-gray-100); border-radius: var(--radius-2xl); height: 300px;"></div>
     </div>
@@ -325,34 +263,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Our values</h2>
       <div class="values-grid">
         <div class="value-card">
-          <div class="value-icon">??</div>
-          <h3>User focus</h3>
+          <div class="value-icon">👥</div>
+          <h3>User-focused</h3>
           <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Everything we do is designed to improve the user experience.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">?</div>
+          <div class="value-icon">✨</div>
           <h3>Excellent design</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We seek perfection in every detail, from visual to functional.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We pursue perfection in every detail, from visual to functional.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">??</div>
+          <div class="value-icon">🔓</div>
           <h3>Transparency</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We believe in our users' privacy and the security of their data.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We believe in user privacy and data security.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">??</div>
+          <div class="value-icon">🌱</div>
           <h3>Sustainability</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We are committed to environmentally friendly and responsible practices.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We are committed to eco-friendly and responsible practices.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">??</div>
+          <div class="value-icon">🤝</div>
           <h3>Community</h3>
           <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We value our community and listen to their suggestions.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">??</div>
+          <div class="value-icon">💡</div>
           <h3>Innovation</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We strive to always be at the forefront of technology.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">We strive to stay at the forefront of technology.</p>
         </div>
       </div>
     </div>
@@ -374,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-date">2023</div>
         <div class="timeline-content">
           <h3>Launch of LixBuds</h3>
-          <p style="color: var(--color-gray-600);">We presented our first wireless headphones with premium technology.</p>
+          <p style="color: var(--color-gray-600);">We introduced our first wireless earbuds with premium technology.</p>
         </div>
       </div>
 
@@ -390,7 +328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-date">2024</div>
         <div class="timeline-content">
           <h3>LixBuds One</h3>
-          <p style="color: var(--color-gray-600);">We present the improved version of our headphones with extended battery.</p>
+          <p style="color: var(--color-gray-600);">We introduced the improved version of our earbuds with extended battery life.</p>
         </div>
       </div>
     </div>
@@ -404,161 +342,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <footer class="footer footer-mega">
-    <div class="container footer-mega-grid">
-      <section class="footer-section">
-        <h3>View and buy</h3>
-        <ul>
-          <li><a href="#">Store</a></li>
-          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="#apps">Apps</a></li>
-          <li><a href="support.html">Support</a></li>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="pages/products/lixbuds-one.html">LixBuds One</a></li>
         </ul>
-      </section>
-
-      <section class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="support.html">Support home page</a></li>
-          <li><a href="support.html#faq">Online Store FAQs</a></li>
-          <li><a href="support.html">Warranty Information</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
-        </ul>
-      </section>
-
-      <section class="footer-section">
-        <h3>Account</h3>
-        <ul>
-          <li><a href="../track.html">Orders</a></li>
-          <li><a href="account.html">My account</a></li>
-          <li><a href="account.html">Coupons</a></li>
-        </ul>
-      </section>
-
-      <section class="footer-section">
-        <h3>About Lixby</h3>
-        <ul>
-          <li><a href="about.html">Nosotros</a></li>
-          <li><a href="support.html">Warranty</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="support.html">Contact</a></li>
-        </ul>
-      </section>
-    </div>
-
-    <div class="container footer-meta">
-      <p class="footer-bottom">Copyright ? 2026 Lixby. All rights reserved.</p>
-      <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Privacy Policy</a>
-        <a href="pages/legal/cookies.html">Cookie Usage</a>
-        <a href="pages/legal/terms.html">Terms of Use</a>
-        <a href="support.html">Sales and Refunds</a>
-        <a href="pages/legal/legal-notice.html">Legal Notices</a>
       </div>
+      <div class="footer-section">
+        <h3>Apps</h3>
+        <ul class="footer-links">
+          <li><a href="pages/apps/lixney.html">Lixney</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="./about.html">About Lixby</a></li>
+          <li><a href="./support.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="pages/legal/privacy.html">Privacy</a></li>
+          <li><a href="pages/legal/terms.html">Terms</a></li>
+          <li><a href="pages/legal/cookies.html">Cookies</a></li>
+          <li><a href="pages/legal/legal-notice.html">Legal Notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lixby. All rights reserved. Designed in Spain.</p>
     </div>
   </footer>
 
-  <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll(".fade-scale, .wipe-reveal").forEach((el) => {
-      revealObserver.observe(el);
-    });
-
-    const nav = document.getElementById("nav");
-    const progressBar = document.getElementById("scroll-progress");
-
-    const updateScrollUI = () => {
-      const top = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = height > 0 ? (top / height) * 100 : 0;
-
-      if (progressBar) progressBar.style.width = progress + "%";
-      if (nav) nav.classList.toggle("nav-scrolled", top > 20);
-    };
-
-    window.addEventListener("scroll", updateScrollUI, { passive: true });
-    updateScrollUI();
-
-    const searchForm = document.getElementById("navSearchForm");
-    const searchInput = document.getElementById("navSearch");
-    if (searchForm && searchInput) {
-      searchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
-        window.location.href = url;
-      });
-    }
-
-    const mobileSearchForm = document.getElementById("navSearchFormMobile");
-    const mobileSearchInput = document.getElementById("navSearchMobile");
-    if (mobileSearchForm && mobileSearchInput) {
-      mobileSearchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
-        window.location.href = url;
-      });
-    }
-
-    const mobilePanel = document.getElementById("navMobilePanel");
-    const searchToggle = document.querySelector(".nav-search-toggle");
-    const menuToggle = document.querySelector(".nav-menu-toggle");
-    const closeNav = () => {
-      document.body.classList.remove("nav-open", "menu-open");
-      nav?.classList.remove("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "true");
-      searchToggle?.setAttribute("aria-expanded", "false");
-      menuToggle?.setAttribute("aria-expanded", "false");
-    };
-
-    const openNav = (focusSearch = false) => {
-      document.body.classList.add("nav-open", "menu-open");
-      nav?.classList.add("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "false");
-      searchToggle?.setAttribute("aria-expanded", "true");
-      menuToggle?.setAttribute("aria-expanded", "true");
-      if (focusSearch && mobileSearchInput) {
-        setTimeout(() => mobileSearchInput.focus(), 80);
-      }
-    };
-
-    const toggleNav = (focusSearch = false) => {
-      if (nav?.classList.contains("nav-open")) {
-        closeNav();
-      } else {
-        openNav(focusSearch);
-      }
-    };
-
-    searchToggle?.addEventListener("click", () => toggleNav(true));
-    menuToggle?.addEventListener("click", () => toggleNav(false));
-
-    const mobileClose = document.querySelector(".nav-mobile-close");
-    mobileClose?.addEventListener("click", () => closeNav());
-
-    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
-      link.addEventListener("click", () => closeNav());
-    });
-
-    window.addEventListener("load", () => {
-      if (window.gsap) {
-        gsap.from(".about-hero h1", { y: 20, opacity: 0, duration: 0.8 });
-        gsap.from(".about-hero p", { y: 16, opacity: 0, duration: 0.8, delay: 0.1 });
-      }
-    });
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
-
-

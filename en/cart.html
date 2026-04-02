@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/da/cart" hreflang="da-DK">
   <link rel="alternate" href="https://www.lixby.es/de/cart" hreflang="de-DE">
   <link rel="alternate" href="https://www.lixby.es/el/cart" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/es/cart" hreflang="es-ES">
+  <link rel="alternate" href="https://www.lixby.es/en/cart" hreflang="en-US">
   <link rel="alternate" href="https://www.lixby.es/et/cart" hreflang="et-EE">
   <link rel="alternate" href="https://www.lixby.es/fi/cart" hreflang="fi-FI">
   <link rel="alternate" href="https://www.lixby.es/ga/cart" hreflang="ga-IE">
@@ -211,17 +211,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="store.html" class="nav-link">Store</a>
-        <a href="index.html#products" class="nav-link">Products</a>
+        <a href="tienda.html" class="nav-link">Store</a>
+        <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
         <a href="pages/support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
         <a href="cart.html" class="nav-icon-link" aria-label="Cart">
-          <img src="images/Bag.png" alt="Cart">
+          <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Account">
-          <img src="images/account.png" alt="Account">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
     </div>
@@ -230,7 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="container cart-page">
     <section class="cart-head">
       <h1>Your cart</h1>
-      <p>Review your products before checkout.</p>
+      <p>Review your products before completing your purchase.</p>
     </section>
 
     <section class="cart-layout">
@@ -242,11 +242,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cart-row"><span>Shipping</span><span>Free</span></div>
         <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Proceed to checkout</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Clear cart</button>
+          <div id="giftCardSection" style="margin-bottom:12px">
+            <div style="display:flex;gap:8px">
+              <input type="text" id="giftCodeInput" placeholder="Gift card code (LIXBY-XXXX-XXXX)"
+                style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.9rem;outline:none">
+              <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
+                Apply
+              </button>
+            </div>
+            <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
+          </div>
+          <button id="checkoutBtn" class="btn btn-primary" type="button">Checkout</button>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">Empty cart</button>
         </div>
       </aside>
     </section>
+
+    <!-- Test button - REMOVE IN PRODUCTION -->
+    <div style="margin-top: 32px; padding: 16px; background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 14px; text-align: center;">
+      <p style="margin: 0 0 10px; font-size: 0.85rem; color: #92400e; font-weight: 700;">🧪 TEST MODE — Remove before publishing</p>
+      <button id="testBtn" type="button" class="btn btn-secondary" style="font-size:0.9rem">
+        Buy test product (1€)
+      </button>
+    </div>
   </main>
 
   <script type="module">
@@ -255,9 +273,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
-    const CHECKOUT_ENDPOINT = "/create-checkout-session";
+    const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
     const SUCCESS_URL = new URL("thank-you.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
+
+    const PRICES = {
+      negro: "price_1T9gzS4JmdPA7hphzMXa8s7T",
+      blanco: "price_1TD6xx4JmdPA7hphNSWAJLJM",
+      lixsafe: "price_1TD70q4JmdPA7hphQ9KJNOXV",
+      lixsafe_plus: "price_1TD71L4JmdPA7hphdYbs0z0i"
+    };
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -297,13 +322,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const totalEl = document.getElementById("total");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const checkoutBtn = document.getElementById("checkoutBtn");
+    let appliedGiftCard = null;
 
     function readCart() {
-      return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      let changed = false;
+      const normalized = cart.map((entry) => {
+        const lineId = entry.lineId || buildLineId(entry);
+        if (!entry.lineId || entry.lineId !== lineId) {
+          changed = true;
+        }
+        return { ...entry, lineId };
+      });
+      if (changed) {
+        writeCart(normalized);
+      }
+      return normalized;
     }
 
     function writeCart(cart) {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function buildLineId(entry) {
+      const id = entry.id || "item";
+      const color = entry.color || "—";
+      const plan = entry.insurancePlan || "No LixSafe";
+      const price = Number(entry.insurancePrice) || 0;
+      return `${id}|${color}|${plan}|${price}`;
+    }
+
+    function resolveBasePrice(entry, product) {
+      const raw = Number(entry.price);
+      const productPrice = Number(product.price) || 0;
+      const insurancePrice = Number(entry.insurancePrice) || 0;
+      if (!Number.isNaN(raw) && raw > 0) {
+        if (insurancePrice > 0 && Math.abs(raw - (productPrice + insurancePrice)) < 0.01) {
+          return raw - insurancePrice;
+        }
+        return raw;
+      }
+      return productPrice;
     }
 
     function money(value) {
@@ -325,6 +384,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return `LX-${yyyy}${mm}${dd}-${rand}`;
     }
 
+    function normalizeColorKey(value) {
+      if (!value) return null;
+      const normalized = String(value).toLowerCase();
+      if (normalized.includes("negro") || normalized.includes("black")) return "negro";
+      if (normalized.includes("blanco") || normalized.includes("white")) return "blanco";
+      return null;
+    }
+
+    function resolveProductPriceId(item) {
+      const colorKey =
+        normalizeColorKey(item.color) ||
+        normalizeColorKey(item.name) ||
+        normalizeColorKey(item.id);
+      return PRICES[colorKey || "blanco"];
+    }
+
+    function resolveInsurancePriceId(plan) {
+      if (!plan) return null;
+      const normalized = String(plan).toLowerCase().trim();
+      if (normalized === "no lixsafe" || normalized === "sin seguro") return null;
+      if (normalized.includes("lixsafe+") || normalized.includes("plus")) {
+        return PRICES.lixsafe_plus;
+      }
+      if (normalized === "lixsafe") {
+        return PRICES.lixsafe;
+      }
+      return null;
+    }
+
+    function buildCheckoutItems(items) {
+      if (!Array.isArray(items)) return [];
+      const lineItems = [];
+      items.forEach((item) => {
+        const quantity = Math.max(1, Number(item.qty) || 1);
+        const productPriceId = resolveProductPriceId(item);
+        if (productPriceId) {
+          lineItems.push({ priceId: productPriceId, quantity });
+        }
+        const insurancePriceId = resolveInsurancePriceId(item.insurancePlan);
+        if (insurancePriceId) {
+          lineItems.push({ priceId: insurancePriceId, quantity });
+        }
+      });
+      return lineItems;
+    }
+
     function calculateSummary(cart) {
       let subtotal = 0;
       const items = cart.map((entry) => {
@@ -334,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
@@ -345,24 +450,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           id: product.id,
           name: product.name,
           price: basePrice,
+          lineId: entry.lineId || buildLineId(entry),
+          color: entry.color || "—",
           qty,
+          unitPrice,
           lineTotal,
           insurancePlan: entry.insurancePlan || "No LixSafe",
           insurancePrice
         };
       });
 
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        subtotal = Math.max(0, subtotal - discount);
+      }
+
       return { items, subtotal };
     }
 
-    function updateQuantity(productId, delta) {
+    function updateQuantity(lineId, delta) {
       const cart = readCart();
-      const item = cart.find((entry) => entry.id === productId);
+      const item = cart.find((entry) => (entry.lineId || buildLineId(entry)) === lineId);
       if (!item) return;
 
       item.qty += delta;
       if (item.qty <= 0) {
-        const next = cart.filter((entry) => entry.id !== productId);
+        const next = cart.filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
         writeCart(next);
       } else {
         writeCart(cart);
@@ -371,8 +484,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       renderCart();
     }
 
-    function removeItem(productId) {
-      const next = readCart().filter((entry) => entry.id !== productId);
+    function removeItem(lineId) {
+      const next = readCart().filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
       writeCart(next);
       renderCart();
     }
@@ -381,7 +494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="store.html">Go to store</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="tienda.html">Go to store</a>.</p>`;
         subtotalEl.textContent = money(0);
         totalEl.textContent = money(0);
         return;
@@ -397,7 +510,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           image: "images/lixbuds-hero.jpg"
         };
 
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
@@ -430,11 +543,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="cart-item-meta">Color: ${color}</p>
               <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
               <div class="cart-controls">
-                <button type="button" data-action="minus" data-id="${product.id}">-</button>
+                <button type="button" data-action="minus" data-id="${entry.lineId}">-</button>
                 <span>${qty}</span>
-                <button type="button" data-action="plus" data-id="${product.id}">+</button>
+                <button type="button" data-action="plus" data-id="${entry.lineId}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${product.id}">Remove</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${entry.lineId}">Remove</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -442,7 +555,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).join("");
 
       subtotalEl.textContent = money(subtotal);
-      totalEl.textContent = money(subtotal);
+      let total = subtotal;
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        total = Math.max(0, subtotal - discount);
+      }
+      totalEl.textContent = money(total);
     }
 
     cartListEl.addEventListener("click", (event) => {
@@ -450,18 +568,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!(target instanceof HTMLElement)) return;
 
       const action = target.getAttribute("data-action");
-      const productId = target.getAttribute("data-id");
-      if (!action || !productId) return;
+      const lineId = target.getAttribute("data-id");
+      if (!action || !lineId) return;
 
-      if (action === "plus") updateQuantity(productId, 1);
-      if (action === "minus") updateQuantity(productId, -1);
-      if (action === "remove") removeItem(productId);
+      if (action === "plus") updateQuantity(lineId, 1);
+      if (action === "minus") updateQuantity(lineId, -1);
+      if (action === "remove") removeItem(lineId);
     });
 
     clearCartBtn.addEventListener("click", () => {
       localStorage.removeItem(CART_KEY);
       renderCart();
     });
+
+    const applyGiftBtn = document.getElementById("applyGiftBtn");
+    if (applyGiftBtn) {
+      applyGiftBtn.addEventListener("click", async () => {
+        const codeInput = document.getElementById("giftCodeInput");
+        const msg = document.getElementById("giftCardMsg");
+        if (!codeInput || !msg) return;
+
+        const code = codeInput.value.trim().toUpperCase();
+        if (!code) return;
+
+        applyGiftBtn.disabled = true;
+        applyGiftBtn.textContent = "...";
+
+        try {
+          const res = await fetch("https://lixby-production.up.railway.app/redeem-gift-card", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code })
+          });
+          const data = await res.json();
+
+          if (!res.ok || !data.valid) {
+            msg.style.color = "#ef4444";
+            msg.textContent = "❌ " + (data.error || "Invalid code");
+            msg.style.display = "block";
+            appliedGiftCard = null;
+          } else {
+            appliedGiftCard = data;
+            msg.style.color = "#458500";
+            msg.textContent = `✅ Gift card applied — ${data.balance
+              .toFixed(2)
+              .replace(".", ",")} € balance remaining`;
+            msg.style.display = "block";
+            renderCart();
+          }
+        } catch (e) {
+          msg.style.color = "#ef4444";
+          msg.textContent = "❌ Error verifying code";
+          msg.style.display = "block";
+        } finally {
+          applyGiftBtn.disabled = false;
+          applyGiftBtn.textContent = "Apply";
+        }
+      });
+    }
 
     checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
@@ -516,13 +680,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       try {
+        // Read saved profile
+        const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
+        const customerName = profile.firstName
+          ? `${profile.firstName} ${profile.lastName || ""}`.trim()
+          : null;
+
+        const checkoutItems = buildCheckoutItems(summary.items);
+        const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             orderId,
             successUrl: SUCCESS_URL,
-            cancelUrl: CANCEL_URL
+            cancelUrl: CANCEL_URL,
+            items: itemsForCheckout,
+            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
+            customerEmail: profile.email || auth.currentUser?.email || null,
+            customerName,
+            customerPhone: profile.phone || null
           })
         });
         const data = await response.json();
@@ -540,6 +717,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     renderCart();
+  </script>
+
+  <script>
+    document.getElementById('testBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('testBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      try {
+        const res = await fetch('https://lixby-production.up.railway.app/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: 'TEST-' + Math.random().toString(36).slice(2, 8).toUpperCase(),
+            successUrl: window.location.origin + '/en/thank-you.html',
+            cancelUrl: window.location.href,
+            items: [{ priceId: 'price_1TDPUo4JmdPA7hphOnNbvKJz', quantity: 1 }]
+          })
+        });
+        const data = await res.json();
+        if (data.url) window.location.href = data.url;
+      } catch (e) {
+        alert('Error starting test payment.');
+        btn.disabled = false;
+        btn.textContent = 'Buy test product (0,01 €)';
+      }
+    });
   </script>
 </body>
 </html>

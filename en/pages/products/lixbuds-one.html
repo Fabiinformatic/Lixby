@@ -38,10 +38,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LixBuds One | Premium Landing</title>
-  <meta name="description" content="LixBuds One: the sound that redefines wireless.">
+  <meta name="description" content="LixBuds One: sound that redefines wireless.">
+  <meta property="og:title" content="LixBuds One | Wireless Premium">
+  <meta property="og:description" content="Wireless headphones with noise cancellation, spatial audio and premium design.">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://lixby.es/en/pages/products/images/lixbuds-product.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LixBuds One | Wireless Premium">
+  <meta name="twitter:description" content="Wireless headphones with noise cancellation, spatial audio and premium design.">
+  <meta name="twitter:image" content="https://lixby.es/en/pages/products/images/lixbuds-product.jpg">
+  <meta property="og:url" content="https://www.lixby.es/en/pages/products/lixbuds-one">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0c;
@@ -59,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "Inter", "Manrope", sans-serif;
+      font-family: "Manrope", "Space Grotesk", sans-serif;
       color: var(--ink);
       background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.12) 0, transparent 45%),
                   radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06) 0, transparent 40%),
@@ -68,7 +83,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow-x: hidden;
     }
 
+    body::after {
+      content: "";
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 35%, transparent 70%);
+      mix-blend-mode: screen;
+      left: var(--x, -999px);
+      top: var(--y, -999px);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      opacity: 0.65;
+    }
+
+    h1, h2 {
+      font-family: "Sora", "Space Grotesk", sans-serif;
+      text-transform: none;
+    }
+
     .container { width: min(1200px, 92vw); margin: 0 auto; }
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 0 0 18px rgba(255,255,255,0.4);
+    }
     .panel {
       min-height: 100vh;
       display: grid;
@@ -122,6 +168,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       letter-spacing: 0.02em;
     }
     .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
 
     .hero {
       display: grid;
@@ -179,7 +226,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .btn:hover::after { transform: translateX(120%); }
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover { transform: translateY(-3px) scale(1.02); }
+    .btn:active { transform: scale(0.96); }
     .btn-dark {
       background: #f4f4f4;
       color: #0b0b0c;
@@ -214,7 +262,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-product {
       position: absolute;
       width: min(76%, 460px);
-      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.45));
+      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.45))
+              drop-shadow(0 0 30px rgba(255,255,255,0.15));
       animation: floatSpin 12s ease-in-out infinite;
     }
 
@@ -563,14 +612,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .reveal {
       opacity: 0;
       transform: translateY(30px) scale(0.98);
-      transition: opacity .8s ease, transform .8s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
     .parallax { will-change: transform; }
 
     .float { animation: softFloat 6s ease-in-out infinite; }
     @keyframes softFloat { 50% { transform: translateY(-10px); } }
+
+    .hero h1 {
+      clip-path: inset(0 100% 0 0);
+      animation: textReveal 1.3s steps(32) forwards;
+    }
+
+    @keyframes textReveal {
+      to { clip-path: inset(0 0 0 0); }
+    }
 
     .section-label {
       text-transform: uppercase;
@@ -581,19 +642,151 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: inline-block;
     }
 
+    .inline-cta {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .inline-cta .price {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .audio-demo {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .comparison-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .noise-demo.clean {
+      background: linear-gradient(120deg, #0a0f14 0%, #0f141c 100%);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .noise-demo .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .why-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonials-grid,
+    .faq-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .why-card,
+    .testimonial-card,
+    .faq-item {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: grid;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    .why-card span {
+      font-size: 1.5rem;
+    }
+
+    .stars {
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      color: #f4f4f4;
+    }
+
+    .faq-item button {
+      all: unset;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-item button::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .faq-item[open] button::after {
+      content: "−";
+      color: var(--ink);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      color: var(--muted);
+    }
+
+    .faq-item[open] .faq-answer {
+      max-height: 200px;
+    }
+
     @media (max-width: 980px) {
       .hero,
-      .media-block { grid-template-columns: 1fr; }
-      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .media-block,
+      .comparison-grid { grid-template-columns: 1fr; }
+      .feature-grid,
+      .why-grid,
+      .testimonials-grid,
+      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-media { min-height: 420px; }
     }
 
     @media (max-width: 640px) {
       .panel { padding: 8vh 0; }
-      .feature-grid { grid-template-columns: 1fr; }
+      .feature-grid,
+      .why-grid,
+      .testimonials-grid,
+      .faq-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hero { min-height: auto; }
       .hero-meta { font-size: 0.95rem; }
+      .btn { min-height: 52px; }
+      .hero-product,
+      .earbud-3d { animation: none; }
+      .ring,
+      .case-lid,
+      .battery-level,
+      .final-product { animation: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
     }
   </style>
   <link rel="icon" href="/favicon.ico">
@@ -616,6 +809,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+  <div class="scroll-progress" aria-hidden="true"></div>
   <header class="top-nav">
 <div class="container">
       <div class="brand">Lixby</div>
@@ -630,78 +824,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <main>
-    <section class="panel">
+    <section class="panel" aria-labelledby="hero-title">
       <div class="container hero">
         <div class="reveal">
           <span class="section-label">Product</span>
-          <h1>LixBuds One<br>The sound that redefines wireless.</h1>
+          <h1 id="hero-title">Hear what matters.<br>Tune out everything else.</h1>
+          <p>Designed to immerse you in your music like never before.</p>
           <div class="hero-meta">
             <span>Intelligent noise cancellation</span>
             <span>Immersive spatial audio</span>
           </div>
-          <div class="price">�99</div>
+          <div class="price">€99</div>
           <div class="cta-row">
-            <a href="/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark">Buy</a>
-            <a href="#caracteristicas" class="btn btn-light">See highlights</a>
+            <a href="/Lixby/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark" aria-label="Buy LixBuds One now for 99 euros">Buy now — €99</a>
+            <a href="#caracteristicas" class="btn btn-light">See featured</a>
           </div>
         </div>
         <div class="hero-media reveal parallax" data-speed="0.12">
-          <video autoplay muted loop playsinline poster="images/lixbuds-hero.jpg">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
             <source src="media/lixbuds-loop.mp4" type="video/mp4">
           </video>
-          <img class="hero-product" src="images/lixbuds-product.jpg" alt="Floating LixBuds One">
+          <img class="hero-product" src="images/lixbuds-product.jpg" alt="LixBuds One wireless headphones with noise cancellation" loading="lazy">
           <div class="hero-orbs"></div>
         </div>
       </div>
     </section>
 
-    <section id="caracteristicas" class="panel">
+    <section id="caracteristicas" class="panel" aria-labelledby="features-title">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-label">Premium technology</span>
-          <h2>Key features</h2>
-          <p>Advanced technology with minimalist design and daily professional-grade performance.</p>
+          <h2 id="features-title">Key features</h2>
+          <p>Advanced technology with minimalist design and professional-grade daily performance.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>High-definition spatial audio</h3><p>Wide and precise soundstage.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>Intelligent active noise cancellation</h3><p>Blocks environment in real time.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>Adaptive transparency mode</h3><p>Hear outside without losing clarity.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>Intuitive touch controls</h3><p>Natural and precise gestures.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>Up to 8 hours of battery</h3><p>All-day energy.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">??</div><h3>IPX5 resistance</h3><p>Ready for workouts in light rain.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">?</div><h3>Wireless charging case</h3><p>Compact, elegant and fast.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Feel every note as if you were there</h3><p>Spatial audio that surrounds your listening.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">🔇</div><h3>Absolute silence, even in the midst of chaos</h3><p>Intelligent ANC that silences the noise.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">👂</div><h3>Hear the world when you decide</h3><p>Adaptive and natural transparency.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">👆</div><h3>Total control with a touch</h3><p>Precise gestures, without looking.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">🔋</div><h3>Energy that lasts all day</h3><p>Up to 8 hours non-stop.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">💧</div><h3>Ready for sweat, rain and the street</h3><p>Real IPX5 protection.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">📦</div><h3>Wireless charging, effortless</h3><p>Premium wireless case.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="sonido" class="panel">
+    <section id="sonido" class="panel" aria-labelledby="sound-title">
       <div class="container">
         <div class="media-block">
           <div class="media-box sound-waves reveal parallax" data-speed="0.08">
-            <video autoplay muted loop playsinline poster="images/lixbuds-hero.jpg">
+            <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-hero.jpg">
               <source src="media/lixbuds-listening.mp4" type="video/mp4">
             </video>
           </div>
           <div class="reveal">
             <span class="section-label">Experience</span>
-            <h2>An extraordinary sound experience.</h2>
-            <p style="color:var(--muted);margin-top:12px;">The LixBuds One are designed to deliver deep, clear, and immersive sound. Thanks to their advanced acoustic architecture, every song is heard with more powerful bass, clearer vocals, and a wider soundstage.</p>
+            <h2 id="sound-title">An extraordinary sound experience.</h2>
+            <p style="color:var(--muted);margin-top:12px;">The LixBuds One have been designed to deliver deep, clear and immersive sound. Thanks to their advanced acoustic architecture, every song sounds with more powerful bass, clearer vocals and a wider soundstage.</p>
             <p style="color:var(--muted);margin-top:16px;">Sound waves and particles react to the rhythm for an immersive sensation.</p>
+            <div class="audio-demo">
+              <button class="btn btn-light" id="audioToggle" aria-pressed="false">Listen to demo</button>
+              <audio id="audioDemo" preload="none" src="media/lixbuds-demo.mp3"></audio>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="anc" class="panel">
+    <section id="anc" class="panel" aria-labelledby="anc-title">
       <div class="container media-block">
         <div class="noise-demo reveal" id="ancDemo">
           <span class="section-label">Noise cancellation</span>
-          <h3>Focus only on what you want to hear.</h3>
-          <p style="color:var(--muted);">Active noise cancellation uses internal and external microphones to detect environmental sounds and eliminate them in real time.</p>
+          <h3 id="anc-title">Focus only on what you want to hear.</h3>
+          <p style="color:var(--muted);">Active noise cancellation uses internal and external microphones to detect ambient sounds and eliminate them in real time.</p>
           <div class="noise-city"></div>
           <div class="toggle-row">
-            <button class="btn btn-dark" id="toggleAnc">Activate cancellation</button>
-            <button class="btn btn-light" id="toggleTransparency">Transparency mode</button>
+            <button class="btn btn-dark" id="toggleAnc" aria-pressed="false">Activate cancellation</button>
+            <button class="btn btn-light" id="toggleTransparency" aria-pressed="false">Transparency mode</button>
+          </div>
+          <div class="inline-cta">
+            <div class="price">€99</div>
+            <a href="/Lixby/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark" aria-label="Buy LixBuds One now for 99 euros">Buy now — €99</a>
           </div>
         </div>
         <div class="reveal">
@@ -710,20 +913,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="ring r2"></div>
             <div class="head"></div>
           </div>
-          <p style="margin-top:16px;color:var(--muted);">Immersive spatial audio. Feel the sound in three dimensions, as if you were inside the music.</p>
+          <p style="margin-top:16px;color:var(--muted);">Immersive spatial audio. Feel sound in three dimensions, as if you were inside the music.</p>
         </div>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Comparison</span>
+          <h2 id="compare-title">Hear the contrast</h2>
+          <p>Two worlds, one real difference: uncontrolled noise vs. intelligent silence.</p>
+        </div>
+        <div class="comparison-grid">
+          <div class="noise-demo reveal">
+            <span class="label">Without LixBuds</span>
+            <h3>Constant sonic chaos</h3>
+            <p style="color:var(--muted);">Everything competes for your attention.</p>
+            <div class="noise-city"></div>
+          </div>
+          <div class="noise-demo anc-on clean reveal">
+            <span class="label">With LixBuds</span>
+            <h3>Focused silence</h3>
+            <p style="color:var(--muted);">Your music, without interruptions.</p>
+            <div class="noise-city"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="fit-title">
       <div class="container media-block">
         <div class="fit-visual reveal parallax" data-speed="0.06">
-          <img class="earbud-3d" src="images/lixbuds-product.jpg" alt="3D model of LixBuds One earbud">
+          <img class="earbud-3d" src="images/lixbuds-product.jpg" alt="3D model of LixBuds One earbud" loading="lazy">
         </div>
         <div class="reveal">
           <span class="section-label">Fit and comfort</span>
-          <h2 style="font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:-.04em;">Ergonomic and lightweight design</h2>
-          <p style="color:var(--muted);margin-top:8px;">Silicone eartips, secure fit and soft materials to wear them for hours.</p>
+          <h2 id="fit-title" style="font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:-.04em;">Ergonomic and lightweight design</h2>
+          <p style="color:var(--muted);margin-top:8px;">Silicone tips, secure fit and soft materials for hours of use.</p>
           <div class="touch-demo" style="margin-top:16px;">
             <div class="finger"></div>
             <ul class="touch-actions" id="touchActions">
@@ -738,51 +965,123 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" aria-labelledby="water-title">
       <div class="container media-block">
         <div class="water-demo reveal">
           <div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div>
           <div style="position:absolute;bottom:16px;left:16px;right:16px;">
             <span class="section-label">Water resistance</span>
-            <h3>IPX5 certification</h3>
-            <p style="color:var(--muted);">Resistant to sweat and light rain. They keep working while water falls.</p>
+            <h3 id="water-title">IPX5 certification</h3>
+            <p style="color:var(--muted);">Resistant to sweat and light rain. They keep working as the water falls.</p>
           </div>
         </div>
-        <div id="bateria" class="battery-demo reveal">
+        <div id="bateria" class="battery-demo reveal" aria-labelledby="battery-title">
           <span class="section-label">Battery</span>
-          <h2 style="font-size:clamp(1.5rem,3.5vw,2.3rem);letter-spacing:-.03em;">Intelligent energy</h2>
-          <p style="color:var(--muted);margin:6px 0 14px;">Up to 8 hours on a single charge. Up to 30 hours with case.</p>
+          <h2 id="battery-title" style="font-size:clamp(1.5rem,3.5vw,2.3rem);letter-spacing:-.03em;">Intelligent energy</h2>
+          <p style="color:var(--muted);margin:6px 0 14px;">Up to 8 hours on a single charge. Up to 30 hours with the case.</p>
           <div class="battery-body"><div class="battery-level"></div></div>
           <div class="case-anim">
             <div class="case-shell"><div class="case-lid"></div></div>
+          </div>
+          <div class="inline-cta">
+            <div class="price">€99</div>
+            <a href="/Lixby/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark" aria-label="Buy LixBuds One now for 99 euros">Buy now — €99</a>
           </div>
           <p style="color:var(--muted);margin-top:10px;">Wireless charging case, LED indicator and compact design.</p>
         </div>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" aria-labelledby="case-title">
       <div class="container media-block">
         <div class="media-box reveal parallax" data-speed="0.1">
-          <video autoplay muted loop playsinline poster="images/lixbuds-product.jpg">
+          <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-product.jpg">
             <source src="media/lixbuds-case.mp4" type="video/mp4">
           </video>
         </div>
         <div class="reveal">
           <span class="section-label">Charging case</span>
-          <h2>Total minimalism, maximum control</h2>
-          <p style="color:var(--muted);margin-top:12px;">Wireless charging, precise LED indicator and compact design to take it anywhere.</p>
-          <p style="color:var(--muted);margin-top:12px;">The case slowly rotates in 3D to show every detail.</p>
+          <h2 id="case-title">Total minimalism, maximum control</h2>
+          <p style="color:var(--muted);margin-top:12px;">Wireless charging, precise LED indicator and compact design to take anywhere.</p>
+          <p style="color:var(--muted);margin-top:12px;">The case rotates slowly in 3D to show every detail.</p>
         </div>
       </div>
     </section>
 
-    <section id="comprar" class="panel">
+    <section class="panel" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Why LixBuds One</span>
+          <h2 id="why-title">More than headphones, a better routine</h2>
+          <p>Designed to elevate your day with comfort, focus and premium sound.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal"><span>✨</span><h3>Immersive sound</h3><p>Wide soundstage that puts you in the song.</p></div>
+          <div class="why-card reveal"><span>🧠</span><h3>Real focus</h3><p>Intelligent ANC that eliminates distractions.</p></div>
+          <div class="why-card reveal"><span>⚡</span><h3>Ready instantly</h3><p>Fast pairing and precise touch controls.</p></div>
+          <div class="why-card reveal"><span>🎒</span><h3>Always with you</h3><p>Compact case and wireless charging.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Testimonials</span>
+          <h2 id="testimonials-title">Real reviews, real value</h2>
+          <p>In the €99 range, these are the ones people buy again.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <strong>Maria G.</strong>
+            <p>"The ANC changed my commute. I can work without stress."</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <strong>Diego L.</strong>
+            <p>"It sounds deep and clear. Nothing to envy from more expensive models."</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★☆</div>
+            <strong>Lucia P.</strong>
+            <p>"Very comfortable for working out, and the case is compact."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">FAQ</span>
+          <h2 id="faq-title">Frequently asked questions</h2>
+          <p>Quick answers before buying.</p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">What is the return policy?</button>
+            <div class="faq-answer">You have 30 days to return them if they're not for you, as long as they're in original condition.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">Are they compatible with Android and iOS?</button>
+            <div class="faq-answer">Yes, they work with both systems and pair in seconds via Bluetooth.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">How long does shipping take?</button>
+            <div class="faq-answer">Standard shipping takes 24-72 business hours in Spain.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comprar" class="panel" aria-labelledby="buy-title">
       <div class="container">
         <div class="floating-final reveal">
-          <img class="final-product parallax" data-speed="0.05" src="images/lixbuds-product.jpg" alt="Floating LixBuds One">
-          <h2 style="font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1.02;">LixBuds One<br>Everything you need to hear.</h2>
-          <a href="/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark" style="margin-top:18px;font-size:1.05rem;padding:14px 28px;">Buy now</a>
+          <img class="final-product parallax" data-speed="0.05" src="images/lixbuds-product.jpg" alt="LixBuds One headphones floating with case" loading="lazy">
+          <h2 id="buy-title" style="font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1.02;">LixBuds One<br>Everything you need to hear.</h2>
+          <a href="/Lixby/en/buy-headphones/lixbuds-one/index.html" class="btn btn-dark" style="margin-top:18px;font-size:1.05rem;padding:14px 28px;" aria-label="Buy LixBuds One now for 99 euros">Buy now — €99</a>
+
         </div>
       </div>
     </section>
@@ -797,22 +1096,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0.16 });
     reveals.forEach((el) => observer.observe(el));
 
+    const root = document.documentElement;
+    window.addEventListener('mousemove', (e) => {
+      root.style.setProperty('--x', `${e.clientX}px`);
+      root.style.setProperty('--y', `${e.clientY}px`);
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const parallaxEls = document.querySelectorAll('.parallax');
-    let ticking = false;
-    const handleParallax = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        parallaxEls.forEach((el) => {
-          const speed = Number(el.dataset.speed || 0.08);
-          el.style.transform = `translateY(${y * speed * -0.22}px)`;
+    if (!reduceMotion.matches) {
+      let ticking = false;
+      const handleParallax = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          parallaxEls.forEach((el) => {
+            const speed = Number(el.dataset.speed || 0.08);
+            el.style.transform = `translateY(${y * speed * -0.22}px)`;
+          });
+          ticking = false;
         });
-        ticking = false;
-      });
+      };
+      window.addEventListener('scroll', handleParallax, { passive: true });
+      handleParallax();
+    }
+
+    const progress = document.querySelector('.scroll-progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
     };
-    window.addEventListener('scroll', handleParallax, { passive: true });
-    handleParallax();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
     const ancDemo = document.getElementById('ancDemo');
     const toggleAnc = document.getElementById('toggleAnc');
@@ -820,23 +1137,96 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     toggleAnc.addEventListener('click', () => {
       ancDemo.classList.toggle('anc-on');
+      const isOn = ancDemo.classList.contains('anc-on');
       toggleAnc.textContent = ancDemo.classList.contains('anc-on') ? 'ANC activated' : 'Activate cancellation';
+      toggleTransparency.textContent = 'Transparency mode';
+      toggleAnc.setAttribute('aria-pressed', String(isOn));
+      toggleTransparency.setAttribute('aria-pressed', 'false');
     });
 
     toggleTransparency.addEventListener('click', () => {
       ancDemo.classList.remove('anc-on');
       toggleAnc.textContent = 'Activate cancellation';
+      toggleTransparency.textContent = 'Transparency active';
+      toggleAnc.setAttribute('aria-pressed', 'false');
+      toggleTransparency.setAttribute('aria-pressed', 'true');
     });
 
-    const touchItems = Array.from(document.querySelectorAll('#touchActions li'));
-    let touchIndex = 0;
-    setInterval(() => {
-      touchItems.forEach((li) => li.classList.remove('active'));
-      touchItems[touchIndex].classList.add('active');
-      touchIndex = (touchIndex + 1) % touchItems.length;
-    }, 1600);
+    if (!reduceMotion.matches) {
+      const touchItems = Array.from(document.querySelectorAll('#touchActions li'));
+      let touchIndex = 0;
+      setInterval(() => {
+        touchItems.forEach((li) => li.classList.remove('active'));
+        touchItems[touchIndex].classList.add('active');
+        touchIndex = (touchIndex + 1) % touchItems.length;
+      }, 1600);
+    }
+
+    const audioToggle = document.getElementById('audioToggle');
+    const audioDemo = document.getElementById('audioDemo');
+    if (audioToggle && audioDemo) {
+      audioToggle.addEventListener('click', () => {
+        if (audioDemo.paused) {
+          audioDemo.play();
+          audioToggle.textContent = 'Pause';
+          audioToggle.setAttribute('aria-pressed', 'true');
+        } else {
+          audioDemo.pause();
+          audioToggle.textContent = 'Listen to demo';
+          audioToggle.setAttribute('aria-pressed', 'false');
+        }
+      });
+      audioDemo.addEventListener('ended', () => {
+        audioToggle.textContent = 'Listen to demo';
+        audioToggle.setAttribute('aria-pressed', 'false');
+      });
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.remove('active'));
+        const id = entry.target.getAttribute('id');
+        const active = navLinks.find((link) => link.getAttribute('href') === `#${id}`);
+        if (active) active.classList.add('active');
+      });
+    }, { threshold: 0.55 });
+
+    navLinks.forEach((link) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) sectionObserver.observe(target);
+    });
+
+    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+    faqItems.forEach((item) => {
+      const btn = item.querySelector('button');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const isOpen = item.hasAttribute('open');
+        faqItems.forEach((el) => {
+          el.removeAttribute('open');
+          const button = el.querySelector('button');
+          if (button) button.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.setAttribute('open', '');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const mobileMedia = window.matchMedia('(max-width: 640px)');
+    const handleMobileMedia = (e) => {
+      if (e.matches) {
+        document.querySelectorAll('video').forEach((video) => {
+          video.pause();
+          video.removeAttribute('autoplay');
+        });
+      }
+    };
+    handleMobileMedia(mobileMedia);
+    mobileMedia.addEventListener('change', handleMobileMedia);
   </script>
 </body>
 </html>
-
-
