@@ -2935,73 +2935,67 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/about.html</loc>
+    <loc>https://www.lixby.es/lt/apie.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/cambiar-contrasena.html</loc>
+    <loc>https://www.lixby.es/lt/pakeisti-slaptažodį.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/contacto.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/susisiekti.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/devoluciones.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/grįžta.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/faq.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/faq.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/garantia.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/garantija.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/index.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/index.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/lixbuds.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/lixbuds.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/lixney.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/lixney.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/centro-ayuda/solucion-problemas.html</loc>
+    <loc>https://www.lixby.es/lt/pagalbos-centras/problemų-sprendimas.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/cesta.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/comprar.html</loc>
+    <loc>https://www.lixby.es/lt/krepšelis.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -3013,43 +3007,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/cookies.html</loc>
+    <loc>https://www.lixby.es/lt/dovana.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/cuenta.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/iniciar-sesion.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/legal-notice.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/lixbuds-one.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/lixney.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/pages/about.html</loc>
+    <loc>https://www.lixby.es/lt/dviejų-pakopų-patvirtinimas.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -3097,19 +3061,37 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/pages/support.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/privacy.html</loc>
+    <loc>https://www.lixby.es/lt/pamiršti-slaptažodį.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/returns.html</loc>
+    <loc>https://www.lixby.es/lt/parduotuvė.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.lixby.es/lt/patikrinta.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.lixby.es/lt/pirkti.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.lixby.es/lt/prisijungti.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.lixby.es/lt/sąskaitą.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -3121,25 +3103,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.lixby.es/lt/terms.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/tienda.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/verificacion-2-pasos.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.lixby.es/lt/verificado.html</loc>
+    <loc>https://www.lixby.es/lt/track.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
