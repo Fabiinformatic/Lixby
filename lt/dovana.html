@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<!-- Google žymų tvarkyklė (Google Tag Manager) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,dokumentas,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- Google žymų tvarkyklės pabaiga -->
+  <link rel="canonical" href="https://www.lixby.es/lt/dovana.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dovanų kortelė | Lixby</title>
+  <meta name="description" content="Padovanokite Lixby patirtį. Skaitmeninės dovanų kortelės nuo 5 € – pristatomos per kelias minutes el. paštu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="globalheader.css">
+  <link rel="stylesheet" href="localnav.css">
+  <link rel="stylesheet" href="globalfooter.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <style>
+    :root {
+      --green: #1f4fd8;
+      --green-light: #edf2ff;
+      --green-mid: #c7d7ff;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --text: #111827;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    body {
+      background: #f1f5ff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* HERO */
+    .regalo-hero {
+      background: linear-gradient(135deg, #0f1f5b 0%, #1f4fd8 55%, #4fa0ff 100%);
+      padding: 64px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .regalo-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    }
+
+    .regalo-hero-content { position: relative; z-index: 1; }
+
+    .regalo-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+
+    .regalo-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-style: normal;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .regalo-subtitle {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    /* DOVANŲ KORTELĖS PERŽIŪRA */
+    .card-preview-wrap {
+      perspective: 1000px;
+      display: inline-block;
+      margin-bottom: -40px;
+    }
+
+    .card-preview {
+      width: 320px;
+      height: 190px;
+      background: linear-gradient(135deg, #ffffff 0%, #eef3ff 100%);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2);
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: rotateY(-8deg) rotateX(4deg);
+      transition: transform 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-preview:hover {
+      transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    .card-preview::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(31,79,216,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .card-brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.02em;
+    }
+
+    .card-amount-preview {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      transition: all 0.3s ease;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .card-code-preview {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: monospace;
+      letter-spacing: 0.1em;
+    }
+
+    /* PAGRINDINĖ FORMA */
+    .regalo-main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+
+    .regalo-section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    /* SUMOS PASIRINKIMAS */
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .amount-btn {
+      padding: 14px 8px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .amount-btn:hover {
+      border-color: var(--green);
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .amount-btn.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+      color: var(--green);
+      box-shadow: 0 0 0 3px rgba(69,133,0,0.12);
+    }
+
+    .custom-amount-wrap {
+      display: none;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    .custom-amount-wrap.visible { display: flex; }
+
+    .custom-prefix {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 800;
+      color: var(--green);
+      font-size: 1.1rem;
+    }
+
+    .custom-amount-input {
+      width: 100%;
+      padding: 14px 16px 14px 32px;
+      border: 2px solid var(--green);
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      outline: none;
+      background: var(--green-light);
+    }
+
+    .amount-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* GAVĖJAS */
+    .recipient-toggle {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .toggle-btn.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .recipient-fields { display: none; }
+    .recipient-fields.visible { display: block; }
+
+    /* FORMOS LAUKAI */
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+
+    .field-input:focus { border-color: var(--green); }
+    .field-input.error { border-color: #ef4444; }
+
+    .field-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .field-textarea:focus { border-color: var(--green); }
+
+    /* PRANEŠIMO PARINKTYS */
+    .message-options {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .msg-chip {
+      padding: 6px 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+    }
+
+    .msg-chip:hover, .msg-chip.selected {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    /* SANTRAUKA */
+    .summary-card {
+      background: var(--green-light);
+      border: 1px solid var(--green-mid);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .summary-row:last-child { margin-bottom: 0; }
+
+    .summary-total {
+      border-top: 1px solid var(--green-mid);
+      padding-top: 12px;
+      margin-top: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .summary-total span:last-child { color: var(--green); }
+
+    /* PIRKIMO MYGTUKAS */
+    .buy-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .buy-btn:hover { background: #366a00; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(69,133,0,0.3); }
+    .buy-btn:active { transform: translateY(0); }
+    .buy-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .buy-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* DUK */
+    .faq-section {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .faq-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--green);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.2s;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 20px 16px; }
+
+    @media (max-width: 600px) {
+      .regalo-section { padding: 20px 16px; }
+      .amount-grid { grid-template-columns: repeat(3, 1fr); }
+      .field-row { grid-template-columns: 1fr; }
+      .card-preview { width: 280px; height: 165px; }
+    }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="scroll-progress"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-container">
+    <a href="./" class="nav-brand">Lixby</a>
+    <nav class="nav-links" aria-label="Pagrindinis">
+      <a href="parduotuvė.html" class="nav-link">Parduotuvė</a>
+      <a href="#productos" class="nav-link">Produktai</a>
+      <a href="#apps" class="nav-link">Programėlės</a>
+      <a href="support.html" class="nav-link">Palaikymas</a>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Ieškoti" aria-controls="navMobilePanel" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+        </svg>
+      </button>
+      <form id="navSearchForm" action="parduotuvė.html" method="get">
+        <input
+          type="search"
+          id="navSearch"
+          name="q"
+          class="nav-search"
+          placeholder="Ieškoti produkto..."
+          aria-label="Ieškoti produkto"
+        >
+      </form>
+      <a href="krepšelis.html" class="nav-icon-link" aria-label="Krepšelis">
+        <img src="images/Bolsa.png" alt="Krepšelis">
+      </a>
+      <a href="sąskaitą.html" class="nav-icon-link" aria-label="Paskyra">
+        <img src="images/cuenta.png" alt="Paskyra">
+      </a>
+      <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meniu" aria-controls="navMobilePanel" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+  <div class="nav-mobile-top">
+    <form id="navSearchFormMobile" class="nav-search-form-mobile" action="parduotuvė.html" method="get">
+      <input
+        type="search"
+        id="navSearchMobile"
+        name="q"
+        class="nav-search-mobile"
+        placeholder="Ieškoti"
+        aria-label="Ieškoti produkto"
+      >
+    </form>
+    <button type="button" class="nav-mobile-close" aria-label="Uždaryti meniu">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <nav class="nav-mobile-links" aria-label="Pagrindinis mobilus">
+    <a href="parduotuvė.html">Parduotuvė</a>
+    <a href="#productos">Produktai</a>
+    <a href="#apps">Programėlės</a>
+    <a href="support.html">Palaikymas</a>
+  </nav>
+  <div class="nav-mobile-actions">
+    <a href="krepšelis.html">Krepšelis</a>
+    <a href="sąskaitą.html">Paskyra</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="regalo-hero">
+  <div class="container regalo-hero-content">
+    <div class="regalo-eyebrow">🎁 Skaitmeninė dovanų kortelė</div>
+    <h1 class="regalo-title">Tobula dovana.</h1>
+    <p class="regalo-subtitle">Padovanokite Lixby patirtį. Pristatoma per kelias minutes el. paštu, iš karto galima naudoti parduotuvėje.</p>
+    <div class="card-preview-wrap">
+      <div class="card-preview">
+        <div class="card-brand">Lixby</div>
+        <div class="card-amount-preview" id="cardAmountPreview">—</div>
+        <div class="card-bottom">
+          <div class="card-label">Dovanų kortelė</div>
+          <div class="card-code-preview">LIXBY-XXXX-XXXX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMA -->
+<main class="regalo-main">
+
+  <!-- 1 ŽINGSNIS: SUMA -->
+  <div class="regalo-section">
+    <div class="section-title">
+      <span class="section-number">1</span>
+      Pasirinkite sumą
+    </div>
+
+    <div class="amount-grid">
+      <button class="amount-btn" data-amount="5" type="button">5 €</button>
+      <button class="amount-btn" data-amount="10" type="button">10 €</button>
+      <button class="amount-btn" data-amount="20" type="button">20 €</button>
+      <button class="amount-btn" data-amount="50" type="button">50 €</button>
+      <button class="amount-btn" data-amount="100" type="button">100 €</button>
+      <button class="amount-btn" data-amount="200" type="button">200 €</button>
+    </div>
+    <button class="amount-btn" data-amount="custom" type="button" style="width:100%;margin-bottom:10px">✏️ Kita suma</button>
+
+    <div class="custom-amount-wrap" id="customAmountWrap">
+      <span class="custom-prefix">€</span>
+      <input type="number" class="custom-amount-input" id="customAmountInput" placeholder="Įveskite sumą" min="10" max="200">
+    </div>
+    <div class="amount-hint" id="amountHint">Minimali suma 10 € · Maksimali suma 200 €</div>
+  </div>
+
+  <!-- 2 ŽINGSNIS: KAM SKIRTA? -->
+  <div class="regalo-section">
+    <div class="section-title">
+      <span class="section-number">2</span>
+      Kam skirta?
+    </div>
+
+    <div class="recipient-toggle">
+      <button class="toggle-btn selected" id="toggleSelf" type="button">🙋 Sau</button>
+      <button class="toggle-btn" id="toggleOther" type="button">🎁 Kitam asmeniui</button>
+    </div>
+
+    <div class="recipient-fields" id="recipientFields">
+      <div class="field-row" style="margin-bottom:12px">
+        <div class="field-group">
+          <label class="field-label">Gavėjo vardas</label>
+          <input type="text" class="field-input" id="recipientName" placeholder="Vardas">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Gavėjo el. paštas</label>
+          <input type="email" class="field-input" id="recipientEmail" placeholder="pastas@example.com">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Asmeninė žinutė <span style="color:var(--muted);font-weight:400">(neprivaloma)</span></label>
+        <div class="message-options">
+          <span class="msg-chip" data-msg="Su gimtadieniu! 🎂">Gimtadienis</span>
+          <span class="msg-chip" data-msg="Linksmų Kalėdų! 🎄">Kalėdos</span>
+          <span class="msg-chip" data-msg="Su sukaktimi! 💕">Sukaktis</span>
+          <span class="msg-chip" data-msg="Sveikinimai! 🎉">Sveikinimai</span>
+          <span class="msg-chip selected" data-msg="">Be žinutės</span>
+        </div>
+        <textarea class="field-textarea" id="giftMessage" placeholder="Rašykite savo žinutę čia..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 ŽINGSNIS: JŪSŲ DUOMENYS -->
+  <div class="regalo-section">
+    <div class="section-title">
+      <span class="section-number">3</span>
+      Jūsų duomenys
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">Jūsų vardas</label>
+        <input type="text" class="field-input" id="senderName" placeholder="Vardas">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Jūsų el. paštas</label>
+        <input type="email" class="field-input" id="senderEmail" placeholder="pastas@example.com">
+      </div>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:4px">
+      ⏱ Kodą gausite el. paštu per mažiau nei valandą.
+    </p>
+  </div>
+
+  <!-- SANTRAUKA + MOKĖJIMAS -->
+  <div class="summary-card" id="summaryCard" style="display:none">
+    <div class="summary-row"><span>Lixby dovanų kortelė</span><span id="summaryAmount">—</span></div>
+    <div class="summary-row"><span>Pristatymas</span><span style="color:var(--green);font-weight:700">Nemokamas</span></div>
+    <div class="summary-row summary-total"><span>Iš viso</span><span id="summaryTotal">—</span></div>
+  </div>
+
+  <button class="buy-btn" id="buyBtn" type="button" disabled>Pasirinkite sumą, kad tęstumėte</button>
+  <p class="buy-note">🔒 Saugus mokėjimas su Stripe · Pristatoma per mažiau nei valandą</p>
+
+</main>
+
+<!-- DUK -->
+<section class="faq-section">
+  <div class="faq-title">Dažniausiai užduodami klausimai</div>
+
+  <div class="faq-item">
+    <div class="faq-question">Kada gaunama dovanų kortelė?</div>
+    <div class="faq-answer">Per mažiau nei valandą po apmokėjimo. Jei įvedėte kito asmens el. paštą, ji bus pristatyta tiesiogiai tam asmeniui.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Kaip naudoti kodą?</div>
+    <div class="faq-answer">Lixby parduotuvės krepšelyje pamatysite laukelį kodui įvesti. Jis automatiškai pritaikomas kaip nuolaida.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Ar dovanų kortelė turi galiojimo datą?</div>
+    <div class="faq-answer">Lixby dovanų kortelės neturi galiojimo datos. Jas galima panaudoti bet kada.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Ar galima naudoti keliuose pirkimuose?</div>
+    <div class="faq-answer">Taip. Jei kortelės likutis yra didesnis nei užsakymo suma, likęs likutis lieka prieinamas būsimiems pirkimams.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Ką daryti, jei suklydau dėl el. pašto?</div>
+    <div class="faq-answer">Rašykite lixbyinfo@gmail.com su savo užsakymo numeriu – išspręsime.</div>
+  </div>
+</section>
+
+<footer class="footer footer-mega">
+  <div class="container footer-mega-grid">
+    <section class="footer-section">
+      <h3>Peržiūrėti ir įsigyti</h3>
+      <ul>
+        <li><a href="parduotuvė.html">Parduotuvė</a></li>
+        <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+        <li><a href="#apps">Programėlės</a></li>
+        <li><a href="support.html">Palaikymas</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-section">
+      <h3>Palaikymas</h3>
+      <ul>
+        <li><a href="support.html">Pagrindinis palaikymo puslapis</a></li>
+        <li><a href="support.html#faq">DUK apie internetinę parduotuvę</a></li>
+        <li><a href="support.html">Garantijos informacija</a></li>
+        <li><a href="mailto:lixbyinfo@gmail.com">El. paštas generaliniam direktoriui</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-section">
+      <h3>Paskyra</h3>
+      <ul>
+        <li><a href="../track.html">Užsakymai</a></li>
+        <li><a href="sąskaitą.html">Mano paskyra</a></li>
+        <li><a href="sąskaitą.html">Kuponai</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-section">
+      <h3>Apie Lixby</h3>
+      <ul>
+        <li><a href="apie.html">Apie mus</a></li>
+        <li><a href="support.html">Garantija</a></li>
+        <li><a href="#">Renginiai</a></li>
+        <li><a href="support.html">Kontaktai</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="container footer-meta">
+    <p class="footer-bottom">Autoriaus teisės © 2026 Lixby. Visos teisės saugomos.</p>
+    <div class="footer-legal-links">
+      <a href="pages/legal/privacy.html">Privatumo politika</a>
+      <a href="pages/legal/cookies.html">Slapukų naudojimas</a>
+      <a href="pages/legal/terms.html">Naudojimo sąlygos</a>
+      <a href="support.html">Pardavimai ir grąžinimai</a>
+      <a href="pages/legal/legal-notice.html">Teisiniai pranešimai</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const RAILWAY_URL = 'https://lixby-production.up.railway.app';
+
+  const nav = document.getElementById("nav");
+  const progressBar = document.getElementById("scroll-progress");
+
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+
+    if (progressBar) {
+      progressBar.style.width = progress + "%";
+    }
+    nav?.classList.toggle("nav-scrolled", top > 20);
+  };
+
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+
+  const searchForm = document.getElementById("navSearchForm");
+  const searchInput = document.getElementById("navSearch");
+  if (searchForm && searchInput) {
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+      const url = query ? `parduotuvė.html?q=${encodeURIComponent(query)}` : "parduotuvė.html";
+      window.location.href = url;
+    });
+  }
+
+  const mobileSearchForm = document.getElementById("navSearchFormMobile");
+  const mobileSearchInput = document.getElementById("navSearchMobile");
+  if (mobileSearchForm && mobileSearchInput) {
+    mobileSearchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const query = mobileSearchInput.value.trim();
+      const url = query ? `parduotuvė.html?q=${encodeURIComponent(query)}` : "parduotuvė.html";
+      window.location.href = url;
+    });
+  }
+
+  const mobilePanel = document.getElementById("navMobilePanel");
+  const searchToggle = document.querySelector(".nav-search-toggle");
+  const menuToggle = document.querySelector(".nav-menu-toggle");
+
+  const closeNav = () => {
+    document.body.classList.remove("nav-open", "menu-open");
+    nav?.classList.remove("nav-open");
+    mobilePanel?.setAttribute("aria-hidden", "true");
+    searchToggle?.setAttribute("aria-expanded", "false");
+    menuToggle?.setAttribute("aria-expanded", "false");
+  };
+
+  const openNav = (focusSearch = false) => {
+    document.body.classList.add("nav-open", "menu-open");
+    nav?.classList.add("nav-open");
+    mobilePanel?.setAttribute("aria-hidden", "false");
+    searchToggle?.setAttribute("aria-expanded", "true");
+    menuToggle?.setAttribute("aria-expanded", "true");
+    if (focusSearch && mobileSearchInput) {
+      setTimeout(() => mobileSearchInput.focus(), 80);
+    }
+  };
+
+  const toggleNav = (focusSearch = false) => {
+    if (nav?.classList.contains("nav-open")) {
+      closeNav();
+    } else {
+      openNav(focusSearch);
+    }
+  };
+
+  searchToggle?.addEventListener("click", () => toggleNav(true));
+  menuToggle?.addEventListener("click", () => toggleNav(false));
+
+  const mobileClose = document.querySelector(".nav-mobile-close");
+  mobileClose?.addEventListener("click", () => closeNav());
+
+  document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+    link.addEventListener("click", () => closeNav());
+  });
+
+  let selectedAmount = null;
+  let isCustom = false;
+  let sendToOther = false;
+
+  // ── SUMOS MYGTUKAI ──
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      const val = btn.dataset.amount;
+      if (val === 'custom') {
+        isCustom = true;
+        document.getElementById('customAmountWrap').classList.add('visible');
+        document.getElementById('customAmountInput').focus();
+        selectedAmount = null;
+        updatePreview(null);
+        updateBuyBtn();
+      } else {
+        isCustom = false;
+        document.getElementById('customAmountWrap').classList.remove('visible');
+        selectedAmount = Number(val);
+        updatePreview(selectedAmount);
+        updateBuyBtn();
+      }
+    });
+  });
+
+  document.getElementById('customAmountInput').addEventListener('input', e => {
+    const val = Number(e.target.value);
+    if (val >= 10 && val <= 200) {
+      selectedAmount = val;
+      document.getElementById('amountHint').style.color = 'var(--muted)';
+    } else {
+      selectedAmount = null;
+      document.getElementById('amountHint').style.color = '#ef4444';
+    }
+    updatePreview(selectedAmount);
+    updateBuyBtn();
+  });
+
+  // ── GAVĖJO PERJUNGIMAS ──
+  document.getElementById('toggleSelf').addEventListener('click', () => {
+    sendToOther = false;
+    document.getElementById('toggleSelf').classList.add('selected');
+    document.getElementById('toggleOther').classList.remove('selected');
+    document.getElementById('recipientFields').classList.remove('visible');
+  });
+
+  document.getElementById('toggleOther').addEventListener('click', () => {
+    sendToOther = true;
+    document.getElementById('toggleOther').classList.add('selected');
+    document.getElementById('toggleSelf').classList.remove('selected');
+    document.getElementById('recipientFields').classList.add('visible');
+  });
+
+  // ── PRANEŠIMO PARINKTYS ──
+  document.querySelectorAll('.msg-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.msg-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      const msg = chip.dataset.msg;
+      document.getElementById('giftMessage').value = msg;
+    });
+  });
+
+  // ── PERŽIŪRA ──
+  function updatePreview(amount) {
+    const el = document.getElementById('cardAmountPreview');
+    el.textContent = amount ? amount.toFixed(2).replace('.', ',') + ' €' : '—';
+  }
+
+  function updateBuyBtn() {
+    const btn = document.getElementById('buyBtn');
+    const summary = document.getElementById('summaryCard');
+
+    if (selectedAmount) {
+      const formatted = selectedAmount.toFixed(2).replace('.', ',') + ' €';
+      document.getElementById('summaryAmount').textContent = formatted;
+      document.getElementById('summaryTotal').textContent = formatted;
+      summary.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = `Pirkti dovanų kortelę · ${formatted}`;
+    } else {
+      summary.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = 'Pasirinkite sumą, kad tęstumėte';
+    }
+  }
+
+  // ── VALIDAVIMAS ──
+  function validate() {
+    let ok = true;
+
+    const senderName = document.getElementById('senderName').value.trim();
+    const senderEmail = document.getElementById('senderEmail').value.trim();
+
+    if (!senderName) { document.getElementById('senderName').classList.add('error'); ok = false; }
+    else document.getElementById('senderName').classList.remove('error');
+
+    if (!senderEmail || !senderEmail.includes('@')) { document.getElementById('senderEmail').classList.add('error'); ok = false; }
+    else document.getElementById('senderEmail').classList.remove('error');
+
+    if (sendToOther) {
+      const recipientEmail = document.getElementById('recipientEmail').value.trim();
+      if (!recipientEmail || !recipientEmail.includes('@')) { document.getElementById('recipientEmail').classList.add('error'); ok = false; }
+      else document.getElementById('recipientEmail').classList.remove('error');
+    }
+
+    return ok;
+  }
+
+  // ── PIRKIMAS ──
+  document.getElementById('buyBtn').addEventListener('click', async () => {
+    if (!selectedAmount) return;
+    if (!validate()) {
+      document.querySelector('.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('buyBtn');
+    btn.disabled = true;
+    btn.textContent = 'Apdorojama...';
+
+    const payload = {
+      amount: selectedAmount,
+      senderName: document.getElementById('senderName').value.trim(),
+      senderEmail: document.getElementById('senderEmail').value.trim(),
+      recipientName: sendToOther ? document.getElementById('recipientName').value.trim() : null,
+      recipientEmail: sendToOther ? document.getElementById('recipientEmail').value.trim() : null,
+      message: sendToOther ? document.getElementById('giftMessage').value.trim() : null,
+      successUrl: window.location.origin + '/lt/ačiū.html',
+      cancelUrl: window.location.href
+    };
+
+    try {
+      const res = await fetch(`${RAILWAY_URL}/create-gift-card-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Nežinoma klaida');
+      }
+    } catch (e) {
+      alert('Klaida apdorojant mokėjimą: ' + e.message);
+      btn.disabled = false;
+      btn.textContent = `Pirkti dovanų kortelę · ${selectedAmount.toFixed(2).replace('.', ',')} €`;
+    }
+  });
+
+  // ── DUK ──
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

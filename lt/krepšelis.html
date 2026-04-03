@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="lt">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -8,7 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/lt/cesta.html">
+  <link rel="canonical" href="https://www.lixby.es/lt/krepšelis.html">
   <link rel="alternate" href="https://www.lixby.es/cs/cesta" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/cesta" hreflang="da-DK">
   <link rel="alternate" href="https://www.lixby.es/de/cesta" hreflang="de-DE">
@@ -20,7 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/hr/cesta" hreflang="hr-HR">
   <link rel="alternate" href="https://www.lixby.es/hu/cesta" hreflang="hu-HU">
   <link rel="alternate" href="https://www.lixby.es/it/cestino" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/cesta" hreflang="lt-LT">
+  <link rel="alternate" href="https://www.lixby.es/lt/krepšelis" hreflang="lt-LT">
   <link rel="alternate" href="https://www.lixby.es/lv/cesta" hreflang="lv-LV">
   <link rel="alternate" href="https://www.lixby.es/mt/cesta" hreflang="mt-MT">
   <link rel="alternate" href="https://www.lixby.es/nl/cesta" hreflang="nl-NL">
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cesta | Lixby</title>
+  <title>Krepšelis | Lixby</title>
   <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -210,18 +210,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="index.html#productos" class="nav-link">Productos</a>
-        <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Soporte</a>
+      <nav class="nav-links" aria-label="Pagrindinis">
+        <a href="parduotuvė.html" class="nav-link">Parduotuvė</a>
+        <a href="index.html#productos" class="nav-link">Produktai</a>
+        <a href="index.html#apps" class="nav-link">Programėlės</a>
+        <a href="pages/support.html" class="nav-link">Pagalba</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="krepšelis.html" class="nav-icon-link" aria-label="Krepšelis">
+          <img src="images/Bolsa.png" alt="Krepšelis">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="sąskaitą.html" class="nav-icon-link" aria-label="Paskyra">
+          <img src="images/cuenta.png" alt="Paskyra">
         </a>
       </div>
     </div>
@@ -229,24 +229,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="container cart-page">
     <section class="cart-head">
-      <h1>Tu cesta</h1>
-      <p>Revisa tus productos antes de finalizar la compra.</p>
+      <h1>Jūsų krepšelis</h1>
+      <p>Peržiūrėkite savo produktus prieš užbaigdami pirkimą.</p>
     </section>
 
     <section class="cart-layout">
       <div class="cart-list" id="cartList"></div>
 
       <aside class="cart-summary">
-        <h2>Resumen</h2>
-        <div class="cart-row"><span>Subtotal</span><span id="subtotal">0 EUR</span></div>
-        <div class="cart-row"><span>Envio</span><span>Gratis</span></div>
-        <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
+        <h2>Santrauka</h2>
+        <div class="cart-row"><span>Tarpinė suma</span><span id="subtotal">0 EUR</span></div>
+        <div class="cart-row"><span>Pristatymas</span><span>Nemokamas</span></div>
+        <div class="cart-row cart-total"><span>Iš viso</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Vaciar cesta</button>
+          <div id="giftCardSection" style="margin-bottom:12px">
+            <div style="display:flex;gap:8px">
+              <input type="text" id="giftCodeInput" placeholder="Dovanų kodas (LIXBY-XXXX-XXXX)"
+                style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.9rem;outline:none">
+              <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
+                Taikyti
+              </button>
+            </div>
+            <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
+          </div>
+          <button id="checkoutBtn" class="btn btn-primary" type="button">Užbaigti pirkimą</button>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">Išvalyti krepšelį</button>
         </div>
       </aside>
     </section>
+
+    <!-- Testinis mygtukas - PAŠALINTI PRIEŠ SKELBIANT -->
+    <div style="margin-top: 32px; padding: 16px; background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 14px; text-align: center;">
+      <p style="margin: 0 0 10px; font-size: 0.85rem; color: #92400e; font-weight: 700;">🧪 TESTAVIMO REŽIMAS — Pašalinti prieš skelbiant</p>
+      <button id="testBtn" type="button" class="btn btn-secondary" style="font-size:0.9rem">
+        Pirkti bandomąjį produktą (1€)
+      </button>
+    </div>
   </main>
 
   <script type="module">
@@ -254,10 +272,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZbIU2Hz3Ob1B12LV4ZG00";
     const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
     const SUCCESS_URL = new URL("gracias.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
+
+    const PRICES = {
+      negro: "price_1T9gzS4JmdPA7hphzMXa8s7T",
+      blanco: "price_1TD6xx4JmdPA7hphNSWAJLJM",
+      lixsafe: "price_1TD70q4JmdPA7hphQ9KJNOXV",
+      lixsafe_plus: "price_1TD71L4JmdPA7hphdYbs0z0i"
+    };
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -297,6 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const totalEl = document.getElementById("total");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const checkoutBtn = document.getElementById("checkoutBtn");
+    let appliedGiftCard = null;
 
     function readCart() {
       const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -321,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function buildLineId(entry) {
       const id = entry.id || "item";
       const color = entry.color || "—";
-      const plan = entry.insurancePlan || "Sin LixSafe";
+      const plan = entry.insurancePlan || "Be LixSafe";
       const price = Number(entry.insurancePrice) || 0;
       return `${id}|${color}|${plan}|${price}`;
     }
@@ -358,12 +384,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return `LX-${yyyy}${mm}${dd}-${rand}`;
     }
 
+    function normalizeColorKey(value) {
+      if (!value) return null;
+      const normalized = String(value).toLowerCase();
+      if (normalized.includes("negro") || normalized.includes("black")) return "negro";
+      if (normalized.includes("blanco") || normalized.includes("white")) return "blanco";
+      return null;
+    }
+
+    function resolveProductPriceId(item) {
+      const colorKey =
+        normalizeColorKey(item.color) ||
+        normalizeColorKey(item.name) ||
+        normalizeColorKey(item.id);
+      return PRICES[colorKey || "blanco"];
+    }
+
+    function resolveInsurancePriceId(plan) {
+      if (!plan) return null;
+      const normalized = String(plan).toLowerCase().trim();
+      if (normalized === "be lixsafe" || normalized === "be draudimo") return null;
+      if (normalized.includes("lixsafe+") || normalized.includes("plus")) {
+        return PRICES.lixsafe_plus;
+      }
+      if (normalized === "lixsafe") {
+        return PRICES.lixsafe;
+      }
+      return null;
+    }
+
+    function buildCheckoutItems(items) {
+      if (!Array.isArray(items)) return [];
+      const lineItems = [];
+      items.forEach((item) => {
+        const quantity = Math.max(1, Number(item.qty) || 1);
+        const productPriceId = resolveProductPriceId(item);
+        if (productPriceId) {
+          lineItems.push({ priceId: productPriceId, quantity });
+        }
+        const insurancePriceId = resolveInsurancePriceId(item.insurancePlan);
+        if (insurancePriceId) {
+          lineItems.push({ priceId: insurancePriceId, quantity });
+        }
+      });
+      return lineItems;
+    }
+
     function calculateSummary(cart) {
       let subtotal = 0;
       const items = cart.map((entry) => {
         const product = productCatalog[entry.id] || {
           id: entry.id,
-          name: entry.name || "Producto",
+          name: entry.name || "Produktas",
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
@@ -383,10 +455,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           qty,
           unitPrice,
           lineTotal,
-          insurancePlan: entry.insurancePlan || "Sin LixSafe",
+          insurancePlan: entry.insurancePlan || "Be LixSafe",
           insurancePrice
         };
       });
+
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        subtotal = Math.max(0, subtotal - discount);
+      }
 
       return { items, subtotal };
     }
@@ -417,7 +494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Tu cesta esta vacia. <a href="tienda.html">Ir a tienda</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Jūsų krepšelis tuščias. <a href="parduotuvė.html">Eiti į parduotuvę</a>.</p>`;
         subtotalEl.textContent = money(0);
         totalEl.textContent = money(0);
         return;
@@ -428,7 +505,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       cartListEl.innerHTML = cart.map((entry) => {
         const product = productCatalog[entry.id] || {
           id: entry.id,
-          name: entry.name || "Producto",
+          name: entry.name || "Produktas",
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
@@ -440,10 +517,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
 
-        const insurancePlan = entry.insurancePlan || "Sin LixSafe";
+        const insurancePlan = entry.insurancePlan || "Be LixSafe";
         const color = entry.color || "—";
-        const insuranceLabel = insurancePlan === "Sin LixSafe" ? "Sin LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
-        const baseName = entry.name || product.name || "Producto";
+        const insuranceLabel = insurancePlan === "Be LixSafe" ? "Be LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const baseName = entry.name || product.name || "Produktas";
         let displayName = baseName;
         if (color !== "—") {
           const escapedColor = color.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -462,15 +539,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <img class="cart-item-image" src="${productImage}" alt="${displayName}">
             <div>
               <h3>${displayName}</h3>
-              <p>${money(unitPrice)} / unidad</p>
-              <p class="cart-item-meta">Color: ${color}</p>
+              <p>${money(unitPrice)} / vienetas</p>
+              <p class="cart-item-meta">Spalva: ${color}</p>
               <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
               <div class="cart-controls">
                 <button type="button" data-action="minus" data-id="${entry.lineId}">-</button>
                 <span>${qty}</span>
                 <button type="button" data-action="plus" data-id="${entry.lineId}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${entry.lineId}">Quitar</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${entry.lineId}">Pašalinti</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -478,7 +555,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).join("");
 
       subtotalEl.textContent = money(subtotal);
-      totalEl.textContent = money(subtotal);
+      let total = subtotal;
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        total = Math.max(0, subtotal - discount);
+      }
+      totalEl.textContent = money(total);
     }
 
     cartListEl.addEventListener("click", (event) => {
@@ -499,19 +581,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       renderCart();
     });
 
+    const applyGiftBtn = document.getElementById("applyGiftBtn");
+    if (applyGiftBtn) {
+      applyGiftBtn.addEventListener("click", async () => {
+        const codeInput = document.getElementById("giftCodeInput");
+        const msg = document.getElementById("giftCardMsg");
+        if (!codeInput || !msg) return;
+
+        const code = codeInput.value.trim().toUpperCase();
+        if (!code) return;
+
+        applyGiftBtn.disabled = true;
+        applyGiftBtn.textContent = "...";
+
+        try {
+          const res = await fetch("https://lixby-production.up.railway.app/redeem-gift-card", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code })
+          });
+          const data = await res.json();
+
+          if (!res.ok || !data.valid) {
+            msg.style.color = "#ef4444";
+            msg.textContent = "❌ " + (data.error || "Neteisingas kodas");
+            msg.style.display = "block";
+            appliedGiftCard = null;
+          } else {
+            appliedGiftCard = data;
+            msg.style.color = "#458500";
+            msg.textContent = `✅ Dovanų kortelė pritaikyta — ${data.balance
+              .toFixed(2)
+              .replace(".", ",")} € likučio`;
+            msg.style.display = "block";
+            renderCart();
+          }
+        } catch (e) {
+          msg.style.color = "#ef4444";
+          msg.textContent = "❌ Klaida tikrinant kodą";
+          msg.style.display = "block";
+        } finally {
+          applyGiftBtn.disabled = false;
+          applyGiftBtn.textContent = "Taikyti";
+        }
+      });
+    }
+
     checkoutBtn.addEventListener("click", async () => {
       const cart = readCart();
       if (cart.length === 0) {
-        alert("Tu cesta esta vacia.");
+        alert("Jūsų krepšelis tuščias.");
         return;
       }
 
       checkoutBtn.disabled = true;
       const originalCheckoutLabel = checkoutBtn.textContent;
-      checkoutBtn.textContent = "Procesando...";
+      checkoutBtn.textContent = "Apdorojama...";
 
       if (!authReady) {
-        alert("Cargando sesion. Intenta de nuevo en unos segundos.");
+        alert("Sesija kraunama. Bandykite dar kartą po kelių sekundžių.");
         checkoutBtn.disabled = false;
         checkoutBtn.textContent = originalCheckoutLabel;
         return;
@@ -520,7 +648,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!isAuthenticated) {
         checkoutBtn.disabled = false;
         checkoutBtn.textContent = originalCheckoutLabel;
-        window.location.href = "iniciar-sesion.html";
+        window.location.href = "prisijungti.html";
         return;
       }
 
@@ -548,10 +676,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       try {
         await addDoc(collection(db, "orders"), orderPayload);
       } catch (error) {
-        console.log("Order save failed", error);
+        console.log("Nepavyko išsaugoti užsakymo", error);
       }
 
       try {
+        // Skaityti išsaugotą profilį
+        const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
+        const customerName = profile.firstName
+          ? `${profile.firstName} ${profile.lastName || ""}`.trim()
+          : null;
+
+        const checkoutItems = buildCheckoutItems(summary.items);
+        const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -559,7 +695,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             orderId,
             successUrl: SUCCESS_URL,
             cancelUrl: CANCEL_URL,
-            items: summary.items
+            items: itemsForCheckout,
+            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
+            customerEmail: profile.email || auth.currentUser?.email || null,
+            customerName,
+            customerPhone: profile.phone || null
           })
         });
         const data = await response.json();
@@ -568,7 +708,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
       } catch (error) {
-        console.log("Checkout session failed", error);
+        console.log("Nepavyko sukurti apmokėjimo sesijos", error);
       }
 
       checkoutBtn.disabled = false;
@@ -578,6 +718,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     renderCart();
   </script>
+
+  <script>
+    document.getElementById('testBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('testBtn');
+      btn.disabled = true;
+      btn.textContent = 'Apdorojama...';
+
+      try {
+        const res = await fetch('https://lixby-production.up.railway.app/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: 'TEST-' + Math.random().toString(36).slice(2, 8).toUpperCase(),
+            successUrl: window.location.origin + '/es/gracias.html',
+            cancelUrl: window.location.href,
+            items: [{ priceId: 'price_1TDPUo4JmdPA7hphOnNbvKJz', quantity: 1 }]
+          })
+        });
+        const data = await res.json();
+        if (data.url) window.location.href = data.url;
+      } catch (e) {
+        alert('Klaida pradedant bandomąjį mokėjimą.');
+        btn.disabled = false;
+        btn.textContent = 'Pirkti bandomąjį produktą (0,01 €)';
+      }
+    });
+  </script>
 </body>
 </html>
-

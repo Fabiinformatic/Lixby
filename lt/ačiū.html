@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://www.lixby.es/lt/ačiū.html">
+  <link rel="alternate" href="https://www.lixby.es/es/gracias" hreflang="es-ES">
+  <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ačiū už pirkinį | Lixby</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <style>
+    :root {
+      --green: #458500;
+      --green-light: #f0f7e6;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --shadow-soft: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    body {
+      background: #f5f7fa;
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .thank-you-page {
+      padding: 48px 0 80px;
+    }
+
+    /* Animuotas ženklas */
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: drawCheck 0.4s 0.4s ease forwards;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .thank-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-soft);
+      max-width: 680px;
+      margin: 0 auto;
+      animation: slideUp 0.5s 0.1s ease both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .thank-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .thank-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .thank-sub {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    /* Užsakymo numeris */
+    .order-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--green);
+      margin-bottom: 28px;
+    }
+
+    .order-number-badge span {
+      font-weight: 400;
+      color: #555;
+    }
+
+    /* Kliento informacijos sekcija */
+    .info-section {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+    }
+
+    .info-item label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    /* Produktai */
+    .products-section {
+      margin-bottom: 20px;
+    }
+
+    .products-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+
+    .product-item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .product-item-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .product-item-price {
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Bendra suma */
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .order-total-row span { font-weight: 700; }
+    .order-total-row strong { font-size: 1.2rem; font-weight: 800; color: var(--green); }
+
+    /* Veiksmai */
+    .thank-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .thank-actions .btn {
+      flex: 1;
+      min-width: 160px;
+      text-align: center;
+      min-height: 46px;
+      font-size: 0.95rem;
+    }
+
+    /* Krovimo būsena */
+    .loading-shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+      border-radius: 8px;
+      height: 18px;
+      width: 60%;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 600px) {
+      .thank-card { padding: 24px 18px; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<canvas id="confetti-canvas"></canvas>
+
+<header class="nav" id="nav">
+  <div class="container nav-container">
+    <a href="./" class="nav-brand">Lixby</a>
+    <nav class="nav-links" aria-label="Pagrindinis">
+      <a href="parduotuvė.html" class="nav-link">Parduotuvė</a>
+      <a href="index.html#productos" class="nav-link">Produktai</a>
+      <a href="index.html#apps" class="nav-link">Programėlės</a>
+      <a href="pages/support.html" class="nav-link">Pagalba</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="krepšelis.html" class="nav-icon-link" aria-label="Krepšelis">
+        <img src="images/Bolsa.png" alt="Krepšelis">
+      </a>
+      <a href="sąskaitą.html" class="nav-icon-link" aria-label="Paskyra">
+        <img src="images/cuenta.png" alt="Paskyra">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container thank-you-page">
+  <div class="thank-card">
+    <!-- Animuotas ženklas -->
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <p class="thank-eyebrow">Užsakymas patvirtintas</p>
+    <h1 class="thank-title">Ačiū už pirkinį!</h1>
+    <p class="thank-sub">Patvirtinimą atsiųsime el. paštu. Savo užsakymo būseną galite sekti bet kada.</p>
+
+    <!-- Užsakymo numeris -->
+    <div class="order-number-badge">
+      <span>Užsakymas</span>
+      <strong id="orderNumber">—</strong>
+    </div>
+
+    <!-- Kliento informacija -->
+    <div class="info-section" id="customerSection" style="display:none">
+      <h3>Pristatymo informacija</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Vardas</label>
+          <strong id="customerName">—</strong>
+        </div>
+        <div class="info-item">
+          <label>El. paštas</label>
+          <strong id="customerEmail">—</strong>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1">
+          <label>Pristatymo adresas</label>
+          <strong id="customerAddress">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produktai -->
+    <div class="products-section" id="productsSection" style="display:none">
+      <h3>Jūsų užsakymas</h3>
+      <div id="productsList"></div>
+    </div>
+
+    <!-- Bendra suma -->
+    <div class="order-total-row" id="totalRow" style="display:none">
+      <span>Bendra suma</span>
+      <strong id="totalValue">—</strong>
+    </div>
+
+    <!-- Veiksmai -->
+    <div class="thank-actions">
+      <a class="btn btn-primary" href="parduotuvė.html">Tęsti apsipirkimą</a>
+      <a class="btn btn-secondary" id="trackBtn" href="../track.html">Sekti užsakymą</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ── Konfeti ──────────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#458500', '#8bc34a', '#ffeb3b', '#ff9800', '#2196f3', '#e91e63'];
+    const pieces = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: 8 + Math.random() * 8,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: 2 + Math.random() * 4,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.2,
+      drift: (Math.random() - 0.5) * 1.5
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        p.y += p.speed;
+        p.x += p.drift;
+        p.angle += p.spin;
+        if (p.y > canvas.height) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      frame++;
+      if (frame < 180) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    draw();
+  })();
+
+  // ── Užsakymo duomenys ──────────────────────────────────────
+  const LAST_ORDER_KEY = 'lixbyCart';
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get('orderId');
+
+  function money(v) {
+    const n = Number(v) || 0;
+    return n.toFixed(2).replace('.', ',') + ' €';
+  }
+
+  function show(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = '';
+  }
+
+  // Užsakymo numeris
+  if (orderId) {
+    document.getElementById('orderNumber').textContent = orderId;
+    document.getElementById('trackBtn').href = `../track.html?orderId=${orderId}`;
+  }
+
+  // Bandyti įkelti iš Railway (tikri Stripe duomenys)
+  async function loadOrderFromServer(orderId) {
+    try {
+      const res = await fetch(`https://lixby-production.up.railway.app/track-order/${orderId}`);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function init() {
+    let order = null;
+
+    if (orderId) {
+      order = await loadOrderFromServer(orderId);
+    }
+
+    // Atsarginis variantas iš localStorage
+    if (!order) {
+      try {
+        const cached = JSON.parse(localStorage.getItem('lixbyLastOrder') || 'null');
+        if (cached) order = cached;
+      } catch {}
+    }
+
+    if (!order) return;
+
+    // Užsakymo numeris
+    if (order.orderNumber || order.orderId) {
+      document.getElementById('orderNumber').textContent = order.orderNumber || order.orderId;
+    }
+
+    // Kliento informacija
+    const name = order.customerName || order.email;
+    const email = order.email;
+    const address = order.address;
+
+    if (name || email || address) {
+      if (name) document.getElementById('customerName').textContent = name;
+      if (email) document.getElementById('customerEmail').textContent = email;
+      if (address) document.getElementById('customerAddress').textContent = address;
+      show('customerSection');
+    }
+
+    // Produktai
+    const items = order.items || [];
+    if (items.length) {
+      const list = document.getElementById('productsList');
+      list.innerHTML = items.map(item => {
+        const name = item.productName || item.name || 'Produktas';
+        const qty = item.quantity || item.qty || 1;
+        const price = item.unitAmount
+          ? money(item.unitAmount / 100)
+          : item.lineTotal
+            ? money(item.lineTotal)
+            : '—';
+        return `
+          <div class="product-item">
+            <div>
+              <div class="product-item-name">${name}</div>
+              <div class="product-item-sub">Kiekis: ${qty}</div>
+            </div>
+            <div class="product-item-price">${price}</div>
+          </div>
+        `;
+      }).join('');
+      show('productsSection');
+    }
+
+    // Bendra suma
+    const total = order.amountTotal || order.subtotal;
+    if (total) {
+      document.getElementById('totalValue').textContent = money(total);
+      show('totalRow');
+    }
+
+    // Išvalyti krepšelį po sėkmingo pirkimo
+    localStorage.removeItem('lixbyCart');
+    localStorage.removeItem('lixbyLastOrder');
+  }
+
+  init();
+</script>
+</body>
+</html>
