@@ -8,180 +8,497 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/el/thank-you.html">
-  <link rel="alternate" href="https://www.lixby.es/cs/thank-you" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/thank-you" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/thank-you" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/thank-you" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/thank-you" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/et/thank-you" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/thank-you" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/ga/thank-you" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/thank-you" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/thank-you" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/thank-you" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/thank-you" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/thank-you" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/thank-you" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/thank-you" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/thank-you" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/thank-you" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/thank-you" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/thank-you" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/thank-you" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/thank-you" hreflang="sv-SE">
+  <link rel="canonical" href="https://www.lixby.es/el/gracias.html">
+  <link rel="alternate" href="https://www.lixby.es/el/gracias" hreflang="el-GR">
   <link rel="alternate" href="https://www.lixby.es/" hreflang="x-default">
-
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>???a??st???e | Lixby</title>
+  <title>Ευχαριστούμε για την αγορά σας | Lixby</title>
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+
   <style>
-    .thank-you {
-      padding: 64px 0 80px;
+    :root {
+      --green: #458500;
+      --green-light: #f0f7e6;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --shadow-soft: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    body {
+      background: #f5f7fa;
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .thank-you-page {
+      padding: 48px 0 80px;
+    }
+
+    /* Check animado */
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: drawCheck 0.4s 0.4s ease forwards;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
     }
 
     .thank-card {
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px;
+      border-radius: 20px;
+      padding: 36px 32px;
       box-shadow: var(--shadow-soft);
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
+      animation: slideUp 0.5s 0.1s ease both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .thank-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
     }
 
     .thank-title {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
       letter-spacing: -0.03em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .order-pill {
+    .thank-sub {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    /* Número de pedido */
+    .order-number-badge {
       display: inline-flex;
-      gap: 10px;
       align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
       border-radius: 999px;
+      padding: 8px 18px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--green);
+      margin-bottom: 28px;
+    }
+
+    .order-number-badge span {
+      font-weight: 400;
+      color: #555;
+    }
+
+    /* Sección de info del cliente */
+    .info-section {
+      background: #f9fafb;
       border: 1px solid var(--line);
-      padding: 6px 14px;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-section h3 {
+      font-size: 0.75rem;
       font-weight: 700;
-      margin: 10px 0 18px;
-      background: rgba(15, 23, 42, 0.04);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
-    .order-list {
-      margin-top: 16px;
+    .info-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
     }
 
-    .order-item {
+    .info-item label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    /* Productos */
+    .products-section {
+      margin-bottom: 20px;
+    }
+
+    .products-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .product-item {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      align-items: center;
+      padding: 12px 16px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: #fff;
     }
 
-    .order-total {
-      margin-top: 16px;
+    .product-item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .product-item-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .product-item-price {
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Total */
+    .order-total-row {
       display: flex;
       justify-content: space-between;
-      font-weight: 800;
+      align-items: center;
+      padding: 14px 16px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 12px;
+      margin-bottom: 24px;
     }
 
+    .order-total-row span { font-weight: 700; }
+    .order-total-row strong { font-size: 1.2rem; font-weight: 800; color: var(--green); }
+
+    /* Acciones */
     .thank-actions {
-      margin-top: 22px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
+    .thank-actions .btn {
+      flex: 1;
+      min-width: 160px;
+      text-align: center;
+      min-height: 46px;
+      font-size: 0.95rem;
+    }
+
+    /* Loading state */
+    .loading-shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+      border-radius: 8px;
+      height: 18px;
+      width: 60%;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 600px) {
+      .thank-card { padding: 24px 18px; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
+
+<canvas id="confetti-canvas"></canvas>
+
+<header class="nav" id="nav">
+  <div class="container nav-container">
+    <a href="./" class="nav-brand">Lixby</a>
+    <nav class="nav-links" aria-label="Κύρια">
+      <a href="tienda.html" class="nav-link">Κατάστημα</a>
+      <a href="index.html#productos" class="nav-link">Προϊόντα</a>
+      <a href="index.html#apps" class="nav-link">Εφαρμογές</a>
+      <a href="pages/support.html" class="nav-link">Υποστήριξη</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cesta.html" class="nav-icon-link" aria-label="Καλάθι">
+        <img src="images/Bolsa.png" alt="Καλάθι">
+      </a>
+      <a href="cuenta.html" class="nav-icon-link" aria-label="Λογαριασμός">
+        <img src="images/cuenta.png" alt="Λογαριασμός">
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container thank-you">
-    <section class="thank-card">
-      <p class="eyebrow">? pa?a??e??a ep??e?a?????e</p>
-      <h1 class="thank-title">???a??st???e ??a t?? a???? sa?</h1>
-      <p id="thankMessage">?t????????e t?? pa?a??e??a sa? ?a? ?a sa? ste?????e s??t??a t?? ep??e?a??s? ??s? email.</p>
-      <div class="order-pill" id="orderIdPill" hidden>
-        <span>?a?a??e??a</span>
-        <strong id="orderIdValue">LX-XXXX</strong>
+<main class="container thank-you-page">
+  <div class="thank-card">
+    <!-- Check animado -->
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <p class="thank-eyebrow">Παραγγελία επιβεβαιώθηκε</p>
+    <h1 class="thank-title">Ευχαριστούμε για την αγορά σας!</h1>
+    <p class="thank-sub">Θα σας στείλουμε την επιβεβαίωση μέσω email. Μπορείτε να παρακολουθείτε την παραγγελία σας ανά πάσα στιγμή.</p>
+
+    <!-- Número de pedido -->
+    <div class="order-number-badge">
+      <span>Παραγγελία</span>
+      <strong id="orderNumber">—</strong>
+    </div>
+
+    <!-- Info del cliente -->
+    <div class="info-section" id="customerSection" style="display:none">
+      <h3>Πληροφορίες παράδοσης</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Ονοματεπώνυμο</label>
+          <strong id="customerName">—</strong>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <strong id="customerEmail">—</strong>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1">
+          <label>Διεύθυνση αποστολής</label>
+          <strong id="customerAddress">—</strong>
+        </div>
       </div>
-      <div id="orderItems" class="order-list"></div>
-      <div id="orderTotal" class="order-total" hidden>
-        <span>S?????</span>
-        <span id="orderTotalValue">0 EUR</span>
-      </div>
-      <div class="thank-actions">
-        <a class="btn btn-primary" href="./">??????</a>
-        <a class="btn btn-secondary" href="../track.html">?a?a???????s? pa?a??e??a?</a>
-      </div>
-    </section>
-  </main>
+    </div>
 
-  <script>
-    const LAST_ORDER_KEY = "lixbyLastOrder";
-    const orderIdEl = document.getElementById("orderIdValue");
-    const orderPill = document.getElementById("orderIdPill");
-    const orderItems = document.getElementById("orderItems");
-    const orderTotal = document.getElementById("orderTotal");
-    const orderTotalValue = document.getElementById("orderTotalValue");
+    <!-- Productos -->
+    <div class="products-section" id="productsSection" style="display:none">
+      <h3>Η παραγγελία σας</h3>
+      <div id="productsList"></div>
+    </div>
 
-    const params = new URLSearchParams(window.location.search);
-    const orderOverride = params.get("orderId") || params.get("order");
+    <!-- Total -->
+    <div class="order-total-row" id="totalRow" style="display:none">
+      <span>Σύνολο που πληρώθηκε</span>
+      <strong id="totalValue">—</strong>
+    </div>
 
-    function money(value) {
-      return `${value} EUR`;
+    <!-- Acciones -->
+    <div class="thank-actions">
+      <a class="btn btn-primary" href="tienda.html">Συνέχεια αγορών</a>
+      <a class="btn btn-secondary" id="trackBtn" href="../track.html">Παρακολούθηση παραγγελίας</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ── Confetti ──────────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#458500', '#8bc34a', '#ffeb3b', '#ff9800', '#2196f3', '#e91e63'];
+    const pieces = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: 8 + Math.random() * 8,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: 2 + Math.random() * 4,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.2,
+      drift: (Math.random() - 0.5) * 1.5
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        p.y += p.speed;
+        p.x += p.drift;
+        p.angle += p.spin;
+        if (p.y > canvas.height) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      frame++;
+      if (frame < 180) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+    draw();
+  })();
 
-    function renderOrder(order) {
-      if (!order) return;
-      orderPill.hidden = false;
-      orderIdEl.textContent = order.orderId || orderOverride || "LX";
+  // ── Datos del pedido ──────────────────────────────────────
+  const LAST_ORDER_KEY = 'lixbyCart';
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get('orderId');
 
-      if (Array.isArray(order.items) && order.items.length) {
-        orderItems.innerHTML = order.items.map((item) => `
-          <div class="order-item">
-            <span>${item.name} ? ${item.qty}</span>
-            <strong>${money(item.lineTotal)}</strong>
-          </div>
-        `).join("");
-        orderTotal.hidden = false;
-        orderTotalValue.textContent = money(order.subtotal || 0);
-      }
-    }
+  function money(v) {
+    const n = Number(v) || 0;
+    return n.toFixed(2).replace('.', ',') + ' €';
+  }
 
+  function show(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = '';
+  }
+
+  // Número de pedido
+  if (orderId) {
+    document.getElementById('orderNumber').textContent = orderId;
+    document.getElementById('trackBtn').href = `../track.html?orderId=${orderId}`;
+  }
+
+  // Intentar cargar desde Railway (datos reales de Stripe)
+  async function loadOrderFromServer(orderId) {
     try {
-      const cached = JSON.parse(localStorage.getItem(LAST_ORDER_KEY) || "null");
-      if (cached) {
-        renderOrder(cached);
-      } else if (orderOverride) {
-        renderOrder({ orderId: orderOverride, items: [] });
-      }
-    } catch (error) {
-      if (orderOverride) {
-        renderOrder({ orderId: orderOverride, items: [] });
-      }
+      const res = await fetch(`https://lixby-production.up.railway.app/track-order/${orderId}`);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function init() {
+    let order = null;
+
+    if (orderId) {
+      order = await loadOrderFromServer(orderId);
     }
-  </script>
+
+    // Fallback al localStorage
+    if (!order) {
+      try {
+        const cached = JSON.parse(localStorage.getItem('lixbyLastOrder') || 'null');
+        if (cached) order = cached;
+      } catch {}
+    }
+
+    if (!order) return;
+
+    // Número de pedido
+    if (order.orderNumber || order.orderId) {
+      document.getElementById('orderNumber').textContent = order.orderNumber || order.orderId;
+    }
+
+    // Info del cliente
+    const name = order.customerName || order.email;
+    const email = order.email;
+    const address = order.address;
+
+    if (name || email || address) {
+      if (name) document.getElementById('customerName').textContent = name;
+      if (email) document.getElementById('customerEmail').textContent = email;
+      if (address) document.getElementById('customerAddress').textContent = address;
+      show('customerSection');
+    }
+
+    // Productos
+    const items = order.items || [];
+    if (items.length) {
+      const list = document.getElementById('productsList');
+      list.innerHTML = items.map(item => {
+        const name = item.productName || item.name || 'Προϊόν';
+        const qty = item.quantity || item.qty || 1;
+        const price = item.unitAmount
+          ? money(item.unitAmount / 100)
+          : item.lineTotal
+            ? money(item.lineTotal)
+            : '—';
+        return `
+          <div class="product-item">
+            <div>
+              <div class="product-item-name">${name}</div>
+              <div class="product-item-sub">Ποσότητα: ${qty}</div>
+            </div>
+            <div class="product-item-price">${price}</div>
+          </div>
+        `;
+      }).join('');
+      show('productsSection');
+    }
+
+    // Total
+    const total = order.amountTotal || order.subtotal;
+    if (total) {
+      document.getElementById('totalValue').textContent = money(total);
+      show('totalRow');
+    }
+
+    // Limpiar carrito tras compra exitosa
+    localStorage.removeItem('lixbyCart');
+    localStorage.removeItem('lixbyLastOrder');
+  }
+
+  init();
+</script>
 </body>
 </html>
-
-

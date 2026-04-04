@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="el">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -37,178 +37,756 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LixBuds One - Auriculares Premium | Lixby</title>
-  <meta name="description" content="LixBuds One: Auriculares inal�mbricos premium con cancelaci�n de ruido activa, 30 horas de bater�a y sonido excepcional. Dise�ados en Espa�a.">
-  <meta name="keywords" content="auriculares inal�mbricos, cancelaci�n de ruido, LixBuds One, audio premium, Bluetooth 5.3">
+  <title>LixBuds One | Premium Landing</title>
+  <meta name="description" content="LixBuds One: ο ήχος που επαναπροσδιορίζει τα ασύρματα.">
+  <meta property="og:title" content="LixBuds One | Premium Wireless">
+  <meta property="og:description" content="Ασύρματα ακουστικά με ακύρωση θορύβου, χωρικό ήχο και premium σχεδιασμό.">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="el_GR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://lixby.es/el/pages/products/images/lixbuds-product.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LixBuds One | Premium Wireless">
+  <meta name="twitter:description" content="Ασύρματα ακουστικά με ακύρωση θορύβου, χωρικό ήχο και premium σχεδιασμό.">
+  <meta name="twitter:image" content="https://lixby.es/el/pages/products/images/lixbuds-product.jpg">
+  <meta property="og:url" content="https://www.lixby.es/el/pages/products/lixbuds-one">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap" rel="stylesheet">
   <style>
-    .product-header {
-      min-height: 80vh;
+    :root {
+      --bg: #0b0b0c;
+      --bg-soft: #101114;
+      --ink: #f5f5f6;
+      --muted: #a8abb2;
+      --line: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.06);
+      --accent: #e6e7ea;
+      --accent-soft: rgba(230, 231, 234, 0.15);
+      --glow: rgba(255, 255, 255, 0.24);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Manrope", "Space Grotesk", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.12) 0, transparent 45%),
+                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06) 0, transparent 40%),
+                  var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 35%, transparent 70%);
+      mix-blend-mode: screen;
+      left: var(--x, -999px);
+      top: var(--y, -999px);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      opacity: 0.65;
+    }
+
+    h1, h2 {
+      font-family: "Sora", "Space Grotesk", sans-serif;
+      text-transform: none;
+    }
+
+    .container { width: min(1200px, 92vw); margin: 0 auto; }
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 0 0 18px rgba(255,255,255,0.4);
+    }
+    .panel {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 10vh 0;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(8, 8, 10, 0.75);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top-nav .container {
+      height: 70px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .hero p { font-size: 1.15rem; color: var(--muted); }
+
+    .hero-meta {
+      margin: 24px 0 28px;
+      display: grid;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .price {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--line);
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .product-header-content {
-      max-width: 1400px;
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+      transform: translateX(-120%);
+      transition: transform .45s ease;
+    }
+
+    .btn:hover::after { transform: translateX(120%); }
+    .btn:hover { transform: translateY(-3px) scale(1.02); }
+    .btn:active { transform: scale(0.96); }
+    .btn-dark {
+      background: #f4f4f4;
+      color: #0b0b0c;
+      border-color: #f4f4f4;
+      box-shadow: 0 20px 40px rgba(255,255,255,0.15);
+    }
+    .btn-light {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(150deg, #0c0d10 0%, #1d1f25 100%);
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-media video,
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hero-product {
+      position: absolute;
+      width: min(76%, 460px);
+      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.45))
+              drop-shadow(0 0 30px rgba(255,255,255,0.15));
+      animation: floatSpin 12s ease-in-out infinite;
+    }
+
+    .hero-orbs {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 35%),
+                  radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 40%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    @keyframes floatSpin {
+      0% { transform: translateY(0) rotateY(0deg); }
+      50% { transform: translateY(-12px) rotateY(180deg); }
+      100% { transform: translateY(0) rotateY(360deg); }
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .section-head p { color: var(--muted); max-width: 760px; }
+
+    .feature-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      min-height: 180px;
+      display: grid;
+      gap: 8px;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: 0 25px 40px rgba(0,0,0,0.35);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background: rgba(255,255,255,0.08);
+      animation: floatIcon 2.8s ease-in-out infinite;
+    }
+    @keyframes floatIcon { 50% { transform: translateY(-6px); } }
+
+    .media-block {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-12);
+      gap: 28px;
       align-items: center;
     }
 
-    .product-details h1 {
-      font-size: var(--font-size-5xl);
-      font-weight: 700;
-      margin-bottom: var(--spacing-4);
-      line-height: 1.1;
+    .media-box {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      background: #111;
+      min-height: 360px;
+      position: relative;
+      box-shadow: var(--shadow);
     }
 
-    .product-price {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      color: var(--color-blue);
-      margin-bottom: var(--spacing-6);
+    .media-box video,
+    .media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
     }
 
-    .product-actions {
+    .sound-waves::before,
+    .sound-waves::after {
+      content: "";
+      position: absolute;
+      inset: 18% 18%;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 50%;
+      animation: wave 2.6s linear infinite;
+    }
+
+    .sound-waves::after { animation-delay: 1.2s; }
+    @keyframes wave { from { transform: scale(0.8); opacity: 0.8; } to { transform: scale(1.6); opacity: 0; } }
+
+    .noise-demo {
+      background: linear-gradient(120deg, #0b0b0c 0%, #1b1e26 100%);
+      color: #fff;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .noise-city {
+      height: 160px;
+      border-radius: 18px;
+      background: repeating-linear-gradient(90deg, #2b2b2e 0 12px, #16171a 12px 24px);
+      position: relative;
+      margin: 18px 0;
+      transition: filter .5s ease, opacity .5s ease, transform .5s ease;
+    }
+
+    .noise-city::after {
+      content: "ΑΣΤΙΚΟΣ ΘΟΡΥΒΟΣ";
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      opacity: 0.5;
+    }
+
+    .noise-demo.anc-on .noise-city {
+      filter: blur(3px) grayscale(1);
+      opacity: 0.22;
+      transform: scale(0.98);
+    }
+
+    .toggle-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .spatial-stage {
+      margin-top: 26px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.01) 65%, transparent 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .head {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: #f4f4f5;
+      position: relative;
+      z-index: 2;
+      box-shadow: inset 0 0 24px rgba(0,0,0,0.18);
+    }
+
+    .ring {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.4);
+      animation: spin 8s linear infinite;
+    }
+
+    .ring.r2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .fit-visual {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+    }
+
+    .earbud-3d { width: min(76%, 360px); animation: rotateEarbud 9s linear infinite; }
+    @keyframes rotateEarbud { to { transform: rotate(360deg); } }
+
+    .touch-demo {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255,255,255,0.04);
+      display: grid;
+      gap: 14px;
+    }
+
+    .finger {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #f4f4f4;
+      animation: tap 1.8s ease-in-out infinite;
+      justify-self: center;
+    }
+
+    @keyframes tap { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.72); opacity: 0.6; } }
+
+    .touch-actions { display: grid; gap: 8px; }
+    .touch-actions li {
+      list-style: none;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      transition: all .25s ease;
+      color: var(--muted);
+    }
+
+    .touch-actions li.active {
+      background: #f4f4f4;
+      color: #0b0b0c;
+      border-color: #f4f4f4;
+      transform: translateX(4px);
+    }
+
+    .water-demo {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      min-height: 300px;
+      padding: 22px;
+      background: linear-gradient(180deg, #0f1116 0, #0b0b0c 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drop {
+      position: absolute;
+      width: 9px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(120, 160, 255, 0.35);
+      animation: rain 2.2s linear infinite;
+    }
+
+    .drop:nth-child(1){left:18%; animation-delay:.2s}
+    .drop:nth-child(2){left:34%; animation-delay:.8s}
+    .drop:nth-child(3){left:52%; animation-delay:1.1s}
+    .drop:nth-child(4){left:68%; animation-delay:1.5s}
+    .drop:nth-child(5){left:82%; animation-delay:.5s}
+    @keyframes rain { from{ top:-20px; opacity:0 } 15%{opacity:1} to{ top:110%; opacity:0 } }
+
+    .battery-demo {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .battery-body {
+      width: min(460px, 100%);
+      height: 56px;
+      margin: 12px auto 0;
+      border: 2px solid #f4f4f4;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .battery-level {
+      height: 100%;
+      width: 30%;
+      background: linear-gradient(90deg, #f4f4f4, #b5b7be);
+      animation: charge 4.4s ease-in-out infinite;
+    }
+
+    .battery-body::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 18px;
+      width: 6px;
+      height: 18px;
+      border-radius: 4px;
+      background: #f4f4f4;
+    }
+
+    @keyframes charge { 0%{width:12%} 50%{width:76%} 100%{width:100%} }
+
+    .case-anim {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      height: 220px;
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-shell {
+      width: 190px;
+      height: 108px;
+      background: #f4f4f4;
+      border: 2px solid #d1d5db;
+      border-radius: 45px;
+      position: relative;
+      box-shadow: 0 16px 28px rgba(15,23,42,0.24);
+    }
+
+    .case-lid {
+      position: absolute;
+      width: 190px;
+      height: 48px;
+      left: 0;
+      top: -18px;
+      border-radius: 40px 40px 18px 18px;
+      background: #f4f4f4;
+      border: 2px solid #d1d5db;
+      border-bottom: none;
+      transform-origin: bottom center;
+      animation: openCase 3.4s ease-in-out infinite;
+    }
+
+    @keyframes openCase { 0%,100%{ transform: rotateX(0)} 50%{ transform: rotateX(-56deg)} }
+
+    .floating-final {
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+      padding: 46px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .final-product {
+      width: min(340px, 70vw);
+      animation: finalFloat 4s ease-in-out infinite;
+      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.35));
+      margin: 0 auto 18px;
+    }
+
+    @keyframes finalFloat { 50% { transform: translateY(-12px); } }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .parallax { will-change: transform; }
+
+    .float { animation: softFloat 6s ease-in-out infinite; }
+    @keyframes softFloat { 50% { transform: translateY(-10px); } }
+
+    .hero h1 {
+      clip-path: inset(0 100% 0 0);
+      animation: textReveal 1.3s steps(32) forwards;
+    }
+
+    @keyframes textReveal {
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .inline-cta {
+      margin-top: 18px;
       display: flex;
-      gap: var(--spacing-4);
-      margin-bottom: var(--spacing-8);
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .specs-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
+    .inline-cta .price {
+      font-size: 1.6rem;
+      margin: 0;
     }
 
-    .specs-title {
-      font-size: var(--font-size-4xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-12);
-      text-align: center;
-    }
-
-    .specs-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-8);
-    }
-
-    .spec {
-      padding: var(--spacing-8);
-      background-color: var(--color-gray-50);
-      border-radius: var(--radius-2xl);
-      border-left: 4px solid var(--color-blue);
-    }
-
-    .spec-label {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-500);
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: var(--spacing-2);
-    }
-
-    .spec-value {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      color: var(--color-black);
-    }
-
-    .whats-included {
-      padding: var(--spacing-24) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
-    }
-
-    .included-grid {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-6);
-    }
-
-    .included-item {
-      text-align: center;
-      padding: var(--spacing-6);
-    }
-
-    .included-icon {
-      font-size: 3rem;
-      margin-bottom: var(--spacing-3);
-    }
-
-    .included-title {
-      font-weight: 600;
-      color: var(--color-black);
-      margin-bottom: var(--spacing-2);
-    }
-
-    .compatibility {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
-    }
-
-    .compat-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-12);
+    .audio-demo {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
       align-items: center;
     }
 
-    .compat-list {
-      list-style: none;
-      padding: 0;
+    .comparison-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .compat-list li {
-      padding: var(--spacing-4) 0;
-      padding-left: var(--spacing-8);
-      position: relative;
-      color: var(--color-gray-700);
+    .noise-demo.clean {
+      background: linear-gradient(120deg, #0a0f14 0%, #0f141c 100%);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    .compat-list li::before {
-      content: "?";
-      position: absolute;
-      left: 0;
-      color: var(--color-blue);
-      font-weight: bold;
-      font-size: var(--font-size-lg);
+    .noise-demo .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
 
-    @media (max-width: 768px) {
-      .product-header {
-        padding: var(--spacing-16) var(--spacing-4);
-      }
+    .why-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-      .product-header-content {
-        grid-template-columns: 1fr;
-      }
+    .testimonials-grid,
+    .faq-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-      .product-actions {
-        flex-direction: column;
-      }
+    .why-card,
+    .testimonial-card,
+    .faq-item {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: grid;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+    }
 
-      .compat-grid {
-        grid-template-columns: 1fr;
-      }
+    .why-card span {
+      font-size: 1.5rem;
+    }
 
-      .product-details h1 {
-        font-size: var(--font-size-4xl);
-      }
+    .stars {
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      color: #f4f4f4;
+    }
+
+    .faq-item button {
+      all: unset;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-item button::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .faq-item[open] button::after {
+      content: "−";
+      color: var(--ink);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      color: var(--muted);
+    }
+
+    .faq-item[open] .faq-answer {
+      max-height: 200px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .media-block,
+      .comparison-grid { grid-template-columns: 1fr; }
+      .feature-grid,
+      .why-grid,
+      .testimonials-grid,
+      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-media { min-height: 420px; }
+    }
+
+    @media (max-width: 640px) {
+      .panel { padding: 8vh 0; }
+      .feature-grid,
+      .why-grid,
+      .testimonials-grid,
+      .faq-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { min-height: auto; }
+      .hero-meta { font-size: 0.95rem; }
+      .btn { min-height: 52px; }
+      .hero-product,
+      .earbud-3d { animation: none; }
+      .ring,
+      .case-lid,
+      .battery-level,
+      .final-product { animation: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
     }
   </style>
   <link rel="icon" href="/favicon.ico">
@@ -231,172 +809,424 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/#products" class="nav-link">Productos</a>
-        <a href="/#apps" class="nav-link">Apps</a>
-        <a href="../support.html" class="nav-link">Soporte</a>
-      </div>
-      <div class="nav-right"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <header class="top-nav">
+<div class="container">
+      <div class="brand">Lixby</div>
+      <nav class="nav-links">
+        <a href="#caracteristicas">Χαρακτηριστικά</a>
+        <a href="#sonido">Ήχος</a>
+        <a href="#anc">ANC</a>
+        <a href="#bateria">Μπαταρία</a>
+        <a href="#comprar">Αγορά</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <section class="product-header fade-in-up" data-bg-change="linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%)">
-    <div class="product-header-content">
-      <div class="product-details">
-        <h1 class="intro-animation">LixBuds One</h1>
-        <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);" class="typewriter">Auriculares inal�mbricos con sonido incre�ble y dise�o simple.</p>
-        <div class="product-price">149,99 �</div>
-        <div class="product-actions">
-          <button class="btn btn-primary btn-micro-animation glow-hover stagger-item">Comprar ahora</button>
-          <button class="btn btn-secondary glow-hover stagger-item">M�s informaci�n</button>
+  <main>
+    <section class="panel" aria-labelledby="hero-title">
+      <div class="container hero">
+        <div class="reveal">
+          <span class="section-label">Προϊόν</span>
+          <h1 id="hero-title">Άκου αυτό που έχει σημασία.<br>Αγνόησε όλα τα υπόλοιπα.</h1>
+          <p>Σχεδιασμένα για να σε βυθίζουν στη μουσική σου όπως ποτέ πριν.</p>
+          <div class="hero-meta">
+            <span>Έξυπνη ακύρωση θορύβου</span>
+            <span>Καθηλωτικός χωρικός ήχος</span>
+          </div>
+          <div class="price">99€</div>
+          <div class="cta-row">
+            <a href="/Lixby/el/agorase-akoustika/lixbuds-one/index.html" class="btn btn-dark" aria-label="Αγοράστε τώρα LixBuds One για 99 ευρώ">Αγορά τώρα — 99€</a>
+            <a href="#caracteristicas" class="btn btn-light">Δείτε περισσότερα</a>
+          </div>
         </div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-500);">Disponible en Negro, Blanco y Azul Espacial.</p>
-      </div>
-      <div style="width: 100%;">
-        <picture>
-          <img src="../../images/lixbuds-product.jpg" alt="LixBuds One" style="width: 100%; border-radius: var(--radius-3xl); box-shadow: var(--shadow-xl);" class="zoom-in" data-tilt-3d data-glow="pulse">
-        </picture>
-      </div>
-    </div>
-  </section>
-
-  <section class="specs-section fade-in-up" data-bg-change="rgba(10, 132, 255, 0.02)">
-    <h2 class="specs-title fade-in-up">Especificaciones t�cnicas</h2>
-    <div class="specs-grid" data-cascade>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Bater�a</div>
-        <div class="spec-value">30 horas</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Con estuche de carga</p>
-      </div>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Bluetooth</div>
-        <div class="spec-value">5.3</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Conexi�n estable</p>
-      </div>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Peso</div>
-        <div class="spec-value">5.3g</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Cada auricular</p>
-      </div>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Cancelaci�n de ruido</div>
-        <div class="spec-value">ANC activa</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Tecnolog�a avanzada</p>
-      </div>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Rango de frecuencia</div>
-        <div class="spec-value">20Hz - 20kHz</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Sonido completo</p>
-      </div>
-      <div class="spec card-lift cascade-item" data-cascade-item>
-        <div class="spec-label">Resistencia</div>
-        <div class="spec-value">IPX4</div>
-        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--spacing-2); margin-bottom: 0;">Resistente al sudor</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="whats-included fade-in-up" data-bg-change="linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%)">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;" class="fade-in-up">Qu� incluye</h2>
-      <div class="included-grid" data-cascade>
-        <div class="included-item stagger-item" data-cascade-item>
-          <div class="included-icon">??</div>
-          <div class="included-title">LixBuds One</div>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">2 auriculares</p>
-        </div>
-        <div class="included-item stagger-item" data-cascade-item>
-          <div class="included-icon">??</div>
-          <div class="included-title">Estuche de carga</div>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Con bater�a optimizada</p>
-        </div>
-        <div class="included-item stagger-item" data-cascade-item>
-          <div class="included-icon">??</div>
-          <div class="included-title">Cable USB-C</div>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Carga r�pida</p>
-        </div>
-        <div class="included-item stagger-item" data-cascade-item>
-          <div class="included-icon">??</div>
-          <div class="included-title">Almohadillas</div>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">3 tama�os distintos</p>
+        <div class="hero-media reveal parallax" data-speed="0.12">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
+            <source src="media/lixbuds-loop.mp4" type="video/mp4">
+          </video>
+          <img class="hero-product" src="images/lixbuds-product.jpg" alt="Ασύρματα ακουστικά LixBuds One με ακύρωση θορύβου" loading="lazy">
+          <div class="hero-orbs"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="compatibility fade-in-up" data-bg-change="rgba(10, 132, 255, 0.02)">
-    <div class="compat-grid">
-      <div class="stagger-item">
-        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; margin-bottom: var(--spacing-8);">Compatible con</h2>
-        <ul class="compat-list">
-          <li class="stagger-item">iPhone 12 y posteriores</li>
-          <li class="stagger-item">iPad (2018 y posteriores)</li>
-          <li class="stagger-item">Apple Watch (Series 3+)</li>
-          <li class="stagger-item">Mac (2016 y posteriores)</li>
-          <li class="stagger-item">Android 6.0+</li>
-          <li class="stagger-item">Windows 10+</li>
-          <li class="stagger-item">Cualquier dispositivo Bluetooth 5.0+</li>
-        </ul>
+    <section id="caracteristicas" class="panel" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Premium τεχνολογία</span>
+          <h2 id="features-title">Κορυφαία χαρακτηριστικά</h2>
+          <p>Προηγμένη τεχνολογία με μινιμαλιστικό σχεδιασμό και επαγγελματική απόδοση καθημερινά.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Νιώσε κάθε νότα σαν να είσαι εκεί</h3><p>Χωρικός ήχος που τυλίγει την ακοή σου.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">🔇</div><h3>Απόλυτη ησυχία, ακόμα και στο χάος</h3><p>Έξυπνο ANC που σβήνει τον θόρυβο.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">👂</div><h3>Άκου τον κόσμο όταν εσύ αποφασίζεις</h3><p>Προσαρμοστική και φυσική διαφάνεια.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">👆</div><h3>Πλήρης έλεγχος με ένα άγγιγμα</h3><p>Ακριβείς χειρονομίες, χωρίς να κοιτάς.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">🔋</div><h3>Ενέργεια που συνοδεύει τη μέρα σου</h3><p>Έως 8 ώρες ασταμάτητα.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">💧</div><h3>Έτοιμα για ιδρώτα, βροχή και δρόμο</h3><p>Πραγματική προστασία IPX5.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">📦</div><h3>Ασύρματη φόρτιση, χωρίς προσπάθεια</h3><p>Premium ασύρματη θήκη.</p></article>
+        </div>
       </div>
-      <div style="background-color: var(--color-gray-50); padding: var(--spacing-10); border-radius: var(--radius-2xl);" class="card-lift stagger-item">
-        <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Soporte t�cnico</h3>
-        <p style="margin-bottom: var(--spacing-4);">�Necesitas ayuda? Nuestro equipo est� disponible para ti.</p>
-        <a href="../support.html" class="btn btn-primary btn-micro-animation glow-hover">Contactar soporte</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;" class="fade-in-up">
-    <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);" class="intro-animation">Experimenta la diferencia</h2>
-      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Sonido premium, dise�o elegante, bater�a duradera</p>
-      <button class="btn btn-primary btn-micro-animation glow-hover" style="background-color: var(--color-white); color: var(--color-blue);">Comprar LixBuds One</button>
-    </div>
-  </section>
+    <section id="sonido" class="panel" aria-labelledby="sound-title">
+      <div class="container">
+        <div class="media-block">
+          <div class="media-box sound-waves reveal parallax" data-speed="0.08">
+            <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-hero.jpg">
+              <source src="media/lixbuds-listening.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="reveal">
+            <span class="section-label">Εμπειρία</span>
+            <h2 id="sound-title">Μια εξαιρετική ηχητική εμπειρία.</h2>
+            <p style="color:var(--muted);margin-top:12px;">Τα LixBuds One σχεδιάστηκαν για να προσφέρουν βαθύ, καθαρό και καθηλωτικό ήχο. Χάρη στην προηγμένη ακουστική αρχιτεκτονική τους, κάθε τραγούδι ακούγεται με πιο δυνατά μπάσα, πιο καθαρές φωνές και ευρύτερη ηχητική σκηνή.</p>
+            <p style="color:var(--muted);margin-top:16px;">Τα ηχητικά κύματα και τα σωματίδια αντιδρούν στον ρυθμό για μια καθηλωτική αίσθηση.</p>
+            <div class="audio-demo">
+              <button class="btn btn-light" id="audioToggle" aria-pressed="false">Ακούστε demo</button>
+              <audio id="audioDemo" preload="none" src="media/lixbuds-demo.mp3"></audio>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer class="footer fade-in-up">
-    <div class="footer-container">
-      <div class="footer-section stagger-item">
-        <h3>Productos</h3>
-        <ul class="footer-links">
-          <li><a href="./lixbuds-one.html" class="glow-hover">LixBuds One</a></li>
-        </ul>
+    <section id="anc" class="panel" aria-labelledby="anc-title">
+      <div class="container media-block">
+        <div class="noise-demo reveal" id="ancDemo">
+          <span class="section-label">Ακύρωση θορύβου</span>
+          <h3 id="anc-title">Συγκεντρώσου μόνο σε αυτό που θέλεις να ακούς.</h3>
+          <p style="color:var(--muted);">Η ενεργή ακύρωση θορύβου χρησιμοποιεί εσωτερικά και εξωτερικά μικρόφωνα για να ανιχνεύει ήχους περιβάλλοντος και να τους εξαλείφει σε πραγματικό χρόνο.</p>
+          <div class="noise-city"></div>
+          <div class="toggle-row">
+            <button class="btn btn-dark" id="toggleAnc" aria-pressed="false">Ενεργοποίηση ακύρωσης</button>
+            <button class="btn btn-light" id="toggleTransparency" aria-pressed="false">Λειτουργία διαφάνειας</button>
+          </div>
+          <div class="inline-cta">
+            <div class="price">99€</div>
+            <a href="/Lixby/el/agorase-akoustika/lixbuds-one/index.html" class="btn btn-dark" aria-label="Αγοράστε τώρα LixBuds One για 99 ευρώ">Αγορά τώρα — 99€</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="spatial-stage">
+            <div class="ring"></div>
+            <div class="ring r2"></div>
+            <div class="head"></div>
+          </div>
+          <p style="margin-top:16px;color:var(--muted);">Καθηλωτικός χωρικός ήχος. Νιώσε τον ήχο σε τρεις διαστάσεις, σαν να είσαι μέσα στη μουσική.</p>
+        </div>
       </div>
-      <div class="footer-section stagger-item">
-        <h3>Apps</h3>
-        <ul class="footer-links">
-          <li><a href="../apps/lixney.html" class="glow-hover">Lixney</a></li>
-        </ul>
-      </div>
-      <div class="footer-section stagger-item">
-        <h3>Empresa</h3>
-        <ul class="footer-links">
-          <li><a href="../about.html" class="glow-hover">Sobre Lixby</a></li>
-          <li><a href="../support.html" class="glow-hover">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-section stagger-item">
-        <h3>Legal</h3>
-        <ul class="footer-links">
-          <li><a href="../legal/privacy.html" class="glow-hover">Privacidad</a></li>
-          <li><a href="../legal/terms.html" class="glow-hover">T�rminos</a></li>
-          <li><a href="../legal/cookies.html" class="glow-hover">Cookies</a></li>
-          <li><a href="../legal/legal-notice.html" class="glow-hover">Aviso Legal</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom fade-in-up">
-      <p>� 2024 Lixby. Todos los derechos reservados. Dise�ado en Espa�a.</p>
-    </div>
-  </footer>
+    </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="../../script.js"></script>
+    <section class="panel" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Σύγκριση</span>
+          <h2 id="compare-title">Άκου την αντίθεση</h2>
+          <p>Δύο κόσμοι, μια πραγματική διαφορά: θόρυβος χωρίς έλεγχο vs. έξυπνη ησυχία.</p>
+        </div>
+        <div class="comparison-grid">
+          <div class="noise-demo reveal">
+            <span class="label">Χωρίς LixBuds</span>
+            <h3>Συνεχές ηχητικό χάος</h3>
+            <p style="color:var(--muted);">Όλα ανταγωνίζονται για την προσοχή σου.</p>
+            <div class="noise-city"></div>
+          </div>
+          <div class="noise-demo anc-on clean reveal">
+            <span class="label">Με LixBuds</span>
+            <h3>Εστιασμένη ησυχία</h3>
+            <p style="color:var(--muted);">Η μουσική σου, χωρίς διακοπές.</p>
+            <div class="noise-city"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="fit-title">
+      <div class="container media-block">
+        <div class="fit-visual reveal parallax" data-speed="0.06">
+          <img class="earbud-3d" src="images/lixbuds-product.jpg" alt="Τρισδιάστατο μοντέλο ακουστικών LixBuds One" loading="lazy">
+        </div>
+        <div class="reveal">
+          <span class="section-label">Εφαρμογή και άνεση</span>
+          <h2 id="fit-title" style="font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:-.04em;">Εργονομικός και ελαφρύς σχεδιασμός</h2>
+          <p style="color:var(--muted);margin-top:8px;">Σιλικόνη, ασφαλής εφαρμογή και μαλακά υλικά για ώρες χρήσης.</p>
+          <div class="touch-demo" style="margin-top:16px;">
+            <div class="finger"></div>
+            <ul class="touch-actions" id="touchActions">
+              <li class="active">Αναπαραγωγή μουσικής</li>
+              <li>Παύση</li>
+              <li>Αλλαγή τραγουδιού</li>
+              <li>Απάντηση κλήσεων</li>
+              <li>Ενεργοποίηση ακύρωσης</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="water-title">
+      <div class="container media-block">
+        <div class="water-demo reveal">
+          <div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div>
+          <div style="position:absolute;bottom:16px;left:16px;right:16px;">
+            <span class="section-label">Αντοχή στο νερό</span>
+            <h3 id="water-title">Πιστοποίηση IPX5</h3>
+            <p style="color:var(--muted);">Ανθεκτικά στον ιδρώτα και την ελαφριά βροχή. Συνεχίζουν να λειτουργούν ενώ πέφτει νερό.</p>
+          </div>
+        </div>
+        <div id="bateria" class="battery-demo reveal" aria-labelledby="battery-title">
+          <span class="section-label">Μπαταρία</span>
+          <h2 id="battery-title" style="font-size:clamp(1.5rem,3.5vw,2.3rem);letter-spacing:-.03em;">Έξυπνη ενέργεια</h2>
+          <p style="color:var(--muted);margin:6px 0 14px;">Έως 8 ώρες με μία φόρτιση. Έως 30 ώρες με τη θήκη.</p>
+          <div class="battery-body"><div class="battery-level"></div></div>
+          <div class="case-anim">
+            <div class="case-shell"><div class="case-lid"></div></div>
+          </div>
+          <div class="inline-cta">
+            <div class="price">99€</div>
+            <a href="/Lixby/el/agorase-akoustika/lixbuds-one/index.html" class="btn btn-dark" aria-label="Αγοράστε τώρα LixBuds One για 99 ευρώ">Αγορά τώρα — 99€</a>
+          </div>
+          <p style="color:var(--muted);margin-top:10px;">Θήκη ασύρματης φόρτισης, LED ένδειξη και συμπαγής σχεδιασμός.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="case-title">
+      <div class="container media-block">
+        <div class="media-box reveal parallax" data-speed="0.1">
+          <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-product.jpg">
+            <source src="media/lixbuds-case.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="reveal">
+          <span class="section-label">Θήκη φόρτισης</span>
+          <h2 id="case-title">Απόλυτος μινιμαλισμός, μέγιστος έλεγχος</h2>
+          <p style="color:var(--muted);margin-top:12px;">Ασύρματη φόρτιση, ακριβής LED ένδειξη και συμπαγής σχεδιασμός για να το παίρνεις παντού.</p>
+          <p style="color:var(--muted);margin-top:12px;">Η θήκη περιστρέφεται αργά σε 3D για να δείχνει κάθε λεπτομέρεια.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Γιατί LixBuds One</span>
+          <h2 id="why-title">Κάτι περισσότερο από ακουστικά, μια καλύτερη ρουτίνα</h2>
+          <p>Σχεδιασμένα για να αναβαθμίζουν τη μέρα σου με άνεση, εστίαση και premium ήχο.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal"><span>✨</span><h3>Ήχος που τυλίγει</h3><p>Ευρεία σκηνή που σε βάζει μέσα στο τραγούδι.</p></div>
+          <div class="why-card reveal"><span>🧠</span><h3>Πραγματική εστίαση</h3><p>Έξυπνο ANC που εξαλείφει τις αποσπάσεις.</p></div>
+          <div class="why-card reveal"><span>⚡</span><h3>Έτοιμα άμεσα</h3><p>Γρήγορο ζευγάρωμα και ακριβή χειριστήρια αφής.</p></div>
+          <div class="why-card reveal"><span>🎒</span><h3>Πάντα μαζί σου</h3><p>Συμπαγής θήκη και ασύρματη φόρτιση.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Μαρτυρίες</span>
+          <h2 id="testimonials-title">Πραγματικές απόψεις, πραγματική αξία</h2>
+          <p>Στην κατηγορία των 99€, αυτά είναι που οι άνθρωποι ξαναγοράζουν.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <strong>Μαρία Γ.</strong>
+            <p>"Το ANC μου άλλαξε το μετρό. Μπορώ να δουλεύω χωρίς άγχος."</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <strong>Δημήτρης Λ.</strong>
+            <p>"Ακούγεται βαθιά και καθαρά. Δεν ζηλεύει τίποτα από πιο ακριβά μοντέλα."</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="stars">★★★★☆</div>
+            <strong>Λουκία Π.</strong>
+            <p>"Πολύ άνετα για προπόνηση και η θήκη είναι συμπαγής."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">FAQ</span>
+          <h2 id="faq-title">Συχνές ερωτήσεις</h2>
+          <p>Γρήγορες απαντήσεις πριν την αγορά.</p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">Ποια είναι η πολιτική επιστροφών;</button>
+            <div class="faq-answer">Διαθέτεις 30 ημέρες για να τα επιστρέψεις αν δεν σου κάνουν, πάντα στην αρχική τους κατάσταση.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">Είναι συμβατά με Android και iOS;</button>
+            <div class="faq-answer">Ναι, λειτουργούν και με τα δύο συστήματα και ζευγαρώνουν σε δευτερόλεπτα μέσω Bluetooth.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button type="button" aria-expanded="false">Πόσο διαρκεί η αποστολή;</button>
+            <div class="faq-answer">Η τυπική αποστολή διαρκεί 24 με 72 εργάσιμες ώρες στην Ελλάδα.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comprar" class="panel" aria-labelledby="buy-title">
+      <div class="container">
+        <div class="floating-final reveal">
+          <img class="final-product parallax" data-speed="0.05" src="images/lixbuds-product.jpg" alt="Ακουστικά LixBuds One που επιπλέουν με θήκη" loading="lazy">
+          <h2 id="buy-title" style="font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1.02;">LixBuds One<br>Όλα όσα χρειάζεσαι να ακούσεις.</h2>
+          <a href="/Lixby/el/agorase-akoustika/lixbuds-one/index.html" class="btn btn-dark" style="margin-top:18px;font-size:1.05rem;padding:14px 28px;" aria-label="Αγοράστε τώρα LixBuds One για 99 ευρώ">Αγορά τώρα — 99€</a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.16 });
+    reveals.forEach((el) => observer.observe(el));
+
+    const root = document.documentElement;
+    window.addEventListener('mousemove', (e) => {
+      root.style.setProperty('--x', `${e.clientX}px`);
+      root.style.setProperty('--y', `${e.clientY}px`);
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const parallaxEls = document.querySelectorAll('.parallax');
+    if (!reduceMotion.matches) {
+      let ticking = false;
+      const handleParallax = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          parallaxEls.forEach((el) => {
+            const speed = Number(el.dataset.speed || 0.08);
+            el.style.transform = `translateY(${y * speed * -0.22}px)`;
+          });
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', handleParallax, { passive: true });
+      handleParallax();
+    }
+
+    const progress = document.querySelector('.scroll-progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const ancDemo = document.getElementById('ancDemo');
+    const toggleAnc = document.getElementById('toggleAnc');
+    const toggleTransparency = document.getElementById('toggleTransparency');
+
+    toggleAnc.addEventListener('click', () => {
+      ancDemo.classList.toggle('anc-on');
+      const isOn = ancDemo.classList.contains('anc-on');
+      toggleAnc.textContent = ancDemo.classList.contains('anc-on') ? 'ANC ενεργοποιημένο' : 'Ενεργοποίηση ακύρωσης';
+      toggleTransparency.textContent = 'Λειτουργία διαφάνειας';
+      toggleAnc.setAttribute('aria-pressed', String(isOn));
+      toggleTransparency.setAttribute('aria-pressed', 'false');
+    });
+
+    toggleTransparency.addEventListener('click', () => {
+      ancDemo.classList.remove('anc-on');
+      toggleAnc.textContent = 'Ενεργοποίηση ακύρωσης';
+      toggleTransparency.textContent = 'Διαφάνεια ενεργή';
+      toggleAnc.setAttribute('aria-pressed', 'false');
+      toggleTransparency.setAttribute('aria-pressed', 'true');
+    });
+
+    if (!reduceMotion.matches) {
+      const touchItems = Array.from(document.querySelectorAll('#touchActions li'));
+      let touchIndex = 0;
+      setInterval(() => {
+        touchItems.forEach((li) => li.classList.remove('active'));
+        touchItems[touchIndex].classList.add('active');
+        touchIndex = (touchIndex + 1) % touchItems.length;
+      }, 1600);
+    }
+
+    const audioToggle = document.getElementById('audioToggle');
+    const audioDemo = document.getElementById('audioDemo');
+    if (audioToggle && audioDemo) {
+      audioToggle.addEventListener('click', () => {
+        if (audioDemo.paused) {
+          audioDemo.play();
+          audioToggle.textContent = 'Παύση';
+          audioToggle.setAttribute('aria-pressed', 'true');
+        } else {
+          audioDemo.pause();
+          audioToggle.textContent = 'Ακούστε demo';
+          audioToggle.setAttribute('aria-pressed', 'false');
+        }
+      });
+      audioDemo.addEventListener('ended', () => {
+        audioToggle.textContent = 'Ακούστε demo';
+        audioToggle.setAttribute('aria-pressed', 'false');
+      });
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.remove('active'));
+        const id = entry.target.getAttribute('id');
+        const active = navLinks.find((link) => link.getAttribute('href') === `#${id}`);
+        if (active) active.classList.add('active');
+      });
+    }, { threshold: 0.55 });
+
+    navLinks.forEach((link) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) sectionObserver.observe(target);
+    });
+
+    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+    faqItems.forEach((item) => {
+      const btn = item.querySelector('button');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const isOpen = item.hasAttribute('open');
+        faqItems.forEach((el) => {
+          el.removeAttribute('open');
+          const button = el.querySelector('button');
+          if (button) button.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.setAttribute('open', '');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const mobileMedia = window.matchMedia('(max-width: 640px)');
+    const handleMobileMedia = (e) => {
+      if (e.matches) {
+        document.querySelectorAll('video').forEach((video) => {
+          video.pause();
+          video.removeAttribute('autoplay');
+        });
+      }
+    };
+    handleMobileMedia(mobileMedia);
+    mobileMedia.addEventListener('change', handleMobileMedia);
+  </script>
 </body>
 </html>
-
-
