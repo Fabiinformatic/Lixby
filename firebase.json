@@ -4,8 +4,20 @@
                     "ignore":  [
                                    "firebase.json",
                                    "**/.*",
-                                   "**/node_modules/**"
+                                   "**/node_modules/**",
+                                   "functions/**",
+                                   "src/**",
+                                   "dataconnect/**",
+                                   "y/**",
+                                   "server.js",
+                                   "firebase-service-account.json",
+                                   "package.json",
+                                   "package-lock.json",
+                                   "README.md",
+                                   "firebase-debug.log",
+                                   "*.ps1"
                                ],
+                    "cleanUrls":  true,
                     "rewrites":  [
                                      {
                                          "source":  "**",
