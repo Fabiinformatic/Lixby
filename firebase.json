@@ -3,6 +3,7 @@
                     "public":  ".",
                     "ignore":  [
                                    "firebase.json",
+                                   "sitemap.xml",
                                    "**/.*",
                                    "**/node_modules/**",
                                    "functions/**",
@@ -18,7 +19,16 @@
                                    "*.ps1"
                                ],
                     "cleanUrls":  true,
+                    "predeploy":  [
+                                      "node scripts/generate-sitemap-assets.js"
+                                  ],
                     "rewrites":  [
+                                     {
+                                         "source":  "/sitemap.xml",
+                                         "function":  {
+                                                          "functionId":  "sitemap"
+                                                      }
+                                     },
                                      {
                                          "source":  "**",
                                          "destination":  "/index.html"
@@ -877,6 +887,9 @@
                           "source":  "functions",
                           "codebase":  "default",
                           "disallowLegacyRuntimeConfig":  true,
+                          "predeploy":  [
+                                            "node scripts/generate-sitemap-assets.js"
+                                        ],
                           "ignore":  [
                                          "node_modules",
                                          ".git",

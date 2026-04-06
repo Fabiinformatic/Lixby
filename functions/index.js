@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const functions = require("firebase-functions");
 const { onRequest, onCall, HttpsError } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
@@ -9,6 +11,7 @@ admin.initializeApp();
 
 const stripe = new Stripe("TU_STRIPE_SECRET_KEY");
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
+const sitemapPath = path.join(__dirname, "generated", "sitemap.xml");
 
 // ✅ Tu función de Stripe que ya tenías
 exports.stripeWebhook = functions.https.onRequest((req, res) => {
@@ -81,3 +84,24 @@ exports.sendPasswordReset = onRequest(
     }
   }
 );
+
+exports.sitemap = onRequest((req, res) => {
+  if (req.method !== "GET" && req.method !== "HEAD") {
+    return res.status(405).send("Method Not Allowed");
+  }
+
+  try {
+    const sitemapXml = fs.readFileSync(sitemapPath, "utf8");
+    res.set("Content-Type", "application/xml; charset=utf-8");
+    res.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+
+    if (req.method === "HEAD") {
+      return res.status(200).end();
+    }
+
+    return res.status(200).send(sitemapXml);
+  } catch (error) {
+    console.error("Error serving sitemap:", error.message);
+    return res.status(500).send("Sitemap unavailable");
+  }
+});
