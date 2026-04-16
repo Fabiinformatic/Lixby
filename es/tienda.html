@@ -1,48 +1,138 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html class="nojs es-es lixby consumer eu es" lang="es-ES">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-<!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/es/tienda">
-  <link rel="alternate" href="https://www.lixby.es/bg/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/obchod" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/tienda" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/speichern" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/tienda" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/shop" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/tienda" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/tienda" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/tienda" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/magasin" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/tienda" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/tienda" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/tienda" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/negozio" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/parduotuv%C4%97" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/tienda" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/tienda" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/tienda" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/tienda" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/loja" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/tienda" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/tienda" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/tienda" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/tienda" hreflang="sv-SE">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda | Lixby</title>
-  <meta name="description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
+<script>
+window.LIXBY_CONFIG = {
+    metadata: {
+        environment: "production",
+        region: "eu",
+        country: "ES",
+        locale: "es-es",
+        brand: "Lixby",
+        page: "store",
+        referer: document.referrer
+    },
+    config: {
+        pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
+        app: "com.lixby.web",
+        sendPageViewData: true,
+        sendErrors: true,
+        performanceTracking: true,
+        delay: 300
+    }
+};
+
+window.LIXBY_CONFIG.preLoadErrors = [];
+window.addEventListener("error", e => {
+    window.LIXBY_CONFIG.preLoadErrors.push(e);
+});
+</script>
+
+<script>
+document.addEventListener('readystatechange', () => {
+    if (document.readyState === "interactive" && window.IntersectionObserver) {
+        let lastVisibleTime = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lastVisibleTime = performance.now();
+                }
+            });
+
+            observer.disconnect();
+
+            window.dispatchEvent(new CustomEvent("lixbyPerformance", {
+                detail: {
+                    type: "viewportLoad",
+                    time: lastVisibleTime
+                }
+            }));
+        });
+
+        document.querySelectorAll("*").forEach(el => observer.observe(el));
+    }
+});
+</script>
+
+<script>
+(function () {
+    try {
+        const { app, pageViewId } = window.LIXBY_CONFIG.config;
+        const url = new URL(window.location);
+        const cleanPath = url.pathname.split('%')[0];
+
+        const trackingURL = `https://lixby.es/api/track?app=${app}&id=${pageViewId}&url=${url.origin + cleanPath}`;
+
+        const img = new Image();
+        img.src = trackingURL;
+
+    } catch (e) {
+        console.error(e);
+    }
+})();
+</script>
+
+<noscript>
+    <img src="https://lixby.es/api/track?nojs=true" width="1" height="1">
+</noscript>
+
+<script>
+(function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');
+</script>
+
+<link rel="canonical" href="https://lixby.es/es/tienda">
+
+<link rel="alternate" href="https://lixby.es/bg/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD" hreflang="bg-BG">
+<link rel="alternate" href="https://lixby.es/cs/obchod" hreflang="cs-CZ">
+<link rel="alternate" href="https://lixby.es/da/tienda" hreflang="da-DK">
+<link rel="alternate" href="https://lixby.es/de/speichern" hreflang="de-DE">
+<link rel="alternate" href="https://lixby.es/el/tienda" hreflang="el-GR">
+<link rel="alternate" href="https://lixby.es/en/shop" hreflang="en-US">
+<link rel="alternate" href="https://lixby.es/es/tienda" hreflang="es-ES">
+<link rel="alternate" href="https://lixby.es/et/tienda" hreflang="et-EE">
+<link rel="alternate" href="https://lixby.es/fi/tienda" hreflang="fi-FI">
+<link rel="alternate" href="https://lixby.es/fr/magasin" hreflang="fr-FR">
+<link rel="alternate" href="https://lixby.es/ga/tienda" hreflang="ga-IE">
+<link rel="alternate" href="https://lixby.es/hr/tienda" hreflang="hr-HR">
+<link rel="alternate" href="https://lixby.es/hu/tienda" hreflang="hu-HU">
+<link rel="alternate" href="https://lixby.es/it/negozio" hreflang="it-IT">
+<link rel="alternate" href="https://lixby.es/lt/parduotuv%C4%97" hreflang="lt-LT">
+<link rel="alternate" href="https://lixby.es/lv/tienda" hreflang="lv-LV">
+<link rel="alternate" href="https://lixby.es/mt/tienda" hreflang="mt-MT">
+<link rel="alternate" href="https://lixby.es/nl/tienda" hreflang="nl-NL">
+<link rel="alternate" href="https://lixby.es/pl/tienda" hreflang="pl-PL">
+<link rel="alternate" href="https://lixby.es/pt/loja" hreflang="pt-PT">
+<link rel="alternate" href="https://lixby.es/ro/tienda" hreflang="ro-RO">
+<link rel="alternate" href="https://lixby.es/sk/tienda" hreflang="sk-SK">
+<link rel="alternate" href="https://lixby.es/sl/tienda" hreflang="sl-SI">
+<link rel="alternate" href="https://lixby.es/sv/tienda" hreflang="sv-SE">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tienda | Lixby</title>
+<meta name="description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
+
+<link rel="preconnect" href="https://lixby.es">
+<link rel="dns-prefetch" href="https://lixby.es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<style>
     body.shop-page {
       background: #f5f5f7;
     }
@@ -227,18 +317,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .shop-cards { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": ["https://github.com/lixby"]
-    }
-  </script>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lixby",
+  "url": "https://lixby.es",
+  "logo": "https://lixby.es/logo.png",
+  "sameAs": ["https://github.com/lixby"]
+}
+</script>
+
+<script>
+window.LIXBY_UI = {
+    theme: "light",
+    animations: true,
+    version: "1.0.0"
+};
+</script>
+
+<script>
+document.documentElement.classList.replace("nojs", "js");
+</script>
+
 </head>
 <body class="shop-page">
 <!-- Google Tag Manager (noscript) -->
