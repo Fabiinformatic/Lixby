@@ -101,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Pagrindinis">
-        <a href="parduotuvė.html" class="nav-link">Parduotuvė</a>
+        <a href="shop.html" class="nav-link">Parduotuvė</a>
         <a href="#productos" class="nav-link">Produktai</a>
         <a href="#apps" class="nav-link">Programėlės</a>
         <a href="support.html" class="nav-link">Pagalba</a>
@@ -113,7 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="parduotuvė.html" method="get">
+        <form id="navSearchForm" action="shop.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -123,10 +123,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Ieškoti produkto"
           >
         </form>
-        <a href="krepšelis.html" class="nav-icon-link" aria-label="Krepšelis">
+        <a href="cart.html" class="nav-icon-link" aria-label="Krepšelis">
           <img src="images/Bolsa.png" alt="Krepšelis">
         </a>
-        <a href="sąskaitą.html" class="nav-icon-link" aria-label="Paskyra">
+        <a href="account.html" class="nav-icon-link" aria-label="Paskyra">
           <img src="images/cuenta.png" alt="Paskyra">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meniu" aria-controls="navMobilePanel" aria-expanded="false">
@@ -141,7 +141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="parduotuvė.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -156,14 +156,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Pagrindinis mobilusis">
-      <a href="parduotuvė.html">Parduotuvė</a>
+      <a href="shop.html">Parduotuvė</a>
       <a href="#productos">Produktai</a>
       <a href="#apps">Programėlės</a>
       <a href="support.html">Pagalba</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="krepšelis.html">Krepšelis</a>
-      <a href="sąskaitą.html">Paskyra</a>
+      <a href="cart.html">Krepšelis</a>
+      <a href="account.html">Paskyra</a>
     </div>
   </div>
 
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Belaidės ausinės su triukšmo slopinimu, įtraukiančiu garsu ir itin greito įkrovimo dėklu.</p>
           <div class="card-buttons">
             <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Sužinoti daugiau</a>
-            <a href="comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Pirkti</a>
+            <a href="buy-headphones/lixbuds-one/index.html" class="btn btn-primary">Pirkti</a>
           </div>
         </article>
 
@@ -244,7 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Peržiūrėti ir pirkti</h3>
         <ul>
-          <li><a href="parduotuvė.html">Parduotuvė</a></li>
+          <li><a href="shop.html">Parduotuvė</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Programėlės</a></li>
           <li><a href="support.html">Pagalba</a></li>
@@ -265,15 +265,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Paskyra</h3>
         <ul>
           <li><a href="../track.html">Užsakymai</a></li>
-          <li><a href="sąskaitą.html">Mano paskyra</a></li>
-          <li><a href="sąskaitą.html">Kuponai</a></li>
+          <li><a href="account.html">Mano paskyra</a></li>
+          <li><a href="account.html">Kuponai</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Apie Lixby</h3>
         <ul>
-          <li><a href="apie.html">Apie mus</a></li>
+          <li><a href="about.html">Apie mus</a></li>
           <li><a href="support.html">Garantija</a></li>
           <li><a href="#">Renginiai</a></li>
           <li><a href="support.html">Kontaktai</a></li>
@@ -363,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `parduotuvė.html?q=${encodeURIComponent(query)}` : "parduotuvė.html";
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
         window.location.href = url;
       });
     }
@@ -374,7 +374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `parduotuvė.html?q=${encodeURIComponent(query)}` : "parduotuvė.html";
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
         window.location.href = url;
       });
     }
@@ -506,7 +506,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "krepšelis.html";
+        window.location.href = "cart.html";
       });
     });
   </script>

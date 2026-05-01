@@ -101,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Κύρια">
-        <a href="tienda.html" class="nav-link">Κατάστημα</a>
+        <a href="shop.html" class="nav-link">Κατάστημα</a>
         <a href="#productos" class="nav-link">Προϊόντα</a>
         <a href="#apps" class="nav-link">Εφαρμογές</a>
         <a href="support.html" class="nav-link">Υποστήριξη</a>
@@ -113,7 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="shop.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -123,10 +123,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Αναζήτηση προϊόντος"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Καλάθι">
+        <a href="cart.html" class="nav-icon-link" aria-label="Καλάθι">
           <img src="images/Bolsa.png" alt="Καλάθι">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Λογαριασμός">
+        <a href="account.html" class="nav-icon-link" aria-label="Λογαριασμός">
           <img src="images/cuenta.png" alt="Λογαριασμός">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Μενού" aria-controls="navMobilePanel" aria-expanded="false">
@@ -141,7 +141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -156,14 +156,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Κύρια κινητής">
-      <a href="tienda.html">Κατάστημα</a>
+      <a href="shop.html">Κατάστημα</a>
       <a href="#productos">Προϊόντα</a>
       <a href="#apps">Εφαρμογές</a>
       <a href="support.html">Υποστήριξη</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Καλάθι</a>
-      <a href="cuenta.html">Λογαριασμός</a>
+      <a href="cart.html">Καλάθι</a>
+      <a href="account.html">Λογαριασμός</a>
     </div>
   </div>
 
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Ασύρματα ακουστικά με ακύρωση θορύβου, καθηλωτικό ήχο και θήκη ταχείας φόρτισης.</p>
           <div class="card-buttons">
             <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Μάθετε περισσότερα</a>
-            <a href="comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Αγορά</a>
+            <a href="buy-headphones/lixbuds-one/index.html" class="btn btn-primary">Αγορά</a>
           </div>
         </article>
 
@@ -244,7 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Προβολή και αγορά</h3>
         <ul>
-          <li><a href="tienda.html">Κατάστημα</a></li>
+          <li><a href="shop.html">Κατάστημα</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Εφαρμογές</a></li>
           <li><a href="support.html">Υποστήριξη</a></li>
@@ -265,8 +265,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Λογαριασμός</h3>
         <ul>
           <li><a href="../track.html">Παραγγελίες</a></li>
-          <li><a href="cuenta.html">Ο λογαριασμός μου</a></li>
-          <li><a href="cuenta.html">Κουπόνια</a></li>
+          <li><a href="account.html">Ο λογαριασμός μου</a></li>
+          <li><a href="account.html">Κουπόνια</a></li>
         </ul>
       </section>
 
@@ -363,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
         window.location.href = url;
       });
     }
@@ -374,7 +374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
         window.location.href = url;
       });
     }
@@ -506,7 +506,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cesta.html";
+        window.location.href = "cart.html";
       });
     });
   </script>

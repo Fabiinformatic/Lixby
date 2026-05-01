@@ -1,48 +1,138 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html class="nojs en-us lixby consumer eu en" lang="en-US">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-<!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/en/shop">
-  <link rel="alternate" href="https://www.lixby.es/bg/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/obchod" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/tienda" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/speichern" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/tienda" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/shop" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/tienda" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/tienda" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/tienda" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/magasin" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/tienda" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/tienda" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/tienda" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/negozio" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/parduotuv%C4%97" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/tienda" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/tienda" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/tienda" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/tienda" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/loja" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/tienda" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/tienda" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/tienda" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/tienda" hreflang="sv-SE">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Store | Lixby</title>
-  <meta name="description" content="Official Lixby store. Discover LixBuds One and Lixney.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
+<script>
+window.LIXBY_CONFIG = {
+    metadata: {
+        environment: "production",
+        region: "eu",
+        country: "ES",
+        locale: "en-us",
+        brand: "Lixby",
+        page: "store",
+        referer: document.referrer
+    },
+    config: {
+        pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
+        app: "com.lixby.web",
+        sendPageViewData: true,
+        sendErrors: true,
+        performanceTracking: true,
+        delay: 300
+    }
+};
+
+window.LIXBY_CONFIG.preLoadErrors = [];
+window.addEventListener("error", e => {
+    window.LIXBY_CONFIG.preLoadErrors.push(e);
+});
+</script>
+
+<script>
+document.addEventListener('readystatechange', () => {
+    if (document.readyState === "interactive" && window.IntersectionObserver) {
+        let lastVisibleTime = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lastVisibleTime = performance.now();
+                }
+            });
+
+            observer.disconnect();
+
+            window.dispatchEvent(new CustomEvent("lixbyPerformance", {
+                detail: {
+                    type: "viewportLoad",
+                    time: lastVisibleTime
+                }
+            }));
+        });
+
+        document.querySelectorAll("*").forEach(el => observer.observe(el));
+    }
+});
+</script>
+
+<script>
+(function () {
+    try {
+        const { app, pageViewId } = window.LIXBY_CONFIG.config;
+        const url = new URL(window.location);
+        const cleanPath = url.pathname.split('%')[0];
+
+        const trackingURL = `https://lixby.es/api/track?app=${app}&id=${pageViewId}&url=${url.origin + cleanPath}`;
+
+        const img = new Image();
+        img.src = trackingURL;
+
+    } catch (e) {
+        console.error(e);
+    }
+})();
+</script>
+
+<noscript>
+    <img src="https://lixby.es/api/track?nojs=true" width="1" height="1">
+</noscript>
+
+<script>
+(function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');
+</script>
+
+<link rel="canonical" href="https://lixby.es/en/shop">
+
+<link rel="alternate" href="https://lixby.es/bg/shop" hreflang="bg-BG">
+<link rel="alternate" href="https://lixby.es/cs/shop" hreflang="cs-CZ">
+<link rel="alternate" href="https://lixby.es/da/shop" hreflang="da-DK">
+<link rel="alternate" href="https://lixby.es/de/shop" hreflang="de-DE">
+<link rel="alternate" href="https://lixby.es/el/shop" hreflang="el-GR">
+<link rel="alternate" href="https://lixby.es/en/shop" hreflang="en-US">
+<link rel="alternate" href="https://lixby.es/es/tienda" hreflang="es-ES">
+<link rel="alternate" href="https://lixby.es/et/shop" hreflang="et-EE">
+<link rel="alternate" href="https://lixby.es/fi/shop" hreflang="fi-FI">
+<link rel="alternate" href="https://lixby.es/fr/shop" hreflang="fr-FR">
+<link rel="alternate" href="https://lixby.es/ga/shop" hreflang="ga-IE">
+<link rel="alternate" href="https://lixby.es/hr/shop" hreflang="hr-HR">
+<link rel="alternate" href="https://lixby.es/hu/shop" hreflang="hu-HU">
+<link rel="alternate" href="https://lixby.es/it/shop" hreflang="it-IT">
+<link rel="alternate" href="https://lixby.es/lt/shop" hreflang="lt-LT">
+<link rel="alternate" href="https://lixby.es/lv/shop" hreflang="lv-LV">
+<link rel="alternate" href="https://lixby.es/mt/shop" hreflang="mt-MT">
+<link rel="alternate" href="https://lixby.es/nl/shop" hreflang="nl-NL">
+<link rel="alternate" href="https://lixby.es/pl/shop" hreflang="pl-PL">
+<link rel="alternate" href="https://lixby.es/pt/shop" hreflang="pt-PT">
+<link rel="alternate" href="https://lixby.es/ro/shop" hreflang="ro-RO">
+<link rel="alternate" href="https://lixby.es/sk/shop" hreflang="sk-SK">
+<link rel="alternate" href="https://lixby.es/sl/shop" hreflang="sl-SI">
+<link rel="alternate" href="https://lixby.es/sv/shop" hreflang="sv-SE">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Store | Lixby</title>
+<meta name="description" content="Lixby official store. Discover LixBuds One and Lixney.">
+
+<link rel="preconnect" href="https://lixby.es">
+<link rel="dns-prefetch" href="https://lixby.es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<style>
     body.shop-page {
       background: #f5f5f7;
     }
@@ -227,18 +317,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .shop-cards { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": ["https://github.com/lixby"]
-    }
-  </script>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lixby",
+  "url": "https://lixby.es",
+  "logo": "https://lixby.es/logo.png",
+  "sameAs": ["https://github.com/lixby"]
+}
+</script>
+
+<script>
+window.LIXBY_UI = {
+    theme: "light",
+    animations: true,
+    version: "1.0.0"
+};
+</script>
+
+<script>
+document.documentElement.classList.replace("nojs", "js");
+</script>
+
 </head>
 <body class="shop-page">
 <!-- Google Tag Manager (noscript) -->
@@ -251,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="store.html" class="nav-link">Store</a>
+        <a href="shop.html" class="nav-link">Store</a>
         <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
         <a href="pages/support.html" class="nav-link">Support</a>
@@ -272,7 +377,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <section class="shop-categories" aria-label="Categories">
-      <a class="shop-category" data-searchable="lixbuds one headphones earbuds mixmax" href="pages/products/lixbuds-one.html">
+      <a class="shop-category" data-searchable="lixbuds one earphones headphones mixmax" href="pages/products/lixbuds-one.html">
         <div class="shop-category-icon">
           <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
@@ -287,13 +392,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>The latest.</strong> <span>Check out what's new.</span></h3>
+      <h3><strong>The latest.</strong> <span>Check out the news.</span></h3>
       <div class="shop-cards">
-        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one headphones earbuds mixmax" href="pages/products/lixbuds-one.html">
+        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one earphones headphones mixmax" href="pages/products/lixbuds-one.html">
           <p class="shop-card-eyebrow">Available now</p>
           <h4>LixBuds One</h4>
-          <p>Premium sound with smart noise cancellation.</p>
-          <small>From 99 EUR</small>
+          <p>Premium sound with intelligent noise cancellation.</p>
+          <small>Starting at 99 EUR</small>
           <div class="shop-card-media">
             <img src="images/lixbuds-one-white.png" alt="LixBuds One headphones">
           </div>
@@ -315,9 +420,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Shop</h3>
+        <h3>View and buy</h3>
         <ul>
-          <li><a href="store.html">Store</a></li>
+          <li><a href="shop.html">Store</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="index.html#apps">Apps</a></li>
           <li><a href="pages/support.html">Support</a></li>
@@ -327,9 +432,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Support</h3>
         <ul>
-          <li><a href="pages/support.html">Support home</a></li>
-          <li><a href="pages/support.html#faq">Online store FAQs</a></li>
-          <li><a href="pages/support.html">Warranty information</a></li>
+          <li><a href="pages/support.html">Support home page</a></li>
+          <li><a href="pages/support.html#faq">Online Store FAQs</a></li>
+          <li><a href="pages/support.html">Warranty Information</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
@@ -358,7 +463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
         <a href="pages/legal/privacy.html">Privacy policy</a>
-        <a href="pages/legal/cookies.html">Cookie use</a>
+        <a href="pages/legal/cookies.html">Cookie policy</a>
         <a href="pages/legal/terms.html">Terms of use</a>
         <a href="pages/support.html">Sales and refunds</a>
         <a href="pages/legal/legal-notice.html">Legal notices</a>
@@ -403,7 +508,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 
   <!-- =====================================================
-       LIXBY MINIBOT (ENGLISH VERSION)
+       LIXBOT MINIBOT
   ====================================================== -->
   <style>
     #lixbot-toggle {
@@ -539,11 +644,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="lixbot-messages"></div>
 
     <div id="lixbot-cats">
-      <button class="lixbot-cat" data-cat="shipping">📦 Shipping</button>
-      <button class="lixbot-cat" data-cat="returns">↩️ Returns</button>
-      <button class="lixbot-cat" data-cat="payments">💳 Payments</button>
-      <button class="lixbot-cat" data-cat="orders">🛒 Orders</button>
-      <button class="lixbot-cat" data-cat="products">🎧 Products</button>
+      <button class="lixbot-cat" data-cat="envios">📦 Shipping</button>
+      <button class="lixbot-cat" data-cat="devoluciones">↩️ Returns</button>
+      <button class="lixbot-cat" data-cat="pagos">💳 Payments</button>
+      <button class="lixbot-cat" data-cat="pedidos">🛒 Orders</button>
+      <button class="lixbot-cat" data-cat="productos">🎧 Products</button>
       <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
     </div>
 
@@ -559,57 +664,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>
   (function () {
     var KB = {
-      shipping: { items: [
+      envios: { items: [
         { q: 'How long does standard shipping take?',
-          a: 'Standard shipping takes 5-10 business days. You will receive a tracking number by email as soon as it leaves our warehouse.' },
+          a: 'Standard shipping takes between 5 and 10 business days. You will receive an email with tracking number as soon as it leaves our warehouse.' },
         { q: 'Do you offer express shipping?',
-          a: 'Yes, express shipping in 24-48h for orders placed before 1:00 PM (business days). Available in mainland Spain. Select it at checkout.' },
+          a: 'Yes, express shipping within 24-48 hours for orders before 1:00 PM (business days). Available in the peninsula. Select it at checkout.' },
         { q: 'Is shipping free?',
           a: 'Shipping is completely free.' },
         { q: 'Do you ship to the Canary and Balearic Islands?',
-          a: 'Yes, we ship nationwide. Delivery times for the Canary Islands, Balearic Islands, Ceuta and Melilla may be 5-8 business days.' },
+          a: 'Yes, we ship nationwide. Delivery times for the Canary Islands, Balearic Islands, Ceuta and Melilla can be 5 to 8 business days.' },
         { q: 'Do you ship outside Spain?',
-          a: 'Yes, we ship throughout the European Union. Cost and delivery time are automatically calculated when you enter your address.' }
+          a: 'Yes, we ship throughout the European Union. The cost and delivery time are automatically calculated when you enter your address.' }
       ]},
-      returns: { items: [
+      devoluciones: { items: [
         { q: 'How many days do I have to return?',
-          a: 'You have 30 calendar days from receipt to request a return or exchange, no questions asked.' },
-        { q: 'How do I start a return?',
-          a: 'Go to "My Account → My Orders", select the item and click "Request return". You will receive a free shipping label within 24 hours.' },
+          a: 'You have 30 calendar days from receipt to request a return or exchange, without needing to provide a reason.' },
+        { q: 'How do I initiate a return?',
+          a: 'Go to "My account → My orders", select the item and click "Request return". You will receive a free shipping label within 24 hours.' },
         { q: 'In what condition should I return the item?',
-          a: 'The product must be unused, with all tags and original packaging. We do not accept items with signs of wear.' },
-        { q: 'When will I receive my refund?',
+          a: 'The product must be unused, with all tags and in its original packaging. We do not accept items with signs of wear.' },
+        { q: 'When will I receive the refund?',
           a: 'After receiving and inspecting the item (1-2 days), the refund is processed within 5-7 business days to the same payment method.' },
         { q: 'Can I exchange size or color?',
-          a: 'Yes, we manage exchanges if stock is available. Request it the same way as a return and indicate "exchange" as the reason. No additional cost.' }
+          a: 'Yes, we handle exchanges if in stock. Request it the same way as a return and indicate "exchange" as the reason. No additional cost.' }
       ]},
-      payments: { items: [
+      pagos: { items: [
         { q: 'What payment methods do you accept?',
           a: 'We accept credit card (Visa, Mastercard, Amex), PayPal, Bizum and bank transfer. All payments are secure with SSL encryption.' },
         { q: 'Do prices include VAT?',
-          a: 'Yes, all prices in the store include VAT. No surprises at checkout.' },
-        { q: 'Do you have discounts or promo codes?',
+          a: 'Yes, all prices in the store already include VAT. No surprises at checkout.' },
+        { q: 'Do you have discounts or promotional codes?',
           a: 'We publish offers in the "Offers" section and send exclusive codes to the newsletter. Subscribe so you don\'t miss any!' },
         { q: 'Can I pay in installments?',
-          a: 'No, only one-time payments are available.' },
+          a: 'Only one-time payments are available' },
         { q: 'Do you offer gift cards?',
-          a: 'Yes, gift cards from €10 to €200. They are delivered instantly by email and are valid for 1 year.' }
+          a: 'Yes, gift cards from €10 to €200. They are delivered by email instantly and are valid for 1 year.' }
       ]},
-      orders: { items: [
-        { q: 'Where can I see my order status?',
-          a: 'In "My Account → My Orders" you can see real-time status. You will also receive automatic emails at each status change.' },
+      pedidos: { items: [
+        { q: 'Where can I see the status of my order?',
+          a: 'In "My account → My orders" you can see the status in real time. You will also receive automatic emails at each status change.' },
         { q: 'How do I track my order?',
-          a: 'When the order leaves the warehouse, you will receive an email with the tracking number and a direct link to the carrier.' },
+          a: 'When the order leaves the warehouse you will receive an email with the tracking number and direct link to the carrier.' },
         { q: 'Can I modify or cancel my order?',
           a: 'You can cancel or modify it within the first 2 hours. Write to us at lixbyinfo@gmail.com as soon as possible.' },
         { q: 'What if it arrives damaged?',
           a: 'Send us a photo of the item and packaging to lixbyinfo@gmail.com within 48 hours. We will send a replacement or issue a full refund at no cost.' },
         { q: 'Can I add products to an existing order?',
-          a: 'It is not possible to add products to an order in progress. If it hasn\'t been prepared yet, you can cancel it and place a new one.' }
+          a: 'It is not possible to add products to an order in progress. If it has not yet been prepared you can cancel it and place a new one.' }
       ]},
-      products: { items: [
+      productos: { items: [
         { q: 'What is LixBuds One?',
-          a: 'LixBuds One are our premium headphones with smart noise cancellation. Available from €99.' },
+          a: 'LixBuds One are our premium headphones with intelligent noise cancellation. Available from €99.' },
         { q: 'What is the Lixney app?',
           a: 'Lixney is our free app to save, plan and understand your personal expenses. Available on iOS and Android.' },
         { q: 'Is there a warranty on products?',
@@ -617,17 +722,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         { q: 'Are LixBuds One compatible with all devices?',
           a: 'Yes, LixBuds One are compatible with any device with Bluetooth 5.0 or higher: iOS, Android, Windows and macOS.' },
         { q: 'When do new products arrive?',
-          a: 'We announce new products in our newsletter and social media. Subscribe to be the first to know.' }
+          a: 'We announce news in our newsletter and social networks. Subscribe to be the first to know.' }
       ]},
       faq: { items: [
         { q: 'Do I need an account to buy?',
-          a: 'No, you can checkout as a guest. With an account you can track orders, save addresses and view your history easily.' },
+          a: 'No, you can buy as a guest. With an account you can track orders, save addresses and view your history easily.' },
         { q: 'Is it safe to buy from Lixby?',
-          a: 'Yes. We use SSL encryption throughout the site and do not store card data. Payments are processed with PCI-DSS certified platforms.' },
+          a: 'Yes. We use SSL encryption throughout the website and do not store card data. Payments are processed with PCI-DSS certified platforms.' },
         { q: 'Do you have a physical store?',
-          a: 'We are currently 100% online. You can contact us via chat, email or phone during business hours.' },
+          a: 'We are currently 100% online. You can contact us by chat, email or phone during our business hours.' },
         { q: 'What are your business hours?',
-          a: 'Monday to Friday from 9:00 AM to 6:00 PM. We respond to emails within 24 hours. This assistant is available 24/7.' },
+          a: 'Monday through Friday from 9:00 AM to 6:00 PM. We respond to emails within 24 hours. This assistant is available 24/7.' },
         { q: 'How do I contact Lixby?',
           a: 'Write to us at lixbyinfo@gmail.com or use the form at pages/support.html. We respond within 24 hours.' }
       ]}
@@ -702,7 +807,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!results.length) {
         var p = document.createElement('p');
         p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
-        p.textContent = 'No results. Try different words.';
+        p.textContent = 'No results. Try other words.';
         qsDiv.appendChild(p);
         return;
       }
@@ -718,7 +823,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   })();
   </script>
-  <!-- END LIXBY MINIBOT -->
+  <!-- END LIXBOT MINIBOT -->
 
 </body>
 </html>

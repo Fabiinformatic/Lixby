@@ -10,11 +10,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <link rel="canonical" href="https://www.lixby.es/en/cart">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart | Lixby</title>
-  <meta name="robots" content="noindex, nofollow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
+  <title>Shopping cart | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -189,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="tienda.html" class="nav-link">Store</a>
+        <a href="shop.html" class="nav-link">Store</a>
         <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
         <a href="pages/support.html" class="nav-link">Support</a>
@@ -198,7 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="cart.html" class="nav-icon-link" aria-label="Cart">
           <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -208,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="container cart-page">
     <section class="cart-head">
       <h1>Your cart</h1>
-      <p>Review your products before completing your purchase.</p>
+      <p>Review your products before checking out.</p>
     </section>
 
     <section class="cart-layout">
@@ -222,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cart-actions">
           <div id="giftCardSection" style="margin-bottom:12px">
             <div style="display:flex;gap:8px">
-              <input type="text" id="giftCodeInput" placeholder="Gift card code (LIXBY-XXXX-XXXX)"
+              <input type="text" id="giftCodeInput" placeholder="Gift code (LIXBY-XXXX-XXXX)"
                 style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.9rem;outline:none">
               <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
                 Apply
@@ -235,14 +253,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </aside>
     </section>
-
-    <!-- Test button - REMOVE IN PRODUCTION -->
-    <div style="margin-top: 32px; padding: 16px; background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 14px; text-align: center;">
-      <p style="margin: 0 0 10px; font-size: 0.85rem; color: #92400e; font-weight: 700;">🧪 TEST MODE — Remove before publishing</p>
-      <button id="testBtn" type="button" class="btn btn-secondary" style="font-size:0.9rem">
-        Buy test product (1€)
-      </button>
-    </div>
   </main>
 
   <script type="module">
@@ -252,12 +262,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
     const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
-    const SUCCESS_URL = new URL("thank-you.html", window.location.href).toString();
+    const SUCCESS_URL = new URL("thankyou.html", window.location.href).toString();
     const CANCEL_URL = window.location.href;
 
     const PRICES = {
-      negro: "price_1T9gzS4JmdPA7hphzMXa8s7T",
-      blanco: "price_1TD6xx4JmdPA7hphNSWAJLJM",
+      black: "price_1T9gzS4JmdPA7hphzMXa8s7T",
+      white: "price_1TD6xx4JmdPA7hphNSWAJLJM",
       lixsafe: "price_1TD70q4JmdPA7hphQ9KJNOXV",
       lixsafe_plus: "price_1TD71L4JmdPA7hphdYbs0z0i"
     };
@@ -325,7 +335,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function buildLineId(entry) {
       const id = entry.id || "item";
       const color = entry.color || "—";
-      const plan = entry.insurancePlan || "No LixSafe";
+      const plan = entry.insurancePlan || "Without LixSafe";
       const price = Number(entry.insurancePrice) || 0;
       return `${id}|${color}|${plan}|${price}`;
     }
@@ -365,8 +375,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function normalizeColorKey(value) {
       if (!value) return null;
       const normalized = String(value).toLowerCase();
-      if (normalized.includes("negro") || normalized.includes("black")) return "negro";
-      if (normalized.includes("blanco") || normalized.includes("white")) return "blanco";
+      if (normalized.includes("negro") || normalized.includes("black")) return "black";
+      if (normalized.includes("blanco") || normalized.includes("white")) return "white";
       return null;
     }
 
@@ -375,13 +385,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         normalizeColorKey(item.color) ||
         normalizeColorKey(item.name) ||
         normalizeColorKey(item.id);
-      return PRICES[colorKey || "blanco"];
+      return PRICES[colorKey || "white"];
     }
 
     function resolveInsurancePriceId(plan) {
       if (!plan) return null;
       const normalized = String(plan).toLowerCase().trim();
-      if (normalized === "no lixsafe" || normalized === "sin seguro") return null;
+      if (normalized === "sin lixsafe" || normalized === "without lixsafe" || normalized === "sin seguro") return null;
       if (normalized.includes("lixsafe+") || normalized.includes("plus")) {
         return PRICES.lixsafe_plus;
       }
@@ -433,7 +443,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           qty,
           unitPrice,
           lineTotal,
-          insurancePlan: entry.insurancePlan || "No LixSafe",
+          insurancePlan: entry.insurancePlan || "Without LixSafe",
           insurancePrice
         };
       });
@@ -472,7 +482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="tienda.html">Go to store</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="shop.html">Go to store</a>.</p>`;
         subtotalEl.textContent = money(0);
         totalEl.textContent = money(0);
         return;
@@ -495,9 +505,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
 
-        const insurancePlan = entry.insurancePlan || "No LixSafe";
+        const insurancePlan = entry.insurancePlan || "Without LixSafe";
         const color = entry.color || "—";
-        const insuranceLabel = insurancePlan === "No LixSafe" ? "No LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const insuranceLabel = insurancePlan === "Without LixSafe" ? "Without LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
         const baseName = entry.name || product.name || "Product";
         let displayName = baseName;
         if (color !== "—") {
@@ -590,7 +600,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             msg.style.color = "#458500";
             msg.textContent = `✅ Gift card applied — ${data.balance
               .toFixed(2)
-              .replace(".", ",")} € balance remaining`;
+              .replace(".", ",")} € balance`;
             msg.style.display = "block";
             renderCart();
           }
@@ -617,7 +627,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       checkoutBtn.textContent = "Processing...";
 
       if (!authReady) {
-        alert("Loading session. Please try again in a few seconds.");
+        alert("Loading session. Try again in a few seconds.");
         checkoutBtn.disabled = false;
         checkoutBtn.textContent = originalCheckoutLabel;
         return;
@@ -626,7 +636,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!isAuthenticated) {
         checkoutBtn.disabled = false;
         checkoutBtn.textContent = originalCheckoutLabel;
-        window.location.href = "sign-in.html";
+        window.location.href = "login.html";
         return;
       }
 
@@ -658,7 +668,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       try {
-        // Read saved profile
         const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
         const customerName = profile.firstName
           ? `${profile.firstName} ${profile.lastName || ""}`.trim()
@@ -709,7 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             orderId: 'TEST-' + Math.random().toString(36).slice(2, 8).toUpperCase(),
-            successUrl: window.location.origin + '/en/thank-you.html',
+            successUrl: window.location.origin + '/en/thankyou.html',
             cancelUrl: window.location.href,
             items: [{ priceId: 'price_1TDPUo4JmdPA7hphOnNbvKJz', quantity: 1 }]
           })
@@ -719,7 +728,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       } catch (e) {
         alert('Error starting test payment.');
         btn.disabled = false;
-        btn.textContent = 'Buy test product (0,01 €)';
       }
     });
   </script>

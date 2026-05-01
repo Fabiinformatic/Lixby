@@ -8,10 +8,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Tracking | Lixby</title>
-  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
+  <title>Order tracking | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -472,7 +490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="tienda.html" class="nav-link">Store</a>
+        <a href="shop.html" class="nav-link">Store</a>
         <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
         <a href="support.html" class="nav-link">Support</a>
@@ -484,7 +502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="shop.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -494,10 +512,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Search product"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cart">
+        <a href="cart.html" class="nav-icon-link" aria-label="Cart">
           <img src="images/Bolsa.png" alt="Cart">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
@@ -512,7 +530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -527,14 +545,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Mobile main">
-      <a href="tienda.html">Store</a>
+      <a href="shop.html">Store</a>
       <a href="index.html#productos">Products</a>
       <a href="index.html#apps">Apps</a>
       <a href="support.html">Support</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cart</a>
-      <a href="cuenta.html">Account</a>
+      <a href="cart.html">Cart</a>
+      <a href="account.html">Account</a>
     </div>
   </div>
 
@@ -543,13 +561,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Search -->
   <div class="search-card">
     <h1>Order tracking</h1>
-    <p>Enter your order number to check your shipping status.</p>
+    <p>Enter your order number to see the status of your shipment.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
         <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Order number">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">Track</button>
+      <button class="btn-search" id="searchBtn" type="button">Check</button>
     </div>
   </div>
 
@@ -569,14 +587,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Order not found</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
       We couldn't find any order with that number.<br>
-      Please check that the number is correct — you'll find it in your confirmation email.
+      Check that the number is correct — you'll find it in the confirmation email.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:lixbyinfo@gmail.com" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
         Contact support
       </a>
-      <a href="en/tienda.html" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Back to shop
+      <a href="shop.html" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Back to store
       </a>
     </div>
   </div>
@@ -601,7 +619,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Progress -->
     <div class="progress-section">
-      <h3>Shipping status</h3>
+      <h3>Shipment status</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
@@ -652,7 +670,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Actions -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="en/tienda.html" class="btn-primary">Continue shopping</a>
+      <a href="shop.html" class="btn-primary">Keep shopping</a>
       <a href="mailto:lixbyinfo@gmail.com" class="btn-secondary">Contact support</a>
     </div>
   </div>
@@ -661,7 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>View & buy</h3>
+        <h3>View and buy</h3>
         <ul>
           <li><a href="tienda.html">Store</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
@@ -676,7 +694,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="support.html">Support home</a></li>
           <li><a href="support.html#faq">Online store FAQs</a></li>
           <li><a href="support.html">Warranty information</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email CEO</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
 
@@ -704,10 +722,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
         <a href="pages/legal/privacy.html">Privacy policy</a>
-        <a href="pages/legal/cookies.html">Cookie policy</a>
+        <a href="pages/legal/cookies.html">Cookie usage</a>
         <a href="pages/legal/terms.html">Terms of use</a>
-        <a href="support.html">Sales & refunds</a>
-        <a href="pages/legal/legal-notice.html">Legal notice</a>
+        <a href="support.html">Sales and refunds</a>
+        <a href="pages/legal/legal-notice.html">Legal notices</a>
       </div>
     </div>
   </footer>
@@ -716,11 +734,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Received',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Preparing', icon: '🔧' },
-    { key: 'Enviado',           label: 'Shipped',     icon: '🚚' },
-    { key: 'En reparto',        label: 'Out for delivery',  icon: '📍' },
-    { key: 'Entregado',         label: 'Delivered',   icon: '✅' }
+    { key: 'Order received',   label: 'Received',   icon: '📦' },
+    { key: 'Preparing order', label: 'Preparing', icon: '🔧' },
+    { key: 'Shipped',           label: 'Shipped',     icon: '🚚' },
+    { key: 'Out for delivery',        label: 'Out for delivery',  icon: '📍' },
+    { key: 'Delivered',         label: 'Delivered',   icon: '✅' }
   ];
 
   function money(v) {
@@ -781,7 +799,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     // Progress
-    renderProgress(data.status || 'Pedido recibido');
+    renderProgress(data.status || 'Order received');
 
     // Tracking number
     if (data.trackingNumber) {
@@ -875,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 
-  // Auto-search if orderId comes in URL
+  // Auto-search if orderId is in the URL
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const autoId = params.get('orderId') || params.get('id');
