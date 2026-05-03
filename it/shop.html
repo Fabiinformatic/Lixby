@@ -1,48 +1,138 @@
 <!DOCTYPE html>
-<html lang="it">
+<html class="nojs it-it lixby consumer eu it" lang="it-IT">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-<!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/it/shop">
-  <link rel="alternate" href="https://www.lixby.es/bg/shop" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/shop" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/shop" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/shop" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/shop" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/shop" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/tienda" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/shop" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/shop" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/shop" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/shop" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/shop" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/shop" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/shop" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/shop" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/shop" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/shop" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/shop" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/shop" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/shop" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/shop" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/shop" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/shop" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/shop" hreflang="sv-SE">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Negozio | Lixby</title>
-  <meta name="description" content="Negozio ufficiale di Lixby. Scopri LixBuds One e Lixney.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+window.LIXBY_CONFIG = {
+    metadata: {
+        environment: "production",
+        region: "eu",
+        country: "IT",
+        locale: "it-it",
+        brand: "Lixby",
+        page: "store",
+        referer: document.referrer
+    },
+    config: {
+        pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
+        app: "com.lixby.web",
+        sendPageViewData: true,
+        sendErrors: true,
+        performanceTracking: true,
+        delay: 300
+    }
+};
+
+window.LIXBY_CONFIG.preLoadErrors = [];
+window.addEventListener("error", e => {
+    window.LIXBY_CONFIG.preLoadErrors.push(e);
+});
+</script>
+
+<script>
+document.addEventListener('readystatechange', () => {
+    if (document.readyState === "interactive" && window.IntersectionObserver) {
+        let lastVisibleTime = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lastVisibleTime = performance.now();
+                }
+            });
+
+            observer.disconnect();
+
+            window.dispatchEvent(new CustomEvent("lixbyPerformance", {
+                detail: {
+                    type: "viewportLoad",
+                    time: lastVisibleTime
+                }
+            }));
+        });
+
+        document.querySelectorAll("*").forEach(el => observer.observe(el));
+    }
+});
+</script>
+
+<script>
+(function () {
+    try {
+        const { app, pageViewId } = window.LIXBY_CONFIG.config;
+        const url = new URL(window.location);
+        const cleanPath = url.pathname.split('%')[0];
+
+        const trackingURL = `https://lixby.it/api/track?app=${app}&id=${pageViewId}&url=${url.origin + cleanPath}`;
+
+        const img = new Image();
+        img.src = trackingURL;
+
+    } catch (e) {
+        console.error(e);
+    }
+})();
+</script>
+
+<noscript>
+    <img src="https://lixby.it/api/track?nojs=true" width="1" height="1">
+</noscript>
+
+<script>
+(function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');
+</script>
+
+<link rel="canonical" href="https://lixby.it/it/negozio">
+
+<link rel="alternate" href="https://lixby.it/bg/shop" hreflang="bg-BG">
+<link rel="alternate" href="https://lixby.it/cs/shop" hreflang="cs-CZ">
+<link rel="alternate" href="https://lixby.it/da/shop" hreflang="da-DK">
+<link rel="alternate" href="https://lixby.it/de/shop" hreflang="de-DE">
+<link rel="alternate" href="https://lixby.it/el/shop" hreflang="el-GR">
+<link rel="alternate" href="https://lixby.it/en/shop" hreflang="en-US">
+<link rel="alternate" href="https://lixby.it/it/negozio" hreflang="it-IT">
+<link rel="alternate" href="https://lixby.it/et/shop" hreflang="et-EE">
+<link rel="alternate" href="https://lixby.it/fi/shop" hreflang="fi-FI">
+<link rel="alternate" href="https://lixby.it/fr/shop" hreflang="fr-FR">
+<link rel="alternate" href="https://lixby.it/ga/shop" hreflang="ga-IE">
+<link rel="alternate" href="https://lixby.it/hr/shop" hreflang="hr-HR">
+<link rel="alternate" href="https://lixby.it/hu/shop" hreflang="hu-HU">
+<link rel="alternate" href="https://lixby.it/es/shop" hreflang="es-ES">
+<link rel="alternate" href="https://lixby.it/lt/shop" hreflang="lt-LT">
+<link rel="alternate" href="https://lixby.it/lv/shop" hreflang="lv-LV">
+<link rel="alternate" href="https://lixby.it/mt/shop" hreflang="mt-MT">
+<link rel="alternate" href="https://lixby.it/nl/shop" hreflang="nl-NL">
+<link rel="alternate" href="https://lixby.it/pl/shop" hreflang="pl-PL">
+<link rel="alternate" href="https://lixby.it/pt/shop" hreflang="pt-PT">
+<link rel="alternate" href="https://lixby.it/ro/shop" hreflang="ro-RO">
+<link rel="alternate" href="https://lixby.it/sk/shop" hreflang="sk-SK">
+<link rel="alternate" href="https://lixby.it/sl/shop" hreflang="sl-SI">
+<link rel="alternate" href="https://lixby.it/sv/shop" hreflang="sv-SE">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Negozio | Lixby</title>
+<meta name="description" content="Negozio ufficiale di Lixby. Scopri LixBuds One e Lixney.">
+
+<link rel="preconnect" href="https://lixby.it">
+<link rel="dns-prefetch" href="https://lixby.it">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
+
+<link rel="stylesheet" href="style.css">
+<style>
     body.shop-page {
       background: #f5f5f7;
     }
@@ -138,14 +228,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 20px;
     }
 
-    .shop-latest h3 strong {
-      color: #111827;
-    }
-
-    .shop-latest h3 span {
-      color: #6b7280;
-      font-weight: 600;
-    }
+    .shop-latest h3 strong { color: #111827; }
+    .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
     .shop-cards {
       display: grid;
@@ -199,9 +283,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .shop-card-media img {
-      width: min(88%, 480px);
+      width: min(85%, 320px);
       border-radius: 20px;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      object-fit: contain;
     }
 
     .shop-card-product {
@@ -214,46 +299,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-color: rgba(255, 255, 255, 0.15);
     }
 
-    .shop-card-app .shop-card-eyebrow {
-      color: #fbbf24;
-    }
+    .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
+    .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
 
-    .shop-card-app small {
-      color: rgba(255, 255, 255, 0.8);
+    .shop-card.card-white-solid {
+      background: #ffffff;
+      border-color: #ffffff;
     }
 
     @media (max-width: 980px) {
-      .shop-hero {
-        grid-template-columns: 1fr;
-      }
-
-      .shop-hero-side {
-        text-align: left;
-        justify-self: start;
-      }
+      .shop-hero { grid-template-columns: 1fr; }
+      .shop-hero-side { text-align: left; justify-self: start; }
     }
 
     @media (max-width: 760px) {
       .shop-categories,
-      .shop-cards {
-        grid-template-columns: 1fr;
-      }
+      .shop-cards { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
-    }
-  </script>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lixby",
+  "url": "https://lixby.it",
+  "logo": "https://lixby.it/logo.png",
+  "sameAs": ["https://github.com/lixby"]
+}
+</script>
+
+<script>
+window.LIXBY_UI = {
+    theme: "light",
+    animations: true,
+    version: "1.0.0"
+};
+</script>
+
+<script>
+document.documentElement.classList.replace("nojs", "js");
+</script>
+
 </head>
 <body class="shop-page">
 <!-- Google Tag Manager (noscript) -->
@@ -266,12 +356,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="shop.html" class="nav-link">Negozio</a>
-        <a href="index.html#productos" class="nav-link">Prodotti</a>
+        <a href="negozio.html" class="nav-link">Negozio</a>
+        <a href="index.html#prodotti" class="nav-link">Prodotti</a>
         <a href="index.html#apps" class="nav-link">App</a>
-        <a href="support.html" class="nav-link">Supporto</a>
+        <a href="pages/support.html" class="nav-link">Supporto</a>
       </nav>
-      <a href="index.html#productos" class="btn btn-primary nav-cta">Vedi catalogo</a>
+      <a href="index.html#prodotti" class="btn btn-primary nav-cta">Vedi catalogo</a>
     </div>
   </header>
 
@@ -280,8 +370,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>Negozio</h1>
       <div class="shop-hero-side">
         <h2>Il modo migliore per acquistare i tuoi prodotti preferiti.</h2>
-        <a href="support.html">Parla con un esperto</a>
-        <a href="support.html">Trova assistenza e supporto</a>
+        <a href="pages/support.html">Parla con uno specialista</a>
+        <a href="pages/support.html">Trova aiuto</a>
         <p id="shopSearchStatus"></p>
       </div>
     </section>
@@ -289,38 +379,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="shop-categories" aria-label="Categorie">
       <a class="shop-category" data-searchable="lixbuds one auricolari cuffie mixmax" href="pages/products/lixbuds-one.html">
         <div class="shop-category-icon">
-          <img src="images/lixbuds-product.jpg" alt="LixBuds One">
+          <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
       <a class="shop-category" data-searchable="lixney app finanza" href="pages/apps/lixney.html">
         <div class="shop-category-icon">
-          <img src="images/lixbuds-hero.jpg" alt="App Lixney">
+          <img src="images/lixney.png" alt="App Lixney">
         </div>
         <span>Lixney</span>
       </a>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>Le novità.</strong> <span>Scopri le ultime uscite.</span></h3>
+      <h3><strong>Le ultime novità.</strong> <span>Dai un'occhiata alle novità.</span></h3>
       <div class="shop-cards">
-        <a class="shop-card shop-card-product" data-searchable="lixbuds one auricolari cuffie mixmax" href="pages/products/lixbuds-one.html">
+        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one auricolari cuffie mixmax" href="pages/products/lixbuds-one.html">
           <p class="shop-card-eyebrow">Disponibile ora</p>
           <h4>LixBuds One</h4>
           <p>Suono premium con cancellazione intelligente del rumore.</p>
-          <small>Da 129 EUR</small>
+          <small>A partire da 99 EUR</small>
           <div class="shop-card-media">
-            <img src="images/lixbuds-product.jpg" alt="Auricolari LixBuds One">
+            <img src="images/lixbuds-one-white.png" alt="Auricolari LixBuds One">
           </div>
         </a>
 
         <a class="shop-card shop-card-app" data-searchable="lixney app finanza" href="pages/apps/lixney.html">
           <p class="shop-card-eyebrow">Nuova versione</p>
           <h4>Lixney</h4>
-          <p>La tua app per risparmiare, pianificare e gestire le spese.</p>
+          <p>La tua app per risparmiare, pianificare e capire le tue spese.</p>
           <small>Download gratuito</small>
           <div class="shop-card-media">
-            <img src="images/lixbuds-hero.jpg" alt="Applicazione Lixney">
+            <img src="images/lixney1.png" alt="Applicazione Lixney">
           </div>
         </a>
       </div>
@@ -330,21 +420,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Acquista</h3>
+        <h3>Vedi e acquista</h3>
         <ul>
-          <li><a href="#">Negozio</a></li>
+          <li><a href="negozio.html">Negozio</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="index.html#apps">App</a></li>
-          <li><a href="support.html">Supporto</a></li>
+          <li><a href="pages/support.html">Supporto</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Supporto</h3>
         <ul>
-          <li><a href="support.html">Pagina iniziale supporto</a></li>
-          <li><a href="support.html#faq">FAQ Negozio online</a></li>
-          <li><a href="support.html">Informazioni sulla Garanzia</a></li>
+          <li><a href="pages/support.html">Pagina iniziale del supporto</a></li>
+          <li><a href="pages/support.html#faq">FAQ Negozio online</a></li>
+          <li><a href="pages/support.html">Informazioni sulla Garanzia</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -352,19 +442,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="cart.html">Ordini</a></li>
-          <li><a href="account.html">Il mio account</a></li>
-          <li><a href="account.html">Coupon</a></li>
+          <li><a href="cesta.html">Ordini</a></li>
+          <li><a href="cuenta.html">Il mio account</a></li>
+          <li><a href="cuenta.html">Coupon</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Chi siamo</h3>
+        <h3>Informazioni su Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="support.html">Garanzia</a></li>
+          <li><a href="pages/support.html">Garanzia</a></li>
           <li><a href="#">Eventi</a></li>
-          <li><a href="support.html">Contatti</a></li>
+          <li><a href="pages/support.html">Contatti</a></li>
         </ul>
       </section>
     </div>
@@ -372,10 +462,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Privacy Policy</a>
-        <a href="pages/legal/cookies.html">Utilizzo dei cookie</a>
+        <a href="pages/legal/privacy.html">Informativa sulla privacy</a>
+        <a href="pages/legal/cookies.html">Uso dei cookie</a>
         <a href="pages/legal/terms.html">Condizioni d'uso</a>
-        <a href="support.html">Vendite e rimborsi</a>
+        <a href="pages/support.html">Vendite e rimborsi</a>
         <a href="pages/legal/legal-notice.html">Note legali</a>
       </div>
     </div>
@@ -390,7 +480,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const top = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = height > 0 ? (top / height) * 100 : 0;
-
       progressBar.style.width = progress + "%";
       nav.classList.toggle("nav-scrolled", top > 20);
     };
@@ -408,7 +497,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         item.style.display = match ? "" : "none";
         if (match) matches += 1;
       });
-
       if (statusEl) {
         if (matches > 0) {
           statusEl.textContent = `Risultati per: ${query}`;
@@ -418,6 +506,324 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
   </script>
+
+  <!-- =====================================================
+       MINIBOT LIXBY
+  ====================================================== -->
+  <style>
+    #lixbot-toggle {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #111827; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.25); z-index: 9999;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #lixbot-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 26px rgba(15,23,42,0.32); }
+    #lixbot-badge {
+      position: absolute; top: -2px; right: -2px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #ef4444; border: 2px solid #f5f5f7;
+    }
+    #lixbot-window {
+      position: fixed; bottom: 90px; right: 24px;
+      width: 348px; max-height: 520px;
+      background: #fff; border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 44px rgba(15,23,42,0.14);
+      display: flex; flex-direction: column;
+      overflow: hidden; z-index: 9998;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    #lixbot-window.lixbot-hidden { opacity: 0; pointer-events: none; transform: translateY(14px); }
+    #lixbot-header {
+      background: #111827; color: #fff;
+      padding: 14px 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .lixbot-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    #lixbot-header .lixbot-title { font-size: 13.5px; font-weight: 700; }
+    #lixbot-header .lixbot-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    #lixbot-close {
+      margin-left: auto; background: none; border: none;
+      color: rgba(255,255,255,0.55); cursor: pointer;
+      font-size: 17px; line-height: 1; padding: 2px 4px; transition: color 0.15s;
+    }
+    #lixbot-close:hover { color: #fff; }
+    #lixbot-messages {
+      flex: 1; overflow-y: auto; padding: 14px 14px 6px;
+      display: flex; flex-direction: column; gap: 10px; background: #f9fafb;
+    }
+    #lixbot-messages::-webkit-scrollbar { width: 4px; }
+    #lixbot-messages::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+    .lixbot-msg {
+      max-width: 87%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13.5px; line-height: 1.55;
+    }
+    .lixbot-msg.lixbot-bot {
+      background: #fff; border: 1px solid #e5e7eb;
+      align-self: flex-start; color: #111827; border-bottom-left-radius: 3px;
+    }
+    .lixbot-msg.lixbot-user {
+      background: #111827; color: #fff;
+      align-self: flex-end; border-bottom-right-radius: 3px;
+    }
+    #lixbot-cats {
+      padding: 8px 12px 4px; display: flex; flex-wrap: wrap; gap: 6px;
+      background: #f9fafb; flex-shrink: 0; border-top: 1px solid #f3f4f6;
+    }
+    .lixbot-cat {
+      font-size: 11.5px; padding: 5px 11px; border-radius: 20px;
+      border: 1px solid #d1d5db; background: #fff; cursor: pointer;
+      color: #111827; font-weight: 600; transition: all 0.15s; white-space: nowrap;
+    }
+    .lixbot-cat:hover, .lixbot-cat.lixbot-active {
+      background: #111827; color: #fff; border-color: #111827;
+    }
+    #lixbot-qs {
+      padding: 0 12px 8px; display: flex; flex-wrap: wrap; gap: 6px;
+      background: #f9fafb; flex-shrink: 0;
+    }
+    .lixbot-q {
+      font-size: 11.5px; padding: 5px 11px; border-radius: 10px;
+      border: 1px solid #bfdbfe; background: #eff6ff; cursor: pointer;
+      color: #1e40af; font-weight: 600; transition: all 0.15s; text-align: left;
+    }
+    .lixbot-q:hover { background: #1e40af; color: #fff; border-color: #1e40af; }
+    #lixbot-footer {
+      display: flex; border-top: 1px solid #f3f4f6;
+      background: #fff; flex-shrink: 0; align-items: center;
+    }
+    #lixbot-search-icon { padding: 0 8px 0 14px; color: #9ca3af; font-size: 14px; }
+    #lixbot-input {
+      flex: 1; border: none; outline: none;
+      padding: 12px 6px; font-size: 13px;
+      background: transparent; color: #111827;
+      font-family: 'Manrope', sans-serif;
+    }
+    #lixbot-input::placeholder { color: #c4c9d4; }
+    #lixbot-clearbtn {
+      padding: 0 14px; border: none; background: none;
+      color: #9ca3af; cursor: pointer; font-size: 15px;
+      display: none; transition: color 0.15s;
+    }
+    #lixbot-clearbtn:hover { color: #111827; }
+    @media (max-width: 400px) {
+      #lixbot-window { width: calc(100vw - 24px); right: 12px; }
+      #lixbot-toggle { right: 12px; bottom: 12px; }
+    }
+  </style>
+
+  <button id="lixbot-toggle" aria-label="Apri assistente Lixby">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span id="lixbot-badge"></span>
+  </button>
+
+  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Assistente Lixby">
+    <div id="lixbot-header">
+      <div class="lixbot-avatar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="lixbot-title">Assistente Lixby</div>
+        <div class="lixbot-sub">Risposte immediate</div>
+      </div>
+      <button id="lixbot-close" aria-label="Chiudi">✕</button>
+    </div>
+
+    <div id="lixbot-messages"></div>
+
+    <div id="lixbot-cats">
+      <button class="lixbot-cat" data-cat="envios">📦 Spedizioni</button>
+      <button class="lixbot-cat" data-cat="devoluciones">↩️ Resi</button>
+      <button class="lixbot-cat" data-cat="pagos">💳 Pagamenti</button>
+      <button class="lixbot-cat" data-cat="pedidos">🛒 Ordini</button>
+      <button class="lixbot-cat" data-cat="productos">🎧 Prodotti</button>
+      <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
+    </div>
+
+    <div id="lixbot-qs"></div>
+
+    <div id="lixbot-footer">
+      <span id="lixbot-search-icon">🔍</span>
+      <input id="lixbot-input" type="text" placeholder="Cerca la tua domanda..." autocomplete="off" maxlength="120" />
+      <button id="lixbot-clearbtn" aria-label="Cancella">✕</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var KB = {
+      envios: { items: [
+        { q: 'Quanto tempo impiega la spedizione standard?',
+          a: 'La spedizione standard richiede da 5 a 10 giorni lavorativi. Riceverai un\'email con il numero di tracciamento non appena l\'ordine lascerà il nostro magazzino.' },
+        { q: 'Offrite la spedizione espressa?',
+          a: 'Sì, spedizione espressa in 24-48 ore per gli ordini effettuati entro le 13:00 (giorni lavorativi). Disponibile nella penisola. Selezionala al momento del pagamento.' },
+        { q: 'La spedizione è gratuita?',
+          a: 'Spedizione completamente gratuita.' },
+        { q: 'Spedite alle Isole Canarie e alle Isole Baleari?',
+          a: 'Sì, spediamo in tutto il territorio nazionale. I tempi per Canarie, Baleari, Ceuta e Melilla possono essere di 5-8 giorni lavorativi.' },
+        { q: 'Spedite fuori dalla Spagna?',
+          a: 'Sì, effettuiamo spedizioni in tutta l\'Unione Europea. Il costo e i tempi vengono calcolati automaticamente quando inserisci il tuo indirizzo.' }
+      ]},
+      devoluciones: { items: [
+        { q: 'Quanti giorni ho per effettuare un reso?',
+          a: 'Hai 30 giorni di calendario dalla ricezione per richiedere un reso o un cambio, senza bisogno di giustificazione.' },
+        { q: 'Come avvio un reso?',
+          a: 'Accedi a "Il mio account → I miei ordini", seleziona l\'articolo e premi "Richiedi reso". Riceverai un\'etichetta di spedizione gratuita entro 24 ore.' },
+        { q: 'In quali condizioni deve essere restituito l\'articolo?',
+          a: 'Il prodotto deve essere non utilizzato, con tutte le etichette e nella sua confezione originale. Non accettiamo articoli con segni di utilizzo.' },
+        { q: 'Quando ricevo il rimborso?',
+          a: 'Dopo aver ricevuto e verificato l\'articolo (1-2 giorni), il rimborso verrà elaborato entro 5-7 giorni lavorativi con lo stesso metodo di pagamento.' },
+        { q: 'Posso cambiare taglia o colore?',
+          a: 'Sì, gestiamo i cambi se disponibili in magazzino. Richiedilo come un reso e indica "cambio" come motivo. Nessun costo aggiuntivo.' }
+      ]},
+      pagos: { items: [
+        { q: 'Quali metodi di pagamento accettate?',
+          a: 'Accettiamo carta (Visa, Mastercard, Amex), PayPal, Bizum e bonifico bancario. Tutti i pagamenti sono sicuri con crittografia SSL.' },
+        { q: 'I prezzi includono l\'IVA?',
+          a: 'Sì, tutti i prezzi nel negozio includono già l\'IVA. Non ci saranno sorprese al momento del checkout.' },
+        { q: 'Avete sconti o codici promozionali?',
+          a: 'Pubblichiamo offerte nella sezione "Offerte" e inviamo codici esclusivi con la newsletter. Iscriviti per non perderli!' },
+        { q: 'Posso pagare a rate?',
+          a: 'No, sono accettati solo pagamenti in un\'unica soluzione.' },
+        { q: 'Offrite carte regalo?',
+          a: 'Sì, carte regalo da 10 € a 200 €. Vengono consegnate via email all\'istante e sono valide per 1 anno.' }
+      ]},
+      pedidos: { items: [
+        { q: 'Dove posso vedere lo stato del mio ordine?',
+          a: 'In "Il mio account → I miei ordini" puoi vedere lo stato in tempo reale. Riceverai anche email automatiche ad ogni cambio di stato.' },
+        { q: 'Come faccio il monitoraggio?',
+          a: 'Quando l\'ordine lascia il magazzino riceverai un\'email con il numero di tracciamento e un link diretto al corriere.' },
+        { q: 'Posso modificare o annullare il mio ordine?',
+          a: 'Puoi annullarlo o modificarlo entro le prime 2 ore. Scrivici a lixbyinfo@gmail.com il prima possibile.' },
+        { q: 'Cosa devo fare se arriva danneggiato?',
+          a: 'Inviaci una foto dell\'articolo e dell\'imballaggio a lixbyinfo@gmail.com entro 48 ore. Ti invieremo un sostituto o effettueremo il rimborso completo senza costi.' },
+        { q: 'Posso aggiungere prodotti a un ordine già effettuato?',
+          a: 'Non è possibile aggiungere prodotti a un ordine in corso. Se non è ancora in preparazione puoi annullarlo e farne uno nuovo.' }
+      ]},
+      productos: { items: [
+        { q: 'Cosa sono i LixBuds One?',
+          a: 'LixBuds One sono i nostri auricolari premium con cancellazione intelligente del rumore. Disponibili da 99 €.' },
+        { q: 'Cos\'è l\'app Lixney?',
+          a: 'Lixney è la nostra app gratuita per risparmiare, pianificare e capire le tue spese personali. Disponibile su iOS e Android.' },
+        { q: 'I prodotti hanno una garanzia?',
+          a: 'Sì, tutti i nostri prodotti includono 2 anni di garanzia ufficiale. Maggiori informazioni nella sezione Garanzia del supporto.' },
+        { q: 'I LixBuds One sono compatibili con tutti i dispositivi?',
+          a: 'Sì, i LixBuds One sono compatibili con qualsiasi dispositivo dotato di Bluetooth 5.0 o superiore: iOS, Android, Windows e macOS.' },
+        { q: 'Quando arriveranno nuovi prodotti?',
+          a: 'Annunciamo le novità nella nostra newsletter e sui social network. Iscriviti per essere il primo a saperlo.' }
+      ]},
+      faq: { items: [
+        { q: 'Ho bisogno di un account per acquistare?',
+          a: 'No, puoi acquistare come ospite. Con un account potrai tracciare gli ordini, salvare gli indirizzi e visualizzare la tua cronologia facilmente.' },
+        { q: 'È sicuro acquistare su Lixby?',
+          a: 'Sì. Utilizziamo la crittografia SSL su tutto il sito e non memorizziamo i dati della carta. I pagamenti sono elaborati con piattaforme certificate PCI-DSS.' },
+        { q: 'Avete un negozio fisico?',
+          a: 'Attualmente siamo online al 100%. Puoi contattarci tramite chat, email o telefono durante il nostro orario di assistenza.' },
+        { q: 'Qual è l\'orario di assistenza?',
+          a: 'Dal lunedì al venerdì dalle 9:00 alle 18:00. Rispondiamo via email entro 24 ore. Questo assistente è disponibile 24/7.' },
+        { q: 'Come posso contattare Lixby?',
+          a: 'Scrivici a lixbyinfo@gmail.com o utilizza il modulo su pages/support.html. Rispondiamo entro 24 ore.' }
+      ]}
+    };
+
+    var toggle   = document.getElementById('lixbot-toggle');
+    var win      = document.getElementById('lixbot-window');
+    var closeBtn = document.getElementById('lixbot-close');
+    var msgList  = document.getElementById('lixbot-messages');
+    var catBtns  = document.querySelectorAll('.lixbot-cat');
+    var qsDiv    = document.getElementById('lixbot-qs');
+    var input    = document.getElementById('lixbot-input');
+    var clearBtn = document.getElementById('lixbot-clearbtn');
+    var badge    = document.getElementById('lixbot-badge');
+    var opened   = false;
+
+    function openBot() {
+      win.classList.remove('lixbot-hidden');
+      badge.style.display = 'none';
+      if (!opened) { addMsg('Ciao! 👋 Scegli una categoria o scrivi la tua domanda nel motore di ricerca.', 'lixbot-bot'); opened = true; }
+      input.focus();
+    }
+
+    toggle.addEventListener('click', function () {
+      win.classList.contains('lixbot-hidden') ? openBot() : win.classList.add('lixbot-hidden');
+    });
+    closeBtn.addEventListener('click', function () { win.classList.add('lixbot-hidden'); });
+
+    function addMsg(text, cls) {
+      var d = document.createElement('div');
+      d.className = 'lixbot-msg ' + cls;
+      d.textContent = text;
+      msgList.appendChild(d);
+      msgList.scrollTop = msgList.scrollHeight;
+    }
+
+    catBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+        btn.classList.add('lixbot-active');
+        input.value = '';
+        clearBtn.style.display = 'none';
+        renderQs(KB[btn.dataset.cat].items);
+      });
+    });
+
+    function renderQs(items) {
+      qsDiv.innerHTML = '';
+      items.forEach(function (item) {
+        var b = document.createElement('button');
+        b.className = 'lixbot-q';
+        b.textContent = item.q;
+        b.addEventListener('click', function () {
+          addMsg(item.q, 'lixbot-user');
+          setTimeout(function () { addMsg(item.a, 'lixbot-bot'); }, 260);
+        });
+        qsDiv.appendChild(b);
+      });
+    }
+
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      clearBtn.style.display = q ? 'block' : 'none';
+      if (!q) return;
+      catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+      var all = [];
+      Object.values(KB).forEach(function (cat) { cat.items.forEach(function (i) { all.push(i); }); });
+      var results = all.filter(function (i) {
+        return i.q.toLowerCase().includes(q) || i.a.toLowerCase().includes(q);
+      });
+      qsDiv.innerHTML = '';
+      if (!results.length) {
+        var p = document.createElement('p');
+        p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
+        p.textContent = 'Nessun risultato. Prova con altre parole.';
+        qsDiv.appendChild(p);
+        return;
+      }
+      renderQs(results);
+    });
+
+    clearBtn.addEventListener('click', function () {
+      input.value = '';
+      clearBtn.style.display = 'none';
+      qsDiv.innerHTML = '';
+      catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+      input.focus();
+    });
+  })();
+  </script>
+  <!-- FINE MINIBOT LIXBY -->
+
 </body>
 </html>
-

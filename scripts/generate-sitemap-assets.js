@@ -6,7 +6,7 @@ const functionsDir = path.join(rootDir, "functions");
 const dynamicOutputDir = path.join(functionsDir, "generated");
 const staticOutputPath = path.join(rootDir, "sitemap.xml");
 const dynamicOutputPath = path.join(dynamicOutputDir, "sitemap.xml");
-const domain = "https://www.lixby.es";
+const siteOrigin = "https://lixby.es";
 
 const ignoredTopLevel = new Set([
   ".git",
@@ -20,6 +20,28 @@ const ignoredTopLevel = new Set([
   "dataconnect",
   "y",
   "scripts"
+]);
+
+const excludedPageNames = new Set([
+  "admin",
+  "account",
+  "cambiar-contrasena",
+  "cart",
+  "cesta",
+  "change-password",
+  "cuenta",
+  "forget-password",
+  "gracias",
+  "iniciar-sesion",
+  "login",
+  "olvidar-contrasena",
+  "thank-you",
+  "thankyou",
+  "track",
+  "two-step verification",
+  "verificado",
+  "verificacion-2-pasos",
+  "verified"
 ]);
 
 function collectHtmlFiles(currentDir, relativeDir = "") {
@@ -51,13 +73,65 @@ function collectHtmlFiles(currentDir, relativeDir = "") {
   return files;
 }
 
-function extractCanonicalUrl(html) {
-  const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)">/i);
-  return canonicalMatch ? canonicalMatch[1].trim() : null;
+function isNoindex(html) {
+  const getHtmlAttribute = (tag, attributeName) => {
+    const attributeMatch = tag.match(
+      new RegExp(`\\b${attributeName}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i")
+    );
+
+    if (!attributeMatch) {
+      return null;
+    }
+
+    return (attributeMatch[1] || attributeMatch[2] || "").trim();
+  };
+
+  const metaTags = html.match(/<meta\b[^>]*>/gi) || [];
+
+  for (const tag of metaTags) {
+    const name = getHtmlAttribute(tag, "name");
+    if (!name || name.toLowerCase() !== "robots") {
+      continue;
+    }
+
+    const content = getHtmlAttribute(tag, "content");
+    if (content && /(^|[\s,])noindex([\s,]|$)/i.test(content)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
-function isNoindex(html) {
-  return /<meta name="robots" content="noindex, nofollow">/i.test(html);
+function toUrlPath(relativePath) {
+  const normalizedPath = relativePath.replace(/\\/g, "/");
+
+  if (normalizedPath === "index.html") {
+    return "/";
+  }
+
+  if (normalizedPath.endsWith("/index.html")) {
+    return `/${normalizedPath.slice(0, -"index.html".length)}`;
+  }
+
+  return `/${normalizedPath.slice(0, -".html".length)}`;
+}
+
+function toAbsoluteUrl(relativePath) {
+  const urlPath = toUrlPath(relativePath);
+  const encodedPath = urlPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/")
+    .replace(/%2F/g, "/");
+
+  return new URL(encodedPath, siteOrigin).toString();
+}
+
+function isExcludedFromSitemap(relativePath) {
+  const normalizedPath = relativePath.replace(/\\/g, "/");
+  const fileName = path.posix.basename(normalizedPath, ".html").toLowerCase();
+  return excludedPageNames.has(fileName);
 }
 
 function getSitemapMeta(urlPath) {
@@ -96,11 +170,12 @@ function buildSitemapEntries() {
   const entries = [];
 
   for (const file of collectHtmlFiles(rootDir)) {
+    if (isExcludedFromSitemap(file.relativePath)) continue;
+
     const html = fs.readFileSync(file.absolutePath, "utf8");
     if (isNoindex(html)) continue;
 
-    const canonicalUrl = extractCanonicalUrl(html);
-    if (!canonicalUrl || !canonicalUrl.startsWith(domain)) continue;
+    const canonicalUrl = toAbsoluteUrl(file.relativePath);
     if (seenUrls.has(canonicalUrl)) continue;
 
     seenUrls.add(canonicalUrl);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
 <!-- Google Tag Manager -->
@@ -8,7 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://www.lixby.es/it/login">
+  <link rel="canonical" href="https://www.lixby.es/it/accesso">
   <link rel="alternate" href="https://www.lixby.es/bg/login" hreflang="bg-BG">
   <link rel="alternate" href="https://www.lixby.es/cs/login" hreflang="cs-CZ">
   <link rel="alternate" href="https://www.lixby.es/da/login" hreflang="da-DK">
@@ -34,10 +34,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/sl/login" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/login" hreflang="sv-SE">
 
-          <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
   <title>Accedi | Lixby</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -338,16 +357,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="shop.html" class="nav-link">Negozio</a>
+        <a href="tienda.html" class="nav-link">Negozio</a>
         <a href="index.html#productos" class="nav-link">Prodotti</a>
         <a href="index.html#apps" class="nav-link">App</a>
-        <a href="support.html" class="nav-link">Supporto</a>
+        <a href="pages/support.html" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <a href="cart.html" class="nav-icon-link" aria-label="Carrello">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Carrello">
           <img src="images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Account">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -359,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Pronto per l'autenticazione.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Configurazione Firebase mancante. Modifica l'oggetto <code>firebaseConfig</code> in <code>login.html</code> con le credenziali del tuo progetto.
+          Configurazione Firebase mancante. Modifica l'oggetto <code>firebaseConfig</code> in <code>accesso.html</code> con le tue credenziali del progetto.
         </div>
 
         <section id="loginSection" class="auth-section active">
@@ -368,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <form id="loginForm" class="account-form">
             <label for="loginIdentifier">Email o numero di telefono</label>
-            <input id="loginIdentifier" type="text" required placeholder="nome@example.com">
+            <input id="loginIdentifier" type="text" required placeholder="nome@esempio.com">
 
             <label for="loginPassword">Password</label>
             <input id="loginPassword" type="password" required placeholder="********">
@@ -380,7 +399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </label>
             </div>
 
-            <a href="#" id="forgotPasswordLink" class="auth-link">Hai dimenticato la password?</a>
+            <a href="password-dimenticata.html" class="auth-link">Hai dimenticato la password?</a>
 
             <button class="btn btn-primary" type="submit">Accedi</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
@@ -391,7 +410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Verifica in due passaggi richiesta</strong>
+            <strong>Verifica in 2 passaggi richiesta</strong>
             <p id="mfaHint" class="auth-note">Invieremo un codice SMS al telefono associato.</p>
             <div class="mfa-row">
               <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Invia codice</button>
@@ -409,7 +428,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="registerSection" class="auth-section">
           <div class="account-head">
             <h1>Crea il tuo account Lixby</h1>
-            <p>Ti serve solo un account Lixby per accedere a tutti i servizi Lixby.</p>
+            <p>Hai bisogno solo di un account Lixby per accedere a tutti i servizi Lixby.</p>
             <p class="auth-note">
               Hai già un account Lixby?
               <a href="#" id="showLoginLink" class="auth-link">Accedi</a>
@@ -482,7 +501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
 
-            <label for="registerEmail">nome@example.com</label>
+            <label for="registerEmail">nome@esempio.com</label>
             <input id="registerEmail" type="email" required>
 
             <label for="registerPassword">Password</label>
@@ -528,7 +547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <p class="auth-note">
-              Assicurati di inserire un numero di telefono a cui puoi accedere sempre. Questo numero verrà utilizzato per verificare la tua identità ogni volta che accedi da un nuovo dispositivo o browser web. Potrebbero essere applicate tariffe per dati o messaggistica.
+              Assicurati di inserire un numero di telefono a cui puoi accedere sempre. Questo numero verrà utilizzato per verificare la tua identità ogni volta che accedi da un nuovo dispositivo o browser web. Potrebbero essere applicate tariffe per dati o messaggi.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
@@ -544,15 +563,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <label><input type="checkbox" id="adsOptIn"> Annunci</label>
-            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come annunci, marketing, consigli e aggiornamenti su prodotti, servizi e software Lixby.</p>
+            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come annunci, marketing, raccomandazioni e aggiornamenti su prodotti, servizi e software Lixby.</p>
 
             <label><input type="checkbox" id="mediaOptIn"> App, musica, TV e molto altro</label>
-            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come nuove uscite, contenuti esclusivi e offerte speciali.</p>
+            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come nuovi lanci, contenuti esclusivi e offerte speciali.</p>
 
             <div class="captcha-box">
               <label>Immagine di verifica</label>
               <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Inserisci il codice dall'immagine</label>
+              <label for="captchaInput">Inserisci il codice dell'immagine</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">Nuovo codice</a>
@@ -561,7 +580,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <p class="auth-note">
-              Privacy Icon: Le informazioni del tuo account Lixby vengono utilizzate per permetterti di accedere in modo sicuro e visualizzare i tuoi dati. Lixby registra alcuni dati di utilizzo per scopi relativi a sicurezza, supporto e reportistica. Se accetti, Lixby potrebbe utilizzare le informazioni del tuo account per inviarti comunicazioni ed email di marketing. Consulta come vengono gestiti i tuoi dati.
+              Icona privacy: Le informazioni del tuo account Lixby vengono utilizzate per consentirti di accedere in modo sicuro e accedere ai tuoi dati. Lixby registra alcuni dati di utilizzo per scopi relativi alla sicurezza, al supporto e alla generazione di report. Se accetti, Lixby potrebbe utilizzare le informazioni del tuo account per inviarti comunicazioni ed email di marketing. Scopri come vengono gestiti i tuoi dati.
             </p>
 
             <button class="btn btn-primary" type="submit">Crea account</button>
@@ -578,7 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="account.html" class="btn btn-primary">Vai al mio account</a>
+            <a href="cuenta.html" class="btn btn-primary">Vai al mio account</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Esci</button>
           </div>
         </div>
@@ -595,7 +614,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       browserSessionPersistence,
       createUserWithEmailAndPassword,
       signInWithEmailAndPassword,
-      sendPasswordResetEmail,
       GoogleAuthProvider,
       RecaptchaVerifier,
       PhoneAuthProvider,
@@ -607,8 +625,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { transferSessionToApp } from "./auth-bridge.js";
 
-    const firebaseConfig = {
+     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
       authDomain: "lixby0.firebaseapp.com",
       projectId: "lixby0",
@@ -628,7 +647,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
     const rememberMe = document.getElementById("rememberMe");
-    const forgotPasswordLink = document.getElementById("forgotPasswordLink");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
     const verifyEmailBtn = document.getElementById("verifyEmailBtn");
@@ -733,14 +751,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const googleProvider = new GoogleAuthProvider();
-      const recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-        size: "invisible"
-      });
-      recaptchaVerifier.render();
-      const mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
-        size: "invisible"
-      });
-      mfaRecaptchaVerifier.render();
+      let recaptchaVerifier = null;
+      let mfaRecaptchaVerifier = null;
+
+      function getRecaptcha() {
+        if (!recaptchaVerifier) {
+          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+            size: "invisible"
+          });
+        }
+        return recaptchaVerifier;
+      }
+
+      function getMfaRecaptcha() {
+        if (!mfaRecaptchaVerifier) {
+          mfaRecaptchaVerifier = new RecaptchaVerifier(auth, "mfa-recaptcha-container", {
+            size: "invisible"
+          });
+        }
+        return mfaRecaptchaVerifier;
+      }
       let confirmationResult = null;
       let mfaResolver = null;
       let mfaVerificationId = "";
@@ -773,47 +803,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Per accedere utilizza un indirizzo email valido.", "error");
+          setStatus("Per accedere usa un indirizzo email valido.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
-          await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Accesso effettuato correttamente.", "success");
+          const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
+          setStatus("Accesso effettuato con successo.", "success");
           loginForm.reset();
-          window.location.href = "account.html";
+          await transferSessionToApp(userCredential.user);
+          window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Invieremo un codice SMS al ${hint.phoneNumber || "tuo telefono"}.`;
+            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phoneNumber || "il tuo telefono"}.`;
             mfaPanel.classList.add("active");
-            setStatus("È richiesta la verifica in due passaggi.", "info");
+            setStatus("Verifica in 2 passaggi richiesta.", "info");
             return;
           }
           setStatus(`Errore durante l'accesso: ${error.message}`, "error");
         }
       });
 
-      forgotPasswordLink.addEventListener("click", async (event) => {
-        event.preventDefault();
-        const identifier = document.getElementById("loginIdentifier").value.trim();
-        if (!identifier.includes("@")) {
-          setStatus("Inserisci la tua email nel campo apposito per recuperare la password.", "error");
-          return;
-        }
-        try {
-          await sendPasswordResetEmail(auth, identifier);
-          setStatus("Ti abbiamo inviato un'email per reimpostare la password.", "success");
-        } catch (error) {
-          setStatus(`Impossibile inviare l'email: ${error.message}`, "error");
-        }
-      });
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Nessuna verifica in due passaggi in sospeso.", "error");
+          setStatus("Nessuna verifica in 2 passaggi in sospeso.", "error");
           return;
         }
 
@@ -824,22 +841,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             session: mfaResolver.session
           };
           const phoneAuthProvider = new PhoneAuthProvider(auth);
-          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, mfaRecaptchaVerifier);
+          mfaVerificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, getMfaRecaptcha());
           setStatus("Codice SMS inviato.", "success");
         } catch (error) {
-          mfaRecaptchaVerifier.clear();
+          getMfaRecaptcha().clear();
           setStatus(`Impossibile inviare l'SMS: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Nessuna verifica in due passaggi in sospeso.", "error");
+          setStatus("Nessuna verifica in 2 passaggi in sospeso.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Prima invia il codice SMS.", "error");
+          setStatus("Invia prima il codice SMS.", "error");
           return;
         }
 
@@ -852,20 +869,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           const cred = PhoneAuthProvider.credential(mfaVerificationId, code);
           const assertion = PhoneMultiFactorGenerator.assertion(cred);
-          await mfaResolver.resolveSignIn(assertion);
+          const userCredential = await mfaResolver.resolveSignIn(assertion);
           mfaPanel.classList.remove("active");
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Accesso effettuato correttamente.", "success");
-          window.location.href = "account.html";
+          setStatus("Accesso effettuato con successo.", "success");
+          await transferSessionToApp(userCredential.user);
+          window.location.href = "cuenta.html";
         } catch (error) {
           setStatus(`Codice non valido: ${error.message}`, "error");
         }
       });
 
       const emailActionSettings = {
-        url: `${window.location.origin}/it/verified.html`,
+        url: `${window.location.origin}/it/verificato.html`,
         handleCodeInApp: false
       };
 
@@ -899,9 +917,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         try {
-          await createUserWithEmailAndPassword(auth, email, password);
-          if (auth.currentUser) {
-            await sendEmailVerification(auth.currentUser, emailActionSettings);
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          if (userCredential.user) {
+            await sendEmailVerification(userCredential.user, emailActionSettings);
           }
           localStorage.setItem("lixbyProfile", JSON.stringify({
             firstName,
@@ -916,10 +934,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             adsOptIn,
             mediaOptIn
           }));
-          setStatus("Account creato correttamente.", "success");
+          setStatus("Account creato con successo.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
-          window.location.href = "account.html";
+          await transferSessionToApp(userCredential.user);
+          window.location.href = "cuenta.html";
         } catch (error) {
           setStatus(`Errore durante la registrazione: ${error.message}`, "error");
         }
@@ -941,9 +960,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
-          await signInWithPopup(auth, googleProvider);
-          setStatus("Accesso con Google effettuato.", "success");
-          window.location.href = "account.html";
+          const userCredential = await signInWithPopup(auth, googleProvider);
+          setStatus("Accesso effettuato con Google.", "success");
+          await transferSessionToApp(userCredential.user);
+          window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Accesso con Google annullato.", "error");
@@ -955,9 +975,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
-          await signInWithPopup(auth, googleProvider);
-          setStatus("Registrazione con Google completata.", "success");
-          window.location.href = "account.html";
+          const userCredential = await signInWithPopup(auth, googleProvider);
+          setStatus("Registrazione completata con Google.", "success");
+          await transferSessionToApp(userCredential.user);
+          window.location.href = "cuenta.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Accesso con Google annullato.", "error");
@@ -975,8 +996,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         try {
           sendSmsBtn.disabled = true;
-          confirmationResult = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
-          setStatus("SMS inviato. Controlla il telefono.", "success");
+          confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
+          setStatus("SMS inviato. Controlla il tuo telefono.", "success");
         } catch (error) {
           setStatus(`Impossibile inviare l'SMS: ${error.message}`, "error");
         } finally {
@@ -986,7 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Prima invia il codice SMS.", "error");
+          setStatus("Invia prima il codice SMS.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
@@ -996,7 +1017,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         try {
           await confirmationResult.confirm(code);
-          setStatus("Telefono verificato correttamente.", "success");
+          setStatus("Telefono verificato con successo.", "success");
         } catch (error) {
           setStatus("Codice errato. Riprova.", "error");
         }
@@ -1004,7 +1025,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Sessione terminata.", "info");
+        setStatus("Sessione chiusa.", "info");
       });
 
       onAuthStateChanged(auth, (user) => {

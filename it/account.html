@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
 <!-- Google Tag Manager -->
@@ -34,12 +34,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://www.lixby.es/sl/account" hreflang="sl-SI">
   <link rel="alternate" href="https://www.lixby.es/sv/account" hreflang="sv-SE">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
   <title>Il mio account | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .account-page {
@@ -485,16 +504,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="shop.html" class="nav-link">Negozio</a>
-        <a href="index.html#prodotti" class="nav-link">Prodotti</a>
-        <a href="index.html#app" class="nav-link">App</a>
-        <a href="support.html" class="nav-link">Supporto</a>
+        <a href="tienda.html" class="nav-link">Negozio</a>
+        <a href="index.html#productos" class="nav-link">Prodotti</a>
+        <a href="index.html#apps" class="nav-link">App</a>
+        <a href="pages/support.html" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <a href="cart.html" class="nav-icon-link" aria-label="Carrello">
+        <a href="cesta.html" class="nav-icon-link" aria-label="Carrello">
           <img src="images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Account">
+        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -502,7 +521,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <main class="container account-page">
-    <div id="statusMsg" class="status-msg">Verifica sessione...</div>
+    <div id="statusMsg" class="status-msg">Controllo sessione...</div>
 
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
@@ -511,7 +530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p id="sideEmail">-</p>
         <div class="side-actions">
           <button id="editBtn" class="btn btn-secondary" type="button">Modifica dati</button>
-          <a class="btn btn-secondary" href="cart.html">Visualizza ordini</a>
+          <a class="btn btn-secondary" href="cesta.html">Vedi ordini</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Esci</button>
         </div>
       </aside>
@@ -545,8 +564,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label for="photoUrl">Foto profilo</label>
-              <input id="photoUrl" type="text">
+              <label>Foto profilo</label>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+                <img id="photoPreview" src="images/cuenta.png" alt="Anteprima"
+                  style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
+                <div>
+                  <input id="photoFile" type="file" accept="image/*" style="display:none">
+                  <button id="uploadPhotoBtn" class="btn btn-secondary" type="button" style="font-size:0.85rem">
+                    Carica foto
+                  </button>
+                  <div id="uploadPhotoMsg" style="font-size:0.78rem;color:var(--muted);margin-top:4px"></div>
+                </div>
+              </div>
+              <input id="photoUrl" type="text" style="display:none">
             </div>
           </div>
         </section>
@@ -584,7 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="account-section">
           <h2>Preferenze</h2>
           <div class="check-list">
-            <label class="check-row"><input id="prefAds" type="checkbox"> Ricevere annunci e marketing</label>
+            <label class="check-row"><input id="prefAds" type="checkbox"> Ricevi annunci e marketing</label>
             <label class="check-row"><input id="prefNews" type="checkbox"> Notizie e novità</label>
             <label class="check-row"><input id="prefUpdates" type="checkbox"> Aggiornamenti software</label>
             <label class="check-row"><input id="prefOffers" type="checkbox"> Offerte speciali</label>
@@ -595,10 +625,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="account-section">
           <h2>Sicurezza</h2>
           <div class="action-list">
-            <div class="action-item"><span>Cambia password</span><a class="btn btn-secondary" href="change-password.html">Gestisci</a></div>
+            <div class="action-item"><span>Cambia password</span><a class="btn btn-secondary" href="cambia-password.html">Gestisci</a></div>
             <div class="action-item"><span>Visualizza sessioni attive</span><button class="btn btn-secondary" type="button">Visualizza</button></div>
             <div class="action-item"><span>Esci da altri dispositivi</span><button class="btn btn-secondary" type="button">Esci</button></div>
-            <div class="action-item"><span>Attiva verifica in due passaggi</span><a id="twoFactorBtn" class="btn btn-secondary" href="two-step verification.html">Configura</a></div>
+            <div class="action-item"><span>Attiva verifica in 2 passaggi</span><a id="twoFactorBtn" class="btn btn-secondary" href="verifica-2-passaggi.html">Configura</a></div>
             <div class="action-item"><span>Verifica email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Invia</button></div>
             <div class="action-item"><span>Cronologia accessi</span><button class="btn btn-secondary" type="button">Visualizza cronologia</button></div>
           </div>
@@ -606,16 +636,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="account-section">
           <h2>Ordini</h2>
-          <article class="order-card">
-            <strong>LixBuds One - Ordine #1482</strong>
-            <span>Stato: Spedito</span>
-            <span>Data: 10 marzo 2026</span>
-            <div class="order-actions">
-              <button class="btn btn-secondary" type="button">Visualizza ordine</button>
-              <button class="btn btn-secondary" type="button">Scarica fattura</button>
-              <button class="btn btn-primary" type="button">Tracciamento spedizione</button>
-            </div>
-          </article>
+          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">Caricamento ordini...</div>
+          <div id="ordersList" style="display:none;display:grid;gap:10px"></div>
+          <div id="ordersEmpty" style="display:none">
+            <article class="order-card">
+              <strong>Non hai ancora ordini</strong>
+              <span>Quando effettuerai un acquisto apparirà qui.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="tienda.html">Vai al negozio</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Carte regalo</h2>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Caricamento carte...</div>
+          <div id="giftCardsList" style="display:none;gap:10px"></div>
+          <div id="giftCardsEmpty" style="display:none">
+            <article class="order-card">
+              <strong>Non hai carte regalo</strong>
+              <span>Acquista una carta regalo per te o per qualcuno di speciale.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="regalo.html">Vedi carte regalo</a>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section class="account-section">
@@ -627,13 +673,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <label for="payCardholder">Intestatario</label>
                 <input id="payCardholder" type="text" placeholder="Nome e cognome">
               </div>
-            <div class="payment-field">
-              <label for="payCardNumber">Numero carta</label>
-              <div class="card-input">
-                <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Carta">
-                <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
+              <div class="payment-field">
+                <label for="payCardNumber">Numero carta</label>
+                <div class="card-input">
+                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Carta">
+                  <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
+                </div>
               </div>
-            </div>
               <div class="payment-field">
                 <label for="payExpiry">Scadenza (MM/AA)</label>
                 <input id="payExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="08/29">
@@ -686,17 +732,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="account-section">
           <h2>Supporto</h2>
           <div class="action-list">
-            <div class="action-item"><span>Contatta supporto</span><a class="btn btn-primary" href="support.html">Apri</a></div>
-            <div class="action-item"><span>Segnala problema</span><a class="btn btn-secondary" href="support.html">Segnala</a></div>
-            <div class="action-item"><span>Manuale utente</span><a class="btn btn-secondary" href="support.html">Visualizza</a></div>
-            <div class="action-item"><span>Garanzia prodotto</span><a class="btn btn-secondary" href="support.html">Consulta</a></div>
+            <div class="action-item"><span>Contatta il supporto</span><a class="btn btn-primary" href="pages/support.html">Apri</a></div>
+            <div class="action-item"><span>Segnala un problema</span><a class="btn btn-secondary" href="pages/support.html">Segnala</a></div>
+            <div class="action-item"><span>Manuale utente</span><a class="btn btn-secondary" href="pages/support.html">Visualizza</a></div>
+            <div class="action-item"><span>Garanzia del prodotto</span><a class="btn btn-secondary" href="pages/support.html">Consulta</a></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Privacy</h2>
-            <div class="action-list">
-            <div class="action-item"><span>Privacy Policy</span><a class="btn btn-secondary" href="pages/legal/privacy.html">Visualizza</a></div>
+          <div class="action-list">
+            <div class="action-item"><span>Informativa sulla privacy</span><a class="btn btn-secondary" href="pages/legal/privacy.html">Visualizza</a></div>
             <div class="action-item"><span>Cookie</span><a class="btn btn-secondary" href="pages/legal/cookies.html">Visualizza</a></div>
           </div>
         </section>
@@ -720,21 +766,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Esplora e acquista</h3>
+        <h3>Vedi e acquista</h3>
         <ul>
-          <li><a href="#">Negozio</a></li>
+          <li><a href="tienda.html">Negozio</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="#app">App</a></li>
-          <li><a href="support.html">Supporto</a></li>
+          <li><a href="index.html#apps">App</a></li>
+          <li><a href="pages/support.html">Supporto</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Supporto</h3>
         <ul>
-          <li><a href="support.html">Pagina iniziale supporto</a></li>
-          <li><a href="support.html#faq">FAQ Negozio online</a></li>
-          <li><a href="support.html">Informazioni sulla Garanzia</a></li>
+          <li><a href="pages/support.html">Home supporto</a></li>
+          <li><a href="pages/support.html#faq">FAQ Negozio online</a></li>
+          <li><a href="pages/support.html">Informazioni sulla garanzia</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -742,19 +788,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="../track.html">Ordini</a></li>
-          <li><a href="account.html">Il mio account</a></li>
-          <li><a href="account.html">Coupon</a></li>
+          <li><a href="track.html">Ordini</a></li>
+          <li><a href="cuenta.html">Il mio account</a></li>
+          <li><a href="cuenta.html">Coupon</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Chi siamo</h3>
+        <h3>Chi è Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="support.html">Garanzia</a></li>
+          <li><a href="pages/support.html">Garanzia</a></li>
           <li><a href="#">Eventi</a></li>
-          <li><a href="support.html">Contatti</a></li>
+          <li><a href="pages/support.html">Contatti</a></li>
         </ul>
       </section>
     </div>
@@ -762,10 +808,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Privacy Policy</a>
-        <a href="pages/legal/cookies.html">Utilizzo dei cookie</a>
+        <a href="pages/legal/privacy.html">Informativa sulla privacy</a>
+        <a href="pages/legal/cookies.html">Uso dei cookie</a>
         <a href="pages/legal/terms.html">Condizioni d'uso</a>
-        <a href="support.html">Vendite e rimborsi</a>
+        <a href="pages/support.html">Vendite e rimborsi</a>
         <a href="pages/legal/legal-notice.html">Note legali</a>
       </div>
     </div>
@@ -774,6 +820,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -959,7 +1006,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <article class="payment-item">
             <div>
               <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Predefinita</span>' : ""}</strong>
-              <small>Intestatario: ${method.cardholder} - Scadenza ${method.expiry}</small>
+              <small>Intestatario: ${method.cardholder} - Scade ${method.expiry}</small>
             </div>
             <div class="payment-item-actions">
               <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Predefinita</button>
@@ -1057,8 +1104,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       inputs.region.value = profile.country || "Italia";
       inputs.birthDate.value = mapBirth(profile);
       inputs.language.value = profile.language || navigator.language || "it-IT";
-      inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Rome";
+      inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
+      document.getElementById("photoPreview").src =
+        inputs.photoUrl.value || user.photoURL || "images/cuenta.png";
       inputs.email.value = user.email || profile.email || "";
       inputs.phone.value = profile.phone || profile.phoneNumber || "";
       inputs.address.value = profile.address || "";
@@ -1125,6 +1174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const storage = getStorage(app);
 
     addPaymentBtn.addEventListener("click", () => {
       const cardholder = paymentInputs.cardholder.value.trim();
@@ -1216,7 +1266,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       };
 
       if (!billing.name || !billing.country || !billing.address) {
-        showStatus("Completa nome, paese e indirizzo di fatturazione.", "error");
+        showStatus("Compila nome, paese e indirizzo di fatturazione.", "error");
         return;
       }
 
@@ -1249,9 +1299,198 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
+    const RAILWAY_URL = "https://lixby-production.up.railway.app";
+    const ACCOUNT_API_KEY = "lixby-admin-2026";
+
+    function statusBadge(status) {
+      const map = {
+        "Ordine ricevuto": { bg: "#eff6ff", color: "#1d4ed8", border: "#bfdbfe" },
+        "Preparazione ordine": { bg: "#fefce8", color: "#854d0e", border: "#fde047" },
+        "Spedito": { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
+        "In consegna": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
+        "Consegnato": { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+      };
+      const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
+      return `<span style="background:${s.bg};color:${s.color};border:1px solid ${s.border};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">${status || "Ordine ricevuto"}</span>`;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return "—";
+      return new Date(iso).toLocaleDateString("it-IT", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    async function loadOrders(email) {
+      const loadingEl = document.getElementById("ordersLoading");
+      const listEl = document.getElementById("ordersList");
+      const emptyEl = document.getElementById("ordersEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/orders-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const orders = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!orders.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = orders
+          .map(
+            (o) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${o.orderNumber || o.id}</strong>
+          ${statusBadge(o.status)}
+        </div>
+        <span style="color:var(--muted);font-size:0.85rem">${formatDate(
+          o.createdAt
+        )}</span>
+        <span style="font-size:0.9rem">${o.product || "—"}</span>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${
+            o.amountTotal
+              ? Number(o.amountTotal).toFixed(2).replace(".", ",") + " €"
+              : "—"
+          }</strong>
+          ${
+            o.trackingNumber
+              ? `<span style="font-size:0.8rem;color:var(--muted)">🚚 ${
+                  o.trackingCarrier || ""
+                } ${o.trackingNumber}</span>`
+              : ""
+          }
+        </div>
+        <div class="order-actions">
+          <a class="btn btn-secondary" href="track.html?orderId=${o.id}" style="font-size:0.85rem">Segui ordine</a>
+        </div>
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Errore caricamento ordini.";
+      }
+    }
+
+    async function loadGiftCards(email) {
+      const loadingEl = document.getElementById("giftCardsLoading");
+      const listEl = document.getElementById("giftCardsList");
+      const emptyEl = document.getElementById("giftCardsEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/gift-cards-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const cards = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!cards.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = cards
+          .map(
+            (c) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${c.code}</strong>
+          <span style="background:${c.used ? "#f3f4f6" : "#f0fdf4"};color:${
+              c.used ? "#6b7280" : "#166534"
+            };border:1px solid ${c.used ? "#e5e7eb" : "#86efac"};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">
+            ${c.used ? "Usata" : "Attiva"}
+          </span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:0.85rem;color:var(--muted)">Saldo residuo</span>
+          <strong style="color:#458500">${Number(c.balance || 0)
+            .toFixed(2)
+            .replace(".", ",")} €</strong>
+        </div>
+        ${
+          c.recipientName
+            ? `<span style="font-size:0.82rem;color:var(--muted)">Per: ${c.recipientName}</span>`
+            : ""
+        }
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Errore caricamento carte.";
+      }
+    }
+
+    document.getElementById("uploadPhotoBtn").addEventListener("click", () => {
+      document.getElementById("photoFile").click();
+    });
+
+    document.getElementById("photoFile").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const msg = document.getElementById("uploadPhotoMsg");
+      const btn = document.getElementById("uploadPhotoBtn");
+      const user = auth.currentUser;
+      if (!user) return;
+
+      // Validare dimensione massima 2MB
+      if (file.size > 2 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "L'immagine non può superare i 2MB";
+        return;
+      }
+
+      btn.disabled = true;
+      msg.style.color = "var(--muted)";
+      msg.textContent = "Caricamento...";
+
+      try {
+        const storageRef = ref(storage, `avatars/${user.uid}`);
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+
+        // Aggiornare anteprima e campo nascosto
+        document.getElementById("photoPreview").src = url;
+        document.getElementById("photoUrl").value = url;
+        profilePhoto.src = url;
+
+        // Salvare nel profilo
+        const profile = readProfile();
+        profile.photoUrl = url;
+        writeProfile(profile);
+
+        msg.style.color = "#458500";
+        msg.textContent = "Foto aggiornata";
+        showStatus("Foto profilo aggiornata.", "success");
+      } catch (err) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "Errore durante il caricamento della foto";
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "login.html";
+        window.location.href = "accesso.html";
         return;
       }
 
@@ -1263,6 +1502,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Account caricato correttamente.", "success");
       accountLayout.classList.remove("hidden");
       setReadonlyMode();
+
+      // Caricare ordini e carte regalo
+      const userEmail = user.email;
+      if (userEmail) {
+        loadOrders(userEmail);
+        loadGiftCards(userEmail);
+      }
+
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
         verifyEmailBtn.textContent = user.emailVerified ? "Verificato" : "Invia";
@@ -1316,14 +1563,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     async function doLogout() {
       await signOut(auth);
-      window.location.href = "login.html";
+      window.location.href = "accesso.html";
     }
 
     logoutBtn.addEventListener("click", doLogout);
     logoutBtnSecondary.addEventListener("click", doLogout);
 
     const emailActionSettings = {
-      url: `${window.location.origin}/it/verified.html`,
+      url: `${window.location.origin}/it/verificato.html`,
       handleCodeInApp: false
     };
 
@@ -1361,7 +1608,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       try {
         await deleteUser(user);
         showStatus("Account eliminato correttamente.", "success");
-        window.location.href = "login.html";
+        window.location.href = "accesso.html";
       } catch (error) {
         showStatus(`Impossibile eliminare l'account: ${error.message}`, "error");
       }
