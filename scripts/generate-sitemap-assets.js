@@ -114,7 +114,7 @@ function toUrlPath(relativePath) {
     return `/${normalizedPath.slice(0, -"index.html".length)}`;
   }
 
-  return `/${normalizedPath.slice(0, -".html".length)}`;
+  return `/${normalizedPath}`;
 }
 
 function toAbsoluteUrl(relativePath) {
@@ -128,6 +128,27 @@ function toAbsoluteUrl(relativePath) {
   return new URL(encodedPath, siteOrigin).toString();
 }
 
+function getSitemapUrlVariants(relativePath) {
+  const canonicalUrl = toAbsoluteUrl(relativePath);
+  const urlPath = toUrlPath(relativePath);
+
+  if (!urlPath.endsWith(".html")) {
+    return [canonicalUrl];
+  }
+
+  const extensionlessPath = urlPath.slice(0, -".html".length);
+  const extensionlessUrl = new URL(
+    extensionlessPath
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/")
+      .replace(/%2F/g, "/"),
+    siteOrigin
+  ).toString();
+
+  return [canonicalUrl, extensionlessUrl];
+}
+
 function isExcludedFromSitemap(relativePath) {
   const normalizedPath = relativePath.replace(/\\/g, "/");
   const fileName = path.posix.basename(normalizedPath, ".html").toLowerCase();
@@ -135,20 +156,24 @@ function isExcludedFromSitemap(relativePath) {
 }
 
 function getSitemapMeta(urlPath) {
-  if (urlPath === "/" || /^\/[a-z]{2}\/?$/.test(urlPath)) {
+  const normalizedUrlPath = urlPath.endsWith(".html")
+    ? urlPath.slice(0, -".html".length)
+    : urlPath;
+
+  if (normalizedUrlPath === "/" || /^\/[a-z]{2}\/?$/.test(normalizedUrlPath)) {
     return { changefreq: "weekly", priority: "1.0" };
   }
 
   if (
-    /\/(centro-ayuda|help-center|centre-aide|pagalbos-centras|помощен-център)(\/|$)/u.test(urlPath) ||
-    /\/(support|поддръжка|střední)$/.test(urlPath)
+    /\/(centro-ayuda|help-center|centre-aide|pagalbos-centras|помощен-център)(\/|$)/u.test(normalizedUrlPath) ||
+    /\/(support|поддръжка|střední)$/.test(normalizedUrlPath)
   ) {
     return { changefreq: "weekly", priority: "0.7" };
   }
 
   if (
-    /\/(comprar-cascos|buy-headphones)\/lixbuds-one\/?$/.test(urlPath) ||
-    /\/pages\/products\//.test(urlPath)
+    /\/(comprar-cascos|buy-headphones)\/lixbuds-one\/?$/.test(normalizedUrlPath) ||
+    /\/pages\/products\//.test(normalizedUrlPath)
   ) {
     return { changefreq: "monthly", priority: "0.8" };
   }
@@ -175,21 +200,24 @@ function buildSitemapEntries() {
     const html = fs.readFileSync(file.absolutePath, "utf8");
     if (isNoindex(html)) continue;
 
-    const canonicalUrl = toAbsoluteUrl(file.relativePath);
-    if (seenUrls.has(canonicalUrl)) continue;
-
-    seenUrls.add(canonicalUrl);
-
     const stat = fs.statSync(file.absolutePath);
-    const urlPath = new URL(canonicalUrl).pathname;
-    const meta = getSitemapMeta(urlPath);
+    const sitemapUrls = getSitemapUrlVariants(file.relativePath);
 
-    entries.push({
-      canonicalUrl,
-      lastmod: stat.mtime.toISOString().slice(0, 10),
-      changefreq: meta.changefreq,
-      priority: meta.priority
-    });
+    for (const sitemapUrl of sitemapUrls) {
+      if (seenUrls.has(sitemapUrl)) continue;
+
+      seenUrls.add(sitemapUrl);
+
+      const urlPath = new URL(sitemapUrl).pathname;
+      const meta = getSitemapMeta(urlPath);
+
+      entries.push({
+        canonicalUrl: sitemapUrl,
+        lastmod: stat.mtime.toISOString().slice(0, 10),
+        changefreq: meta.changefreq,
+        priority: meta.priority
+      });
+    }
   }
 
   entries.sort((a, b) => a.canonicalUrl.localeCompare(b.canonicalUrl));

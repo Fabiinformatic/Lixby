@@ -27,7 +27,7 @@
   <link rel="alternate" href="https://lixby.es/sk/" hreflang="sk-SK" />
   <link rel="alternate" href="https://lixby.es/sl/" hreflang="sl-SI" />
   <link rel="alternate" href="https://lixby.es/sv/" hreflang="sv-SE" />
-  <link rel="alternate" href="https://lixby.es/" hreflang="x-default" />
+  <link rel="alternate" href="https://lixby.es/en/" hreflang="x-default" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
@@ -119,7 +119,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Boutique</a>
+        <a href="buy.html" class="nav-link">Boutique</a>
         <a href="#productos" class="nav-link">Produits</a>
         <a href="#apps" class="nav-link">Apps</a>
         <a href="support.html" class="nav-link">Support</a>
@@ -131,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="buy.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -141,10 +141,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Rechercher un produit"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Panier">
+        <a href="cart.html" class="nav-icon-link" aria-label="Panier">
           <img src="images/Bolsa.png" alt="Panier">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Compte">
+        <a href="account.html" class="nav-icon-link" aria-label="Compte">
           <img src="images/cuenta.png" alt="Compte">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
@@ -159,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="buy.html" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -174,14 +174,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principal mobile">
-      <a href="tienda.html">Boutique</a>
+      <a href="buy.html">Boutique</a>
       <a href="#productos">Produits</a>
       <a href="#apps">Apps</a>
       <a href="support.html">Support</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Panier</a>
-      <a href="cuenta.html">Compte</a>
+      <a href="cart.html">Panier</a>
+      <a href="account.html">Compte</a>
     </div>
   </div>
 
@@ -238,7 +238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Écouteurs sans fil avec suppression de bruit, son immersif et étui de charge ultra-rapide.</p>
           <div class="card-buttons">
             <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Voir plus</a>
-            <a href="comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Acheter</a>
+            <a href="buy-headphones/lixbuds-one/index.html" class="btn btn-primary">Acheter</a>
           </div>
         </article>
 
@@ -262,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Voir et acheter</h3>
         <ul>
-          <li><a href="tienda.html">Boutique</a></li>
+          <li><a href="buy.html">Boutique</a></li>
           <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
           <li><a href="support.html">Support</a></li>
@@ -283,8 +283,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Compte</h3>
         <ul>
           <li><a href="../track.html">Commandes</a></li>
-          <li><a href="cuenta.html">Mon compte</a></li>
-          <li><a href="cuenta.html">Coupons</a></li>
+          <li><a href="account.html">Mon compte</a></li>
+          <li><a href="account.html">Coupons</a></li>
         </ul>
       </section>
 
@@ -381,7 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `buy.html?q=${encodeURIComponent(query)}` : "buy.html";
         window.location.href = url;
       });
     }
@@ -392,7 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `buy.html?q=${encodeURIComponent(query)}` : "buy.html";
         window.location.href = url;
       });
     }
@@ -524,7 +524,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cesta.html";
+        window.location.href = "cart.html";
       });
     });
   </script>

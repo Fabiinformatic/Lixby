@@ -734,7 +734,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
 
     if (resend && resendFrom && order.email) {
       try {
-        const trackUrl = `https://lixby.es/track.html?orderId=${order.id}`;
+        const trackUrl = `https://lixby.es/track?orderId=${order.id}`;
         const itemsHtml = order.items
           .map(
             (item) => `
@@ -958,3 +958,5 @@ app.post("/auth/custom-token", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Servidor funcionando"));
+
+
