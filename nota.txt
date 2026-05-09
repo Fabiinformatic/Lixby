@@ -2,5 +2,6 @@ español 100%
 ingles 100%
 italiano 100%
 frances 100%
+portugues 100% falta revisar href y los link rel
 Nuevo head para los idiomas
 ¡IA DEBE REVISAR TODOS LOS href DEL IDOMA!

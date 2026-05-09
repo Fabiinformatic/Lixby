@@ -361,7 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="shop.html" class="nav-link">Store</a>
         <a href="index.html#productos" class="nav-link">Products</a>
         <a href="index.html#apps" class="nav-link">Apps</a>
-        <a href="pages/support.html" class="nav-link">Support</a>
+        <a href="support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
         <a href="cart.html" class="nav-icon-link" aria-label="Cart">
@@ -400,7 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </label>
             </div>
 
-            <a href="forgot-password.html" class="auth-link">Forgot password?</a>
+            <a href="forget-password.html" class="auth-link">Forgot password?</a>
 
             <button class="btn btn-primary" type="submit">Log in</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
@@ -814,7 +814,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           setStatus("Successfully logged in.", "success");
           loginForm.reset();
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
@@ -877,7 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           mfaCodeInput.value = "";
           setStatus("Successfully logged in.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Invalid code: ${error.message}`, "error");
         }
@@ -939,7 +939,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           registerForm.reset();
           currentCaptcha = generateCaptcha();
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Registration error: ${error.message}`, "error");
         }
@@ -964,7 +964,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Logged in with Google.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Google login cancelled.", "error");
@@ -979,7 +979,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Registration completed with Google.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Google login cancelled.", "error");

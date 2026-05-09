@@ -297,6 +297,78 @@ function formatAmount(amountTotal, currency) {
   return `${normalized} ${currency || "EUR"}`;
 }
 
+function formatPaymentMethodLabel(method) {
+  const value = String(method || "").toLowerCase();
+  if (!value) return "No disponible";
+  if (value === "card") return "Tarjeta";
+  if (value === "bizum") return "Bizum";
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+async function sendOrderStatusEmail(order) {
+  if (!resend || !resendFrom || !order || !order.email) {
+    return { ok: false, reason: "email_unavailable" };
+  }
+
+  const trackUrl = `https://lixby.es/track?orderId=${order.id}`;
+  const subject = `📦 Actualización de tu pedido ${order.orderNumber} — ${order.status}`;
+  const trackingBlock =
+    order.trackingCarrier || order.trackingNumber
+      ? `
+      <div style="background:#f9fafb;border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:0.875rem">
+        <div style="font-weight:700;margin-bottom:6px;color:#111827">Seguimiento</div>
+        <div style="color:#6b7280;line-height:1.7">
+          ${order.trackingCarrier ? `<div>Transportista: <strong style="color:#111827">${order.trackingCarrier}</strong></div>` : ""}
+          ${order.trackingNumber ? `<div>Número: <strong style="color:#111827">${order.trackingNumber}</strong></div>` : ""}
+        </div>
+      </div>
+    `
+      : "";
+
+  try {
+    await resend.emails.send({
+      from: resendFrom,
+      to: order.email,
+      subject,
+      html: `
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f5f7fa;font-family:'Helvetica Neue',Arial,sans-serif">
+  <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
+    <div style="background:linear-gradient(135deg,#1a3a00,#458500);padding:36px 40px;text-align:center">
+      <div style="font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.02em">Lixby</div>
+      <div style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px">Actualización de pedido</div>
+    </div>
+    <div style="padding:36px 40px">
+      <p style="font-size:1.05rem;color:#111827;margin:0 0 8px">Hola, <strong>${order.customerName || "Cliente"}</strong> 👋</p>
+      <p style="color:#6b7280;line-height:1.6;margin:0 0 24px">Tu pedido <strong>${order.orderNumber}</strong> ha sido actualizado.</p>
+
+      <div style="background:#f0f7e6;border:1px solid #d4edba;border-radius:12px;padding:16px 20px;margin-bottom:24px">
+        <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-bottom:4px">Estado actual</div>
+        <div style="font-size:1.2rem;font-weight:800;color:#458500">${order.status || "Pedido recibido"}</div>
+      </div>
+
+      ${trackingBlock}
+
+      <a href="${trackUrl}" style="display:block;background:#458500;color:#fff;text-decoration:none;text-align:center;padding:16px;border-radius:12px;font-weight:700;font-size:1rem;margin-bottom:16px">
+        Seguir mi pedido →
+      </a>
+    </div>
+    <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">Si necesitas ayuda, responde a este email o escríbenos a <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">lixbyinfo@gmail.com</a></p>
+    </div>
+  </div>
+</body>
+</html>`
+    });
+    return { ok: true };
+  } catch (error) {
+    console.warn("No se pudo enviar email de actualización:", error.message);
+    return { ok: false, reason: error.message };
+  }
+}
+
 function formatAddress(address) {
   if (!address) return null;
   const parts = [
@@ -616,6 +688,13 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         recipientName: session.metadata.recipientName || null,
         recipientEmail: session.metadata.recipientEmail || null,
         message: session.metadata.message || null,
+        paymentMethod:
+          (Array.isArray(session.payment_method_types) && session.payment_method_types[0]) ||
+          "card",
+        paymentMethodLabel: formatPaymentMethodLabel(
+          (Array.isArray(session.payment_method_types) && session.payment_method_types[0]) ||
+            "card"
+        ),
         sessionId: session.id,
         createdAt: new Date().toISOString()
       };
@@ -704,7 +783,24 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
       product,
       items: orderItems,
       status: "Pedido recibido",
+      statusHistory: [
+        {
+          status: "Pedido recibido",
+          changedAt: new Date().toISOString(),
+          actor: "system",
+          note: "Pedido creado tras checkout confirmado"
+        }
+      ],
       paymentStatus: "paid",
+      paymentMethod:
+        (Array.isArray(session.payment_method_types) && session.payment_method_types[0]) ||
+        (session.payment_method_collection || null) ||
+        "card",
+      paymentMethodLabel: formatPaymentMethodLabel(
+        (Array.isArray(session.payment_method_types) && session.payment_method_types[0]) ||
+          (session.payment_method_collection || null) ||
+          "card"
+      ),
       sessionId: session.id,
       amountTotal: session.amount_total ? session.amount_total / 100 : null,
       currency: session.currency ? session.currency.toUpperCase() : "EUR",
@@ -866,15 +962,67 @@ app.post("/admin/update-order", async (req, res) => {
     return res.status(400).json({ error: "Estado no válido." });
   }
 
+  const ref = db.collection("orders").doc(orderId);
+  const existingDoc = await ref.get();
+  if (!existingDoc.exists) {
+    return res.status(404).json({ error: "Pedido no encontrado." });
+  }
+
+  const existing = existingDoc.data() || {};
   const update = { status };
-  if (trackingCarrier) {
+  if (typeof trackingCarrier === "string") {
     update.trackingCarrier = trackingCarrier;
   }
-  if (trackingNumber) {
+  if (typeof trackingNumber === "string") {
     update.trackingNumber = trackingNumber;
   }
 
-  await db.collection("orders").doc(orderId).update(update);
+  const nextHistory = Array.isArray(existing.statusHistory) ? [...existing.statusHistory] : [];
+  const lastEntry = nextHistory[nextHistory.length - 1];
+  const hasStatusChanged = existing.status !== status;
+  const hasTrackingChanged =
+    (existing.trackingCarrier || "") !== (typeof trackingCarrier === "string" ? trackingCarrier : (existing.trackingCarrier || "")) ||
+    (existing.trackingNumber || "") !== (typeof trackingNumber === "string" ? trackingNumber : (existing.trackingNumber || ""));
+
+  if (hasStatusChanged || hasTrackingChanged || !lastEntry) {
+    nextHistory.push({
+      status,
+      changedAt: new Date().toISOString(),
+      actor: "admin",
+      note: hasStatusChanged
+        ? "Estado actualizado desde el panel admin"
+        : "Datos de seguimiento actualizados desde el panel admin"
+    });
+  }
+
+  update.statusHistory = nextHistory;
+
+  await ref.update(update);
+  return res.json({ ok: true, statusHistory: nextHistory });
+});
+
+app.post("/admin/notify-order", async (req, res) => {
+  const apiKey = req.headers["x-api-key"];
+  if (!adminApiKey || apiKey !== adminApiKey) {
+    return res.status(401).send("No autorizado");
+  }
+
+  const { orderId } = req.body || {};
+  if (!orderId) {
+    return res.status(400).json({ error: "Falta orderId." });
+  }
+
+  const doc = await db.collection("orders").doc(orderId).get();
+  if (!doc.exists) {
+    return res.status(404).json({ error: "Pedido no encontrado." });
+  }
+
+  const order = { id: doc.id, ...doc.data() };
+  const result = await sendOrderStatusEmail(order);
+  if (!result.ok) {
+    return res.status(500).json({ error: "No se pudo enviar el email.", detail: result.reason || null });
+  }
+
   return res.json({ ok: true });
 });
 
@@ -891,6 +1039,21 @@ app.get("/admin/orders", async (req, res) => {
   });
 
   return res.json(orders);
+});
+
+app.get("/admin/gift-cards", async (req, res) => {
+  const apiKey = req.headers["x-api-key"];
+  if (!adminApiKey || apiKey !== adminApiKey) {
+    return res.status(401).send("No autorizado");
+  }
+
+  const snapshot = await db.collection("giftCards").get();
+  const giftCards = [];
+  snapshot.forEach((doc) => {
+    giftCards.push({ id: doc.id, ...doc.data() });
+  });
+
+  return res.json(giftCards);
 });
 
 app.get("/orders-by-email/:email", async (req, res) => {

@@ -868,7 +868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const query = searchInput.value.trim();
-      const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+      const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
       window.location.href = url;
     });
   }
@@ -879,7 +879,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     mobileSearchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const query = mobileSearchInput.value.trim();
-      const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+      const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
       window.location.href = url;
     });
   }

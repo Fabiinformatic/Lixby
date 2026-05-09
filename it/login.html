@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <!-- Google Tag Manager -->
@@ -357,16 +357,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="tienda.html" class="nav-link">Negozio</a>
+        <a href="shop.html" class="nav-link">Negozio</a>
         <a href="index.html#productos" class="nav-link">Prodotti</a>
         <a href="index.html#apps" class="nav-link">App</a>
-        <a href="pages/support.html" class="nav-link">Supporto</a>
+        <a href="support.html" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <a href="cesta.html" class="nav-icon-link" aria-label="Carrello">
+        <a href="cart.html" class="nav-icon-link" aria-label="Carrello">
           <img src="images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Account">
+        <a href="account.html" class="nav-icon-link" aria-label="Account">
           <img src="images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -378,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Pronto per l'autenticazione.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Configurazione Firebase mancante. Modifica l'oggetto <code>firebaseConfig</code> in <code>accesso.html</code> con le tue credenziali del progetto.
+          Configurazione Firebase mancante. Modifica l'oggetto <code>firebaseConfig</code> in <code>login.html</code> con le tue credenziali del progetto.
         </div>
 
         <section id="loginSection" class="auth-section active">
@@ -597,7 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="cuenta.html" class="btn btn-primary">Vai al mio account</a>
+            <a href="account.html" class="btn btn-primary">Vai al mio account</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Esci</button>
           </div>
         </div>
@@ -813,7 +813,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           setStatus("Accesso effettuato con successo.", "success");
           loginForm.reset();
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
@@ -876,7 +876,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           mfaCodeInput.value = "";
           setStatus("Accesso effettuato con successo.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Codice non valido: ${error.message}`, "error");
         }
@@ -938,7 +938,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           registerForm.reset();
           currentCaptcha = generateCaptcha();
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           setStatus(`Errore durante la registrazione: ${error.message}`, "error");
         }
@@ -963,7 +963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Accesso effettuato con Google.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Accesso con Google annullato.", "error");
@@ -978,7 +978,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Registrazione completata con Google.", "success");
           await transferSessionToApp(userCredential.user);
-          window.location.href = "cuenta.html";
+          window.location.href = "account.html";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
             setStatus("Accesso con Google annullato.", "error");

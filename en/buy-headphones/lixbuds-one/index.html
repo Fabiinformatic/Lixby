@@ -847,13 +847,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="../../index.html" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="../../tienda.html" class="nav-link">Store</a>
+        <a href="../../shop.html" class="nav-link">Store</a>
         <a href="../../index.html#productos" class="nav-link">Products</a>
         <a href="../../index.html#apps" class="nav-link">Apps</a>
-        <a href="../../pages/support.html" class="nav-link">Support</a>
+        <a href="../../support.html" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../tienda.html" method="get">
+        <form id="navSearchForm" action="../../shop.html" method="get">
           <input
             type="search"
             id="navSearch"
@@ -863,10 +863,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Search product"
           >
         </form>
-        <a href="../../cesta.html" class="nav-icon-link" aria-label="Cart">
+        <a href="../../cart.html" class="nav-icon-link" aria-label="Cart">
           <img src="../../images/Bolsa.png" alt="Cart">
         </a>
-        <a href="../../cuenta.html" class="nav-icon-link" aria-label="Account">
+        <a href="../../account.html" class="nav-icon-link" aria-label="Account">
           <img src="../../images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -1050,19 +1050,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>View and buy</h3>
         <ul>
-          <li><a href="../../tienda.html">Store</a></li>
+          <li><a href="../../shop.html">Store</a></li>
           <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
           <li><a href="../../index.html#apps">Apps</a></li>
-          <li><a href="../../pages/support.html">Support</a></li>
+          <li><a href="../../support.html">Support</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Support</h3>
         <ul>
-          <li><a href="../../pages/support.html">Support home page</a></li>
-          <li><a href="../../pages/support.html#faq">Online Store FAQs</a></li>
-          <li><a href="../../pages/support.html">Warranty information</a></li>
+          <li><a href="../../support.html">Support home page</a></li>
+          <li><a href="../../support.html#faq">Online Store FAQs</a></li>
+          <li><a href="../../support.html">Warranty information</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
@@ -1070,9 +1070,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="../../cesta.html">Orders</a></li>
-          <li><a href="../../cuenta.html">My account</a></li>
-          <li><a href="../../cuenta.html">Coupons</a></li>
+          <li><a href="../../cart.html">Orders</a></li>
+          <li><a href="../../account.html">My account</a></li>
+          <li><a href="../../account.html">Coupons</a></li>
         </ul>
       </section>
 
@@ -1080,9 +1080,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>About Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="../../pages/support.html">Warranty</a></li>
+          <li><a href="../../support.html">Warranty</a></li>
           <li><a href="#">Events</a></li>
-          <li><a href="../../pages/support.html">Contact</a></li>
+          <li><a href="../../support.html">Contact</a></li>
         </ul>
       </section>
     </div>
@@ -1093,7 +1093,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="../../pages/legal/privacy.html">Privacy policy</a>
         <a href="../../pages/legal/cookies.html">Cookie policy</a>
         <a href="../../pages/legal/terms.html">Terms of use</a>
-        <a href="../../pages/support.html">Sales and refunds</a>
+        <a href="../../support.html">Sales and refunds</a>
         <a href="../../pages/legal/legal-notice.html">Legal notices</a>
       </div>
     </div>
@@ -1150,7 +1150,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../tienda.html?q=${encodeURIComponent(query)}` : "../../tienda.html";
+        const url = query ? `../../shop.html?q=${encodeURIComponent(query)}` : "../../shop.html";
         window.location.href = url;
       });
     }
@@ -1211,7 +1211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "../../cesta.html";
+          window.location.href = "../../cart.html";
         }, 1200);
       });
     }
