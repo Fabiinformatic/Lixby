@@ -117,13 +117,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: grid;
       place-items: center;
     }
-
     .shop-category-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
+    .shop-category-icon img.shop-category-icon-contain {
+      object-fit: contain;
+    }
     .shop-category span {
       font-weight: 700;
     }
@@ -274,13 +276,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="shop-categories" aria-label="Kategorijos">
       <a class="shop-category" data-searchable="lixbuds one ausinės mixmax" href="pages/products/lixbuds-one.html">
         <div class="shop-category-icon">
-          <img src="images/lixbuds-one-black.png" alt="LixBuds One">
+          <img class="shop-category-icon-contain" src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
       <a class="shop-category" data-searchable="lixney app finansai" href="pages/apps/lixney.html">
         <div class="shop-category-icon">
-          <img src="images/lixney.png" alt="Lixney programėlė">
+          <img src="images/LixneyIcon.png" alt="Lixney programėlė">
         </div>
         <span>Lixney</span>
       </a>
@@ -722,3 +724,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
+
+
+
