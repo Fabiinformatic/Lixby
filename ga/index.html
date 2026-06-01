@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ga-GA" lang="ga" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
   <meta charset="utf-8" />
   <link rel="canonical" href="https://lixby.es/ga/">
   <link rel="alternate" href="https://lixby.es/bg/" hreflang="bg-BG">
@@ -119,10 +124,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Príomhroghanna">
-        <a href="tienda.html" class="nav-link">Siopa</a>
+        <a href="/ga/shop/" class="nav-link">Siopa</a>
         <a href="#productos" class="nav-link">Táirgí</a>
         <a href="#apps" class="nav-link">Aipeanna</a>
-        <a href="support.html" class="nav-link">Tacaíocht</a>
+        <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
@@ -131,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="/ga/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -141,10 +146,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Cuardaigh táirge"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Ciseán">
+        <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
           <img src="images/Bolsa.png" alt="Ciseán">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuntas">
+        <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
           <img src="images/cuenta.png" alt="Cuntas">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
@@ -159,7 +164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/ga/shop/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -174,14 +179,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Príomhroghanna soghluaiste">
-      <a href="tienda.html">Siopa</a>
+      <a href="/ga/shop/">Siopa</a>
       <a href="#productos">Táirgí</a>
       <a href="#apps">Aipeanna</a>
-      <a href="support.html">Tacaíocht</a>
+      <a href="/ga/support/">Tacaíocht</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Ciseán</a>
-      <a href="cuenta.html">Cuntas</a>
+      <a href="/ga/cart/">Ciseán</a>
+      <a href="/ga/account/">Cuntas</a>
     </div>
   </div>
 
@@ -237,8 +242,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>LixBuds One</h3>
           <p>Cluasáin gan sreang le cealú torainn, fuaim thumoideach agus cás luchtaithe ultra-tapa.</p>
           <div class="card-buttons">
-            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Féach tuilleadh</a>
-            <a href="comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Ceannaigh</a>
+            <a href="/ga/pages/products/lixbuds-one/" class="btn btn-secondary">Féach tuilleadh</a>
+            <a href="/ga/buy-headphones/lixbuds-one/" class="btn btn-primary">Ceannaigh</a>
           </div>
         </article>
 
@@ -249,8 +254,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Lixney</h3>
           <p>D'aip airgeadais phearsanta: eagraigh caiteachais, cruthaigh buiséid agus tuig cá dtéann d'airgead.</p>
           <div class="card-buttons">
-            <a href="pages/apps/lixney.html" class="btn btn-secondary">Féach tuilleadh</a>
-            <a href="beta-lixney.html" class="btn btn-primary">Ar mhaith leat a bheith i do thástálaí béite ar Lixney?</a>
+            <a href="/ga/pages/apps/lixney/" class="btn btn-secondary">Féach tuilleadh</a>
+            <a href="/ga/beta-lixney/" class="btn btn-primary">Ar mhaith leat a bheith i do thástálaí béite ar Lixney?</a>
           </div>
         </article>
       </div>
@@ -262,19 +267,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Féach agus ceannaigh</h3>
         <ul>
-          <li><a href="tienda.html">Siopa</a></li>
-          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="/ga/shop/">Siopa</a></li>
+          <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
           <li><a href="#apps">Aipeanna</a></li>
-          <li><a href="support.html">Tacaíocht</a></li>
+          <li><a href="/ga/support/">Tacaíocht</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Tacaíocht</h3>
         <ul>
-          <li><a href="support.html">Leathanach tosaigh tacaíochta</a></li>
-          <li><a href="support.html#faq">CCanna Siopa ar líne</a></li>
-          <li><a href="support.html">Eolas ar Bharántas</a></li>
+          <li><a href="/ga/support/">Leathanach tosaigh tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">CCanna Siopa ar líne</a></li>
+          <li><a href="/ga/support/">Eolas ar Bharántas</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Ríomhphost chuig an POF</a></li>
         </ul>
       </section>
@@ -282,19 +287,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Cuntas</h3>
         <ul>
-          <li><a href="../track.html">Orduithe</a></li>
-          <li><a href="cuenta.html">Mo chuntas</a></li>
-          <li><a href="cuenta.html">Cúpóin</a></li>
+          <li><a href="/ga/track/">Orduithe</a></li>
+          <li><a href="/ga/account/">Mo chuntas</a></li>
+          <li><a href="/ga/account/">Cúpóin</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Maidir le Lixby</h3>
         <ul>
-          <li><a href="about.html">Fúinn</a></li>
-          <li><a href="support.html">Barántas</a></li>
+          <li><a href="/ga/about/">Fúinn</a></li>
+          <li><a href="/ga/support/">Barántas</a></li>
           <li><a href="#">Imeachtaí</a></li>
-          <li><a href="support.html">Teagmháil</a></li>
+          <li><a href="/ga/support/">Teagmháil</a></li>
         </ul>
       </section>
     </div>
@@ -302,11 +307,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Cóipcheart © 2026 Lixby. Gach ceart ar cosaint.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Polasaí Príobháideachais</a>
-        <a href="pages/legal/cookies.html">Úsáid fianáin</a>
-        <a href="pages/legal/terms.html">Téarmaí úsáide</a>
-        <a href="support.html">Díolacháin agus aisíocaíochtaí</a>
-        <a href="pages/legal/legal-notice.html">Fógraí dlíthiúla</a>
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachais</a>
+        <a href="/ga/pages/legal/cookies/">Úsáid fianáin</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí úsáide</a>
+        <a href="/ga/support/">Díolacháin agus aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/legal-notice/">Fógraí dlíthiúla</a>
       </div>
     </div>
   </footer>
@@ -381,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `/ga/shop/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }
@@ -392,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `/ga/shop/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }
@@ -524,7 +529,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cesta.html";
+        window.location.href = "/ga/cart/";
       });
     });
   </script>

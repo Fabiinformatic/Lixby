@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -163,12 +168,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
 <div class="container nav-container">
-      <a href="../index.html" class="nav-brand">Lixby</a>
+      <a href="/lt/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Pagrindinis">
-        <a href="../shop.html" class="nav-link">Parduotuvė</a>
-        <a href="../index.html#productos" class="nav-link">Produktai</a>
-        <a href="../index.html#apps" class="nav-link">Programėlės</a>
-        <a href="../support.html" class="nav-link">Pagalba</a>
+        <a href="/lt/shop/" class="nav-link">Parduotuvė</a>
+        <a href="/lt/#productos" class="nav-link">Produktai</a>
+        <a href="/lt/#apps" class="nav-link">Programėlės</a>
+        <a href="/lt/support/" class="nav-link">Pagalba</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Ieškoti" aria-controls="navMobilePanel" aria-expanded="false">
@@ -177,7 +182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="../shop.html" method="get">
+        <form id="navSearchForm" action="/lt/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -187,10 +192,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Ieškoti produkto"
           >
         </form>
-        <a href="../cart.html" class="nav-icon-link" aria-label="Krepšelis">
+        <a href="/lt/cart/" class="nav-icon-link" aria-label="Krepšelis">
           <img src="../images/Bolsa.png" alt="Krepšelis">
         </a>
-        <a href="../account.html" class="nav-icon-link" aria-label="Paskyra">
+        <a href="/lt/account/" class="nav-icon-link" aria-label="Paskyra">
           <img src="../images/cuenta.png" alt="Paskyra">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meniu" aria-controls="navMobilePanel" aria-expanded="false">
@@ -205,7 +210,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../shop.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/lt/shop/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -220,14 +225,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Pagrindinis mobilusis">
-      <a href="../shop.html">Parduotuvė</a>
-      <a href="../index.html#productos">Produktai</a>
-      <a href="../index.html#apps">Programėlės</a>
-      <a href="../support.html">Pagalba</a>
+      <a href="/lt/shop/">Parduotuvė</a>
+      <a href="/lt/#productos">Produktai</a>
+      <a href="/lt/#apps">Programėlės</a>
+      <a href="/lt/support/">Pagalba</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cart.html">Krepšelis</a>
-      <a href="../account.html">Paskyra</a>
+      <a href="/lt/cart/">Krepšelis</a>
+      <a href="/lt/account/">Paskyra</a>
     </div>
   </div>
   <section class="help-hero">
@@ -242,22 +247,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Greitos nuorodos</h2>
       <p>Pasirinkite temą, kuri geriausiai atitinka jūsų klausimą, ir mes jums padėsime žingsnis po žingsnio.</p>
       <div class="help-grid">
-        <a class="help-card" href="lixbuds.html">
+        <a class="help-card" href="/lt/help-center/lixbuds/">
           <h3>LixBuds pagalba</h3>
           <p>Poravimas, baterija, garsas ir valymas.</p>
           <span class="btn btn-primary">Peržiūrėti vadovus</span>
         </a>
-        <a class="help-card" href="lixney.html">
+        <a class="help-card" href="/lt/help-center/lixney/">
           <h3>Lixney pagalba</h3>
           <p>Paskyra, sinchronizavimas ir privatumas.</p>
           <span class="btn btn-primary">Tvarkyti</span>
         </a>
-        <a class="help-card" href="faq.html">
+        <a class="help-card" href="/lt/help-center/faq/">
           <h3>Dažniausiai užduodami klausimai</h3>
           <p>Greiti atsakymai į dažnus klausimus.</p>
           <span class="btn btn-primary">Eiti į DUK</span>
         </a>
-        <a class="help-card" href="troubleshooting.html">
+        <a class="help-card" href="/lt/help-center/troubleshooting/">
           <h3>Problemų sprendimas</h3>
           <p>Vadovaujama diagnostika per kelias minutes.</p>
           <span class="btn btn-primary">Pradėti</span>
@@ -272,15 +277,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="help-container">
       <h2>Taip pat galime jums padėti su</h2>
       <div class="help-grid">
-        <a class="help-card" href="warranty.html">
+        <a class="help-card" href="/lt/help-center/warranty/">
           <h3>Garantija</h3>
           <p>Sąlygos, aprėptis ir žingsniai jai įgyvendinti.</p>
         </a>
-        <a class="help-card" href="returns.html">
+        <a class="help-card" href="/lt/help-center/returns/">
           <h3>Grąžinimai</h3>
           <p>Terminai, reikalavimai ir sekimas.</p>
         </a>
-        <a class="help-card" href="contact.html">
+        <a class="help-card" href="/lt/help-center/contact/">
           <h3>Kontaktai</h3>
           <p>Rašykite mums arba gaukite personalizuotą pagalbą.</p>
         </a>
@@ -292,47 +297,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Peržiūrėti ir pirkti</h3>
         <ul>
-          <li><a href="../shop.html">Parduotuvė</a></li>
-          <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../index.html#apps">Programėlės</a></li>
-          <li><a href="../support.html">Pagalba</a></li>
+          <li><a href="/lt/shop/">Parduotuvė</a></li>
+          <li><a href="/lt/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/lt/#apps">Programėlės</a></li>
+          <li><a href="/lt/support/">Pagalba</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Pagalba</h3>
         <ul>
-          <li><a href="../support.html">Pagalbos pradžios puslapis</a></li>
-          <li><a href="../support.html#faq">DUK apie internetinę parduotuvę</a></li>
-          <li><a href="../pages/legal/returns.html">Garantinė informacija</a></li>
+          <li><a href="/lt/support/">Pagalbos pradžios puslapis</a></li>
+          <li><a href="/lt/support/#faq">DUK apie internetinę parduotuvę</a></li>
+          <li><a href="/lt/pages/legal/returns/">Garantinė informacija</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">El. paštas</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Paskyra</h3>
         <ul>
-          <li><a href="../track.html">Užsakymai</a></li>
-          <li><a href="../account.html">Mano paskyra</a></li>
-          <li><a href="../account.html">Kuponai</a></li>
+          <li><a href="/lt/track/">Užsakymai</a></li>
+          <li><a href="/lt/account/">Mano paskyra</a></li>
+          <li><a href="/lt/account/">Kuponai</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Apie Lixby</h3>
         <ul>
-          <li><a href="../about.html">Naujienų kambarys</a></li>
-          <li><a href="../pages/legal/returns.html">Garantija</a></li>
-          <li><a href="../about.html">Renginiai</a></li>
-          <li><a href="../support.html">Kontaktai</a></li>
+          <li><a href="/lt/about/">Naujienų kambarys</a></li>
+          <li><a href="/lt/pages/legal/returns/">Garantija</a></li>
+          <li><a href="/lt/about/">Renginiai</a></li>
+          <li><a href="/lt/support/">Kontaktai</a></li>
         </ul>
       </section>
     </div>
     <div class="container footer-meta">
       <p class="footer-bottom">Autoriaus teisės © 2026 Lixby. Visos teisės saugomos.</p>
       <div class="footer-legal-links">
-        <a href="../pages/legal/privacy.html">Privatumo politika</a>
-        <a href="../pages/legal/cookies.html">Slapukų naudojimas</a>
-        <a href="../pages/legal/terms.html">Naudojimo sąlygos</a>
-        <a href="../support.html">Pardavimai ir grąžinimai</a>
-        <a href="../pages/legal/legal-notice.html">Teisiniai pranešimai</a>
+        <a href="/lt/pages/legal/privacy/">Privatumo politika</a>
+        <a href="/lt/pages/legal/cookies/">Slapukų naudojimas</a>
+        <a href="/lt/pages/legal/terms/">Naudojimo sąlygos</a>
+        <a href="/lt/support/">Pardavimai ir grąžinimai</a>
+        <a href="/lt/pages/legal/legal-notice/">Teisiniai pranešimai</a>
       </div>
     </div>
   </footer>
@@ -387,7 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../shop.html?q=${encodeURIComponent(query)}` : "../shop.html";
+        const url = query ? `/lt/shop/?q=${encodeURIComponent(query)}` : "/lt/shop/";
         window.location.href = url;
       });
     }
@@ -396,7 +401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `../shop.html?q=${encodeURIComponent(query)}` : "../shop.html";
+        const url = query ? `/lt/shop/?q=${encodeURIComponent(query)}` : "/lt/shop/";
         window.location.href = url;
       });
     }
@@ -404,3 +409,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="../script.js"></script>
 </body>
 </html>
+

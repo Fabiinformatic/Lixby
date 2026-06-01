@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/it/">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
+  <title>Tracciamento ordine | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <style>
+    :root {
+      --green: #458500;
+      --green-light: #f0f7e6;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --shadow-soft: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    body {
+      background: #f5f7fa;
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 48px 16px 80px;
+      flex: 1;
+    }
+
+    /* Search card */
+    .search-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      animation: slideUp 0.4s ease both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(16px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .search-card h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0 0 6px;
+    }
+
+    .search-card p {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: var(--green);
+    }
+
+    .search-prefix {
+      padding: 12px 10px 12px 16px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green);
+      background: var(--green-light);
+      border-right: 1.5px solid #c3e6a0;
+      white-space: nowrap;
+    }
+
+    .search-input-wrap input {
+      flex: 1;
+      padding: 12px 14px;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Manrope', sans-serif;
+      outline: none;
+      min-width: 0;
+    }
+
+    .btn-search {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 12px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Manrope', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-search:hover { background: #366a00; }
+    .btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Result card */
+    .result-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-soft);
+      animation: slideUp 0.4s ease both;
+      display: none;
+    }
+
+    /* Error */
+    .error-card {
+      background: #fff5f5;
+      border-color: #fecaca;
+      color: #b91c1c;
+      text-align: center;
+      padding: 28px;
+      display: none;
+    }
+
+    /* Order header */
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .order-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--green);
+    }
+
+    .order-number-badge span { font-weight: 400; color: #555; }
+
+    .order-date {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .payment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    /* Progress bar */
+    .progress-section {
+      margin-bottom: 28px;
+    }
+
+    .progress-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .progress-steps {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .progress-line {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      height: 3px;
+      background: var(--line);
+      z-index: 0;
+    }
+
+    .progress-line-fill {
+      height: 100%;
+      background: var(--green);
+      transition: width 0.8s ease;
+      border-radius: 999px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 3px solid var(--line);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      font-size: 0.8rem;
+    }
+
+    .step-dot.done {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .step-dot.active {
+      border-color: var(--green);
+      background: var(--green-light);
+      box-shadow: 0 0 0 4px rgba(69,133,0,0.15);
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+      max-width: 70px;
+      line-height: 1.3;
+    }
+
+    .step-label.active { color: var(--green); font-weight: 700; }
+    .step-label.done { color: #374151; }
+
+    /* Info sections */
+    .info-section {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .info-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+    }
+
+    .info-item label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Tracking number */
+    .tracking-info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tracking-icon {
+      width: 40px;
+      height: 40px;
+      background: #2563eb;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tracking-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .tracking-details label {
+      font-size: 0.78rem;
+      color: #3b82f6;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .tracking-details strong {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    /* Products */
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+
+    .product-item-name { font-weight: 600; font-size: 0.92rem; }
+    .product-item-sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .product-item-price { font-weight: 800; white-space: nowrap; }
+
+    /* Total */
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .total-row span { font-weight: 700; }
+    .total-row strong { font-size: 1.1rem; font-weight: 800; color: var(--green); }
+
+    /* Actions */
+    .track-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .track-actions a {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover { background: #366a00; }
+
+    .btn-secondary {
+      background: #fff;
+      color: #374151;
+      border: 1.5px solid var(--line);
+    }
+
+    .btn-secondary:hover { border-color: #9ca3af; }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--line);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      .search-card, .result-card { padding: 20px 16px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .step-label { font-size: 0.65rem; max-width: 55px; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div id="scroll-progress"></div>
+
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principale">
+        <a href="/it/shop/" class="nav-link">Negozio</a>
+        <a href="/it/#productos" class="nav-link">Prodotti</a>
+        <a href="/it/#apps" class="nav-link">App</a>
+        <a href="/it/support/" class="nav-link">Supporto</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cerca" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/it/shop/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cerca prodotto..."
+            aria-label="Cerca prodotto"
+          >
+        </form>
+        <a href="/it/cart/" class="nav-icon-link" aria-label="Carrello">
+          <img src="images/Bolsa.png" alt="Carrello">
+        </a>
+        <a href="/it/account/" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/it/shop/" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Cerca"
+          aria-label="Cerca prodotto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Chiudi menu">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Principale mobile">
+      <a href="/it/shop/">Negozio</a>
+      <a href="/it/#productos">Prodotti</a>
+      <a href="/it/#apps">App</a>
+      <a href="/it/support/">Supporto</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="/it/cart/">Carrello</a>
+      <a href="/it/account/">Account</a>
+    </div>
+  </div>
+
+<div class="track-page">
+
+  <!-- Ricerca -->
+  <div class="search-card">
+    <h1>Tracciamento ordine</h1>
+    <p>Inserisci il numero del tuo ordine per vedere lo stato della spedizione.</p>
+    <div class="search-row">
+      <div class="search-input-wrap">
+        <span class="search-prefix">LXB-</span>
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Numero ordine">
+      </div>
+      <button class="btn-search" id="searchBtn" type="button">Cerca</button>
+    </div>
+  </div>
+
+  <!-- Caricamento -->
+  <div id="loadingEl" style="display:none">
+    <div class="result-card" style="display:block">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Ricerca del tuo ordine in corso...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Errore -->
+  <div class="result-card error-card" id="errorCard">
+    <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Ordine non trovato</p>
+    <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
+      Non abbiamo trovato nessun ordine con questo numero.<br>
+      Verifica che il numero sia corretto — lo troverai nell'email di conferma.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <a href="mailto:lixbyinfo@gmail.com" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Contatta il supporto
+      </a>
+      <a href="/it/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        Torna al negozio
+      </a>
+    </div>
+  </div>
+
+  <!-- Risultato -->
+  <div class="result-card" id="resultCard">
+
+    <!-- Header -->
+    <div class="order-header">
+      <div>
+        <div class="order-number-badge">
+          <span>Ordine</span>
+          <strong id="resOrderNumber">—</strong>
+        </div>
+        <div class="order-date" id="resDate"></div>
+      </div>
+      <div class="payment-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Pagamento confermato
+      </div>
+    </div>
+
+    <!-- Progresso -->
+    <div class="progress-section">
+      <h3>Stato della spedizione</h3>
+      <div class="progress-steps" id="progressSteps">
+        <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
+      </div>
+    </div>
+
+    <!-- Numero di tracciamento -->
+    <div class="tracking-info" id="trackingInfo" style="display:none">
+      <div class="tracking-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="tracking-details">
+        <label>Numero di tracciamento</label>
+        <strong id="trackingNumber">—</strong>
+        <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
+      </div>
+    </div>
+
+    <!-- Info cliente -->
+    <div class="info-section" id="resCustomerSection" style="display:none">
+      <h3>Informazioni di consegna</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Nome</label>
+          <strong id="resName">—</strong>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <strong id="resEmail">—</strong>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1">
+          <label>Indirizzo di spedizione</label>
+          <strong id="resAddress">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prodotti -->
+    <div id="resProductsSection" style="display:none">
+      <div class="info-section" style="background:#fff">
+        <h3>Prodotti</h3>
+        <div id="resProductsList"></div>
+        <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
+          <span>Totale pagato</span>
+          <strong id="resTotalValue">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Azioni -->
+    <div class="track-actions" style="margin-top:20px">
+      <a href="/it/shop/" class="btn-primary">Continua gli acquisti</a>
+      <a href="mailto:lixbyinfo@gmail.com" class="btn-secondary">Contatta il supporto</a>
+    </div>
+  </div>
+</div>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Vedi e acquista</h3>
+        <ul>
+          <li><a href="/it/shop/">Negozio</a></li>
+          <li><a href="/it/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/it/#apps">App</a></li>
+          <li><a href="/it/support/">Supporto</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Supporto</h3>
+        <ul>
+          <li><a href="/it/support/">Pagina iniziale supporto</a></li>
+          <li><a href="/it/support/#faq">FAQ Negozio online</a></li>
+          <li><a href="/it/support/">Informazioni sulla garanzia</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Account</h3>
+        <ul>
+          <li><a href="/it/track/">Ordini</a></li>
+          <li><a href="/it/account/">Il mio account</a></li>
+          <li><a href="/it/account/">Coupon</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Chi è Lixby</h3>
+        <ul>
+          <li><a href="/it/about/">Noi</a></li>
+          <li><a href="/it/support/">Garanzia</a></li>
+          <li><a href="#">Eventi</a></li>
+          <li><a href="/it/support/">Contatto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
+      <div class="footer-legal-links">
+        <a href="/it/pages/legal/privacy/">Politica sulla privacy</a>
+        <a href="/it/pages/legal/cookies/">Utilizzo dei cookie</a>
+        <a href="/it/pages/legal/terms/">Condizioni d'uso</a>
+        <a href="/it/support/">Vendite e rimborsi</a>
+        <a href="/it/pages/legal/legal-notice/">Note legali</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  const RAILWAY_URL = 'https://lixby-production.up.railway.app';
+
+  const STATUS_STEPS = [
+    { key: 'Pedido recibido',   label: 'Ricevuto',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'Preparazione', icon: '🔧' },
+    { key: 'Enviado',           label: 'Inviato',     icon: '🚚' },
+    { key: 'En reparto',        label: 'In consegna',  icon: '📍' },
+    { key: 'Entregado',         label: 'Consegnato',   icon: '✅' }
+  ];
+
+  function money(v) {
+    return Number(v).toFixed(2).replace('.', ',') + ' €';
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function show(id, display = 'block') { document.getElementById(id).style.display = display; }
+  function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+  function renderProgress(status) {
+    const currentIndex = STATUS_STEPS.findIndex(s => s.key === status);
+    const container = document.getElementById('progressSteps');
+    const fill = document.getElementById('progressFill');
+
+    // Mantenere la linea
+    const line = container.querySelector('.progress-line');
+
+    // Pulire i passi precedenti
+    container.querySelectorAll('.step-item').forEach(el => el.remove());
+
+    STATUS_STEPS.forEach((step, idx) => {
+      const isDone = idx < currentIndex;
+      const isActive = idx === currentIndex;
+
+      const item = document.createElement('div');
+      item.className = 'step-item';
+
+      const dot = document.createElement('div');
+      dot.className = 'step-dot' + (isDone ? ' done' : isActive ? ' active' : '');
+      dot.textContent = isDone ? '✓' : step.icon;
+
+      const label = document.createElement('div');
+      label.className = 'step-label' + (isDone ? ' done' : isActive ? ' active' : '');
+      label.textContent = step.label;
+
+      item.appendChild(dot);
+      item.appendChild(label);
+      container.appendChild(item);
+    });
+
+    // Animare la linea di progresso
+    const pct = currentIndex <= 0 ? 0 : (currentIndex / (STATUS_STEPS.length - 1)) * 100;
+    setTimeout(() => { fill.style.width = pct + '%'; }, 100);
+  }
+
+  function renderOrder(data) {
+    // Numero e data
+    document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
+    const dateEl = document.getElementById('resDate');
+    if (data.paidAt || data.createdAt) {
+      dateEl.textContent = 'Effettuato il ' + formatDate(data.paidAt || data.createdAt);
+    }
+
+    // Progresso
+    renderProgress(data.status || 'Pedido recibido');
+
+    // Numero di tracciamento
+    if (data.trackingNumber) {
+      document.getElementById('trackingNumber').textContent = data.trackingNumber;
+      if (data.trackingCarrier) {
+        document.getElementById('trackingCarrier').textContent = data.trackingCarrier;
+      }
+      show('trackingInfo', 'flex');
+    }
+
+    // Cliente
+    const name = data.customerName;
+    const email = data.email;
+    const address = data.address;
+    if (name || email || address) {
+      if (name) document.getElementById('resName').textContent = name;
+      if (email) document.getElementById('resEmail').textContent = email;
+      if (address) document.getElementById('resAddress').textContent = address;
+      show('resCustomerSection', 'block');
+    }
+
+    // Prodotti
+    const items = data.items || [];
+    if (items.length) {
+      const list = document.getElementById('resProductsList');
+      list.innerHTML = items.map(item => {
+        const name = item.productName || item.name || 'Prodotto';
+        const qty = item.quantity || item.qty || 1;
+        const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
+        return `
+          <div class="product-item">
+            <div>
+              <div class="product-item-name">${name}</div>
+              <div class="product-item-sub">Quantità: ${qty}</div>
+            </div>
+            <div class="product-item-price">${price}</div>
+          </div>
+        `;
+      }).join('');
+
+      if (data.amountTotal) {
+        document.getElementById('resTotalValue').textContent = money(data.amountTotal);
+        show('resTotalRow', 'flex');
+      }
+      show('resProductsSection', 'block');
+    }
+
+    hide('loadingEl');
+    hide('errorCard');
+    show('resultCard', 'block');
+  }
+
+  async function fetchOrder(id) {
+    hide('resultCard');
+    hide('errorCard');
+    show('loadingEl', 'block');
+
+    // Normalizzare ID — accetta con o senza LXB-
+    let normalized = id.trim().toUpperCase();
+    if (!normalized.startsWith('LXB-') && !normalized.startsWith('LX-') && !normalized.startsWith('TEST-')) {
+      normalized = 'LXB-' + normalized;
+    }
+
+    try {
+      const res = await fetch(`${RAILWAY_URL}/track-order/${encodeURIComponent(normalized)}`);
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        hide('loadingEl');
+        show('errorCard', 'block');
+        return;
+      }
+
+      renderOrder(data);
+    } catch (e) {
+      hide('loadingEl');
+      show('errorCard', 'block');
+    }
+  }
+
+  // Pulsante cerca
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    const val = document.getElementById('orderInput').value.trim();
+    if (val) fetchOrder(val);
+  });
+
+  document.getElementById('orderInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = e.target.value.trim();
+      if (val) fetchOrder(val);
+    }
+  });
+
+  // Auto-cerca se orderId è presente nell'URL
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const autoId = params.get('orderId') || params.get('id');
+    if (autoId) {
+      document.getElementById('orderInput').value = autoId;
+      fetchOrder(autoId);
+    }
+  });
+</script>
+</body>
+</html>

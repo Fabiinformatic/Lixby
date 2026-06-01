@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ga">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://lixby.es/es/centro-ayuda/">
+  <link rel="canonical" href="https://lixby.es/ga/help-center/">
   <link rel="alternate" href="https://lixby.es/bg/help-center/" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/help-center/" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/help-center/" hreflang="da-DK">
@@ -164,12 +169,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
 <div class="container nav-container">
-      <a href="../index.html" class="nav-brand">Lixby</a>
+      <a href="/ga/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Príomh">
-        <a href="../tienda.html" class="nav-link">Siopa</a>
-        <a href="../index.html#productos" class="nav-link">Táirgí</a>
-        <a href="../index.html#apps" class="nav-link">Aipeanna</a>
-        <a href="../support.html" class="nav-link">Tacaíocht</a>
+        <a href="/ga/shop/" class="nav-link">Siopa</a>
+        <a href="/ga/#productos" class="nav-link">Táirgí</a>
+        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
@@ -178,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="../tienda.html" method="get">
+        <form id="navSearchForm" action="/ga/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -188,10 +193,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Cuardaigh táirge"
           >
         </form>
-        <a href="../cesta.html" class="nav-icon-link" aria-label="Ciseán">
+        <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
           <img src="../images/Bolsa.png" alt="Ciseán">
         </a>
-        <a href="../cuenta.html" class="nav-icon-link" aria-label="Cuntas">
+        <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
           <img src="../images/cuenta.png" alt="Cuntas">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
@@ -206,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/ga/shop/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -221,14 +226,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Príomh soghluaiste">
-      <a href="../tienda.html">Siopa</a>
-      <a href="../index.html#productos">Táirgí</a>
-      <a href="../index.html#apps">Aipeanna</a>
-      <a href="../support.html">Tacaíocht</a>
+      <a href="/ga/shop/">Siopa</a>
+      <a href="/ga/#productos">Táirgí</a>
+      <a href="/ga/#apps">Aipeanna</a>
+      <a href="/ga/support/">Tacaíocht</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cesta.html">Ciseán</a>
-      <a href="../cuenta.html">Cuntas</a>
+      <a href="/ga/cart/">Ciseán</a>
+      <a href="/ga/account/">Cuntas</a>
     </div>
   </div>
   <section class="help-hero">
@@ -243,22 +248,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Rochtain thapa</h2>
       <p>Roghnaigh an t-ábhar is fearr a oireann do d'fhiosrúchán agus treoróimid céim ar chéim thú.</p>
       <div class="help-grid">
-        <a class="help-card" href="lixbuds.html">
+        <a class="help-card" href="/ga/help-center/lixbuds/">
           <h3>Tacaíocht LixBuds</h3>
           <p>Céipeáil, ceallraí, fuaim agus glanadh.</p>
           <span class="btn btn-primary">Féach ar threoracha</span>
         </a>
-        <a class="help-card" href="lixney.html">
+        <a class="help-card" href="/ga/help-center/lixney/">
           <h3>Tacaíocht Lixney</h3>
           <p>Cuntas, sioncrónú agus príobháideacht.</p>
           <span class="btn btn-primary">Bainistigh</span>
         </a>
-        <a class="help-card" href="faq.html">
+        <a class="help-card" href="/ga/help-center/faq/">
           <h3>Ceisteanna Coitianta</h3>
           <p>Freagraí tapa ar cheisteanna coitianta.</p>
           <span class="btn btn-primary">Téigh go FAQ</span>
         </a>
-        <a class="help-card" href="solucion-problemas.html">
+        <a class="help-card" href="/ga/help-center/troubleshooting/">
           <h3>Fabhtcheartú</h3>
           <p>Diagnóisic threoraithe i gceann nóiméad.</p>
           <span class="btn btn-primary">Tosaigh</span>
@@ -273,15 +278,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="help-container">
       <h2>Is féidir linn cabhrú leat freisin le</h2>
       <div class="help-grid">
-        <a class="help-card" href="garantia.html">
+        <a class="help-card" href="/ga/help-center/warranty/">
           <h3>Barántas</h3>
           <p>Coinníollacha, clúdach agus céimeanna chun é a phróiseáil.</p>
         </a>
-        <a class="help-card" href="devoluciones.html">
+        <a class="help-card" href="/ga/help-center/returns/">
           <h3>Filleadh</h3>
           <p>Teorainneacha ama, ceanglais agus rianú.</p>
         </a>
-        <a class="help-card" href="contacto.html">
+        <a class="help-card" href="/ga/help-center/contact/">
           <h3>Teagmháil</h3>
           <p>Scríobh chugainn nó iarr tacaíocht phearsantaithe.</p>
         </a>
@@ -293,47 +298,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Féach agus ceannaigh</h3>
         <ul>
-          <li><a href="../tienda.html">Siopa</a></li>
-          <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../index.html#apps">Aipeanna</a></li>
-          <li><a href="../support.html">Tacaíocht</a></li>
+          <li><a href="/ga/shop/">Siopa</a></li>
+          <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/ga/#apps">Aipeanna</a></li>
+          <li><a href="/ga/support/">Tacaíocht</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Tacaíocht</h3>
         <ul>
-          <li><a href="../support.html">Leathanach tosaigh tacaíochta</a></li>
-          <li><a href="../support.html#faq">CCanna Siopa Ar Líne</a></li>
-          <li><a href="../pages/legal/returns.html">Faisnéis Baránta</a></li>
+          <li><a href="/ga/support/">Leathanach tosaigh tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">CCanna Siopa Ar Líne</a></li>
+          <li><a href="/ga/pages/legal/returns/">Faisnéis Baránta</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Ríomhphost</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Cuntas</h3>
         <ul>
-          <li><a href="../track.html">Orduithe</a></li>
-          <li><a href="../cuenta.html">Mo Chuntas</a></li>
-          <li><a href="../cuenta.html">Cúpóin</a></li>
+          <li><a href="/ga/track/">Orduithe</a></li>
+          <li><a href="/ga/account/">Mo Chuntas</a></li>
+          <li><a href="/ga/account/">Cúpóin</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Maidir le Lixby</h3>
         <ul>
-          <li><a href="../about.html">Seomra Nuachta</a></li>
-          <li><a href="../pages/legal/returns.html">Barántas</a></li>
-          <li><a href="../about.html">Imeachtaí</a></li>
-          <li><a href="../support.html">Teagmháil</a></li>
+          <li><a href="/ga/about/">Seomra Nuachta</a></li>
+          <li><a href="/ga/pages/legal/returns/">Barántas</a></li>
+          <li><a href="/ga/about/">Imeachtaí</a></li>
+          <li><a href="/ga/support/">Teagmháil</a></li>
         </ul>
       </section>
     </div>
     <div class="container footer-meta">
       <p class="footer-bottom">Cóipcheart © 2026 Lixby. Gach ceart ar cosaint.</p>
       <div class="footer-legal-links">
-        <a href="../pages/legal/privacy.html">Polasaí Príobháideachais</a>
-        <a href="../pages/legal/cookies.html">Úsáid Fianán</a>
-        <a href="../pages/legal/terms.html">Téarmaí Úsáide</a>
-        <a href="../support.html">Díolacháin agus Aisíocaíochtaí</a>
-        <a href="../pages/legal/legal-notice.html">Fógraí Dlíthiúla</a>
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachais</a>
+        <a href="/ga/pages/legal/cookies/">Úsáid Fianán</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí Úsáide</a>
+        <a href="/ga/support/">Díolacháin agus Aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/legal-notice/">Fógraí Dlíthiúla</a>
       </div>
     </div>
   </footer>
@@ -388,7 +393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `/ga/shop/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }
@@ -397,7 +402,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `../tienda.html?q=${encodeURIComponent(query)}` : "../tienda.html";
+        const url = query ? `/ga/shop/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }

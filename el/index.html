@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="el">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -101,10 +106,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Κύρια">
-        <a href="shop.html" class="nav-link">Κατάστημα</a>
+        <a href="/el/shop/" class="nav-link">Κατάστημα</a>
         <a href="#productos" class="nav-link">Προϊόντα</a>
         <a href="#apps" class="nav-link">Εφαρμογές</a>
-        <a href="support.html" class="nav-link">Υποστήριξη</a>
+        <a href="/el/support/" class="nav-link">Υποστήριξη</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Αναζήτηση" aria-controls="navMobilePanel" aria-expanded="false">
@@ -113,7 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="shop.html" method="get">
+        <form id="navSearchForm" action="/el/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -123,10 +128,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Αναζήτηση προϊόντος"
           >
         </form>
-        <a href="cart.html" class="nav-icon-link" aria-label="Καλάθι">
+        <a href="/el/cart/" class="nav-icon-link" aria-label="Καλάθι">
           <img src="images/Bolsa.png" alt="Καλάθι">
         </a>
-        <a href="account.html" class="nav-icon-link" aria-label="Λογαριασμός">
+        <a href="/el/account/" class="nav-icon-link" aria-label="Λογαριασμός">
           <img src="images/cuenta.png" alt="Λογαριασμός">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Μενού" aria-controls="navMobilePanel" aria-expanded="false">
@@ -141,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="shop.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/el/shop/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -156,14 +161,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Κύρια κινητής">
-      <a href="shop.html">Κατάστημα</a>
+      <a href="/el/shop/">Κατάστημα</a>
       <a href="#productos">Προϊόντα</a>
       <a href="#apps">Εφαρμογές</a>
-      <a href="support.html">Υποστήριξη</a>
+      <a href="/el/support/">Υποστήριξη</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cart.html">Καλάθι</a>
-      <a href="account.html">Λογαριασμός</a>
+      <a href="/el/cart/">Καλάθι</a>
+      <a href="/el/account/">Λογαριασμός</a>
     </div>
   </div>
 
@@ -219,8 +224,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>LixBuds One</h3>
           <p>Ασύρματα ακουστικά με ακύρωση θορύβου, καθηλωτικό ήχο και θήκη ταχείας φόρτισης.</p>
           <div class="card-buttons">
-            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Μάθετε περισσότερα</a>
-            <a href="buy-headphones/lixbuds-one/index.html" class="btn btn-primary">Αγορά</a>
+            <a href="/el/pages/products/lixbuds-one/" class="btn btn-secondary">Μάθετε περισσότερα</a>
+            <a href="/el/buy-headphones/lixbuds-one/" class="btn btn-primary">Αγορά</a>
           </div>
         </article>
 
@@ -231,7 +236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Lixney</h3>
           <p>Η εφαρμογή προσωπικών οικονομικών σας: οργανώστε έξοδα, δημιουργήστε προϋπολογισμούς και κατανοήστε πού πηγαίνουν τα χρήματά σας.</p>
           <div class="card-buttons">
-            <a href="pages/apps/lixney.html" class="btn btn-secondary">Μάθετε περισσότερα</a>
+            <a href="/el/pages/apps/lixney/" class="btn btn-secondary">Μάθετε περισσότερα</a>
             <a href="#" class="btn btn-primary">Λήψη</a>
           </div>
         </article>
@@ -244,19 +249,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Προβολή και αγορά</h3>
         <ul>
-          <li><a href="shop.html">Κατάστημα</a></li>
-          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="/el/shop/">Κατάστημα</a></li>
+          <li><a href="/el/pages/products/lixbuds-one/">LixBuds</a></li>
           <li><a href="#apps">Εφαρμογές</a></li>
-          <li><a href="support.html">Υποστήριξη</a></li>
+          <li><a href="/el/support/">Υποστήριξη</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Υποστήριξη</h3>
         <ul>
-          <li><a href="support.html">Αρχική σελίδα υποστήριξης</a></li>
-          <li><a href="support.html#faq">Συχνές ερωτήσεις ηλεκτρονικού καταστήματος</a></li>
-          <li><a href="support.html">Πληροφορίες εγγύησης</a></li>
+          <li><a href="/el/support/">Αρχική σελίδα υποστήριξης</a></li>
+          <li><a href="/el/support/#faq">Συχνές ερωτήσεις ηλεκτρονικού καταστήματος</a></li>
+          <li><a href="/el/support/">Πληροφορίες εγγύησης</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email προς τον CEO</a></li>
         </ul>
       </section>
@@ -264,19 +269,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Λογαριασμός</h3>
         <ul>
-          <li><a href="../track.html">Παραγγελίες</a></li>
-          <li><a href="account.html">Ο λογαριασμός μου</a></li>
-          <li><a href="account.html">Κουπόνια</a></li>
+          <li><a href="/el/track/">Παραγγελίες</a></li>
+          <li><a href="/el/account/">Ο λογαριασμός μου</a></li>
+          <li><a href="/el/account/">Κουπόνια</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Σχετικά με τη Lixby</h3>
         <ul>
-          <li><a href="about.html">Η εταιρεία μας</a></li>
-          <li><a href="support.html">Εγγύηση</a></li>
+          <li><a href="/el/about/">Η εταιρεία μας</a></li>
+          <li><a href="/el/support/">Εγγύηση</a></li>
           <li><a href="#">Εκδηλώσεις</a></li>
-          <li><a href="support.html">Επικοινωνία</a></li>
+          <li><a href="/el/support/">Επικοινωνία</a></li>
         </ul>
       </section>
     </div>
@@ -284,11 +289,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Με την επιφύλαξη παντός δικαιώματος.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Πολιτική απορρήτου</a>
-        <a href="pages/legal/cookies.html">Χρήση cookies</a>
-        <a href="pages/legal/terms.html">Όροι χρήσης</a>
-        <a href="support.html">Πωλήσεις και επιστροφές</a>
-        <a href="pages/legal/legal-notice.html">Νομικές σημειώσεις</a>
+        <a href="/el/pages/legal/privacy/">Πολιτική απορρήτου</a>
+        <a href="/el/pages/legal/cookies/">Χρήση cookies</a>
+        <a href="/el/pages/legal/terms/">Όροι χρήσης</a>
+        <a href="/el/support/">Πωλήσεις και επιστροφές</a>
+        <a href="/el/pages/legal/legal-notice/">Νομικές σημειώσεις</a>
       </div>
     </div>
   </footer>
@@ -363,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
+        const url = query ? `/el/shop/?q=${encodeURIComponent(query)}` : "/el/shop/";
         window.location.href = url;
       });
     }
@@ -374,7 +379,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `shop.html?q=${encodeURIComponent(query)}` : "shop.html";
+        const url = query ? `/el/shop/?q=${encodeURIComponent(query)}` : "/el/shop/";
         window.location.href = url;
       });
     }
@@ -506,7 +511,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cart.html";
+        window.location.href = "/el/cart/";
       });
     });
   </script>

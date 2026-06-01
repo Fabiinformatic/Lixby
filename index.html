@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -63,30 +68,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <noscript>
     <p>JavaScript is required for automatic language redirect.</p>
     <p>
-      <a href="./de/index.html">Deutsch</a> |
-      <a href="./bg/index.html">Български</a> |
-      <a href="./cs/index.html">Čeština</a> |
-      <a href="./hr/index.html">Hrvatski</a> |
-      <a href="./da/index.html">Dansk</a> |
-      <a href="./sk/index.html">Slovenčina</a> |
-      <a href="./sl/index.html">Slovenščina</a> |
-      <a href="./es/index.html">Español</a> |
-      <a href="./et/index.html">Eesti</a> |
-      <a href="./fi/index.html">Suomi</a> |
-      <a href="./fr/index.html">Français</a> |
-      <a href="./el/index.html">Ελληνικά</a> |
-      <a href="./hu/index.html">Magyar</a> |
-      <a href="./en/index.html">English</a> |
-      <a href="./ga/index.html">Gaeilge</a> |
-      <a href="./it/index.html">Italiano</a> |
-      <a href="./lv/index.html">Latviešu</a> |
-      <a href="./lt/index.html">Lietuvių</a> |
-      <a href="./mt/index.html">Malti</a> |
-      <a href="./nl/index.html">Nederlands</a> |
-      <a href="./pl/index.html">Polski</a> |
-      <a href="./pt/index.html">Português</a> |
-      <a href="./ro/index.html">Română</a> |
-      <a href="./sv/index.html">Svenska</a>
+      <a href="./de/">Deutsch</a> |
+      <a href="./bg/">Български</a> |
+      <a href="./cs/">Čeština</a> |
+      <a href="./hr/">Hrvatski</a> |
+      <a href="./da/">Dansk</a> |
+      <a href="./sk/">Slovenčina</a> |
+      <a href="./sl/">Slovenščina</a> |
+      <a href="./es/">Español</a> |
+      <a href="./et/">Eesti</a> |
+      <a href="./fi/">Suomi</a> |
+      <a href="./fr/">Français</a> |
+      <a href="./el/">Ελληνικά</a> |
+      <a href="./hu/">Magyar</a> |
+      <a href="./en/">English</a> |
+      <a href="./ga/">Gaeilge</a> |
+      <a href="./it/">Italiano</a> |
+      <a href="./lv/">Latviešu</a> |
+      <a href="./lt/">Lietuvių</a> |
+      <a href="./mt/">Malti</a> |
+      <a href="./nl/">Nederlands</a> |
+      <a href="./pl/">Polski</a> |
+      <a href="./pt/">Português</a> |
+      <a href="./ro/">Română</a> |
+      <a href="./sv/">Svenska</a>
     </p>
   </noscript>
   <script>
@@ -119,7 +124,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       else if (lang.startsWith("ro")) folder = "ro";
       else if (lang.startsWith("sv")) folder = "sv";
 
-      window.location.replace(`./${folder}/index.html`);
+      window.location.replace(`./${folder}/`);
     })();
   </script>
 </body>

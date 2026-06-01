@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -844,15 +849,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="../../index.html" class="nav-brand">Lixby</a>
+      <a href="/lt/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Pagrindinis">
-        <a href="../../shop.html" class="nav-link">Parduotuvė</a>
-        <a href="../../index.html#productos" class="nav-link">Produktai</a>
-        <a href="../../index.html#apps" class="nav-link">Programėlės</a>
-        <a href="../../support.html" class="nav-link">Pagalba</a>
+        <a href="/lt/shop/" class="nav-link">Parduotuvė</a>
+        <a href="/lt/#productos" class="nav-link">Produktai</a>
+        <a href="/lt/#apps" class="nav-link">Programėlės</a>
+        <a href="/lt/support/" class="nav-link">Pagalba</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../shop.html" method="get">
+        <form id="navSearchForm" action="/lt/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -862,10 +867,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Ieškoti produkto"
           >
         </form>
-        <a href="../../cart.html" class="nav-icon-link" aria-label="Krepšelis">
+        <a href="/lt/cart/" class="nav-icon-link" aria-label="Krepšelis">
           <img src="../../images/Bolsa.png" alt="Krepšelis">
         </a>
-        <a href="../../account.html" class="nav-icon-link" aria-label="Paskyra">
+        <a href="/lt/account/" class="nav-icon-link" aria-label="Paskyra">
           <img src="../../images/cuenta.png" alt="Paskyra">
         </a>
       </div>
@@ -875,7 +880,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="product-subnav-title"><span class="product-subnav-badge">Nauja</span> LixBuds One</div>
         <div class="product-subnav-links">
           <a href="#descripcion">Aprašymas</a>
-          <a href="../../pages/products/lixbuds-one.html">Specifikacijos</a>
+          <a href="/lt/pages/products/lixbuds-one/">Specifikacijos</a>
         </div>
       </div>
     </div>
@@ -1049,19 +1054,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Peržiūrėti ir pirkti</h3>
         <ul>
-          <li><a href="../../shop.html">Parduotuvė</a></li>
-          <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../../index.html#apps">Programėlės</a></li>
-          <li><a href="../../support.html">Pagalba</a></li>
+          <li><a href="/lt/shop/">Parduotuvė</a></li>
+          <li><a href="/lt/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/lt/#apps">Programėlės</a></li>
+          <li><a href="/lt/support/">Pagalba</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Pagalba</h3>
         <ul>
-          <li><a href="../../support.html">Pagalbos pradžios puslapis</a></li>
-          <li><a href="../../support.html#faq">DUK apie internetinę parduotuvę</a></li>
-          <li><a href="../../support.html">Garantinė informacija</a></li>
+          <li><a href="/lt/support/">Pagalbos pradžios puslapis</a></li>
+          <li><a href="/lt/support/#faq">DUK apie internetinę parduotuvę</a></li>
+          <li><a href="/lt/support/">Garantinė informacija</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">El. paštas generaliniam direktoriui</a></li>
         </ul>
       </section>
@@ -1069,9 +1074,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Paskyra</h3>
         <ul>
-          <li><a href="../../cart.html">Užsakymai</a></li>
-          <li><a href="../../account.html">Mano paskyra</a></li>
-          <li><a href="../../account.html">Kuponai</a></li>
+          <li><a href="/lt/cart/">Užsakymai</a></li>
+          <li><a href="/lt/account/">Mano paskyra</a></li>
+          <li><a href="/lt/account/">Kuponai</a></li>
         </ul>
       </section>
 
@@ -1079,9 +1084,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Apie Lixby</h3>
         <ul>
           <li><a href="#">Naujienų kambarys</a></li>
-          <li><a href="../../support.html">Garantija</a></li>
+          <li><a href="/lt/support/">Garantija</a></li>
           <li><a href="#">Renginiai</a></li>
-          <li><a href="../../support.html">Kontaktai</a></li>
+          <li><a href="/lt/support/">Kontaktai</a></li>
         </ul>
       </section>
     </div>
@@ -1089,11 +1094,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Autoriaus teisės © 2026 Lixby. Visos teisės saugomos.</p>
       <div class="footer-legal-links">
-        <a href="../../pages/legal/privacy.html">Privatumo politika</a>
-        <a href="../../pages/legal/cookies.html">Slapukų naudojimas</a>
-        <a href="../../pages/legal/terms.html">Naudojimo sąlygos</a>
-        <a href="../../support.html">Pardavimai ir grąžinimai</a>
-        <a href="../../pages/legal/legal-notice.html">Teisiniai pranešimai</a>
+        <a href="/lt/pages/legal/privacy/">Privatumo politika</a>
+        <a href="/lt/pages/legal/cookies/">Slapukų naudojimas</a>
+        <a href="/lt/pages/legal/terms/">Naudojimo sąlygos</a>
+        <a href="/lt/support/">Pardavimai ir grąžinimai</a>
+        <a href="/lt/pages/legal/legal-notice/">Teisiniai pranešimai</a>
       </div>
     </div>
   </footer>
@@ -1149,7 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../shop.html?q=${encodeURIComponent(query)}` : "../../shop.html";
+        const url = query ? `/lt/shop/?q=${encodeURIComponent(query)}` : "/lt/shop/";
         window.location.href = url;
       });
     }
@@ -1210,7 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "../../cart.html";
+          window.location.href = "/lt/cart/";
         }, 1200);
       });
     }
@@ -1376,3 +1381,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
+

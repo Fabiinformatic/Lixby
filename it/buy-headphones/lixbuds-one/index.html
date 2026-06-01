@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -844,15 +849,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="../../index.html" class="nav-brand">Lixby</a>
+      <a href="/it/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="../../negozio.html" class="nav-link">Negozio</a>
-        <a href="../../index.html#prodotti" class="nav-link">Prodotti</a>
-        <a href="../../index.html#apps" class="nav-link">App</a>
-        <a href="../../pages/supporto.html" class="nav-link">Supporto</a>
+        <a href="/it/shop/" class="nav-link">Negozio</a>
+        <a href="/it/#prodotti" class="nav-link">Prodotti</a>
+        <a href="/it/#apps" class="nav-link">App</a>
+        <a href="../../pages//it/support/" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../negozio.html" method="get">
+        <form id="navSearchForm" action="/it/shop/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -862,10 +867,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Cerca prodotto"
           >
         </form>
-        <a href="../../carrello.html" class="nav-icon-link" aria-label="Carrello">
+        <a href="/it/cart/" class="nav-icon-link" aria-label="Carrello">
           <img src="../../images/Bolsa.png" alt="Carrello">
         </a>
-        <a href="../../account.html" class="nav-icon-link" aria-label="Account">
+        <a href="/it/account/" class="nav-icon-link" aria-label="Account">
           <img src="../../images/cuenta.png" alt="Account">
         </a>
       </div>
@@ -875,7 +880,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="product-subnav-title"><span class="product-subnav-badge">Nuovo</span> LixBuds One</div>
         <div class="product-subnav-links">
           <a href="#descrizione">Descrizione</a>
-          <a href="../../pages/products/lixbuds-one.html">Specifiche</a>
+          <a href="/it/pages/products/lixbuds-one/">Specifiche</a>
         </div>
       </div>
     </div>
@@ -1049,19 +1054,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Vedi e acquista</h3>
         <ul>
-          <li><a href="../../negozio.html">Negozio</a></li>
-          <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../../index.html#apps">App</a></li>
-          <li><a href="../../pages/supporto.html">Supporto</a></li>
+          <li><a href="/it/shop/">Negozio</a></li>
+          <li><a href="/it/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/it/#apps">App</a></li>
+          <li><a href="../../pages//it/support/">Supporto</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Supporto</h3>
         <ul>
-          <li><a href="../../pages/supporto.html">Pagina iniziale del supporto</a></li>
-          <li><a href="../../pages/supporto.html#faq">FAQ Negozio online</a></li>
-          <li><a href="../../pages/supporto.html">Informazioni sulla Garanzia</a></li>
+          <li><a href="../../pages//it/support/">Pagina iniziale del supporto</a></li>
+          <li><a href="../../pages//it/support/#faq">FAQ Negozio online</a></li>
+          <li><a href="../../pages//it/support/">Informazioni sulla Garanzia</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -1069,9 +1074,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="../../carrello.html">Ordini</a></li>
-          <li><a href="../../account.html">Il mio account</a></li>
-          <li><a href="../../account.html">Coupon</a></li>
+          <li><a href="/it/cart/">Ordini</a></li>
+          <li><a href="/it/account/">Il mio account</a></li>
+          <li><a href="/it/account/">Coupon</a></li>
         </ul>
       </section>
 
@@ -1079,9 +1084,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Informazioni su Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="../../pages/supporto.html">Garanzia</a></li>
+          <li><a href="../../pages//it/support/">Garanzia</a></li>
           <li><a href="#">Eventi</a></li>
-          <li><a href="../../pages/supporto.html">Contatti</a></li>
+          <li><a href="../../pages//it/support/">Contatti</a></li>
         </ul>
       </section>
     </div>
@@ -1089,11 +1094,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
       <div class="footer-legal-links">
-        <a href="../../pages/legal/privacy.html">Informativa sulla privacy</a>
-        <a href="../../pages/legal/cookies.html">Uso dei cookie</a>
-        <a href="../../pages/legal/terms.html">Condizioni d'uso</a>
-        <a href="../../pages/supporto.html">Vendite e rimborsi</a>
-        <a href="../../pages/legal/legal-notice.html">Note legali</a>
+        <a href="/it/pages/legal/privacy/">Informativa sulla privacy</a>
+        <a href="/it/pages/legal/cookies/">Uso dei cookie</a>
+        <a href="/it/pages/legal/terms/">Condizioni d'uso</a>
+        <a href="../../pages//it/support/">Vendite e rimborsi</a>
+        <a href="/it/pages/legal/legal-notice/">Note legali</a>
       </div>
     </div>
   </footer>
@@ -1149,7 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../negozio.html?q=${encodeURIComponent(query)}` : "../../negozio.html";
+        const url = query ? `/it/shop/?q=${encodeURIComponent(query)}` : "/it/shop/";
         window.location.href = url;
       });
     }
@@ -1210,7 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "../../carrello.html";
+          window.location.href = "/it/cart/";
         }, 1200);
       });
     }

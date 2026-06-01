@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/it/">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://lixby.es/it/account">
+  <link rel="alternate" href="https://lixby.es/bg/account" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/account" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/account" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/account" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/account" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/account" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/cuenta" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/account" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/account" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/account" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/account" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/account" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/account" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/account" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/account" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/account" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/account" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/account" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/account" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/account" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/account" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/account" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/account" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/account" hreflang="sv-SE">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="localnav.css" />
+
+  <title>Il mio account | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .account-page {
+      padding: 34px 0 84px;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+    }
+
+    .orb-3 {
+      bottom: -120px;
+      left: 35%;
+      background: rgba(22, 167, 255, 0.2);
+      animation: drift 11s ease-in-out infinite;
+    }
+
+    .orb-4 {
+      top: 18%;
+      left: 55%;
+      background: rgba(15, 61, 255, 0.16);
+      animation: drift 12s ease-in-out infinite reverse;
+    }
+
+    .orb-5 {
+      bottom: 10%;
+      right: 20%;
+      background: rgba(22, 167, 255, 0.14);
+      animation: drift 13s ease-in-out infinite;
+    }
+
+    .status-msg {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .status-msg.error {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .status-msg.success {
+      border-color: #a7f3d0;
+      background: #ecfdf5;
+      color: #047857;
+    }
+
+    .account-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .account-side,
+    .account-main {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+    }
+
+    .account-side h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .account-side p {
+      color: var(--muted);
+      margin-bottom: 12px;
+      word-break: break-word;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      object-fit: cover;
+      margin-bottom: 10px;
+      background: #e2e8f0;
+    }
+
+    .side-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .account-section + .account-section {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .account-section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+    }
+
+    .field label {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 11px;
+      font: inherit;
+      background: #f8fafc;
+      color: #111827;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 72px;
+    }
+
+    .field-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .readonly .field input,
+    .readonly .field select,
+    .readonly .field textarea,
+    .readonly .field input[type="checkbox"] {
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .check-row {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .check-row input {
+      width: auto;
+    }
+
+    .action-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .action-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+    }
+
+    .action-item .btn {
+      min-width: 160px;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      height: 40px;
+      padding: 0 18px;
+      border-radius: 999px;
+    }
+
+    .btn-verified {
+      background: #22c55e;
+      border-color: #22c55e;
+      color: #fff;
+    }
+
+    .btn-verified:hover {
+      background: #16a34a;
+      border-color: #16a34a;
+      color: #fff;
+    }
+
+    .order-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+      display: grid;
+      gap: 6px;
+    }
+
+    .order-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .payment-panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+      display: grid;
+      gap: 10px;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .payment-grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .payment-field {
+      display: grid;
+      gap: 5px;
+    }
+
+    .payment-field label {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .payment-field input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 11px;
+      font: inherit;
+      background: #fff;
+      color: #111827;
+    }
+
+    .card-input {
+      position: relative;
+    }
+
+    .card-input input {
+      padding-left: 46px;
+    }
+
+    .card-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 28px;
+      width: 28px;
+      border-radius: 8px;
+      background: #e2e8f0;
+      padding: 4px;
+      object-fit: contain;
+    }
+
+    .payment-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .billing-summary {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      background: #f8fafc;
+      color: var(--muted);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+      margin-top: 8px;
+    }
+
+    .billing-summary strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .billing-summary-details {
+      display: grid;
+      gap: 4px;
+    }
+
+    .billing-summary-actions {
+      display: grid;
+      gap: 6px;
+      justify-items: end;
+    }
+
+    .payment-methods {
+      display: grid;
+      gap: 8px;
+    }
+
+    .payment-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .payment-item strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .payment-item small {
+      color: var(--muted);
+    }
+
+    .payment-item-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .payment-default {
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 3px 8px;
+      margin-left: 6px;
+    }
+
+    .save-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(120%);
+      background: #0f172a;
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2000;
+      transition: transform 0.25s ease;
+      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.35);
+    }
+
+    .save-bar.show {
+      transform: translateX(-50%) translateY(0);
+      animation: pulseSave 0.45s ease;
+    }
+
+    @keyframes pulseSave {
+      0% { transform: translateX(-50%) translateY(14px) scale(0.96); }
+      100% { transform: translateX(-50%) translateY(0) scale(1); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .account-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .field-grid,
+      .field-grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-grid,
+      .payment-grid.two {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://lixby.es",
+      "logo": "https://lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+<div class="container nav-container">
+      <a href="./" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principale">
+        <a href="/it/shop/" class="nav-link">Negozio</a>
+        <a href="/it/#productos" class="nav-link">Prodotti</a>
+        <a href="/it/#apps" class="nav-link">App</a>
+        <a href="/it/support/" class="nav-link">Supporto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/it/cart/" class="nav-icon-link" aria-label="Carrello">
+          <img src="images/Bolsa.png" alt="Carrello">
+        </a>
+        <a href="/it/account/" class="nav-icon-link" aria-label="Account">
+          <img src="images/cuenta.png" alt="Account">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container account-page">
+    <div id="statusMsg" class="status-msg">Controllo sessione...</div>
+
+    <section id="accountLayout" class="account-layout hidden">
+      <aside class="account-side">
+        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Foto profilo">
+        <h1 id="sideName">Il tuo account Lixby</h1>
+        <p id="sideEmail">-</p>
+        <div class="side-actions">
+          <button id="editBtn" class="btn btn-secondary" type="button">Modifica dati</button>
+          <a class="btn btn-secondary" href="/it/cart/">Vedi ordini</a>
+          <button id="logoutBtn" class="btn btn-primary" type="button">Esci</button>
+        </div>
+      </aside>
+
+      <section id="profileForm" class="account-main readonly">
+        <section class="account-section">
+          <h2>Dati personali</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="firstName">Nome</label>
+              <input id="firstName" type="text">
+            </div>
+            <div class="field">
+              <label for="lastName">Cognome</label>
+              <input id="lastName" type="text">
+            </div>
+            <div class="field">
+              <label for="region">Paese / Regione</label>
+              <input id="region" type="text">
+            </div>
+            <div class="field">
+              <label for="birthDate">Data di nascita</label>
+              <input id="birthDate" type="text">
+            </div>
+            <div class="field">
+              <label for="language">Lingua</label>
+              <input id="language" type="text">
+            </div>
+            <div class="field">
+              <label for="timezone">Fuso orario</label>
+              <input id="timezone" type="text">
+            </div>
+            <div class="field full">
+              <label>Foto profilo</label>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+                <img id="photoPreview" src="images/cuenta.png" alt="Anteprima"
+                  style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
+                <div>
+                  <input id="photoFile" type="file" accept="image/*" style="display:none">
+                  <button id="uploadPhotoBtn" class="btn btn-secondary" type="button" style="font-size:0.85rem">
+                    Carica foto
+                  </button>
+                  <div id="uploadPhotoMsg" style="font-size:0.78rem;color:var(--muted);margin-top:4px"></div>
+                </div>
+              </div>
+              <input id="photoUrl" type="text" style="display:none">
+            </div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Contatti</h2>
+          <div class="field-grid three">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email">
+            </div>
+            <div class="field">
+              <label for="phone">Numero di telefono</label>
+              <input id="phone" type="text">
+            </div>
+            <div class="field">
+              <label for="countryContact">Paese</label>
+              <input id="countryContact" type="text">
+            </div>
+            <div class="field full">
+              <label for="address">Indirizzo</label>
+              <textarea id="address"></textarea>
+            </div>
+            <div class="field">
+              <label for="city">Città</label>
+              <input id="city" type="text">
+            </div>
+            <div class="field">
+              <label for="postalCode">Codice postale</label>
+              <input id="postalCode" type="text">
+            </div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Preferenze</h2>
+          <div class="check-list">
+            <label class="check-row"><input id="prefAds" type="checkbox"> Ricevi annunci e marketing</label>
+            <label class="check-row"><input id="prefNews" type="checkbox"> Notizie e novità</label>
+            <label class="check-row"><input id="prefUpdates" type="checkbox"> Aggiornamenti software</label>
+            <label class="check-row"><input id="prefOffers" type="checkbox"> Offerte speciali</label>
+            <label class="check-row"><input id="prefSupport" type="checkbox"> Email di supporto</label>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Sicurezza</h2>
+          <div class="action-list">
+            <div class="action-item"><span>Cambia password</span><a class="btn btn-secondary" href="/it/change-password/">Gestisci</a></div>
+            <div class="action-item"><span>Visualizza sessioni attive</span><button class="btn btn-secondary" type="button">Visualizza</button></div>
+            <div class="action-item"><span>Esci da altri dispositivi</span><button class="btn btn-secondary" type="button">Esci</button></div>
+            <div class="action-item"><span>Attiva verifica in 2 passaggi</span><a id="twoFactorBtn" class="btn btn-secondary" href="/it/two-step verification/">Configura</a></div>
+            <div class="action-item"><span>Verifica email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Invia</button></div>
+            <div class="action-item"><span>Cronologia accessi</span><button class="btn btn-secondary" type="button">Visualizza cronologia</button></div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Ordini</h2>
+          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">Caricamento ordini...</div>
+          <div id="ordersList" style="display:none;display:grid;gap:10px"></div>
+          <div id="ordersEmpty" style="display:none">
+            <article class="order-card">
+              <strong>Non hai ancora ordini</strong>
+              <span>Quando effettuerai un acquisto apparirà qui.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="/it/shop/">Vai al negozio</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Carte regalo</h2>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Caricamento carte...</div>
+          <div id="giftCardsList" style="display:none;gap:10px"></div>
+          <div id="giftCardsEmpty" style="display:none">
+            <article class="order-card">
+              <strong>Non hai carte regalo</strong>
+              <span>Acquista una carta regalo per te o per qualcuno di speciale.</span>
+              <div class="order-actions">
+                <a class="btn btn-primary" href="/it/gift/">Vedi carte regalo</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Pagamenti</h2>
+          <div class="payment-panel" id="paymentsSection">
+            <h3>Carte salvate</h3>
+            <div class="payment-grid">
+              <div class="payment-field">
+                <label for="payCardholder">Intestatario</label>
+                <input id="payCardholder" type="text" placeholder="Nome e cognome">
+              </div>
+              <div class="payment-field">
+                <label for="payCardNumber">Numero carta</label>
+                <div class="card-input">
+                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Carta">
+                  <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
+                </div>
+              </div>
+              <div class="payment-field">
+                <label for="payExpiry">Scadenza (MM/AA)</label>
+                <input id="payExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="08/29">
+              </div>
+              <div class="payment-field">
+                <label for="payCvv">CVV</label>
+                <input id="payCvv" type="password" inputmode="numeric" maxlength="4" placeholder="123">
+              </div>
+            </div>
+            <div class="order-actions">
+              <button id="addPaymentBtn" class="btn btn-primary" type="button">Aggiungi metodo di pagamento</button>
+            </div>
+            <div id="paymentMethods" class="payment-methods"></div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Indirizzo di fatturazione</h2>
+          <div class="payment-panel">
+            <h3>Dati di fatturazione</h3>
+            <div class="payment-grid two">
+              <div class="payment-field">
+                <label for="billName">Nome fiscale</label>
+                <input id="billName" type="text" placeholder="Nome completo">
+              </div>
+              <div class="payment-field">
+                <label for="billCountry">Paese</label>
+                <input id="billCountry" type="text" placeholder="Italia">
+              </div>
+              <div class="payment-field full">
+                <label for="billAddress">Indirizzo</label>
+                <input id="billAddress" type="text" placeholder="Via, numero, città">
+              </div>
+              <div class="payment-field">
+                <label for="billCity">Città</label>
+                <input id="billCity" type="text" placeholder="Roma">
+              </div>
+              <div class="payment-field">
+                <label for="billPostal">Codice postale</label>
+                <input id="billPostal" type="text" placeholder="00100">
+              </div>
+            </div>
+            <div class="order-actions">
+              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Salva indirizzo di fatturazione</button>
+            </div>
+            <div id="billingSummary" class="billing-summary"></div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Supporto</h2>
+          <div class="action-list">
+            <div class="action-item"><span>Contatta il supporto</span><a class="btn btn-primary" href="/it/support/">Apri</a></div>
+            <div class="action-item"><span>Segnala un problema</span><a class="btn btn-secondary" href="/it/support/">Segnala</a></div>
+            <div class="action-item"><span>Manuale utente</span><a class="btn btn-secondary" href="/it/support/">Visualizza</a></div>
+            <div class="action-item"><span>Garanzia del prodotto</span><a class="btn btn-secondary" href="/it/support/">Consulta</a></div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Privacy</h2>
+          <div class="action-list">
+            <div class="action-item"><span>Informativa sulla privacy</span><a class="btn btn-secondary" href="/it/pages/legal/privacy/">Visualizza</a></div>
+            <div class="action-item"><span>Cookie</span><a class="btn btn-secondary" href="/it/pages/legal/cookies/">Visualizza</a></div>
+          </div>
+        </section>
+
+        <section class="account-section">
+          <h2>Account</h2>
+          <div class="action-list">
+            <div class="action-item"><span>Esci</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Esci</button></div>
+            <div class="action-item"><span>Elimina account</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Elimina</button></div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <div id="saveBar" class="save-bar" aria-live="polite">
+    <span>Modifiche rilevate</span>
+    <button id="saveChangesBtn" class="btn btn-primary" type="button">Salva modifiche</button>
+  </div>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Vedi e acquista</h3>
+        <ul>
+          <li><a href="/it/shop/">Negozio</a></li>
+          <li><a href="/it/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/it/#apps">App</a></li>
+          <li><a href="/it/support/">Supporto</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Supporto</h3>
+        <ul>
+          <li><a href="/it/support/">Home supporto</a></li>
+          <li><a href="/it/support/#faq">FAQ Negozio online</a></li>
+          <li><a href="/it/support/">Informazioni sulla garanzia</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Account</h3>
+        <ul>
+          <li><a href="/it/track/">Ordini</a></li>
+          <li><a href="/it/account/">Il mio account</a></li>
+          <li><a href="/it/account/">Coupon</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Chi è Lixby</h3>
+        <ul>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="/it/support/">Garanzia</a></li>
+          <li><a href="#">Eventi</a></li>
+          <li><a href="/it/support/">Contatti</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
+      <div class="footer-legal-links">
+        <a href="/it/pages/legal/privacy/">Informativa sulla privacy</a>
+        <a href="/it/pages/legal/cookies/">Uso dei cookie</a>
+        <a href="/it/pages/legal/terms/">Condizioni d'uso</a>
+        <a href="/it/support/">Vendite e rimborsi</a>
+        <a href="/it/pages/legal/legal-notice/">Note legali</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+      authDomain: "lixby0.firebaseapp.com",
+      projectId: "lixby0",
+      storageBucket: "lixby0.firebasestorage.app",
+      messagingSenderId: "1058088945026",
+      appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b",
+      measurementId: "G-689VDV93C2"
+    };
+
+    const PROFILE_KEY = "lixbyProfile";
+    const PAYMENTS_KEY = "lixbyPayments";
+    const BILLING_KEY = "lixbyBilling";
+
+    const statusMsg = document.getElementById("statusMsg");
+    const accountLayout = document.getElementById("accountLayout");
+    const profileForm = document.getElementById("profileForm");
+    const sideName = document.getElementById("sideName");
+    const sideEmail = document.getElementById("sideEmail");
+    const profilePhoto = document.getElementById("profilePhoto");
+    const editBtn = document.getElementById("editBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const logoutBtnSecondary = document.getElementById("logoutBtnSecondary");
+    const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const twoFactorBtn = document.getElementById("twoFactorBtn");
+    const saveBar = document.getElementById("saveBar");
+    const saveChangesBtn = document.getElementById("saveChangesBtn");
+    const addPaymentBtn = document.getElementById("addPaymentBtn");
+    const paymentMethodsEl = document.getElementById("paymentMethods");
+    const saveBillingBtn = document.getElementById("saveBillingBtn");
+    const cardBrandIcon = document.getElementById("cardBrandIcon");
+    const billingSummaryEl = document.getElementById("billingSummary");
+
+    const paymentInputs = {
+      cardholder: document.getElementById("payCardholder"),
+      cardNumber: document.getElementById("payCardNumber"),
+      expiry: document.getElementById("payExpiry"),
+      cvv: document.getElementById("payCvv")
+    };
+
+    const billingInputs = {
+      name: document.getElementById("billName"),
+      country: document.getElementById("billCountry"),
+      address: document.getElementById("billAddress"),
+      city: document.getElementById("billCity"),
+      postalCode: document.getElementById("billPostal")
+    };
+
+    const inputs = {
+      firstName: document.getElementById("firstName"),
+      lastName: document.getElementById("lastName"),
+      region: document.getElementById("region"),
+      birthDate: document.getElementById("birthDate"),
+      language: document.getElementById("language"),
+      timezone: document.getElementById("timezone"),
+      photoUrl: document.getElementById("photoUrl"),
+      email: document.getElementById("email"),
+      phone: document.getElementById("phone"),
+      address: document.getElementById("address"),
+      city: document.getElementById("city"),
+      postalCode: document.getElementById("postalCode"),
+      countryContact: document.getElementById("countryContact"),
+      prefAds: document.getElementById("prefAds"),
+      prefNews: document.getElementById("prefNews"),
+      prefUpdates: document.getElementById("prefUpdates"),
+      prefOffers: document.getElementById("prefOffers"),
+      prefSupport: document.getElementById("prefSupport")
+    };
+
+    let editMode = false;
+    let dirty = false;
+
+    function readProfile() {
+      return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
+    }
+
+    function writeProfile(profile) {
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+    }
+
+    function getScopedKey(baseKey) {
+      const uid = auth.currentUser?.uid || "guest";
+      return `${baseKey}:${uid}`;
+    }
+
+    function readPayments() {
+      return JSON.parse(localStorage.getItem(getScopedKey(PAYMENTS_KEY)) || "{\"methods\":[],\"defaultMethodId\":null}");
+    }
+
+    function writePayments(value) {
+      localStorage.setItem(getScopedKey(PAYMENTS_KEY), JSON.stringify(value));
+    }
+
+    function readBilling() {
+      return JSON.parse(localStorage.getItem(getScopedKey(BILLING_KEY)) || "{}");
+    }
+
+    function writeBilling(value) {
+      localStorage.setItem(getScopedKey(BILLING_KEY), JSON.stringify(value));
+    }
+
+    function onlyDigits(value) {
+      return String(value || "").replace(/\D/g, "");
+    }
+
+    function formatCardNumber(raw) {
+      return onlyDigits(raw).slice(0, 19).replace(/(\d{4})(?=\d)/g, "$1 ").trim();
+    }
+
+    function formatExpiry(raw) {
+      const digits = onlyDigits(raw).slice(0, 4);
+      if (digits.length <= 1) return digits;
+      if (digits.length === 2) return `${digits}/`;
+      return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+    }
+
+    function isValidCardNumber(number) {
+      const len = number.length;
+      return len >= 12 && len <= 19;
+    }
+
+    function isValidExpiry(expiry) {
+      const [mm, yy] = expiry.split("/");
+      if (!mm || !yy) return false;
+      const month = Number(mm);
+      const year = Number(`20${yy}`);
+      if (month < 1 || month > 12) return false;
+      const now = new Date();
+      const nowYear = now.getFullYear();
+      const nowMonth = now.getMonth() + 1;
+      return year > nowYear || (year === nowYear && month >= nowMonth);
+    }
+
+    function detectBrand(cardNumber) {
+      const digits = onlyDigits(cardNumber);
+      if (!digits) return { brand: "Carta", icon: "card.svg" };
+
+      const first1 = digits.slice(0, 1);
+      const first2 = digits.slice(0, 2);
+      const first3 = digits.slice(0, 3);
+      const first4 = digits.slice(0, 4);
+      const n2 = Number(first2);
+      const n3 = Number(first3);
+      const n4 = Number(first4);
+
+      if (first1 === "4") return { brand: "Visa", icon: "visa.svg" };
+      if ((n2 >= 51 && n2 <= 55) || (n4 >= 2221 && n4 <= 2720)) return { brand: "Mastercard", icon: "mastercard.svg" };
+      if (first2 === "34" || first2 === "37") return { brand: "American Express", icon: "amex.svg" };
+      if (first4 === "6011" || first2 === "65") return { brand: "Discover", icon: "discover.svg" };
+      if ((n3 >= 300 && n3 <= 305) || first2 === "36" || first2 === "38") return { brand: "Diners Club", icon: "diners.svg" };
+      if (first2 === "35") return { brand: "JCB", icon: "jcb.svg" };
+      if (first2 === "62") return { brand: "UnionPay", icon: "unionpay.svg" };
+      if (first3 === "636") return { brand: "Interac", icon: "interac.svg" };
+      if (first4 === "9792") return { brand: "Troy", icon: "troy.svg" };
+      if (n4 >= 2200 && n4 <= 2204) return { brand: "MIR", icon: "mir.svg" };
+      if (first2 === "50" || (n2 >= 56 && n2 <= 69)) return { brand: "Maestro", icon: "maestro.svg" };
+      return { brand: "Carta", icon: "card.svg" };
+    }
+
+    function maskCard(cardNumber) {
+      return `**** **** **** ${cardNumber.slice(-4)}`;
+    }
+
+    function makeId() {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID();
+      }
+      return `pm_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    }
+
+    function renderPaymentMethods() {
+      const state = readPayments();
+      if (!state.methods.length) {
+        paymentMethodsEl.innerHTML = `<p style="color:var(--muted);">Nessuna carta salvata.</p>`;
+        return;
+      }
+
+      paymentMethodsEl.innerHTML = state.methods.map((method) => {
+        const isDefault = state.defaultMethodId === method.id;
+        return `
+          <article class="payment-item">
+            <div>
+              <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Predefinita</span>' : ""}</strong>
+              <small>Intestatario: ${method.cardholder} - Scade ${method.expiry}</small>
+            </div>
+            <div class="payment-item-actions">
+              <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Predefinita</button>
+              <button class="btn btn-secondary" type="button" data-payment-action="remove" data-id="${method.id}">Elimina</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function fillBilling() {
+      const billing = readBilling();
+      billingInputs.name.value = billing.name || "";
+      billingInputs.country.value = billing.country || "";
+      billingInputs.address.value = billing.address || "";
+      billingInputs.city.value = billing.city || "";
+      billingInputs.postalCode.value = billing.postalCode || "";
+    }
+
+    function renderBillingSummary() {
+      const billing = readBilling();
+      if (!billing.name && !billing.address && !billing.country && !billing.city && !billing.postalCode) {
+        billingSummaryEl.innerHTML = `
+          <div class="billing-summary-details">
+            <p>Nessun indirizzo salvato.</p>
+          </div>
+          <div class="billing-summary-actions">
+            <button id="editBillingBtn" class="btn btn-secondary" type="button" disabled>Modifica dati</button>
+            <button id="deleteBillingBtn" class="btn btn-secondary" type="button" disabled>Elimina</button>
+          </div>
+        `;
+        return;
+      }
+
+      billingSummaryEl.innerHTML = `
+        <div class="billing-summary-details">
+          <strong>${billing.name || "Nome fiscale"}</strong>
+          <span>${billing.address || "Indirizzo"}</span>
+          <span>${billing.city || "Città"} ${billing.postalCode || ""}</span>
+          <span>${billing.country || "Paese"}</span>
+        </div>
+        <div class="billing-summary-actions">
+          <button id="editBillingBtn" class="btn btn-secondary" type="button">Modifica dati</button>
+          <button id="deleteBillingBtn" class="btn btn-secondary" type="button">Elimina</button>
+        </div>
+      `;
+    }
+
+    function showStatus(text, type = "") {
+      statusMsg.textContent = text;
+      statusMsg.className = `status-msg ${type}`.trim();
+    }
+
+    function setReadonlyMode() {
+      profileForm.classList.add("readonly");
+      Object.values(inputs).forEach((el) => {
+        if (el.type === "checkbox") {
+          el.disabled = true;
+        } else {
+          el.readOnly = true;
+        }
+      });
+      editBtn.textContent = "Modifica dati";
+      editMode = false;
+      dirty = false;
+      saveBar.classList.remove("show");
+    }
+
+    function setEditMode() {
+      profileForm.classList.remove("readonly");
+      Object.values(inputs).forEach((el) => {
+        if (el.type === "checkbox") {
+          el.disabled = false;
+        } else {
+          el.readOnly = false;
+        }
+      });
+      editBtn.textContent = "Annulla modifica";
+      editMode = true;
+      dirty = false;
+      saveBar.classList.remove("show");
+    }
+
+    function mapBirth(profile) {
+      if (profile.birthDate) return profile.birthDate;
+      if (profile.birthYear && profile.birthMonth && profile.birthDay) {
+        return `${profile.birthDay}/${profile.birthMonth}/${profile.birthYear}`;
+      }
+      return "";
+    }
+
+    function fillProfile(user, profile) {
+      inputs.firstName.value = profile.firstName || "";
+      inputs.lastName.value = profile.lastName || "";
+      inputs.region.value = profile.country || "Italia";
+      inputs.birthDate.value = mapBirth(profile);
+      inputs.language.value = profile.language || navigator.language || "it-IT";
+      inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+      inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
+      document.getElementById("photoPreview").src =
+        inputs.photoUrl.value || user.photoURL || "images/cuenta.png";
+      inputs.email.value = user.email || profile.email || "";
+      inputs.phone.value = profile.phone || profile.phoneNumber || "";
+      inputs.address.value = profile.address || "";
+      inputs.city.value = profile.city || "";
+      inputs.postalCode.value = profile.postalCode || "";
+      inputs.countryContact.value = profile.countryContact || profile.country || "Italia";
+      inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
+      inputs.prefNews.checked = Boolean(profile.prefNews);
+      inputs.prefUpdates.checked = Boolean(profile.prefUpdates);
+      inputs.prefOffers.checked = Boolean(profile.prefOffers);
+      inputs.prefSupport.checked = Boolean(profile.prefSupport);
+
+      const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
+      sideName.textContent = fullName || "Il tuo account Lixby";
+      sideEmail.textContent = inputs.email.value || "Nessuna email";
+      profilePhoto.src = inputs.photoUrl.value || "images/cuenta.png";
+    }
+
+    function collectProfileData() {
+      return {
+        firstName: inputs.firstName.value.trim(),
+        lastName: inputs.lastName.value.trim(),
+        country: inputs.region.value.trim(),
+        birthDate: inputs.birthDate.value.trim(),
+        language: inputs.language.value.trim(),
+        timezone: inputs.timezone.value.trim(),
+        photoUrl: inputs.photoUrl.value.trim(),
+        email: inputs.email.value.trim(),
+        phone: inputs.phone.value.trim(),
+        address: inputs.address.value.trim(),
+        city: inputs.city.value.trim(),
+        postalCode: inputs.postalCode.value.trim(),
+        countryContact: inputs.countryContact.value.trim(),
+        prefAds: inputs.prefAds.checked,
+        prefNews: inputs.prefNews.checked,
+        prefUpdates: inputs.prefUpdates.checked,
+        prefOffers: inputs.prefOffers.checked,
+        prefSupport: inputs.prefSupport.checked,
+        adsOptIn: inputs.prefAds.checked
+      };
+    }
+
+    function setDirty() {
+      if (!editMode) return;
+      dirty = true;
+      saveBar.classList.add("show");
+    }
+
+    Object.values(inputs).forEach((el) => {
+      const evt = el.type === "checkbox" ? "change" : "input";
+      el.addEventListener(evt, setDirty);
+    });
+
+    paymentInputs.cardNumber.addEventListener("input", () => {
+      paymentInputs.cardNumber.value = formatCardNumber(paymentInputs.cardNumber.value);
+      const brandInfo = detectBrand(paymentInputs.cardNumber.value);
+      cardBrandIcon.src = `images/icono-de.tarjeta/${brandInfo.icon}`;
+      cardBrandIcon.alt = brandInfo.brand;
+    });
+
+    paymentInputs.expiry.addEventListener("input", () => {
+      paymentInputs.expiry.value = formatExpiry(paymentInputs.expiry.value);
+    });
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const storage = getStorage(app);
+
+    addPaymentBtn.addEventListener("click", () => {
+      const cardholder = paymentInputs.cardholder.value.trim();
+      const cardNumber = onlyDigits(paymentInputs.cardNumber.value);
+      const expiry = paymentInputs.expiry.value.trim();
+      const cvv = onlyDigits(paymentInputs.cvv.value);
+
+      if (!cardholder) {
+        showStatus("L'intestatario della carta è obbligatorio.", "error");
+        return;
+      }
+
+      if (!isValidCardNumber(cardNumber)) {
+        showStatus("Numero carta non valido.", "error");
+        return;
+      }
+
+      if (!isValidExpiry(expiry)) {
+        showStatus("Data di scadenza non valida.", "error");
+        return;
+      }
+
+      if (cvv.length < 3 || cvv.length > 4) {
+        showStatus("CVV non valido.", "error");
+        return;
+      }
+
+      const state = readPayments();
+      const brandInfo = detectBrand(cardNumber);
+      const method = {
+        id: makeId(),
+        cardholder,
+        number: cardNumber,
+        expiry,
+        brand: brandInfo.brand
+      };
+
+      state.methods.push(method);
+      if (!state.defaultMethodId) {
+        state.defaultMethodId = method.id;
+      }
+
+      writePayments(state);
+      renderPaymentMethods();
+
+      paymentInputs.cardholder.value = "";
+      paymentInputs.cardNumber.value = "";
+      paymentInputs.expiry.value = "";
+      paymentInputs.cvv.value = "";
+      cardBrandIcon.src = "images/icono-de.tarjeta/card.svg";
+      cardBrandIcon.alt = "Carta";
+
+      showStatus("Metodo di pagamento salvato correttamente.", "success");
+    });
+
+    paymentMethodsEl.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+
+      const action = target.getAttribute("data-payment-action");
+      const methodId = target.getAttribute("data-id");
+      if (!action || !methodId) return;
+
+      const state = readPayments();
+
+      if (action === "remove") {
+        state.methods = state.methods.filter((method) => method.id !== methodId);
+        if (state.defaultMethodId === methodId) {
+          state.defaultMethodId = state.methods[0]?.id || null;
+        }
+      }
+
+      if (action === "default") {
+        state.defaultMethodId = methodId;
+      }
+
+      writePayments(state);
+      renderPaymentMethods();
+      showStatus("Pagamenti aggiornati.", "success");
+    });
+
+    saveBillingBtn.addEventListener("click", () => {
+      const billing = {
+        name: billingInputs.name.value.trim(),
+        country: billingInputs.country.value.trim(),
+        address: billingInputs.address.value.trim(),
+        city: billingInputs.city.value.trim(),
+        postalCode: billingInputs.postalCode.value.trim()
+      };
+
+      if (!billing.name || !billing.country || !billing.address) {
+        showStatus("Compila nome, paese e indirizzo di fatturazione.", "error");
+        return;
+      }
+
+      writeBilling(billing);
+      renderBillingSummary();
+      billingInputs.name.value = "";
+      billingInputs.country.value = "";
+      billingInputs.address.value = "";
+      billingInputs.city.value = "";
+      billingInputs.postalCode.value = "";
+      showStatus("Indirizzo di fatturazione salvato.", "success");
+    });
+
+    billingSummaryEl.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+
+      if (target.id === "editBillingBtn") {
+        fillBilling();
+        billingInputs.name.focus();
+        showStatus("Puoi modificare l'indirizzo di fatturazione.", "success");
+        return;
+      }
+
+      if (target.id === "deleteBillingBtn") {
+        writeBilling({});
+        fillBilling();
+        renderBillingSummary();
+        showStatus("Indirizzo di fatturazione eliminato.", "success");
+      }
+    });
+
+    const RAILWAY_URL = "https://lixby-production.up.railway.app";
+    const ACCOUNT_API_KEY = "lixby-admin-2026";
+
+    function statusBadge(status) {
+      const map = {
+        "Ordine ricevuto": { bg: "#eff6ff", color: "#1d4ed8", border: "#bfdbfe" },
+        "Preparazione ordine": { bg: "#fefce8", color: "#854d0e", border: "#fde047" },
+        "Spedito": { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
+        "In consegna": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
+        "Consegnato": { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+      };
+      const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
+      return `<span style="background:${s.bg};color:${s.color};border:1px solid ${s.border};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">${status || "Ordine ricevuto"}</span>`;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return "—";
+      return new Date(iso).toLocaleDateString("it-IT", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    async function loadOrders(email) {
+      const loadingEl = document.getElementById("ordersLoading");
+      const listEl = document.getElementById("ordersList");
+      const emptyEl = document.getElementById("ordersEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/orders-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const orders = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!orders.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = orders
+          .map(
+            (o) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${o.orderNumber || o.id}</strong>
+          ${statusBadge(o.status)}
+        </div>
+        <span style="color:var(--muted);font-size:0.85rem">${formatDate(
+          o.createdAt
+        )}</span>
+        <span style="font-size:0.9rem">${o.product || "—"}</span>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${
+            o.amountTotal
+              ? Number(o.amountTotal).toFixed(2).replace(".", ",") + " €"
+              : "—"
+          }</strong>
+          ${
+            o.trackingNumber
+              ? `<span style="font-size:0.8rem;color:var(--muted)">🚚 ${
+                  o.trackingCarrier || ""
+                } ${o.trackingNumber}</span>`
+              : ""
+          }
+        </div>
+        <div class="order-actions">
+          <a class="btn btn-secondary" href="/it/track/?orderId=${o.id}" style="font-size:0.85rem">Segui ordine</a>
+        </div>
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Errore caricamento ordini.";
+      }
+    }
+
+    async function loadGiftCards(email) {
+      const loadingEl = document.getElementById("giftCardsLoading");
+      const listEl = document.getElementById("giftCardsList");
+      const emptyEl = document.getElementById("giftCardsEmpty");
+
+      try {
+        const res = await fetch(
+          `${RAILWAY_URL}/gift-cards-by-email/${encodeURIComponent(email)}`,
+          {
+            headers: { "x-api-key": ACCOUNT_API_KEY }
+          }
+        );
+        const cards = await res.json();
+
+        loadingEl.style.display = "none";
+
+        if (!cards.length) {
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        listEl.style.display = "grid";
+        listEl.innerHTML = cards
+          .map(
+            (c) => `
+      <article class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <strong style="font-family:monospace;color:#458500">${c.code}</strong>
+          <span style="background:${c.used ? "#f3f4f6" : "#f0fdf4"};color:${
+              c.used ? "#6b7280" : "#166534"
+            };border:1px solid ${c.used ? "#e5e7eb" : "#86efac"};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">
+            ${c.used ? "Usata" : "Attiva"}
+          </span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:0.85rem;color:var(--muted)">Saldo residuo</span>
+          <strong style="color:#458500">${Number(c.balance || 0)
+            .toFixed(2)
+            .replace(".", ",")} €</strong>
+        </div>
+        ${
+          c.recipientName
+            ? `<span style="font-size:0.82rem;color:var(--muted)">Per: ${c.recipientName}</span>`
+            : ""
+        }
+      </article>
+    `
+          )
+          .join("");
+      } catch (e) {
+        loadingEl.textContent = "Errore caricamento carte.";
+      }
+    }
+
+    document.getElementById("uploadPhotoBtn").addEventListener("click", () => {
+      document.getElementById("photoFile").click();
+    });
+
+    document.getElementById("photoFile").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const msg = document.getElementById("uploadPhotoMsg");
+      const btn = document.getElementById("uploadPhotoBtn");
+      const user = auth.currentUser;
+      if (!user) return;
+
+      // Validare dimensione massima 2MB
+      if (file.size > 2 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "L'immagine non può superare i 2MB";
+        return;
+      }
+
+      btn.disabled = true;
+      msg.style.color = "var(--muted)";
+      msg.textContent = "Caricamento...";
+
+      try {
+        const storageRef = ref(storage, `avatars/${user.uid}`);
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+
+        // Aggiornare anteprima e campo nascosto
+        document.getElementById("photoPreview").src = url;
+        document.getElementById("photoUrl").value = url;
+        profilePhoto.src = url;
+
+        // Salvare nel profilo
+        const profile = readProfile();
+        profile.photoUrl = url;
+        writeProfile(profile);
+
+        msg.style.color = "#458500";
+        msg.textContent = "Foto aggiornata";
+        showStatus("Foto profilo aggiornata.", "success");
+      } catch (err) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "Errore durante il caricamento della foto";
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "/it/login/";
+        return;
+      }
+
+      const stored = readProfile();
+      fillProfile(user, stored);
+      fillBilling();
+      renderBillingSummary();
+      renderPaymentMethods();
+      showStatus("Account caricato correttamente.", "success");
+      accountLayout.classList.remove("hidden");
+      setReadonlyMode();
+
+      // Caricare ordini e carte regalo
+      const userEmail = user.email;
+      if (userEmail) {
+        loadOrders(userEmail);
+        loadGiftCards(userEmail);
+      }
+
+      if (verifyEmailBtn) {
+        verifyEmailBtn.disabled = user.emailVerified;
+        verifyEmailBtn.textContent = user.emailVerified ? "Verificato" : "Invia";
+        verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
+      }
+      if (twoFactorBtn) {
+        const has2fa = multiFactor(user).enrolledFactors
+          .some((factor) => factor.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+        twoFactorBtn.textContent = has2fa ? "Verificato" : "Configura";
+        twoFactorBtn.classList.toggle("btn-verified", has2fa);
+      }
+    });
+
+    editBtn.addEventListener("click", () => {
+      if (editMode) {
+        const user = auth.currentUser;
+        if (!user) return;
+        fillProfile(user, readProfile());
+        setReadonlyMode();
+      } else {
+        setEditMode();
+      }
+    });
+
+    saveChangesBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sessione non valida.", "error");
+        return;
+      }
+
+      if (!dirty) {
+        saveBar.classList.remove("show");
+        return;
+      }
+
+      const next = collectProfileData();
+
+      try {
+        if (next.email && next.email !== user.email) {
+          await updateEmail(user, next.email);
+        }
+        writeProfile(next);
+        fillProfile(user, next);
+        setReadonlyMode();
+        showStatus("Modifica effettuata. Dati salvati.", "success");
+      } catch (error) {
+        showStatus(`Impossibile salvare: ${error.message}`, "error");
+      }
+    });
+
+    async function doLogout() {
+      await signOut(auth);
+      window.location.href = "/it/login/";
+    }
+
+    logoutBtn.addEventListener("click", doLogout);
+    logoutBtnSecondary.addEventListener("click", doLogout);
+
+    const emailActionSettings = {
+      url: `${window.location.origin}/it//it/verified/`,
+      handleCodeInApp: false
+    };
+
+    verifyEmailBtn?.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sessione non valida.", "error");
+        return;
+      }
+      try {
+        showStatus("Invio email di verifica...", "info");
+        await sendEmailVerification(user, emailActionSettings);
+        await reload(user);
+        if (verifyEmailBtn) {
+          verifyEmailBtn.disabled = user.emailVerified;
+          verifyEmailBtn.textContent = user.emailVerified ? "Verificato" : "Invia";
+          verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
+        }
+        showStatus("Email inviata. Controlla Spam e Promozioni.", "success");
+      } catch (error) {
+        showStatus(`Impossibile inviare: ${error.message || error.code}`, "error");
+      }
+    });
+
+    deleteAccountBtn.addEventListener("click", async () => {
+      const confirmed = window.confirm("Sei sicuro di voler eliminare il tuo account? Questa azione non può essere annullata.");
+      if (!confirmed) return;
+
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sessione non valida.", "error");
+        return;
+      }
+
+      try {
+        await deleteUser(user);
+        showStatus("Account eliminato correttamente.", "success");
+        window.location.href = "/it/login/";
+      } catch (error) {
+        showStatus(`Impossibile eliminare l'account: ${error.message}`, "error");
+      }
+    });
+  </script>
+</body>
+</html>

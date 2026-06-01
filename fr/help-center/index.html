@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -164,12 +169,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
 <div class="container nav-container">
-      <a href="../index.html" class="nav-brand">Lixby</a>
+      <a href="/fr/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principale">
-        <a href="../buy.html" class="nav-link">Boutique</a>
-        <a href="../index.html#productos" class="nav-link">Produits</a>
-        <a href="../index.html#apps" class="nav-link">Applications</a>
-        <a href="../support.html" class="nav-link">Assistance</a>
+        <a href="/fr/buy/" class="nav-link">Boutique</a>
+        <a href="/fr/#productos" class="nav-link">Produits</a>
+        <a href="/fr/#apps" class="nav-link">Applications</a>
+        <a href="/fr/support/" class="nav-link">Assistance</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Rechercher" aria-controls="navMobilePanel" aria-expanded="false">
@@ -178,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="../buy.html" method="get">
+        <form id="navSearchForm" action="/fr/buy/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -188,10 +193,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Rechercher un produit"
           >
         </form>
-        <a href="../cart.html" class="nav-icon-link" aria-label="Panier">
+        <a href="/fr/cart/" class="nav-icon-link" aria-label="Panier">
           <img src="../images/Bolsa.png" alt="Panier">
         </a>
-        <a href="../account.html" class="nav-icon-link" aria-label="Compte">
+        <a href="/fr/account/" class="nav-icon-link" aria-label="Compte">
           <img src="../images/cuenta.png" alt="Compte">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
@@ -206,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="../buy.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/fr/buy/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -221,14 +226,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principale mobile">
-      <a href="../buy.html">Boutique</a>
-      <a href="../index.html#productos">Produits</a>
-      <a href="../index.html#apps">Applications</a>
-      <a href="../support.html">Assistance</a>
+      <a href="/fr/buy/">Boutique</a>
+      <a href="/fr/#productos">Produits</a>
+      <a href="/fr/#apps">Applications</a>
+      <a href="/fr/support/">Assistance</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="../cart.html">Panier</a>
-      <a href="../account.html">Compte</a>
+      <a href="/fr/cart/">Panier</a>
+      <a href="/fr/account/">Compte</a>
     </div>
   </div>
   <section class="help-hero">
@@ -243,22 +248,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Accès rapides</h2>
       <p>Choisissez le sujet qui correspond le mieux à votre demande et nous vous guiderons étape par étape.</p>
       <div class="help-grid">
-        <a class="help-card" href="lixbuds.html">
+        <a class="help-card" href="/fr/help-center/lixbuds/">
           <h3>Assistance LixBuds</h3>
           <p>Appairage, batterie, son et nettoyage.</p>
           <span class="btn btn-primary">Voir les guides</span>
         </a>
-        <a class="help-card" href="lixney.html">
+        <a class="help-card" href="/fr/help-center/lixney/">
           <h3>Assistance Lixney</h3>
           <p>Compte, synchronisation et confidentialité.</p>
           <span class="btn btn-primary">Gérer</span>
         </a>
-        <a class="help-card" href="faq.html">
+        <a class="help-card" href="/fr/help-center/faq/">
           <h3>Questions fréquentes</h3>
           <p>Réponses rapides aux questions courantes.</p>
           <span class="btn btn-primary">Aller à la FAQ</span>
         </a>
-        <a class="help-card" href="resoudre-problemes.html">
+        <a class="help-card" href="/fr/help-center/troubleshooting/">
           <h3>Résolution de problèmes</h3>
           <p>Diagnostics guidés en quelques minutes.</p>
           <span class="btn btn-primary">Commencer</span>
@@ -273,15 +278,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="help-container">
       <h2>Nous pouvons aussi vous aider avec</h2>
       <div class="help-grid">
-        <a class="help-card" href="garantie.html">
+        <a class="help-card" href="/fr/help-center/warranty/">
           <h3>Garantie</h3>
           <p>Conditions, couverture et procédures pour la demander.</p>
         </a>
-        <a class="help-card" href="retours.html">
+        <a class="help-card" href="/fr/help-center/returns/">
           <h3>Retours</h3>
           <p>Délais, conditions et suivi.</p>
         </a>
-        <a class="help-card" href="contact.html">
+        <a class="help-card" href="/fr/help-center/contact/">
           <h3>Contact</h3>
           <p>Écrivez-nous ou demandez un support personnalisé.</p>
         </a>
@@ -293,47 +298,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Voir et acheter</h3>
         <ul>
-          <li><a href="../buy.html">Boutique</a></li>
-          <li><a href="../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../index.html#apps">Applications</a></li>
-          <li><a href="../support.html">Assistance</a></li>
+          <li><a href="/fr/buy/">Boutique</a></li>
+          <li><a href="/fr/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/fr/#apps">Applications</a></li>
+          <li><a href="/fr/support/">Assistance</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Assistance</h3>
         <ul>
-          <li><a href="../support.html">Page d'accueil assistance</a></li>
-          <li><a href="../support.html#faq">FAQ Boutique en ligne</a></li>
-          <li><a href="../pages/legal/returns.html">Informations sur la garantie</a></li>
+          <li><a href="/fr/support/">Page d'accueil assistance</a></li>
+          <li><a href="/fr/support/#faq">FAQ Boutique en ligne</a></li>
+          <li><a href="/fr/pages/legal/returns/">Informations sur la garantie</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>Compte</h3>
         <ul>
-          <li><a href="../track.html">Commandes</a></li>
-          <li><a href="../account.html">Mon compte</a></li>
-          <li><a href="../account.html">Coupons</a></li>
+          <li><a href="/fr/track/">Commandes</a></li>
+          <li><a href="/fr/account/">Mon compte</a></li>
+          <li><a href="/fr/account/">Coupons</a></li>
         </ul>
       </section>
       <section class="footer-section">
         <h3>À propos de Lixby</h3>
         <ul>
-          <li><a href="../about.html">Newsroom</a></li>
-          <li><a href="../pages/legal/returns.html">Garantie</a></li>
-          <li><a href="../about.html">Événements</a></li>
-          <li><a href="../support.html">Contact</a></li>
+          <li><a href="/fr/about/">Newsroom</a></li>
+          <li><a href="/fr/pages/legal/returns/">Garantie</a></li>
+          <li><a href="/fr/about/">Événements</a></li>
+          <li><a href="/fr/support/">Contact</a></li>
         </ul>
       </section>
     </div>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tous droits réservés.</p>
       <div class="footer-legal-links">
-        <a href="../pages/legal/privacy.html">Politique de confidentialité</a>
-        <a href="../pages/legal/cookies.html">Utilisation des cookies</a>
-        <a href="../pages/legal/terms.html">Conditions d'utilisation</a>
-        <a href="../support.html">Ventes et remboursements</a>
-        <a href="../pages/legal/legal-notice.html">Mentions légales</a>
+        <a href="/fr/pages/legal/privacy/">Politique de confidentialité</a>
+        <a href="/fr/pages/legal/cookies/">Utilisation des cookies</a>
+        <a href="/fr/pages/legal/terms/">Conditions d'utilisation</a>
+        <a href="/fr/support/">Ventes et remboursements</a>
+        <a href="/fr/pages/legal/legal-notice/">Mentions légales</a>
       </div>
     </div>
   </footer>
@@ -388,7 +393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../buy.html?q=${encodeURIComponent(query)}` : "../buy.html";
+        const url = query ? `/fr/buy/?q=${encodeURIComponent(query)}` : "/fr/buy/";
         window.location.href = url;
       });
     }
@@ -397,7 +402,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `../buy.html?q=${encodeURIComponent(query)}` : "../buy.html";
+        const url = query ? `/fr/buy/?q=${encodeURIComponent(query)}` : "/fr/buy/";
         window.location.href = url;
       });
     }

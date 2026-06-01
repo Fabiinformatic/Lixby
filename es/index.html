@@ -1,6 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
   <meta charset="utf-8" />
   <link rel="canonical" href="https://lixby.es/es/">
   <link rel="alternate" href="https://lixby.es/bg/" hreflang="bg-BG">
@@ -119,10 +124,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
         <a href="#productos" class="nav-link">Productos</a>
         <a href="#apps" class="nav-link">Apps</a>
-        <a href="support.html" class="nav-link">Soporte</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
@@ -131,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="tienda.html" method="get">
+        <form id="navSearchForm" action="/es/tienda/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -141,10 +146,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Buscar producto"
           >
         </form>
-        <a href="cesta.html" class="nav-icon-link" aria-label="Cesta">
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
           <img src="images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
           <img src="images/cuenta.png" alt="Cuenta">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
@@ -159,7 +164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="tienda.html" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/es/tienda/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -174,14 +179,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Principal móvil">
-      <a href="tienda.html">Tienda</a>
+      <a href="/es/tienda/">Tienda</a>
       <a href="#productos">Productos</a>
       <a href="#apps">Apps</a>
-      <a href="support.html">Soporte</a>
+      <a href="/es/support/">Soporte</a>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="cesta.html">Cesta</a>
-      <a href="cuenta.html">Cuenta</a>
+      <a href="/es/cesta/">Cesta</a>
+      <a href="/es/cuenta/">Cuenta</a>
     </div>
   </div>
 
@@ -237,8 +242,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>LixBuds One</h3>
           <p>Auriculares inalámbricos con cancelación de ruido, sonido inmersivo y estuche de carga ultrarrápido.</p>
           <div class="card-buttons">
-            <a href="pages/products/lixbuds-one.html" class="btn btn-secondary">Ver más</a>
-            <a href="comprar-cascos/lixbuds-one/index.html" class="btn btn-primary">Comprar</a>
+            <a href="/es/pages/products/lixbuds-one/" class="btn btn-secondary">Ver más</a>
+            <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-primary">Comprar</a>
           </div>
         </article>
 
@@ -249,8 +254,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Lixney</h3>
           <p>Tu app de finanzas personales: organiza gastos, crea presupuestos y entiende en qué se va tu dinero.</p>
           <div class="card-buttons">
-            <a href="pages/apps/lixney.html" class="btn btn-secondary">Ver más</a>
-            <a href="beta-lixney.html" class="btn btn-primary">¿Quieres ser beta tester de Lixney?</a>
+            <a href="/es/pages/apps/lixney/" class="btn btn-secondary">Ver más</a>
+            <a href="/es/beta-lixney/" class="btn btn-primary">¿Quieres ser beta tester de Lixney?</a>
           </div>
         </article>
       </div>
@@ -262,19 +267,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Ver y comprar</h3>
         <ul>
-          <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="pages/products/lixbuds-one.html">LixBuds</a></li>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
           <li><a href="#apps">Apps</a></li>
-          <li><a href="support.html">Soporte</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Soporte</h3>
         <ul>
-          <li><a href="support.html">Página inicial soporte</a></li>
-          <li><a href="support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="support.html">Información de Garantía</a></li>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -282,19 +287,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Cuenta</h3>
         <ul>
-          <li><a href="../track.html">Pedidos</a></li>
-          <li><a href="cuenta.html">Mi cuenta</a></li>
-          <li><a href="cuenta.html">Cupones</a></li>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Acerca de Lixby</h3>
         <ul>
-          <li><a href="about.html">Nosotros</a></li>
-          <li><a href="support.html">Garantía</a></li>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
           <li><a href="#">Eventos</a></li>
-          <li><a href="support.html">Contacto</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
         </ul>
       </section>
     </div>
@@ -302,11 +307,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
-        <a href="pages/legal/privacy.html">Política de privacidad</a>
-        <a href="pages/legal/cookies.html">Uso de cookies</a>
-        <a href="pages/legal/terms.html">Condiciones de uso</a>
-        <a href="support.html">Ventas y reembolsos</a>
-        <a href="pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/support/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>
     </div>
   </footer>
@@ -381,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
         window.location.href = url;
       });
     }
@@ -392,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mobileSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = mobileSearchInput.value.trim();
-        const url = query ? `tienda.html?q=${encodeURIComponent(query)}` : "tienda.html";
+        const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
         window.location.href = url;
       });
     }
@@ -524,7 +529,7 @@ const swapImages = document.querySelectorAll(".swap-media .swap-image");
         }
 
         localStorage.setItem("lixbyCart", JSON.stringify(cart));
-        window.location.href = "cesta.html";
+        window.location.href = "/es/cesta/";
       });
     });
   </script>

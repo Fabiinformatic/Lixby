@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/el/">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://www.lixby.es/el/about">
+  <link rel="alternate" href="https://www.lixby.es/bg/about" hreflang="bg-BG">
+  <link rel="alternate" href="https://www.lixby.es/cs/about" hreflang="cs-CZ">
+  <link rel="alternate" href="https://www.lixby.es/da/about" hreflang="da-DK">
+  <link rel="alternate" href="https://www.lixby.es/de/about" hreflang="de-DE">
+  <link rel="alternate" href="https://www.lixby.es/el/about" hreflang="el-GR">
+  <link rel="alternate" href="https://www.lixby.es/en/about" hreflang="en-US">
+  <link rel="alternate" href="https://www.lixby.es/es/about" hreflang="es-ES">
+  <link rel="alternate" href="https://www.lixby.es/et/about" hreflang="et-EE">
+  <link rel="alternate" href="https://www.lixby.es/fi/about" hreflang="fi-FI">
+  <link rel="alternate" href="https://www.lixby.es/fr/about" hreflang="fr-FR">
+  <link rel="alternate" href="https://www.lixby.es/ga/about" hreflang="ga-IE">
+  <link rel="alternate" href="https://www.lixby.es/hr/about" hreflang="hr-HR">
+  <link rel="alternate" href="https://www.lixby.es/hu/about" hreflang="hu-HU">
+  <link rel="alternate" href="https://www.lixby.es/it/about" hreflang="it-IT">
+  <link rel="alternate" href="https://www.lixby.es/lt/about" hreflang="lt-LT">
+  <link rel="alternate" href="https://www.lixby.es/lv/about" hreflang="lv-LV">
+  <link rel="alternate" href="https://www.lixby.es/mt/about" hreflang="mt-MT">
+  <link rel="alternate" href="https://www.lixby.es/nl/about" hreflang="nl-NL">
+  <link rel="alternate" href="https://www.lixby.es/pl/about" hreflang="pl-PL">
+  <link rel="alternate" href="https://www.lixby.es/pt/about" hreflang="pt-PT">
+  <link rel="alternate" href="https://www.lixby.es/ro/about" hreflang="ro-RO">
+  <link rel="alternate" href="https://www.lixby.es/sk/about" hreflang="sk-SK">
+  <link rel="alternate" href="https://www.lixby.es/sl/about" hreflang="sl-SI">
+  <link rel="alternate" href="https://www.lixby.es/sv/about" hreflang="sv-SE">
+
+          <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Σχετικά με τη Lixby | Η ιστορία και η αποστολή μας</title>
+  <meta name="description" content="Γνωρίστε την ιστορία της Lixby. Μια ισπανική εταιρεία αφοσιωμένη στη δημιουργία τεχνολογίας που απλοποιεί τη ζωή των ανθρώπων.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .about-hero p {
+      font-size: var(--font-size-xl);
+      color: var(--color-gray-600);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .mission-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .mission-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .mission-content h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-6);
+    }
+
+    .mission-content p {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .values-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    .values-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-8);
+    }
+
+    .value-card {
+      padding: var(--spacing-10);
+      background-color: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .value-card h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .timeline {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: var(--spacing-12);
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 60px;
+      width: 2px;
+      height: calc(100% + var(--spacing-12));
+      background-color: var(--color-blue);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-date {
+      width: 100px;
+      font-weight: 700;
+      color: var(--color-blue);
+      font-size: var(--font-size-lg);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-left: var(--spacing-8);
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: var(--color-blue);
+      border: 3px solid var(--color-white);
+      border-radius: 50%;
+      left: -20px;
+      top: 8px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .timeline-content h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-2);
+    }
+
+    .team-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero h1 {
+        font-size: var(--font-size-4xl);
+      }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://www.lixby.es",
+      "logo": "https://www.lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">Lixby</a>
+      <div class="nav-links">
+        <a href="/#products" class="nav-link">Προϊόντα</a>
+        <a href="/#apps" class="nav-link">Εφαρμογές</a>
+        <a href="/el/support/" class="nav-link">Υποστήριξη</a>
+      </div>
+      <div class="nav-right"></div>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <div>
+      <h1>Σχετικά με τη Lixby</h1>
+      <p>Δημιουργούμε τεχνολογία για να απλοποιήσουμε τη ζωή σας. Σχεδιασμένο στην Ισπανία, δημιουργημένο με πάθος.</p>
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="mission-grid">
+      <div class="mission-content">
+        <h2>Η αποστολή μας</h2>
+        <p>Στη Lixby πιστεύουμε ότι η τεχνολογία πρέπει να απλοποιεί τη ζωή, όχι να την περιπλέκει. Στόχος μας είναι να δημιουργούμε προϊόντα και υπηρεσίες που είναι διαισθητικά, όμορφα και χρήσιμα.</p>
+        <p>Από την ίδρυσή μας το 2022, εργαζόμαστε για να προσφέρουμε καινοτόμες λύσεις που κάνουν πραγματικά τη διαφορά στη ζωή των χρηστών μας.</p>
+      </div>
+      <div style="background-color: var(--color-gray-100); border-radius: var(--radius-2xl); height: 300px;"></div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Οι αξίες μας</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">👥</div>
+          <h3>Εστίαση στον χρήστη</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Ό,τι κάνουμε είναι σχεδιασμένο για να βελτιώνει την εμπειρία του χρήστη.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">✨</div>
+          <h3>Εξαιρετικός σχεδιασμός</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Επιδιώκουμε την τελειότητα σε κάθε λεπτομέρεια, από την οπτική έως τη λειτουργική.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔓</div>
+          <h3>Διαφάνεια</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Πιστεύουμε στο απόρρητο των χρηστών μας και στην ασφάλεια των δεδομένων τους.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌱</div>
+          <h3>Βιωσιμότητα</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Δεσμευόμαστε σε φιλικές προς το περιβάλλον και υπεύθυνες πρακτικές.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>Κοινότητα</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Εκτιμούμε την κοινότητά μας και ακούμε τις προτάσεις της.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💡</div>
+          <h3>Καινοτομία</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Προσπαθούμε να είμαστε πάντα στην αιχμή της τεχνολογίας.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <div class="timeline-container">
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Η ιστορία μας</h2>
+      
+      <div class="timeline-item">
+        <div class="timeline-date">2022</div>
+        <div class="timeline-content">
+          <h3>Ίδρυση της Lixby</h3>
+          <p style="color: var(--color-gray-600);">Η Lixby ιδρύθηκε ως μια startup με στόχο τη δημιουργία τεχνολογίας που απλοποιεί τη ζωή.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Κυκλοφορία των LixBuds</h3>
+          <p style="color: var(--color-gray-600);">Παρουσιάσαμε τα πρώτα μας ασύρματα ακουστικά με premium τεχνολογία.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Κυκλοφορία του Lixney</h3>
+          <p style="color: var(--color-gray-600);">Η εφαρμογή προσωπικών οικονομικών μας φτάνει με επαναστατικές δυνατότητες.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>LixBuds One</h3>
+          <p style="color: var(--color-gray-600);">Παρουσιάζουμε την αναβαθμισμένη έκδοση των ακουστικών μας με εκτεταμένη μπαταρία.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Γίνετε μέλος της κοινότητάς μας</h2>
+      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Ανακαλύψτε πώς η Lixby μπορεί να βελτιώσει τη ζωή σας σήμερα.</p>
+      <a href="/#products" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Εξερεύνηση προϊόντων</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Προϊόντα</h3>
+        <ul class="footer-links">
+          <li><a href="/el/pages/products/lixbuds-one/">LixBuds One</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Εφαρμογές</h3>
+        <ul class="footer-links">
+          <li><a href="/el/pages/apps/lixney/">Lixney</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Εταιρεία</h3>
+        <ul class="footer-links">
+          <li><a href="/el/about/">Σχετικά με τη Lixby</a></li>
+          <li><a href="/el/support/">Επικοινωνία</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Νομικά</h3>
+        <ul class="footer-links">
+          <li><a href="/el/pages/legal/privacy/">Απόρρητο</a></li>
+          <li><a href="/el/pages/legal/terms/">Όροι</a></li>
+          <li><a href="/el/pages/legal/cookies/">Cookies</a></li>
+          <li><a href="/el/pages/legal/legal-notice/">Νομική σημείωση</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lixby. Με την επιφύλαξη παντός δικαιώματος. Σχεδιασμένο στην Ισπανία.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

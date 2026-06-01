@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -844,15 +849,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="../../index.html" class="nav-brand">Lixby</a>
+      <a href="/es/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="../../tienda.html" class="nav-link">Tienda</a>
-        <a href="../../index.html#productos" class="nav-link">Productos</a>
-        <a href="../../index.html#apps" class="nav-link">Apps</a>
-        <a href="../../support.html" class="nav-link">Soporte</a>
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/#productos" class="nav-link">Productos</a>
+        <a href="/es/#apps" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="../../tienda.html" method="get">
+        <form id="navSearchForm" action="/es/tienda/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -862,10 +867,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             aria-label="Buscar producto"
           >
         </form>
-        <a href="../../cesta.html" class="nav-icon-link" aria-label="Cesta">
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
           <img src="../../images/Bolsa.png" alt="Cesta">
         </a>
-        <a href="../../cuenta.html" class="nav-icon-link" aria-label="Cuenta">
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
           <img src="../../images/cuenta.png" alt="Cuenta">
         </a>
       </div>
@@ -875,7 +880,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="product-subnav-title"><span class="product-subnav-badge">Nuevo</span> LixBuds One</div>
         <div class="product-subnav-links">
           <a href="#descripcion">Descripción</a>
-          <a href="../../pages/products/lixbuds-one.html">Especificaciones</a>
+          <a href="/es/pages/products/lixbuds-one/">Especificaciones</a>
         </div>
       </div>
     </div>
@@ -1049,19 +1054,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Ver y comprar</h3>
         <ul>
-          <li><a href="../../tienda.html">Tienda</a></li>
-          <li><a href="../../pages/products/lixbuds-one.html">LixBuds</a></li>
-          <li><a href="../../index.html#apps">Apps</a></li>
-          <li><a href="../../support.html">Soporte</a></li>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/#apps">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Soporte</h3>
         <ul>
-          <li><a href="../../support.html">Página inicial de soporte</a></li>
-          <li><a href="../../support.html#faq">FAQs Tienda online</a></li>
-          <li><a href="../../support.html">Información de Garantía</a></li>
+          <li><a href="/es/support/">Página inicial de soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
       </section>
@@ -1069,9 +1074,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="footer-section">
         <h3>Cuenta</h3>
         <ul>
-          <li><a href="../../cesta.html">Pedidos</a></li>
-          <li><a href="../../cuenta.html">Mi cuenta</a></li>
-          <li><a href="../../cuenta.html">Cupones</a></li>
+          <li><a href="/es/cesta/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
         </ul>
       </section>
 
@@ -1079,9 +1084,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="#">Newsroom</a></li>
-          <li><a href="../../support.html">Garantía</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
           <li><a href="#">Eventos</a></li>
-          <li><a href="../../support.html">Contacto</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
         </ul>
       </section>
     </div>
@@ -1089,11 +1094,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
-        <a href="../../pages/legal/privacy.html">Política de privacidad</a>
-        <a href="../../pages/legal/cookies.html">Uso de cookies</a>
-        <a href="../../pages/legal/terms.html">Condiciones de uso</a>
-        <a href="../../support.html">Ventas y reembolsos</a>
-        <a href="../../pages/legal/legal-notice.html">Avisos legales</a>
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/support/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>
     </div>
   </footer>
@@ -1149,7 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `../../tienda.html?q=${encodeURIComponent(query)}` : "../../tienda.html";
+        const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
         window.location.href = url;
       });
     }
@@ -1210,7 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "../../cesta.html";
+          window.location.href = "/es/cesta/";
         }, 1200);
       });
     }
