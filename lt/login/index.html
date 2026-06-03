@@ -916,19 +916,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if (userCredential.user) {
             await sendEmailVerification(userCredential.user, emailActionSettings);
           }
-          localStorage.setItem("lixbyProfile", JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            country,
-            birthDay: birthDayValue,
-            birthMonth: birthMonthValue,
-            birthYear: birthYearValue,
-            phoneCountry: phoneCountryValue,
-            phoneNumber,
-            adsOptIn,
-            mediaOptIn
-          }));
+            // Save profile to Firebase Realtime Database
+            await set(ref(database, `users/${auth.currentUser.uid}/profile`), {
+              firstName,
+              lastName,
+              email,
+              country,
+              birthDay: birthDayValue,
+              birthMonth: birthMonthValue,
+              birthYear: birthYearValue,
+              phoneCountry: phoneCountryValue,
+              phoneNumber,
+              adsOptIn,
+              mediaOptIn
+            });
           setStatus("Paskyra sėkmingai sukurta.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();

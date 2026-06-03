@@ -926,20 +926,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
             await sendEmailVerification(userCredential.user, emailActionSettings);
+            
+            // Save profile to Firebase Realtime Database
+            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+              firstName,
+              lastName,
+              email,
+              country,
+              birthDay: birthDayValue,
+              birthMonth: birthMonthValue,
+              birthYear: birthYearValue,
+              phoneCountry: phoneCountryValue,
+              phoneNumber,
+              adsOptIn,
+              mediaOptIn
+            });
           }
-          localStorage.setItem("lixbyProfile", JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            country,
-            birthDay: birthDayValue,
-            birthMonth: birthMonthValue,
-            birthYear: birthYearValue,
-            phoneCountry: phoneCountryValue,
-            phoneNumber,
-            adsOptIn,
-            mediaOptIn
-          }));
           setStatus("Conta criada com sucesso.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();
