@@ -13,7 +13,8 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-<!-- End Google Tag Manager -->  <link rel="canonical" href="https://lixby.es/es/iniciar-sesion">
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://lixby.es/es/iniciar-sesion">
   <link rel="alternate" href="https://lixby.es/bg/login" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/login" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/login" hreflang="da-DK">
@@ -629,6 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
      const firebaseConfig = {
@@ -754,6 +756,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+      const database = getDatabase(app);
       const googleProvider = new GoogleAuthProvider();
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
@@ -924,20 +927,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
             await sendEmailVerification(userCredential.user, emailActionSettings);
+            
+            // Guardar el perfil en Firebase Realtime Database
+            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+              firstName,
+              lastName,
+              email,
+              country,
+              birthDay: birthDayValue,
+              birthMonth: birthMonthValue,
+              birthYear: birthYearValue,
+              phoneCountry: phoneCountryValue,
+              phoneNumber,
+              adsOptIn,
+              mediaOptIn
+            });
           }
-          localStorage.setItem("lixbyProfile", JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            country,
-            birthDay: birthDayValue,
-            birthMonth: birthMonthValue,
-            birthYear: birthYearValue,
-            phoneCountry: phoneCountryValue,
-            phoneNumber,
-            adsOptIn,
-            mediaOptIn
-          }));
           setStatus("Cuenta creada correctamente.", "success");
           registerForm.reset();
           currentCaptcha = generateCaptcha();

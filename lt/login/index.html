@@ -618,6 +618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
      const firebaseConfig = {
@@ -743,6 +744,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+      const database = getDatabase(app);
       const googleProvider = new GoogleAuthProvider();
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
