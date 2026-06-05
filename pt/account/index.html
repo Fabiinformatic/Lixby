@@ -825,6 +825,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -920,12 +921,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.setItem(getScopedKey(PAYMENTS_KEY), JSON.stringify(value));
     }
 
-    function readBilling() {
-      return JSON.parse(localStorage.getItem(getScopedKey(BILLING_KEY)) || "{}");
+    async function readBilling() {
+      const user = auth.currentUser;
+      if (!user) return {};
+
+      const snapshot = await getDoc(doc(db, "users", user.uid, "account", "billing"));
+      return snapshot.exists() ? snapshot.data() : {};
     }
 
-    function writeBilling(value) {
-      localStorage.setItem(getScopedKey(BILLING_KEY), JSON.stringify(value));
+    async function writeBilling(value) {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const billingRef = doc(db, "users", user.uid, "account", "billing");
+      if (!value || Object.keys(value).length === 0) {
+        await deleteDoc(billingRef);
+        return;
+      }
+
+      await setDoc(billingRef, {
+        ...value,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+    }
+
+    function generateAccountNumber() {
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const values = new Uint32Array(15);
+      crypto.getRandomValues(values);
+      return `NLX-${Array.from(values, (value) => alphabet[value % alphabet.length]).join("")}`;
+    }
+
+    async function ensureAccountNumber(user) {
+      const userRef = doc(db, "users", user.uid);
+
+      await runTransaction(db, async (transaction) => {
+        const userDoc = await transaction.get(userRef);
+        if (userDoc.exists() && userDoc.data().accountNumber) return;
+
+        let accountNumber = "";
+        let accountNumberRef = null;
+
+        for (let attempt = 0; attempt < 5; attempt += 1) {
+          accountNumber = generateAccountNumber();
+          accountNumberRef = doc(db, "accountNumbers", accountNumber);
+          const accountNumberDoc = await transaction.get(accountNumberRef);
+          if (!accountNumberDoc.exists()) break;
+          accountNumberRef = null;
+        }
+
+        if (!accountNumberRef) {
+          throw new Error("Could not generate a unique account number.");
+        }
+
+        transaction.set(accountNumberRef, {
+          uid: user.uid,
+          createdAt: serverTimestamp()
+        });
+
+        transaction.set(userRef, {
+          accountNumber,
+          accountNumberCreatedAt: serverTimestamp()
+        }, { merge: true });
+      });
+    }
+
+    async function migrateStoredBilling() {
+      const storedBilling = localStorage.getItem(getScopedKey(BILLING_KEY));
+      if (!storedBilling) return;
+
+      try {
+        await writeBilling(JSON.parse(storedBilling));
+        localStorage.removeItem(getScopedKey(BILLING_KEY));
+      } catch (error) {
+        console.error("Could not migrate billing address.", error);
+      }
     }
 
     function onlyDigits(value) {
@@ -996,33 +1066,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       return `pm_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
     }
+    function el(tag, options = {}) {
+      const node = document.createElement(tag);
+      if (options.className) node.className = options.className;
+      if (options.id) node.id = options.id;
+      if (options.type) node.type = options.type;
+      if (options.text !== undefined) node.textContent = options.text;
+      if (options.disabled) node.disabled = true;
+      if (options.href) node.href = options.href;
+      if (options.style) Object.assign(node.style, options.style);
+      if (options.dataset) {
+        Object.entries(options.dataset).forEach(([key, value]) => {
+          node.dataset[key] = String(value ?? "");
+        });
+      }
+      return node;
+    }
+
+    function replaceChildren(parent, children) {
+      parent.textContent = "";
+      children.forEach((child) => parent.appendChild(child));
+    }
+
+    function sanitizeImageUrl(url) {
+      const fallback = "images/cuenta.png";
+      const value = String(url || "").trim();
+      if (!value) return fallback;
+
+      try {
+        const parsed = new URL(value, window.location.href);
+        if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+          return parsed.href;
+        }
+      } catch (error) {}
+
+      return fallback;
+    }
 
     function renderPaymentMethods() {
       const state = readPayments();
       if (!state.methods.length) {
-        paymentMethodsEl.innerHTML = `<p style="color:var(--muted);">Não há cartões guardados.</p>`;
+        replaceChildren(paymentMethodsEl, [
+          el("p", { text: "Não há cartões guardados.", style: { color: "var(--muted)" } })
+        ]);
         return;
       }
 
-      paymentMethodsEl.innerHTML = state.methods.map((method) => {
+      const items = state.methods.map((method) => {
         const isDefault = state.defaultMethodId === method.id;
-        return `
-          <article class="payment-item">
-            <div>
-              <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Predeterminado</span>' : ""}</strong>
-              <small>Titular: ${method.cardholder} - Válido até ${method.expiry}</small>
-            </div>
-            <div class="payment-item-actions">
-              <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Predeterminado</button>
-              <button class="btn btn-secondary" type="button" data-payment-action="remove" data-id="${method.id}">Eliminar</button>
-            </div>
-          </article>
-        `;
-      }).join("");
+        const article = el("article", { className: "payment-item" });
+        const details = el("div");
+        const title = el("strong", {
+          text: `${method.brand || "Card"} ${maskCard(onlyDigits(method.number || ""))}`
+        });
+        if (isDefault) {
+          title.appendChild(el("span", { className: "payment-default", text: "Predeterminado" }));
+        }
+        details.appendChild(title);
+        details.appendChild(el("small", {
+          text: `Titular: ${method.cardholder || ""} - Válido até ${method.expiry || ""}`
+        }));
+
+        const actions = el("div", { className: "payment-item-actions" });
+        actions.appendChild(el("button", {
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Predeterminado",
+          dataset: { paymentAction: "default", id: method.id || "" }
+        }));
+        actions.appendChild(el("button", {
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Eliminar",
+          dataset: { paymentAction: "remove", id: method.id || "" }
+        }));
+
+        article.appendChild(details);
+        article.appendChild(actions);
+        return article;
+      });
+
+      replaceChildren(paymentMethodsEl, items);
     }
 
-    function fillBilling() {
-      const billing = readBilling();
+    async function fillBilling() {
+      const billing = await readBilling();
       billingInputs.name.value = billing.name || "";
       billingInputs.country.value = billing.country || "";
       billingInputs.address.value = billing.address || "";
@@ -1030,33 +1158,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       billingInputs.postalCode.value = billing.postalCode || "";
     }
 
-    function renderBillingSummary() {
-      const billing = readBilling();
+    async function renderBillingSummary() {
+      const billing = await readBilling();
+      const details = el("div", { className: "billing-summary-details" });
+      const actions = el("div", { className: "billing-summary-actions" });
+
       if (!billing.name && !billing.address && !billing.country && !billing.city && !billing.postalCode) {
-        billingSummaryEl.innerHTML = `
-          <div class="billing-summary-details">
-            <p>Não há morada guardada.</p>
-          </div>
-          <div class="billing-summary-actions">
-            <button id="editBillingBtn" class="btn btn-secondary" type="button" disabled>Editar dados</button>
-            <button id="deleteBillingBtn" class="btn btn-secondary" type="button" disabled>Eliminar</button>
-          </div>
-        `;
+        details.appendChild(el("p", { text: "Não há morada guardada." }));
+        actions.appendChild(el("button", {
+          id: "editBillingBtn",
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Editar dados",
+          disabled: true
+        }));
+        actions.appendChild(el("button", {
+          id: "deleteBillingBtn",
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Eliminar",
+          disabled: true
+        }));
+        replaceChildren(billingSummaryEl, [details, actions]);
         return;
       }
 
-      billingSummaryEl.innerHTML = `
-        <div class="billing-summary-details">
-          <strong>${billing.name || "Nome fiscal"}</strong>
-          <span>${billing.address || "Morada"}</span>
-          <span>${billing.city || "Cidade"} ${billing.postalCode || ""}</span>
-          <span>${billing.country || "País"}</span>
-        </div>
-        <div class="billing-summary-actions">
-          <button id="editBillingBtn" class="btn btn-secondary" type="button">Editar dados</button>
-          <button id="deleteBillingBtn" class="btn btn-secondary" type="button">Eliminar</button>
-        </div>
-      `;
+      details.appendChild(el("strong", { text: billing.name || "" }));
+      details.appendChild(el("span", { text: billing.address || "" }));
+      details.appendChild(el("span", { text: `${billing.city || ""} ${billing.postalCode || ""}`.trim() }));
+      details.appendChild(el("span", { text: billing.country || "" }));
+      actions.appendChild(el("button", {
+        id: "editBillingBtn",
+        className: "btn btn-secondary",
+        type: "button",
+        text: "Editar dados"
+      }));
+      actions.appendChild(el("button", {
+        id: "deleteBillingBtn",
+        className: "btn btn-secondary",
+        type: "button",
+        text: "Eliminar"
+      }));
+      replaceChildren(billingSummaryEl, [details, actions]);
     }
 
     function showStatus(text, type = "") {
@@ -1110,8 +1253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       inputs.language.value = profile.language || navigator.language || "pt-PT";
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
-      document.getElementById("photoPreview").src =
-        inputs.photoUrl.value || user.photoURL || "images/cuenta.png";
+      document.getElementById("photoPreview").src = sanitizeImageUrl(inputs.photoUrl.value || user.photoURL);
       inputs.email.value = user.email || profile.email || "";
       inputs.phone.value = profile.phone || profile.phoneNumber || "";
       inputs.address.value = profile.address || "";
@@ -1127,7 +1269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "A sua conta Lixby";
       sideEmail.textContent = inputs.email.value || "Sem email";
-      profilePhoto.src = inputs.photoUrl.value || "images/cuenta.png";
+      profilePhoto.src = sanitizeImageUrl(inputs.photoUrl.value);
     }
 
     function collectProfileData() {
@@ -1179,6 +1321,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const storage = getStorage(app);
+    const db = getFirestore(app);
 
     addPaymentBtn.addEventListener("click", () => {
       const cardholder = paymentInputs.cardholder.value.trim();
@@ -1260,7 +1403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Pagamentos atualizados.", "success");
     });
 
-    saveBillingBtn.addEventListener("click", () => {
+    saveBillingBtn.addEventListener("click", async () => {
       const billing = {
         name: billingInputs.name.value.trim(),
         country: billingInputs.country.value.trim(),
@@ -1274,8 +1417,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
-      writeBilling(billing);
-      renderBillingSummary();
+      await writeBilling(billing);
+      await renderBillingSummary();
       billingInputs.name.value = "";
       billingInputs.country.value = "";
       billingInputs.address.value = "";
@@ -1284,27 +1427,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Morada de faturação guardada.", "success");
     });
 
-    billingSummaryEl.addEventListener("click", (event) => {
+    billingSummaryEl.addEventListener("click", async (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
 
       if (target.id === "editBillingBtn") {
-        fillBilling();
+        await fillBilling();
         billingInputs.name.focus();
         showStatus("Pode editar a morada de faturação.", "success");
         return;
       }
 
       if (target.id === "deleteBillingBtn") {
-        writeBilling({});
-        fillBilling();
-        renderBillingSummary();
+        await writeBilling({});
+        await fillBilling();
+        await renderBillingSummary();
         showStatus("Morada de faturação eliminada.", "success");
       }
     });
 
     const RAILWAY_URL = "https://lixby-production.up.railway.app";
     const ACCOUNT_API_KEY = "lixby-admin-2026";
+
+    function badge(text, colors) {
+      return el("span", {
+        text,
+        style: {
+          background: colors.bg,
+          color: colors.color,
+          border: `1px solid ${colors.border}`,
+          borderRadius: "999px",
+          padding: "3px 10px",
+          fontSize: "0.75rem",
+          fontWeight: "700"
+        }
+      });
+    }
 
     function statusBadge(status) {
       const map = {
@@ -1313,9 +1471,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Enviado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
         "Em distribuição": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
         Entregue: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+      
       };
       const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
-      return `<span style="background:${s.bg};color:${s.color};border:1px solid ${s.border};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">${status || "Encomenda recebida"}</span>`;
+      return badge(status || "Encomenda recebida", s);
     }
 
     function formatDate(iso) {
@@ -1325,6 +1484,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         month: "short",
         year: "numeric"
       });
+    }
+
+    function formatEuro(value) {
+      return value ? `${Number(value).toFixed(2).replace(".", ",")} €` : "—";
+    }
+
+    function renderOrderCard(order) {
+      const article = el("article", { className: "order-card" });
+      const header = el("div", {
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "8px"
+        }
+      });
+      header.appendChild(el("strong", {
+        text: order.orderNumber || order.id || "",
+        style: { fontFamily: "monospace", color: "#458500" }
+      }));
+      header.appendChild(statusBadge(order.status));
+
+      article.appendChild(header);
+      article.appendChild(el("span", {
+        text: formatDate(order.createdAt),
+        style: { color: "var(--muted)", fontSize: "0.85rem" }
+      }));
+      article.appendChild(el("span", {
+        text: order.product || "—",
+        style: { fontSize: "0.9rem" }
+      }));
+
+      const totalRow = el("div", {
+        style: { display: "flex", justifyContent: "space-between", alignItems: "center" }
+      });
+      totalRow.appendChild(el("strong", { text: formatEuro(order.amountTotal) }));
+      if (order.trackingNumber) {
+        totalRow.appendChild(el("span", {
+          text: `🚚 ${order.trackingCarrier || ""} ${order.trackingNumber}`,
+          style: { fontSize: "0.8rem", color: "var(--muted)" }
+        }));
+      }
+      article.appendChild(totalRow);
+
+      const actions = el("div", { className: "order-actions" });
+      actions.appendChild(el("a", {
+        className: "btn btn-secondary",
+        href: `/pt/track/?orderId=${encodeURIComponent(order.id || "")}`,
+        text: "Seguir encomenda",
+        style: { fontSize: "0.85rem" }
+      }));
+      article.appendChild(actions);
+      return article;
+    }
+
+    function renderGiftCard(card) {
+      const article = el("article", { className: "order-card" });
+      const header = el("div", {
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "8px"
+        }
+      });
+      header.appendChild(el("strong", {
+        text: card.code || "",
+        style: { fontFamily: "monospace", color: "#458500" }
+      }));
+      header.appendChild(badge(card.used ? "Usado" : "Ativo", card.used
+        ? { bg: "#f3f4f6", color: "#6b7280", border: "#e5e7eb" }
+        : { bg: "#f0fdf4", color: "#166534", border: "#86efac" }));
+      article.appendChild(header);
+
+      const balanceRow = el("div", { style: { display: "flex", justifyContent: "space-between" } });
+      balanceRow.appendChild(el("span", {
+        text: "Saldo restante",
+        style: { fontSize: "0.85rem", color: "var(--muted)" }
+      }));
+      balanceRow.appendChild(el("strong", {
+        text: `${Number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
+        style: { color: "#458500" }
+      }));
+      article.appendChild(balanceRow);
+
+      if (card.recipientName) {
+        article.appendChild(el("span", {
+          text: `Para: ${card.recipientName}`,
+          style: { fontSize: "0.82rem", color: "var(--muted)" }
+        }));
+      }
+      return article;
     }
 
     async function loadOrders(email) {
@@ -1349,39 +1602,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         listEl.style.display = "grid";
-        listEl.innerHTML = orders
-          .map(
-            (o) => `
-      <article class="order-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-          <strong style="font-family:monospace;color:#458500">${o.orderNumber || o.id}</strong>
-          ${statusBadge(o.status)}
-        </div>
-        <span style="color:var(--muted);font-size:0.85rem">${formatDate(
-          o.createdAt
-        )}</span>
-        <span style="font-size:0.9rem">${o.product || "—"}</span>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <strong>${
-            o.amountTotal
-              ? Number(o.amountTotal).toFixed(2).replace(".", ",") + " €"
-              : "—"
-          }</strong>
-          ${
-            o.trackingNumber
-              ? `<span style="font-size:0.8rem;color:var(--muted)">🚚 ${
-                  o.trackingCarrier || ""
-                } ${o.trackingNumber}</span>`
-              : ""
-          }
-        </div>
-        <div class="order-actions">
-          <a class="btn btn-secondary" href="/pt/track/?orderId=${o.id}" style="font-size:0.85rem">Seguir encomenda</a>
-        </div>
-      </article>
-    `
-          )
-          .join("");
+        replaceChildren(listEl, orders.map(renderOrderCard));
       } catch (e) {
         loadingEl.textContent = "Erro ao carregar encomendas.";
       }
@@ -1409,33 +1630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         listEl.style.display = "grid";
-        listEl.innerHTML = cards
-          .map(
-            (c) => `
-      <article class="order-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-          <strong style="font-family:monospace;color:#458500">${c.code}</strong>
-          <span style="background:${c.used ? "#f3f4f6" : "#f0fdf4"};color:${
-              c.used ? "#6b7280" : "#166534"
-            };border:1px solid ${c.used ? "#e5e7eb" : "#86efac"};border-radius:999px;padding:3px 10px;font-size:0.75rem;font-weight:700">
-            ${c.used ? "Usado" : "Ativo"}
-          </span>
-        </div>
-        <div style="display:flex;justify-content:space-between">
-          <span style="font-size:0.85rem;color:var(--muted)">Saldo restante</span>
-          <strong style="color:#458500">${Number(c.balance || 0)
-            .toFixed(2)
-            .replace(".", ",")} €</strong>
-        </div>
-        ${
-          c.recipientName
-            ? `<span style="font-size:0.82rem;color:var(--muted)">Para: ${c.recipientName}</span>`
-            : ""
-        }
-      </article>
-    `
-          )
-          .join("");
+        replaceChildren(listEl, cards.map(renderGiftCard));
       } catch (e) {
         loadingEl.textContent = "Erro ao carregar cartões.";
       }
@@ -1471,9 +1666,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const url = await getDownloadURL(storageRef);
 
         // Atualizar pré-visualização e campo oculto
-        document.getElementById("photoPreview").src = url;
+        document.getElementById("photoPreview").src = sanitizeImageUrl(url);
         document.getElementById("photoUrl").value = url;
-        profilePhoto.src = url;
+        profilePhoto.src = sanitizeImageUrl(url);
 
         // Guardar no perfil
         const profile = readProfile();
@@ -1492,16 +1687,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (!user) {
         window.location.href = "/pt/login/";
         return;
       }
 
+      await ensureAccountNumber(user);
+      await migrateStoredBilling();
+
       const stored = readProfile();
       fillProfile(user, stored);
-      fillBilling();
-      renderBillingSummary();
+      await fillBilling();
+      await renderBillingSummary();
       renderPaymentMethods();
       showStatus("Conta carregada corretamente.", "success");
       accountLayout.classList.remove("hidden");

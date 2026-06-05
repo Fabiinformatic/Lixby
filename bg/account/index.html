@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <script>
@@ -780,6 +780,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -875,12 +876,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.setItem(getScopedKey(PAYMENTS_KEY), JSON.stringify(value));
     }
 
-    function readBilling() {
-      return JSON.parse(localStorage.getItem(getScopedKey(BILLING_KEY)) || "{}");
+    async function readBilling() {
+      const user = auth.currentUser;
+      if (!user) return {};
+
+      const snapshot = await getDoc(doc(db, "users", user.uid, "account", "billing"));
+      return snapshot.exists() ? snapshot.data() : {};
     }
 
-    function writeBilling(value) {
-      localStorage.setItem(getScopedKey(BILLING_KEY), JSON.stringify(value));
+    async function writeBilling(value) {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const billingRef = doc(db, "users", user.uid, "account", "billing");
+      if (!value || Object.keys(value).length === 0) {
+        await deleteDoc(billingRef);
+        return;
+      }
+
+      await setDoc(billingRef, {
+        ...value,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+    }
+
+    function generateAccountNumber() {
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const values = new Uint32Array(15);
+      crypto.getRandomValues(values);
+      return `NLX-${Array.from(values, (value) => alphabet[value % alphabet.length]).join("")}`;
+    }
+
+    async function ensureAccountNumber(user) {
+      const userRef = doc(db, "users", user.uid);
+
+      await runTransaction(db, async (transaction) => {
+        const userDoc = await transaction.get(userRef);
+        if (userDoc.exists() && userDoc.data().accountNumber) return;
+
+        let accountNumber = "";
+        let accountNumberRef = null;
+
+        for (let attempt = 0; attempt < 5; attempt += 1) {
+          accountNumber = generateAccountNumber();
+          accountNumberRef = doc(db, "accountNumbers", accountNumber);
+          const accountNumberDoc = await transaction.get(accountNumberRef);
+          if (!accountNumberDoc.exists()) break;
+          accountNumberRef = null;
+        }
+
+        if (!accountNumberRef) {
+          throw new Error("Could not generate a unique account number.");
+        }
+
+        transaction.set(accountNumberRef, {
+          uid: user.uid,
+          createdAt: serverTimestamp()
+        });
+
+        transaction.set(userRef, {
+          accountNumber,
+          accountNumberCreatedAt: serverTimestamp()
+        }, { merge: true });
+      });
+    }
+
+    async function migrateStoredBilling() {
+      const storedBilling = localStorage.getItem(getScopedKey(BILLING_KEY));
+      if (!storedBilling) return;
+
+      try {
+        await writeBilling(JSON.parse(storedBilling));
+        localStorage.removeItem(getScopedKey(BILLING_KEY));
+      } catch (error) {
+        console.error("Could not migrate billing address.", error);
+      }
     }
 
     function onlyDigits(value) {
@@ -951,33 +1021,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       return `pm_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
     }
+    function el(tag, options = {}) {
+      const node = document.createElement(tag);
+      if (options.className) node.className = options.className;
+      if (options.id) node.id = options.id;
+      if (options.type) node.type = options.type;
+      if (options.text !== undefined) node.textContent = options.text;
+      if (options.disabled) node.disabled = true;
+      if (options.href) node.href = options.href;
+      if (options.style) Object.assign(node.style, options.style);
+      if (options.dataset) {
+        Object.entries(options.dataset).forEach(([key, value]) => {
+          node.dataset[key] = String(value ?? "");
+        });
+      }
+      return node;
+    }
+
+    function replaceChildren(parent, children) {
+      parent.textContent = "";
+      children.forEach((child) => parent.appendChild(child));
+    }
+
+    function sanitizeImageUrl(url) {
+      const fallback = "images/cuenta.png";
+      const value = String(url || "").trim();
+      if (!value) return fallback;
+
+      try {
+        const parsed = new URL(value, window.location.href);
+        if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+          return parsed.href;
+        }
+      } catch (error) {}
+
+      return fallback;
+    }
 
     function renderPaymentMethods() {
       const state = readPayments();
       if (!state.methods.length) {
-        paymentMethodsEl.innerHTML = `<p style="color:var(--muted);">No hay tarjetas guardadas.</p>`;
+        replaceChildren(paymentMethodsEl, [
+          el("p", { text: "No hay tarjetas guardadas.", style: { color: "var(--muted)" } })
+        ]);
         return;
       }
 
-      paymentMethodsEl.innerHTML = state.methods.map((method) => {
+      const items = state.methods.map((method) => {
         const isDefault = state.defaultMethodId === method.id;
-        return `
-          <article class="payment-item">
-            <div>
-              <strong>${method.brand} ${maskCard(method.number)} ${isDefault ? '<span class="payment-default">Predeterminada</span>' : ""}</strong>
-              <small>Titular: ${method.cardholder} - Caduca ${method.expiry}</small>
-            </div>
-            <div class="payment-item-actions">
-              <button class="btn btn-secondary" type="button" data-payment-action="default" data-id="${method.id}">Predeterminada</button>
-              <button class="btn btn-secondary" type="button" data-payment-action="remove" data-id="${method.id}">Eliminar</button>
-            </div>
-          </article>
-        `;
-      }).join("");
+        const article = el("article", { className: "payment-item" });
+        const details = el("div");
+        const title = el("strong", {
+          text: `${method.brand || "Card"} ${maskCard(onlyDigits(method.number || ""))}`
+        });
+        if (isDefault) {
+          title.appendChild(el("span", { className: "payment-default", text: "Predeterminada" }));
+        }
+        details.appendChild(title);
+        details.appendChild(el("small", {
+          text: `Titular: ${method.cardholder || ""} - Caduca ${method.expiry || ""}`
+        }));
+
+        const actions = el("div", { className: "payment-item-actions" });
+        actions.appendChild(el("button", {
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Predeterminada",
+          dataset: { paymentAction: "default", id: method.id || "" }
+        }));
+        actions.appendChild(el("button", {
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Eliminar",
+          dataset: { paymentAction: "remove", id: method.id || "" }
+        }));
+
+        article.appendChild(details);
+        article.appendChild(actions);
+        return article;
+      });
+
+      replaceChildren(paymentMethodsEl, items);
     }
 
-    function fillBilling() {
-      const billing = readBilling();
+    async function fillBilling() {
+      const billing = await readBilling();
       billingInputs.name.value = billing.name || "";
       billingInputs.country.value = billing.country || "";
       billingInputs.address.value = billing.address || "";
@@ -985,33 +1113,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       billingInputs.postalCode.value = billing.postalCode || "";
     }
 
-    function renderBillingSummary() {
-      const billing = readBilling();
+    async function renderBillingSummary() {
+      const billing = await readBilling();
+      const details = el("div", { className: "billing-summary-details" });
+      const actions = el("div", { className: "billing-summary-actions" });
+
       if (!billing.name && !billing.address && !billing.country && !billing.city && !billing.postalCode) {
-        billingSummaryEl.innerHTML = `
-          <div class="billing-summary-details">
-            <p>No hay direcci?n guardada.</p>
-          </div>
-          <div class="billing-summary-actions">
-            <button id="editBillingBtn" class="btn btn-secondary" type="button" disabled>Editar datos</button>
-            <button id="deleteBillingBtn" class="btn btn-secondary" type="button" disabled>Eliminar</button>
-          </div>
-        `;
+        details.appendChild(el("p", { text: "No hay direcci?n guardada." }));
+        actions.appendChild(el("button", {
+          id: "editBillingBtn",
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Editar datos",
+          disabled: true
+        }));
+        actions.appendChild(el("button", {
+          id: "deleteBillingBtn",
+          className: "btn btn-secondary",
+          type: "button",
+          text: "Eliminar",
+          disabled: true
+        }));
+        replaceChildren(billingSummaryEl, [details, actions]);
         return;
       }
 
-      billingSummaryEl.innerHTML = `
-        <div class="billing-summary-details">
-          <strong>${billing.name || "Nombre fiscal"}</strong>
-          <span>${billing.address || "Direcci?n"}</span>
-          <span>${billing.city || "Ciudad"} ${billing.postalCode || ""}</span>
-          <span>${billing.country || "Pa?s"}</span>
-        </div>
-        <div class="billing-summary-actions">
-          <button id="editBillingBtn" class="btn btn-secondary" type="button">Editar datos</button>
-          <button id="deleteBillingBtn" class="btn btn-secondary" type="button">Eliminar</button>
-        </div>
-      `;
+      details.appendChild(el("strong", { text: billing.name || "" }));
+      details.appendChild(el("span", { text: billing.address || "" }));
+      details.appendChild(el("span", { text: `${billing.city || ""} ${billing.postalCode || ""}`.trim() }));
+      details.appendChild(el("span", { text: billing.country || "" }));
+      actions.appendChild(el("button", {
+        id: "editBillingBtn",
+        className: "btn btn-secondary",
+        type: "button",
+        text: "Editar datos"
+      }));
+      actions.appendChild(el("button", {
+        id: "deleteBillingBtn",
+        className: "btn btn-secondary",
+        type: "button",
+        text: "Eliminar"
+      }));
+      replaceChildren(billingSummaryEl, [details, actions]);
     }
 
     function showStatus(text, type = "") {
@@ -1080,7 +1223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "Tu cuenta Lixby";
       sideEmail.textContent = inputs.email.value || "Sin email";
-      profilePhoto.src = inputs.photoUrl.value || "images/cuenta.png";
+      profilePhoto.src = sanitizeImageUrl(inputs.photoUrl.value);
     }
 
     function collectProfileData() {
@@ -1131,6 +1274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
     addPaymentBtn.addEventListener("click", () => {
       const cardholder = paymentInputs.cardholder.value.trim();
@@ -1212,7 +1356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Pagos actualizados.", "success");
     });
 
-    saveBillingBtn.addEventListener("click", () => {
+    saveBillingBtn.addEventListener("click", async () => {
       const billing = {
         name: billingInputs.name.value.trim(),
         country: billingInputs.country.value.trim(),
@@ -1226,8 +1370,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
-      writeBilling(billing);
-      renderBillingSummary();
+      await writeBilling(billing);
+      await renderBillingSummary();
       billingInputs.name.value = "";
       billingInputs.country.value = "";
       billingInputs.address.value = "";
@@ -1236,35 +1380,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       showStatus("Direcci?n de facturaci?n guardada.", "success");
     });
 
-    billingSummaryEl.addEventListener("click", (event) => {
+    billingSummaryEl.addEventListener("click", async (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
 
       if (target.id === "editBillingBtn") {
-        fillBilling();
+        await fillBilling();
         billingInputs.name.focus();
         showStatus("Puedes editar la direcci?n de facturaci?n.", "success");
         return;
       }
 
       if (target.id === "deleteBillingBtn") {
-        writeBilling({});
-        fillBilling();
-        renderBillingSummary();
+        await writeBilling({});
+        await fillBilling();
+        await renderBillingSummary();
         showStatus("Direcci?n de facturaci?n eliminada.", "success");
       }
     });
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (!user) {
         window.location.href = "/bg/login/";
         return;
       }
 
+      await ensureAccountNumber(user);
+      await migrateStoredBilling();
+
       const stored = readProfile();
       fillProfile(user, stored);
-      fillBilling();
-      renderBillingSummary();
+      await fillBilling();
+      await renderBillingSummary();
       renderPaymentMethods();
       showStatus("Cuenta cargada correctamente.", "success");
       accountLayout.classList.remove("hidden");
