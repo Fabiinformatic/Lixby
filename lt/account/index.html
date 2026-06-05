@@ -808,7 +808,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-    import { getFirestore, doc, getDoc, setDoc, deleteDoc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -928,45 +929,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, { merge: true });
     }
 
-    function generateAccountNumber() {
-      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      const values = new Uint32Array(15);
-      crypto.getRandomValues(values);
-      return `NLX-${Array.from(values, (value) => alphabet[value % alphabet.length]).join("")}`;
-    }
-
-    async function ensureAccountNumber(user) {
-      const userRef = doc(db, "users", user.uid);
-
-      await runTransaction(db, async (transaction) => {
-        const userDoc = await transaction.get(userRef);
-        if (userDoc.exists() && userDoc.data().accountNumber) return;
-
-        let accountNumber = "";
-        let accountNumberRef = null;
-
-        for (let attempt = 0; attempt < 5; attempt += 1) {
-          accountNumber = generateAccountNumber();
-          accountNumberRef = doc(db, "accountNumbers", accountNumber);
-          const accountNumberDoc = await transaction.get(accountNumberRef);
-          if (!accountNumberDoc.exists()) break;
-          accountNumberRef = null;
-        }
-
-        if (!accountNumberRef) {
-          throw new Error("Could not generate a unique account number.");
-        }
-
-        transaction.set(accountNumberRef, {
-          uid: user.uid,
-          createdAt: serverTimestamp()
-        });
-
-        transaction.set(userRef, {
-          accountNumber,
-          accountNumberCreatedAt: serverTimestamp()
-        }, { merge: true });
-      });
+    async function ensureAccountNumber() {
+      const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
+      const result = await ensureAccountNumberFn();
+      return result.data.accountNumber;
     }
 
     async function migrateStoredBilling() {
@@ -1305,6 +1271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const auth = getAuth(app);
     const storage = getStorage(app);
     const db = getFirestore(app);
+    const functions = getFunctions(app, "us-central1");
 
     addPaymentBtn.addEventListener("click", () => {
       const cardholder = paymentInputs.cardholder.value.trim();
@@ -1673,7 +1640,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
-      await ensureAccountNumber(user);
+      await ensureAccountNumber();
       await migrateStoredBilling();
 
       const stored = readProfile();

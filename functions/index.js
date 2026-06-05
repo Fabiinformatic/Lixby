@@ -4,14 +4,76 @@ const functions = require("firebase-functions");
 const { onRequest, onCall, HttpsError } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
+const crypto = require("crypto");
 const Stripe = require("stripe");
 const { Resend } = require("resend");
 
-admin.initializeApp();
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
 
 const stripe = new Stripe("TU_STRIPE_SECRET_KEY");
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 const sitemapPath = path.join(__dirname, "generated", "sitemap.xml");
+
+function generateAccountNumber() {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const bytes = crypto.randomBytes(15);
+  const random = Array.from(bytes, (byte) => chars[byte % chars.length]).join("");
+  return `NLX-${random}`;
+}
+
+exports.ensureAccountNumber = onCall({ region: "us-central1" }, async (request) => {
+  const uid = request.auth?.uid;
+  if (!uid) {
+    throw new HttpsError("unauthenticated", "No autenticado");
+  }
+
+  const db = admin.firestore();
+  const userRef = db.collection("users").doc(uid);
+
+  try {
+    return await db.runTransaction(async (transaction) => {
+      const userDoc = await transaction.get(userRef);
+      const existingAccountNumber = userDoc.data()?.accountNumber;
+      if (existingAccountNumber) {
+        return { accountNumber: existingAccountNumber };
+      }
+
+      let accountNumber = "";
+      let accountNumberRef = null;
+
+      for (let attempt = 0; attempt < 10; attempt += 1) {
+        accountNumber = generateAccountNumber();
+        const candidateRef = db.collection("accountNumbers").doc(accountNumber);
+        const candidateDoc = await transaction.get(candidateRef);
+        if (!candidateDoc.exists) {
+          accountNumberRef = candidateRef;
+          break;
+        }
+      }
+
+      if (!accountNumberRef) {
+        throw new HttpsError("resource-exhausted", "No se pudo generar un numero de cuenta unico.");
+      }
+
+      transaction.set(accountNumberRef, {
+        uid,
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      transaction.set(userRef, {
+        accountNumber,
+        accountNumberCreatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      }, { merge: true });
+
+      return { accountNumber };
+    });
+  } catch (error) {
+    if (error instanceof HttpsError) throw error;
+    console.error("Error ensuring account number:", error);
+    throw new HttpsError("internal", "No se pudo preparar el numero de cuenta.");
+  }
+});
 
 // ✅ Tu función de Stripe que ya tenías
 exports.stripeWebhook = functions.https.onRequest((req, res) => {
