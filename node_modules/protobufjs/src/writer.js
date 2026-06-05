@@ -173,6 +173,11 @@ function writeByte(val, buf, pos) {
     buf[pos] = val & 255;
 }
 
+function writeStringAscii(val, buf, pos) {
+    for (var i = 0; i < val.length;)
+        buf[pos++] = val.charCodeAt(i++);
+}
+
 function writeVarint32(val, buf, pos) {
     while (val > 127) {
         buf[pos++] = val & 127 | 128;
@@ -225,7 +230,7 @@ Writer.prototype.uint32 = function write_uint32(value) {
  * @returns {Writer} `this`
  */
 Writer.prototype.int32 = function write_int32(value) {
-    return value < 0
+    return (value |= 0) < 0
         ? this._push(writeVarint64, 10, LongBits.fromNumber(value)) // 10 bytes per spec
         : this.uint32(value);
 };
@@ -240,16 +245,18 @@ Writer.prototype.sint32 = function write_sint32(value) {
 };
 
 function writeVarint64(val, buf, pos) {
-    while (val.hi) {
-        buf[pos++] = val.lo & 127 | 128;
-        val.lo = (val.lo >>> 7 | val.hi << 25) >>> 0;
-        val.hi >>>= 7;
+    var lo = val.lo,
+        hi = val.hi;
+    while (hi) {
+        buf[pos++] = lo & 127 | 128;
+        lo = (lo >>> 7 | hi << 25) >>> 0;
+        hi >>>= 7;
     }
-    while (val.lo > 127) {
-        buf[pos++] = val.lo & 127 | 128;
-        val.lo = val.lo >>> 7;
+    while (lo > 127) {
+        buf[pos++] = lo & 127 | 128;
+        lo = lo >>> 7;
     }
-    buf[pos++] = val.lo;
+    buf[pos++] = lo;
 }
 
 /**
@@ -384,6 +391,16 @@ Writer.prototype.bytes = function write_bytes(value) {
 };
 
 /**
+ * Writes raw bytes without a tag or length prefix.
+ * @param {Uint8Array} value Raw bytes
+ * @returns {Writer} `this`
+ */
+Writer.prototype.raw = function write_raw(value) {
+    var len = value.length >>> 0;
+    return len ? this._push(writeBytes, len, value) : this;
+};
+
+/**
  * Writes a string.
  * @param {string} value Value to write
  * @returns {Writer} `this`
@@ -391,7 +408,7 @@ Writer.prototype.bytes = function write_bytes(value) {
 Writer.prototype.string = function write_string(value) {
     var len = utf8.length(value);
     return len
-        ? this.uint32(len)._push(utf8.write, len, value)
+        ? this.uint32(len)._push(len === value.length ? writeStringAscii : utf8.write, len, value)
         : this._push(writeByte, 1, 0);
 };
 
@@ -446,15 +463,28 @@ Writer.prototype.ldelim = function ldelim() {
  * @returns {Uint8Array} Finished buffer
  */
 Writer.prototype.finish = function finish() {
-    var head = this.head.next, // skip noop
-        buf  = this.constructor.alloc(this.len),
-        pos  = 0;
+    return this.finishInto(this.constructor.alloc(this.len), 0);
+};
+
+/**
+ * Finishes the write operation, writing into the provided buffer.
+ * The caller must ensure that `buf` has enough space starting at `offset`
+ * to hold {@link Writer#len} bytes.
+ * @param {T} buf Target buffer
+ * @param {number} [offset=0] Offset to start writing at
+ * @returns {T} The provided buffer
+ * @template T extends Uint8Array
+ */
+Writer.prototype.finishInto = function finishInto(buf, offset) {
+    if (offset === undefined)
+        offset = 0;
+    var head = this.head.next,
+        pos  = offset;
     while (head) {
         head.fn(head.val, buf, pos);
         pos += head.len;
         head = head.next;
     }
-    // this.head = this.tail = null;
     return buf;
 };
 

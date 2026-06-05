@@ -23,7 +23,11 @@ function generateAccountNumber() {
   return `NLX-${random}`;
 }
 
-exports.ensureAccountNumber = onCall({ region: "us-central1" }, async (request) => {
+exports.ensureAccountNumber = onCall({
+  region: "us-central1",
+  cors: ["https://lixby.es", "https://www.lixby.es"],
+  invoker: "public",
+}, async (request) => {
   const uid = request.auth?.uid;
   if (!uid) {
     throw new HttpsError("unauthenticated", "No autenticado");

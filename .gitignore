@@ -1,7 +1,42 @@
-node_modules
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Firebase
 firebase-service-account.json
 firebase-service-account.json.json
-.env
-*.env
+.firebase/
+
+# Sensitive files
 secrets/
 admin.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Build/Cache
+dist/
+build/
+coverage/
+.cache/
+.next/

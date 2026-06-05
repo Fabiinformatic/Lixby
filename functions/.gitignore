@@ -1,2 +1,24 @@
+# Dependencies
 node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
 *.local
+
+# Firebase
+.firebase/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Build/Cache
+lib/
+coverage/
+.cache/
+dist/

@@ -54,6 +54,7 @@ function OneOf(name, fieldNames, options, comment) {
  * @interface IOneOf
  * @property {Array.<string>} oneof Oneof field names
  * @property {Object.<string,*>} [options] Oneof options
+ * @property {string|null} [comment] Oneof comment
  */
 
 /**
@@ -197,6 +198,7 @@ Object.defineProperty(OneOf.prototype, "isProto3Optional", {
  * @param {Object} prototype Target prototype
  * @param {string} oneofName OneOf name
  * @returns {undefined}
+ * @deprecated Legacy TypeScript decorator support. Will be removed in a future release.
  */
 
 /**
@@ -205,6 +207,7 @@ Object.defineProperty(OneOf.prototype, "isProto3Optional", {
  * @param {...string} fieldNames Field names
  * @returns {OneOfDecorator} Decorator function
  * @template T extends string
+ * @deprecated Legacy TypeScript decorator support. Will be removed in a future release.
  */
 OneOf.d = function decorateOneOf() {
     var fieldNames = new Array(arguments.length),
