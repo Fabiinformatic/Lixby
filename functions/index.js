@@ -166,44 +166,30 @@ exports.sendWelcomeEmail = onCall(
 
     await sgMail.send({
       to: email,
-      from: { email: "hola@lixby.es", name: "Lixby" },
+      from: { email: "info@lixby.es", name: "Lixby" },
       replyTo: "soporte@lixby.es",
       subject: `Bienvenido a Lixby, ${name} 🎉`,
-      html: `
-
-    
-    
-        
-            ¡Bienvenido a Lixby!
-        
-        Hola ${name},
-
-        
-            Gracias por crear una cuenta en **Lixby**. Tu cuenta ya está lista y puedes empezar a utilizar nuestros servicios.
-        
-
-        
-            Estamos encantados de tenerte con nosotros.
-        
-
-        
-            [Ir a Lixby](https://lixby.es)
-        
-
-        
----
-
-        
-            Este correo ha sido enviado automáticamente por Lixby. Si no has creado esta cuenta, puedes ignorar este mensaje.
-        
-
-        
-            © 2026 Lixby. Todos los derechos reservados.
-        
-
-    
-`,
-      text: `Hola ${name},\n\nBienvenido a Lixby. Tu cuenta ya está activa.\n\nAccede aquí: https://lixby.es/es/cuenta/\n\n— El equipo de Lixby`
+      html: `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px;">
+        <h1 style="color: #2563eb; text-align: center;">¡Bienvenido a Lixby!</h1>
+        <p>Hola ${name},</p>
+        <p>Gracias por crear una cuenta en <strong>Lixby</strong>. Tu cuenta ya está lista y puedes empezar a utilizar nuestros servicios.</p>
+        <p>Estamos encantados de tenerte con nosotros.</p>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://lixby.es" style="background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px;">Ir a Lixby</a>
+        </div>
+        <hr>
+        <p style="font-size: 12px; color: #666;">Este correo ha sido enviado automáticamente por Lixby. Si no has creado esta cuenta, puedes ignorar este mensaje.</p>
+        <p style="font-size: 12px; color: #666;">© 2026 Lixby. Todos los derechos reservados.</p>
+    </div>
+</body>
+</html>`,
+      text: `Hola ${name},\n\nGracias por crear una cuenta en Lixby. Tu cuenta ya está lista.\n\nIr a Lixby: https://lixby.es\n\n— Lixby`
     });
 
     return { success: true };

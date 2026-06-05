@@ -757,7 +757,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      const database = getDatabase(app, "https://lixby0-default-rtdb.europe-west1.firebasedatabase.app");
       const functions = getFunctions(app, "europe-west1");
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
@@ -1004,16 +1004,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Registro completado con Google.", "success");
 
-          // Enviar email de bienvenida si es cuenta nueva
-          const isNewUser = userCredential._tokenResponse?.isNewUser;
+          // Detectar si es cuenta nueva comprobando cuándo fue creada
+          const user = userCredential.user;
+          const createdAt = new Date(user.metadata.creationTime).getTime();
+          const now = Date.now();
+          const isNewUser = (now - createdAt) < 10000; // menos de 10 segundos = cuenta nueva
+
           if (isNewUser) {
-            const displayName = userCredential.user.displayName || "usuario";
-            const email = userCredential.user.email;
-            await sendWelcomeEmail({ name: displayName, email });
+            const displayName = user.displayName || "usuario";
+            try {
+              await sendWelcomeEmail({ name: displayName, email: user.email });
+              console.log("Email de bienvenida enviado a:", user.email);
+            } catch (err) {
+              console.error("Error al enviar email:", err);
+            }
           }
 
-          // La redirección siempre al final
-          await transferSessionToApp(userCredential.user);
+          await transferSessionToApp(user);
           window.location.href = "/es/cuenta/";
         } catch (error) {
           if (error.code === "auth/popup-closed-by-user") {
