@@ -6,6 +6,7 @@ const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const crypto = require("crypto");
 const Stripe = require("stripe");
+const sgMail = require("@sendgrid/mail");
 const { Resend } = require("resend");
 
 if (!admin.apps.length) {
@@ -14,6 +15,7 @@ if (!admin.apps.length) {
 
 const stripe = new Stripe("TU_STRIPE_SECRET_KEY");
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
+const SENDGRID_API_KEY = defineSecret("SENDGRID_API_KEY");
 const sitemapPath = path.join(__dirname, "generated", "sitemap.xml");
 
 function generateAccountNumber() {
@@ -148,6 +150,63 @@ exports.sendPasswordReset = onRequest(
       console.error("Error:", error);
       return res.status(500).json({ error: "Error interno" });
     }
+  }
+);
+
+exports.sendWelcomeEmail = onCall(
+  { secrets: [SENDGRID_API_KEY], region: "europe-west1" },
+  async (request) => {
+    const { name, email } = request.data;
+
+    if (!email || !name) {
+      throw new HttpsError("invalid-argument", "Faltan name o email.");
+    }
+
+    sgMail.setApiKey(SENDGRID_API_KEY.value());
+
+    await sgMail.send({
+      to: email,
+      from: { email: "hola@lixby.es", name: "Lixby" },
+      replyTo: "soporte@lixby.es",
+      subject: `Bienvenido a Lixby, ${name} 🎉`,
+      html: `
+
+    
+    
+        
+            ¡Bienvenido a Lixby!
+        
+        Hola ${name},
+
+        
+            Gracias por crear una cuenta en **Lixby**. Tu cuenta ya está lista y puedes empezar a utilizar nuestros servicios.
+        
+
+        
+            Estamos encantados de tenerte con nosotros.
+        
+
+        
+            [Ir a Lixby](https://lixby.es)
+        
+
+        
+---
+
+        
+            Este correo ha sido enviado automáticamente por Lixby. Si no has creado esta cuenta, puedes ignorar este mensaje.
+        
+
+        
+            © 2026 Lixby. Todos los derechos reservados.
+        
+
+    
+`,
+      text: `Hola ${name},\n\nBienvenido a Lixby. Tu cuenta ya está activa.\n\nAccede aquí: https://lixby.es/es/cuenta/\n\n— El equipo de Lixby`
+    });
+
+    return { success: true };
   }
 );
 

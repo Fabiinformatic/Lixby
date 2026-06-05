@@ -631,6 +631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
      const firebaseConfig = {
@@ -757,6 +758,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const database = getDatabase(app);
+      const functions = getFunctions(app, "europe-west1");
+      const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
@@ -926,6 +929,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
+            await sendWelcomeEmail({
+              name: firstName,
+              email: email
+            });
             await sendEmailVerification(userCredential.user, emailActionSettings);
             
             // Guardar el perfil en Firebase Realtime Database
