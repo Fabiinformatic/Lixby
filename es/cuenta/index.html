@@ -89,43 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .orb-4 {
       top: 18%;
       left: 55%;
-      background: rgba(15, 61, 255, 0.16);
-      animation: drift 12s ease-in-out infinite reverse;
-    }
 
-    .orb-5 {
-      bottom: 10%;
-      right: 20%;
-      background: rgba(22, 167, 255, 0.14);
-      animation: drift 13s ease-in-out infinite;
-    }
-
-    .status-msg {
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 600;
-    }
-
-    .status-msg.error {
-      border-color: #fecaca;
-      background: #fef2f2;
-      color: #b91c1c;
-    }
-
-    .status-msg.success {
-      border-color: #a7f3d0;
-      background: #ecfdf5;
-      color: #047857;
-    }
-
-    /* Fade-out animation for transient status messages */
-    @keyframes statusFadeOut {
-      0% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-8px); }
     }
 
     .status-msg.fade-out {
@@ -882,7 +846,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const BILLING_KEY = "lixbyBilling";
 
     const statusMsg = document.getElementById("statusMsg");
-    let statusHideTimer = null;
     const accountLayout = document.getElementById("accountLayout");
     const profileForm = document.getElementById("profileForm");
     const sideName = document.getElementById("sideName");
@@ -1209,25 +1172,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function showStatus(text, type = "") {
-      // clear any pending hide action
-      if (statusHideTimer) {
-        clearTimeout(statusHideTimer);
-        statusHideTimer = null;
-      }
-
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
-      statusMsg.classList.remove("fade-out");
-      statusMsg.classList.remove("hidden");
-
-      // auto-hide success messages after 2 seconds with a fade animation
-      if (type === "success") {
-        statusHideTimer = setTimeout(() => {
-          statusMsg.classList.add("fade-out");
-          // remove from flow after animation
-          setTimeout(() => statusMsg.classList.add("hidden"), 360);
-        }, 2000);
-      }
     }
 
     function setReadonlyMode() {
