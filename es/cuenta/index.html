@@ -13,7 +13,8 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-<!-- End Google Tag Manager -->  <link rel="canonical" href="https://lixby.es/es/cuenta">
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://lixby.es/es/cuenta">
   <link rel="alternate" href="https://lixby.es/bg/account" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/account" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/account" hreflang="da-DK">
@@ -119,6 +120,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-color: #a7f3d0;
       background: #ecfdf5;
       color: #047857;
+    }
+
+    /* Fade-out animation for transient status messages */
+    @keyframes statusFadeOut {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-8px); }
+    }
+
+    .status-msg.fade-out {
+      animation: statusFadeOut 0.35s ease forwards;
     }
 
     .account-layout {
@@ -267,6 +278,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       height: 40px;
       padding: 0 18px;
       border-radius: 999px;
+    }
+
+    /* Make side actions match the size and border style of other action buttons */
+    .side-actions .btn,
+    .side-actions a.btn {
+      min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #111827;
+      box-shadow: none;
+      position: static;
+    }
+
+    /* Make the primary logout button match the Contactar soporte primary style, but keep a thin border like others */
+    .side-actions .btn.btn-primary {
+      background: #0f172a;
+      color: #fff;
+      border-color: #0f172a;
+      box-shadow: none;
+      border-width: 1px;
     }
 
     .btn-verified {
@@ -843,6 +882,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const BILLING_KEY = "lixbyBilling";
 
     const statusMsg = document.getElementById("statusMsg");
+    let statusHideTimer = null;
     const accountLayout = document.getElementById("accountLayout");
     const profileForm = document.getElementById("profileForm");
     const sideName = document.getElementById("sideName");
@@ -1169,8 +1209,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function showStatus(text, type = "") {
+      // clear any pending hide action
+      if (statusHideTimer) {
+        clearTimeout(statusHideTimer);
+        statusHideTimer = null;
+      }
+
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.classList.remove("fade-out");
+      statusMsg.classList.remove("hidden");
+
+      // auto-hide success messages after 2 seconds with a fade animation
+      if (type === "success") {
+        statusHideTimer = setTimeout(() => {
+          statusMsg.classList.add("fade-out");
+          // remove from flow after animation
+          setTimeout(() => statusMsg.classList.add("hidden"), 360);
+        }, 2000);
+      }
     }
 
     function setReadonlyMode() {
