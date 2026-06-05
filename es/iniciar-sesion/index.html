@@ -930,10 +930,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
             // Primero el email de bienvenida
-            await sendWelcomeEmail({
-              name: firstName,
-              email: email
-            });
+            console.log("Intentando enviar email de bienvenida...");
+            try {
+              const result = await sendWelcomeEmail({
+                name: firstName,
+                email: email
+              });
+              console.log("Email enviado:", result);
+            } catch (err) {
+              console.error("Error al enviar email:", err);
+            }
 
             // Luego verificación y base de datos
             await sendEmailVerification(userCredential.user, emailActionSettings);
