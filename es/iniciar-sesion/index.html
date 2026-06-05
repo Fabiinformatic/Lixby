@@ -993,6 +993,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           const userCredential = await signInWithPopup(auth, googleProvider);
           setStatus("Registro completado con Google.", "success");
+
+          // Enviar email de bienvenida si es cuenta nueva
+          const isNewUser = userCredential._tokenResponse?.isNewUser;
+          if (isNewUser) {
+            const displayName = userCredential.user.displayName || "usuario";
+            const email = userCredential.user.email;
+            await sendWelcomeEmail({ name: displayName, email });
+          }
+
           await transferSessionToApp(userCredential.user);
           window.location.href = "/es/cuenta/";
         } catch (error) {
