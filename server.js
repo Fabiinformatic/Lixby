@@ -5,6 +5,7 @@ const admin = require("firebase-admin");
 const https = require("https");
 const path = require("path");
 const { Resend } = require("resend");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 const app = express();
@@ -38,7 +39,69 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
+
+// Rate limiters
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100, // máximo 100 peticiones por IP en 15 minutos
+  message: {
+    error: "Demasiadas solicitudes. Inténtalo más tarde."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 20, // máximo 20 peticiones por IP en 15 minutos
+  message: {
+    error: "Demasiados intentos de autenticación. Inténtalo más tarde."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const checkoutLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 10, // máximo 10 intentos de checkout por IP
+  message: {
+    error: "Demasiados intentos de compra. Inténtalo más tarde."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const giftCardLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 15, // máximo 15 operaciones de tarjeta regalo por IP
+  message: {
+    error: "Demasiadas solicitudes de tarjeta regalo. Inténtalo más tarde."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const adminLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hora
+  max: 50, // máximo 50 peticiones por IP cada hora
+  message: {
+    error: "Demasiadas solicitudes administrativas. Inténtalo más tarde."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// Middleware global
 app.use(cors());
+
+// Aplicar rate limiter general a toda la API ANTES de express.json()
+app.use(generalLimiter);
+
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname)));
+
+// Parser de JSON
+app.use(express.json());
 
 function appendQueryParam(rawUrl, key, value) {
   try {
@@ -433,7 +496,7 @@ function buildStripeLineItems(items) {
   return lineItems;
 }
 
-app.post("/create-gift-card-session", express.json(), async (req, res) => {
+app.post("/create-gift-card-session", express.json(), giftCardLimiter, async (req, res) => {
   const {
     amount,
     senderName,
@@ -489,7 +552,7 @@ app.post("/create-gift-card-session", express.json(), async (req, res) => {
   }
 });
 
-app.post("/redeem-gift-card", express.json(), async (req, res) => {
+app.post("/redeem-gift-card", express.json(), giftCardLimiter, async (req, res) => {
   const { code } = req.body || {};
   if (!code) return res.status(400).json({ error: "Falta el código" });
 
@@ -515,7 +578,7 @@ app.post("/redeem-gift-card", express.json(), async (req, res) => {
   }
 });
 
-app.post("/use-gift-card", express.json(), async (req, res) => {
+app.post("/use-gift-card", express.json(), giftCardLimiter, async (req, res) => {
   const { code, amountUsed } = req.body || {};
   if (!code || !amountUsed) return res.status(400).json({ error: "Faltan datos" });
 
@@ -541,7 +604,7 @@ app.post("/use-gift-card", express.json(), async (req, res) => {
   }
 });
 
-app.post("/create-checkout-session", express.json(), async (req, res) => {
+app.post("/create-checkout-session", express.json(), checkoutLimiter, async (req, res) => {
   console.log("📦 BODY RECIBIDO:", JSON.stringify(req.body, null, 2));
   const {
     orderId: rawOrderId,
@@ -656,7 +719,7 @@ app.post("/create-checkout-session", express.json(), async (req, res) => {
   }
 });
 
-app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
+app.post("/webhook", express.raw({ type: "application/json" }), generalLimiter, async (req, res) => {
   const sig = req.headers["stripe-signature"];
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event;
@@ -905,8 +968,6 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
   res.sendStatus(200);
 });
 
-app.use(express.json());
-
 app.get("/track", (req, res) => {
   res.sendFile(path.join(__dirname, "track.html"));
 });
@@ -939,7 +1000,7 @@ app.get("/track-order/:orderId", async (req, res) => {
   return res.json(snapshot.docs[0].data());
 });
 
-app.post("/admin/update-order", async (req, res) => {
+app.post("/admin/update-order", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).send("No autorizado");
@@ -1001,7 +1062,7 @@ app.post("/admin/update-order", async (req, res) => {
   return res.json({ ok: true, statusHistory: nextHistory });
 });
 
-app.post("/admin/notify-order", async (req, res) => {
+app.post("/admin/notify-order", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).send("No autorizado");
@@ -1026,7 +1087,7 @@ app.post("/admin/notify-order", async (req, res) => {
   return res.json({ ok: true });
 });
 
-app.get("/admin/orders", async (req, res) => {
+app.get("/admin/orders", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).send("No autorizado");
@@ -1041,7 +1102,7 @@ app.get("/admin/orders", async (req, res) => {
   return res.json(orders);
 });
 
-app.get("/admin/gift-cards", async (req, res) => {
+app.get("/admin/gift-cards", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).send("No autorizado");
@@ -1056,7 +1117,7 @@ app.get("/admin/gift-cards", async (req, res) => {
   return res.json(giftCards);
 });
 
-app.get("/orders-by-email/:email", async (req, res) => {
+app.get("/orders-by-email/:email", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).json({ error: "No autorizado" });
@@ -1079,7 +1140,7 @@ app.get("/orders-by-email/:email", async (req, res) => {
   }
 });
 
-app.get("/gift-cards-by-email/:email", async (req, res) => {
+app.get("/gift-cards-by-email/:email", adminLimiter, async (req, res) => {
   const apiKey = req.headers["x-api-key"];
   if (!adminApiKey || apiKey !== adminApiKey) {
     return res.status(401).json({ error: "No autorizado" });
@@ -1101,7 +1162,7 @@ app.get("/gift-cards-by-email/:email", async (req, res) => {
 });
 
 // Genera un custom token para transferir sesión a la app nativa
-app.post("/auth/custom-token", async (req, res) => {
+app.post("/auth/custom-token", authLimiter, async (req, res) => {
   try {
     const authHeader = req.headers.authorization || "";
     const idToken = authHeader.replace("Bearer ", "");
