@@ -905,8 +905,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
     }
 
-    function writeProfile(profile) {
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+        function writeProfile(profile) {
+      const cachedProfile = {
+        language: profile.language,
+        timezone: profile.timezone,
+        photoUrl: profile.photoUrl,
+        prefAds: profile.prefAds,
+        prefNews: profile.prefNews,
+        prefUpdates: profile.prefUpdates,
+        prefOffers: profile.prefOffers,
+        prefSupport: profile.prefSupport,
+        adsOptIn: profile.adsOptIn
+      };
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(cachedProfile));
     }
 
     function getScopedKey(baseKey) {

@@ -818,6 +818,15 @@ body.menu-open {
   box-shadow: 0 16px 30px rgba(15, 61, 255, 0.38);
 }
 
+  /* Disabled state for buttons/links styled as buttons */
+  .btn[aria-disabled="true"],
+  .btn.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
 .btn-secondary,
 .btn-outline {
   color: var(--text);

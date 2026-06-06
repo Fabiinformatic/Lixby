@@ -665,10 +665,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       try {
         // Skaityti išsaugotą profilį
-        const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
-        const customerName = profile.firstName
-          ? `${profile.firstName} ${profile.lastName || ""}`.trim()
-          : null;
+                const customerName = auth.currentUser?.displayName || null;
 
         const checkoutItems = buildCheckoutItems(summary.items);
         const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
@@ -681,9 +678,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             cancelUrl: CANCEL_URL,
             items: itemsForCheckout,
             giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
-            customerEmail: profile.email || auth.currentUser?.email || null,
+            customerEmail: auth.currentUser?.email || null,
             customerName,
-            customerPhone: profile.phone || null
+            customerPhone: auth.currentUser?.phoneNumber || null
           })
         });
         const data = await response.json();

@@ -528,7 +528,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <main class="container account-page">
-    <div id="statusMsg" class="status-msg">Comprobando sesión...</div>
+    <!-- statusMsg removed per request -->
 
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
@@ -757,7 +757,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="account-section">
           <h2>Cuenta</h2>
           <div class="action-list">
-            <div class="action-item"><span>Cerrar sesión</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Cerrar</button></div>
+            <div class="action-item"><span>Cerrar sesión</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Cerrar</button></div>
             <div class="action-item"><span>Eliminar cuenta</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Eliminar</button></div>
           </div>
         </section>
@@ -765,10 +765,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
   </main>
 
-  <div id="saveBar" class="save-bar" aria-live="polite">
-    <span>Cambios detectados</span>
-    <button id="saveChangesBtn" class="btn btn-primary" type="button">Guardar cambios</button>
-  </div>
+  <!-- saveBar removed: UI handled inline, avoid persistent bar -->
 
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
@@ -908,8 +905,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
     }
 
-    function writeProfile(profile) {
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+        function writeProfile(profile) {
+      const cachedProfile = {
+        language: profile.language,
+        timezone: profile.timezone,
+        photoUrl: profile.photoUrl,
+        prefAds: profile.prefAds,
+        prefNews: profile.prefNews,
+        prefUpdates: profile.prefUpdates,
+        prefOffers: profile.prefOffers,
+        prefSupport: profile.prefSupport,
+        adsOptIn: profile.adsOptIn
+      };
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(cachedProfile));
     }
 
     function getScopedKey(baseKey) {
@@ -1172,8 +1180,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function showStatus(text, type = "") {
-      statusMsg.textContent = text;
-      statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg?.textContent = text;
+      if (statusMsg) statusMsg.className = `status-msg ${type}`.trim();
     }
 
     function setReadonlyMode() {
@@ -1188,7 +1196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       editBtn.textContent = "Editar datos";
       editMode = false;
       dirty = false;
-      saveBar.classList.remove("show");
+      saveBar?.classList.remove("show");
     }
 
     function setEditMode() {
@@ -1203,7 +1211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       editBtn.textContent = "Cancelar edición";
       editMode = true;
       dirty = false;
-      saveBar.classList.remove("show");
+      saveBar?.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1268,7 +1276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function setDirty() {
       if (!editMode) return;
       dirty = true;
-      saveBar.classList.add("show");
+      saveBar?.classList.add("show");
     }
 
     Object.values(inputs).forEach((el) => {
@@ -1713,7 +1721,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       if (!dirty) {
-        saveBar.classList.remove("show");
+        saveBar?.classList.remove("show");
         return;
       }
 

@@ -277,7 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
           </div>
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Finalizar compra</button>
+          <a id="checkoutBtn" class="btn btn-primary" href="#" role="button">Finalizar compra</a>
           <button id="clearCartBtn" class="btn btn-secondary" type="button">Vaciar cesta</button>
         </div>
       </aside>
@@ -644,26 +644,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    checkoutBtn.addEventListener("click", async () => {
+    checkoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
       const cart = readCart();
       if (cart.length === 0) {
         alert("Tu cesta esta vacia.");
         return;
       }
 
-      checkoutBtn.disabled = true;
+      checkoutBtn.setAttribute("aria-disabled", "true");
+      checkoutBtn.classList.add("disabled");
       const originalCheckoutLabel = checkoutBtn.textContent;
       checkoutBtn.textContent = "Procesando...";
 
       if (!authReady) {
         alert("Cargando sesion. Intenta de nuevo en unos segundos.");
-        checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
         return;
       }
 
       if (!isAuthenticated) {
-        checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
         window.location.href = "/es/iniciar-sesion/";
         return;
@@ -698,10 +702,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       try {
         // Leer perfil guardado
-        const profile = JSON.parse(localStorage.getItem("lixbyProfile") || "{}");
-        const customerName = profile.firstName
-          ? `${profile.firstName} ${profile.lastName || ""}`.trim()
-          : null;
+                const customerName = auth.currentUser?.displayName || null;
 
         const checkoutItems = buildCheckoutItems(summary.items);
         const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
@@ -714,9 +715,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             cancelUrl: CANCEL_URL,
             items: itemsForCheckout,
             giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
-            customerEmail: profile.email || auth.currentUser?.email || null,
+            customerEmail: auth.currentUser?.email || null,
             customerName,
-            customerPhone: profile.phone || null
+            customerPhone: auth.currentUser?.phoneNumber || null
           })
         });
         const data = await response.json();
