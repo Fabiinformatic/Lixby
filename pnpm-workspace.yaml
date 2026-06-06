@@ -1,3 +1,4 @@
 allowBuilds:
-  protobufjs: set this to true or false
-  re2: set this to true or false
+  '@firebase/util': true
+  protobufjs: true
+  re2: true
