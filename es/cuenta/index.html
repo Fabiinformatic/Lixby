@@ -1178,8 +1178,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function showStatus(text, type = "") {
-      statusMsg?.textContent = text;
-      if (statusMsg) statusMsg.className = `status-msg ${type}`.trim();
+      if (statusMsg) {
+        statusMsg.textContent = text;
+        statusMsg.className = `status-msg ${type}`.trim();
+      }
     }
 
     function setReadonlyMode() {

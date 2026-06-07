@@ -1,6 +1,7 @@
 {
     "hosting":  {
                     "public":  ".",
+                    "404":  "404.html",
                     "ignore":  [
                                    "firebase.json",
                                    "sitemap.xml",
@@ -63,10 +64,6 @@
                                          "function":  {
                                                           "functionId":  "sitemap"
                                                       }
-                                     },
-                                     {
-                                         "source":  "**",
-                                         "destination":  "/index.html"
                                      }
                                  ],
                     "redirects":  [

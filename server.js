@@ -4,6 +4,7 @@ const cors = require("cors");
 const admin = require("firebase-admin");
 const https = require("https");
 const path = require("path");
+const fs = require("fs");
 const { Resend } = require("resend");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
@@ -30,7 +31,10 @@ function generateGiftCode() {
 
 let serviceAccount;
 try {
-  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  const serviceAccountJson =
+    process.env.FIREBASE_SERVICE_ACCOUNT ||
+    fs.readFileSync(path.join(__dirname, "firebase-service-account.json"), "utf8");
+  serviceAccount = JSON.parse(serviceAccountJson);
 } catch (e) {
   console.error("Error parsing FIREBASE_SERVICE_ACCOUNT:", e.message);
   process.exit(1);
@@ -730,8 +734,8 @@ app.post("/webhook", express.raw({ type: "application/json" }), generalLimiter, 
     }
     event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
   } catch (err) {
-    console.error("Webhook signature verification failed.", err.message);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
+    console.error("Webhook signature verification failed.", err);
+    return res.status(400).send("Webhook Error");
   }
 
   if (event.type === "checkout.session.completed") {
@@ -1181,6 +1185,27 @@ app.post("/auth/custom-token", authLimiter, async (req, res) => {
   }
 });
 
+function getLocalized404Page(requestPath) {
+  const match = requestPath.match(/^\/([a-z]{2})(?:\/|$)/i);
+  const lang = match ? match[1].toLowerCase() : "es";
+  const candidates = [
+    path.join(__dirname, lang, "error404", "index.html"),
+    path.join(__dirname, lang, "error404.html"),
+    path.join(__dirname, "es", "error404", "index.html"),
+    path.join(__dirname, "es", "error404.html")
+  ];
+
+  return candidates.find((filePath) => fs.existsSync(filePath));
+}
+
+app.use((req, res) => {
+  const page404 = getLocalized404Page(req.path);
+
+  if (page404 && (req.method === "GET" || req.method === "HEAD") && req.accepts("html")) {
+    return res.status(404).sendFile(page404);
+  }
+
+  return res.status(404).json({ error: "Ruta no encontrada" });
+});
+
 app.listen(3000, () => console.log("Servidor funcionando"));
-
-

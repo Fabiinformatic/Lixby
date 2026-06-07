@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 - Lixby</title>
+  <script>
+    (function () {
+      var supportedLanguages = [
+        "bg", "cs", "da", "de", "el", "en", "es", "et", "fi", "fr", "ga", "hr",
+        "hu", "it", "lt", "lv", "mt", "nl", "pl", "pt", "ro", "sk", "sl", "sv"
+      ];
+      var match = location.pathname.match(/^\/([a-z]{2})(?:\/|$)/i);
+      var language = match && supportedLanguages.indexOf(match[1].toLowerCase()) !== -1
+        ? match[1].toLowerCase()
+        : "es";
+      location.replace("/" + language + "/error404/" + location.search + location.hash);
+    }());
+  </script>
+  <meta http-equiv="refresh" content="0; url=/es/error404/">
+</head>
+<body>
+  <p><a href="/es/error404/">404</a></p>
+</body>
+</html>

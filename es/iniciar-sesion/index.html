@@ -311,6 +311,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 8px;
     }
 
+    .login-primary-btn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .login-primary-btn:hover {
+      transform: none;
+    }
+
     .google-icon {
       width: 18px;
       height: 18px;
@@ -406,7 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <a href="/es/olvidar-contrasena/" class="auth-link">¿Has olvidado la contraseña?</a>
 
-            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Iniciar sesión</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
