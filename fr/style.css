@@ -55,6 +55,19 @@ body {
   height: 100%;
 }
 
+/* Visually hidden (accessible to screen readers and search engines) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 body {
   font-family: "Inter", "Manrope", sans-serif;
   color: var(--text);
@@ -817,6 +830,15 @@ body.menu-open {
 .btn-solid:hover {
   box-shadow: 0 16px 30px rgba(15, 61, 255, 0.38);
 }
+
+  /* Disabled state for buttons/links styled as buttons */
+  .btn[aria-disabled="true"],
+  .btn.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+  }
 
 .btn-secondary,
 .btn-outline {

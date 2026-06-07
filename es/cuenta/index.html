@@ -854,8 +854,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
     const verifyEmailBtn = document.getElementById("verifyEmailBtn");
     const twoFactorBtn = document.getElementById("twoFactorBtn");
-    const saveBar = document.getElementById("saveBar");
-    const saveChangesBtn = document.getElementById("saveChangesBtn");
     const addPaymentBtn = document.getElementById("addPaymentBtn");
     const paymentMethodsEl = document.getElementById("paymentMethods");
     const saveBillingBtn = document.getElementById("saveBillingBtn");
@@ -1196,7 +1194,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       editBtn.textContent = "Editar datos";
       editMode = false;
       dirty = false;
-      saveBar?.classList.remove("show");
     }
 
     function setEditMode() {
@@ -1211,7 +1208,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       editBtn.textContent = "Cancelar edición";
       editMode = true;
       dirty = false;
-      saveBar?.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1276,7 +1272,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function setDirty() {
       if (!editMode) return;
       dirty = true;
-      saveBar?.classList.add("show");
     }
 
     Object.values(inputs).forEach((el) => {
@@ -1713,32 +1708,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    saveChangesBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user) {
-        showStatus("Sesión no válida.", "error");
-        return;
-      }
 
-      if (!dirty) {
-        saveBar?.classList.remove("show");
-        return;
-      }
-
-      const next = collectProfileData();
-
-      try {
-        if (next.email && next.email !== user.email) {
-          await updateEmail(user, next.email);
-        }
-        writeProfile(next);
-        fillProfile(user, next);
-        setReadonlyMode();
-        showStatus("Cambio realizado. Datos guardados.", "success");
-      } catch (error) {
-        showStatus(`No se pudo guardar: ${error.message}`, "error");
-      }
-    });
 
     async function doLogout() {
       await signOut(auth);
