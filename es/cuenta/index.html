@@ -45,21 +45,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
 
-  <link rel="stylesheet" type="text/css" href="globalheader.css" />
-  <link rel="stylesheet" type="text/css" href="globalfooter.css" />
-  <link rel="stylesheet" type="text/css" href="localnav.css" />
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
   <title>Mi cuenta | Lixby</title>
 
   <meta name="author" content="Lixby" />
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-  <!-- End Google Tag Manager -->
 
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
@@ -72,11 +64,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding: 34px 0 84px;
     }
 
+    html, body {
+      overflow-x: hidden;
+    }
+
     body {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
       min-height: 100vh;
+    }
+
+    .background-orb {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    #accountLayout {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #accountLayout.visible {
+      opacity: 1;
     }
 
     .orb-3 {
@@ -264,12 +274,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* Make the primary logout button match the Contactar soporte primary style, but keep a thin border like others */
-    .side-actions .btn.btn-primary {
+    .side-actions .btn.btn-primary,
+    .action-item .btn.btn-primary,
+    .order-actions .btn.btn-primary {
       background: #0f172a;
       color: #fff;
       border-color: #0f172a;
       box-shadow: none;
       border-width: 1px;
+    }
+
+    .action-item .btn.btn-primary:hover,
+    .order-actions .btn.btn-primary:hover {
+      background: #020617;
+      border-color: #020617;
     }
 
     .btn-verified {
@@ -899,23 +917,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let editMode = false;
     let dirty = false;
 
-    function readProfile() {
-      return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
+    async function readProfile() {
+      const user = auth.currentUser;
+      if (!user) return {};
+      const snap = await getDoc(doc(db, "users", user.uid, "account", "profile"));
+      return snap.exists() ? snap.data() : {};
     }
 
-        function writeProfile(profile) {
-      const cachedProfile = {
-        language: profile.language,
-        timezone: profile.timezone,
-        photoUrl: profile.photoUrl,
-        prefAds: profile.prefAds,
-        prefNews: profile.prefNews,
-        prefUpdates: profile.prefUpdates,
-        prefOffers: profile.prefOffers,
-        prefSupport: profile.prefSupport,
-        adsOptIn: profile.adsOptIn
-      };
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(cachedProfile));
+    async function writeProfile(profile) {
+      const user = auth.currentUser;
+      if (!user) return;
+      await setDoc(doc(db, "users", user.uid, "account", "profile"), {
+        ...profile,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
     }
 
     function getScopedKey(baseKey) {
@@ -1207,7 +1222,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           el.readOnly = false;
         }
       });
-      editBtn.textContent = "Cancelar edición";
+      editBtn.textContent = "Guardar perfil";
       editMode = true;
       dirty = false;
     }
@@ -1269,6 +1284,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         prefSupport: inputs.prefSupport.checked,
         adsOptIn: inputs.prefAds.checked
       };
+    }
+
+    async function saveProfile() {
+      const data = collectProfileData();
+      await writeProfile(data);
+      const user = auth.currentUser;
+      if (!user) return;
+      fillProfile(user, data);
+      setReadonlyMode();
     }
 
     function setDirty() {
@@ -1645,9 +1669,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         profilePhoto.src = sanitizeImageUrl(url);
 
         // Guardar en perfil
-        const profile = readProfile();
+        const profile = await readProfile();
         profile.photoUrl = url;
-        writeProfile(profile);
+        await writeProfile(profile);
 
         msg.style.color = "#458500";
         msg.textContent = "Foto actualizada";
@@ -1670,13 +1694,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await ensureAccountNumber();
       await migrateStoredBilling();
 
-      const stored = readProfile();
+      const stored = await readProfile();
       fillProfile(user, stored);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
       showStatus("Cuenta cargada correctamente.", "success");
       accountLayout.classList.remove("hidden");
+      requestAnimationFrame(() => accountLayout.classList.add("visible"));
       setReadonlyMode();
 
       // Cargar pedidos y tarjetas regalo
@@ -1699,12 +1724,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    editBtn.addEventListener("click", () => {
+    editBtn.addEventListener("click", async () => {
       if (editMode) {
-        const user = auth.currentUser;
-        if (!user) return;
-        fillProfile(user, readProfile());
-        setReadonlyMode();
+        await saveProfile();
       } else {
         setEditMode();
       }
@@ -1767,3 +1789,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
+
+
