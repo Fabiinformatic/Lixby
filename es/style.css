@@ -118,6 +118,9 @@ img {
   filter: blur(48px);
   pointer-events: none;
   z-index: -1;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: strict;
 }
 
 .orb-1 {
@@ -1140,13 +1143,8 @@ body.menu-open {
 }
 
 @keyframes drift {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(18px, 10px);
-  }
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8px, 6px); }
 }
 
 /* Support page */

@@ -60,6 +60,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     .account-page {
       padding: 34px 0 84px;
     }
@@ -89,18 +94,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 1;
     }
 
-    .orb-3 {
-      bottom: -120px;
-      left: 35%;
-      background: rgba(22, 167, 255, 0.2);
-      animation: drift 11s ease-in-out infinite;
-    }
-
-    .orb-4 {
-      top: 18%;
-      left: 55%;
-
-    }
+    .orb-1 { top: -80px; left: -60px; }
+    .orb-2 { top: 40%; right: -80px; }
+    .orb-3 { bottom: -80px; left: 35%; }
+    .orb-4 { top: 18%; left: 55%; }
+    .orb-5 { bottom: 10%; right: 10%; }
 
     .status-msg.fade-out {
       animation: statusFadeOut 0.35s ease forwards;
@@ -255,8 +253,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* Make side actions match the size and border style of other action buttons */
-    .side-actions .btn,
-    .side-actions a.btn {
+    .side-actions .btn:not(.btn-primary),
+    .side-actions a.btn:not(.btn-primary) {
       min-width: 160px;
       height: 40px;
       padding: 0 18px;
@@ -273,21 +271,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: static;
     }
 
-    /* Make the primary logout button match the Contactar soporte primary style, but keep a thin border like others */
-    .side-actions .btn.btn-primary,
-    .action-item .btn.btn-primary,
-    .order-actions .btn.btn-primary {
-      background: #0f172a;
-      color: #fff;
-      border-color: #0f172a;
-      box-shadow: none;
-      border-width: 1px;
-    }
-
-    .action-item .btn.btn-primary:hover,
-    .order-actions .btn.btn-primary:hover {
-      background: #020617;
-      border-color: #020617;
+    .side-actions .btn.btn-primary {
+      min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-verified {
