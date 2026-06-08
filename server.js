@@ -96,7 +96,16 @@ const adminLimiter = rateLimit({
 });
 
 // Middleware global
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://lixby.es",
+    "https://www.lixby.es",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500"
+  ],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "x-api-key", "Authorization"]
+}));
 
 // Aplicar rate limiter general a toda la API ANTES de express.json()
 app.use(generalLimiter);

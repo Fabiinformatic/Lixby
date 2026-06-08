@@ -68,6 +68,266 @@
                                  ],
                     "redirects":  [
                                       {
+                                          "source": "/en",
+                                          "destination": "/en/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/es",
+                                          "destination": "/es/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/fr",
+                                          "destination": "/fr/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/de",
+                                          "destination": "/de/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/it",
+                                          "destination": "/it/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/pt",
+                                          "destination": "/pt/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/nl",
+                                          "destination": "/nl/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/pl",
+                                          "destination": "/pl/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/sv",
+                                          "destination": "/sv/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/fi",
+                                          "destination": "/fi/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/ro",
+                                          "destination": "/ro/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/hu",
+                                          "destination": "/hu/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/cs",
+                                          "destination": "/cs/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/da",
+                                          "destination": "/da/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/el",
+                                          "destination": "/el/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/et",
+                                          "destination": "/et/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/lv",
+                                          "destination": "/lv/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/lt",
+                                          "destination": "/lt/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/sk",
+                                          "destination": "/sk/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/sl",
+                                          "destination": "/sl/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/bg",
+                                          "destination": "/bg/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/ga",
+                                          "destination": "/ga/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/mt",
+                                          "destination": "/mt/",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/admin",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/admin.html",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/admin/",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/package-lock.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.env",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.env.local",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.env.*.local",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.gitignore",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/firebase-service-account.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/firebase-service-account.json.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/node_modules/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.firebase/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/secrets/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.vscode/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.idea/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/dist/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/build/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/coverage/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.cache/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.next/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/admin.html",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.DS_Store",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/Thumbs.db",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/npm-debug.log*",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/yarn-debug.log*",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/yarn-error.log*",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.swp",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.swo",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/~",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
                                           "source":  "/bg/cookies.html",
                                           "destination":  "/bg/pages/legal/cookies.html",
                                           "type":  301
