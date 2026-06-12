@@ -6,6 +6,8 @@
                                    "firebase.json",
                                    "sitemap.xml",
                                    "**/.*",
+                                   ".git",
+                                   ".git/**",
                                    "**/node_modules/**",
                                    "functions/**",
                                    "src/**",
@@ -64,6 +66,102 @@
                                          "function":  {
                                                           "functionId":  "sitemap"
                                                       }
+                                     },
+                                     {
+                                         "source": "/bg",
+                                         "destination": "/bg/index.html"
+                                     },
+                                     {
+                                         "source": "/cs",
+                                         "destination": "/cs/index.html"
+                                     },
+                                     {
+                                         "source": "/da",
+                                         "destination": "/da/index.html"
+                                     },
+                                     {
+                                         "source": "/de",
+                                         "destination": "/de/index.html"
+                                     },
+                                     {
+                                         "source": "/el",
+                                         "destination": "/el/index.html"
+                                     },
+                                     {
+                                         "source": "/en",
+                                         "destination": "/en/index.html"
+                                     },
+                                     {
+                                         "source": "/es",
+                                         "destination": "/es/index.html"
+                                     },
+                                     {
+                                         "source": "/et",
+                                         "destination": "/et/index.html"
+                                     },
+                                     {
+                                         "source": "/fi",
+                                         "destination": "/fi/index.html"
+                                     },
+                                     {
+                                         "source": "/fr",
+                                         "destination": "/fr/index.html"
+                                     },
+                                     {
+                                         "source": "/ga",
+                                         "destination": "/ga/index.html"
+                                     },
+                                     {
+                                         "source": "/hr",
+                                         "destination": "/hr/index.html"
+                                     },
+                                     {
+                                         "source": "/hu",
+                                         "destination": "/hu/index.html"
+                                     },
+                                     {
+                                         "source": "/it",
+                                         "destination": "/it/index.html"
+                                     },
+                                     {
+                                         "source": "/lt",
+                                         "destination": "/lt/index.html"
+                                     },
+                                     {
+                                         "source": "/lv",
+                                         "destination": "/lv/index.html"
+                                     },
+                                     {
+                                         "source": "/mt",
+                                         "destination": "/mt/index.html"
+                                     },
+                                     {
+                                         "source": "/nl",
+                                         "destination": "/nl/index.html"
+                                     },
+                                     {
+                                         "source": "/pl",
+                                         "destination": "/pl/index.html"
+                                     },
+                                     {
+                                         "source": "/pt",
+                                         "destination": "/pt/index.html"
+                                     },
+                                     {
+                                         "source": "/ro",
+                                         "destination": "/ro/index.html"
+                                     },
+                                     {
+                                         "source": "/sk",
+                                         "destination": "/sk/index.html"
+                                     },
+                                     {
+                                         "source": "/sl",
+                                         "destination": "/sl/index.html"
+                                     },
+                                     {
+                                         "source": "/sv",
+                                         "destination": "/sv/index.html"
                                      }
                                  ],
                     "redirects":  [
