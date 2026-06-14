@@ -1076,9 +1076,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       // Capturar resultado del redirect de Google
       getRedirectResult(auth).then(async (result) => {
-        if (!result) return;
+        const user = result?.user || auth.currentUser;
+        if (!user) return;
 
-        const user = result.user;
         const createdAt = new Date(user.metadata.creationTime).getTime();
         const isNewUser = (Date.now() - createdAt) < 10000;
 
