@@ -6,7 +6,6 @@
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
-  <base href="/es/">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -66,37 +65,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/es/style.css">
   <style>
-    .verify-page {
-      padding: 40px 0 84px;
-      min-height: 70vh;
-      display: grid;
-      place-items: center;
-    }
+  .verified-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
 
-    .verify-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
-      max-width: 520px;
-      text-align: center;
-      display: grid;
-      gap: 12px;
-    }
+  .verified-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 48px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+  }
 
-    .verify-card p {
-      color: var(--muted);
-    }
+  .verified-icon {
+    width: 72px;
+    height: 72px;
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
 
-    .verify-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .verified-icon svg {
+    width: 36px;
+    height: 36px;
+    color: #16a34a;
+  }
+
+  .verified-card h1 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    color: #0f172a;
+  }
+
+  .verified-card p {
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .verified-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .error-card .verified-icon {
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+
+  .error-card .verified-icon svg {
+    color: #dc2626;
+  }
+
+  .login-primary-btn {
+    width: 100%;
+    border: 0;
+    font: inherit;
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .login-primary-btn:hover {
+    transform: none;
+  }
   </style>
   <script type="application/ld+json">
     {
@@ -118,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <header class="nav" id="nav">
 <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
+      <a href="/es/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
         <a href="/es/tienda/" class="nav-link">Tienda</a>
         <a href="/es/#productos" class="nav-link">Productos</a>
@@ -127,25 +172,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </nav>
       <div class="nav-actions">
         <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+          <img src="/images/Bolsa.png" alt="Cesta">
         </a>
         <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+          <img src="/images/cuenta.png" alt="Cuenta">
         </a>
       </div>
     </div>
   </header>
 
-  <main class="container verify-page">
-    <section class="verify-card">
-      <h1>Correo verificado</h1>
-      <p>Tu correo se ha verificado correctamente.</p>
-      <div class="verify-actions">
-        <a class="btn btn-primary" href="/es/cuenta/">Ir a mi cuenta</a>
-        <a class="btn btn-secondary" href="/es/iniciar-sesion/">Iniciar sesion</a>
+  <main class="container verified-page">
+    <section id="verifiedCard" class="verified-card">
+      <div class="verified-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+      </div>
+      <h1>Email verificado</h1>
+      <p>Tu dirección de correo electrónico ha sido verificada correctamente. Ya puedes acceder a todos los servicios de Lixby.</p>
+      <div class="verified-actions">
+        <button id="backBtn" class="btn btn-primary login-primary-btn" type="button">Regresar</button>
+        <a class="btn btn-secondary" href="/es/">Volver al inicio</a>
       </div>
     </section>
   </main>
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/#apps">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/support/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, applyActionCode, reload } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+    authDomain: "lixby0.firebaseapp.com",
+    projectId: "lixby0",
+    storageBucket: "lixby0.firebasestorage.app",
+    messagingSenderId: "1058088945026",
+    appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode");
+  const oobCode = params.get("oobCode");
+  const card = document.getElementById("verifiedCard");
+
+  function showError(msg) {
+    card.classList.add("error-card");
+    card.querySelector(".verified-icon svg").innerHTML = '';
+    card.querySelector("h1").textContent = "Algo salió mal";
+    card.querySelector("p").textContent = msg;
+  }
+
+  if (mode === "verifyEmail" && oobCode) {
+    applyActionCode(auth, oobCode)
+      .then(async () => {
+        sessionStorage.setItem("lixby_email_verified", "1");
+        const user = auth.currentUser;
+        if (user) await reload(user);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-action-code") {
+          showError("El enlace ya fue usado o ha caducado. Solicita uno nuevo desde tu cuenta.");
+        } else {
+          showError(`No se pudo verificar el email: ${error.message}`);
+        }
+      });
+  } else if (mode) {
+    showError("Enlace no válido.");
+  }
+
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes("/es/iniciar-sesion")) {
+        window.history.back();
+      } else {
+        window.location.href = "/es/iniciar-sesion/?verified=1";
+      }
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    document.getElementById("nav").classList.toggle("nav-scrolled", window.scrollY > 20);
+  }, { passive: true });
+  </script>
 </body>
 </html>
 

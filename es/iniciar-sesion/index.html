@@ -1076,8 +1076,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       // Capturar resultado del redirect de Google
       getRedirectResult(auth).then(async (result) => {
-        const user = result?.user || auth.currentUser;
-        if (!user) return;
+        if (!result?.user) return;
+        const user = result.user;
 
         const createdAt = new Date(user.metadata.creationTime).getTime();
         const isNewUser = (Date.now() - createdAt) < 10000;
@@ -1309,6 +1309,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
           setStatus("Cuenta creada correctamente.", "success");
           registerForm.reset();
+          sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
           // La redirección siempre al final
           await transferSessionToApp(userCredential.user);
@@ -1342,6 +1343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
+          saveFormState();
           setStatus("Email de verificación enviado. Revisa tu bandeja y el spam.", "success");
           emailVerifyConfirmInput.value = user.email || "Correo enviado";
           emailVerifyConfirmRow.style.display = "flex";
@@ -1410,10 +1412,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         setStatus("Sesión cerrada.", "info");
       });
 
+      function saveFormState() {
+        const fields = {
+          firstName: document.getElementById("firstName").value,
+          lastName: document.getElementById("lastName").value,
+          country: document.getElementById("country").value,
+          birthDay: document.getElementById("birthDay").value,
+          birthMonth: document.getElementById("birthMonth").value,
+          birthYear: document.getElementById("birthYear").value,
+          registerEmail: document.getElementById("registerEmail").value,
+          registerPassword: document.getElementById("registerPassword").value,
+          registerPasswordConfirm: document.getElementById("registerPasswordConfirm").value,
+          phoneCountry: document.getElementById("phoneCountry").value,
+          phoneNumber: document.getElementById("phoneNumber").value,
+          adsOptIn: document.getElementById("adsOptIn").checked,
+          mediaOptIn: document.getElementById("mediaOptIn").checked,
+          activeSection: registerSection.classList.contains("active") ? "register" : "login"
+        };
+        sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
+      }
+
+      function restoreFormState() {
+        const raw = sessionStorage.getItem("lixby_register_draft");
+        if (!raw) return;
+        try {
+          const f = JSON.parse(raw);
+          if (f.firstName) document.getElementById("firstName").value = f.firstName;
+          if (f.lastName) document.getElementById("lastName").value = f.lastName;
+          if (f.country) document.getElementById("country").value = f.country;
+          if (f.birthDay) document.getElementById("birthDay").value = f.birthDay;
+          if (f.birthMonth) document.getElementById("birthMonth").value = f.birthMonth;
+          if (f.birthYear) document.getElementById("birthYear").value = f.birthYear;
+          if (f.registerEmail) {
+            registerEmail.value = f.registerEmail;
+            emailVerifySection.style.display = "grid";
+          }
+          if (f.registerPassword) document.getElementById("registerPassword").value = f.registerPassword;
+          if (f.registerPasswordConfirm) document.getElementById("registerPasswordConfirm").value = f.registerPasswordConfirm;
+          if (f.phoneCountry) document.getElementById("phoneCountry").value = f.phoneCountry;
+          if (f.phoneNumber) {
+            document.getElementById("phoneNumber").value = f.phoneNumber;
+            togglePhoneVerify();
+          }
+          document.getElementById("adsOptIn").checked = !!f.adsOptIn;
+          document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
+          if (f.activeSection === "register") openRegister(null);
+        } catch (e) {
+          console.warn("No se pudo restaurar el borrador:", e);
+        }
+      }
+
+      registerForm.addEventListener("input", saveFormState);
+      registerForm.addEventListener("change", saveFormState);
+      restoreFormState();
+      const urlParams = new URLSearchParams(window.location.search);
+      const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
+      if (sessionStorage.getItem("lixby_email_verified") === "1") {
+        sessionStorage.removeItem("lixby_email_verified");
+      }
+      if (returningFromVerification) {
+        setStatus("Correo verificado. Puedes continuar con tu cuenta.", "success");
+        if (registerEmail.value) {
+          emailVerifySection.style.display = "grid";
+          emailVerifyConfirmInput.value = registerEmail.value;
+          emailVerifyConfirmRow.style.display = "flex";
+        }
+        urlParams.delete("verified");
+        const cleanedUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanedUrl);
+      }
+
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
           userEmail.textContent = `Conectado como ${user.email}`;
+          if (!returningFromVerification) {
+            window.location.href = "/es/cuenta/";
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
