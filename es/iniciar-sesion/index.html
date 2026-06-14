@@ -1338,7 +1338,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Inicia sesión o crea tu cuenta para verificar tu email.", "error");
+          setStatus("El botón está listo. Al crear tu cuenta se enviará el correo de verificación automáticamente.", "info");
           return;
         }
         try {
