@@ -328,7 +328,17 @@ exports.sendNewsletter = onCall(
             replyTo: "soporte@lixby.es",
             subject,
             html,
-            text: html.replace(/]*>/g, "")
+            text: html
+              .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+              .replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, "")
+              .replace(/<[^>]+>/g, "")
+              .replace(/&nbsp;/g, " ")
+              .replace(/&amp;/g, "&")
+              .replace(/&lt;/g, "<")
+              .replace(/&gt;/g, ">")
+              .replace(/&quot;/g, '"')
+              .replace(/\s{2,}/g, " ")
+              .trim()
           });
           sent++;
         } catch (e) {
@@ -377,7 +387,17 @@ exports.sendEmailToUser = onCall(
       replyTo: "soporte@lixby.es",
       subject,
       html,
-      text: html.replace(/]*>/g, "")
+      text: html
+        .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+        .replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, "")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/\s{2,}/g, " ")
+        .trim()
     });
 
     await db.collection("emailLogs").add({
