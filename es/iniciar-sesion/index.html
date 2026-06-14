@@ -278,9 +278,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       flex-wrap: wrap;
     }
 
+    .email-verify {
+      display: grid;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+
+    .email-verify .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-verify .sms-row button {
+      flex-shrink: 0;
+      padding: 0 18px;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
     .sms-row input {
       flex: 1 1 180px;
       min-width: 180px;
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .sms-row #verifySmsBtn {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 18px !important;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .captcha-box {
@@ -326,6 +368,110 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       0% { transform: scale(1); box-shadow: none; }
       50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
       100% { transform: scale(1); box-shadow: none; }
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toggle-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 26px;
+      background: #d1d5db;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+      position: relative;
+      display: block;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-track {
+      background: #1d4ed8;
+    }
+
+    .toggle-switch input:checked + .toggle-track .toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .toggle-switch input:focus-visible + .toggle-track {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .pref-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pref-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pref-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .pref-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+
+    .pref-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SMS verification animations */
+    .sms-success {
+      animation: smsSuccessPulse 0.6s ease forwards;
+    }
+
+    .sms-error {
+      animation: smsErrorShake 0.4s ease;
+    }
+
+    @keyframes smsSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes smsErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
     }
 
     .login-primary-btn {
@@ -560,6 +706,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="registerEmail">nombre@ejemplo.com</label>
             <input id="registerEmail" type="email" required>
 
+            <div class="email-verify" id="emailVerifySection" style="display:none;">
+              <div class="sms-row">
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Verificar email</button>
+                <span class="auth-note">Te enviaremos un correo de verificación.</span>
+              </div>
+              <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
+                <input id="emailVerifyConfirmInput" type="text" readonly>
+              </div>
+            </div>
+
             <label for="registerPassword">Contraseña</label>
             <input id="registerPassword" type="password" required minlength="6">
 
@@ -634,15 +790,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="sms-row">
                 <input id="code" type="text" placeholder="Código SMS">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Verificar</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Anuncios</label>
-            <p class="auth-note">Recibe correos electrónicos y comunicaciones de Lixby, como anuncios, marketing, recomendaciones y actualizaciones sobre los productos, los servicios y el software de Lixby.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Anuncios</div>
+                <div class="pref-desc">Recibe correos de Lixby sobre anuncios, marketing y recomendaciones de productos.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="adsOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
-            <label><input type="checkbox" id="mediaOptIn"> Apps, música, TV y mucho más</label>
-            <p class="auth-note">Recibe correos electrónicos y comunicaciones de Lixby, como nuevos lanzamientos, contenido exclusivo y ofertas especiales.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Apps, música y mucho más</div>
+                <div class="pref-desc">Recibe correos sobre nuevos lanzamientos, contenido exclusivo y ofertas especiales.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="mediaOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
             <div class="captcha-box">
               <label>Imagen de verificación</label>
@@ -659,8 +831,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               Privacy Icon: La información de tu cuenta de Lixby se utiliza para que puedas iniciar sesión de manera segura y acceder a tus datos. Lixby registra ciertos datos de uso para fines relacionados con la seguridad, el soporte y la generación de informes. Si aceptas, Lixby podría utilizar la información de tu cuenta para enviarte comunicaciones y correos electrónicos de marketing. Consulta cómo se gestionan tus datos.
             </p>
 
-            <button class="btn btn-primary" type="submit">Crear cuenta</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verificar email</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Crear cuenta</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -695,7 +866,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       PhoneAuthProvider,
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
-      signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
@@ -727,7 +899,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const rememberMe = document.getElementById("rememberMe");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
-    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const sendEmailVerifyBtn = document.getElementById("sendEmailVerifyBtn");
+    const emailVerifySection = document.getElementById("emailVerifySection");
+    const emailVerifyConfirmRow = document.getElementById("emailVerifyConfirmRow");
+    const emailVerifyConfirmInput = document.getElementById("emailVerifyConfirmInput");
+    const registerEmail = document.getElementById("registerEmail");
     const mfaPanel = document.getElementById("mfaPanel");
     const mfaHint = document.getElementById("mfaHint");
     const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
@@ -738,7 +914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-const captchaCanvas = document.getElementById("captchaCanvas");
+    const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -897,6 +1073,34 @@ const captchaCanvas = document.getElementById("captchaCanvas");
       const functions = getFunctions(app, "europe-west1");
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
+
+      // Capturar resultado del redirect de Google
+      getRedirectResult(auth).then(async (result) => {
+        if (!result) return;
+
+        const user = result.user;
+        const createdAt = new Date(user.metadata.creationTime).getTime();
+        const isNewUser = (Date.now() - createdAt) < 10000;
+
+        if (isNewUser) {
+          const displayName = user.displayName || "usuario";
+          try {
+            await sendWelcomeEmail({ name: displayName, email: user.email });
+            console.log("Email de bienvenida enviado a:", user.email);
+          } catch (err) {
+            console.error("Error al enviar email:", err);
+          }
+        }
+
+        setStatus("Sesión iniciada con Google.", "success");
+        await transferSessionToApp(user);
+        window.location.href = "/es/cuenta/";
+      }).catch((error) => {
+        if (error.code !== "auth/no-current-user") {
+          setStatus(`Error con Google: ${error.message}`, "error");
+        }
+      });
+
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
 
@@ -944,6 +1148,9 @@ const captchaCanvas = document.getElementById("captchaCanvas");
 
       document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
       document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+      registerEmail.addEventListener("input", () => {
+        emailVerifySection.style.display = registerEmail.value.trim() ? "grid" : "none";
+      });
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -1111,64 +1318,35 @@ const captchaCanvas = document.getElementById("captchaCanvas");
         }
       });
 
-      verifyEmailBtn.addEventListener("click", async () => {
-        const user = auth.currentUser;
-        if (!user) {
-          setStatus("Inicia sesión para verificar tu email.", "error");
-          return;
-        }
-        try {
-          await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email enviado. Revisa Spam y Promociones.", "success");
-        } catch (error) {
-          setStatus(`No se pudo enviar: ${error.message}`, "error");
-        }
-      });
-
       googleAuthBtn.addEventListener("click", async () => {
         try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Sesión iniciada con Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/es/cuenta/";
+          await signInWithRedirect(auth, googleProvider);
         } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Inicio con Google cancelado.", "error");
-            return;
-          }
           setStatus(`Error con Google: ${error.message}`, "error");
         }
       });
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Registro completado con Google.", "success");
-
-          // Detectar si es cuenta nueva comprobando cuándo fue creada
-          const user = userCredential.user;
-          const createdAt = new Date(user.metadata.creationTime).getTime();
-          const now = Date.now();
-          const isNewUser = (now - createdAt) < 10000; // menos de 10 segundos = cuenta nueva
-
-          if (isNewUser) {
-            const displayName = user.displayName || "usuario";
-            try {
-              await sendWelcomeEmail({ name: displayName, email: user.email });
-              console.log("Email de bienvenida enviado a:", user.email);
-            } catch (err) {
-              console.error("Error al enviar email:", err);
-            }
-          }
-
-          await transferSessionToApp(user);
-          window.location.href = "/es/cuenta/";
+          await signInWithRedirect(auth, googleProvider);
         } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Inicio con Google cancelado.", "error");
-            return;
-          }
           setStatus(`Error con Google: ${error.message}`, "error");
+        }
+      });
+
+      sendEmailVerifyBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) {
+          setStatus("Inicia sesión o crea tu cuenta para verificar tu email.", "error");
+          return;
+        }
+        try {
+          await sendEmailVerification(user, emailActionSettings);
+          setStatus("Email de verificación enviado. Revisa tu bandeja y el spam.", "success");
+          emailVerifyConfirmInput.value = user.email || "Correo enviado";
+          emailVerifyConfirmRow.style.display = "flex";
+        } catch (error) {
+          setStatus(`No se pudo enviar: ${error.message}`, "error");
         }
       });
 
@@ -1213,8 +1391,17 @@ const captchaCanvas = document.getElementById("captchaCanvas");
         try {
           await confirmationResult.confirm(code);
           setStatus("Teléfono verificado correctamente.", "success");
+          smsCodeInput.classList.add("sms-success");
+          setTimeout(() => {
+            smsCodeInput.disabled = true;
+            verifySmsBtn.style.display = "none";
+          }, 300);
         } catch (error) {
           setStatus("Código incorrecto. Inténtalo de nuevo.", "error");
+          smsCodeInput.classList.add("sms-error");
+          setTimeout(() => {
+            smsCodeInput.classList.remove("sms-error");
+          }, 400);
         }
       });
 
