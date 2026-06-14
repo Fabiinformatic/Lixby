@@ -311,6 +311,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 8px;
     }
 
+    .btn {
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sms-sent {
+      animation: smsSentPulse 0.5s ease forwards;
+      background-color: #16a34a !important;
+      border-color: #15803d !important;
+      color: white !important;
+    }
+
+    @keyframes smsSentPulse {
+      0% { transform: scale(1); box-shadow: none; }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
     .login-primary-btn {
       width: 100%;
       border: 0;
@@ -468,32 +485,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div>
                 <label for="country">País/región</label>
                 <select id="country" required>
-                  <option value="ES" selected>España</option>
-                  <option value="MX">México</option>
+                  <option value="DE">Alemania</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">Bélgica</option>
                   <option value="AR">Argentina</option>
-                  <option value="CO">Colombia</option>
-                  <option value="CL">Chile</option>
-                  <option value="PE">Perú</option>
-                  <option value="EC">Ecuador</option>
-                  <option value="VE">Venezuela</option>
-                  <option value="UY">Uruguay</option>
-                  <option value="PY">Paraguay</option>
                   <option value="BO">Bolivia</option>
                   <option value="BR">Brasil</option>
-                  <option value="DO">República Dominicana</option>
-                  <option value="PA">Panamá</option>
-                  <option value="CR">Costa Rica</option>
-                  <option value="GT">Guatemala</option>
-                  <option value="SV">El Salvador</option>
-                  <option value="HN">Honduras</option>
-                  <option value="NI">Nicaragua</option>
+                  <option value="BG">Bulgaria</option>
                   <option value="CA">Canadá</option>
+                  <option value="CL">Chile</option>
+                  <option value="CY">Chipre</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croacia</option>
+                  <option value="DK">Dinamarca</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="SK">Eslovaquia</option>
+                  <option value="SI">Eslovenia</option>
+                  <option value="ES" selected>España</option>
                   <option value="US">Estados Unidos</option>
-                  <option value="PT">Portugal</option>
+                  <option value="EE">Estonia</option>
+                  <option value="FI">Finlandia</option>
                   <option value="FR">Francia</option>
-                  <option value="DE">Alemania</option>
+                  <option value="GR">Grecia</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="HU">Hungría</option>
+                  <option value="HN">Honduras</option>
+                  <option value="IE">Irlanda</option>
                   <option value="IT">Italia</option>
+                  <option value="LV">Letonia</option>
+                  <option value="LT">Lituania</option>
+                  <option value="LU">Luxemburgo</option>
+                  <option value="MT">Malta</option>
+                  <option value="MX">México</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NL">Países Bajos</option>
+                  <option value="PA">Panamá</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Perú</option>
+                  <option value="PL">Polonia</option>
+                  <option value="PT">Portugal</option>
                   <option value="GB">Reino Unido</option>
+                  <option value="CZ">República Checa</option>
+                  <option value="DO">República Dominicana</option>
+                  <option value="RO">Rumanía</option>
+                  <option value="SE">Suecia</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="VE">Venezuela</option>
                 </select>
               </div>
               <div>
@@ -531,30 +570,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div>
                 <label for="phoneCountry">País</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (España)</option>
-                  <option value="+52">+52 (México)</option>
+                  <option value="+49">+49 (Alemania)</option>
+                  <option value="+43">+43 (Austria)</option>
+                  <option value="+32">+32 (Bélgica)</option>
                   <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colombia)</option>
-                  <option value="+56">+56 (Chile)</option>
-                  <option value="+51">+51 (Perú)</option>
-                  <option value="+593">+593 (Ecuador)</option>
-                  <option value="+58">+58 (Venezuela)</option>
-                  <option value="+598">+598 (Uruguay)</option>
-                  <option value="+595">+595 (Paraguay)</option>
                   <option value="+591">+591 (Bolivia)</option>
                   <option value="+55">+55 (Brasil)</option>
+                  <option value="+359">+359 (Bulgaria)</option>
                   <option value="+1">+1 (Estados Unidos/Canadá)</option>
-                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+357">+357 (Chipre)</option>
+                  <option value="+57">+57 (Colombia)</option>
                   <option value="+506">+506 (Costa Rica)</option>
-                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+385">+385 (Croacia)</option>
+                  <option value="+45">+45 (Dinamarca)</option>
+                  <option value="+593">+593 (Ecuador)</option>
                   <option value="+503">+503 (El Salvador)</option>
-                  <option value="+504">+504 (Honduras)</option>
-                  <option value="+505">+505 (Nicaragua)</option>
-                  <option value="+351">+351 (Portugal)</option>
+                  <option value="+34" selected>+34 (España)</option>
+                  <option value="+372">+372 (Estonia)</option>
+                  <option value="+358">+358 (Finlandia)</option>
                   <option value="+33">+33 (Francia)</option>
-                  <option value="+49">+49 (Alemania)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+30">+30 (Grecia)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+36">+36 (Hungría)</option>
+                  <option value="+353">+353 (Irlanda)</option>
                   <option value="+39">+39 (Italia)</option>
+                  <option value="+371">+371 (Letonia)</option>
+                  <option value="+370">+370 (Lituania)</option>
+                  <option value="+352">+352 (Luxemburgo)</option>
+                  <option value="+356">+356 (Malta)</option>
+                  <option value="+52">+52 (México)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+31">+31 (Países Bajos)</option>
+                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+51">+51 (Perú)</option>
+                  <option value="+48">+48 (Polonia)</option>
+                  <option value="+351">+351 (Portugal)</option>
                   <option value="+44">+44 (Reino Unido)</option>
+                  <option value="+420">+420 (República Checa)</option>
+                  <option value="+40">+40 (Rumanía)</option>
+                  <option value="+46">+46 (Suecia)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+58">+58 (Venezuela)</option>
                 </select>
               </div>
               <div>
@@ -587,12 +646,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="captcha-box">
               <label>Imagen de verificación</label>
-              <div id="captchaImage" class="captcha-image">------</div>
+              <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
               <label for="captchaInput">Introduce el código de la imagen</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">Código nuevo</a>
-                <span class="auth-note">Visión limitada</span>
+                <span class="auth-note">No distingue mayúsculas</span>
               </div>
             </div>
 
@@ -642,7 +701,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
@@ -679,7 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    const captchaImage = document.getElementById("captchaImage");
+const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -739,13 +798,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function generateCaptcha() {
       const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       let code = "";
       for (let i = 0; i < 6; i += 1) {
         code += chars[Math.floor(Math.random() * chars.length)];
       }
-      captchaImage.textContent = code;
+
+      const ctx = captchaCanvas.getContext("2d");
+      const w = captchaCanvas.width;
+      const h = captchaCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = `rgb(${rand(220, 245)}, ${rand(220, 245)}, ${rand(220, 245)})`;
+      ctx.fillRect(0, 0, w, h);
+
+      // Ruido de puntos
+      for (let i = 0; i < 120; i += 1) {
+        ctx.fillStyle = `rgba(${rand(100, 180)}, ${rand(100, 180)}, ${rand(100, 180)}, ${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(rand(0, w), rand(0, h), rand(1, 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Líneas de distorsión
+      for (let i = 0; i < 6; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(40, 90)}, ${rand(40, 90)}, ${rand(40, 90)}, 0.2)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
+      const charW = w / 6;
+      code.split("").forEach((char, i) => {
+        ctx.save();
+        ctx.translate(charW * i + charW / 2, h / 2 + rand(-6, 6));
+        ctx.rotate((rand(-35, 35) * Math.PI) / 180);
+
+        ctx.shadowColor = `rgba(${rand(0, 100)}, ${rand(0, 100)}, ${rand(0, 100)}, 0.6)`;
+        ctx.shadowBlur = rand(2, 5);
+        ctx.shadowOffsetX = rand(-3, 3);
+        ctx.shadowOffsetY = rand(-3, 3);
+
+        const bold = rand(0, 1) ? "bold " : "900 ";
+        ctx.font = `${bold}${rand(22, 32)}px Manrope, sans-serif`;
+        ctx.fillStyle = `rgb(${rand(10, 70)}, ${rand(10, 70)}, ${rand(30, 90)})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = `rgba(${rand(150, 220)}, ${rand(150, 220)}, ${rand(150, 220)}, 0.4)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.strokeText(char, 0, 0);
+        ctx.fillText(char, 0, 0);
+        ctx.restore();
+      });
+
+      // Capa de ruido final encima de las letras
+      for (let i = 0; i < 18; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(120, 180)}, ${rand(120, 180)}, ${rand(120, 180)}, 0.15)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.lineTo(rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
       return code;
     }
 
@@ -769,7 +892,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-      const database = getDatabase(app, "https://lixby0-default-rtdb.europe-west1.firebasedatabase.app");
+      auth.languageCode = "es";
+      const db = getFirestore(app);
       const functions = getFunctions(app, "europe-west1");
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
@@ -778,8 +902,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       function getRecaptcha() {
         if (!recaptchaVerifier) {
-          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible"
+          recaptchaVerifier = new RecaptchaVerifier(auth, "sendSmsBtn", {
+            size: "invisible",
+            callback: () => {},
+            "expired-callback": () => {
+              recaptchaVerifier = null;
+            }
           });
         }
         return recaptchaVerifier;
@@ -956,8 +1084,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             // Luego verificación y base de datos
             await sendEmailVerification(userCredential.user, emailActionSettings);
             
-            // Guardar el perfil en Firebase Realtime Database
-            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+            // Guardar el perfil en Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
               firstName,
               lastName,
               email,
@@ -968,8 +1096,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               phoneCountry: phoneCountryValue,
               phoneNumber,
               adsOptIn,
-              mediaOptIn
-            });
+              mediaOptIn,
+              createdAt: serverTimestamp()
+            }, { merge: true });
           }
           setStatus("Cuenta creada correctamente.", "success");
           registerForm.reset();
@@ -1053,7 +1182,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
           setStatus("SMS enviado. Revisa tu teléfono.", "success");
+          const originalText = sendSmsBtn.textContent;
+          sendSmsBtn.textContent = "¡SMS enviado!";
+          sendSmsBtn.classList.add("sms-sent");
+          setTimeout(() => {
+            sendSmsBtn.classList.remove("sms-sent");
+            sendSmsBtn.textContent = originalText;
+          }, 1600);
         } catch (error) {
+          if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+          }
           setStatus(`No se pudo enviar el SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
