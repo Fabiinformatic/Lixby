@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const Stripe = require("stripe");
 const sgMail = require("@sendgrid/mail");
 const { Resend } = require("resend");
+const sanitizeHtml = require("sanitize-html");
 
 if (!admin.apps.length) {
   admin.initializeApp();
@@ -381,23 +382,21 @@ exports.sendEmailToUser = onCall(
     });
 
     sgMail.setApiKey(SENDGRID_API_KEY.value());
+    
+    // Sanitizar HTML para generar texto plano seguro
+    const plainText = sanitizeHtml(html, {
+      allowedTags: [],
+      allowedAttributes: {},
+      decodeEntities: true
+    }).trim();
+    
     await sgMail.send({
       to,
       from: { email: template.fromEmail || "info@lixby.es", name: "Lixby" },
       replyTo: "soporte@lixby.es",
       subject,
       html,
-      text: html
-        .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
-        .replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, "")
-        .replace(/<[^>]+>/g, "")
-        .replace(/&nbsp;/g, " ")
-        .replace(/&amp;/g, "&")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&quot;/g, '"')
-        .replace(/\s{2,}/g, " ")
-        .trim()
+      text: plainText
     });
 
     await db.collection("emailLogs").add({

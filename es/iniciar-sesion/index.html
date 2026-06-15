@@ -1077,6 +1077,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // Capturar resultado del redirect de Google
       getRedirectResult(auth).then(async (result) => {
         if (!result?.user) return;
+
+        // Marcar que estamos procesando un redirect de Google
+        sessionStorage.setItem("lixby_google_redirect", "1");
+
         const user = result.user;
 
         const createdAt = new Date(user.metadata.creationTime).getTime();
@@ -1096,6 +1100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         await transferSessionToApp(user);
         window.location.href = "/es/cuenta/";
       }).catch((error) => {
+        sessionStorage.removeItem("lixby_google_redirect");
         if (error.code !== "auth/no-current-user") {
           setStatus(`Error con Google: ${error.message}`, "error");
         }
@@ -1486,7 +1491,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (user) {
           userPanel.classList.add("show");
           userEmail.textContent = `Conectado como ${user.email}`;
-          if (!returningFromVerification) {
+
+          // Solo redirigir si NO venimos de verificación de email
+          // y NO estamos ya procesando un redirect de Google (getRedirectResult lo maneja)
+          const isGoogleRedirect = sessionStorage.getItem("lixby_google_redirect");
+          if (!returningFromVerification && !isGoogleRedirect) {
             window.location.href = "/es/cuenta/";
           }
         } else {
