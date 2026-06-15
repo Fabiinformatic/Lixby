@@ -53,14 +53,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta name="author" content="Lixby" />
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-  <!-- End Google Tag Manager -->
-
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,8 +60,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     .account-page {
       padding: 34px 0 84px;
+    }
+
+    html, body {
+      overflow-x: hidden;
     }
 
     body {
@@ -79,47 +80,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       min-height: 100vh;
     }
 
-    .orb-3 {
-      bottom: -120px;
-      left: 35%;
-      background: rgba(22, 167, 255, 0.2);
-      animation: drift 11s ease-in-out infinite;
+    .background-orb {
+      will-change: transform;
+      transform: translateZ(0);
     }
 
-    .orb-4 {
-      top: 18%;
-      left: 55%;
-      background: rgba(15, 61, 255, 0.16);
-      animation: drift 12s ease-in-out infinite reverse;
+    #accountLayout {
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .orb-5 {
-      bottom: 10%;
-      right: 20%;
-      background: rgba(22, 167, 255, 0.14);
-      animation: drift 13s ease-in-out infinite;
+    #accountLayout.visible {
+      opacity: 1;
     }
 
-    .status-msg {
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 600;
-    }
+    .orb-1 { top: -80px; left: -60px; }
+    .orb-2 { top: 40%; right: -80px; }
+    .orb-3 { bottom: -80px; left: 35%; }
+    .orb-4 { top: 18%; left: 55%; }
+    .orb-5 { bottom: 10%; right: 10%; }
 
-    .status-msg.error {
-      border-color: #fecaca;
-      background: #fef2f2;
-      color: #b91c1c;
-    }
-
-    .status-msg.success {
-      border-color: #a7f3d0;
-      background: #ecfdf5;
-      color: #047857;
+    .status-msg.fade-out {
+      animation: statusFadeOut 0.35s ease forwards;
     }
 
     .account-layout {
@@ -268,6 +250,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       height: 40px;
       padding: 0 18px;
       border-radius: 999px;
+    }
+
+    /* Make side actions match the size and border style of other action buttons */
+    .side-actions .btn:not(.btn-primary),
+    .side-actions a.btn:not(.btn-primary) {
+      min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #111827;
+      box-shadow: none;
+      position: static;
+    }
+
+    .side-actions .btn.btn-primary {
+      min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-verified {
@@ -482,8 +497,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -511,8 +524,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/shop/" class="nav-link">Store</a>
-        <a href="/en/#productos" class="nav-link">Products</a>
+        <a href="/en/store/" class="nav-link">Store</a>
+        <a href="/en/#products" class="nav-link">Products</a>
         <a href="/en/#apps" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
@@ -528,11 +541,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <main class="container account-page">
-    <div id="statusMsg" class="status-msg">Checking session...</div>
+    <!-- statusMsg removed per request -->
 
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
-        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Profile photo">
+        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Profile picture">
         <h1 id="sideName">Your Lixby account</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
@@ -544,7 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <section id="profileForm" class="account-main readonly">
         <section class="account-section">
-          <h2>Personal information</h2>
+          <h2>Personal details</h2>
           <div class="field-grid">
             <div class="field">
               <label for="firstName">First name</label>
@@ -567,11 +580,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input id="language" type="text">
             </div>
             <div class="field">
-              <label for="timezone">Time zone</label>
+              <label for="timezone">Timezone</label>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label>Profile photo</label>
+              <label>Profile picture</label>
               <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
                 <img id="photoPreview" src="images/cuenta.png" alt="Preview"
                   style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
@@ -634,8 +647,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="action-list">
             <div class="action-item"><span>Change password</span><a class="btn btn-secondary" href="/en/change-password/">Manage</a></div>
             <div class="action-item"><span>View active sessions</span><button class="btn btn-secondary" type="button">View</button></div>
-            <div class="action-item"><span>Sign out from other devices</span><button class="btn btn-secondary" type="button">Sign out</button></div>
-            <div class="action-item"><span>Enable two-step verification</span><a id="twoFactorBtn" class="btn btn-secondary" href="/en/two-step verification/">Set up</a></div>
+            <div class="action-item"><span>Sign out on other devices</span><button class="btn btn-secondary" type="button">Sign out</button></div>
+            <div class="action-item"><span>Enable two-step verification</span><a id="twoFactorBtn" class="btn btn-secondary" href="/en/two-factor-verification/">Set up</a></div>
             <div class="action-item"><span>Verify email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Send</button></div>
             <div class="action-item"><span>Login history</span><button class="btn btn-secondary" type="button">View history</button></div>
           </div>
@@ -650,7 +663,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <strong>You have no orders yet</strong>
               <span>When you make a purchase it will appear here.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/en/shop/">Go to store</a>
+                <a class="btn btn-primary" href="/en/store/">Go to store</a>
               </div>
             </article>
           </div>
@@ -677,7 +690,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h3>Saved cards</h3>
             <div class="payment-grid">
               <div class="payment-field">
-                <label for="payCardholder">Cardholder</label>
+                <label for="payCardholder">Cardholder name</label>
                 <input id="payCardholder" type="text" placeholder="Full name">
               </div>
               <div class="payment-field">
@@ -740,7 +753,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2>Support</h2>
           <div class="action-list">
             <div class="action-item"><span>Contact support</span><a class="btn btn-primary" href="/en/support/">Open</a></div>
-            <div class="action-item"><span>Report problem</span><a class="btn btn-secondary" href="/en/support/">Report</a></div>
+            <div class="action-item"><span>Report issue</span><a class="btn btn-secondary" href="/en/support/">Report</a></div>
             <div class="action-item"><span>User manual</span><a class="btn btn-secondary" href="/en/support/">View</a></div>
             <div class="action-item"><span>Product warranty</span><a class="btn btn-secondary" href="/en/support/">Check</a></div>
           </div>
@@ -757,7 +770,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="account-section">
           <h2>Account</h2>
           <div class="action-list">
-            <div class="action-item"><span>Sign out</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Sign out</button></div>
+            <div class="action-item"><span>Sign out</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Sign out</button></div>
             <div class="action-item"><span>Delete account</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Delete</button></div>
           </div>
         </section>
@@ -765,17 +778,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
   </main>
 
-  <div id="saveBar" class="save-bar" aria-live="polite">
-    <span>Changes detected</span>
-    <button id="saveChangesBtn" class="btn btn-primary" type="button">Save changes</button>
-  </div>
+  <!-- saveBar removed: UI handled inline, avoid persistent bar -->
 
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
         <h3>View and buy</h3>
         <ul>
-          <li><a href="/en/shop/">Store</a></li>
+          <li><a href="/en/store/">Store</a></li>
           <li><a href="/en/pages/products/lixbuds-one/">LixBuds</a></li>
           <li><a href="/en/#apps">Apps</a></li>
           <li><a href="/en/support/">Support</a></li>
@@ -786,8 +796,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Support</h3>
         <ul>
           <li><a href="/en/support/">Support home page</a></li>
-          <li><a href="/en/support/#faq">Online store FAQs</a></li>
-          <li><a href="/en/support/">Warranty information</a></li>
+          <li><a href="/en/support/#faq">Online Store FAQs</a></li>
+          <li><a href="/en/support/">Warranty Information</a></li>
           <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
         </ul>
       </section>
@@ -816,7 +826,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
         <a href="/en/pages/legal/privacy/">Privacy policy</a>
-        <a href="/en/pages/legal/cookies/">Cookie usage</a>
+        <a href="/en/pages/legal/cookies/">Cookie use</a>
         <a href="/en/pages/legal/terms/">Terms of use</a>
         <a href="/en/support/">Sales and refunds</a>
         <a href="/en/pages/legal/legal-notice/">Legal notices</a>
@@ -857,8 +867,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
     const verifyEmailBtn = document.getElementById("verifyEmailBtn");
     const twoFactorBtn = document.getElementById("twoFactorBtn");
-    const saveBar = document.getElementById("saveBar");
-    const saveChangesBtn = document.getElementById("saveChangesBtn");
     const addPaymentBtn = document.getElementById("addPaymentBtn");
     const paymentMethodsEl = document.getElementById("paymentMethods");
     const saveBillingBtn = document.getElementById("saveBillingBtn");
@@ -904,23 +912,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let editMode = false;
     let dirty = false;
 
-    function readProfile() {
-      return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
+    async function readProfile() {
+      const user = auth.currentUser;
+      if (!user) return {};
+      const snap = await getDoc(doc(db, "users", user.uid, "account", "profile"));
+      return snap.exists() ? snap.data() : {};
     }
 
-        function writeProfile(profile) {
-      const cachedProfile = {
-        language: profile.language,
-        timezone: profile.timezone,
-        photoUrl: profile.photoUrl,
-        prefAds: profile.prefAds,
-        prefNews: profile.prefNews,
-        prefUpdates: profile.prefUpdates,
-        prefOffers: profile.prefOffers,
-        prefSupport: profile.prefSupport,
-        adsOptIn: profile.adsOptIn
-      };
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(cachedProfile));
+    async function writeProfile(profile) {
+      const user = auth.currentUser;
+      if (!user) return;
+      await setDoc(doc(db, "users", user.uid, "account", "profile"), {
+        ...profile,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
     }
 
     function getScopedKey(baseKey) {
@@ -974,7 +979,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         await writeBilling(JSON.parse(storedBilling));
         localStorage.removeItem(getScopedKey(BILLING_KEY));
       } catch (error) {
-        console.error("Could not migrate billing address.", error);
+        console.error("Unable to migrate billing address.", error);
       }
     }
 
@@ -1117,7 +1122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         actions.appendChild(el("button", {
           className: "btn btn-secondary",
           type: "button",
-          text: "Remove",
+          text: "Delete",
           dataset: { paymentAction: "remove", id: method.id || "" }
         }));
 
@@ -1163,10 +1168,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return;
       }
 
-      details.appendChild(el("strong", { text: billing.name || "" }));
-      details.appendChild(el("span", { text: billing.address || "" }));
-      details.appendChild(el("span", { text: `${billing.city || ""} ${billing.postalCode || ""}`.trim() }));
-      details.appendChild(el("span", { text: billing.country || "" }));
+      details.appendChild(el("strong", { text: billing.name || "Tax name" }));
+      details.appendChild(el("span", { text: billing.address || "Address" }));
+      details.appendChild(el("span", { text: `${billing.city || "City"} ${billing.postalCode || ""}`.trim() }));
+      details.appendChild(el("span", { text: billing.country || "Country" }));
       actions.appendChild(el("button", {
         id: "editBillingBtn",
         className: "btn btn-secondary",
@@ -1183,8 +1188,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function showStatus(text, type = "") {
-      statusMsg.textContent = text;
-      statusMsg.className = `status-msg ${type}`.trim();
+      if (statusMsg) {
+        statusMsg.textContent = text;
+        statusMsg.className = `status-msg ${type}`.trim();
+      }
     }
 
     function setReadonlyMode() {
@@ -1199,7 +1206,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       editBtn.textContent = "Edit details";
       editMode = false;
       dirty = false;
-      saveBar.classList.remove("show");
     }
 
     function setEditMode() {
@@ -1211,10 +1217,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           el.readOnly = false;
         }
       });
-      editBtn.textContent = "Cancel editing";
+      editBtn.textContent = "Save profile";
       editMode = true;
       dirty = false;
-      saveBar.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1276,10 +1281,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       };
     }
 
+    async function saveProfile() {
+      const data = collectProfileData();
+      await writeProfile(data);
+      const user = auth.currentUser;
+      if (!user) return;
+      fillProfile(user, data);
+      setReadonlyMode();
+    }
+
     function setDirty() {
       if (!editMode) return;
       dirty = true;
-      saveBar.classList.add("show");
     }
 
     Object.values(inputs).forEach((el) => {
@@ -1452,7 +1465,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Shipped: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
         "Out for delivery": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
         Delivered: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
-      
       };
       const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
       return badge(status || "Order received", s);
@@ -1651,14 +1663,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById("photoUrl").value = url;
         profilePhoto.src = sanitizeImageUrl(url);
 
-        // Save in profile
-        const profile = readProfile();
+        // Save to profile
+        const profile = await readProfile();
         profile.photoUrl = url;
-        writeProfile(profile);
+        await writeProfile(profile);
 
         msg.style.color = "#458500";
         msg.textContent = "Photo updated";
-        showStatus("Profile photo updated.", "success");
+        showStatus("Profile picture updated.", "success");
       } catch (err) {
         msg.style.color = "#ef4444";
         msg.textContent = "Error uploading photo";
@@ -1670,20 +1682,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        window.location.href = "/en/login/";
+        window.location.href = "/en/sign-in/";
         return;
       }
 
       await ensureAccountNumber();
       await migrateStoredBilling();
 
-      const stored = readProfile();
+      const stored = await readProfile();
       fillProfile(user, stored);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
       showStatus("Account loaded successfully.", "success");
       accountLayout.classList.remove("hidden");
+      requestAnimationFrame(() => accountLayout.classList.add("visible"));
       setReadonlyMode();
 
       // Load orders and gift cards
@@ -1706,54 +1719,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    editBtn.addEventListener("click", () => {
+    editBtn.addEventListener("click", async () => {
       if (editMode) {
-        const user = auth.currentUser;
-        if (!user) return;
-        fillProfile(user, readProfile());
-        setReadonlyMode();
+        await saveProfile();
       } else {
         setEditMode();
       }
     });
 
-    saveChangesBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user) {
-        showStatus("Invalid session.", "error");
-        return;
-      }
 
-      if (!dirty) {
-        saveBar.classList.remove("show");
-        return;
-      }
-
-      const next = collectProfileData();
-
-      try {
-        if (next.email && next.email !== user.email) {
-          await updateEmail(user, next.email);
-        }
-        writeProfile(next);
-        fillProfile(user, next);
-        setReadonlyMode();
-        showStatus("Changes saved. Data updated.", "success");
-      } catch (error) {
-        showStatus(`Could not save: ${error.message}`, "error");
-      }
-    });
 
     async function doLogout() {
       await signOut(auth);
-      window.location.href = "/en/login/";
+      window.location.href = "/en/sign-in/";
     }
 
     logoutBtn.addEventListener("click", doLogout);
     logoutBtnSecondary.addEventListener("click", doLogout);
 
     const emailActionSettings = {
-      url: `/en/verified/`,
+      url: `${window.location.origin}/en/verified/`,
       handleCodeInApp: false
     };
 
@@ -1791,7 +1776,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       try {
         await deleteUser(user);
         showStatus("Account deleted successfully.", "success");
-        window.location.href = "/en/login/";
+        window.location.href = "/en/sign-in/";
       } catch (error) {
         showStatus(`Could not delete account: ${error.message}`, "error");
       }
@@ -1799,7 +1784,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-
-
-

@@ -156,7 +156,7 @@ if (addToCartButtons.length) {
 }
 
 const texto = document.getElementById("texto");
-const typedString = "Diseño limpio,\nsonido potente y\ncontrol total de tu día.";
+const typedString = "Clean design,\npowerful sound and\ntotal control of your day.";
 let typedIndex = 0;
 
 function typeNext() {

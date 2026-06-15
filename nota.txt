@@ -1,10 +1,9 @@
 español 100%
-ingles 100%
+ingles 100% ¡Falta link rel y href!
 italiano 100%
 frances 100%
 portugues 100%
 polaco 100% 
 irlandes 100% falta revisar href y los link rel y https://lixby.es
 hecho lixney beta en /es falta lo demas y retocar y revisar lixneybeta.html cuestionario!!!
-Nuevo head para los idiomas
 ¡IA DEBE REVISAR TODOS LOS href DEL IDOMA!

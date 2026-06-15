@@ -719,6 +719,9 @@ body.menu-open {
 
 .swap-media {
   position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: auto;
 }
 
 .swap-media .swap-image {
@@ -727,6 +730,8 @@ body.menu-open {
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.45s ease;
   object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .swap-media .swap-image.swap-black {
@@ -743,7 +748,9 @@ body.menu-open {
 
 .swap-media .swap-image.is-active {
   opacity: 1;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 }
 
 .swap-dots {
@@ -1359,6 +1366,11 @@ body.menu-open {
   .stats {
     grid-template-columns: 1fr;
   }
+.hero-image, 
+.app-logo { 
+  height: auto; 
+  width: 100%; 
+}
 
   .feature-grid.reverse .feature-copy,
   .feature-grid.reverse .feature-media {

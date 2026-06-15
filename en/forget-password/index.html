@@ -98,18 +98,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-color: #fecaca;
       background: #fef2f2;
       color: #b91c1c;
+      animation: statusErrorShake 0.4s ease;
     }
 
     .status-msg.success {
       border-color: #a7f3d0;
       background: #ecfdf5;
       color: #047857;
+      animation: statusSuccessPulse 0.6s ease forwards;
     }
 
     .status-msg.info {
       border-color: #bfdbfe;
       background: #eff6ff;
       color: #1d4ed8;
+      animation: statusInfoSlide 0.4s ease forwards;
+    }
+
+    @keyframes statusSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(16,185,129,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes statusErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    @keyframes statusInfoSlide {
+      0% { opacity: 0; transform: translateY(-8px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .field {
@@ -138,13 +158,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .actions {
-      display: flex;
+      display: grid;
       gap: 10px;
-      flex-wrap: wrap;
+    }
+
+    #sendResetBtn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    #sendResetBtn:hover {
+      transform: none;
+    }
+
+    .actions a {
+      width: 100%;
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -167,8 +200,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/shop/" class="nav-link">Store</a>
-        <a href="#productos" class="nav-link">Products</a>
+        <a href="/en/store/" class="nav-link">Store</a>
+        <a href="#products" class="nav-link">Products</a>
         <a href="#apps" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
@@ -179,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/en/shop/" method="get">
+        <form id="navSearchForm" action="/en/store/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -207,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/en/shop/" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/en/store/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -221,9 +254,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span aria-hidden="true">✕</span>
       </button>
     </div>
-    <nav class="nav-mobile-links" aria-label="Mobile main">
-      <a href="/en/shop/">Store</a>
-      <a href="#productos">Products</a>
+    <nav class="nav-mobile-links" aria-label="Main mobile">
+      <a href="/en/store/">Store</a>
+      <a href="#products">Products</a>
       <a href="#apps">Apps</a>
       <a href="/en/support/">Support</a>
     </nav>
@@ -234,9 +267,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
-
     <section class="password-card">
+      <div id="statusMsg" class="status-msg" style="display:none;"></div>
       <h1>Forgot your password?</h1>
       <p class="helper">Enter your email address and we'll send you a link to reset it.</p>
 
@@ -247,14 +279,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="actions">
         <button id="sendResetBtn" class="btn btn-primary" type="button">Send email</button>
-        <a class="btn btn-secondary" href="/en/login/">Back to sign in</a>
+        <a class="btn btn-secondary" href="/en/sign-in/">Back to sign in</a>
       </div>
     </section>
   </main>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -274,8 +306,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const auth = getAuth(app);
 
     function showStatus(text, type = "") {
+      if (!statusMsg) return;
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.style.display = text ? "block" : "none";
     }
 
     function isValidEmail(value) {
@@ -284,33 +318,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     sendResetBtn.addEventListener("click", async () => {
       const email = resetEmail.value.trim();
-      if (!isValidEmail(email)) {
+
+      if (!email || !email.includes("@")) {
         showStatus("Please enter a valid email address.", "error");
         return;
       }
 
       try {
         sendResetBtn.disabled = true;
-        const response = await fetch("https://sendpasswordreset-dtoucjpwkq-uc.a.run.app", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
+        showStatus("Sending email...", "info");
+
+        await sendPasswordResetEmail(auth, email, {
+          url: "https://lixby.es/en/sign-in/",
+          handleCodeInApp: false
         });
 
-        if (!response.ok) {
-          const data = await response.json().catch(() => ({}));
-          throw new Error(data.error || "Could not send the email");
-        }
-        showStatus("We've sent you an email. Please check your inbox.", "success");
+        showStatus("We've sent you an email. Check your inbox and spam folder.", "success");
+        resetEmail.value = "";
+
+        // Feedback visual en el botón
+        const originalText = sendResetBtn.textContent;
+        sendResetBtn.textContent = "Email sent!";
+        sendResetBtn.style.background = "#16a34a";
+        sendResetBtn.style.borderColor = "#15803d";
+        setTimeout(() => {
+          sendResetBtn.textContent = originalText;
+          sendResetBtn.style.background = "";
+          sendResetBtn.style.borderColor = "";
+        }, 3000);
+
       } catch (error) {
-        showStatus(`Could not send the email: ${error.message}`, "error");
+        // Firebase devuelve el mismo mensaje tanto si el email existe como si no
+        // por seguridad — no revelamos si el email está registrado
+        if (error.code === "auth/user-not-found" || error.code === "auth/invalid-email") {
+          showStatus("We've sent you an email if that address is registered.", "success");
+        } else {
+          showStatus(`Could not send email: ${error.message}`, "error");
+        }
       } finally {
         sendResetBtn.disabled = false;
       }
     });
   </script>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>View and buy</h3>
+        <ul>
+          <li><a href="/en/store/">Store</a></li>
+          <li><a href="/en/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="/en/support/">Support</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="/en/support/">Support home</a></li>
+          <li><a href="/en/support/#faq">Online Store FAQs</a></li>
+          <li><a href="/en/support/">Warranty information</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email the CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Account</h3>
+        <ul>
+          <li><a href="/en/track/">Orders</a></li>
+          <li><a href="/en/account/">My account</a></li>
+          <li><a href="/en/account/">Coupons</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>About Lixby</h3>
+        <ul>
+          <li><a href="/en/about/">About us</a></li>
+          <li><a href="/en/support/">Warranty</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="/en/support/">Contact</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="/en/pages/legal/privacy/">Privacy policy</a>
+        <a href="/en/pages/legal/cookies/">Cookie policy</a>
+        <a href="/en/pages/legal/terms/">Terms of use</a>
+        <a href="/en/support/">Sales and refunds</a>
+        <a href="/en/pages/legal/legal-notice/">Legal notices</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-

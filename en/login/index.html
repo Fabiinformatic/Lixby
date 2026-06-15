@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
 <!-- End Google Tag Manager -->
-  <link rel="canonical" href="https://lixby.es/en/login">
+  <link rel="canonical" href="https://lixby.es/en/sign-in">
   <link rel="alternate" href="https://lixby.es/bg/login" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/login" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/login" hreflang="da-DK">
@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Log in | Lixby</title>
+  <title>Sign in | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -278,9 +278,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       flex-wrap: wrap;
     }
 
+    .email-verify {
+      display: grid;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+
+    .email-verify .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-verify .sms-row button {
+      flex-shrink: 0;
+      padding: 0 18px;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
     .sms-row input {
       flex: 1 1 180px;
       min-width: 180px;
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .sms-row #verifySmsBtn {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 18px !important;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .captcha-box {
@@ -309,6 +351,139 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       align-items: center;
       justify-content: center;
       gap: 8px;
+    }
+
+    .btn {
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sms-sent {
+      animation: smsSentPulse 0.5s ease forwards;
+      background-color: #16a34a !important;
+      border-color: #15803d !important;
+      color: white !important;
+    }
+
+    @keyframes smsSentPulse {
+      0% { transform: scale(1); box-shadow: none; }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toggle-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 26px;
+      background: #d1d5db;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+      position: relative;
+      display: block;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-track {
+      background: #1d4ed8;
+    }
+
+    .toggle-switch input:checked + .toggle-track .toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .toggle-switch input:focus-visible + .toggle-track {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .pref-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pref-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pref-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .pref-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+
+    .pref-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SMS verification animations */
+    .sms-success {
+      animation: smsSuccessPulse 0.6s ease forwards;
+    }
+
+    .sms-error {
+      animation: smsErrorShake 0.4s ease;
+    }
+
+    @keyframes smsSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes smsErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .login-primary-btn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .login-primary-btn:hover {
+      transform: none;
     }
 
     .google-icon {
@@ -340,8 +515,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -364,8 +537,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/shop/" class="nav-link">Store</a>
-        <a href="/en/#productos" class="nav-link">Products</a>
+        <a href="/en/store/" class="nav-link">Store</a>
+        <a href="/en/#products" class="nav-link">Products</a>
         <a href="/en/#apps" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
@@ -385,12 +558,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Ready to authenticate.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Firebase configuration missing. Edit the <code>firebaseConfig</code> object in <code>login.html</code> with your project credentials.
+          Firebase configuration missing. Edit the <code>firebaseConfig</code> object on this page with your project credentials.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Log in to Lixby</h1>
+            <h1>Sign in to Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
             <label for="loginIdentifier">Email or phone number</label>
@@ -406,9 +579,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </label>
             </div>
 
-            <a href="/en/forget-password/" class="auth-link">Forgot password?</a>
+            <a href="/en/forgot-password/" class="auth-link">Forgot your password?</a>
 
-            <button class="btn btn-primary" type="submit">Log in</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Sign in</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -418,7 +591,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
             <strong>Two-step verification required</strong>
-            <p id="mfaHint" class="auth-note">We will send a code via SMS to the associated phone.</p>
+            <p id="mfaHint" class="auth-note">We will send an SMS code to the associated phone number.</p>
             <div class="mfa-row">
               <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Send code</button>
               <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="SMS code">
@@ -435,10 +608,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="registerSection" class="auth-section">
           <div class="account-head">
             <h1>Create your Lixby account</h1>
-            <p>You just need a Lixby account to access all Lixby services.</p>
+            <p>You only need a Lixby account to access all Lixby services.</p>
             <p class="auth-note">
               Already have a Lixby account?
-              <a href="#" id="showLoginLink" class="auth-link">Log in</a>
+              <a href="#" id="showLoginLink" class="auth-link">Sign in</a>
             </p>
           </div>
 
@@ -456,34 +629,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="register-grid">
               <div>
-                <label for="country">Country/region</label>
+                <label for="country">Country/Region</label>
                 <select id="country" required>
-                  <option value="ES" selected>Spain</option>
-                  <option value="MX">Mexico</option>
+                  <option value="DE">Germany</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">Belgium</option>
                   <option value="AR">Argentina</option>
-                  <option value="CO">Colombia</option>
-                  <option value="CL">Chile</option>
-                  <option value="PE">Peru</option>
-                  <option value="EC">Ecuador</option>
-                  <option value="VE">Venezuela</option>
-                  <option value="UY">Uruguay</option>
-                  <option value="PY">Paraguay</option>
                   <option value="BO">Bolivia</option>
                   <option value="BR">Brazil</option>
-                  <option value="DO">Dominican Republic</option>
-                  <option value="PA">Panama</option>
-                  <option value="CR">Costa Rica</option>
-                  <option value="GT">Guatemala</option>
-                  <option value="SV">El Salvador</option>
-                  <option value="HN">Honduras</option>
-                  <option value="NI">Nicaragua</option>
+                  <option value="BG">Bulgaria</option>
                   <option value="CA">Canada</option>
+                  <option value="CL">Chile</option>
+                  <option value="CY">Cyprus</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croatia</option>
+                  <option value="DK">Denmark</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="ES" selected>Spain</option>
                   <option value="US">United States</option>
-                  <option value="PT">Portugal</option>
+                  <option value="EE">Estonia</option>
+                  <option value="FI">Finland</option>
                   <option value="FR">France</option>
-                  <option value="DE">Germany</option>
+                  <option value="GR">Greece</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="HU">Hungary</option>
+                  <option value="HN">Honduras</option>
+                  <option value="IE">Ireland</option>
                   <option value="IT">Italy</option>
+                  <option value="LV">Latvia</option>
+                  <option value="LT">Lithuania</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MT">Malta</option>
+                  <option value="MX">Mexico</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="PA">Panama</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PL">Poland</option>
+                  <option value="PT">Portugal</option>
                   <option value="GB">United Kingdom</option>
+                  <option value="CZ">Czech Republic</option>
+                  <option value="DO">Dominican Republic</option>
+                  <option value="RO">Romania</option>
+                  <option value="SE">Sweden</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="VE">Venezuela</option>
                 </select>
               </div>
               <div>
@@ -511,6 +706,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="registerEmail">name@example.com</label>
             <input id="registerEmail" type="email" required>
 
+            <div class="email-verify" id="emailVerifySection" style="display:none;">
+              <div class="sms-row">
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Verify email</button>
+                <span class="auth-note">We will send you a verification email.</span>
+              </div>
+              <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
+                <input id="emailVerifyConfirmInput" type="text" readonly>
+              </div>
+            </div>
+
             <label for="registerPassword">Password</label>
             <input id="registerPassword" type="password" required minlength="6">
 
@@ -521,30 +726,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div>
                 <label for="phoneCountry">Country</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (Spain)</option>
-                  <option value="+52">+52 (Mexico)</option>
+                  <option value="+49">+49 (Germany)</option>
+                  <option value="+43">+43 (Austria)</option>
+                  <option value="+32">+32 (Belgium)</option>
                   <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colombia)</option>
-                  <option value="+56">+56 (Chile)</option>
-                  <option value="+51">+51 (Peru)</option>
-                  <option value="+593">+593 (Ecuador)</option>
-                  <option value="+58">+58 (Venezuela)</option>
-                  <option value="+598">+598 (Uruguay)</option>
-                  <option value="+595">+595 (Paraguay)</option>
                   <option value="+591">+591 (Bolivia)</option>
                   <option value="+55">+55 (Brazil)</option>
+                  <option value="+359">+359 (Bulgaria)</option>
                   <option value="+1">+1 (United States/Canada)</option>
-                  <option value="+507">+507 (Panama)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+357">+357 (Cyprus)</option>
+                  <option value="+57">+57 (Colombia)</option>
                   <option value="+506">+506 (Costa Rica)</option>
-                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+385">+385 (Croatia)</option>
+                  <option value="+45">+45 (Denmark)</option>
+                  <option value="+593">+593 (Ecuador)</option>
                   <option value="+503">+503 (El Salvador)</option>
-                  <option value="+504">+504 (Honduras)</option>
-                  <option value="+505">+505 (Nicaragua)</option>
-                  <option value="+351">+351 (Portugal)</option>
+                  <option value="+34" selected>+34 (Spain)</option>
+                  <option value="+372">+372 (Estonia)</option>
+                  <option value="+358">+358 (Finland)</option>
                   <option value="+33">+33 (France)</option>
-                  <option value="+49">+49 (Germany)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+30">+30 (Greece)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+36">+36 (Hungary)</option>
+                  <option value="+353">+353 (Ireland)</option>
                   <option value="+39">+39 (Italy)</option>
+                  <option value="+371">+371 (Latvia)</option>
+                  <option value="+370">+370 (Lithuania)</option>
+                  <option value="+352">+352 (Luxembourg)</option>
+                  <option value="+356">+356 (Malta)</option>
+                  <option value="+52">+52 (Mexico)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+31">+31 (Netherlands)</option>
+                  <option value="+507">+507 (Panama)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+51">+51 (Peru)</option>
+                  <option value="+48">+48 (Poland)</option>
+                  <option value="+351">+351 (Portugal)</option>
                   <option value="+44">+44 (United Kingdom)</option>
+                  <option value="+420">+420 (Czech Republic)</option>
+                  <option value="+40">+40 (Romania)</option>
+                  <option value="+46">+46 (Sweden)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+58">+58 (Venezuela)</option>
                 </select>
               </div>
               <div>
@@ -554,7 +779,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <p class="auth-note">
-              Make sure to enter a phone number you can always access. This number will be used to verify your identity every time you log in from a new device or web browser. Data or messaging rates may apply.
+              Make sure to enter a phone number you can always access. This number will be used to verify your identity every time you sign in on a new device or web browser. Data or messaging rates may apply.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
@@ -565,33 +790,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="sms-row">
                 <input id="code" type="text" placeholder="SMS code">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verify</button>
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Verify</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Advertising</label>
-            <p class="auth-note">Receive emails and communications from Lixby, such as announcements, marketing, recommendations and updates about Lixby products, services and software.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Ads</div>
+                <div class="pref-desc">Receive emails from Lixby about announcements, marketing, and product recommendations.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="adsOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
-            <label><input type="checkbox" id="mediaOptIn"> Apps, music, TV and more</label>
-            <p class="auth-note">Receive emails and communications from Lixby, such as new releases, exclusive content and special offers.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Apps, music and much more</div>
+                <div class="pref-desc">Receive emails about new releases, exclusive content, and special offers.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="mediaOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
             <div class="captcha-box">
               <label>Verification image</label>
-              <div id="captchaImage" class="captcha-image">------</div>
+              <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
               <label for="captchaInput">Enter the code from the image</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">New code</a>
-                <span class="auth-note">Limited vision</span>
+                <span class="auth-note">Not case sensitive</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Privacy Icon: Your Lixby account information is used so you can log in securely and access your data. Lixby records certain usage data for security, support and reporting purposes. If you accept, Lixby may use your account information to send you marketing communications and emails. See how your data is managed.
+              Privacy Icon: Your Lixby account information is used so you can sign in securely and access your data. Lixby records certain usage data for security, support, and reporting purposes. If you agree, Lixby may use your account information to send you marketing communications and emails. See how your data is managed.
             </p>
 
-            <button class="btn btn-primary" type="submit">Create account</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verify email</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Create account</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -605,7 +845,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
             <a href="/en/account/" class="btn btn-primary">Go to my account</a>
-            <button id="logoutBtn" class="btn btn-secondary" type="button">Log out</button>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Sign out</button>
           </div>
         </div>
       </article>
@@ -626,13 +866,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       PhoneAuthProvider,
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
-      signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
      const firebaseConfig = {
@@ -657,7 +899,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const rememberMe = document.getElementById("rememberMe");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
-    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const sendEmailVerifyBtn = document.getElementById("sendEmailVerifyBtn");
+    const emailVerifySection = document.getElementById("emailVerifySection");
+    const emailVerifyConfirmRow = document.getElementById("emailVerifyConfirmRow");
+    const emailVerifyConfirmInput = document.getElementById("emailVerifyConfirmInput");
+    const registerEmail = document.getElementById("registerEmail");
     const mfaPanel = document.getElementById("mfaPanel");
     const mfaHint = document.getElementById("mfaHint");
     const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
@@ -668,7 +914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    const captchaImage = document.getElementById("captchaImage");
+    const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -728,13 +974,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function generateCaptcha() {
       const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       let code = "";
       for (let i = 0; i < 6; i += 1) {
         code += chars[Math.floor(Math.random() * chars.length)];
       }
-      captchaImage.textContent = code;
+
+      const ctx = captchaCanvas.getContext("2d");
+      const w = captchaCanvas.width;
+      const h = captchaCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = `rgb(${rand(220, 245)}, ${rand(220, 245)}, ${rand(220, 245)})`;
+      ctx.fillRect(0, 0, w, h);
+
+      // Dot noise
+      for (let i = 0; i < 120; i += 1) {
+        ctx.fillStyle = `rgba(${rand(100, 180)}, ${rand(100, 180)}, ${rand(100, 180)}, ${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(rand(0, w), rand(0, h), rand(1, 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Distortion lines
+      for (let i = 0; i < 6; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(40, 90)}, ${rand(40, 90)}, ${rand(40, 90)}, 0.2)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
+      const charW = w / 6;
+      code.split("").forEach((char, i) => {
+        ctx.save();
+        ctx.translate(charW * i + charW / 2, h / 2 + rand(-6, 6));
+        ctx.rotate((rand(-35, 35) * Math.PI) / 180);
+
+        ctx.shadowColor = `rgba(${rand(0, 100)}, ${rand(0, 100)}, ${rand(0, 100)}, 0.6)`;
+        ctx.shadowBlur = rand(2, 5);
+        ctx.shadowOffsetX = rand(-3, 3);
+        ctx.shadowOffsetY = rand(-3, 3);
+
+        const bold = rand(0, 1) ? "bold " : "900 ";
+        ctx.font = `${bold}${rand(22, 32)}px Manrope, sans-serif`;
+        ctx.fillStyle = `rgb(${rand(10, 70)}, ${rand(10, 70)}, ${rand(30, 90)})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = `rgba(${rand(150, 220)}, ${rand(150, 220)}, ${rand(150, 220)}, 0.4)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.strokeText(char, 0, 0);
+        ctx.fillText(char, 0, 0);
+        ctx.restore();
+      });
+
+      // Final noise layer on top of letters
+      for (let i = 0; i < 18; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(120, 180)}, ${rand(120, 180)}, ${rand(120, 180)}, 0.15)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.lineTo(rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
       return code;
     }
 
@@ -749,7 +1059,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Configure Firebase to enable registration and login.", "error");
+      setStatus("Configure Firebase to enable registration and sign in.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -758,15 +1068,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      auth.languageCode = "en";
+      const db = getFirestore(app);
+      const functions = getFunctions(app, "europe-west1");
+      const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
+
+      // Capture Google redirect result
+      getRedirectResult(auth).then(async (result) => {
+        if (!result?.user) return;
+
+        // Mark that we are processing a Google redirect
+        sessionStorage.setItem("lixby_google_redirect", "1");
+
+        const user = result.user;
+
+        const createdAt = new Date(user.metadata.creationTime).getTime();
+        const isNewUser = (Date.now() - createdAt) < 10000;
+
+        if (isNewUser) {
+          const displayName = user.displayName || "user";
+          try {
+            await sendWelcomeEmail({ name: displayName, email: user.email });
+            console.log("Welcome email sent to:", user.email);
+          } catch (err) {
+            console.error("Error sending email:", err);
+          }
+        }
+
+        setStatus("Signed in with Google.", "success");
+        await transferSessionToApp(user);
+        window.location.href = "/en/account/";
+      }).catch((error) => {
+        sessionStorage.removeItem("lixby_google_redirect");
+        if (error.code !== "auth/no-current-user") {
+          setStatus(`Google error: ${error.message}`, "error");
+        }
+      });
+
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
 
       function getRecaptcha() {
         if (!recaptchaVerifier) {
-          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible"
+          recaptchaVerifier = new RecaptchaVerifier(auth, "sendSmsBtn", {
+            size: "invisible",
+            callback: () => {},
+            "expired-callback": () => {
+              recaptchaVerifier = null;
+            }
           });
         }
         return recaptchaVerifier;
@@ -803,6 +1153,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
       document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+      registerEmail.addEventListener("input", () => {
+        emailVerifySection.style.display = registerEmail.value.trim() ? "grid" : "none";
+      });
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -812,14 +1165,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Please use a valid email address to log in.", "error");
+          setStatus("To sign in, use a valid email address.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Successfully logged in.", "success");
+          setStatus("Signed in successfully.", "success");
           loginForm.reset();
           await transferSessionToApp(userCredential.user);
           window.location.href = "/en/account/";
@@ -832,7 +1185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             setStatus("Two-step verification required.", "info");
             return;
           }
-          setStatus(`Login error: ${error.message}`, "error");
+          setStatus(`Sign in error: ${error.message}`, "error");
         }
       });
 
@@ -883,7 +1236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Successfully logged in.", "success");
+          setStatus("Signed in successfully.", "success");
           await transferSessionToApp(userCredential.user);
           window.location.href = "/en/account/";
         } catch (error) {
@@ -892,7 +1245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
 
       const emailActionSettings = {
-        url: `/en/verified/`,
+        url: `${window.location.origin}/en/verified/`,
         handleCodeInApp: false
       };
 
@@ -928,10 +1281,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
+            // First send welcome email
+            console.log("Attempting to send welcome email...");
+            try {
+              const result = await sendWelcomeEmail({
+                name: firstName,
+                email: email
+              });
+              console.log("Email sent:", result);
+            } catch (err) {
+              console.error("Error sending email:", err);
+            }
+
+            // Then verification and database
             await sendEmailVerification(userCredential.user, emailActionSettings);
             
-            // Save profile to Firebase Realtime Database
-            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+            // Save profile to Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
               firstName,
               lastName,
               email,
@@ -942,12 +1308,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               phoneCountry: phoneCountryValue,
               phoneNumber,
               adsOptIn,
-              mediaOptIn
-            });
+              mediaOptIn,
+              createdAt: serverTimestamp()
+            }, { merge: true });
           }
           setStatus("Account created successfully.", "success");
           registerForm.reset();
+          sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
+          // Redirect always at the end
           await transferSessionToApp(userCredential.user);
           window.location.href = "/en/account/";
         } catch (error) {
@@ -955,47 +1324,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
 
-      verifyEmailBtn.addEventListener("click", async () => {
-        const user = auth.currentUser;
-        if (!user) {
-          setStatus("Log in to verify your email.", "error");
-          return;
-        }
-        try {
-          await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email sent. Check Spam and Promotions folders.", "success");
-        } catch (error) {
-          setStatus(`Could not send: ${error.message}`, "error");
-        }
-      });
-
       googleAuthBtn.addEventListener("click", async () => {
         try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Logged in with Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/en/account/";
+          await signInWithRedirect(auth, googleProvider);
         } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Google login cancelled.", "error");
-            return;
-          }
           setStatus(`Google error: ${error.message}`, "error");
         }
       });
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Registration completed with Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/en/account/";
+          await signInWithRedirect(auth, googleProvider);
         } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Google login cancelled.", "error");
-            return;
-          }
           setStatus(`Google error: ${error.message}`, "error");
+        }
+      });
+
+      sendEmailVerifyBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) {
+          setStatus("The button is ready. When you create your account, the verification email will be sent automatically.", "info");
+          return;
+        }
+        try {
+          await sendEmailVerification(user, emailActionSettings);
+          saveFormState();
+          setStatus("Verification email sent. Check your inbox and spam folder.", "success");
+          emailVerifyConfirmInput.value = user.email || "Email sent";
+          emailVerifyConfirmRow.style.display = "flex";
+        } catch (error) {
+          setStatus(`Could not send: ${error.message}`, "error");
         }
       });
 
@@ -1009,7 +1367,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
           setStatus("SMS sent. Check your phone.", "success");
+          const originalText = sendSmsBtn.textContent;
+          sendSmsBtn.textContent = "SMS sent!";
+          sendSmsBtn.classList.add("sms-sent");
+          setTimeout(() => {
+            sendSmsBtn.classList.remove("sms-sent");
+            sendSmsBtn.textContent = originalText;
+          }, 1600);
         } catch (error) {
+          if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+          }
           setStatus(`Could not send SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
@@ -1029,20 +1398,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         try {
           await confirmationResult.confirm(code);
           setStatus("Phone verified successfully.", "success");
+          smsCodeInput.classList.add("sms-success");
+          setTimeout(() => {
+            smsCodeInput.disabled = true;
+            verifySmsBtn.style.display = "none";
+          }, 300);
         } catch (error) {
-          setStatus("Incorrect code. Please try again.", "error");
+          setStatus("Incorrect code. Try again.", "error");
+          smsCodeInput.classList.add("sms-error");
+          setTimeout(() => {
+            smsCodeInput.classList.remove("sms-error");
+          }, 400);
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Logged out.", "info");
+        setStatus("Signed out.", "info");
       });
+
+      function saveFormState() {
+        const fields = {
+          firstName: document.getElementById("firstName")?.value || "",
+          lastName: document.getElementById("lastName")?.value || "",
+          country: document.getElementById("country")?.value || "",
+          birthDay: document.getElementById("birthDay")?.value || "",
+          birthMonth: document.getElementById("birthMonth")?.value || "",
+          birthYear: document.getElementById("birthYear")?.value || "",
+          registerEmail: document.getElementById("registerEmail")?.value || "",
+          phoneCountry: document.getElementById("phoneCountry")?.value || "",
+          phoneNumber: document.getElementById("phoneNumber")?.value || "",
+          adsOptIn: document.getElementById("adsOptIn")?.checked || false,
+          mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
+          activeSection: registerSection.classList.contains("active") ? "register" : "login"
+        };
+        sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
+      }
+
+      function restoreFormState() {
+        const raw = sessionStorage.getItem("lixby_register_draft");
+        if (!raw) return;
+        try {
+          const f = JSON.parse(raw);
+          if (f.firstName) document.getElementById("firstName").value = f.firstName;
+          if (f.lastName) document.getElementById("lastName").value = f.lastName;
+          if (f.country) document.getElementById("country").value = f.country;
+          if (f.birthDay) document.getElementById("birthDay").value = f.birthDay;
+          if (f.birthMonth) document.getElementById("birthMonth").value = f.birthMonth;
+          if (f.birthYear) document.getElementById("birthYear").value = f.birthYear;
+          if (f.registerEmail) {
+            registerEmail.value = f.registerEmail;
+            emailVerifySection.style.display = "grid";
+          }
+          if (f.phoneCountry) document.getElementById("phoneCountry").value = f.phoneCountry;
+          if (f.phoneNumber) {
+            document.getElementById("phoneNumber").value = f.phoneNumber;
+            togglePhoneVerify();
+          }
+          document.getElementById("adsOptIn").checked = !!f.adsOptIn;
+          document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
+          if (f.activeSection === "register") openRegister(null);
+        } catch (e) {
+          console.warn("Could not restore draft:", e);
+        }
+      }
+
+      registerForm.addEventListener("input", saveFormState);
+      registerForm.addEventListener("change", saveFormState);
+
+      // On page load, clear sensitive keys from previous drafts
+      const oldDraft = JSON.parse(sessionStorage.getItem("lixby_register_draft") || "{}");
+      delete oldDraft.registerPassword;
+      delete oldDraft.registerPasswordConfirm;
+      sessionStorage.setItem("lixby_register_draft", JSON.stringify(oldDraft));
+
+      restoreFormState();
+      const urlParams = new URLSearchParams(window.location.search);
+      const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
+      if (sessionStorage.getItem("lixby_email_verified") === "1") {
+        sessionStorage.removeItem("lixby_email_verified");
+      }
+      if (returningFromVerification) {
+        setStatus("Email verified. You can continue with your account.", "success");
+        if (registerEmail.value) {
+          emailVerifySection.style.display = "grid";
+          emailVerifyConfirmInput.value = registerEmail.value;
+          emailVerifyConfirmRow.style.display = "flex";
+        }
+        urlParams.delete("verified");
+        const cleanedUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanedUrl);
+      }
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Logged in as ${user.email}`;
+          userEmail.textContent = `Signed in as ${user.email}`;
+          // ❌ Do not perform redirects here; getRedirectResult and login flow should handle it
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
@@ -1052,6 +1504,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-
-

@@ -214,8 +214,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -238,8 +236,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/shop/" class="nav-link">Store</a>
-        <a href="/en/#productos" class="nav-link">Products</a>
+        <a href="/en/store/" class="nav-link">Store</a>
+        <a href="/en/#products" class="nav-link">Products</a>
         <a href="/en/#apps" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
@@ -271,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cart-actions">
           <div id="giftCardSection" style="margin-bottom:12px">
             <div style="display:flex;gap:8px">
-              <input type="text" id="giftCodeInput" placeholder="Gift code (LIXBY-XXXX-XXXX)"
+              <input type="text" id="giftCodeInput" placeholder="Gift card code (LIXBY-XXXX-XXXX)"
                 style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.9rem;outline:none">
               <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
                 Apply
@@ -279,8 +277,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
           </div>
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Checkout</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Empty cart</button>
+          <a id="checkoutBtn" class="btn btn-primary" href="#" role="button">Checkout</a>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">Clear cart</button>
         </div>
       </aside>
     </section>
@@ -291,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZbIU2Hz3Ob1B12LV4ZG00";
     const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
     const SUCCESS_URL = new URL("/en/thank-you/", window.location.href).toString();
     const CANCEL_URL = window.location.href;
@@ -366,7 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function buildLineId(entry) {
       const id = entry.id || "item";
       const color = entry.color || "—";
-      const plan = entry.insurancePlan || "Without LixSafe";
+      const plan = entry.insurancePlan || "No LixSafe";
       const price = Number(entry.insurancePrice) || 0;
       return `${id}|${color}|${plan}|${price}`;
     }
@@ -422,7 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function resolveInsurancePriceId(plan) {
       if (!plan) return null;
       const normalized = String(plan).toLowerCase().trim();
-      if (normalized === "sin lixsafe" || normalized === "without lixsafe" || normalized === "sin seguro") return null;
+      if (normalized === "sin lixsafe" || normalized === "sin seguro" || normalized === "no lixsafe") return null;
       if (normalized.includes("lixsafe+") || normalized.includes("plus")) {
         return PRICES.lixsafe_plus;
       }
@@ -474,7 +472,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           qty,
           unitPrice,
           lineTotal,
-          insurancePlan: entry.insurancePlan || "Without LixSafe",
+          insurancePlan: entry.insurancePlan || "No LixSafe",
           insurancePrice
         };
       });
@@ -513,7 +511,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="/en/shop/">Go to store</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Your cart is empty. <a href="/en/store/">Go to store</a>.</p>`;
         subtotalEl.textContent = money(0);
         totalEl.textContent = money(0);
         return;
@@ -536,9 +534,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
 
-        const insurancePlan = entry.insurancePlan || "Without LixSafe";
+        const insurancePlan = entry.insurancePlan || "No LixSafe";
         const color = entry.color || "—";
-        const insuranceLabel = insurancePlan === "Without LixSafe" ? "Without LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const insuranceLabel = insurancePlan === "No LixSafe" ? "No LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
         const baseName = entry.name || product.name || "Product";
         let displayName = baseName;
         if (color !== "—") {
@@ -637,7 +635,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
         } catch (e) {
           msg.style.color = "#ef4444";
-          msg.textContent = "❌ Error verifying code";
+          msg.textContent = "❌ Error verifying the code";
           msg.style.display = "block";
         } finally {
           applyGiftBtn.disabled = false;
@@ -646,28 +644,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    checkoutBtn.addEventListener("click", async () => {
+    checkoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
       const cart = readCart();
       if (cart.length === 0) {
         alert("Your cart is empty.");
         return;
       }
 
-      checkoutBtn.disabled = true;
+      checkoutBtn.setAttribute("aria-disabled", "true");
+      checkoutBtn.classList.add("disabled");
       const originalCheckoutLabel = checkoutBtn.textContent;
       checkoutBtn.textContent = "Processing...";
 
       if (!authReady) {
         alert("Loading session. Try again in a few seconds.");
-        checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
         return;
       }
 
       if (!isAuthenticated) {
-        checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
-        window.location.href = "/en/login/";
+        window.location.href = "/en/sign-in/";
         return;
       }
 
@@ -696,7 +698,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         await addDoc(collection(db, "orders"), orderPayload);
       } catch (error) {
         console.log("Order save failed", error);
-      }      try {
+      }
+
+      try {
+        // Read saved profile
         const customerName = auth.currentUser?.displayName || null;
 
         const checkoutItems = buildCheckoutItems(summary.items);
@@ -759,6 +764,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-
-

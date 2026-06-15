@@ -67,8 +67,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
 
   <style>
     :root {
@@ -325,8 +323,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container nav-container">
     <a href="./" class="nav-brand">Lixby</a>
     <nav class="nav-links" aria-label="Main">
-      <a href="/en/shop/" class="nav-link">Store</a>
-      <a href="/en/#productos" class="nav-link">Products</a>
+      <a href="/en/store/" class="nav-link">Store</a>
+      <a href="/en/#products" class="nav-link">Products</a>
       <a href="/en/#apps" class="nav-link">Apps</a>
       <a href="/en/support/" class="nav-link">Support</a>
     </nav>
@@ -352,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="thank-eyebrow">Order confirmed</p>
     <h1 class="thank-title">Thank you for your purchase!</h1>
-    <p class="thank-sub">We'll send the confirmation by email. You can track your order at any time.</p>
+    <p class="thank-sub">We will send you a confirmation email. You can track your order at any time.</p>
 
     <!-- Order number -->
     <div class="order-number-badge">
@@ -393,7 +391,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Actions -->
     <div class="thank-actions">
-      <a class="btn btn-primary" href="/en/shop/">Continue shopping</a>
+      <a class="btn btn-primary" href="/en/store/">Continue shopping</a>
       <a class="btn btn-secondary" id="trackBtn" href="/en/track/">Track order</a>
     </div>
   </div>
@@ -445,7 +443,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     draw();
   })();
 
-  // ── Order data ────────────────────────────────────────────
+  // ── Order data ──────────────────────────────────────────────
   const LAST_ORDER_KEY = 'lixbyCart';
   const params = new URLSearchParams(window.location.search);
   const orderId = params.get('orderId');
@@ -550,6 +548,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 </body>
 </html>
-
-
-

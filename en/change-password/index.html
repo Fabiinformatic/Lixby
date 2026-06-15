@@ -137,8 +137,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       flex-wrap: wrap;
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -161,8 +159,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/shop/" class="nav-link">Store</a>
-        <a href="#productos" class="nav-link">Products</a>
+        <a href="/en/store/" class="nav-link">Store</a>
+        <a href="#products" class="nav-link">Products</a>
         <a href="#apps" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
@@ -173,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/en/shop/" method="get">
+        <form id="navSearchForm" action="/en/store/" method="get">
           <input
             type="search"
             id="navSearch"
@@ -201,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
     <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/en/shop/" method="get">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/en/store/" method="get">
         <input
           type="search"
           id="navSearchMobile"
@@ -216,8 +214,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <nav class="nav-mobile-links" aria-label="Mobile main">
-      <a href="/en/shop/">Store</a>
-      <a href="#productos">Products</a>
+      <a href="/en/store/">Store</a>
+      <a href="#products">Products</a>
       <a href="#apps">Apps</a>
       <a href="/en/support/">Support</a>
     </nav>
@@ -294,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/en/login/";
+        window.location.href = "/en/sign-in/";
       }
     });
 
@@ -315,7 +313,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       if (!isStrongEnough(next)) {
-        showStatus("New password must be at least 8 characters long.", "error");
+        showStatus("The new password must be at least 8 characters long.", "error");
         return;
       }
 
@@ -337,6 +335,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
-
-
-
