@@ -1419,19 +1419,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       function saveFormState() {
         const fields = {
-          firstName: document.getElementById("firstName").value,
-          lastName: document.getElementById("lastName").value,
-          country: document.getElementById("country").value,
-          birthDay: document.getElementById("birthDay").value,
-          birthMonth: document.getElementById("birthMonth").value,
-          birthYear: document.getElementById("birthYear").value,
-          registerEmail: document.getElementById("registerEmail").value,
-          registerPassword: document.getElementById("registerPassword").value,
-          registerPasswordConfirm: document.getElementById("registerPasswordConfirm").value,
-          phoneCountry: document.getElementById("phoneCountry").value,
-          phoneNumber: document.getElementById("phoneNumber").value,
-          adsOptIn: document.getElementById("adsOptIn").checked,
-          mediaOptIn: document.getElementById("mediaOptIn").checked,
+          firstName: document.getElementById("firstName")?.value || "",
+          lastName: document.getElementById("lastName")?.value || "",
+          country: document.getElementById("country")?.value || "",
+          birthDay: document.getElementById("birthDay")?.value || "",
+          birthMonth: document.getElementById("birthMonth")?.value || "",
+          birthYear: document.getElementById("birthYear")?.value || "",
+          registerEmail: document.getElementById("registerEmail")?.value || "",
+          phoneCountry: document.getElementById("phoneCountry")?.value || "",
+          phoneNumber: document.getElementById("phoneNumber")?.value || "",
+          adsOptIn: document.getElementById("adsOptIn")?.checked || false,
+          mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
           activeSection: registerSection.classList.contains("active") ? "register" : "login"
         };
         sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
@@ -1452,8 +1450,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             registerEmail.value = f.registerEmail;
             emailVerifySection.style.display = "grid";
           }
-          if (f.registerPassword) document.getElementById("registerPassword").value = f.registerPassword;
-          if (f.registerPasswordConfirm) document.getElementById("registerPasswordConfirm").value = f.registerPasswordConfirm;
           if (f.phoneCountry) document.getElementById("phoneCountry").value = f.phoneCountry;
           if (f.phoneNumber) {
             document.getElementById("phoneNumber").value = f.phoneNumber;
@@ -1469,6 +1465,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       registerForm.addEventListener("input", saveFormState);
       registerForm.addEventListener("change", saveFormState);
+
+      // Al cargar la página, limpiar claves sensibles de drafts anteriores
+      const oldDraft = JSON.parse(sessionStorage.getItem("lixby_register_draft") || "{}");
+      delete oldDraft.registerPassword;
+      delete oldDraft.registerPasswordConfirm;
+      sessionStorage.setItem("lixby_register_draft", JSON.stringify(oldDraft));
+
       restoreFormState();
       const urlParams = new URLSearchParams(window.location.search);
       const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
@@ -1491,13 +1494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (user) {
           userPanel.classList.add("show");
           userEmail.textContent = `Conectado como ${user.email}`;
-
-          // Solo redirigir si NO venimos de verificación de email
-          // y NO estamos ya procesando un redirect de Google (getRedirectResult lo maneja)
-          const isGoogleRedirect = sessionStorage.getItem("lixby_google_redirect");
-          if (!returningFromVerification && !isGoogleRedirect) {
-            window.location.href = "/es/cuenta/";
-          }
+          // ❌ No realizar redirecciones aquí; getRedirectResult y el flujo de login deben encargarse
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";

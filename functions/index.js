@@ -198,7 +198,7 @@ Este correo ha sido enviado automáticamente por Lixby. Si no has creado esta cu
       replyTo: "soporte@lixby.es",
       subject,
       html,
-      text: html.replace(/<[^>]*>/g, "")
+      text: sanitizeHtml(html, { allowedTags: [], allowedAttributes: {}, decodeEntities: true }).trim()
     });
 
     return { success: true };
@@ -232,7 +232,7 @@ exports.sendLixbyEmail = onCall(
       replyTo: "soporte@lixby.es",
       subject,
       html,
-      text: html.replace(/<[^>]*>/g, "")
+      text: sanitizeHtml(html, { allowedTags: [], allowedAttributes: {}, decodeEntities: true }).trim()
     });
 
     await db.collection("emailLogs").add({
@@ -270,7 +270,7 @@ exports.sendNewsletter = onCall(
         replyTo: "soporte@lixby.es",
         subject: template.subject || "Newsletter Lixby",
         html: (template.html || "").replace(/{{name}}/g, "Usuario Test"),
-        text: (template.html || "").replace(/]*>/g, "")
+        text: sanitizeHtml(template.html || "", { allowedTags: [], allowedAttributes: {}, decodeEntities: true }).trim()
       });
       return { success: true, sent: 1, mode: "test" };
     }
@@ -329,17 +329,7 @@ exports.sendNewsletter = onCall(
             replyTo: "soporte@lixby.es",
             subject,
             html,
-            text: html
-              .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
-              .replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, "")
-              .replace(/<[^>]+>/g, "")
-              .replace(/&nbsp;/g, " ")
-              .replace(/&amp;/g, "&")
-              .replace(/&lt;/g, "<")
-              .replace(/&gt;/g, ">")
-              .replace(/&quot;/g, '"')
-              .replace(/\s{2,}/g, " ")
-              .trim()
+            text: sanitizeHtml(html, { allowedTags: [], allowedAttributes: {}, decodeEntities: true }).trim()
           });
           sent++;
         } catch (e) {
