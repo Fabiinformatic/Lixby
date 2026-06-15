@@ -19,8 +19,7 @@
                                    "package-lock.json",
                                    "README.md",
                                    "firebase-debug.log",
-                                   "*.ps1",
-                                   "**/main.js"
+                                   "*.ps1"
                                ],
                     "cleanUrls":  true,
                     "headers":  [
