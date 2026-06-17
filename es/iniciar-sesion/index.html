@@ -1326,6 +1326,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleAuthBtn.addEventListener("click", async () => {
         try {
+          await setPersistence(auth, browserLocalPersistence);
           await signInWithRedirect(auth, googleProvider);
         } catch (error) {
           setStatus(`Error con Google: ${error.message}`, "error");
@@ -1334,6 +1335,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       googleRegisterBtn.addEventListener("click", async () => {
         try {
+          await setPersistence(auth, browserLocalPersistence);
           await signInWithRedirect(auth, googleProvider);
         } catch (error) {
           setStatus(`Error con Google: ${error.message}`, "error");

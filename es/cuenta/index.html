@@ -836,7 +836,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getAuth, getRedirectResult, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
     import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
@@ -1313,6 +1313,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const redirectResultPromise = getRedirectResult(auth).catch((error) => {
+      console.warn("No se pudo resolver el redirect de autenticacion:", error);
+      return null;
+    });
     const storage = getStorage(app);
     const db = getFirestore(app);
     const functions = getFunctions(app, "us-central1");
@@ -1680,12 +1684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        window.location.href = "/es/iniciar-sesion/";
-        return;
-      }
-
+    async function loadAccount(user) {
       await ensureAccountNumber();
       await migrateStoredBilling();
 
@@ -1717,6 +1716,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         twoFactorBtn.textContent = has2fa ? "Verificado" : "Configurar";
         twoFactorBtn.classList.toggle("btn-verified", has2fa);
       }
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      let activeUser = user;
+
+      if (!activeUser) {
+        const redirectResult = await redirectResultPromise;
+        activeUser = redirectResult?.user || auth.currentUser;
+      }
+
+      if (!activeUser) {
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        activeUser = auth.currentUser;
+      }
+
+      if (!activeUser) {
+        window.location.href = "/es/iniciar-sesion/";
+        return;
+      }
+
+      await loadAccount(activeUser);
     });
 
     editBtn.addEventListener("click", async () => {

@@ -1,5 +1,5 @@
 español 100%
-ingles 100% ¡Falta link rel y href!
+ingles 100% ¡Falta link rel y href! cuenta.html y inciar-sesion.html
 italiano 100%
 frances 100%
 portugues 100%

@@ -2,6 +2,10 @@ export async function transferSessionToApp(user) {
   if (!user) return false;
 
   try {
+    if (!isNativeApp()) {
+      return false;
+    }
+
     const idToken = await user.getIdToken();
 
     const res = await fetch("/auth/custom-token", {
@@ -22,6 +26,10 @@ export async function transferSessionToApp(user) {
     console.warn("No se pudo transferir la sesión a la app:", error);
     return false;
   }
+}
+
+function isNativeApp() {
+  return navigator.userAgent.includes("LixneyApp");
 }
 
 function redirectToApp(customToken) {
