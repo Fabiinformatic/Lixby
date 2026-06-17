@@ -1097,8 +1097,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         setStatus("Sesión iniciada con Google.", "success");
-        await transferSessionToApp(user);
-        window.location.href = "/es/cuenta/";
+        try {
+          await transferSessionToApp(user);
+        } catch (error) {
+          console.warn("No se pudo transferir la sesión a la app:", error);
+        } finally {
+          window.location.href = "/es/cuenta/";
+        }
       }).catch((error) => {
         sessionStorage.removeItem("lixby_google_redirect");
         if (error.code !== "auth/no-current-user") {
@@ -1174,8 +1179,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
           setStatus("Sesión iniciada correctamente.", "success");
           loginForm.reset();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/es/cuenta/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("No se pudo transferir la sesión a la app:", error);
+          } finally {
+            window.location.href = "/es/cuenta/";
+          }
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
@@ -1237,8 +1247,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           mfaVerificationId = "";
           mfaCodeInput.value = "";
           setStatus("Sesión iniciada correctamente.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/es/cuenta/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("No se pudo transferir la sesión a la app:", error);
+          } finally {
+            window.location.href = "/es/cuenta/";
+          }
         } catch (error) {
           setStatus(`Código inválido: ${error.message}`, "error");
         }
@@ -1317,8 +1332,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
           // La redirección siempre al final
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/es/cuenta/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("No se pudo transferir la sesión a la app:", error);
+          } finally {
+            window.location.href = "/es/cuenta/";
+          }
         } catch (error) {
           setStatus(`Error al registrar: ${error.message}`, "error");
         }
