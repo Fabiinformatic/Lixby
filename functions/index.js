@@ -422,3 +422,56 @@ exports.sitemap = onRequest((req, res) => {
     return res.status(500).send("Sitemap unavailable");
   }
 });
+
+exports.adminSearchUser = onCall(
+  { region: "europe-west1" },
+  async (request) => {
+    const { email, nlx } = request.data;
+
+    const db = admin.firestore();
+
+    if (nlx) {
+      const snap = await db.collectionGroup("profiles")
+        .where("accountNumber", "==", nlx)
+        .limit(1)
+        .get();
+
+      if (!snap.empty) {
+        const doc = snap.docs[0];
+        return { userData: doc.data(), uid: doc.ref.parent.parent?.id || null };
+      }
+
+      const snap2 = await db.collection("users")
+        .where("accountNumber", "==", nlx)
+        .limit(1)
+        .get();
+      if (!snap2.empty) {
+        const doc2 = snap2.docs[0];
+        return { userData: doc2.data(), uid: doc2.id };
+      }
+    }
+
+    if (email) {
+      const snap = await db.collection("users")
+        .where("email", "==", email)
+        .limit(1)
+        .get();
+
+      if (!snap.empty) {
+        const doc = snap.docs[0];
+        return { userData: doc.data(), uid: doc.id };
+      }
+
+      const snap2 = await db.collectionGroup("profiles")
+        .where("email", "==", email)
+        .limit(1)
+        .get();
+      if (!snap2.empty) {
+        const doc2 = snap2.docs[0];
+        return { userData: doc2.data(), uid: doc2.ref.parent.parent?.id || null };
+      }
+    }
+
+    return { userData: null, uid: null };
+  }
+);

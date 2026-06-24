@@ -1,7 +1,6 @@
 {
     "hosting":  {
                     "public":  ".",
-                    "404":  "404.html",
                     "ignore":  [
                                    "firebase.json",
                                    "sitemap.xml",
