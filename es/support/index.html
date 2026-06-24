@@ -336,13 +336,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 .faq-question::after {
-  content: "❓";
-  font-size: 18px;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-gray-600);
+  border-bottom: 2px solid var(--color-gray-600);
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-left: var(--spacing-4);
+  transform: rotate(45deg);
   transition: transform 0.25s ease;
 }
 
 .faq-question[aria-expanded="true"]::after {
-  transform: rotate(180deg);
+  transform: rotate(225deg);
 }
 
 .faq-answer {
@@ -827,6 +834,132 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             Sí, durante el checkout puedes introducir los datos fiscales. También puedes solicitarla desde tu cuenta.
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq15" aria-labelledby="faq15-label">
+            <span id="faq15-label">¿Dónde puedo ver el estado de mi pedido?</span>
+          </button>
+          <div class="faq-answer" id="faq15" role="region" aria-labelledby="faq15-label">
+            Puedes consultar el seguimiento desde la página de rastreo introduciendo el número de pedido o desde tu cuenta Lixby.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq16" aria-labelledby="faq16-label">
+            <span id="faq16-label">¿Qué hago si mis LixBuds no cargan?</span>
+          </button>
+          <div class="faq-answer" id="faq16" role="region" aria-labelledby="faq16-label">
+            Limpia suavemente los contactos de carga, prueba otro cable USB-C y deja el estuche conectado durante 20 minutos antes de volver a intentarlo.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq17" aria-labelledby="faq17-label">
+            <span id="faq17-label">¿Cómo emparejo los LixBuds con un móvil nuevo?</span>
+          </button>
+          <div class="faq-answer" id="faq17" role="region" aria-labelledby="faq17-label">
+            Abre el estuche, mantén pulsado el botón de emparejamiento hasta que el LED parpadee y selecciona LixBuds One en los ajustes Bluetooth.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq18" aria-labelledby="faq18-label">
+            <span id="faq18-label">¿Puedo cancelar un pedido?</span>
+          </button>
+          <div class="faq-answer" id="faq18" role="region" aria-labelledby="faq18-label">
+            Puedes solicitar la cancelación si el pedido todavía no ha sido preparado. Escríbenos cuanto antes con tu número de pedido.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq19" aria-labelledby="faq19-label">
+            <span id="faq19-label">¿Cuándo recibo el reembolso?</span>
+          </button>
+          <div class="faq-answer" id="faq19" role="region" aria-labelledby="faq19-label">
+            Tras aprobar la devolución, el reembolso se procesa normalmente en 3-7 días laborables según el banco o método de pago.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq20" aria-labelledby="faq20-label">
+            <span id="faq20-label">¿Lixney funciona sin conexión?</span>
+          </button>
+          <div class="faq-answer" id="faq20" role="region" aria-labelledby="faq20-label">
+            Algunas funciones básicas pueden usarse sin conexión, pero la sincronización, copias y servicios de cuenta requieren internet.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq21" aria-labelledby="faq21-label">
+            <span id="faq21-label">¿Cómo cambio el correo de mi cuenta?</span>
+          </button>
+          <div class="faq-answer" id="faq21" role="region" aria-labelledby="faq21-label">
+            Entra en tu cuenta, abre los ajustes de perfil y actualiza el correo. Puede que tengas que confirmar el cambio desde ambos emails.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq22" aria-labelledby="faq22-label">
+            <span id="faq22-label">¿Qué incluye la caja de LixBuds One?</span>
+          </button>
+          <div class="faq-answer" id="faq22" role="region" aria-labelledby="faq22-label">
+            Incluye los auriculares, estuche de carga, cable USB-C, almohadillas de repuesto y documentación básica de uso.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq23" aria-labelledby="faq23-label">
+            <span id="faq23-label">¿Puedo usar solo un auricular?</span>
+          </button>
+          <div class="faq-answer" id="faq23" role="region" aria-labelledby="faq23-label">
+            Sí, puedes usar el auricular izquierdo o derecho de forma independiente para llamadas, música o asistentes de voz.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq24" aria-labelledby="faq24-label">
+            <span id="faq24-label">¿Cómo limpio los auriculares?</span>
+          </button>
+          <div class="faq-answer" id="faq24" role="region" aria-labelledby="faq24-label">
+            Usa un paño seco y bastoncillos suaves. No uses agua directa, alcohol ni productos abrasivos sobre las rejillas o contactos.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq25" aria-labelledby="faq25-label">
+            <span id="faq25-label">¿Puedo cambiar la contraseña de Lixby?</span>
+          </button>
+          <div class="faq-answer" id="faq25" role="region" aria-labelledby="faq25-label">
+            Sí, puedes hacerlo desde la página de cambiar contraseña o usando la recuperación de contraseña si no recuerdas la actual.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq26" aria-labelledby="faq26-label">
+            <span id="faq26-label">¿Qué pasa si no recibo el email de verificación?</span>
+          </button>
+          <div class="faq-answer" id="faq26" role="region" aria-labelledby="faq26-label">
+            Revisa spam o promociones, confirma que el correo esté bien escrito y solicita reenviar el email desde la pantalla de cuenta.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq27" aria-labelledby="faq27-label">
+            <span id="faq27-label">¿Puedo pedir ayuda con una compra hecha como invitado?</span>
+          </button>
+          <div class="faq-answer" id="faq27" role="region" aria-labelledby="faq27-label">
+            Sí, indica el email usado en la compra y el número de pedido para que podamos localizarla.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" role="button" aria-expanded="false" aria-controls="faq28" aria-labelledby="faq28-label">
+            <span id="faq28-label">¿Cómo sé si mi producto entra en garantía?</span>
+          </button>
+          <div class="faq-answer" id="faq28" role="region" aria-labelledby="faq28-label">
+            Revisa la fecha de compra y el tipo de incidencia. La garantía cubre defectos de fabricación, no daños accidentales o mal uso.
+          </div>
+        </div>
       </div>
     </section>
 
@@ -843,14 +976,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="contact-info-content">
                 <h3>Email</h3>
                 <p style="color: var(--color-gray-600); margin: 0;">lixbyinfo@gmail.com</p>
-              </div>
-            </div>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon"><i data-lucide="phone"></i></div>
-              <div class="contact-info-content">
-                <h3>Teléfono</h3>
-                <p style="color: var(--color-gray-600); margin: 0;">+34 900 123 456</p>
               </div>
             </div>
 
@@ -992,6 +1117,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     };
 
+    const visibleFaqLimit = 15;
+    const supportSearchInput = document.querySelector('.support-search input');
+    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+    const faqCount = document.getElementById('faq-results-count');
+
+    const shuffleItems = (items) => {
+      const shuffled = [...items];
+      for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    const showInitialFaqSet = () => {
+      const selectedItems = new Set(shuffleItems(faqItems).slice(0, visibleFaqLimit));
+      faqItems.forEach((faq) => {
+        const button = faq.querySelector('.faq-question');
+        if (button) closeItem(button);
+        faq.style.display = selectedItems.has(faq) ? 'block' : 'none';
+        faq.style.background = '';
+      });
+      if (faqCount) {
+        faqCount.textContent = `Mostrando ${Math.min(visibleFaqLimit, faqItems.length)} preguntas destacadas`;
+      }
+    };
+
     document.querySelectorAll('.faq-question').forEach((button) => {
       button.addEventListener('click', () => {
         const allButtons = document.querySelectorAll('.faq-question');
@@ -1007,12 +1159,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
 
-    const supportSearchInput = document.querySelector('.support-search input');
-    const faqItems = document.querySelectorAll('.faq-item');
-    const faqCount = document.getElementById('faq-results-count');
     if (supportSearchInput) {
       supportSearchInput.addEventListener('input', () => {
         const term = supportSearchInput.value.trim().toLowerCase();
+        if (!term) {
+          showInitialFaqSet();
+          return;
+        }
+
         let results = 0;
         faqItems.forEach((faq) => {
           const text = faq.innerText.toLowerCase();
@@ -1039,6 +1193,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
     }
+
+    showInitialFaqSet();
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted && supportSearchInput && !supportSearchInput.value.trim()) {
+        showInitialFaqSet();
+      }
+    });
 
     const form = document.querySelector('.contact-form');
     const status = document.getElementById('form-status');

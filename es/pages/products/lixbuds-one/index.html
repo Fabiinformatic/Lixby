@@ -41,9 +41,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="https://lixby.es/sv/pages/products/lixbuds-one" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/pages/products/lixbuds-one" hreflang="x-default">
 
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LixBuds One | Landing Premium</title>
+  <title>LixBuds One | Lixby</title>
   <meta name="description" content="LixBuds One: el sonido que redefine lo inalámbrico.">
   <meta property="og:title" content="LixBuds One | Wireless Premium">
   <meta property="og:description" content="Auriculares inalámbricos con cancelación de ruido, audio espacial y diseño premium.">
@@ -57,70 +57,183 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:description" content="Auriculares inalámbricos con cancelación de ruido, audio espacial y diseño premium.">
   <meta name="twitter:image" content="https://lixby.es/es/pages/products/images/lixbuds-product.jpg">
   <meta property="og:url" content="https://lixby.es/es/pages/products/lixbuds-one">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    /* === VARIABLES === */
     :root {
-      --bg: #0b0b0c;
-      --bg-soft: #101114;
-      --ink: #f5f5f6;
-      --muted: #a8abb2;
-      --line: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.06);
-      --accent: #e6e7ea;
-      --accent-soft: rgba(230, 231, 234, 0.15);
-      --glow: rgba(255, 255, 255, 0.24);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --bg: #ffffff;
+      --bg-soft: #f7f8fb;
+      --ink: #111318;
+      --muted: #626a76;
+      --line: rgba(17, 19, 24, 0.12);
+      --glass: rgba(255, 255, 255, 0.82);
+      --shadow: 0 24px 70px rgba(17, 24, 39, 0.12);
     }
 
+    /* === RESET === */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "Manrope", "Space Grotesk", sans-serif;
+      font-family: "Inter", sans-serif;
       color: var(--ink);
-      background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.12) 0, transparent 45%),
-                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06) 0, transparent 40%),
-                  var(--bg);
+      background: var(--bg);
       line-height: 1.6;
       overflow-x: hidden;
+      padding-top: 118px;
     }
-
-    body::after {
-      content: "";
-      position: fixed;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 35%, transparent 70%);
-      mix-blend-mode: screen;
-      left: var(--x, -999px);
-      top: var(--y, -999px);
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      opacity: 0.65;
-    }
-
-    h1, h2 {
-      font-family: "Sora", "Space Grotesk", sans-serif;
-      text-transform: none;
-    }
-
+    h1, h2 { font-family: "Inter", sans-serif; font-weight: 600; text-transform: none; }
     .container { width: min(1200px, 92vw); margin: 0 auto; }
-    .scroll-progress {
+
+    /* === SCROLL PROGRESS === */
+    #scroll-progress {
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: #ffffff;
-      z-index: 999;
-      box-shadow: 0 0 18px rgba(255,255,255,0.4);
+      top: 0; left: 0;
+      height: 4px;
+      width: 0;
+      background: var(--ink);
+      z-index: 2000;
+      transition: width 0.1s linear;
     }
+
+    /* === NAV === */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      z-index: 1200;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px) saturate(170%);
+      -webkit-backdrop-filter: blur(16px) saturate(170%);
+      border-bottom: 1px solid #e6e7eb;
+    }
+    .nav-container {
+      max-width: 1120px;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+    .nav.nav-scrolled .nav-container { display: none; }
+    .nav-brand {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 1.28rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      gap: 20px;
+    }
+    .nav-link {
+      position: relative;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 0;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 2px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+      opacity: 0;
+      transform: scaleX(0.5);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link:hover::after { opacity: 1; transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-search {
+      width: clamp(160px, 18vw, 220px);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-family: inherit;
+      font-weight: 600;
+      outline: none;
+      background: #f8fafc;
+      color: var(--ink);
+    }
+    .nav-icon-link {
+      width: 32px; height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nav-icon-link:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08); }
+    .nav-icon-link img { width: 16px; height: 16px; object-fit: contain; }
+
+    /* === SUBNAV === */
+    .product-subnav {
+      border-top: 1px solid #e6e7eb;
+      background: transparent;
+    }
+    .product-subnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      font-weight: 600;
+      max-width: 1120px;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+    .product-subnav-title { font-size: 1.1rem; white-space: nowrap; }
+    .product-subnav-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .product-subnav-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .product-subnav-links a:hover,
+    .product-subnav-links a.active { color: var(--ink); }
+    .product-subnav-links .buy-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--ink);
+      box-shadow: 0 12px 24px rgba(17, 24, 39, 0.18);
+    }
+    .product-subnav-links .buy-pill:hover {
+      color: #ffffff;
+      box-shadow: 0 16px 30px rgba(17, 24, 39, 0.24);
+      transform: translateY(-1px);
+    }
+
+    /* === PANEL BASE === */
     .panel {
       min-height: 100vh;
       display: grid;
@@ -129,84 +242,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: relative;
       isolation: isolate;
     }
-
+    #caracteristicas, #sonido, #anc, #bateria, #comprar { scroll-margin-top: 132px; }
     .panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%);
+      background: radial-gradient(circle at 30% 30%, rgba(148, 163, 184, 0.12), transparent 60%);
       opacity: 0.6;
       pointer-events: none;
       z-index: -1;
     }
 
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(8, 8, 10, 0.75);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .top-nav .container {
-      height: 70px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 0.08em;
+    /* === SECTION LABEL & HEAD === */
+    .section-label {
       text-transform: uppercase;
-      font-size: 0.85rem;
-      color: var(--ink);
-    }
-
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a {
-      text-decoration: none;
+      letter-spacing: 0.2em;
+      font-size: 0.68rem;
       color: var(--muted);
-      font-weight: 500;
-      font-size: 0.92rem;
-      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      display: inline-block;
     }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--ink); }
+    .section-head h2 { font-size: clamp(1.8rem, 4.5vw, 3.2rem); letter-spacing: -0.04em; margin-bottom: 10px; }
+    .section-head p { color: var(--muted); max-width: 760px; }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-    }
-
-    .hero p { font-size: 1.15rem; color: var(--muted); }
-
-    .hero-meta {
-      margin: 24px 0 28px;
-      display: grid;
-      gap: 6px;
-      font-weight: 500;
-    }
-
-    .price {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-    }
-
-    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    /* === BUTTONS === */
     .btn {
       border: 1px solid var(--line);
       padding: 14px 28px;
@@ -221,160 +280,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: relative;
       overflow: hidden;
     }
-
     .btn::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
       transform: translateX(-120%);
       transition: transform .45s ease;
     }
-
     .btn:hover::after { transform: translateX(120%); }
     .btn:hover { transform: translateY(-3px) scale(1.02); }
     .btn:active { transform: scale(0.96); }
-    .btn-dark {
-      background: #f4f4f4;
-      color: #0b0b0c;
-      border-color: #f4f4f4;
-      box-shadow: 0 20px 40px rgba(255,255,255,0.15);
-    }
-    .btn-light {
-      background: transparent;
-      color: var(--ink);
-    }
+    .btn-dark { background: var(--ink); color: #ffffff; border-color: var(--ink); box-shadow: 0 20px 40px rgba(17, 24, 39, 0.16); }
+    .btn-light { background: transparent; color: var(--ink); }
 
-    .hero-media {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: linear-gradient(150deg, #0c0d10 0%, #1d1f25 100%);
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      box-shadow: var(--shadow);
+    /* === PRICE === */
+    .price { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 18px; }
+
+    /* === REVEAL & PARALLAX === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+    .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+    .parallax { will-change: transform; }
 
-    .hero-media video,
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-    }
+    /* === INLINE CTA === */
+    .inline-cta { margin-top: 18px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .inline-cta .price { font-size: 1.6rem; margin: 0; }
 
-    .hero-product {
-      position: absolute;
-      width: min(76%, 460px);
-      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.45))
-              drop-shadow(0 0 30px rgba(255,255,255,0.15));
-      animation: floatSpin 12s ease-in-out infinite;
-    }
-
-    .hero-orbs {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 35%),
-                  radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 40%);
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    @keyframes floatSpin {
-      0% { transform: translateY(0) rotateY(0deg); }
-      50% { transform: translateY(-12px) rotateY(180deg); }
-      100% { transform: translateY(0) rotateY(360deg); }
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .section-head p { color: var(--muted); max-width: 760px; }
-
-    .feature-grid {
-      margin-top: 38px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .feature-card {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 180px;
-      display: grid;
-      gap: 8px;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-      backdrop-filter: blur(8px);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,0.22);
-      box-shadow: 0 25px 40px rgba(0,0,0,0.35);
-    }
-
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      background: rgba(255,255,255,0.08);
-      animation: floatIcon 2.8s ease-in-out infinite;
-    }
-    @keyframes floatIcon { 50% { transform: translateY(-6px); } }
-
-    .media-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: center;
-    }
-
+    /* === MEDIA BLOCK & BOX === */
+    .media-block { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
     .media-box {
       border: 1px solid var(--line);
       border-radius: 26px;
       overflow: hidden;
-      background: #111;
+      background: #f3f4f6;
       min-height: 360px;
       position: relative;
       box-shadow: var(--shadow);
     }
+    .media-box video, .media-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-    .media-box video,
-    .media-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-    }
-
-    .sound-waves::before,
-    .sound-waves::after {
-      content: "";
-      position: absolute;
-      inset: 18% 18%;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 50%;
-      animation: wave 2.6s linear infinite;
-    }
-
-    .sound-waves::after { animation-delay: 1.2s; }
-    @keyframes wave { from { transform: scale(0.8); opacity: 0.8; } to { transform: scale(1.6); opacity: 0; } }
-
+    /* === NOISE DEMO / ANC === */
     .noise-demo {
-      background: linear-gradient(120deg, #0b0b0c 0%, #1b1e26 100%);
-      color: #fff;
+      background: linear-gradient(120deg, #ffffff 0%, #f2f4f8 100%);
+      color: var(--ink);
       border-radius: 26px;
       border: 1px solid var(--line);
       padding: 28px;
@@ -382,305 +334,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-
     .noise-city {
       height: 160px;
       border-radius: 18px;
-      background: repeating-linear-gradient(90deg, #2b2b2e 0 12px, #16171a 12px 24px);
+      background: repeating-linear-gradient(90deg, #d6dbe3 0 12px, #eef1f5 12px 24px);
       position: relative;
       margin: 18px 0;
       transition: filter .5s ease, opacity .5s ease, transform .5s ease;
     }
-
     .noise-city::after {
       content: "RUIDO URBANO";
       position: absolute;
-      bottom: 12px;
-      right: 14px;
+      bottom: 12px; right: 14px;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       opacity: 0.5;
     }
-
-    .noise-demo.anc-on .noise-city {
-      filter: blur(3px) grayscale(1);
-      opacity: 0.22;
-      transform: scale(0.98);
-    }
-
+    .noise-demo.anc-on .noise-city { filter: blur(3px) grayscale(1); opacity: 0.22; transform: scale(0.98); }
     .toggle-row { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .spatial-stage {
-      margin-top: 26px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      min-height: 280px;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.01) 65%, transparent 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .head {
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      background: #f4f4f5;
-      position: relative;
-      z-index: 2;
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.18);
-    }
-
-    .ring {
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.4);
-      animation: spin 8s linear infinite;
-    }
-
-    .ring.r2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .fit-visual {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(255,255,255,0.04);
-      padding: 30px;
-      display: grid;
-      place-items: center;
-      min-height: 320px;
-    }
-
-    .earbud-3d { width: min(76%, 360px); animation: rotateEarbud 9s linear infinite; }
-    @keyframes rotateEarbud { to { transform: rotate(360deg); } }
-
-    .touch-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 22px;
-      background: rgba(255,255,255,0.04);
-      display: grid;
-      gap: 14px;
-    }
-
-    .finger {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #f4f4f4;
-      animation: tap 1.8s ease-in-out infinite;
-      justify-self: center;
-    }
-
-    @keyframes tap { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.72); opacity: 0.6; } }
-
-    .touch-actions { display: grid; gap: 8px; }
-    .touch-actions li {
-      list-style: none;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      transition: all .25s ease;
-      color: var(--muted);
-    }
-
-    .touch-actions li.active {
-      background: #f4f4f4;
-      color: #0b0b0c;
-      border-color: #f4f4f4;
-      transform: translateX(4px);
-    }
-
-    .water-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      min-height: 300px;
-      padding: 22px;
-      background: linear-gradient(180deg, #0f1116 0, #0b0b0c 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .drop {
-      position: absolute;
-      width: 9px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(120, 160, 255, 0.35);
-      animation: rain 2.2s linear infinite;
-    }
-
-    .drop:nth-child(1){left:18%; animation-delay:.2s}
-    .drop:nth-child(2){left:34%; animation-delay:.8s}
-    .drop:nth-child(3){left:52%; animation-delay:1.1s}
-    .drop:nth-child(4){left:68%; animation-delay:1.5s}
-    .drop:nth-child(5){left:82%; animation-delay:.5s}
-    @keyframes rain { from{ top:-20px; opacity:0 } 15%{opacity:1} to{ top:110%; opacity:0 } }
-
-    .battery-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 24px;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .battery-body {
-      width: min(460px, 100%);
-      height: 56px;
-      margin: 12px auto 0;
-      border: 2px solid #f4f4f4;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .battery-level {
-      height: 100%;
-      width: 30%;
-      background: linear-gradient(90deg, #f4f4f4, #b5b7be);
-      animation: charge 4.4s ease-in-out infinite;
-    }
-
-    .battery-body::after {
-      content: "";
-      position: absolute;
-      right: -8px;
-      top: 18px;
-      width: 6px;
-      height: 18px;
-      border-radius: 4px;
-      background: #f4f4f4;
-    }
-
-    @keyframes charge { 0%{width:12%} 50%{width:76%} 100%{width:100%} }
-
-    .case-anim {
-      margin-top: 20px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      height: 220px;
-      background: rgba(255,255,255,0.03);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-shell {
-      width: 190px;
-      height: 108px;
-      background: #f4f4f4;
-      border: 2px solid #d1d5db;
-      border-radius: 45px;
-      position: relative;
-      box-shadow: 0 16px 28px rgba(15,23,42,0.24);
-    }
-
-    .case-lid {
-      position: absolute;
-      width: 190px;
-      height: 48px;
-      left: 0;
-      top: -18px;
-      border-radius: 40px 40px 18px 18px;
-      background: #f4f4f4;
-      border: 2px solid #d1d5db;
-      border-bottom: none;
-      transform-origin: bottom center;
-      animation: openCase 3.4s ease-in-out infinite;
-    }
-
-    @keyframes openCase { 0%,100%{ transform: rotateX(0)} 50%{ transform: rotateX(-56deg)} }
-
-    .floating-final {
-      border-radius: 32px;
-      border: 1px solid var(--line);
-      background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-      padding: 46px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .final-product {
-      width: min(340px, 70vw);
-      animation: finalFloat 4s ease-in-out infinite;
-      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.35));
-      margin: 0 auto 18px;
-    }
-
-    @keyframes finalFloat { 50% { transform: translateY(-12px); } }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .parallax { will-change: transform; }
-
-    .float { animation: softFloat 6s ease-in-out infinite; }
-    @keyframes softFloat { 50% { transform: translateY(-10px); } }
-
-    .hero h1 {
-      clip-path: inset(0 100% 0 0);
-      animation: textReveal 1.3s steps(32) forwards;
-    }
-
-    @keyframes textReveal {
-      to { clip-path: inset(0 0 0 0); }
-    }
-
-    .section-label {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.68rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-
-    .inline-cta {
-      margin-top: 18px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .inline-cta .price {
-      font-size: 1.6rem;
-      margin: 0;
-    }
-
-    .audio-demo {
-      margin-top: 18px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .comparison-grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .noise-demo.clean {
-      background: linear-gradient(120deg, #0a0f14 0%, #0f141c 100%);
-      border-color: rgba(255,255,255,0.2);
-    }
-
+    .comparison-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .noise-demo.clean { background: linear-gradient(120deg, #ffffff 0%, #eef6f8 100%); border-color: rgba(17,19,24,0.16); }
     .noise-demo .label {
       display: inline-flex;
       align-items: center;
@@ -692,102 +365,214 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 8px;
     }
 
-    .why-grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .testimonials-grid,
-    .faq-grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .why-card,
-    .testimonial-card,
-    .faq-item {
-      background: var(--glass);
+    /* === SPATIAL STAGE === */
+    .spatial-stage {
+      margin-top: 26px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
+      border-radius: 26px;
+      min-height: 280px;
       display: grid;
-      gap: 10px;
-      backdrop-filter: blur(8px);
+      place-items: center;
+      background: radial-gradient(circle at center, rgba(17,19,24,0.06) 0, rgba(148,163,184,0.08) 65%, transparent 100%);
+      position: relative;
+      overflow: hidden;
     }
+    .head { width: 105px; height: 105px; border-radius: 50%; background: #111827; position: relative; z-index: 2; box-shadow: inset 0 0 24px rgba(0,0,0,0.18); }
+    .ring { position: absolute; width: 190px; height: 190px; border-radius: 50%; border: 1px dashed rgba(17,19,24,0.32); animation: spin 8s linear infinite; }
+    .ring.r2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .why-card span {
-      font-size: 1.5rem;
+    /* === FIT / TOUCH === */
+    .fit-visual { border: 1px solid var(--line); border-radius: 26px; background: rgba(255,255,255,0.82); padding: 30px; display: grid; place-items: center; min-height: 320px; }
+    .earbud-3d { width: min(76%, 360px); animation: rotateEarbud 9s linear infinite; }
+    @keyframes rotateEarbud { to { transform: rotate(360deg); } }
+    .touch-demo { border: 1px solid var(--line); border-radius: 26px; padding: 22px; background: rgba(255,255,255,0.82); display: grid; gap: 14px; }
+    .finger { width: 46px; height: 46px; border-radius: 50%; background: var(--ink); animation: tap 1.8s ease-in-out infinite; justify-self: center; }
+    @keyframes tap { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.72); opacity: 0.6; } }
+    .touch-actions { display: grid; gap: 8px; }
+    .touch-actions li { list-style: none; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; transition: all .25s ease; color: var(--muted); }
+    .touch-actions li.active { background: var(--ink); color: #ffffff; border-color: var(--ink); transform: translateX(4px); }
+
+    /* === WATER / RAIN === */
+    .water-demo { border: 1px solid var(--line); border-radius: 26px; min-height: 300px; padding: 22px; background: linear-gradient(180deg, #f8fafc 0, #e9eef5 100%); position: relative; overflow: hidden; }
+    .drop { position: absolute; width: 9px; height: 16px; border-radius: 50%; background: rgba(120, 160, 255, 0.35); animation: rain 2.2s linear infinite; }
+    .drop:nth-child(1){left:18%; animation-delay:.2s}
+    .drop:nth-child(2){left:34%; animation-delay:.8s}
+    .drop:nth-child(3){left:52%; animation-delay:1.1s}
+    .drop:nth-child(4){left:68%; animation-delay:1.5s}
+    .drop:nth-child(5){left:82%; animation-delay:.5s}
+    @keyframes rain { from{ top:-20px; opacity:0 } 15%{opacity:1} to{ top:110%; opacity:0 } }
+
+    /* === BATTERY === */
+    .battery-demo { border: 1px solid var(--line); border-radius: 26px; padding: 24px; background: rgba(255,255,255,0.82); }
+    .battery-body { width: min(460px, 100%); height: 56px; margin: 12px auto 0; border: 2px solid var(--ink); border-radius: 12px; position: relative; overflow: hidden; }
+    .battery-level { height: 100%; width: 30%; background: linear-gradient(90deg, var(--ink), #64748b); animation: charge 4.4s ease-in-out infinite; }
+    .battery-body::after { content: ""; position: absolute; right: -8px; top: 18px; width: 6px; height: 18px; border-radius: 4px; background: var(--ink); }
+    @keyframes charge { 0%{width:12%} 50%{width:76%} 100%{width:100%} }
+    .case-anim { margin-top: 20px; border: 1px solid var(--line); border-radius: 18px; height: 220px; background: rgba(255,255,255,0.72); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .case-shell { width: 190px; height: 108px; background: #f4f4f4; border: 2px solid #d1d5db; border-radius: 45px; position: relative; box-shadow: 0 16px 28px rgba(15,23,42,0.24); }
+    .case-lid { position: absolute; width: 190px; height: 48px; left: 0; top: -18px; border-radius: 40px 40px 18px 18px; background: #f4f4f4; border: 2px solid #d1d5db; border-bottom: none; transform-origin: bottom center; animation: openCase 3.4s ease-in-out infinite; }
+    @keyframes openCase { 0%,100%{ transform: rotateX(0)} 50%{ transform: rotateX(-56deg)} }
+
+    /* === WHY / TESTIMONIALS / FAQ === */
+    .why-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .testimonials-grid, .faq-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .why-card, .testimonial-card, .faq-item { background: var(--glass); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: grid; gap: 10px; backdrop-filter: blur(8px); }
+    .why-card span { font-size: 1.5rem; }
+    .stars { letter-spacing: 0.2em; font-size: 0.85rem; color: var(--ink); }
+    .faq-item button { all: unset; cursor: pointer; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .faq-item button::after { content: "+"; font-size: 1.2rem; color: var(--muted); }
+    .faq-item[open] button::after { content: "−"; color: var(--ink); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--muted); }
+    .faq-item[open] .faq-answer { max-height: 200px; }
+
+    /* === FINAL BUY === */
+    .floating-final { border-radius: 32px; border: 1px solid var(--line); background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(244,247,251,0.82)); padding: 46px; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+    .final-product { width: min(340px, 70vw); animation: finalFloat 4s ease-in-out infinite; filter: drop-shadow(0 26px 40px rgba(17,24,39,0.18)); margin: 0 auto 18px; }
+    @keyframes finalFloat { 50% { transform: translateY(-12px); } }
+
+    /* === HERO VIDEO === */
+    .hero-video-wrap { position: relative; width: 100%; height: 100svh; min-height: 560px; overflow: hidden; background: #f5f5f7; }
+    .hero-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-video-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px min(4vw, 48px) 36px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      background: linear-gradient(to top, rgba(255,255,255,0.72) 0%, transparent 100%);
     }
+    .hero-video-copy { display: grid; gap: 4px; }
+    .hero-video-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+    .hero-video-title { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.03em; color: #111318; line-height: 1.1; }
+    .hero-video-sub { font-size: 1rem; color: rgba(0,0,0,0.55); margin-top: 4px; }
+    .hero-video-cta { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+    .hero-video-price { font-size: 1.4rem; font-weight: 700; color: #111318; letter-spacing: -0.02em; }
+    .hero-buy-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 26px; border-radius: 999px; background: #ffffff; color: #111318; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap; }
+    .hero-buy-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
 
-    .stars {
-      letter-spacing: 0.2em;
-      font-size: 0.85rem;
-      color: #f4f4f4;
-    }
-
-    .faq-item button {
-      all: unset;
-      cursor: pointer;
-      font-weight: 600;
+    /* === FEATURES STICKY CROSSFADE === */
+    .fs-outer { height: calc(7 * 100vh); position: relative; }
+    .fs-sticky { position: sticky; top: 0; height: 100vh; background: #0b0b0c; overflow: hidden; }
+    .fs-slide {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      color: #f5f5f6;
+      opacity: 0;
+      pointer-events: none;
+      will-change: opacity, transform;
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+      transform: translateY(24px) scale(0.99);
+      filter: blur(4px);
     }
+    .fs-slide.fs-visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); filter: blur(0); }
+    .fs-slide.fs-past { opacity: 0; transform: translateY(-20px) scale(1.01); filter: blur(6px); }
+    .fs-bg-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.12; pointer-events: none; z-index: 0; transform: scale(1.04); transition: transform 1s ease; }
+    .fs-slide.fs-visible .fs-bg-img { transform: scale(1); }
+    .fs-slide--center { justify-content: center; text-align: center; }
+    .fs-center-content { display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; z-index: 2; }
+    .fs-slide--split { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+    .fs-slide--reverse { direction: rtl; }
+    .fs-slide--reverse > * { direction: ltr; }
+    .fs-split-text { display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: 80px min(7vw, 90px); z-index: 2; }
+    .fs-split-img { overflow: hidden; position: relative; }
+    .fs-split-img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fs-slide.fs-visible .fs-split-img img { transform: scale(1); }
+    .fs-slide--stats { align-items: flex-end; padding-bottom: 80px; }
+    .fs-stats-content { display: grid; gap: 24px; position: relative; z-index: 2; }
+    .fs-stats-row { display: flex; gap: 56px; }
+    .fs-stat { display: flex; flex-direction: column; gap: 4px; }
+    .fs-stat-num { font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; color: #f5f5f6; }
+    .fs-stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+    .fs-showcase { width: min(240px, 50vw); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+    .fs-showcase img { width: 100%; height: auto; display: block; }
+    .fs-label { display: block; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.32); }
+    .fs-h { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: #f5f5f6; }
+    .fs-h--xl { font-size: clamp(2.8rem, 5.5vw, 4.6rem); }
+    .fs-h--lg { font-size: clamp(2.4rem, 4.8vw, 4.2rem); }
+    .fs-h--giant { font-size: clamp(3.5rem, 9vw, 7.5rem); letter-spacing: -0.05em; }
+    .fs-p { font-size: 1.05rem; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 480px; }
+    .fs-progress-bar { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); width: min(600px, 80vw); height: 1px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; z-index: 10; }
+    .fs-progress-fill { height: 100%; width: 0%; background: rgba(255,255,255,0.6); border-radius: 999px; transition: width 0.1s linear; }
 
-    .faq-item button::after {
-      content: "+";
-      font-size: 1.2rem;
-      color: var(--muted);
-    }
+    /* === SONIDO === */
+    #sonido { scroll-margin-top: 132px; }
+    .snd-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 24px; overflow: hidden; }
+    .snd-pillar { background: #f7f8fb; padding: 0 0 28px; display: flex; flex-direction: column; }
+    .snd-pillar-img { height: 280px; overflow: hidden; position: relative; margin-bottom: 22px; }
+    .snd-pillar-img--tall { height: 360px; }
+    .snd-pillar-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform 0.7s ease; }
+    .snd-pillar:hover .snd-pillar-img img { transform: scale(1.04); }
+    .snd-pillar-badge { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.08); color: #111318; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; }
+    .snd-pillar h3 { font-size: 1.2rem; font-weight: 600; color: #111318; letter-spacing: -0.02em; margin-bottom: 8px; padding: 0 24px; }
+    .snd-pillar p { font-size: 0.92rem; color: #626a76; line-height: 1.65; padding: 0 24px; }
+    .snd-bottom-inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; padding-top: 48px; border-top: 1px solid rgba(17,19,24,0.08); }
+    .snd-wave-visual { display: flex; align-items: center; gap: 3px; height: 90px; margin-bottom: 12px; }
+    .snd-wave-bar { flex: 1; background: rgba(17,19,24,0.15); border-radius: 999px; animation: wavePulse var(--d, 1.2s) ease-in-out infinite alternate; height: var(--h, 30%); }
+    .snd-wave-bar:nth-child(1)  { --h:20%; --d:1.1s } .snd-wave-bar:nth-child(2)  { --h:40%; --d:0.9s }
+    .snd-wave-bar:nth-child(3)  { --h:65%; --d:1.3s } .snd-wave-bar:nth-child(4)  { --h:90%; --d:0.8s }
+    .snd-wave-bar:nth-child(5)  { --h:55%; --d:1.0s } .snd-wave-bar:nth-child(6)  { --h:80%; --d:1.4s }
+    .snd-wave-bar:nth-child(7)  { --h:100%;--d:0.7s } .snd-wave-bar:nth-child(8)  { --h:70%; --d:1.2s }
+    .snd-wave-bar:nth-child(9)  { --h:85%; --d:0.9s } .snd-wave-bar:nth-child(10) { --h:60%; --d:1.1s }
+    .snd-wave-bar:nth-child(11) { --h:95%; --d:0.8s } .snd-wave-bar:nth-child(12) { --h:75%; --d:1.3s }
+    .snd-wave-bar:nth-child(13) { --h:100%;--d:1.0s } .snd-wave-bar:nth-child(14) { --h:85%; --d:0.7s }
+    .snd-wave-bar:nth-child(15) { --h:70%; --d:1.2s } .snd-wave-bar:nth-child(16) { --h:55%; --d:0.9s }
+    .snd-wave-bar:nth-child(17) { --h:80%; --d:1.4s } .snd-wave-bar:nth-child(18) { --h:65%; --d:1.1s }
+    .snd-wave-bar:nth-child(19) { --h:45%; --d:0.8s } .snd-wave-bar:nth-child(20) { --h:90%; --d:1.3s }
+    .snd-wave-bar:nth-child(21) { --h:75%; --d:1.0s } .snd-wave-bar:nth-child(22) { --h:55%; --d:0.9s }
+    .snd-wave-bar:nth-child(23) { --h:35%; --d:1.2s } .snd-wave-bar:nth-child(24) { --h:60%; --d:0.7s }
+    .snd-wave-bar:nth-child(25) { --h:40%; --d:1.1s } .snd-wave-bar:nth-child(26) { --h:25%; --d:1.3s }
+    .snd-wave-bar:nth-child(27) { --h:45%; --d:0.8s } .snd-wave-bar:nth-child(28) { --h:30%; --d:1.0s }
+    .snd-wave-bar:nth-child(29) { --h:20%; --d:0.9s } .snd-wave-bar:nth-child(30) { --h:15%; --d:1.2s }
+    @keyframes wavePulse { from { height: 6%; } to { height: var(--h, 30%); } }
+    .snd-freq-row { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 600; color: rgba(17,19,24,0.3); letter-spacing: 0.06em; }
+    .snd-specs { display: grid; gap: 24px; }
+    .snd-spec-item { display: flex; flex-direction: column; gap: 4px; padding-bottom: 24px; border-bottom: 1px solid rgba(17,19,24,0.08); }
+    .snd-spec-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .snd-spec-num { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.04em; color: #111318; line-height: 1; }
+    .snd-spec-lbl { font-size: 0.75rem; color: #626a76; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .faq-item[open] button::after {
-      content: "−";
-      color: var(--ink);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-      color: var(--muted);
-    }
-
-    .faq-item[open] .faq-answer {
-      max-height: 200px;
-    }
-
+    /* === RESPONSIVE === */
     @media (max-width: 980px) {
-      .hero,
-      .media-block,
-      .comparison-grid { grid-template-columns: 1fr; }
-      .feature-grid,
-      .why-grid,
-      .testimonials-grid,
-      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hero-media { min-height: 420px; }
+      body { padding-top: 150px; }
+      .media-block, .comparison-grid { grid-template-columns: 1fr; }
+      .why-grid, .testimonials-grid, .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-search { width: 150px; }
+      .product-subnav-inner { align-items: flex-start; flex-direction: column; }
+      .product-subnav-links { width: 100%; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+      .product-subnav-links::-webkit-scrollbar { display: none; }
+      .snd-pillars { grid-template-columns: 1fr; gap: 2px; }
+      .snd-pillar-img--tall { height: 280px; }
+      .snd-bottom-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .fs-slide--split { grid-template-columns: 1fr; grid-template-rows: 40vh 60vh; }
+      .fs-h--giant { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .fs-stat-num { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .fs-stats-row { gap: 32px; }
+      .fs-split-text { padding: 40px 24px; }
     }
 
     @media (max-width: 640px) {
+      body { padding-top: 152px; }
       .panel { padding: 8vh 0; }
-      .feature-grid,
-      .why-grid,
-      .testimonials-grid,
-      .faq-grid { grid-template-columns: 1fr; }
+      .why-grid, .testimonials-grid, .faq-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero { min-height: auto; }
-      .hero-meta { font-size: 0.95rem; }
-      .btn { min-height: 52px; }
-      .hero-product,
+      .nav-search { display: none; }
+      .product-subnav-title { font-size: 1rem; }
+      .product-subnav-links { gap: 14px; font-size: 0.9rem; }
+      .product-subnav-links .buy-pill { min-height: 34px; padding: 8px 15px; }
+      #caracteristicas, #sonido, #anc, #bateria, #comprar { scroll-margin-top: 164px; }
+      .hero-video-bottom { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 20px 28px; }
+      .hero-video-cta { width: 100%; justify-content: space-between; }
       .earbud-3d { animation: none; }
-      .ring,
-      .case-lid,
-      .battery-level,
-      .final-product { animation: none; }
+      .ring, .case-lid, .battery-level, .final-product { animation: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -795,6 +580,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       html { scroll-behavior: auto; }
     }
   </style>
+
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
@@ -804,9 +590,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Lixby",
       "url": "https://lixby.es",
       "logo": "https://lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
+      "sameAs": ["https://github.com/lixby"]
     }
   </script>
 </head>
@@ -814,89 +598,232 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <header class="top-nav">
-<div class="container">
-      <div class="brand">Lixby</div>
-      <nav class="nav-links">
-        <a href="#caracteristicas">Características</a>
-        <a href="#sonido">Sonido</a>
-        <a href="#anc">ANC</a>
-        <a href="#bateria">Batería</a>
-        <a href="#comprar">Comprar</a>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/es/" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/#productos" class="nav-link">Productos</a>
+        <a href="/es/#apps" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
+      <div class="nav-actions">
+        <form id="navSearchForm" action="/es/tienda/" method="get">
+          <input type="search" id="navSearch" name="q" class="nav-search" placeholder="Buscar producto..." aria-label="Buscar producto">
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="../../images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="../../images/cuenta.png" alt="Cuenta">
+        </a>
+      </div>
+    </div>
+    <div class="product-subnav">
+      <div class="container product-subnav-inner">
+        <div class="product-subnav-title">LixBuds One</div>
+        <nav class="product-subnav-links" aria-label="LixBuds One">
+          <a href="/es/pages/products/lixbuds-one#caracteristicas">Características</a>
+          <a href="/es/pages/products/lixbuds-one#sonido">Sonido</a>
+          <a href="/es/pages/products/lixbuds-one#anc">ANC</a>
+          <a href="/es/pages/products/lixbuds-one#bateria">Batería</a>
+          <a href="/es/pages/products/lixbuds-one#comprar" class="buy-pill">Comprar</a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="panel" aria-labelledby="hero-title">
-      <div class="container hero">
-        <div class="reveal">
-          <span class="section-label">Producto</span>
-          <h1 id="hero-title">Escucha lo que importa.<br>Ignora todo lo demás.</h1>
-          <p>Diseñados para sumergirte en tu música como nunca antes.</p>
-          <div class="hero-meta">
-            <span>Cancelación de ruido inteligente</span>
-            <span>Audio espacial inmersivo</span>
+
+    <!-- HERO VIDEO -->
+    <section aria-labelledby="hero-title">
+      <div class="hero-video-wrap">
+        <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
+          <source src="/es/media/lixbuds-loop.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-bottom">
+          <div class="hero-video-copy">
+            <span class="hero-video-label">LixBuds One</span>
+            <h1 class="hero-video-title" id="hero-title">Escúchalo.<br>Nada más importa.</h1>
+            <p class="hero-video-sub">Cancelación de ruido inteligente · Audio espacial · IPX5</p>
           </div>
-          <div class="price">99€</div>
-          <div class="cta-row">
-            <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" aria-label="Comprar ahora LixBuds One por 99 euros">Comprar ahora — 99€</a>
-            <a href="#caracteristicas" class="btn btn-light">Ver más destacado</a>
+          <div class="hero-video-cta">
+            <span class="hero-video-price">99€</span>
+            <a href="/es/comprar-cascos/lixbuds-one/" class="hero-buy-btn" aria-label="Comprar LixBuds One por 99 euros">Comprar</a>
           </div>
-        </div>
-        <div class="hero-media reveal parallax" data-speed="0.12">
-          <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
-            <source src="media/lixbuds-loop.mp4" type="video/mp4">
-          </video>
-          <img class="hero-product" src="images/lixbuds-product.jpg" alt="Auriculares inalámbricos LixBuds One con cancelación de ruido" loading="lazy">
-          <div class="hero-orbs"></div>
         </div>
       </div>
     </section>
 
-    <section id="caracteristicas" class="panel" aria-labelledby="features-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Tecnología premium</span>
-          <h2 id="features-title">Características destacadas</h2>
-          <p>Tecnología avanzada con diseño minimalista y rendimiento diario de nivel profesional.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Siente cada nota como si estuvieras ahí</h3><p>Audio espacial que envuelve tu escucha.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">🔇</div><h3>Silencio absoluto, incluso en medio del caos</h3><p>ANC inteligente que apaga el ruido.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">👂</div><h3>Escucha el mundo cuando tú decides</h3><p>Transparencia adaptativa y natural.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">👆</div><h3>Control total con un toque</h3><p>Gestos precisos, sin mirar.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">🔋</div><h3>Energía que acompaña tu día</h3><p>Hasta 8 horas sin parar.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">💧</div><h3>Listos para sudor, lluvia y calle</h3><p>Protección IPX5 real.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">📦</div><h3>Carga sin cables, sin esfuerzo</h3><p>Estuche premium inalámbrico.</p></article>
-        </div>
-      </div>
-    </section>
+    <!-- CARACTERÍSTICAS (sticky crossfade) -->
+    <section id="caracteristicas">
+      <div class="fs-outer">
+        <div class="fs-sticky">
 
-    <section id="sonido" class="panel" aria-labelledby="sound-title">
-      <div class="container">
-        <div class="media-block">
-          <div class="media-box sound-waves reveal parallax" data-speed="0.08">
-            <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-hero.jpg">
-              <source src="media/lixbuds-listening.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="reveal">
-            <span class="section-label">Experiencia</span>
-            <h2 id="sound-title">Una experiencia sonora extraordinaria.</h2>
-            <p style="color:var(--muted);margin-top:12px;">Los LixBuds One han sido diseñados para ofrecer un sonido profundo, claro y envolvente. Gracias a su arquitectura acústica avanzada, cada canción se escucha con graves más potentes, voces más claras y un escenario sonoro más amplio.</p>
-            <p style="color:var(--muted);margin-top:16px;">Las ondas sonoras y las partículas reaccionan al ritmo para una sensación inmersiva.</p>
-            <div class="audio-demo">
-              <button class="btn btn-light" id="audioToggle" aria-pressed="false">Escuchar demo</button>
-              <audio id="audioDemo" preload="none" src="media/lixbuds-demo.mp3"></audio>
+          <div class="fs-slide fs-slide--center" data-index="0">
+            <div class="fs-bg-img" style="background-image:url('images/lixbuds-product.jpg');"></div>
+            <div class="container fs-center-content">
+              <span class="fs-label">Audio espacial</span>
+              <h2 class="fs-h fs-h--xl">Siente cada nota<br>como si estuvieras ahí.</h2>
+              <p class="fs-p">Arquitectura acústica avanzada con graves profundos y un escenario sonoro de nivel profesional.</p>
             </div>
           </div>
+
+          <div class="fs-slide fs-slide--split" data-index="1">
+            <div class="fs-split-text">
+              <span class="fs-label">Cancelación de ruido</span>
+              <h2 class="fs-h">Silencio absoluto,<br>incluso en medio<br>del caos.</h2>
+              <p class="fs-p">ANC inteligente que detecta y elimina el ruido en tiempo real.</p>
+            </div>
+            <div class="fs-split-img">
+              <img src="images/lixbuds-product.jpg" alt="ANC LixBuds One">
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--split fs-slide--reverse" data-index="2">
+            <div class="fs-split-img">
+              <img src="images/lixbuds-product.jpg" alt="Transparencia LixBuds One">
+            </div>
+            <div class="fs-split-text">
+              <span class="fs-label">Modo transparencia</span>
+              <h2 class="fs-h">Escucha el mundo<br>cuando tú decides.</h2>
+              <p class="fs-p">Transparencia adaptativa para mantenerte conectado sin quitártelos.</p>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--center" data-index="3">
+            <div class="container fs-center-content">
+              <span class="fs-label">Control táctil</span>
+              <h2 class="fs-h fs-h--giant">Control total<br>con un toque.</h2>
+              <p class="fs-p">Gestos precisos para música, llamadas y ANC. Sin mirar.</p>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--stats" data-index="4">
+            <div class="fs-bg-img" style="background-image:url('images/lixbuds-product.jpg');"></div>
+            <div class="container fs-stats-content">
+              <div class="fs-stats-row">
+                <div class="fs-stat">
+                  <span class="fs-stat-num">8h</span>
+                  <span class="fs-stat-lbl">con ANC activado</span>
+                </div>
+                <div class="fs-stat">
+                  <span class="fs-stat-num">30h</span>
+                  <span class="fs-stat-lbl">con estuche</span>
+                </div>
+              </div>
+              <h2 class="fs-h fs-h--xl">Energía que<br>acompaña tu día.</h2>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--split" data-index="5">
+            <div class="fs-split-text">
+              <span class="fs-label">Resistencia</span>
+              <h2 class="fs-h fs-h--lg">IPX5.<br>Lluvia, sudor,<br>calle.</h2>
+              <p class="fs-p">Certificación real para el uso diario sin importar las condiciones.</p>
+            </div>
+            <div class="fs-split-img">
+              <img src="images/lixbuds-product.jpg" alt="IPX5 LixBuds One">
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--center" data-index="6">
+            <div class="container fs-center-content">
+              <span class="fs-label">Estuche de carga</span>
+              <h2 class="fs-h fs-h--xl">Carga sin cables,<br>sin esfuerzo.</h2>
+              <div class="fs-showcase">
+                <img src="images/lixbuds-product.jpg" alt="Estuche LixBuds One">
+              </div>
+              <p class="fs-p">Carga inalámbrica Qi, indicador LED y diseño compacto.</p>
+            </div>
+          </div>
+
+          <div class="fs-progress-bar">
+            <div class="fs-progress-fill" id="fsProgressFill"></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- SONIDO -->
+    <section id="sonido" class="panel" style="background:#ffffff; padding:12vh 0;">
+      <div class="container">
+        <div class="section-head reveal" style="margin-bottom:60px;">
+          <span class="section-label">Sonido</span>
+          <h2 style="font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-0.04em;line-height:1.04;">Una experiencia sonora<br>extraordinaria.</h2>
+          <p style="max-width:600px;margin-top:12px;">Diseñados para ofrecer un sonido profundo, claro y envolvente. Cada canción se escucha como nunca antes.</p>
+        </div>
+
+        <div class="snd-pillars reveal">
+          <div class="snd-pillar">
+            <div class="snd-pillar-img">
+              <img src="images/lixbuds-product.jpg" alt="Graves LixBuds One">
+              <span class="snd-pillar-badge">Graves</span>
+            </div>
+            <h3>Graves más potentes.</h3>
+            <p>Un driver de 40mm diseñado para reproducir las frecuencias bajas con precisión y profundidad real.</p>
+          </div>
+          <div class="snd-pillar">
+            <div class="snd-pillar-img snd-pillar-img--tall">
+              <img src="images/lixbuds-product.jpg" alt="Voces LixBuds One">
+              <span class="snd-pillar-badge">Medios</span>
+            </div>
+            <h3>Voces más claras.</h3>
+            <p>Los rangos medios se reproducen con nitidez para que cada letra y cada voz llegue con claridad total.</p>
+          </div>
+          <div class="snd-pillar">
+            <div class="snd-pillar-img">
+              <img src="images/lixbuds-product.jpg" alt="Audio espacial LixBuds One">
+              <span class="snd-pillar-badge">Espacial</span>
+            </div>
+            <h3>Escenario más amplio.</h3>
+            <p>Audio espacial que coloca cada instrumento en su lugar, creando una sensación envolvente de 360°.</p>
+          </div>
+        </div>
+
+        <div class="snd-bottom-inner reveal" style="margin-top:64px;">
+          <div>
+            <div class="snd-wave-visual" aria-hidden="true">
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+            </div>
+            <div class="snd-freq-row">
+              <span>20 Hz</span><span>1 kHz</span><span>20 kHz</span>
+            </div>
+            <p style="font-size:0.78rem;color:var(--muted);margin-top:6px;">Rango de frecuencia completo — 20 Hz a 20 kHz</p>
+          </div>
+          <div class="snd-specs">
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">40mm</span>
+              <span class="snd-spec-lbl">Driver de precisión</span>
+            </div>
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">20–20k</span>
+              <span class="snd-spec-lbl">Frecuencia Hz</span>
+            </div>
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">32Ω</span>
+              <span class="snd-spec-lbl">Impedancia</span>
+            </div>
+            <button class="btn btn-light" id="audioToggle" aria-pressed="false" style="margin-top:8px;">Escuchar demo</button>
+            <audio id="audioDemo" preload="none" src="media/lixbuds-demo.mp3"></audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANC -->
     <section id="anc" class="panel" aria-labelledby="anc-title">
       <div class="container media-block">
         <div class="noise-demo reveal" id="ancDemo">
@@ -924,6 +851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- COMPARATIVA -->
     <section class="panel" aria-labelledby="compare-title">
       <div class="container">
         <div class="section-head reveal">
@@ -948,6 +876,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- AJUSTE Y CONFORT -->
     <section class="panel" aria-labelledby="fit-title">
       <div class="container media-block">
         <div class="fit-visual reveal parallax" data-speed="0.06">
@@ -971,6 +900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- AGUA + BATERÍA -->
     <section class="panel" aria-labelledby="water-title">
       <div class="container media-block">
         <div class="water-demo reveal">
@@ -998,6 +928,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- ESTUCHE -->
     <section class="panel" aria-labelledby="case-title">
       <div class="container media-block">
         <div class="media-box reveal parallax" data-speed="0.1">
@@ -1009,11 +940,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="section-label">Estuche de carga</span>
           <h2 id="case-title">Minimalismo total, máximo control</h2>
           <p style="color:var(--muted);margin-top:12px;">Carga inalámbrica, indicador LED preciso y diseño compacto para llevarlo a cualquier lugar.</p>
-          <p style="color:var(--muted);margin-top:12px;">El estuche gira lentamente en 3D para mostrar cada detalle.</p>
         </div>
       </div>
     </section>
 
+    <!-- POR QUÉ LIXBUDS ONE -->
     <section class="panel" aria-labelledby="why-title">
       <div class="container">
         <div class="section-head reveal">
@@ -1030,6 +961,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- TESTIMONIOS -->
     <section class="panel" aria-labelledby="testimonials-title">
       <div class="container">
         <div class="section-head reveal">
@@ -1057,6 +989,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section class="panel" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-head reveal">
@@ -1081,19 +1014,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- COMPRAR -->
     <section id="comprar" class="panel" aria-labelledby="buy-title">
       <div class="container">
         <div class="floating-final reveal">
           <img class="final-product parallax" data-speed="0.05" src="images/lixbuds-product.jpg" alt="Auriculares LixBuds One flotando con estuche" loading="lazy">
           <h2 id="buy-title" style="font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1.02;">LixBuds One<br>Todo lo que necesitas escuchar.</h2>
           <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" style="margin-top:18px;font-size:1.05rem;padding:14px 28px;" aria-label="Comprar ahora LixBuds One por 99 euros">Comprar ahora — 99€</a>
-
         </div>
       </div>
     </section>
+
   </main>
 
   <script>
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1102,12 +1037,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0.16 });
     reveals.forEach((el) => observer.observe(el));
 
-    const root = document.documentElement;
-    window.addEventListener('mousemove', (e) => {
-      root.style.setProperty('--x', `${e.clientX}px`);
-      root.style.setProperty('--y', `${e.clientY}px`);
-    });
-
+    // Parallax
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const parallaxEls = document.querySelectorAll('.parallax');
     if (!reduceMotion.matches) {
@@ -1128,28 +1058,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       handleParallax();
     }
 
-    const progress = document.querySelector('.scroll-progress');
-    const updateProgress = () => {
-      const h = document.documentElement;
-      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-      progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
+    // Scroll progress + nav hide
+    const progressBar = document.getElementById('scroll-progress');
+    const navHeader = document.getElementById('nav');
+    const updateScrollUI = () => {
+      const top = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progressBar.style.width = `${height > 0 ? (top / height) * 100 : 0}%`;
+      navHeader.classList.toggle('nav-scrolled', top > 24);
     };
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
+    updateScrollUI();
 
+    // ANC toggle
     const ancDemo = document.getElementById('ancDemo');
     const toggleAnc = document.getElementById('toggleAnc');
     const toggleTransparency = document.getElementById('toggleTransparency');
-
     toggleAnc.addEventListener('click', () => {
       ancDemo.classList.toggle('anc-on');
       const isOn = ancDemo.classList.contains('anc-on');
-      toggleAnc.textContent = ancDemo.classList.contains('anc-on') ? 'ANC activado' : 'Activar cancelación';
+      toggleAnc.textContent = isOn ? 'ANC activado' : 'Activar cancelación';
       toggleTransparency.textContent = 'Modo transparencia';
       toggleAnc.setAttribute('aria-pressed', String(isOn));
       toggleTransparency.setAttribute('aria-pressed', 'false');
     });
-
     toggleTransparency.addEventListener('click', () => {
       ancDemo.classList.remove('anc-on');
       toggleAnc.textContent = 'Activar cancelación';
@@ -1158,6 +1090,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       toggleTransparency.setAttribute('aria-pressed', 'true');
     });
 
+    // Touch actions cycle
     if (!reduceMotion.matches) {
       const touchItems = Array.from(document.querySelectorAll('#touchActions li'));
       let touchIndex = 0;
@@ -1168,6 +1101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, 1600);
     }
 
+    // Audio demo
     const audioToggle = document.getElementById('audioToggle');
     const audioDemo = document.getElementById('audioDemo');
     if (audioToggle && audioDemo) {
@@ -1188,22 +1122,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    // Subnav active link
+    const navLinks = Array.from(document.querySelectorAll('.product-subnav-links a'));
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         navLinks.forEach((link) => link.classList.remove('active'));
         const id = entry.target.getAttribute('id');
-        const active = navLinks.find((link) => link.getAttribute('href') === `#${id}`);
+        const active = navLinks.find((link) => link.getAttribute('href').endsWith(`#${id}`));
         if (active) active.classList.add('active');
       });
     }, { threshold: 0.55 });
-
     navLinks.forEach((link) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const hash = link.getAttribute('href').split('#')[1];
+      const target = hash ? document.getElementById(hash) : null;
       if (target) sectionObserver.observe(target);
     });
 
+    // FAQ accordion
     const faqItems = Array.from(document.querySelectorAll('.faq-item'));
     faqItems.forEach((item) => {
       const btn = item.querySelector('button');
@@ -1212,8 +1148,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const isOpen = item.hasAttribute('open');
         faqItems.forEach((el) => {
           el.removeAttribute('open');
-          const button = el.querySelector('button');
-          if (button) button.setAttribute('aria-expanded', 'false');
+          const b = el.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', 'false');
         });
         if (!isOpen) {
           item.setAttribute('open', '');
@@ -1222,17 +1158,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
 
+    // Mobile: pause videos
     const mobileMedia = window.matchMedia('(max-width: 640px)');
     const handleMobileMedia = (e) => {
       if (e.matches) {
-        document.querySelectorAll('video').forEach((video) => {
-          video.pause();
-          video.removeAttribute('autoplay');
-        });
+        document.querySelectorAll('video').forEach((v) => { v.pause(); v.removeAttribute('autoplay'); });
       }
     };
     handleMobileMedia(mobileMedia);
     mobileMedia.addEventListener('change', handleMobileMedia);
+
+    // Features sticky crossfade
+    const fsOuter = document.querySelector('.fs-outer');
+    const fsSlides = Array.from(document.querySelectorAll('.fs-slide'));
+    const fsProgressFill = document.getElementById('fsProgressFill');
+    const FS_COUNT = fsSlides.length;
+    let fsActive = -1;
+    function updateFeatureScroll() {
+      if (!fsOuter) return;
+      const rect = fsOuter.getBoundingClientRect();
+      const totalScroll = fsOuter.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
+      const progress = scrolled / totalScroll;
+      if (fsProgressFill) fsProgressFill.style.width = `${progress * 100}%`;
+      const activeIndex = Math.min(FS_COUNT - 1, Math.round(progress * (FS_COUNT - 1)));
+      if (activeIndex === fsActive) return;
+      fsActive = activeIndex;
+      fsSlides.forEach((slide, i) => {
+        slide.classList.remove('fs-visible', 'fs-past');
+        if (i === activeIndex) slide.classList.add('fs-visible');
+        else if (i < activeIndex) slide.classList.add('fs-past');
+      });
+    }
+    window.addEventListener('scroll', updateFeatureScroll, { passive: true });
+    updateFeatureScroll();
   </script>
 </body>
 </html>

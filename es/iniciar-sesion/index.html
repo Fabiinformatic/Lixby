@@ -1075,6 +1075,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const googleProvider = new GoogleAuthProvider();
 
       // Capturar resultado del redirect de Google
+      let googleRedirectHandled = false;
+
       getRedirectResult(auth).then(async (result) => {
         if (!result?.user) return;
 
@@ -1096,6 +1098,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
         }
 
+        googleRedirectHandled = true;
         setStatus("Sesión iniciada con Google.", "success");
         try {
           await transferSessionToApp(user);
@@ -1516,7 +1519,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (user) {
           userPanel.classList.add("show");
           userEmail.textContent = `Conectado como ${user.email}`;
-          // ❌ No realizar redirecciones aquí; getRedirectResult y el flujo de login deben encargarse
+          if (!googleRedirectHandled) {
+            window.location.href = "/es/cuenta/";
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";

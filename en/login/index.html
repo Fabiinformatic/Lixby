@@ -1075,6 +1075,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const googleProvider = new GoogleAuthProvider();
 
       // Capture Google redirect result
+      let googleRedirectHandled = false;
+
       getRedirectResult(auth).then(async (result) => {
         if (!result?.user) return;
 
@@ -1096,6 +1098,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
         }
 
+        googleRedirectHandled = true;
         setStatus("Signed in with Google.", "success");
         await transferSessionToApp(user);
         window.location.href = "/en/account/";
@@ -1494,7 +1497,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (user) {
           userPanel.classList.add("show");
           userEmail.textContent = `Signed in as ${user.email}`;
-          // ❌ Do not perform redirects here; getRedirectResult and login flow should handle it
+          if (!googleRedirectHandled) {
+            window.location.href = "/en/account/";
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";

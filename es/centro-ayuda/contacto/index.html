@@ -132,8 +132,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       align-items: center;
       justify-content: space-between;
     }
-    .faq-question::after { content: "?"; transition: transform 0.25s ease; }
-    .faq-question[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .faq-question::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--color-gray-600);
+      border-bottom: 2px solid var(--color-gray-600);
+      display: inline-block;
+      flex: 0 0 auto;
+      margin-left: var(--spacing-4);
+      transform: rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+    .faq-question[aria-expanded="true"]::after { transform: rotate(225deg); }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -251,11 +262,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3>Email</h3>
           <p>lixbyinfo@gmail.com</p>
           <a class="btn btn-primary" href="mailto:lixbyinfo@gmail.com">Escribir</a>
-        </div>
-        <div class="help-card">
-          <h3>Teléfono</h3>
-          <p>+34 900 123 456</p>
-          <a class="btn btn-primary" href="tel:+34900123456">Llamar</a>
         </div>
         <div class="help-card">
           <h3>Horario</h3>
