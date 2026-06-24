@@ -424,54 +424,42 @@ exports.sitemap = onRequest((req, res) => {
 });
 
 exports.adminSearchUser = onCall(
-  { region: "europe-west1" },
+  { region: "europe-west1", invoker: "public" },
   async (request) => {
     const { email, nlx } = request.data;
-
     const db = admin.firestore();
 
-    if (nlx) {
-      const snap = await db.collectionGroup("profiles")
-        .where("accountNumber", "==", nlx)
-        .limit(1)
-        .get();
-
-      if (!snap.empty) {
-        const doc = snap.docs[0];
-        return { userData: doc.data(), uid: doc.ref.parent.parent?.id || null };
-      }
-
-      const snap2 = await db.collection("users")
-        .where("accountNumber", "==", nlx)
-        .limit(1)
-        .get();
-      if (!snap2.empty) {
-        const doc2 = snap2.docs[0];
-        return { userData: doc2.data(), uid: doc2.id };
-      }
-    }
-
-    if (email) {
+    const searchUserDoc = async (field, value) => {
       const snap = await db.collection("users")
-        .where("email", "==", email)
+        .where(field, "==", value)
         .limit(1)
         .get();
-
       if (!snap.empty) {
         const doc = snap.docs[0];
         return { userData: doc.data(), uid: doc.id };
       }
+      return null;
+    };
 
-      const snap2 = await db.collectionGroup("profiles")
-        .where("email", "==", email)
-        .limit(1)
-        .get();
-      if (!snap2.empty) {
-        const doc2 = snap2.docs[0];
-        return { userData: doc2.data(), uid: doc2.ref.parent.parent?.id || null };
+    try {
+      if (nlx) {
+        const result = await searchUserDoc("accountNumber", nlx);
+        if (result) return result;
       }
-    }
 
-    return { userData: null, uid: null };
+      if (email) {
+        const normalized = email.toLowerCase().trim();
+        const result = await searchUserDoc("email", normalized);
+        if (result) return result;
+
+        const result2 = await searchUserDoc("email", email);
+        if (result2) return result2;
+      }
+
+      return { userData: null, uid: null };
+    } catch (error) {
+      console.error("adminSearchUser error:", error);
+      throw new HttpsError("internal", "Error al buscar usuario: " + error.message);
+    }
   }
 );
