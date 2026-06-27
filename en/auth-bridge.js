@@ -2,10 +2,6 @@ export async function transferSessionToApp(user) {
   if (!user) return false;
 
   try {
-    if (!isNativeApp()) {
-      return false;
-    }
-
     const idToken = await user.getIdToken();
 
     const res = await fetch("/auth/custom-token", {
