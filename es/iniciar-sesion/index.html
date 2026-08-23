@@ -853,7 +853,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import {
       getAuth,
       setPersistence,
@@ -872,9 +872,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       signOut,
       sendEmailVerification,
       getMultiFactorResolver
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js";
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
      const firebaseConfig = {
@@ -1443,13 +1443,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
 
       function saveFormState() {
+        // Solo se persiste estado de UI sin datos personales; nunca texto introducido por el usuario (PII).
         const fields = {
-          firstName: document.getElementById("firstName")?.value || "",
-          lastName: document.getElementById("lastName")?.value || "",
-          country: document.getElementById("country")?.value || "",
-          birthDay: document.getElementById("birthDay")?.value || "",
-          birthMonth: document.getElementById("birthMonth")?.value || "",
-          birthYear: document.getElementById("birthYear")?.value || "",
           adsOptIn: document.getElementById("adsOptIn")?.checked || false,
           mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
           activeSection: registerSection.classList.contains("active") ? "register" : "login"
@@ -1462,12 +1457,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (!raw) return;
         try {
           const f = JSON.parse(raw);
-          if (f.firstName) document.getElementById("firstName").value = f.firstName;
-          if (f.lastName) document.getElementById("lastName").value = f.lastName;
-          if (f.country) document.getElementById("country").value = f.country;
-          if (f.birthDay) document.getElementById("birthDay").value = f.birthDay;
-          if (f.birthMonth) document.getElementById("birthMonth").value = f.birthMonth;
-          if (f.birthYear) document.getElementById("birthYear").value = f.birthYear;
           document.getElementById("adsOptIn").checked = !!f.adsOptIn;
           document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
           if (f.activeSection === "register") openRegister(null);
@@ -1480,7 +1469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       registerForm.addEventListener("change", saveFormState);
 
       // Purga única de borradores legacy que puedan contener datos sensibles (contraseñas, emails, teléfonos).
-      const DRAFT_SCHEMA = "2";
+      const DRAFT_SCHEMA = "3";
       if (sessionStorage.getItem("lixby_register_draft_schema") !== DRAFT_SCHEMA) {
         sessionStorage.removeItem("lixby_register_draft");
         sessionStorage.setItem("lixby_register_draft_schema", DRAFT_SCHEMA);
