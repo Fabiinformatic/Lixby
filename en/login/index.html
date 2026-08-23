@@ -570,7 +570,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input id="loginIdentifier" type="text" required placeholder="name@example.com">
 
             <label for="loginPassword">Password</label>
-            <input id="loginPassword" type="password" required placeholder="********">
+            <input id="loginPassword" type="password" required placeholder="********" autocomplete="current-password">
 
             <div class="auth-inline">
               <label>
@@ -717,10 +717,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <label for="registerPassword">Password</label>
-            <input id="registerPassword" type="password" required minlength="6">
+            <input id="registerPassword" type="password" required minlength="6" autocomplete="new-password">
 
             <label for="registerPasswordConfirm">Confirm password</label>
-            <input id="registerPasswordConfirm" type="password" required minlength="6">
+            <input id="registerPasswordConfirm" type="password" required minlength="6" autocomplete="new-password">
 
             <div class="register-grid">
               <div>
@@ -866,6 +866,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       PhoneAuthProvider,
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
+      signInWithPopup,
       signInWithRedirect,
       getRedirectResult,
       onAuthStateChanged,
@@ -1074,10 +1075,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
 
-      // Capture Google redirect result
+      // Capture Google redirect result and finish Google sign-in (popup or redirect)
       let googleRedirectHandled = false;
 
-      getRedirectResult(auth).then(async (result) => {
+      async function handleGoogleResult(result) {
         if (!result?.user) return;
 
         // Mark that we are processing a Google redirect
@@ -1100,9 +1101,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         googleRedirectHandled = true;
         setStatus("Signed in with Google.", "success");
-        await transferSessionToApp(user);
-        window.location.href = "/en/account/";
-      }).catch((error) => {
+        try {
+          await transferSessionToApp(user);
+        } catch (error) {
+          console.warn("Could not transfer the session to the app:", error);
+        } finally {
+          window.location.href = "/en/account/";
+        }
+      }
+
+      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
         sessionStorage.removeItem("lixby_google_redirect");
         if (error.code !== "auth/no-current-user") {
           setStatus(`Google error: ${error.message}`, "error");
@@ -1327,21 +1335,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
 
-      googleAuthBtn.addEventListener("click", async () => {
+      async function startGoogleSignIn() {
         try {
-          await signInWithRedirect(auth, googleProvider);
+          await setPersistence(auth, browserLocalPersistence);
+          try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await handleGoogleResult(result);
+          } catch (popupError) {
+            const code = popupError?.code || "";
+            if (
+              code === "auth/popup-blocked" ||
+              code === "auth/popup-request-failed" ||
+              code === "auth/cancelled-popup-request" ||
+              code === "auth/operation-not-supported-in-this-environment"
+            ) {
+              // Fallback: classic redirect when the browser blocks the popup
+              await signInWithRedirect(auth, googleProvider);
+            } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
+              setStatus("Google window closed.", "info");
+            } else {
+              setStatus(`Google error: ${popupError.message}`, "error");
+            }
+          }
         } catch (error) {
           setStatus(`Google error: ${error.message}`, "error");
         }
-      });
+      }
 
-      googleRegisterBtn.addEventListener("click", async () => {
-        try {
-          await signInWithRedirect(auth, googleProvider);
-        } catch (error) {
-          setStatus(`Google error: ${error.message}`, "error");
-        }
-      });
+      googleAuthBtn.addEventListener("click", startGoogleSignIn);
+
+      googleRegisterBtn.addEventListener("click", startGoogleSignIn);
 
       sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;

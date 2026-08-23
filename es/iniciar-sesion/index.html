@@ -570,7 +570,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input id="loginIdentifier" type="text" required placeholder="nombre@ejemplo.com">
 
             <label for="loginPassword">Contraseña</label>
-            <input id="loginPassword" type="password" required placeholder="********">
+            <input id="loginPassword" type="password" required placeholder="********" autocomplete="current-password">
 
             <div class="auth-inline">
               <label>
@@ -717,10 +717,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <label for="registerPassword">Contraseña</label>
-            <input id="registerPassword" type="password" required minlength="6">
+            <input id="registerPassword" type="password" required minlength="6" autocomplete="new-password">
 
             <label for="registerPasswordConfirm">Confirmar contraseña</label>
-            <input id="registerPasswordConfirm" type="password" required minlength="6">
+            <input id="registerPasswordConfirm" type="password" required minlength="6" autocomplete="new-password">
 
             <div class="register-grid">
               <div>
@@ -866,6 +866,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       PhoneAuthProvider,
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
+      signInWithPopup,
       signInWithRedirect,
       getRedirectResult,
       onAuthStateChanged,
@@ -1074,10 +1075,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
 
-      // Capturar resultado del redirect de Google
+      // Capturar resultado del redirect de Google y finalizar sesion (popup o redirect)
       let googleRedirectHandled = false;
 
-      getRedirectResult(auth).then(async (result) => {
+      async function handleGoogleResult(result) {
         if (!result?.user) return;
 
         // Marcar que estamos procesando un redirect de Google
@@ -1107,7 +1108,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         } finally {
           window.location.href = "/es/cuenta/";
         }
-      }).catch((error) => {
+      }
+
+      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
         sessionStorage.removeItem("lixby_google_redirect");
         if (error.code !== "auth/no-current-user") {
           setStatus(`Error con Google: ${error.message}`, "error");
@@ -1347,23 +1350,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
 
-      googleAuthBtn.addEventListener("click", async () => {
+      async function startGoogleSignIn() {
         try {
           await setPersistence(auth, browserLocalPersistence);
-          await signInWithRedirect(auth, googleProvider);
+          try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await handleGoogleResult(result);
+          } catch (popupError) {
+            const code = popupError?.code || "";
+            if (
+              code === "auth/popup-blocked" ||
+              code === "auth/popup-request-failed" ||
+              code === "auth/cancelled-popup-request" ||
+              code === "auth/operation-not-supported-in-this-environment"
+            ) {
+              // Respaldo: redirect clasico si el navegador bloquea el popup
+              await signInWithRedirect(auth, googleProvider);
+            } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
+              setStatus("Ventana de Google cerrada.", "info");
+            } else {
+              setStatus(`Error con Google: ${popupError.message}`, "error");
+            }
+          }
         } catch (error) {
           setStatus(`Error con Google: ${error.message}`, "error");
         }
-      });
+      }
 
-      googleRegisterBtn.addEventListener("click", async () => {
-        try {
-          await setPersistence(auth, browserLocalPersistence);
-          await signInWithRedirect(auth, googleProvider);
-        } catch (error) {
-          setStatus(`Error con Google: ${error.message}`, "error");
-        }
-      });
+      googleAuthBtn.addEventListener("click", startGoogleSignIn);
+
+      googleRegisterBtn.addEventListener("click", startGoogleSignIn);
 
       sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
