@@ -85,6 +85,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transform: translateZ(0);
     }
 
+    /* ── Loading screen ──────────────────────────── */
+    #loadingScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: var(--bg, #f6f8fb);
+      font-family: var(--font-family, "Inter", "Manrope", sans-serif);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+    #loadingScreen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--line, #dbe3ef);
+      border-top-color: var(--primary, #0f3dff);
+      border-radius: 50%;
+      animation: loadSpin 0.75s linear infinite;
+    }
+    .loading-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted, #5f6b7a);
+      letter-spacing: 0.01em;
+    }
+    @keyframes loadSpin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes loadPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
     #accountLayout {
       opacity: 0;
       transition: opacity 0.3s ease;
@@ -515,6 +556,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+  <div id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Cargando tu cuenta…</p>
+  </div>
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -1684,7 +1729,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
+    function hideLoadingScreen() {
+      const ls = document.getElementById("loadingScreen");
+      if (ls) ls.classList.add("hide");
+    }
+
     async function loadAccount(user) {
+      hideLoadingScreen();
       await ensureAccountNumber();
       await migrateStoredBilling();
 
@@ -1732,6 +1783,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       if (!activeUser) {
+        hideLoadingScreen();
         window.location.href = "/es/iniciar-sesion/";
         return;
       }

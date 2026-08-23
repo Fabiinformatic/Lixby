@@ -138,9 +138,10 @@ document.addEventListener('readystatechange', () => {
 
 <link rel="stylesheet" href="style.css">
 <style>
-    body.shop-page {
-      background: #f5f5f7;
-    }
+      body.shop-page {
+        background: #f5f5f7;
+        overflow-x: hidden;
+      }
 
     .shop-hero {
       display: grid;
@@ -178,11 +179,9 @@ document.addEventListener('readystatechange', () => {
     }
 
     .shop-categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
       padding: 24px 0 56px;
-      max-width: 540px;
     }
 
     .shop-category {
@@ -195,6 +194,8 @@ document.addEventListener('readystatechange', () => {
       color: #111827;
       box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-width: 0;
+      flex: 1;
     }
 
     .shop-category:hover {
@@ -241,10 +242,69 @@ document.addEventListener('readystatechange', () => {
     .shop-latest h3 strong { color: #111827; }
     .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
-    .shop-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .shop-cards-wrapper {
+      position: relative;
+      overflow: visible;
+    }
+    .shop-cards,
+    .trust-cards {
+      display: flex;
       gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-right: calc(-1 * (100vw - min(1120px, 92vw)) / 2);
+      padding-right: calc((100vw - min(1120px, 92vw)) / 2);
+    }
+
+
+    .shop-cards::-webkit-scrollbar { display: none; }
+
+    .shop-cards > .shop-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(50% - 11px);
+      min-width: 0;
+    }
+
+    .shop-arrow {
+      position: fixed;
+      top: 50vh;
+      transform: translateY(-50%);
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229,231,235,0.5);
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #111827;
+      font-size: 1.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .shop-arrow-left  { left: 12px; }
+    .shop-arrow-right { right: 12px; }
+
+    .shop-arrow:active { transform: translateY(-50%) scale(0.92); }
+
+    .shop-cards-wrapper:hover .shop-arrow:not(.arrow-hidden) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .shop-arrow.arrow-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .shop-card {
@@ -312,10 +372,69 @@ document.addEventListener('readystatechange', () => {
     .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
     .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
 
+    .shop-card-lixfly {
+      background: linear-gradient(165deg, #0c1220, #1e3a8a);
+      color: #fff;
+      border-color: rgba(96, 165, 250, 0.2);
+    }
+
+    .shop-card-lixfly .shop-card-eyebrow { color: #60a5fa; }
+    .shop-card-lixfly small { color: rgba(148, 163, 184, 0.9); }
+
     .shop-card.card-white-solid {
       background: #ffffff;
       border-color: #ffffff;
     }
+
+    /* ── Trust section ─────────────────────────── */
+    .trust-section {
+      padding: 20px 0 80px;
+    }
+    .trust-section h3 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .trust-section h3 strong { color: #111827; }
+    .trust-section h3 span   { color: #6b7280; font-weight: 600; }
+    .trust-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.05);
+      scroll-snap-align: start;
+      flex: 0 0 calc(33.33% - 15px);
+      min-width: 0;
+      min-height: 240px;
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-card p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    @media (max-width: 980px) { .trust-card { flex: 0 0 50%; } }
+    @media (max-width: 640px) { .trust-card { flex: 0 0 85%; } }
 
     @media (max-width: 980px) {
       .shop-hero { grid-template-columns: 1fr; }
@@ -323,8 +442,11 @@ document.addEventListener('readystatechange', () => {
     }
 
     @media (max-width: 760px) {
-      .shop-categories,
-      .shop-cards { grid-template-columns: 1fr; }
+      .shop-categories { flex-direction: column; }
+      .shop-cards > .shop-card { flex: 0 0 85%; }
+      .shop-arrow { width: 46px; height: 46px; font-size: 1.3rem; }
+      .shop-arrow-left  { left: 6px; }
+      .shop-arrow-right { right: 6px; }
     }
   </style>
 
@@ -399,30 +521,96 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <span>Lixney</span>
       </a>
+      <a class="shop-category" data-searchable="lixfly efb msfs preflight flight plan performance" href="/es/pages/apps/lixfly/">
+        <div class="shop-category-icon">
+          <img class="shop-category-icon-contain" src="images/LixneyIcon.png" alt="App Lixfly">
+        </div>
+        <span>Lixfly</span>
+      </a>
     </section>
 
     <section class="shop-latest">
       <h3><strong>Lo último.</strong> <span>Echa un vistazo a las novedades.</span></h3>
-      <div class="shop-cards">
-        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one auriculares cascos mixmax" href="/es/pages/products/lixbuds-one/">
-          <p class="shop-card-eyebrow">Disponible ahora</p>
-          <h4>LixBuds One</h4>
-          <p>Sonido premium con cancelación de ruido inteligente.</p>
-          <small>Desde 99 EUR</small>
-          <div class="shop-card-media">
-            <img src="images/lixbuds-one-white.png" alt="Auriculares LixBuds One">
-          </div>
-        </a>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left" aria-label="Anterior">‹</button>
+        <button class="shop-arrow shop-arrow-right" aria-label="Siguiente">›</button>
+        <div class="shop-cards">
+          <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one auriculares cascos mixmax" href="/es/pages/products/lixbuds-one/">
+            <p class="shop-card-eyebrow">Disponible ahora</p>
+            <h4>LixBuds One</h4>
+            <p>Sonido premium con cancelación de ruido inteligente.</p>
+            <small>Desde 99 EUR</small>
+            <div class="shop-card-media">
+              <img src="images/lixbuds-one-white.png" alt="Auriculares LixBuds One">
+            </div>
+          </a>
 
-        <a class="shop-card shop-card-app" data-searchable="lixney app finanzas" href="/es/pages/apps/lixney/">
-          <p class="shop-card-eyebrow">Nueva versión</p>
-          <h4>Lixney</h4>
-          <p>Tu app para ahorrar, planificar y entender tus gastos.</p>
-          <small>Descarga gratuita</small>
+          <a class="shop-card shop-card-app" data-searchable="lixney app finanzas" href="/es/pages/apps/lixney/">
+            <p class="shop-card-eyebrow">Nueva versión</p>
+            <h4>Lixney</h4>
+            <p>Tu app para ahorrar, planificar y entender tus gastos.</p>
+            <small>Descarga gratuita</small>
+            <div class="shop-card-media">
+              <img src="images/lixney1.png" alt="Aplicación Lixney">
+            </div>
+          </a>
+
+        <a class="shop-card shop-card-lixfly" data-searchable="lixfly efb msfs preflight flight plan performance" href="/es/pages/apps/lixfly/">
+          <p class="shop-card-eyebrow">Beta abierta</p>
+          <h4>Lixfly</h4>
+          <p>Tu EFB para MSFS2020/2024: Preflight, Flight Plan, Performance, Navegación, eQRH y mucho más.</p>
+          <small>Beta gratuita</small>
           <div class="shop-card-media">
-            <img src="images/lixney1.png" alt="Aplicación Lixney">
+            <img src="images/lixney1.png" alt="Aplicación Lixfly">
           </div>
         </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Así cuidamos tu compra.</strong> <span>Simple, seguro y sin sorpresas.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Anterior">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Siguiente">›</button>
+        <div class="shop-cards trust-cards">
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#059669">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+            </div>
+            <p><strong style="color:#059669">Envío gratuito.</strong> Todos tus pedidos llegan a casa <strong style="color:#059669">sin coste adicional</strong>, sin importar el importe.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#d97706">
+              <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
+            </div>
+            <p><strong style="color:#d97706">Devolución en 30 días.</strong> Si algo no te convence, lo devuelves <strong style="color:#d97706">sin preguntas y sin complicaciones</strong>.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#2563eb">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p><strong style="color:#2563eb">Pago seguro.</strong> Cada transacción está <strong style="color:#2563eb">cifrada y protegida</strong> para que compres con total tranquilidad.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#7c3aed">
+              <svg viewBox="0 0 24 24"><path d="M3 11v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3"/><path d="M21 12v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+            </div>
+            <p><strong style="color:#7c3aed">Soporte en español.</strong> Nuestro equipo está aquí para ayudarte, <strong style="color:#7c3aed">en tu idioma</strong> y cuando lo necesites.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#16a34a">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <p><strong style="color:#16a34a">Garantía oficial.</strong> Todos los productos Lixby incluyen <strong style="color:#16a34a">dos años de garantía</strong> conforme a la normativa europea.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A9 9 0 1 0 4.16 7.51"/></svg>
+            </div>
+            <p><strong style="color:#6366f1">Actualizaciones gratuitas.</strong> Tus aplicaciones siempre a la última, <strong style="color:#6366f1">sin coste adicional</strong> y para siempre.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -496,6 +684,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
+
+    const shopCards = document.querySelector(".shop-cards");
+    const leftArrow = document.querySelector(".shop-arrow-left");
+    const rightArrow = document.querySelector(".shop-arrow-right");
+
+    if (shopCards && leftArrow && rightArrow) {
+      const scrollAmount = () => {
+        const card = shopCards.querySelector(".shop-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      leftArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const updateArrows = () => {
+        const maxScroll = shopCards.scrollWidth - shopCards.clientWidth;
+        leftArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft <= 4);
+        rightArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft >= maxScroll - 4);
+      };
+
+      shopCards.addEventListener("scroll", () => {
+        updateArrows();
+      }, { passive: true });
+      updateArrows();
+    }
+
+    const trustSection = document.querySelector(".trust-section");
+    const trustCards = document.querySelector(".trust-cards");
+    const trustArrowLeft = document.querySelector(".trust-arrow-left");
+    const trustArrowRight = document.querySelector(".trust-arrow-right");
+
+    if (trustSection && trustCards && trustArrowLeft && trustArrowRight) {
+      const trustScrollAmount = () => {
+        const card = trustCards.querySelector(".trust-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      trustArrowLeft.addEventListener("click", () => {
+        trustCards.scrollBy({ left: -trustScrollAmount(), behavior: "smooth" });
+      });
+
+      trustArrowRight.addEventListener("click", () => {
+        trustCards.scrollBy({ left: trustScrollAmount(), behavior: "smooth" });
+      });
+
+      const updateTrustArrows = () => {
+        const maxScroll = trustCards.scrollWidth - trustCards.clientWidth;
+        trustArrowLeft.classList.toggle("arrow-hidden", trustCards.scrollLeft <= 4);
+        trustArrowRight.classList.toggle("arrow-hidden", trustCards.scrollLeft >= maxScroll - 4);
+      };
+
+      trustCards.addEventListener("scroll", () => {
+        updateTrustArrows();
+      }, { passive: true });
+      updateTrustArrows();
+    }
+
+    function anchorArrowsToCards(arrows, cardsEl) {
+      if (!arrows.left || !arrows.right || !cardsEl) return;
+      const rect = cardsEl.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      arrows.left.style.top = center + "px";
+      arrows.right.style.top = center + "px";
+    }
+
+    function watchCards(arrows, cardsEl) {
+      if (!arrows.left || !arrows.right || !cardsEl) return;
+      const update = () => anchorArrowsToCards(arrows, cardsEl);
+      update();
+      window.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update, { passive: true });
+    }
+
+    watchCards({ left: leftArrow, right: rightArrow }, shopCards);
+    watchCards({ left: trustArrowLeft, right: trustArrowRight }, trustCards);
 
     const query = new URLSearchParams(window.location.search).get("q");
     if (query) {
