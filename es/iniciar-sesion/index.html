@@ -1450,9 +1450,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           birthDay: document.getElementById("birthDay")?.value || "",
           birthMonth: document.getElementById("birthMonth")?.value || "",
           birthYear: document.getElementById("birthYear")?.value || "",
-          registerEmail: document.getElementById("registerEmail")?.value || "",
-          phoneCountry: document.getElementById("phoneCountry")?.value || "",
-          phoneNumber: document.getElementById("phoneNumber")?.value || "",
           adsOptIn: document.getElementById("adsOptIn")?.checked || false,
           mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
           activeSection: registerSection.classList.contains("active") ? "register" : "login"
@@ -1471,15 +1468,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if (f.birthDay) document.getElementById("birthDay").value = f.birthDay;
           if (f.birthMonth) document.getElementById("birthMonth").value = f.birthMonth;
           if (f.birthYear) document.getElementById("birthYear").value = f.birthYear;
-          if (f.registerEmail) {
-            registerEmail.value = f.registerEmail;
-            emailVerifySection.style.display = "grid";
-          }
-          if (f.phoneCountry) document.getElementById("phoneCountry").value = f.phoneCountry;
-          if (f.phoneNumber) {
-            document.getElementById("phoneNumber").value = f.phoneNumber;
-            togglePhoneVerify();
-          }
           document.getElementById("adsOptIn").checked = !!f.adsOptIn;
           document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
           if (f.activeSection === "register") openRegister(null);
@@ -1491,11 +1479,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       registerForm.addEventListener("input", saveFormState);
       registerForm.addEventListener("change", saveFormState);
 
-      // Al cargar la página, limpiar claves sensibles de drafts anteriores
-      const oldDraft = JSON.parse(sessionStorage.getItem("lixby_register_draft") || "{}");
-      delete oldDraft.registerPassword;
-      delete oldDraft.registerPasswordConfirm;
-      sessionStorage.setItem("lixby_register_draft", JSON.stringify(oldDraft));
+      // Purga única de borradores legacy que puedan contener datos sensibles (contraseñas, emails, teléfonos).
+      const DRAFT_SCHEMA = "2";
+      if (sessionStorage.getItem("lixby_register_draft_schema") !== DRAFT_SCHEMA) {
+        sessionStorage.removeItem("lixby_register_draft");
+        sessionStorage.setItem("lixby_register_draft_schema", DRAFT_SCHEMA);
+      }
 
       restoreFormState();
       const urlParams = new URLSearchParams(window.location.search);
