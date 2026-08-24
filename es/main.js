@@ -1,22 +1,3 @@
-const cookieBanner = document.getElementById("cookieBanner");
-const acceptCookiesButton = document.getElementById("acceptCookies");
-const rejectCookiesButton = document.getElementById("rejectCookies");
-
-const cookieChoice = localStorage.getItem("cookiesChoice");
-if (cookieChoice === "accepted" || cookieChoice === "rejected") {
-  cookieBanner.style.display = "none";
-}
-
-acceptCookiesButton.addEventListener("click", () => {
-  localStorage.setItem("cookiesChoice", "accepted");
-  cookieBanner.style.display = "none";
-});
-
-rejectCookiesButton.addEventListener("click", () => {
-  localStorage.setItem("cookiesChoice", "rejected");
-  cookieBanner.style.display = "none";
-});
-
 const nav = document.getElementById("nav");
 const progressBar = document.getElementById("scroll-progress");
 

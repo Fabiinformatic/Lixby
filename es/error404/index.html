@@ -71,13 +71,7 @@
   <meta name="robots" content="noindex, follow" />
   <meta name="author" content="Lixby" />
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KB2GQBDR');</script>
-  <!-- End Google Tag Manager -->
+  
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -90,23 +84,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       ]
     }
   </script>
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB2GQBDR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
 
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
   <div class="background-orb orb-4" aria-hidden="true"></div>
   <div class="background-orb orb-5" aria-hidden="true"></div>
-
-  <div class="cookie-banner" id="cookieBanner">
-    <p>Usamos cookies para mejorar tu experiencia. Puedes aceptar o rechazar.</p>
-    <div class="cookie-actions">
-      <button type="button" id="acceptCookies">Aceptar</button>
-      <button type="button" id="rejectCookies" class="cookie-reject">Rechazar</button>
-    </div>
-  </div>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
@@ -261,25 +249,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </footer>
 
   <script>
-    const cookieBanner = document.getElementById("cookieBanner");
-    const acceptCookiesButton = document.getElementById("acceptCookies");
-    const rejectCookiesButton = document.getElementById("rejectCookies");
-
-    const cookieChoice = localStorage.getItem("cookiesChoice");
-    if (cookieChoice === "accepted" || cookieChoice === "rejected") {
-      cookieBanner.style.display = "none";
-    }
-
-    acceptCookiesButton.addEventListener("click", () => {
-      localStorage.setItem("cookiesChoice", "accepted");
-      cookieBanner.style.display = "none";
-    });
-
-    rejectCookiesButton.addEventListener("click", () => {
-      localStorage.setItem("cookiesChoice", "rejected");
-      cookieBanner.style.display = "none";
-    });
-
     const searchForm = document.getElementById("error404SearchForm");
     const searchInput = document.getElementById("error404Search");
     
