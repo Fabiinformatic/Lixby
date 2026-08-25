@@ -25,8 +25,8 @@ const updateScrollUI = () => {
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const progress = height > 0 ? (top / height) * 100 : 0;
 
-  progressBar.style.width = progress + "%";
-  nav.classList.toggle("nav-scrolled", top > 20);
+  if(progressBar)progressBar.style.width = progress + "%";
+  if(nav)nav.classList.toggle("nav-scrolled", top > 20);
 };
 
 window.addEventListener("scroll", updateScrollUI, { passive: true });
