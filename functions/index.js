@@ -10,7 +10,7 @@ const sgMail = require("@sendgrid/mail");
 const { Resend } = require("resend");
 const sanitizeHtml = require("sanitize-html");
 
-if (!admin.apps.length) {
+if (admin.getApps().length === 0) {
   admin.initializeApp();
 }
 
