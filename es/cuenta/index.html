@@ -726,6 +726,7 @@
           <h2>Pagos</h2>
           <div class="payment-panel" id="paymentsSection">
             <h3>Tarjetas guardadas</h3>
+            <form id="paymentForm" onsubmit="return false" autocomplete="off">
             <div class="payment-grid">
               <div class="payment-field">
                 <label for="payCardholder">Titular</label>
@@ -750,6 +751,7 @@
             <div class="order-actions">
               <button id="addPaymentBtn" class="btn btn-primary" type="button">Añadir método de pago</button>
             </div>
+            </form>
             <div id="paymentMethods" class="payment-methods"></div>
           </div>
         </section>
@@ -1004,9 +1006,20 @@
     }
 
     async function ensureAccountNumber() {
-      const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
-      const result = await ensureAccountNumberFn();
-      return result.data.accountNumber;
+      try {
+        const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
+        const result = await ensureAccountNumberFn();
+        return result.data.accountNumber || null;
+      } catch (error) {
+        console.warn("No se pudo generar el numero de cuenta desde el backend, revisando Firestore:", error?.message || error);
+        try {
+          const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+          return userDoc.exists() ? (userDoc.data().accountNumber || null) : null;
+        } catch (firestoreError) {
+          console.warn("Tampoco se pudo leer el numero de cuenta de Firestore:", firestoreError?.message || firestoreError);
+          return null;
+        }
+      }
     }
 
     async function migrateStoredBilling() {
