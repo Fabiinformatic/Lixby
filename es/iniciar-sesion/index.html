@@ -854,8 +854,6 @@
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
       signInWithPopup,
-      signInWithRedirect,
-      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
@@ -1062,13 +1060,13 @@
       const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
 
-      // Capturar resultado del redirect de Google y finalizar sesion (popup o redirect)
+      // Capturar resultado del login de Google (popup) y finalizar sesion
       let googleRedirectHandled = false;
 
       async function handleGoogleResult(result) {
         if (!result?.user) return;
 
-        // Marcar que estamos procesando un redirect de Google
+        // Marcar que estamos procesando un login de Google
         sessionStorage.setItem("lixby_google_redirect", "1");
 
         const user = result.user;
@@ -1096,13 +1094,6 @@
           window.location.href = "/es/cuenta/";
         }
       }
-
-      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
-        sessionStorage.removeItem("lixby_google_redirect");
-        if (error.code !== "auth/no-current-user") {
-          setStatus(`Error con Google: ${error.message}`, "error");
-        }
-      });
 
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
@@ -1351,8 +1342,8 @@
               code === "auth/cancelled-popup-request" ||
               code === "auth/operation-not-supported-in-this-environment"
             ) {
-              // Respaldo: redirect clasico si el navegador bloquea el popup
-              await signInWithRedirect(auth, googleProvider);
+              // Logins con Google siempre via popup (sin redireccion a pantalla completa)
+              setStatus("Permite las ventanas emergentes (popups) de este sitio para continuar con Google.", "error");
             } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
               setStatus("Ventana de Google cerrada.", "info");
             } else {

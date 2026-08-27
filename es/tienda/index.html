@@ -256,6 +256,7 @@ document.addEventListener('readystatechange', () => {
       scroll-snap-align: start;
       flex: 0 0 calc(50% - 11px);
       min-width: 0;
+      align-self: stretch;
     }
 
     .shop-arrow {
@@ -339,15 +340,21 @@ document.addEventListener('readystatechange', () => {
       margin-top: auto;
       padding-top: 18px;
       display: flex;
-      align-items: end;
+      flex: 1 1 0%;
+      align-items: flex-end;
       justify-content: center;
+      min-height: 0;
     }
 
     .shop-card-media img {
-      width: min(85%, 320px);
-      border-radius: 20px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      display: block;
+      width: auto;
+      height: 230px;
+      max-width: 100%;
       object-fit: contain;
+      object-position: center bottom;
+      border-radius: 20px 20px 28px 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     .shop-card-product {
@@ -651,7 +658,7 @@ document.documentElement.classList.replace("nojs", "js");
         <a href="/es/pages/legal/privacy/">Política de privacidad</a>
         <a href="/es/pages/legal/cookies/">Uso de cookies</a>
         <a href="/es/pages/legal/terms/">Condiciones de uso</a>
-        <a href="/es/support/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
         <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>
     </div>
@@ -1090,6 +1097,38 @@ document.documentElement.classList.replace("nojs", "js");
   })();
   </script>
   <!-- FIN MINIBOT LIXBY -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.shop-card');
+
+      function fixShopCards() {
+        cards.forEach(card => {
+          const media = card.querySelector('.shop-card-media');
+          if (!media) return;
+
+          const cardRect = card.getBoundingClientRect();
+          const mediaRect = media.getBoundingClientRect();
+
+          const gap = cardRect.bottom - mediaRect.bottom;
+
+          if (Math.abs(gap) > 0.5) {
+            media.style.marginBottom = `${-gap}px`;
+          }
+        });
+      }
+
+      fixShopCards();
+      window.addEventListener('resize', fixShopCards);
+
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(fixShopCards);
+        cards.forEach(card => {
+          if (card.querySelector('.shop-card-media')) ro.observe(card);
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

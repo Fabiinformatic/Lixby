@@ -1088,7 +1088,7 @@
   </url>
   <url>
     <loc>https://lixby.es/es/pages/legal/legal-notice/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1106,7 +1106,13 @@
   </url>
   <url>
     <loc>https://lixby.es/es/pages/legal/terms/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://lixby.es/es/pages/legal/ventas-reembolsos/</loc>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
