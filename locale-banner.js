@@ -253,9 +253,14 @@
     go.textContent = T.action;
     go.addEventListener("click", function () {
       markDismissed();
+      /* Valida contra la lista blanca de idiomas (los options del select
+         se construyen desde LANGS), de modo que el valor leido del DOM
+         no pueda inyectar una URL arbitraria al redirigir. */
+      var chosen = sel.value;
+      var lang = LANGS.indexOf(chosen) !== -1 ? chosen : sug;
       /* Redirige al idioma elegido en el dropdown (o al sugerido) */
       window.location.replace(
-        buildTargetPath(location.pathname, location.search, location.hash, sel.value || sug)
+        buildTargetPath(location.pathname, location.search, location.hash, lang)
       );
     });
 

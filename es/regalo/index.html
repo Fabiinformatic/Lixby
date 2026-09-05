@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
 <head>
 <script>
@@ -46,7 +46,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
 
@@ -514,52 +514,88 @@
       padding: 0 20px;
     }
 
+    /* FAQ */
     .faq-title {
-      font-size: 1.3rem;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
       font-weight: 800;
-      margin-bottom: 16px;
       letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 24px;
     }
 
-    .faq-item {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .faq-question {
-      padding: 16px 20px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-    }
-
-    .faq-question::after {
-      content: '+';
-      font-size: 1.2rem;
-      color: var(--green);
-      transition: transform 0.2s;
-    }
-
-    .faq-item.open .faq-question::after { transform: rotate(45deg); }
-
-    .faq-answer {
+    .faq-section.faq {
+      max-width: 680px;
+      margin: 0 auto 80px;
       padding: 0 20px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq .faq-item {
+      background: var(--surface, #ffffff);
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(15, 61, 255, 0.06);
+      overflow: hidden;
+      transition: box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open {
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.08);
+    }
+
+    .faq .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text, #111827);
+      text-align: left;
+      transition: color 200ms ease;
+    }
+
+    .faq .faq-question:hover {
+      color: var(--primary, #0f3dff);
+    }
+
+    .faq .faq-chevron {
+      flex-shrink: 0;
+      color: var(--green, #1f4fd8);
+      width: 22px;
+      height: 22px;
+      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.2s;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
+      transition: max-height 250ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .faq-item.open .faq-answer { max-height: 200px; padding: 0 20px 16px; }
+    .faq .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq .faq-answer-text {
+      padding: 14px 28px 24px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted, #6b7280);
+    }
 
     @media (max-width: 600px) {
       .regalo-section { padding: 20px 16px; }
@@ -579,8 +615,8 @@
     <a href="./" class="nav-brand">Lixby</a>
     <nav class="nav-links" aria-label="Principal">
       <a href="/es/tienda/" class="nav-link">Tienda</a>
-      <a href="#productos" class="nav-link">Productos</a>
-      <a href="#apps" class="nav-link">Apps</a>
+      <a href="/es/productos/" class="nav-link">Productos</a>
+      <a href="/es/apps/" class="nav-link">Apps</a>
       <a href="/es/support/" class="nav-link">Soporte</a>
     </nav>
     <div class="nav-actions">
@@ -634,8 +670,8 @@
   </div>
   <nav class="nav-mobile-links" aria-label="Principal móvil">
     <a href="/es/tienda/">Tienda</a>
-    <a href="#productos">Productos</a>
-    <a href="#apps">Apps</a>
+    <a href="/es/productos/">Productos</a>
+    <a href="/es/apps/">Apps</a>
     <a href="/es/support/">Soporte</a>
   </nav>
   <div class="nav-mobile-actions">
@@ -762,84 +798,111 @@
 </main>
 
 <!-- FAQ -->
-<section class="faq-section">
+<section class="faq faq-section">
   <div class="faq-title">Preguntas frecuentes</div>
+  <div class="faq-list">
 
   <div class="faq-item">
-    <div class="faq-question">¿Cuándo llega la tarjeta regalo?</div>
-    <div class="faq-answer">En menos de una hora tras el pago. Si has introducido el email de otra persona, le llegará directamente a esa persona.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>¿Cuándo llega la tarjeta regalo?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">En menos de una hora tras el pago. Si has introducido el email de otra persona, le llegará directamente a esa persona.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">¿Cómo se usa el código?</div>
-    <div class="faq-answer">En el carrito de la tienda Lixby verás un campo para introducir el código. Se aplica automáticamente como descuento.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>¿Cómo se usa el código?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">En el carrito de la tienda Lixby verás un campo para introducir el código. Se aplica automáticamente como descuento.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">¿Caduca la tarjeta regalo?</div>
-    <div class="faq-answer">Las tarjetas regalo Lixby no tienen fecha de caducidad. Se pueden usar en cualquier momento.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>¿Caduca la tarjeta regalo?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Las tarjetas regalo Lixby no tienen fecha de caducidad. Se pueden usar en cualquier momento.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">¿Se puede usar en más de una compra?</div>
-    <div class="faq-answer">Sí. Si el saldo de la tarjeta es mayor que el pedido, el saldo restante queda disponible para futuras compras.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>¿Se puede usar en más de una compra?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Sí. Si el saldo de la tarjeta es mayor que el pedido, el saldo restante queda disponible para futuras compras.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">¿Qué pasa si me equivoco en el email?</div>
-    <div class="faq-answer">Escribe a lixbyinfo@gmail.com con tu número de pedido y lo solucionamos.</div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>¿Qué pasa si me equivoco en el email?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Escribe a lixbyinfo@gmail.com con tu número de pedido y lo solucionamos.</p>
+      </div>
+</div>
   </div>
 </section>
 
 <footer class="footer footer-mega">
-  <div class="container footer-mega-grid">
-    <section class="footer-section">
-      <h3>Ver y comprar</h3>
-      <ul>
-        <li><a href="/es/tienda/">Tienda</a></li>
-        <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-        <li><a href="#apps">Apps</a></li>
-        <li><a href="/es/support/">Soporte</a></li>
-      </ul>
-    </section>
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>Soporte</h3>
-      <ul>
-        <li><a href="/es/support/">Página inicial soporte</a></li>
-        <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-        <li><a href="/es/support/">Información de Garantía</a></li>
-        <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
-      </ul>
-    </section>
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>Cuenta</h3>
-      <ul>
-        <li><a href="/es/track/">Pedidos</a></li>
-        <li><a href="/es/cuenta/">Mi cuenta</a></li>
-        <li><a href="/es/cuenta/">Cupones</a></li>
-      </ul>
-    </section>
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>Acerca de Lixby</h3>
-      <ul>
-        <li><a href="/es/about/">Nosotros</a></li>
-        <li><a href="/es/support/">Garantía</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="/es/support/">Contacto</a></li>
-      </ul>
-    </section>
-  </div>
-
-  <div class="container footer-meta">
-    <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
-    <div class="footer-legal-links">
-      <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-      <a href="/es/pages/legal/cookies/">Uso de cookies</a>
-      <a href="/es/pages/legal/terms/">Condiciones de uso</a>
-      <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
-      <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
     </div>
-  </div>
-</footer>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
 
 <script>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
@@ -1082,7 +1145,16 @@
   document.querySelectorAll('.faq-question').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.parentElement;
-      item.classList.toggle('open');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        const ob = o.querySelector('.faq-question');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 </script>

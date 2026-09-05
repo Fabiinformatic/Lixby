@@ -43,7 +43,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="images/lixbuds-one-white.png" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
@@ -100,8 +100,6 @@
 <body>
 
   <div id="scroll-progress"></div>
-  <h1 class="visually-hidden">Lixby</h1>
-
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -113,8 +111,8 @@
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
         <a href="/es/tienda/" class="nav-link">Tienda</a>
-        <a href="#productos" class="nav-link">Productos</a>
-        <a href="#apps" class="nav-link">Apps</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
         <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
@@ -168,8 +166,8 @@
     </div>
     <nav class="nav-mobile-links" aria-label="Principal móvil">
       <a href="/es/tienda/">Tienda</a>
-      <a href="#productos">Productos</a>
-      <a href="#apps">Apps</a>
+      <a href="/es/productos/">Productos</a>
+      <a href="/es/apps/">Apps</a>
       <a href="/es/support/">Soporte</a>
     </nav>
     <div class="nav-mobile-actions">
@@ -182,15 +180,13 @@
     <section id="inicio" class="hero container reveal" data-delay="0s">
       <div class="hero-copy">
         <p class="eyebrow">Tecnología pensada para ti</p>
-        <h1><span id="texto">Diseño limpio,
-sonido potente y
-control total de tu día.</span></h1>
+        <h1><span id="texto">Contigo en cada parte de tu día, estés donde estés.</span></h1>
         <p class="hero-text">
           Bienvenido a Lixby. Descubre nuestros productos más innovadores. Auriculares LixBuds One, apps como Lixney, Lixfly y mucho más.
         </p>
         <div class="hero-actions">
-          <a href="#productos" class="btn btn-primary">Explorar productos</a>
-          <a href="#apps" class="btn btn-secondary">Conocer apps</a>
+          <a href="/es/productos/" class="btn btn-primary">Explorar productos</a>
+          <a href="/es/apps/" class="btn btn-secondary">Conocer apps</a>
         </div>
       </div>
       <div class="hero-media reveal" data-delay="0.15s">
@@ -246,7 +242,7 @@ control total de tu día.</span></h1>
         <div class="cards-grid">
           <article id="apps" class="product-card reveal" data-delay="0.15s">
             <div class="card-media">
-              <img src="images/lixney1.png" loading="lazy" alt="Aplicación Lixney" class="app-logo">
+              <img src="images/lixneyicon2.webp" loading="lazy" alt="Aplicación Lixney" class="app-logo">
             </div>
             <h3>Lixney</h3>
             <p>Tu app de finanzas personales: organiza gastos, crea presupuestos y entiende en qué se va tu dinero.</p>
@@ -258,13 +254,13 @@ control total de tu día.</span></h1>
           
           <article id="apps-lixfly" class="product-card reveal" data-delay="0.20s">
             <div class="card-media">
-              <img src="images/lixney1.png" loading="lazy" alt="Aplicación Lixfly" class="app-logo">
+              <img src="images/lixflyicon2.webp" loading="lazy" alt="Aplicación Lixfly" class="app-logo">
             </div>
             <h3>Lixfly</h3>
             <p>Tu EFB para MSFS2020/2024: Preflight, Flight Plan, Performance, Navegación, eQRH y mucho más.</p>
             <div class="card-buttons">
-              <a href="/es/pages/apps/lixfly/" class="btn btn-secondary">Ver más</a>
-              <a href="/es/beta-lixfly/" class="btn btn-primary">¿Quieres ser beta tester de Lixfly?</a>
+              <a href="/es/centro-ayuda/lixfly/" class="btn btn-secondary">Centro de ayuda</a>
+              <a href="mailto:lixbyinfo@gmail.com?subject=Beta%20Lixfly" class="btn btn-primary">Solicitar acceso beta</a>
             </div>
           </article>
         </div>
@@ -279,7 +275,7 @@ control total de tu día.</span></h1>
         <ul>
           <li><a href="/es/tienda/">Tienda</a></li>
           <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="#apps">Apps</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
           <li><a href="/es/support/">Soporte</a></li>
         </ul>
       </section>
@@ -308,7 +304,7 @@ control total de tu día.</span></h1>
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
           <li><a href="/es/support/">Garantía</a></li>
-          <li><a href="#">Eventos</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
           <li><a href="/es/support/">Contacto</a></li>
         </ul>
       </section>
@@ -318,8 +314,8 @@ control total de tu día.</span></h1>
       <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
         <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
         <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
         <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>

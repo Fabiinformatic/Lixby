@@ -46,7 +46,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
 
@@ -90,9 +90,11 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0c;
@@ -100,13 +102,13 @@
       --muted: #a8abb2;
       --line: rgba(255, 255, 255, 0.08);
       --glass: rgba(255, 255, 255, 0.06);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --shadow: 0 30px 80px rgba(15, 61, 255, 0.25);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "Inter", "Manrope", sans-serif;
+      font-family: "Inter", "Inter", sans-serif;
       color: var(--ink);
       background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.12) 0, transparent 45%),
                   radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06) 0, transparent 40%),
@@ -138,7 +140,7 @@
     .section-label {
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       color: var(--muted);
       margin-bottom: 12px;
       display: inline-block;
@@ -152,7 +154,7 @@
     }
 
     .card {
-      border-radius: 26px;
+      border-radius: 24px;
       border: 1px solid var(--line);
       background: var(--glass);
       padding: 28px;
@@ -338,6 +340,17 @@
       </div>
     </section>
   </main>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+</script>
 </body>
 </html>
 

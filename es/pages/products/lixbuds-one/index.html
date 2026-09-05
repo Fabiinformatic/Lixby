@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <script>
@@ -60,6 +60,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary, #0F3DFF), var(--primary-2, #16A7FF));
+  z-index: 2000;
+  transition: width 0.1s linear;
+}
+
     /* === VARIABLES === */
     :root {
       --bg: #ffffff;
@@ -69,8 +80,8 @@
       --line: rgba(17, 19, 24, 0.12);
       --glass: rgba(255, 255, 255, 0.82);
       --shadow: 0 24px 70px rgba(17, 24, 39, 0.12);
-      --primary: #0f3dff;
-      --primary-2: #16a7ff;
+      --primary: #0F3DFF;
+      --primary-2: #16A7FF;
       --text: #111827;
     }
 
@@ -995,64 +1006,83 @@
       color: #f5a623;
       margin-top: auto;
     }
-    /* === FAQ === */
-    .panel-faq { background: #0b0b0c; color: #fff; }
+        /* === FAQ === */
+    .panel-faq {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      color: var(--text, #111827);
+      border-top: 1px solid #e5e7eb;
+    }
     .section-title { font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 700; letter-spacing: -0.03em; }
     .section-subtitle { font-size: 0.95rem; color: var(--muted); }
-    .panel-faq .section-title { color: #fff; }
-    .panel-faq .section-subtitle { color: rgba(255,255,255,0.55); }
+    .panel-faq .section-title { color: var(--text, #111827); }
+    .panel-faq .section-subtitle { color: var(--muted, #626a76); }
+
     .faq-list {
       max-width: 720px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      gap: 14px;
     }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      padding: 0;
+
+    .faq .faq-item {
+      background: var(--surface, #ffffff);
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(15, 61, 255, 0.06);
+      overflow: hidden;
+      transition: box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .faq-item:first-child {
-      border-top: 1px solid rgba(255,255,255,0.12);
+
+    .faq .faq-item.open {
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.08);
     }
-    .faq-item button {
-      all: unset;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 1.05rem;
+
+.faq .faq-question {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 18px 0;
-      width: 100%;
+      padding: 20px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text, #111827);
       text-align: left;
-      color: #fff;
-    }
-    .faq-item button::after {
-      content: "+";
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.4);
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-    .faq-item[open] button::after {
-      content: "−";
-      color: #fff;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-    .faq-item[open] .faq-answer {
-      max-height: 300px;
-      padding-bottom: 18px;
+      transition: color 200ms ease;
     }
 
-    /* === FINAL BUY === */
+    .faq .faq-question:hover {
+      color: var(--primary, #0f3dff);
+    }
+
+    .faq .faq-chevron {
+      flex-shrink: 0;
+      color: var(--primary, #0f3dff);
+      width: 22px;
+      height: 22px;
+      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-answer-text {
+      padding: 14px 28px 24px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted, #626a76);
+    }
+/* === FINAL BUY === */
     .panel-final { background: #fff; text-align: center; overflow: hidden; }
     .final-stats {
       display: flex;
@@ -1378,14 +1408,16 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
 
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="/es/" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
         <a href="/es/tienda/" class="nav-link">Tienda</a>
-        <a href="/es/#productos" class="nav-link">Productos</a>
-        <a href="/es/#apps" class="nav-link">Apps</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
         <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
@@ -1429,8 +1461,8 @@
             <p class="hero-video-sub">Cancelación de ruido inteligente · Audio espacial · IPX5</p>
           </div>
           <div class="hero-video-cta">
-            <span class="hero-video-price">99€</span>
-            <a href="/es/comprar-cascos/lixbuds-one/" class="hero-buy-btn" aria-label="Comprar LixBuds One por 99 euros">Comprar</a>
+            <span class="hero-video-price">99,00€</span>
+            <a href="/es/comprar-cascos/lixbuds-one/" class="hero-buy-btn" aria-label="Comprar LixBuds One por 99,00 euros">Comprar</a>
           </div>
         </div>
       </div>
@@ -1659,7 +1691,7 @@
             <tbody>
               <tr>
                 <th>Precio</th>
-                <td class="col-lixby">99€</td>
+                <td class="col-lixby">99,00€</td>
                 <td class="col-other">99–150€</td>
               </tr>
               <tr>
@@ -1759,8 +1791,8 @@
             <span class="wb-stat"><strong>Qi</strong> Carga inalámbrica</span>
           </div>
           <div class="inline-cta" style="justify-content:center;">
-            <div class="price" style="margin:0;">99€</div>
-            <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" aria-label="Comprar ahora LixBuds One por 99 euros">Comprar ahora — 99€</a>
+            <div class="price" style="margin:0;">99,00€</div>
+            <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" aria-label="Comprar ahora LixBuds One por 99,00 euros">Comprar ahora — 99,00€</a>
           </div>
         </div>
       </div>
@@ -1793,8 +1825,8 @@
               <div class="case-feature-desc">Cabe en cualquier bolsillo</div>
             </div>
             <div class="case-cta">
-              <div class="price">99€</div>
-              <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" aria-label="Comprar ahora LixBuds One por 99 euros">Comprar ahora — 99€</a>
+              <div class="price">99,00€</div>
+              <a href="/es/comprar-cascos/lixbuds-one/" class="btn btn-dark" aria-label="Comprar ahora LixBuds One por 99,00 euros">Comprar ahora — 99,00€</a>
             </div>
           </div>
         </div>
@@ -1846,30 +1878,60 @@
       <div class="container">
         <h2 id="faq-title" class="section-title reveal" style="text-align:center;margin-bottom:6px;">Todo lo que necesitas saber.</h2>
         <p class="section-subtitle reveal" style="text-align:center;margin-bottom:32px;">Respuestas rápidas antes de comprar.</p>
-        <div class="faq-list reveal">
+        <div class="faq-list faq reveal">
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Cuál es la política de devolución?</button>
-            <div class="faq-answer">Dispones de 30 días para devolverlos si no son para ti, siempre en su estado original.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p1" aria-labelledby="faq-p1-label">
+              <span id="faq-p1-label">¿Cuál es la política de devolución?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p1" role="region" aria-labelledby="faq-p1-label">
+              <p class="faq-answer-text">Dispones de 30 días para devolverlos si no son para ti, siempre en su estado original.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Son compatibles con Android y iOS?</button>
-            <div class="faq-answer">Sí, funcionan con ambos sistemas y se emparejan en segundos vía Bluetooth 5.3.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p2" aria-labelledby="faq-p2-label">
+              <span id="faq-p2-label">¿Son compatibles con Android y iOS?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p2" role="region" aria-labelledby="faq-p2-label">
+              <p class="faq-answer-text">Sí, funcionan con ambos sistemas y se emparejan en segundos vía Bluetooth 5.3.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Cuánto tarda el envío?</button>
-            <div class="faq-answer">El envío estándar tarda entre 24 y 72 horas laborables en España. Disponemos de envío exprés en 24h.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p3" aria-labelledby="faq-p3-label">
+              <span id="faq-p3-label">¿Cuánto tarda el envío?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p3" role="region" aria-labelledby="faq-p3-label">
+              <p class="faq-answer-text">El envío estándar tarda entre 24 y 72 horas laborables en España. Disponemos de envío exprés en 24h.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Los LixBuds One son resistentes al agua?</button>
-            <div class="faq-answer">Sí, cuentan con certificación IPX5, lo que los hace resistentes al sudor, lluvia y salpicaduras.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p4" aria-labelledby="faq-p4-label">
+              <span id="faq-p4-label">¿Los LixBuds One son resistentes al agua?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p4" role="region" aria-labelledby="faq-p4-label">
+              <p class="faq-answer-text">Sí, cuentan con certificación IPX5, lo que los hace resistentes al sudor, lluvia y salpicaduras.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Qué incluye LixSafe?</button>
-            <div class="faq-answer">LixSafe cubre daños accidentales, pérdida y robos durante 12 meses con reposición rápida sin coste adicional.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p5" aria-labelledby="faq-p5-label">
+              <span id="faq-p5-label">¿Qué incluye LixSafe?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p5" role="region" aria-labelledby="faq-p5-label">
+              <p class="faq-answer-text">LixSafe cubre daños accidentales, pérdida y robos durante 12 meses con reposición rápida sin coste adicional.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false">¿Cómo se cargan los LixBuds One?</button>
-            <div class="faq-answer">Se cargan automáticamente al colocarlos en el estuche. El estuche se carga vía USB-C o con cualquier base de carga inalámbrica Qi.</div>
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p6" aria-labelledby="faq-p6-label">
+              <span id="faq-p6-label">¿Cómo se cargan los LixBuds One?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p6" role="region" aria-labelledby="faq-p6-label">
+              <p class="faq-answer-text">Se cargan automáticamente al colocarlos en el estuche. El estuche se carga vía USB-C o con cualquier base de carga inalámbrica Qi.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1902,8 +1964,8 @@
             <h2 id="buy-title" class="final-hero-title">LixBuds One.</h2>
             <p class="final-hero-sub">Escúchalo. Nada más importa.</p>
             <div class="final-cta-row">
-              <span class="final-price">99€</span>
-              <a href="/es/comprar-cascos/lixbuds-one/" class="btn-final" aria-label="Comprar ahora LixBuds One por 99 euros">Comprar ahora</a>
+              <span class="final-price">99,00€</span>
+              <a href="/es/comprar-cascos/lixbuds-one/" class="btn-final" aria-label="Comprar ahora LixBuds One por 99,00 euros">Comprar ahora</a>
             </div>
           </div>
         </div>
@@ -2018,20 +2080,24 @@
     });
 
     // FAQ accordion
-    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
-    faqItems.forEach((item) => {
-      const btn = item.querySelector('button');
-      if (!btn) return;
+    const faqButtons = Array.from(document.querySelectorAll('.faq .faq-question'));
+    faqButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const isOpen = item.hasAttribute('open');
-        faqItems.forEach((el) => {
-          el.removeAttribute('open');
-          const b = el.querySelector('button');
-          if (b) b.setAttribute('aria-expanded', 'false');
+        const item = btn.closest('.faq-item');
+        const answer = btn.nextElementSibling;
+        const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+        faqButtons.forEach((b) => {
+          const it = b.closest('.faq-item');
+          b.setAttribute('aria-expanded', 'false');
+          if (it) it.classList.remove('open');
+          const a = b.nextElementSibling;
+          if (a) a.style.maxHeight = '0px';
         });
-        if (!isOpen) {
-          item.setAttribute('open', '');
+        if (!wasOpen && answer) {
           btn.setAttribute('aria-expanded', 'true');
+          item.classList.add('open');
+          answer.style.maxHeight = '0px';
+          requestAnimationFrame(() => { answer.style.maxHeight = answer.scrollHeight + 'px'; });
         }
       });
     });
@@ -2077,7 +2143,7 @@
         <ul>
           <li><a href="/es/tienda/">Tienda</a></li>
           <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="#apps">Apps</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
           <li><a href="/es/support/">Soporte</a></li>
         </ul>
       </section>
@@ -2106,7 +2172,7 @@
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
           <li><a href="/es/support/">Garantía</a></li>
-          <li><a href="#">Eventos</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
           <li><a href="/es/support/">Contacto</a></li>
         </ul>
       </section>
@@ -2116,12 +2182,23 @@
       <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
         <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
         <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
         <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>
     </div>
   </footer>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+</script>
 </body>
 </html>

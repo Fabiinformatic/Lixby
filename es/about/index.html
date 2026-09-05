@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
 <head>
 <script>
@@ -46,7 +46,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
 
@@ -74,7 +74,6 @@
   <meta name="twitter:description" content="Descubre la historia de Lixby y nuestro compromiso con la innovación." />
   <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png" />
 
-  
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,350 +82,1608 @@
       "url": "https://lixby.es",
       "logo": "https://lixby.es/logo.png",
       "sameAs": [
-        "https://github.com/lixby"
+        "https://github.com/lixby",
+        "https://www.youtube.com/@lixby2026",
+        "https://www.instagram.com/lixby2026/",
+        "https://x.com/Lixby2026",
+        "https://www.tiktok.com/@lixby2026"
       ]
     }
   </script>
-</head>
-<body>
-
-
 
   <style>
-    .about-hero {
-      min-height: 60vh;
+    /* Preloader: Lixby -> LX -> zoom -> web */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-      margin-top: 4rem;
+      background: #ffffff;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      visibility: hidden;
+    }
+    #preloader .preloader-lixby {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #000000;
+    }
+
+    .about-hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(6rem) var(--spacing-6) var(--spacing-20);
       text-align: center;
+      overflow: hidden;
+    }
+
+    .about-hero-inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .about-hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: var(--spacing-6);
+      font-size: 0.95rem;
     }
 
     .about-hero h1 {
-      font-size: var(--font-size-5xl);
-      font-weight: 700;
+      font-size: clamp(3rem, 7.5vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: var(--spacing-8);
+      color: var(--text, #111827);
+    }
+
+    .about-hero h1 .grad {
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .about-hero p.lead {
+      font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+      color: var(--muted, #5f6b7a);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-8);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-12);
+    }
+
+    .about-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .about-stat strong {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      color: var(--primary, #0f3dff);
+      line-height: 1;
+    }
+
+    .about-stat span {
+      font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+    }
+
+    /* Secciones a pantalla completa */
+    .full-section {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .full-section > .container,
+    .full-section > .container.section-shell {
+      width: 100%;
+    }
+
+    .section-shell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-24) var(--spacing-6);
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--spacing-16);
+    }
+
+    .section-head .eyebrow {
       margin-bottom: var(--spacing-4);
     }
 
-    .about-hero p {
-      font-size: var(--font-size-xl);
-      color: var(--color-gray-600);
-      max-width: 600px;
-      margin: 0 auto;
+    .section-head h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text, #111827);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .section-head p {
+      color: var(--muted, #5f6b7a);
+      font-size: var(--font-size-lg);
+      line-height: 1.7;
     }
 
     .mission-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
+      background: var(--color-white, #ffffff);
     }
 
     .mission-grid {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: var(--spacing-12);
       align-items: center;
+      padding: 40px;
+      border: 1px solid var(--line, #dbe3ef);
+      border-radius: var(--radius-xl, 26px);
+      box-shadow: var(--shadow-soft, 0 20px 50px rgba(16,24,40,.08));
     }
 
     .mission-content h2 {
-      font-size: var(--font-size-4xl);
-      font-weight: 600;
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text, #111827);
       margin-bottom: var(--spacing-6);
     }
 
     .mission-content p {
       font-size: var(--font-size-lg);
-      color: var(--color-gray-600);
+      color: var(--muted, #5f6b7a);
       line-height: 1.8;
-      margin-bottom: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
     }
 
-    .values-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    .mission-visual {
+      position: relative;
+      border-radius: var(--radius-lg, 18px);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary, #0f3dff) 0%, var(--primary-2, #16a7ff) 100%);
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .values-grid {
-      max-width: 1200px;
+    .mission-visual img {
+      max-width: 78%;
+      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.3));
+      margin-top: 30px;
+    }
+
+    /* === VALORES STICKY CROSSFADE === */
+    .values-section { position: relative; }
+    .values-outer { height: calc((5 + 1) * 100vh); height: calc((5 + 1) * 100svh); position: relative; background: #000; background-color: #000; }
+    .values-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; background: #000; background-color: #000; overflow: hidden; }
+    .values-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      color: #f5f5f6;
+      opacity: 0;
+      pointer-events: none;
+      will-change: opacity, transform;
+      transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transform: translateY(20px) scale(0.98);
+    }
+    .values-slide.fv-visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .values-slide.fv-past { opacity: 0; transform: translateY(-16px) scale(0.99); }
+    .values-slide--head { text-align: center; }
+    .values-slide--value { text-align: left; }
+    .fv-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; max-width: 760px; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+    .fv-inner--row { align-items: flex-start; text-align: left; max-width: 860px; }
+    .fv-label { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.32); }
+    .fv-kicker { color: var(--primary-2, #16a7ff); letter-spacing: 0.2em; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
+    .fv-h { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: #f5f5f6; }
+    .fv-h--xl { font-size: clamp(2.8rem, 5.5vw, 4.8rem); }
+    .fv-num { font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 700; letter-spacing: .05em; color: rgba(255,255,255,0.45); }
+    .fv-p { font-size: 1.05rem; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 480px; }
+    .fv-value-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+
+    .timeline-section {
+      background: var(--color-white, #ffffff);
+    }
+
+    .timeline-list {
+      position: relative;
+      max-width: 760px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-8);
+      padding-left: 0;
     }
 
-    .value-card {
-      padding: var(--spacing-10);
-      background-color: var(--color-white);
-      border-radius: var(--radius-2xl);
-      box-shadow: var(--shadow-md);
-      text-align: center;
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      opacity: 0.35;
+      border-radius: 999px;
     }
 
-    .value-icon {
-      font-size: 3rem;
-      margin-bottom: var(--spacing-4);
-    }
-
-    .value-card h3 {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-3);
-    }
-
-    .timeline {
-      padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
-    }
-
-    .timeline-container {
-      max-width: 900px;
-      margin: 0 auto;
+    .timeline-list::after {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      border-radius: 999px;
+      transform: scaleY(var(--tl-progress, 0));
+      transform-origin: top center;
+      will-change: transform;
     }
 
     .timeline-item {
-      display: flex;
-      margin-bottom: var(--spacing-12);
       position: relative;
+      padding-left: 52px;
+      margin-bottom: var(--spacing-12);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: 24px;
-      top: 60px;
-      width: 2px;
-      height: calc(100% + var(--spacing-12));
-      background-color: var(--color-blue);
+      left: 13px;
+      top: 6px;
+      width: 20px;
+      height: 20px;
+      background: var(--primary, #0f3dff);
+      border: 4px solid var(--color-white, #ffffff);
+      border-radius: 50%;
+      box-shadow: var(--shadow-md, 0 12px 28px rgba(15,23,42,.08));
+      transform: translateX(-50%);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .timeline-item:last-child::before {
-      display: none;
+    .timeline-item.is-active::before {
+      box-shadow: 0 0 0 6px rgba(15, 61, 255, 0.15);
+      transform: translateX(-50%) scale(1.15);
     }
 
-    .timeline-date {
-      width: 100px;
+    .timeline-card {
+      padding: var(--spacing-10);
+      border: 1px solid var(--line, #dbe3ef);
+      border-radius: var(--radius-lg, 18px);
+      background: var(--color-white, #ffffff);
+      box-shadow: var(--shadow-md, 0 12px 28px rgba(15,23,42,.08));
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg, 0 20px 50px rgba(16,24,40,.12));
+    }
+
+    .timeline-year {
+      display: inline-block;
+      font-size: var(--font-size-sm);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--primary, #0f3dff);
+      background: rgba(15, 61, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .timeline-card h3 {
+      font-size: var(--font-size-xl);
       font-weight: 700;
-      color: var(--color-blue);
+      color: var(--text, #111827);
+      margin-bottom: var(--spacing-3);
+    }
+
+    .timeline-card p {
       font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+      line-height: 1.7;
+      margin: 0;
     }
 
-    .timeline-content {
-      flex: 1;
-      padding-left: var(--spacing-8);
+    .cta-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(180deg, var(--color-gray-50, #f8fafc) 0%, var(--color-white, #ffffff) 100%);
+      border-top: 1px solid var(--line, #dbe3ef);
+    }
+
+    .cta-card {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+      border-radius: var(--radius-xl, 26px);
+      background: linear-gradient(120deg, var(--primary, #0f3dff) 0%, var(--primary-2, #16a7ff) 100%);
+      text-align: center;
+      box-shadow: var(--shadow-strong, 0 30px 70px rgba(15,61,255,.18));
       position: relative;
+      overflow: hidden;
     }
 
-    .timeline-content::before {
+    .cta-card::before,
+    .cta-card::after {
       content: '';
       position: absolute;
-      width: 16px;
-      height: 16px;
-      background-color: var(--color-blue);
-      border: 3px solid var(--color-white);
       border-radius: 50%;
-      left: -20px;
-      top: 8px;
-      box-shadow: var(--shadow-lg);
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .timeline-content h3 {
-      font-size: var(--font-size-xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-2);
+    .cta-card::before {
+      width: 240px;
+      height: 240px;
+      top: -100px;
+      right: -60px;
     }
 
-    .team-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    .cta-card::after {
+      width: 180px;
+      height: 180px;
+      bottom: -80px;
+      left: -40px;
+    }
+
+    .cta-card h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: var(--spacing-4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-8);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card .btn {
+      position: relative;
+      z-index: 1;
+      background: #ffffff;
+      color: var(--primary, #0f3dff);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .eyebrow {
+      color: var(--primary, #0f3dff);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
     }
 
     @media (max-width: 768px) {
       .about-hero {
-        padding: var(--spacing-16) var(--spacing-4);
+        padding: calc(var(--spacing-20) + 2rem) var(--spacing-4) var(--spacing-16);
+      }
+
+      .about-hero h1 {
+        font-size: clamp(2.6rem, 10vw, 3.6rem);
       }
 
       .mission-grid {
         grid-template-columns: 1fr;
+        padding: var(--spacing-8);
       }
 
-      .about-hero h1 {
-        font-size: var(--font-size-4xl);
+      .mission-visual {
+        min-height: 220px;
+      }
+
+      .section-shell {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .about-stats {
+        gap: var(--spacing-6);
+        margin-top: var(--spacing-10);
+      }
+    }
+
+    /* Carta del fundador */
+    /* === CARTA CON SOBRE ANIMADO (control por scroll) === */
+    .letter-divider {
+      width: 100%;
+      height: 1px;
+      background: #000000;
+    }
+
+    .letter-section {
+      background: var(--color-white, #ffffff);
+    }
+
+    .letter-section > .section-shell {
+      padding-top: var(--spacing-16);
+      padding-bottom: 0;
+    }
+
+    .letter-section .section-head {
+      margin-bottom: var(--spacing-8);
+    }
+
+    .letter-section .section-head h2 {
+      margin-bottom: 0;
+    }
+
+    .letter-outer {
+      height: calc(1.6 * 100vh);
+      height: calc(1.6 * 100svh);
+      position: relative;
+    }
+
+    .letter-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .envelope {
+      --evw: min(430px, 84vw);
+      --evh: 270px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: var(--evw);
+      height: var(--evh);
+      background: #ffffff;
+      border: 1px solid var(--line, #dbe3ef);
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft, 0 20px 50px rgba(16, 24, 40, .08));
+      transform: translate(-50%, -50%) translateX(120vw);
+      z-index: 5;
+      will-change: transform, opacity;
+    }
+
+    .env-back {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      z-index: 1;
+    }
+
+    .env-paper {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 26px;
+      bottom: 14%;
+      background: #ffffff;
+      border: 1px solid var(--line, #dbe3ef);
+      border-radius: 8px;
+      box-shadow: 0 8px 22px rgba(16, 24, 40, .07);
+      z-index: 2;
+      will-change: transform;
+    }
+
+    .env-front {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 54%;
+      background: #f1f4fa;
+      z-index: 3;
+      clip-path: polygon(0 0, 50% 42%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .env-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: calc(var(--evw) * .5) solid transparent;
+      border-right: calc(var(--evw) * .5) solid transparent;
+      border-top: calc(var(--evh) * .5) solid #e6ebf5;
+      z-index: 4;
+      transform-origin: top center;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+
+    .letter-card {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      border: 1px solid var(--line, #dbe3ef);
+      border-radius: var(--radius-xl, 26px);
+      background:
+        linear-gradient(180deg, rgba(240, 244, 255, 0.6) 0%, rgba(255, 255, 255, 0) 40%),
+        var(--color-white, #ffffff);
+      box-shadow: var(--shadow-soft, 0 20px 50px rgba(16,24,40,.08));
+      position: relative;
+      opacity: 0;
+      transform: scale(0.94) translateY(20px);
+      will-change: opacity, transform;
+    }
+
+    .letter-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 4px;
+      border-radius: 0 0 999px 999px;
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+    }
+
+    .letter-intro {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-8);
+    }
+
+    .letter-avatar {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #ffffff;
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      box-shadow: var(--shadow-md, 0 12px 28px rgba(15,23,42,.08));
+    }
+
+    .letter-intro h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text, #111827);
+    }
+
+    .letter-body {
+      color: var(--muted, #5f6b7a);
+      font-size: var(--font-size-lg);
+      line-height: 1.85;
+    }
+
+    .letter-body p {
+      margin-bottom: var(--spacing-6);
+    }
+
+    .letter-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-sign {
+      margin-top: var(--spacing-10);
+      padding-top: var(--spacing-6);
+      border-top: 1px solid var(--line, #dbe3ef);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text, #111827);
+      font-size: var(--font-size-lg);
+    }
+
+    /* FAQ componente Lix Design */
+    .faq-section {
+      background: linear-gradient(180deg, var(--color-gray-50, #f8fafc) 0%, var(--color-white, #ffffff) 100%);
+      border-top: 1px solid var(--line, #dbe3ef);
+    }
+    .faq.faq-section { max-width: none; margin: 0; }
+
+    .faq {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq .faq-item {
+      background: var(--color-white, #ffffff);
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(15, 61, 255, 0.06);
+      overflow: hidden;
+      transition: box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open {
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.08);
+    }
+
+    .faq .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text, #111827);
+      text-align: left;
+      transition: color 200ms ease;
+    }
+
+    .faq .faq-question:hover {
+      color: var(--primary, #0f3dff);
+    }
+
+    .faq .faq-question::after {
+      content: none;
+    }
+
+    .faq .faq-chevron {
+      flex-shrink: 0;
+      color: var(--primary, #0f3dff);
+      width: 22px;
+      height: 22px;
+      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-answer-text {
+      padding: 14px 28px 24px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted, #5f6b7a);
+    }
+
+    .faq .faq-answer a {
+      color: var(--primary, #0f3dff);
+      font-weight: 600;
+    }
+
+    /* Síguenos */
+    .follow-section {
+      padding: var(--spacing-20) var(--spacing-6);
+      background: var(--color-white, #ffffff);
+      border-top: 1px solid var(--line, #dbe3ef);
+      text-align: center;
+    }
+
+    .follow-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .follow-inner h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text, #111827);
+      margin-bottom: var(--spacing-3);
+    }
+
+    .follow-inner p {
+      color: var(--muted, #5f6b7a);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-10);
+    }
+
+    .follow-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+
+    .follow-link {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white, #ffffff);
+      border: 1px solid var(--line, #dbe3ef);
+      box-shadow: var(--shadow-md, 0 12px 28px rgba(15,23,42,.08));
+      color: var(--primary, #0f3dff);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .follow-link:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      color: #ffffff;
+      box-shadow: var(--shadow-strong, 0 30px 70px rgba(15,61,255,.18));
+    }
+
+    @media (max-width: 640px) {
+      .letter-intro h2 {
+        font-size: var(--font-size-2xl);
+      }
+
+      .follow-links {
+        gap: var(--spacing-3);
       }
     }
   </style>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://lixby.es",
-      "logo": "https://lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
-    }
-  </script>
 </head>
 <body>
 
-  
-  <nav class="nav">
-    <div class="nav-container">
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-box">
+      <span class="preloader-lixby">
+        <span class="pl-l">L</span><span class="pl-i">i</span><span class="pl-x">x</span><span class="pl-b">b</span><span class="pl-y">y</span>
+      </span>
+    </div>
+  </div>
+
+  <div id="scroll-progress"></div>
+
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
       <a href="/es/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/es/#productos" class="nav-link">Productos</a>
-        <a href="/es/#apps" class="nav-link">Apps</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
         <a href="/es/support/" class="nav-link">Soporte</a>
-      </div>
-      <div class="nav-right"></div>
-    </div>
-  </nav>
-
-  <section class="about-hero">
-    <div>
-      <h1>Sobre Lixby</h1>
-      <p>Creamos tecnología para simplificar tu vida. Diseñado en España, creado con pasión.</p>
-    </div>
-  </section>
-
-  <section class="mission-section">
-    <div class="mission-grid">
-      <div class="mission-content">
-        <h2>Nuestra misión</h2>
-        <p>En Lixby creemos que la tecnología debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y útiles.</p>
-        <p>Desde nuestros inicios en 2022, hemos trabajado para ofrecer soluciones innovadoras que realmente marcan la diferencia en la vida de nuestros usuarios.</p>
-      </div>
-      <div style="background-color: var(--color-gray-100); border-radius: var(--radius-2xl); height: 300px;"></div>
-    </div>
-  </section>
-
-  <section class="values-section">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Nuestros valores</h2>
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon">👥</div>
-          <h3>Enfoque en usuario</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Todo lo que hacemos está pensado para mejorar la experiencia del usuario.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">✨</div>
-          <h3>Diseño excelente</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Buscamos la perfección en cada detalle, desde lo visual hasta lo funcional.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">🔓</div>
-          <h3>Transparencia</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Creemos en la privacidad de nuestros usuarios y la seguridad de sus datos.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">🌱</div>
-          <h3>Sostenibilidad</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos comprometemos con prácticas ecológicas y responsables.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">🤝</div>
-          <h3>Comunidad</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Valoramos a nuestra comunidad y escuchamos sus sugerencias.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">💡</div>
-          <h3>Innovación</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nos esforzamos por estar siempre a la vanguardia de la tecnología.</p>
-        </div>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/es/tienda/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
+          >
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
-  </section>
-
-  <section class="timeline">
-    <div class="timeline-container">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Nuestra historia</h2>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2022</div>
-        <div class="timeline-content">
-          <h3>Fundación de Lixby</h3>
-          <p style="color: var(--color-gray-600);">Nació Lixby como una startup enfocada en crear tecnología que simplifica la vida.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2023</div>
-        <div class="timeline-content">
-          <h3>Lanzamiento de LixBuds</h3>
-          <p style="color: var(--color-gray-600);">Presentamos nuestros primeros auriculares inalámbricos con tecnología premium.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2023</div>
-        <div class="timeline-content">
-          <h3>Lanzamiento de Lixney</h3>
-          <p style="color: var(--color-gray-600);">Nuestra app de finanzas personales llega con revolucionarias características.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-content">
-          <h3>LixBuds One</h3>
-          <p style="color: var(--color-gray-600);">Presentamos la versión mejorada de nuestros auriculares con batería extendida.</p>
-        </div>
-      </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/es/tienda/" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Buscar"
+          aria-label="Buscar producto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
-  </section>
-
-  <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Únete a nuestra comunidad</h2>
-      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Descubre cómo Lixby puede mejorar tu vida hoy mismo.</p>
-      <a href="/es/#productos" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Explorar productos</a>
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <a href="/es/tienda/">Tienda</a>
+      <a href="/es/productos/">Productos</a>
+      <a href="/es/apps/">Apps</a>
+      <a href="/es/support/">Soporte</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="/es/cesta/">Cesta</a>
+      <a href="/es/cuenta/">Cuenta</a>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Productos</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></li>
+  <main>
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <p class="eyebrow">Tecnología pensada para ti</p>
+        <h1><span class="typewriter" data-text="Sobre">Sobre</span> <span class="grad">Lixby</span></h1>
+        <p class="lead">Creamos tecnología para simplificar tu vida. Diseñado en España, creado con pasión.</p>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong data-target="2025">2025</strong>
+            <span>Desde nuestros inicios</span>
+          </div>
+          <div class="about-stat">
+            <strong data-target="100" data-suffix="%">100%</strong>
+            <span>Hecho en España</span>
+          </div>
+          <div class="about-stat">
+            <strong data-target="2" data-prefix="+">+2</strong>
+            <span>Apps propias</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission-section full-section">
+      <div class="container section-shell">
+        <div class="mission-grid">
+          <div class="mission-content">
+            <p class="eyebrow">Nuestra misión</p>
+            <h2>La tecnología debe simplificar la vida, no complicarla.</h2>
+            <p>En Lixby creemos que la tecnología debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y útiles.</p>
+            <p>Desde nuestros inicios en 2025, hemos trabajado para ofrecer soluciones innovadoras que realmente marcan la diferencia en la vida de nuestros usuarios.</p>
+          </div>
+          <div class="mission-visual">
+            <img src="/es/images/lixbuds-one-white.png" alt="LixBuds One" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <div class="values-outer">
+        <div class="values-sticky">
+
+          <div class="values-slide values-slide--head" data-index="0">
+            <div class="fv-inner">
+              <span class="fv-kicker">Lo que nos mueve</span>
+              <h2 class="fv-h fv-h--xl">Nuestros valores</h2>
+              <p class="fv-p">Los principios que guían cada producto y cada decisión que tomamos.</p>
+            </div>
+          </div>
+
+          <div class="values-slide values-slide--value" data-index="1">
+            <div class="fv-inner">
+              <div class="fv-value-head"><span class="fv-num">01</span><span class="fv-label">Enfoque en usuario</span></div>
+              <h3 class="fv-h">Todo lo que hacemos está pensado para mejorar la experiencia del usuario.</h3>
+            </div>
+          </div>
+
+          <div class="values-slide values-slide--value" data-index="2">
+            <div class="fv-inner">
+              <div class="fv-value-head"><span class="fv-num">02</span><span class="fv-label">Diseño excelente</span></div>
+              <h3 class="fv-h">Buscamos la perfección en cada detalle, desde lo visual hasta lo funcional.</h3>
+            </div>
+          </div>
+
+          <div class="values-slide values-slide--value" data-index="3">
+            <div class="fv-inner">
+              <div class="fv-value-head"><span class="fv-num">03</span><span class="fv-label">Privacidad y seguridad</span></div>
+              <h3 class="fv-h">Creemos en la privacidad de nuestros usuarios y la seguridad de sus datos.</h3>
+            </div>
+          </div>
+
+          <div class="values-slide values-slide--value" data-index="4">
+            <div class="fv-inner">
+              <div class="fv-value-head"><span class="fv-num">04</span><span class="fv-label">Comunidad</span></div>
+              <h3 class="fv-h">Valoramos a nuestra comunidad y escuchamos sus sugerencias.</h3>
+            </div>
+          </div>
+
+          <div class="values-slide values-slide--value" data-index="5">
+            <div class="fv-inner">
+              <div class="fv-value-head"><span class="fv-num">05</span><span class="fv-label">Innovación</span></div>
+              <h3 class="fv-h">Nos esforzamos por estar siempre a la vanguardia de la tecnología.</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section">
+      <div class="container section-shell">
+        <div class="section-head">
+          <p class="eyebrow">Nuestra historia</p>
+          <h2>El camino que nos trajo hasta aquí</h2>
+        </div>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-year">16 ago 2025</span>
+              <h3>Fundación de Lixby</h3>
+              <p>Nació Lixby como una startup enfocada en crear tecnología que simplifica la vida.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-year">4 feb 2026</span>
+              <h3>Lanzamiento de Lixney</h3>
+              <p>Nuestra app de finanzas personales llega con un diseño pensado para el control total de tus finanzas.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-year">25 feb 2026</span>
+              <h3>Lanzamiento de LixBuds One</h3>
+              <p>Presentamos nuestros primeros auriculares inalámbricos, diseñados con batería extendida y un sonido premium.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-year">1 abr 2026</span>
+              <h3>Lanzamiento de Lixfly</h3>
+              <p>Nuestra EFB para simulación aérea en MSFS2020/2024 llega para llevar el vuelo al siguiente nivel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="letter-divider" aria-hidden="true"></div>
+
+    <section class="letter-section" id="carta">
+      <div class="container section-shell">
+        <div class="section-head">
+          <p class="eyebrow">Carta de Fabian</p>
+          <h2>Una carta de nuestro fundador</h2>
+        </div>
+      </div>
+
+      <div class="letter-outer" id="letterOuter">
+        <div class="letter-sticky">
+          <div class="envelope" id="envelope" aria-hidden="true">
+            <div class="env-back"></div>
+            <div class="env-paper"></div>
+            <div class="env-front"></div>
+            <div class="env-flap"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section-shell">
+        <div class="letter-card" id="letterCard">
+          <div class="letter-intro">
+            <div class="letter-avatar" aria-hidden="true">F</div>
+            <h2>Una carta de nuestro fundador</h2>
+          </div>
+          <div class="letter-body">
+            <p>Hola, soy Fabian, el fundador de Lixby.</p>
+            <p>Empecé este proyecto con una pregunta simple: ¿por qué no? Quería crear algo que ayudara a la gente en cualquier ámbito de su vida, algo que empezara siendo pequeño, pero con una ambición grande detrás: construir una empresa de tecnología que, con el tiempo, esté presente en cada rincón de tu día a día. No tenía un gran equipo ni un gran presupuesto. Solo tenía la idea de que se podía hacer, y decidí intentarlo.</p>
+            <p>Así nació Lixby: empezando por lo que sabíamos hacer bien. Lixney, para que entender tus finanzas sea más sencillo. Lixfly, la EFB para simulación aérea en MSFS2020/2024. LixBuds One, diseñados para sonar como se merece cada detalle. Y esto es solo el principio.</p>
+            <p>Seguimos siendo un equipo pequeño con sede en España, pero con ambiciones grandes. Cada mensaje, cada reseña, cada sugerencia que nos mandáis la leemos y la tenemos en cuenta — porque al final, construimos todo esto para ti.</p>
+            <p>Gracias por confiar en Lixby.</p>
+          </div>
+          <p class="letter-sign">— Fabian, Fundador de Lixby</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq faq-section full-section">
+      <div class="container section-shell">
+        <div class="section-head">
+          <p class="eyebrow">Tu tranquilidad</p>
+          <h2>FAQ de confianza</h2>
+          <p>Las respuestas a las preguntas que más nos hacéis sobre Lixby.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-o1" aria-labelledby="faq-o1-label">
+              <span id="faq-o1-label">¿Es Lixby una empresa registrada?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-o1" role="region" aria-labelledby="faq-o1-label">
+              <p class="faq-answer-text">Sí. Lixby opera como empresa en España y nos encontramos en pleno proceso de constitución como sociedad limitada (S.L.). Puedes consultar los datos registrales y legales en nuestro <a href="/es/pages/legal/legal-notice/">Aviso legal</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-o2" aria-labelledby="faq-o2-label">
+              <span id="faq-o2-label">¿Dónde tenéis sede?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-o2" role="region" aria-labelledby="faq-o2-label">
+              <p class="faq-answer-text">Nuestra sede se encuentra en España, donde diseñamos y desarrollamos todos nuestros productos desde cero.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-o3" aria-labelledby="faq-o3-label">
+              <span id="faq-o3-label">¿Cómo protegéis mis datos?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-o3" role="region" aria-labelledby="faq-o3-label">
+              <p class="faq-answer-text">Tratamos tus datos de forma segura y conforme al RGPD. Solo utilizamos la información estrictamente necesaria para ofrecerte nuestros servicios y nunca vendemos tus datos a terceros. Puedes ampliar esta información en nuestra <a href="/es/pages/legal/privacy/">Política de privacidad</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-o4" aria-labelledby="faq-o4-label">
+              <span id="faq-o4-label">¿Cómo puedo contactar con vosotros?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-o4" role="region" aria-labelledby="faq-o4-label">
+              <p class="faq-answer-text">Puedes escribirnos a <a href="mailto:info@lixby.es">info@lixby.es</a> o a través de nuestra <a href="/es/support/">página de Soporte</a>. Leemos y respondemos todos los mensajes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c1" aria-labelledby="faq-c1-label">
+              <span id="faq-c1-label">¿Quién está detrás de Lixby?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c1" role="region" aria-labelledby="faq-c1-label">
+              <p class="faq-answer-text">Lixby fue fundada por Fabian, con la idea de crear tecnología que realmente simplifique la vida de las personas. Puedes leer su carta completa <a href="#carta">aquí</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c2" aria-labelledby="faq-c2-label">
+              <span id="faq-c2-label">¿Cuándo se fundó Lixby?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c2" role="region" aria-labelledby="faq-c2-label">
+              <p class="faq-answer-text">Lixby nació en 2025 como un proyecto pequeño con grandes ambiciones.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c3" aria-labelledby="faq-c3-label">
+              <span id="faq-c3-label">¿En qué países está disponible Lixby?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c3" role="region" aria-labelledby="faq-c3-label">
+              <p class="faq-answer-text">Nuestra web está disponible en 24 idiomas de la Unión Europea, y trabajamos para que nuestros productos lleguen a usuarios de toda Europa.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c4" aria-labelledby="faq-c4-label">
+              <span id="faq-c4-label">¿Qué productos ofrece Lixby actualmente?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c4" role="region" aria-labelledby="faq-c4-label">
+              <p class="faq-answer-text">Actualmente contamos con Lixney (finanzas personales), Lixfly (EFB para simulación aérea) y LixBuds One (auriculares inalámbricos). Puedes conocerlos todos en nuestra <a href="/es/tienda/">página de productos</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c5" aria-labelledby="faq-c5-label">
+              <span id="faq-c5-label">¿Cómo elegís qué productos crear?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c5" role="region" aria-labelledby="faq-c5-label">
+              <p class="faq-answer-text">Elegimos proyectos que resuelvan problemas reales que nosotros mismos hemos vivido como usuarios — por eso nuestros productos son tan distintos entre sí, pero comparten la misma filosofía de simplicidad.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c6" aria-labelledby="faq-c6-label">
+              <span id="faq-c6-label">¿Lixby tiene inversores externos?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c6" role="region" aria-labelledby="faq-c6-label">
+              <p class="faq-answer-text">No — Lixby es un proyecto autofinanciado.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c7" aria-labelledby="faq-c7-label">
+              <span id="faq-c7-label">¿Puedo sugerir una idea o mejora para algún producto?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c7" role="region" aria-labelledby="faq-c7-label">
+              <p class="faq-answer-text">Por supuesto. Todas las sugerencias de nuestra comunidad se leen y se tienen en cuenta. Puedes escribirnos a través de <a href="/es/support/">soporte</a> o nuestras redes sociales.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c8" aria-labelledby="faq-c8-label">
+              <span id="faq-c8-label">¿Trabajáis con colaboradores o partners externos?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c8" role="region" aria-labelledby="faq-c8-label">
+              <p class="faq-answer-text">Somos un equipo pequeño y ágil, y valoramos las colaboraciones que compartan nuestra visión.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c9" aria-labelledby="faq-c9-label">
+              <span id="faq-c9-label">¿Ofrecéis oportunidades de empleo o colaboración?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c9" role="region" aria-labelledby="faq-c9-label">
+              <p class="faq-answer-text">Aún no tenemos vacantes abiertas, pero si Lixby sigue creciendo, este será uno de los primeros lugares donde lo anunciaremos. Síguenos en redes para no perdértelo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-c10" aria-labelledby="faq-c10-label">
+              <span id="faq-c10-label">¿Cómo puedo estar al tanto de las novedades de Lixby?</span>
+            <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-c10" role="region" aria-labelledby="faq-c10-label">
+              <p class="faq-answer-text">Puedes seguirnos en nuestras redes sociales o suscribirte a nuestra newsletter, donde compartimos lanzamientos y novedades antes que nadie.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section full-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2>Únete a nuestra comunidad</h2>
+          <p>Descubre cómo Lixby puede mejorar tu vida hoy mismo.</p>
+          <a href="/es/productos/" class="btn btn-primary">Explorar productos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="follow-section full-section">
+      <div class="container follow-inner">
+        <h2>Síguenos</h2>
+        <p>Entérate de nuestras novedades, lanzamientos y detrás de cámaras.</p>
+        <div class="follow-links">
+          <a class="follow-link" href="https://www.instagram.com/lixby2026/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a class="follow-link" href="https://x.com/Lixby2026" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+            </svg>
+          </a>
+          <a class="follow-link" href="https://www.tiktok.com/@lixby2026" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path>
+            </svg>
+          </a>
+          <a class="follow-link" href="https://www.youtube.com/@lixby2026" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Apps</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/apps/lixney/">Lixney</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Empresa</h3>
-        <ul class="footer-links">
-          <li><a href="/es/about/">Sobre Lixby</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
           <li><a href="/es/support/">Contacto</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/legal/privacy/">Privacidad</a></li>
-          <li><a href="/es/pages/legal/terms/">Términos</a></li>
-          <li><a href="/es/pages/legal/ventas-reembolsos/">Ventas y Reembolsos</a></li>
-          <li><a href="/es/pages/legal/cookies/">Cookies</a></li>
-          <li><a href="/es/pages/legal/legal-notice/">Aviso Legal</a></li>
-        </ul>
-      </div>
+      </section>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Lixby. Todos los derechos reservados. Diseñado en España.</p>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
     </div>
   </footer>
 
   <script src="/js/gsap.min.js"></script>
   <script src="script.js"></script>
+  <script src="/es/main.js" defer></script>
+  <script>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+      items.forEach(function (item) {
+        var btn = item.querySelector('.faq-question');
+        var answer = item.querySelector('.faq-answer');
+        if (!btn || !answer) return;
+        btn.addEventListener('click', function () {
+          var isOpen = btn.getAttribute('aria-expanded') === 'true';
+          items.forEach(function (other) {
+            var ob = other.querySelector('.faq-question');
+            var oa = other.querySelector('.faq-answer');
+            if (ob) ob.setAttribute('aria-expanded', 'false');
+            other.classList.remove('open');
+            if (oa) {
+              oa.classList.remove('active');
+              oa.style.maxHeight = '0px';
+            }
+          });
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            item.classList.add('open');
+            answer.classList.add('active');
+            answer.style.maxHeight = '0px';
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+            });
+          }
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      if (typeof gsap === "undefined") return;
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      var sb = document.querySelector(".about-hero .typewriter");
+      var ld = document.querySelector(".about-hero p.lead");
+      var gr = document.querySelector(".about-hero h1 .grad");
+
+      function typeInto(el, text, speed, cb) {
+        el.textContent = "";
+        var i = 0;
+        (function next() {
+          if (i > text.length) { if (cb) cb(); return; }
+          el.textContent = text.slice(0, i);
+          i += 1;
+          setTimeout(next, speed);
+        })();
+      }
+
+      function appearBrand() {
+        gsap.to(gr, { autoAlpha: 1, duration: 0.8, ease: "power3.out" });
+      }
+
+      function heroIntro() {
+        gsap.from(".about-hero .eyebrow", { y: 16, autoAlpha: 0, duration: 0.5, ease: "power2.out" });
+        startCounters();
+        if (sb && gr) {
+          /* ocultar "Lixby" mientras se escribe "Sobre"; aparece 1 s después */
+          gsap.set(gr, { autoAlpha: 0 });
+          typeInto(sb, sb.getAttribute("data-text") || "Sobre", 140, function () {
+            setTimeout(appearBrand, 1000);
+          });
+        } else {
+          appearBrand();
+        }
+      }
+
+      /* Splash: aparece "Lixby", la i/b/y se van, la L y la x se juntan en "LX", zoom y web */
+      var pre = document.getElementById("preloader");
+      var lxEl = pre && pre.querySelector(".preloader-lixby");
+      if (pre && lxEl) {
+        gsap.set(pre, { autoAlpha: 1 });
+        gsap.timeline()
+          /* "Lixby" entra letra a letra */
+          .fromTo(".pl-l,.pl-i,.pl-x,.pl-b,.pl-y", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.06, delay: 0.2 })
+          /* la i, la b y la y se van volando */
+          .to(".pl-i,.pl-b,.pl-y", { autoAlpha: 0, y: -42, rotation: -12, duration: 0.4, ease: "power2.in", stagger: 0.05 }, "+=0.35")
+          .add(function () {
+            document.querySelectorAll(".pl-i,.pl-b,.pl-y").forEach(function (el) {
+              el.style.cssText = "position:absolute;left:-9999px;visibility:hidden";
+            });
+          })
+          /* la L y la x se juntan y la x se vuelve mayúscula: un solo "LX" */
+          .to(".pl-l", { x: "+=18", duration: 0.15, ease: "power2.inOut" }, "<")
+          .to(".pl-x", { x: "-=18", duration: 0.15, ease: "power2.inOut" }, "<")
+          .add(function () {
+            document.querySelector(".pl-x").textContent = "X";
+            gsap.set([".pl-l", ".pl-x"], { clearProps: "transform" });
+          }, ">-0.03")
+          /* las letras unidas se convierten en el logo "LX" grande: un solo LX que crece */
+          .to(lxEl, { scale: 1.55, duration: 0.5, ease: "back.out(1.6)", delay: 0.1 })
+          /* la animacion de la pagina arranca al inicio del zoom (paso 5) */
+          .to(pre, { scale: 2.4, autoAlpha: 0, duration: 0.6, ease: "power2.inOut" }, "+=0.35")
+          .call(heroIntro, null, "<")
+          .set(pre, { display: "none" });
+      } else {
+        heroIntro();
+      }
+
+      /* Dispara un callback cuando un elemento entra en pantalla (sin depender de ScrollTrigger) */
+      function onView(el, cb) {
+        if (!el) { cb(); return; }
+        if (typeof IntersectionObserver === "undefined") { cb(); return; }
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0] && entries[0].isIntersecting) {
+            io.disconnect();
+            cb();
+          }
+        }, { threshold: 0.15 });
+        io.observe(el);
+      }
+
+      /* Los numeros suben al entrar el hero */
+      /* Los numeros suben cuando se revela la web (paso 5) */
+      function startCounters() {
+        var counters = document.querySelectorAll(".about-stat strong[data-target]");
+        if (!counters.length) return;
+        counters.forEach(function (el) {
+          var target = +el.getAttribute("data-target");
+          var suffix = el.getAttribute("data-suffix") || "";
+          var prefix = el.getAttribute("data-prefix") || "";
+          var obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 1.6,
+            ease: "power2.out",
+            delay: 0.4,
+            onUpdate: function () {
+              el.textContent = prefix + Math.round(obj.val) + suffix;
+            }
+          });
+        });
+      }
+
+      /* Revelado de cada seccion al hacer scroll (solo contenido, nunca nav/footer) */
+      var selectors = [
+        ".section-head",
+        ".mission-grid",
+        ".faq-item",
+        ".cta-card",
+        ".follow-inner h2",
+        ".follow-inner p",
+        ".follow-link"
+      ];
+
+      document.querySelectorAll(".full-section:not(.hero)").forEach(function (sec) {
+        onView(sec, function () {
+          selectors.forEach(function (sel) {
+            var els = sec.querySelectorAll(sel);
+            if (!els.length) return;
+            gsap.from(els, {
+              y: 40,
+              opacity: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              stagger: 0.08
+            });
+          });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var fsOuter = document.querySelector('.values-outer');
+      var fsSlides = Array.from(document.querySelectorAll('.values-slide'));
+      var FS_COUNT = fsSlides.length;
+      var fvActive = -1;
+      function updateValueScroll() {
+        if (!fsOuter) return;
+        var rect = fsOuter.getBoundingClientRect();
+        var totalScroll = fsOuter.offsetHeight - window.innerHeight;
+        var scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
+        var progress = scrolled / totalScroll;
+        var activeIndex = Math.min(FS_COUNT - 1, Math.round(progress * (FS_COUNT - 1)));
+        if (activeIndex === fvActive) return;
+        fvActive = activeIndex;
+        fsSlides.forEach(function (slide, i) {
+          slide.classList.remove('fv-visible', 'fv-past');
+          if (i === activeIndex) slide.classList.add('fv-visible');
+          else if (i < activeIndex) slide.classList.add('fv-past');
+        });
+      }
+      window.addEventListener('scroll', updateValueScroll, { passive: true });
+      window.addEventListener('resize', updateValueScroll);
+      updateValueScroll();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var list = document.querySelector('.timeline-list');
+      if (!list) return;
+      var items = Array.from(list.querySelectorAll('.timeline-item'));
+      function updateTimeline() {
+        var rect = list.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var anchor = vh * 0.8;
+        var done = anchor - rect.top;
+        var total = list.offsetHeight;
+        var progress = total > 0 ? done / total : 0;
+        progress = Math.max(0, Math.min(1, progress));
+        list.style.setProperty('--tl-progress', progress);
+        var activeIndex = Math.floor(progress * items.length);
+        items.forEach(function (item, i) {
+          item.classList.toggle('is-active', i < activeIndex);
+        });
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () {
+            updateTimeline();
+            ticking = false;
+          });
+        }
+      }, { passive: true });
+      window.addEventListener('resize', updateTimeline);
+      updateTimeline();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (typeof IntersectionObserver === 'undefined' || typeof gsap === 'undefined') return;
+      var cards = Array.from(document.querySelectorAll('.timeline-card'));
+      if (!cards.length) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var card = entry.target;
+          var index = cards.indexOf(card);
+          var fromX = (index % 2 === 0 ? -1 : 1) * 60;
+          gsap.fromTo(card,
+            { x: fromX, scale: 0.96, opacity: 0 },
+            { x: 0, scale: 1, opacity: 1, duration: 0.7, delay: index * 0.12, ease: 'power3.out' }
+          );
+          io.unobserve(card);
+        });
+      }, { threshold: 0.25 });
+      cards.forEach(function (card) { io.observe(card); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var outer = document.getElementById('letterOuter');
+      if (!outer) return;
+      var envelope = document.getElementById('envelope');
+      var card = document.getElementById('letterCard');
+      var paper = outer.querySelector('.env-paper');
+      var flap = outer.querySelector('.env-flap');
+      if (!envelope || !card || !paper || !flap) return;
+
+      function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+      function seg(p, a, b) { return clamp01((p - a) / (b - a)); }
+
+      var done = false;
+      var W = typeof window !== 'undefined' ? window : null;
+
+      function updateLetter() {
+        if (done) return;
+        var rect = outer.getBoundingClientRect();
+        var total = outer.offsetHeight - W.innerHeight;
+        var scrolled = Math.min(Math.max(0, -rect.top), total);
+        var p = total > 0 ? scrolled / total : 0;
+
+        var enter = seg(p, 0, 0.4);
+        var off = 1 - enter;
+        var x = off * 85;
+        var y = off * 70;
+
+        var flapT = seg(p, 0.4, 0.55) * 180;
+        var paperY = -seg(p, 0.42, 0.58) * 80;
+        var envFade = 1 - seg(p, 0.5, 0.85);
+        var cardIn = seg(p, 0.6, 0.95);
+        var cardScale = 0.94 + 0.06 * cardIn;
+        var cardY = (1 - cardIn) * 20;
+
+        envelope.style.transform = 'translate(-50%, -50%) translate(' + x + 'vw,' + y + 'vh)';
+        envelope.style.opacity = envFade.toFixed(3);
+        flap.style.transform = 'rotateX(' + flapT + 'deg)';
+        paper.style.transform = 'translateY(' + paperY + 'px)';
+        card.style.opacity = cardIn.toFixed(3);
+        card.style.transform = 'scale(' + cardScale.toFixed(3) + ') translateY(' + cardY.toFixed(1) + 'px)';
+
+        if (p >= 1) {
+          done = true;
+          envelope.style.visibility = 'hidden';
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+          W.removeEventListener('scroll', onScroll);
+          W.removeEventListener('resize', onResize);
+        }
+      }
+
+      function onScroll() { updateLetter(); }
+      function onResize() { updateLetter(); }
+
+      W.addEventListener('scroll', onScroll, { passive: true });
+      W.addEventListener('resize', onResize);
+      updateLetter();
+    })();
+  </script>
 </body>
 </html>
-
-

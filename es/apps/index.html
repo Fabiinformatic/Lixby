@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es-ES" class="no-js">
+<head>
+  <script>
+    if (location.pathname.endsWith('/index.html')) {
+      location.replace(location.href.replace('/index.html', '/'));
+    }
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="canonical" href="https://lixby.es/es/apps/">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+  <link rel="stylesheet" href="/globalfooter.css">
+  <link rel="stylesheet" href="/localnav.css">
+  <link rel="stylesheet" href="/es/style.css">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+  <title>Apps | Lixby</title>
+  <meta name="description" content="Conoce las apps de Lixby: Lixney para tus finanzas personales y Lixfly para tus vuelos en Microsoft Flight Simulator.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lixby.es/es/apps/">
+  <meta property="og:title" content="Apps | Lixby">
+  <meta property="og:description" content="Aplicaciones sencillas para organizar mejor tu vida y tus vuelos.">
+  <meta property="og:image" content="https://lixby.es/es/images/lixneyicon2.webp">
+  <style>
+    .apps-hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center;
+      padding: 86px 0 64px;
+    }
+
+    .apps-hero h1 { max-width: 680px; font-size: clamp(2.5rem, 6vw, 5.2rem); line-height: 1.03; letter-spacing: -.06em; margin-bottom: 20px; }
+    .apps-hero p:not(.eyebrow) { max-width: 620px; color: var(--muted); font-size: 1.1rem; }
+    .apps-hero-media { min-height: 360px; display: grid; place-items: center; border-radius: var(--radius-xl); background: linear-gradient(145deg, #061438, #16A7FF); box-shadow: var(--shadow-strong); overflow: hidden; }
+    .apps-hero-media img { width: min(78%, 330px); height: 330px; object-fit: contain; filter: drop-shadow(0 24px 28px rgba(0,0,0,.25)); }
+
+    .apps-section { padding: 42px 0 92px; }
+    .apps-section > h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -.04em; margin-bottom: 28px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .app-card { display: flex; flex-direction: column; padding: 26px; border-radius: 24px; background: rgba(255,255,255,.72); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 12px 28px rgba(15,61,255,.08); transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1); }
+    .app-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 20px 50px rgba(15,61,255,.12); }
+    .app-card-media { min-height: 270px; display: grid; place-items: center; margin: -2px -2px 22px; border-radius: var(--radius-lg); background: #f5f8ff; overflow: hidden; }
+    .app-card-media.dark { background: #061438; }
+    .app-card-media img { width: min(70%, 230px); height: 230px; object-fit: contain; }
+    .app-card .product-label { color: var(--primary); font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .app-card h3 { font-size: 2rem; letter-spacing: -.04em; margin: 6px 0 10px; }
+    .app-card p { color: var(--muted); }
+    .app-card ul { list-style: none; display: grid; gap: 8px; margin: 20px 0 24px; }
+    .app-card li { color: var(--text); font-weight: 700; }
+    .app-card li::before { content: "✓"; color: var(--primary); margin-right: 8px; }
+    .app-card .catalog-actions { margin-top: auto; }
+
+    .app-note { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; padding: 34px; border-radius: var(--radius-xl); background: linear-gradient(120deg, #eef5ff, #fff); border: 1px solid var(--line); }
+    .app-note h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing: -.04em; }
+    .app-note p { color: var(--muted); margin-top: 10px; }
+    .app-note-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .app-note-points div { padding: 17px; border-radius: 16px; background: rgba(255,255,255,.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.4); font-weight: 700; box-shadow: 0 4px 16px rgba(15,61,255,.05); }
+
+    .apps-cta { margin: 0 auto 92px; padding: 42px; border-radius: var(--radius-xl); color: #fff; background: linear-gradient(120deg, #0F3DFF, #16A7FF); text-align: center; }
+    .apps-cta h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); letter-spacing: -.04em; margin-bottom: 10px; }
+    .apps-cta p { max-width: 620px; margin: 0 auto 22px; color: rgba(255,255,255,.86); }
+    .apps-cta .btn-secondary { border-color: transparent; }
+
+    @media (max-width: 780px) {
+      .apps-hero, .app-note { grid-template-columns: 1fr; }
+      .apps-hero { padding-top: 58px; }
+      .apps-hero-media { min-height: 300px; }
+      .apps-hero-media img { height: 270px; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .app-note-points { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .app-note, .apps-cta { padding: 28px 20px; }
+      .app-note-points { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/es/" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link" aria-current="page">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.65" y1="16.65" x2="21" y2="21"></line></svg></button>
+        <form id="navSearchForm" action="/es/tienda/" method="get"><input type="search" id="navSearch" name="q" class="nav-search" placeholder="Buscar producto..." aria-label="Buscar producto"></form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta"><img src="/es/images/Bolsa.png" alt="Cesta"></a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta"><img src="/es/images/cuenta.png" alt="Cuenta"></a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top"><form id="navSearchFormMobile" class="nav-search-form-mobile" action="/es/tienda/" method="get"><input type="search" id="navSearchMobile" name="q" class="nav-search-mobile" placeholder="Buscar" aria-label="Buscar producto"></form><button type="button" class="nav-mobile-close" aria-label="Cerrar menú"><span aria-hidden="true">×</span></button></div>
+    <nav class="nav-mobile-links" aria-label="Principal móvil"><a href="/es/tienda/">Tienda</a><a href="/es/productos/">Productos</a><a href="/es/apps/">Apps</a><a href="/es/support/">Soporte</a></nav>
+    <div class="nav-mobile-actions"><a href="/es/cesta/">Cesta</a><a href="/es/cuenta/">Cuenta</a></div>
+  </div>
+
+  <main>
+    <section class="apps-hero container reveal" data-delay="0s">
+      <div>
+        <p class="eyebrow">Apps Lixby</p>
+        <h1>Herramientas digitales para vivir y volar mejor.</h1>
+        <p>Aplicaciones claras, útiles y diseñadas para que tengas más control sobre lo que haces cada día.</p>
+        <div class="catalog-actions"><a class="btn btn-primary" href="#apps-disponibles">Ver nuestras apps</a><a class="btn btn-secondary" href="/es/">Volver al inicio</a></div>
+      </div>
+      <div class="apps-hero-media"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixney"></div>
+    </section>
+
+    <section id="apps-disponibles" class="apps-section container" aria-labelledby="apps-title">
+      <h2 id="apps-title">Encuentra la app para tu mundo</h2>
+      <div class="apps-grid">
+        <article class="app-card reveal" data-delay="0.05s">
+          <div class="app-card-media"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixney"></div>
+          <span class="product-label">Finanzas personales</span>
+          <h3>Lixney</h3>
+          <p>Entiende mejor tu dinero, organiza tus gastos y crea hábitos de ahorro con una experiencia sencilla.</p>
+          <ul><li>Control de gastos</li><li>Presupuestos personales</li><li>Visión clara de tus finanzas</li></ul>
+          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/pages/apps/lixney/">Conocer Lixney</a><a class="btn btn-primary" href="/es/beta-lixney/">Unirme a la beta</a></div>
+        </article>
+        <article class="app-card reveal" data-delay="0.15s">
+          <div class="app-card-media dark"><img src="/es/images/lixflyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixfly"></div>
+          <span class="product-label">Simulación de vuelo</span>
+          <h3>Lixfly</h3>
+          <p>Tu EFB para Microsoft Flight Simulator: prepara el vuelo, consulta datos y mantén todo a mano.</p>
+          <ul><li>Preflight y Flight Plan</li><li>Performance y navegación</li><li>eQRH y herramientas de vuelo</li></ul>
+          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/centro-ayuda/lixfly/">Centro de ayuda</a><a class="btn btn-primary" href="mailto:lixbyinfo@gmail.com?subject=Beta%20Lixfly">Solicitar acceso</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="apps-section container" aria-labelledby="apps-values-title">
+      <div class="app-note reveal" data-delay="0s">
+        <div><p class="eyebrow">La filosofía Lixby</p><h2>Menos ruido. Más claridad.</h2><p>Construimos apps que hacen lo complejo más comprensible, con interfaces honestas y funciones que tienen un propósito.</p></div>
+        <div class="app-note-points"><div>Diseño intuitivo</div><div>Datos bajo tu control</div><div>Mejoras continuas</div><div>Soporte cercano</div></div>
+      </div>
+    </section>
+
+    <section class="apps-cta container reveal" data-delay="0s"><h2>¿Quieres probar lo próximo?</h2><p>Únete a las betas de Lixby y ayúdanos a construir herramientas cada vez más útiles.</p><a class="btn btn-secondary" href="/es/beta-lixney/">Participar en la beta</a></section>
+  </main>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/es/main.js" defer></script>
+</body>
+</html>

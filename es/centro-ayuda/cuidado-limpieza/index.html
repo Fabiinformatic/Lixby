@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/es/centro-ayuda/">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+
+  <link rel="canonical" href="https://lixby.es/es/centro-ayuda/cuidado-limpieza">
+  <link rel="alternate" href="https://lixby.es/bg/help-center/care-cleaning" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/help-center/care-cleaning" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/help-center/care-cleaning" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/help-center/care-cleaning" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/help-center/care-cleaning" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/help-center/care-cleaning" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/centro-ayuda/cuidado-limpieza" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/help-center/care-cleaning" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/help-center/care-cleaning" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/help-center/care-cleaning" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/help-center/care-cleaning" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/help-center/care-cleaning" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/help-center/care-cleaning" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/help-center/care-cleaning" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/help-center/care-cleaning" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/help-center/care-cleaning" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/help-center/care-cleaning" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/help-center/care-cleaning" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/help-center/care-cleaning" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/help-center/care-cleaning" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/help-center/care-cleaning" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/help-center/care-cleaning" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/help-center/care-cleaning" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/help-center/care-cleaning" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/help-center/care-cleaning" hreflang="x-default">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuidado y limpieza de LixBuds | Lixby</title>
+  <meta name="description" content="Recomendaciones para cuidar y limpiar tus LixBuds y su estuche de carga.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lixby">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    html, body { margin: 0; padding: 0; }
+    .help-hero {
+      position: relative;
+      min-height: 60vh;
+      min-height: 60svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(6rem) var(--spacing-6) var(--spacing-24);
+      text-align: center;
+      overflow: hidden;
+    }
+    .help-hero-inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .help-hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: var(--spacing-6);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+    }
+    .help-hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: var(--spacing-8);
+      color: var(--text, #111827);
+    }
+    .help-hero h1 .grad {
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .help-hero p.lead {
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+      color: var(--muted, #5f6b7a);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .help-section { padding: var(--spacing-12) var(--spacing-6) var(--spacing-20); }
+    .help-container { max-width: 1120px; margin: 0 auto; }
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--spacing-12);
+    }
+    .help-section .section-head::after { display: none; }
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-intro {
+      text-align: center;
+      font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+      max-width: 560px;
+      margin: 0 auto var(--spacing-10);
+    }
+    .step-list {
+      display: grid;
+      gap: var(--spacing-4);
+      margin: 0 0 var(--spacing-10);
+    }
+    .step-item {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-6);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+    }
+    .step-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .step-item p { margin: 0; color: var(--muted, #5f6b7a); }
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .help-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      transition: opacity 0.6s var(--ease-lix), transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      color: inherit;
+    }
+    .help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .help-grid .help-card.reveal { opacity: 0; transform: none; }
+    .help-grid .help-card.reveal.visible { opacity: 1; }
+    .help-card h3 { margin: 0 0 var(--spacing-3); font-size: var(--font-size-xl); }
+    .help-card p { margin: 0 0 var(--spacing-4); color: var(--muted, #5f6b7a); }
+    .help-card .btn { margin-top: auto; align-self: flex-start; }
+    .note-box {
+      margin-top: var(--spacing-10);
+      padding: var(--spacing-6);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      color: var(--text);
+    }
+    .note-box strong { color: var(--primary); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--spacing-6); }
+    @media (max-width: 768px) {
+      .help-hero { padding: var(--spacing-16) var(--spacing-4); }
+      .help-section { padding: var(--spacing-10) var(--spacing-4) var(--spacing-16); }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://lixby.es",
+      "logo": "https://lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+<div class="container nav-container">
+      <a href="/es/" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/es/tienda/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
+          >
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="../images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="../images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/es/tienda/" method="get">
+        <input
+          type="search"
+          id="navSearchMobile"
+          name="q"
+          class="nav-search-mobile"
+          placeholder="Buscar"
+          aria-label="Buscar producto"
+        >
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+        <span aria-hidden="true">X</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <a href="/es/tienda/">Tienda</a>
+      <a href="/es/productos/">Productos</a>
+      <a href="/es/apps/">Apps</a>
+      <a href="/es/support/">Soporte</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="/es/cesta/">Cesta</a>
+      <a href="/es/cuenta/">Cuenta</a>
+    </div>
+  </div>
+  <section class="help-hero">
+    <div class="help-hero-inner reveal" data-delay="0s">
+      <span class="badge">Centro de ayuda</span>
+      <h1>Cuidado y <span class="grad">limpieza</span></h1>
+      <p class="lead">Consejos para mantener tus LixBuds y su estuche en perfecto estado.</p>
+    </div>
+  </section>
+  <section class="help-section">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Mantenimiento</p>
+        <h2>Cuida tus LixBuds</h2>
+      </div>
+      <div class="step-list">
+        <div class="step-item reveal" data-delay="0.05s">
+          <strong>1. Limpia los auriculares</strong>
+          <p>Usa un paño suave y seco. Retira el cerumen con una herramienta de limpieza para rejillas.</p>
+        </div>
+        <div class="step-item reveal" data-delay="0.1s">
+          <strong>2. Cuida el estuche</strong>
+          <p>Limpia los contactos con un bastoncillo de algodón y evita la humedad excesiva.</p>
+        </div>
+        <div class="step-item reveal" data-delay="0.15s">
+          <strong>3. Guarda y carga bien</strong>
+          <p>Conserva tus LixBuds en el estuche cuando no lo uses y evita temperaturas extremas.</p>
+        </div>
+      </div>
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.05s" href="lixbuds/">
+          <h3>Soporte LixBuds</h3>
+          <p>Emparejamiento, batería, sonido y limpieza.</p>
+          <span class="btn btn-primary">Ver guías</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.1s" href="solucion-problemas/">
+          <h3>Solución de problemas</h3>
+          <p>Diagnósticos guiados en minutos.</p>
+          <span class="btn btn-primary">Empezar</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="garantia/">
+          <h3>Garantía</h3>
+          <p>Revisa la cobertura de tus LixBuds.</p>
+          <span class="btn btn-primary">Ver detalles</span>
+        </a>
+      </div>
+      <div class="note-box reveal" data-delay="0.1s">
+        <strong>Aviso:</strong> no sumerjas los auriculares ni uses productos abrasivos; dañan el altavoz y los micrófonos.
+      </div>
+      <a class="back-link btn btn-secondary" href="/es/centro-ayuda/">Volver al centro de ayuda</a>
+    </div>
+  </section>
+<footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../main.js" defer></script>
+</body>
+</html>

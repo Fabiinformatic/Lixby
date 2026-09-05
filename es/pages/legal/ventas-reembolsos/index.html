@@ -6,298 +6,515 @@
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
-  <base href="/es/pages/legal/">
-  <script src="/gtm.js"></script>
-  <script src="/locale-banner.js" defer></script>
-
-  <link rel="canonical" href="https://lixby.es/es/pages/legal/ventas-reembolsos">
-  <link rel="alternate" href="https://lixby.es/es/pages/legal/ventas-reembolsos" hreflang="es-ES">
-  <link rel="alternate" href="https://lixby.es/es/pages/legal/ventas-reembolsos" hreflang="x-default">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://lixby.es/es/pages/legal/ventas-reembolsos/">
+  <link rel="alternate" href="https://lixby.es/es/pages/legal/ventas-reembolsos/" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/es/pages/legal/ventas-reembolsos/" hreflang="x-default">
+
   <title>Ventas y Reembolsos | Lixby</title>
   <meta name="description" content="Información sobre devoluciones, cambios y reembolsos en Lixby: derecho de desistimiento, garantía legal y procedimiento de reembolso.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+  <link rel="stylesheet" href="/globalfooter.css">
+  <link rel="stylesheet" href="/localnav.css">
+  <link rel="stylesheet" href="/es/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Ventas y Reembolsos",
+      "url": "https://lixby.es/es/pages/legal/ventas-reembolsos/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lixby",
+        "url": "https://lixby.es"
+      }
+    }
+  </script>
   <style>
-    .legal-header {
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-      margin-top: 4rem;
+    .legal-hero {
+      padding: clamp(6rem, 12vh, 9rem) 0 clamp(3rem, 6vh, 5rem);
+      text-align: center;
     }
 
-    .legal-header h1 {
-      font-size: var(--font-size-4xl);
+    .legal-hero .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: var(--spacing-4);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(15, 61, 255, 0.08);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
     }
 
-    .legal-header p {
-      font-size: var(--font-size-lg);
-      color: var(--color-gray-600);
+    .legal-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
     }
 
-    .legal-content {
-      padding: var(--spacing-12) var(--spacing-6);
-      background-color: var(--color-white);
+    .legal-hero p {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .legal-body {
+      padding: 0 0 clamp(4rem, 8vh, 6rem);
     }
 
     .legal-container {
-      max-width: 900px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
     .legal-section {
-      margin-bottom: var(--spacing-12);
-      padding-bottom: var(--spacing-12);
-      border-bottom: 1px solid var(--color-gray-200);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .legal-section:last-child {
-      border-bottom: none;
+    .legal-section:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
 
     .legal-section h2 {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-4);
-      color: var(--color-black);
+      font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--line);
     }
 
     .legal-section h3 {
-      font-size: var(--font-size-lg);
+      font-size: 1.1rem;
       font-weight: 600;
-      margin-top: var(--spacing-6);
-      margin-bottom: var(--spacing-3);
-      color: var(--color-gray-800);
+      color: var(--text);
+      margin: 1.5rem 0 0.5rem;
     }
 
-    .legal-section p,
-    .legal-section li {
-      color: var(--color-gray-700);
+    .legal-section p {
+      font-size: 0.95rem;
+      color: var(--muted);
       line-height: 1.8;
-      margin-bottom: var(--spacing-3);
+      margin-bottom: 0.85rem;
+    }
+
+    .legal-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .legal-section strong {
+      font-weight: 600;
+      color: var(--text);
     }
 
     .legal-section ul {
-      padding-left: var(--spacing-6);
-      margin-bottom: var(--spacing-4);
+      padding-left: 1.25rem;
+      margin: 0.75rem 0 1rem;
     }
 
     .legal-section li {
-      margin-bottom: var(--spacing-2);
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .legal-section li::marker {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .legal-section a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .legal-section a:hover {
+      color: var(--primary-2);
+      text-decoration: underline;
+    }
+
+    .legal-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: -3.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .legal-nav a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: all 0.2s ease;
+    }
+
+    .legal-nav a:hover,
+    .legal-nav a.active {
+      color: var(--primary);
+      border-color: rgba(15, 61, 255, 0.25);
+      background: rgba(15, 61, 255, 0.05);
+    }
+
+    .legal-intro {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .legal-intro p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .legal-intro a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .legal-intro a:hover {
+      text-decoration: underline;
     }
 
     .withdrawal-form {
-      border: 1px solid var(--color-gray-200);
-      border-left: 4px solid #ffc107;
-      border-radius: var(--radius-lg);
-      background-color: #fffdf5;
-      padding: var(--spacing-6);
-      margin: var(--spacing-6) 0 var(--spacing-4);
+      border: 1px solid var(--line);
+      border-left: 4px solid #f59e0b;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+      padding: 1.5rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .withdrawal-form h3 {
+      margin-top: 0;
     }
 
     .withdrawal-form .form-intro {
-      font-size: var(--font-size-sm);
-      color: var(--color-gray-500);
-      margin-bottom: var(--spacing-4);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
     }
 
     .form-field {
-      margin-bottom: var(--spacing-3);
+      margin-bottom: 0.8rem;
     }
 
     .form-field .form-label {
       font-weight: 600;
-      color: var(--color-gray-800);
+      color: var(--text);
+      font-size: 0.9rem;
     }
 
     .form-field .blank {
       display: inline-block;
-      border-bottom: 1px solid var(--color-gray-400);
+      border-bottom: 1px dashed var(--color-gray-400);
       min-width: 14rem;
-      height: 1.6em;
+      height: 1.5em;
       margin-left: 0.35rem;
+      vertical-align: baseline;
     }
 
-    @media (max-width: 768px) {
-      .legal-header {
-        padding: var(--spacing-12) var(--spacing-4);
+    .legal-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: rgba(15, 61, 255, 0.04);
+      border: 1px solid rgba(15, 61, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .legal-card svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .legal-card p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .legal-section,
+      .legal-intro {
+        padding: 1.5rem;
       }
 
-      .legal-header h1 {
-        font-size: var(--font-size-3xl);
-      }
-
-      .legal-content {
-        padding: var(--spacing-8) var(--spacing-4);
+      .form-field .blank {
+        min-width: 8rem;
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://lixby.es",
-      "logo": "https://lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
-    }
-  </script>
 </head>
 <body>
 
-  
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/es/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/es/#productos" class="nav-link">Productos</a>
-        <a href="/es/#apps" class="nav-link">Apps</a>
-        <a href="/es/support/" class="nav-link">Soporte</a>
-      </div>
-      <div class="nav-right"></div>
-    </div>
-  </nav>
+  <div id="scroll-progress"></div>
 
-  <section class="legal-header">
-    <div style="max-width: 900px; margin: 0 auto;">
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/es/" class="nav-brand">Lixby</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/es/tienda/" method="get">
+          <input type="search" id="navSearch" name="q" class="nav-search" placeholder="Buscar producto..." aria-label="Buscar producto">
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="/es/images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="/es/images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <div class="nav-mobile-top">
+      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/es/tienda/" method="get">
+        <input type="search" id="navSearchMobile" name="q" class="nav-search-mobile" placeholder="Buscar" aria-label="Buscar producto">
+      </form>
+      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <a href="/es/tienda/">Tienda</a>
+      <a href="/es/productos/">Productos</a>
+      <a href="/es/apps/">Apps</a>
+      <a href="/es/support/">Soporte</a>
+    </nav>
+    <div class="nav-mobile-actions">
+      <a href="/es/cesta/">Cesta</a>
+      <a href="/es/cuenta/">Cuenta</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="legal-hero container">
+      <div class="legal-nav">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/" class="active">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+      <p class="eyebrow">Legal</p>
       <h1>Ventas y Reembolsos</h1>
       <p>Última actualización: 23 de agosto de 2026</p>
-    </div>
-  </section>
+    </section>
 
-  <section class="legal-content">
-    <div class="legal-container">
-      
-      <p>Esta página explica cómo funcionan las devoluciones, cambios y reembolsos en las compras realizadas en https://lixby.es. Complementa nuestros <a href="/es/pages/legal/terms/">Términos y Condiciones</a>.</p>
+    <section class="legal-body">
+      <div class="legal-container">
 
-      <div class="legal-section">
-        <h2>Derecho de desistimiento (14 días)</h2>
-        <p>Si eres consumidor y compras desde la Unión Europea, tienes derecho a devolver tu pedido en un plazo de <strong>14 días naturales</strong> desde que lo recibes, sin necesidad de justificar el motivo.</p>
-
-        <h3>Cómo ejercerlo:</h3>
-        <ul>
-          <li>Escríbenos a info@lixby.es indicando tu número de pedido y que deseas desistir de la compra.</li>
-          <li>Te confirmaremos la recepción de tu solicitud y te indicaremos cómo y adónde enviar el producto.</li>
-          <li>Envía el producto en su embalaje original, sin usar, con todos los accesorios incluidos.</li>
-        </ul>
-
-        <h3>Plazo de reembolso:</h3>
-        <p>Reembolsamos el importe pagado (incluidos los gastos de envío iniciales, si los hubo) en un máximo de 14 días desde que recibimos tu notificación de desistimiento o, si es anterior, desde que recibimos el producto devuelto. El reembolso se hace por el mismo método de pago que usaste en la compra.</p>
-
-        <h3>Gastos de devolución:</h3>
-        <p>Corren de tu cuenta, salvo que el producto llegara defectuoso o te enviáramos un artículo incorrecto — en ese caso, los cubrimos nosotros.</p>
-      </div>
-
-      <div class="legal-section">
-        <p>Si prefieres usar un formulario estándar para comunicar tu desistimiento, puedes copiar y completar este modelo y enviarlo a info@lixby.es:</p>
-
-        <div class="withdrawal-form">
-          <h3>Formulario de Desistimiento</h3>
-          <p class="form-intro">(Solo debes rellenar y enviar este formulario si deseas desistir del contrato)</p>
-
-          <p><strong>A la atención de:</strong><br>
-            Fabián Casañas González (Lixby)<br>
-            Email: info@lixby.es</p>
-
-          <p>Por la presente le comunico que desisto de mi contrato de venta del siguiente producto:</p>
-
-          <p class="form-field"><span class="form-label">Producto:</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Número de pedido:</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Pedido el / recibido el:</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Nombre del consumidor:</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Dirección del consumidor:</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Firma del consumidor (solo si se envía en papel):</span><span class="blank"></span></p>
-          <p class="form-field"><span class="form-label">Fecha:</span><span class="blank"></span></p>
+        <div class="legal-intro">
+          <p>Esta página explica cómo funcionan las devoluciones, cambios y reembolsos en las compras realizadas en <a href="https://lixby.es">https://lixby.es</a>. Complementa nuestros <a href="/es/pages/legal/terms/">Términos y Condiciones</a>.</p>
         </div>
-      </div>
 
-      <div class="legal-section">
-        <h2>Excepciones al derecho de desistimiento</h2>
-        <p>No se puede desistir de:</p>
+        <article class="legal-section">
+          <h2>Derecho de desistimiento (14 días)</h2>
+          <p>Si eres consumidor y compras desde la Unión Europea, tienes derecho a devolver tu pedido en un plazo de <strong>14 días naturales</strong> desde que lo recibes, sin necesidad de justificar el motivo.</p>
+
+          <h3>Cómo ejercerlo:</h3>
+          <ul>
+            <li>Escríbenos a info@lixby.es indicando tu número de pedido y que deseas desistir de la compra.</li>
+            <li>Te confirmaremos la recepción de tu solicitud y te indicaremos cómo y adónde enviar el producto.</li>
+            <li>Envía el producto en su embalaje original, sin usar, con todos los accesorios incluidos.</li>
+          </ul>
+
+          <h3>Plazo de reembolso:</h3>
+          <p>Reembolsamos el importe pagado (incluidos los gastos de envío iniciales, si los hubo) en un máximo de 14 días desde que recibimos tu notificación de desistimiento o, si es anterior, desde que recibimos el producto devuelto. El reembolso se hace por el mismo método de pago que usaste en la compra.</p>
+
+          <h3>Gastos de devolución:</h3>
+          <p>Corren de tu cuenta, salvo que el producto llegara defectuoso o te enviáramos un artículo incorrecto — en ese caso, los cubrimos nosotros.</p>
+        </article>
+
+        <article class="legal-section">
+          <h2>Formulario de desistimiento</h2>
+          <p>Si prefieres usar un formulario estándar para comunicar tu desistimiento, puedes copiar y completar este modelo y enviarlo a info@lixby.es:</p>
+
+          <div class="withdrawal-form">
+            <h3>Formulario de Desistimiento</h3>
+            <p class="form-intro">(Solo debes rellenar y enviar este formulario si deseas desistir del contrato)</p>
+
+            <p><strong>A la atención de:</strong><br>
+              Fabián Casañas González (Lixby)<br>
+              Email: info@lixby.es</p>
+
+            <p>Por la presente le comunico que desisto de mi contrato de venta del siguiente producto:</p>
+
+            <p class="form-field"><span class="form-label">Producto:</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Número de pedido:</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Pedido el / recibido el:</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Nombre del consumidor:</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Dirección del consumidor:</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Firma del consumidor (solo si se envía en papel):</span><span class="blank"></span></p>
+            <p class="form-field"><span class="form-label">Fecha:</span><span class="blank"></span></p>
+          </div>
+        </article>
+
+        <article class="legal-section">
+          <h2>Excepciones al derecho de desistimiento</h2>
+          <p>No se puede desistir de:</p>
+          <ul>
+            <li>Productos que hayas desprecintado por razones de higiene (auriculares, si el precinto de higiene ha sido roto).</li>
+            <li>Licencias de software o contenido digital una vez hayas empezado a descargarlo o usarlo con tu consentimiento expreso.</li>
+            <li>Productos personalizados o hechos a medida.</li>
+          </ul>
+        </article>
+
+        <article class="legal-section">
+          <h2>Producto defectuoso o dañado en el envío</h2>
+          <p>Si tu pedido llega defectuoso, dañado, o no corresponde con lo solicitado, contáctanos en info@lixby.es en un plazo de <strong>48 horas</strong> desde la recepción, con fotos del producto y el embalaje. Gestionaremos la sustitución o el reembolso sin coste para ti.</p>
+        </article>
+
+        <article class="legal-section">
+          <h2>Garantía legal</h2>
+          <p>Los productos físicos (como LixBuds One) cuentan con la garantía legal de conformidad de <strong>3 años</strong> desde la entrega, conforme a la legislación española y de la UE. Cubre defectos de fabricación o falta de conformidad con lo anunciado; no cubre daños por uso indebido, negligencia, desgaste normal o manipulación no autorizada.</p>
+          <p>Para reclamar la garantía, contacta con info@lixby.es indicando el problema y adjuntando prueba de compra.</p>
+        </article>
+
+        <article class="legal-section">
+          <h2>Cambios de producto</h2>
+          <p>Si quieres cambiar tu producto por otra variante (por ejemplo, otro color), trátalo como una devolución dentro del plazo de 14 días y realiza un nuevo pedido por el artículo que prefieras.</p>
+        </article>
+
+        <article class="legal-section">
+          <h2>Cancelación de pedidos antes del envío</h2>
+          <p>Si tu pedido aún no ha sido enviado, puedes solicitar su cancelación escribiendo a info@lixby.es; te reembolsaremos el importe completo.</p>
+        </article>
+
+        <article class="legal-section">
+          <h2>Contacto</h2>
+          <p>Para cualquier duda sobre devoluciones o reembolsos: <a href="mailto:info@lixby.es">info@lixby.es</a></p>
+          <div class="legal-card">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <p>Si no llegamos a una solución satisfactoria, como consumidor de la UE puedes acudir a la plataforma de resolución de litigios en línea: <a href="https://ec.europa.eu/consumers/odr/">https://ec.europa.eu/consumers/odr/</a></p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+<footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
         <ul>
-          <li>Productos que hayas desprecintado por razones de higiene (auriculares, si el precinto de higiene ha sido roto).</li>
-          <li>Licencias de software o contenido digital una vez hayas empezado a descargarlo o usarlo con tu consentimiento expreso.</li>
-          <li>Productos personalizados o hechos a medida.</li>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
         </ul>
-      </div>
+      </section>
 
-      <div class="legal-section">
-        <h2>Producto defectuoso o dañado en el envío</h2>
-        <p>Si tu pedido llega defectuoso, dañado, o no corresponde con lo solicitado, contáctanos en info@lixby.es en un plazo de <strong>48 horas</strong> desde la recepción, con fotos del producto y el embalaje. Gestionaremos la sustitución o el reembolso sin coste para ti.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Garantía legal</h2>
-        <p>Los productos físicos (como LixBuds One) cuentan con la garantía legal de conformidad de <strong>3 años</strong> desde la entrega, conforme a la legislación española y de la UE. Cubre defectos de fabricación o falta de conformidad con lo anunciado; no cubre daños por uso indebido, negligencia, desgaste normal o manipulación no autorizada.</p>
-        <p>Para reclamar la garantía, contacta con info@lixby.es indicando el problema y adjuntando prueba de compra.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Cambios de producto</h2>
-        <p>Si quieres cambiar tu producto por otra variante (por ejemplo, otro color), trátalo como una devolución dentro del plazo de 14 días y realiza un nuevo pedido por el artículo que prefieras.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Cancelación de pedidos antes del envío</h2>
-        <p>Si tu pedido aún no ha sido enviado, puedes solicitar su cancelación escribiendo a info@lixby.es; te reembolsaremos el importe completo.</p>
-      </div>
-
-      <div class="legal-section">
-        <h2>Contacto</h2>
-        <p>Para cualquier duda sobre devoluciones o reembolsos: <a href="mailto:info@lixby.es">info@lixby.es</a></p>
-        <p>Si no llegamos a una solución satisfactoria, como consumidor de la UE puedes acudir a la plataforma de resolución de litigios en línea: <a href="https://ec.europa.eu/consumers/odr/">https://ec.europa.eu/consumers/odr/</a></p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Productos</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></li>
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Apps</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/apps/lixney/">Lixney</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Empresa</h3>
-        <ul class="footer-links">
-          <li><a href="/es/about/">Sobre Lixby</a></li>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
           <li><a href="/es/support/">Contacto</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul class="footer-links">
-          <li><a href="/es/pages/legal/privacy/">Privacidad</a></li>
-          <li><a href="/es/pages/legal/terms/">Términos</a></li>
-          <li><a href="/es/pages/legal/ventas-reembolsos/">Ventas y Reembolsos</a></li>
-          <li><a href="/es/pages/legal/cookies/">Cookies</a></li>
-          <li><a href="/es/pages/legal/legal-notice/">Aviso Legal</a></li>
-        </ul>
-      </div>
+      </section>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Lixby. Todos los derechos reservados. Diseñado en España.</p>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
     </div>
   </footer>
 
   <script src="/js/gsap.min.js"></script>
-  <script src="../../script.js"></script>
+  <script src="/es/main.js" defer></script>
 </body>
 </html>

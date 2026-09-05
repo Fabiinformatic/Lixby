@@ -137,7 +137,7 @@ if (addToCartButtons.length) {
 }
 
 const texto = document.getElementById("texto");
-const typedString = "Diseño limpio,\nsonido potente y\ncontrol total de tu día.";
+const typedString = "Contigo en cada parte de tu día, estés donde estés.";
 let typedIndex = 0;
 
 function typeNext() {

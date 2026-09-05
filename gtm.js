@@ -159,7 +159,50 @@
       ".lixby-box{width:18px;height:18px;accent-color:var(--primary,#0f3dff);cursor:pointer;margin:0;}",
       ".lixby-close{position:absolute;top:10px;right:14px;border:none;background:transparent;",
       "font-size:20px;line-height:1;color:var(--muted,#5f6b7a);padding:4px 8px;cursor:pointer;}",
-      ".lixby-close:hover{transform:none;color:var(--text,#111827);}"
+      ".lixby-close:hover{transform:none;color:var(--text,#111827);}",
+      ".lixby-backdrop{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;",
+      "background:rgba(15,23,42,.45);backdrop-filter:blur(4px);",
+      "-webkit-backdrop-filter:blur(4px);animation:lixbyFade .25s ease;}",
+      "@keyframes lixbyFade{from{opacity:0}to{opacity:1}}",
+      ".lixby-panel-outer{width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 64px);overflow-y:auto;",
+      "animation:lixbyPop .3s cubic-bezier(.2,.9,.3,1.2);}",
+      "@keyframes lixbyPop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}",
+      ".lixby-card.lixby-settings{position:relative;left:auto;right:auto;bottom:auto;width:100%;max-width:none;",
+      "display:flex;flex-direction:column;gap:16px;padding:24px;overflow:visible;}",
+      ".lixby-settings .lixby-head{display:flex;align-items:center;gap:12px;padding-right:28px;}",
+      ".lixby-settings .lixby-head-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;",
+      "display:flex;align-items:center;justify-content:center;",
+      "background:linear-gradient(120deg,var(--primary,#0f3dff),var(--primary-2,#16a7ff));}",
+      ".lixby-settings .lixby-head-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;",
+      "stroke-linecap:round;stroke-linejoin:round;}",
+      ".lixby-settings .lixby-title{font-size:1.05rem;font-weight:800;color:var(--text,#111827);",
+      "letter-spacing:-.02em;line-height:1.2;}",
+      ".lixby-settings .lixby-sub{font-size:.85rem;color:var(--muted,#5f6b7a);line-height:1.5;margin-top:2px;}",
+      ".lixby-settings .lixby-options{display:flex;flex-direction:column;gap:10px;}",
+      ".lixby-settings .lixby-option{display:flex;align-items:center;justify-content:space-between;gap:12px;",
+      "padding:14px 16px;border:1px solid var(--line,#dbe3ef);border-radius:var(--radius-md,14px);",
+      "background:var(--color-gray-50,#f8fafc);}",
+      ".lixby-settings .lixby-option .lixby-opt-label{display:flex;flex-direction:column;gap:2px;flex:1;}",
+      ".lixby-settings .lixby-option .lixby-opt-name{font-weight:700;font-size:.92rem;color:var(--text,#111827);}",
+      ".lixby-settings .lixby-option .lixby-opt-desc{font-size:.8rem;color:var(--muted,#5f6b7a);line-height:1.4;}",
+      ".lixby-settings .lixby-option .lixby-badge{display:inline-block;font-size:.65rem;font-weight:700;",
+      "letter-spacing:.05em;text-transform:uppercase;color:var(--primary,#0f3dff);",
+      "background:rgba(15,61,255,.1);padding:2px 8px;border-radius:999px;align-self:flex-start;}",
+      ".lixby-settings .lixby-option.lixby-locked{opacity:.95;}",
+      ".lixby-settings .lixby-switch{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:26px;",
+      "flex-shrink:0;margin:0;cursor:pointer;border-radius:999px;outline:none;",
+      "background:var(--line,#dbe3ef);transition:background .25s ease;}",
+      ".lixby-settings .lixby-switch::after{content:'';position:absolute;top:2px;left:2px;width:22px;height:22px;",
+      "border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .25s ease;}",
+      ".lixby-settings .lixby-switch:checked{background:linear-gradient(120deg,var(--primary,#0f3dff),var(--primary-2,#16a7ff));}",
+      ".lixby-settings .lixby-switch:checked::after{transform:translateX(20px);}",
+      ".lixby-settings .lixby-switch:focus-visible{box-shadow:0 0 0 3px rgba(15,61,255,.25);}",
+      ".lixby-settings .lixby-settings-foot{display:flex;justify-content:flex-end;gap:10px;}",
+      "@media (max-width:520px){",
+      ".lixby-settings .lixby-settings-foot{flex-direction:column;}",
+      ".lixby-settings .lixby-settings-foot .lixby-btn{width:100%;}",
+      ".lixby-option{flex-wrap:wrap;}",
+      "}"
     ].join("");
     var style = document.createElement("style");
     style.id = STYLE_ID;
@@ -175,6 +218,68 @@
     return b;
   }
 
+  /* Bloque reutilizable de opciones (analiticas por defecto / estrictas bloqueadas) */
+  function buildOptions(initialChecked) {
+    var options = document.createElement("div");
+    options.className = "lixby-options";
+
+    var strict = document.createElement("div");
+    strict.className = "lixby-option lixby-locked";
+    var strictLabel = document.createElement("div");
+    strictLabel.className = "lixby-opt-label";
+    var strictName = document.createElement("span");
+    strictName.className = "lixby-opt-name";
+    strictName.textContent = isSpanish ? "Cookies estrictamente necesarias" : "Strictly necessary cookies";
+    var strictBadge = document.createElement("span");
+    strictBadge.className = "lixby-badge";
+    strictBadge.textContent = isSpanish ? "Siempre activas" : "Always on";
+    var strictDesc = document.createElement("span");
+    strictDesc.className = "lixby-opt-desc";
+    strictDesc.textContent = isSpanish
+      ? "Necesarias para el funcionamiento del sitio."
+      : "Required for the site to work.";
+    strictLabel.appendChild(strictName);
+    strictLabel.appendChild(strictBadge);
+    strictLabel.appendChild(strictDesc);
+    var strictOn = document.createElement("span");
+    strictOn.className = "lixby-badge";
+    strictOn.textContent = isSpanish ? "Activas" : "On";
+    strict.appendChild(strictLabel);
+    strict.appendChild(strictOn);
+    options.appendChild(strict);
+
+    var option = document.createElement("div");
+    option.className = "lixby-option";
+    var label = document.createElement("div");
+    label.className = "lixby-opt-label";
+    var name = document.createElement("span");
+    name.className = "lixby-opt-name";
+    name.textContent = T.analyticsLabel;
+    var badge = document.createElement("span");
+    badge.className = "lixby-badge";
+    badge.textContent = isSpanish ? "Opcional" : "Optional";
+    var desc = document.createElement("span");
+    desc.className = "lixby-opt-desc";
+    desc.textContent = isSpanish
+      ? "Nos ayudan a entender c\u00F3mo usas Lixby para mejorarlo."
+      : "Help us understand how you use Lixby to improve it.";
+    label.appendChild(name);
+    label.appendChild(badge);
+    label.appendChild(desc);
+
+    var box = document.createElement("input");
+    box.type = "checkbox";
+    box.className = "lixby-switch";
+    box.checked = !!initialChecked;
+    box.setAttribute("aria-label", T.analyticsLabel);
+
+    option.appendChild(label);
+    option.appendChild(box);
+    options.appendChild(option);
+
+    return { options: options, box: box };
+  }
+
   /* Panel de preferencias reutilizable (banner y pie) */
   function buildSettingsPanel(initialChecked, onSave) {
     var panel = document.createElement("div");
@@ -185,19 +290,12 @@
     title.textContent = T.settingsTitle;
     panel.appendChild(title);
 
-    var row = document.createElement("label");
-    row.className = "lixby-row";
-    var box = document.createElement("input");
-    box.type = "checkbox";
-    box.className = "lixby-box";
-    box.checked = !!initialChecked;
-    row.appendChild(box);
-    row.appendChild(document.createTextNode(T.analyticsLabel));
-    panel.appendChild(row);
+    var built = buildOptions(initialChecked);
+    panel.appendChild(built.options);
 
     var save = button(T.save, true);
     save.addEventListener("click", function () {
-      onSave(box.checked);
+      onSave(built.box.checked);
     });
     panel.appendChild(save);
 
@@ -252,31 +350,87 @@
     ensureStyles();
     if (document.getElementById("lixby-cookie-settings")) return;
 
+    /* Fondo oscuro */
+    var backdrop = document.createElement("div");
+    backdrop.className = "lixby-backdrop";
+
+    /* Contenedor centrado con scroll */
+    var outer = document.createElement("div");
+    outer.className = "lixby-panel-outer";
+
     var card = document.createElement("div");
     card.id = "lixby-cookie-settings";
-    card.className = "lixby-card lixby-col";
+    card.className = "lixby-card lixby-settings";
     card.setAttribute("role", "dialog");
+    card.setAttribute("aria-modal", "true");
     card.setAttribute("aria-label", T.settingsTitle);
+
+    /* Cabecera con icono y titulo */
+    var head = document.createElement("div");
+    head.className = "lixby-head";
+
+    var icon = document.createElement("span");
+    icon.className = "lixby-head-icon";
+    icon.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="3"/>' +
+      '<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>' +
+      "</svg>";
+    head.appendChild(icon);
+
+    var headText = document.createElement("div");
+    var title = document.createElement("div");
+    title.className = "lixby-title";
+    title.textContent = T.settingsTitle;
+    var sub = document.createElement("div");
+    sub.className = "lixby-sub";
+    sub.textContent = isSpanish
+      ? "Elige qu\u00E9 cookies permites. Puedes cambiar tu decisi\u00F3n en cualquier momento."
+      : "Choose which cookies you allow. You can change your mind at any time.";
+    headText.appendChild(title);
+    headText.appendChild(sub);
+    head.appendChild(headText);
 
     var close = button("\u00D7", false);
     close.className = "lixby-close";
     close.setAttribute("aria-label", isSpanish ? "Cerrar" : "Close");
     close.addEventListener("click", function () {
-      card.remove();
+      backdrop.remove();
     });
 
-    var panel = buildSettingsPanel(readChoice() === "granted", function (checked) {
-      var decision = checked ? "granted" : "denied";
+    card.appendChild(head);
+    card.appendChild(close);
+
+    var built = buildOptions(readChoice() === "granted");
+    card.appendChild(built.options);
+
+    var foot = document.createElement("div");
+    foot.className = "lixby-settings-foot";
+    foot.appendChild(button(T.save, true));
+    foot.lastChild.addEventListener("click", function () {
+      var decision = built.box.checked ? "granted" : "denied";
       var changed = decision !== readChoice();
       applyDecision(decision);
-      card.remove();
+      backdrop.remove();
       if (changed) window.location.reload();
     });
-    panel.el.style.display = "flex"; // visible directamente
+    card.appendChild(foot);
 
-    card.appendChild(close);
-    card.appendChild(panel.el);
-    document.body.appendChild(card);
+    outer.appendChild(card);
+    backdrop.appendChild(outer);
+
+    /* Cerrar al pulsar fuera del panel o con Escape */
+    backdrop.addEventListener("click", function (e) {
+      if (e.target === backdrop) backdrop.remove();
+    });
+    document.addEventListener("keydown", function esc(e) {
+      if (e.key === "Escape" && document.getElementById("lixby-cookie-settings")) {
+        backdrop.remove();
+        document.removeEventListener("keydown", esc);
+      }
+    });
+
+    document.body.appendChild(backdrop);
   }
 
   function showBanner() {

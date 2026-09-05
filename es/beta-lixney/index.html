@@ -45,7 +45,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
 
@@ -57,13 +57,13 @@
   <meta property="og:description" content="Completa el cuestionario y solicita acceso anticipado a la beta de Lixney." />
   <meta property="og:site_name" content="Lixby (España)" />
   <meta property="og:locale" content="es_ES" />
-  <meta property="og:image" content="https://lixby.es/es/images/LixneyIcon.png" />
+  <meta property="og:image" content="https://lixby.es/es/images/lixneyicon2.webp" />
   <meta property="og:url" content="https://lixby.es/es/beta-lixney" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Beta Tester de Lixney | Lixby" />
   <meta name="twitter:description" content="Solicita tu plaza para probar la beta de Lixney." />
-  <meta name="twitter:image" content="https://lixby.es/es/images/LixneyIcon.png" />
+  <meta name="twitter:image" content="https://lixby.es/es/images/lixneyicon2.webp" />
 
   
 
@@ -373,14 +373,16 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
   <a class="skip-link" href="#main">Saltar al contenido</a>
   <header class="nav" id="nav">
     <div class="container nav-container">
       <a href="./" class="nav-brand">Lixby</a>
       <nav class="nav-links" aria-label="Principal">
         <a href="/es/tienda/" class="nav-link">Tienda</a>
-        <a href="/es/#productos" class="nav-link">Productos</a>
-        <a href="/es/#apps" class="nav-link">Apps</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
         <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
@@ -421,8 +423,8 @@
     </div>
     <nav class="nav-mobile-links" aria-label="Principal móvil">
       <a href="/es/tienda/">Tienda</a>
-      <a href="/es/#productos">Productos</a>
-      <a href="/es/#apps">Apps</a>
+      <a href="/es/productos/">Productos</a>
+      <a href="/es/apps/">Apps</a>
       <a href="/es/support/">Soporte</a>
     </nav>
     <div class="nav-mobile-actions">
@@ -523,14 +525,14 @@
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
         <h3>Ver y comprar</h3>
         <ul>
           <li><a href="/es/tienda/">Tienda</a></li>
           <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/es/#apps">Apps</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
           <li><a href="/es/support/">Soporte</a></li>
         </ul>
       </section>
@@ -557,9 +559,9 @@
       <section class="footer-section">
         <h3>Acerca de Lixby</h3>
         <ul>
-          <li><a href="/es/about/">Newsroom</a></li>
+          <li><a href="/es/about/">Nosotros</a></li>
           <li><a href="/es/support/">Garantía</a></li>
-          <li><a href="/es/about/">Eventos</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
           <li><a href="/es/support/">Contacto</a></li>
         </ul>
       </section>
@@ -569,8 +571,8 @@
       <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
       <div class="footer-legal-links">
         <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/es/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/es/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
         <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
         <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
       </div>
@@ -707,6 +709,17 @@
       }
     });
   </script>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+</script>
 </body>
 </html>
 

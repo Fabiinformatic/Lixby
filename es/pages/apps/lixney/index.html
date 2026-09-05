@@ -44,7 +44,7 @@
   <meta name="keywords" content="app finanzas, gestor de gastos, presupuesto personal, ahorro, dinero, Lixney">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
   <style>
     .app-hero {
@@ -221,13 +221,15 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
   
   <nav class="nav">
     <div class="nav-container">
       <a href="/es/" class="nav-brand">Lixby</a>
       <div class="nav-links">
-        <a href="/es/#productos" class="nav-link">Productos</a>
-        <a href="/es/#apps" class="nav-link">Apps</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
         <a href="/es/support/" class="nav-link">Soporte</a>
       </div>
       <div class="nav-right"></div>
@@ -375,5 +377,16 @@
 
   <script src="/js/gsap.min.js"></script>
   <script src="../../script.js"></script>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+</script>
 </body>
 </html>
