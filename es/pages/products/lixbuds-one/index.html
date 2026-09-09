@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <script>
@@ -46,18 +46,22 @@
   <meta property="og:site_name" content="Lixby">
   <meta property="og:locale" content="es_ES">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://lixby.es/es/pages/products/images/lixbuds-product.jpg">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LixBuds One | Wireless Premium">
   <meta name="twitter:description" content="Auriculares inalámbricos con cancelación de ruido, audio espacial y diseño premium.">
-  <meta name="twitter:image" content="https://lixby.es/es/pages/products/images/lixbuds-product.jpg">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
   <meta property="og:url" content="https://lixby.es/es/pages/products/lixbuds-one">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/es/style.css">
 
   <style>
 #scroll-progress {
@@ -1413,7 +1417,7 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="/es/" class="nav-brand">Lixby</a>
+      <a href="/es/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
       <nav class="nav-links" aria-label="Principal">
         <a href="/es/tienda/" class="nav-link">Tienda</a>
         <a href="/es/productos/" class="nav-link">Productos</a>
@@ -1421,37 +1425,121 @@
         <a href="/es/support/" class="nav-link">Soporte</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
         <form id="navSearchForm" action="/es/tienda/" method="get">
-          <input type="search" id="navSearch" name="q" class="nav-search" placeholder="Buscar producto..." aria-label="Buscar producto">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar producto..."
+            aria-label="Buscar producto"
+          >
         </form>
         <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
-          <img src="../../images/Bolsa.png" alt="Cesta">
+          <img src="/es/images/Bolsa.png" alt="Cesta">
         </a>
         <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="../../images/cuenta.png" alt="Cuenta">
+          <img src="/es/images/cuenta.png" alt="Cuenta">
         </a>
-      </div>
-    </div>
-    <div class="product-subnav">
-      <div class="container product-subnav-inner">
-        <div class="product-subnav-title">LixBuds One</div>
-        <nav class="product-subnav-links" aria-label="LixBuds One">
-          <a href="/es/pages/products/lixbuds-one#caracteristicas">Características</a>
-          <a href="/es/pages/products/lixbuds-one#sonido">Sonido</a>
-          <a href="/es/pages/products/lixbuds-one#anc">ANC</a>
-          <a href="/es/pages/products/lixbuds-one#bateria">Batería</a>
-          <a href="/es/pages/products/lixbuds-one#comprar" class="buy-pill">Comprar</a>
-        </nav>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Tienda</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/es/tienda/">Entrar a tienda</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">Auriculares LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/comprar-cascos/lixbuds-one/">Comprar ahora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/novedades/">Novedades</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Productos</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Soporte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/es/support/">Ir a soporte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/contacto/">Contacto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/devoluciones/">Devoluciones</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Cesta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Ver cesta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Finalizar compra</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuenta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Entrar a mi cuenta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mis pedidos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mi perfil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Configuración</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/iniciar-sesion/">Iniciar sesión</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/verificacion-2-pasos/">Verificación en 2 pasos</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
 
     <!-- HERO VIDEO -->
     <section aria-labelledby="hero-title">
       <div class="hero-video-wrap">
-        <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
+        <video autoplay muted loop playsinline preload="metadata" poster="/images/lixbuds-hero.jpg">
           <source src="/es/media/lixbuds-loop.mp4" type="video/mp4">
         </video>
         <div class="hero-video-bottom">
@@ -1474,7 +1562,7 @@
         <div class="fs-sticky">
 
           <div class="fs-slide fs-slide--center" data-index="0">
-            <div class="fs-bg-img" style="background-image:url('images/lixbuds-product.jpg');"></div>
+            <div class="fs-bg-img" style="background-image:url('/images/lixbuds-one-white.png');"></div>
             <div class="container fs-center-content">
               <span class="fs-label">Audio espacial</span>
               <h2 class="fs-h fs-h--xl">Siente cada nota<br>como si estuvieras ahí.</h2>
@@ -1489,13 +1577,13 @@
               <p class="fs-p">ANC inteligente que detecta y elimina el ruido en tiempo real.</p>
             </div>
             <div class="fs-split-img">
-              <img src="images/lixbuds-product.jpg" alt="ANC LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="ANC LixBuds One">
             </div>
           </div>
 
           <div class="fs-slide fs-slide--split fs-slide--reverse" data-index="2">
             <div class="fs-split-img">
-              <img src="images/lixbuds-product.jpg" alt="Transparencia LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="Transparencia LixBuds One">
             </div>
             <div class="fs-split-text">
               <span class="fs-label">Modo transparencia</span>
@@ -1513,7 +1601,7 @@
           </div>
 
           <div class="fs-slide fs-slide--stats" data-index="4">
-            <div class="fs-bg-img" style="background-image:url('images/lixbuds-product.jpg');"></div>
+            <div class="fs-bg-img" style="background-image:url('/images/lixbuds-one-white.png');"></div>
             <div class="container fs-stats-content">
               <div class="fs-stats-row">
                 <div class="fs-stat">
@@ -1536,7 +1624,7 @@
               <p class="fs-p">Certificación real para el uso diario sin importar las condiciones.</p>
             </div>
             <div class="fs-split-img">
-              <img src="images/lixbuds-product.jpg" alt="IPX5 LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="IPX5 LixBuds One">
             </div>
           </div>
 
@@ -1545,7 +1633,7 @@
               <span class="fs-label">Estuche de carga</span>
               <h2 class="fs-h fs-h--xl">Carga sin cables,<br>sin esfuerzo.</h2>
               <div class="fs-showcase">
-                <img src="images/lixbuds-product.jpg" alt="Estuche LixBuds One">
+                <img src="/images/lixbuds-one-white.png" alt="Estuche LixBuds One">
               </div>
               <p class="fs-p">Carga inalámbrica Qi, indicador LED y diseño compacto.</p>
             </div>
@@ -1567,7 +1655,7 @@
         <div class="snd-pillars reveal">
           <div class="snd-pillar">
             <div class="snd-pillar-img">
-              <img src="images/lixbuds-product.jpg" alt="Graves LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="Graves LixBuds One">
               <span class="snd-pillar-badge">Graves</span>
             </div>
             <h3>Graves más potentes.</h3>
@@ -1575,7 +1663,7 @@
           </div>
           <div class="snd-pillar">
             <div class="snd-pillar-img snd-pillar-img--tall">
-              <img src="images/lixbuds-product.jpg" alt="Voces LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="Voces LixBuds One">
               <span class="snd-pillar-badge">Medios</span>
             </div>
             <h3>Voces más claras.</h3>
@@ -1583,7 +1671,7 @@
           </div>
           <div class="snd-pillar">
             <div class="snd-pillar-img">
-              <img src="images/lixbuds-product.jpg" alt="Audio espacial LixBuds One">
+              <img src="/images/lixbuds-one-white.png" alt="Audio espacial LixBuds One">
               <span class="snd-pillar-badge">Espacial</span>
             </div>
             <h3>Escenario más amplio.</h3>
@@ -1749,7 +1837,7 @@
     <section class="fit-section" aria-labelledby="fit-title">
       <div class="container">
         <div class="fit-hero">
-          <img class="fit-hero-img" src="images/lixbuds-product.jpg" alt="Auriculares LixBuds One" loading="lazy">
+          <img class="fit-hero-img" src="/images/lixbuds-one-white.png" alt="Auriculares LixBuds One" loading="lazy">
           <div class="fit-hero-tag">Ajuste ergonómico · Silicona suave · 3 tallas incluidas</div>
         </div>
         <div class="fit-cards">
@@ -1807,7 +1895,7 @@
         </div>
         <div class="case-grid">
           <div class="case-video">
-            <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-product.jpg">
+            <video autoplay muted loop playsinline preload="none" poster="/images/lixbuds-one-white.png">
               <source src="media/lixbuds-case.mp4" type="video/mp4">
             </video>
           </div>
@@ -1960,7 +2048,7 @@
             </div>
           </div>
           <div class="final-hero">
-            <img class="final-hero-img" src="images/lixbuds-product.jpg" alt="Auriculares LixBuds One" loading="lazy">
+            <img class="final-hero-img" src="/images/lixbuds-one-white.png" alt="Auriculares LixBuds One" loading="lazy">
             <h2 id="buy-title" class="final-hero-title">LixBuds One.</h2>
             <p class="final-hero-sub">Escúchalo. Nada más importa.</p>
             <div class="final-cta-row">
@@ -2199,6 +2287,75 @@
   };
   window.addEventListener("scroll", updateScrollUI, { passive: true });
   updateScrollUI();
-</script>
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>

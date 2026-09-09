@@ -53,17 +53,6 @@ if (searchForm && searchInput) {
   });
 }
 
-const mobileSearchForm = document.getElementById("navSearchFormMobile");
-const mobileSearchInput = document.getElementById("navSearchMobile");
-if (mobileSearchForm && mobileSearchInput) {
-  mobileSearchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const query = mobileSearchInput.value.trim();
-    const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
-    window.location.href = url;
-  });
-}
-
 const mobilePanel = document.getElementById("navMobilePanel");
 const searchToggle = document.querySelector(".nav-search-toggle");
 const menuToggle = document.querySelector(".nav-menu-toggle");
@@ -81,8 +70,8 @@ const openNav = (focusSearch = false) => {
   mobilePanel?.setAttribute("aria-hidden", "false");
   searchToggle?.setAttribute("aria-expanded", "true");
   menuToggle?.setAttribute("aria-expanded", "true");
-  if (focusSearch && mobileSearchInput) {
-    setTimeout(() => mobileSearchInput.focus(), 80);
+  if (focusSearch && searchInput) {
+    setTimeout(() => searchInput.focus(), 270);
   }
 };
 
@@ -97,10 +86,38 @@ const toggleNav = (focusSearch = false) => {
 searchToggle?.addEventListener("click", () => toggleNav(true));
 menuToggle?.addEventListener("click", () => toggleNav(false));
 
-const mobileClose = document.querySelector(".nav-mobile-close");
-mobileClose?.addEventListener("click", () => closeNav());
+document.querySelectorAll(".nav-mobile-item").forEach((item) => {
+  const btn = item.querySelector(".nav-mobile-question");
+  const answer = item.querySelector(".nav-mobile-answer");
+  if (!btn || !answer) return;
 
-document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+  btn.addEventListener("click", () => {
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+    document.querySelectorAll(".nav-mobile-item.open").forEach((other) => {
+      const ob = other.querySelector(".nav-mobile-question");
+      const oa = other.querySelector(".nav-mobile-answer");
+      if (ob) ob.setAttribute("aria-expanded", "false");
+      other.classList.remove("open");
+      if (oa) {
+        oa.classList.remove("active");
+        oa.style.maxHeight = "0px";
+      }
+    });
+
+    if (!isOpen) {
+      btn.setAttribute("aria-expanded", "true");
+      item.classList.add("open");
+      answer.classList.add("active");
+      answer.style.maxHeight = "0px";
+      requestAnimationFrame(() => {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      });
+    }
+  });
+});
+
+document.querySelectorAll(".nav-mobile-answer a").forEach((link) => {
   link.addEventListener("click", () => closeNav());
 });
 
@@ -148,7 +165,7 @@ function typeNext() {
   setTimeout(typeNext, 25);
 }
 
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (texto && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   texto.textContent = "";
   typeNext();
 }
