@@ -497,6 +497,16 @@
       renderCart();
     }
 
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[ch] || ch);
+    }
+
     function renderCart() {
       const cart = readCart();
 
@@ -543,18 +553,18 @@
 
         return `
           <article class="cart-item">
-            <img class="cart-item-image" src="${productImage}" alt="${displayName}">
+            <img class="cart-item-image" src="${esc(productImage)}" alt="${esc(displayName)}">
             <div>
-              <h3>${displayName}</h3>
+              <h3>${esc(displayName)}</h3>
               <p>${money(unitPrice)} / unidade</p>
-              <p class="cart-item-meta">Cor: ${color}</p>
-              <p class="cart-item-meta">LixSafe: ${insuranceLabel}</p>
+              <p class="cart-item-meta">Cor: ${esc(color)}</p>
+              <p class="cart-item-meta">LixSafe: ${esc(insuranceLabel)}</p>
               <div class="cart-controls">
-                <button type="button" data-action="minus" data-id="${entry.lineId}">-</button>
+                <button type="button" data-action="minus" data-id="${esc(entry.lineId)}">-</button>
                 <span>${qty}</span>
-                <button type="button" data-action="plus" data-id="${entry.lineId}">+</button>
+                <button type="button" data-action="plus" data-id="${esc(entry.lineId)}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${entry.lineId}">Remover</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${esc(entry.lineId)}">Remover</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
