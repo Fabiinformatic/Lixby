@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/es/pages/apps/">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+
+  <link rel="canonical" href="https://lixby.es/es/pages/apps/lixfly">
+  <link rel="alternate" href="https://lixby.es/bg/pages/apps/lixfly" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/pages/apps/lixfly" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/pages/apps/lixfly" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/pages/apps/lixfly" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/pages/apps/lixfly" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/pages/apps/lixfly" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/pages/apps/lixfly" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/pages/apps/lixfly" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/pages/apps/lixfly" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/pages/apps/lixfly" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/pages/apps/lixfly" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/pages/apps/lixfly" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/pages/apps/lixfly" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/pages/apps/lixfly" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/pages/apps/lixfly" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/pages/apps/lixfly" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/pages/apps/lixfly" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/pages/apps/lixfly" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/pages/apps/lixfly" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/pages/apps/lixfly" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/pages/apps/lixfly" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/pages/apps/lixfly" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/pages/apps/lixfly" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/pages/apps/lixfly" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/pages/apps/lixfly" hreflang="x-default">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lixfly - EFB para MSFS2020/2024 | Lixby</title>
+  <meta name="description" content="Lixfly: tu EFB para Microsoft Flight Simulator 2020 y 2024. Preflight, Flight Plan, Performance, Navegación y eQRH en una sola app.">
+  <meta name="keywords" content="Lixfly, EFB, MSFS2020, MSFS2024, Microsoft Flight Simulator, aviación, simulador de vuelo, Lixby">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lixby">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+  <link rel="stylesheet" href="/globalfooter.css">
+  <link rel="stylesheet" href="/localnav.css">
+  <link rel="stylesheet" href="/es/style.css">
+  <style>
+    .app-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-20) var(--spacing-6);
+      background: linear-gradient(135deg, #eef4ff 0%, #e0ecff 100%);
+      margin-top: 4rem;
+    }
+
+    .app-hero-content {
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .app-info h1 {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-4);
+      line-height: 1.1;
+    }
+
+    .app-downloads {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-8);
+      flex-wrap: wrap;
+    }
+
+    .features-detail {
+      padding: var(--spacing-24) var(--spacing-6);
+      background-color: var(--color-white);
+    }
+
+    .features-detail h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-12);
+      text-align: center;
+    }
+
+    .feature-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: var(--spacing-16);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+      align-items: center;
+    }
+
+    .feature-row:nth-child(even) .feature-image {
+      order: -1;
+    }
+
+    .feature-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-content h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .feature-content p {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+      line-height: 1.8;
+    }
+
+    .security-section {
+      padding: var(--spacing-24) var(--spacing-6);
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    .security-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-8);
+    }
+
+    .security-item {
+      padding: var(--spacing-8);
+      background-color: var(--color-white);
+      border-radius: var(--radius-2xl);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .security-item-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .security-item h3 {
+      font-weight: 600;
+      margin-bottom: var(--spacing-2);
+    }
+
+    @media (max-width: 768px) {
+      .app-hero {
+        padding: var(--spacing-16) var(--spacing-4);
+      }
+
+      .app-hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .app-info h1 {
+        font-size: var(--font-size-4xl);
+      }
+
+      .app-downloads {
+        flex-direction: column;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row:nth-child(even) .feature-image {
+        order: 0;
+      }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://lixby.es",
+      "logo": "https://lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/es/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/es/buscar/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar en Lixby..."
+            aria-label="Buscar en Lixby"
+          >
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="/es/images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="/es/images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Tienda</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/es/tienda/">Entrar a tienda</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">Auriculares LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/comprar-cascos/lixbuds-one/">Comprar ahora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/novedades/">Novedades</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Productos</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Soporte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/es/support/">Ir a soporte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/contacto/">Contacto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/devoluciones/">Devoluciones</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Cesta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Ver cesta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Finalizar compra</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuenta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Entrar a mi cuenta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mis pedidos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mi perfil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Configuración</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/iniciar-sesion/">Iniciar sesión</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/verificacion-2-pasos/">Verificación en 2 pasos</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="app-hero">
+      <div class="app-hero-content">
+        <div class="app-info">
+          <p class="eyebrow">Lixby Apps</p>
+          <h1>Lixfly</h1>
+          <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);">Tu EFB para MSFS2020 y MSFS2024.</p>
+          <p style="font-size: var(--font-size-lg); color: var(--color-gray-700); margin-bottom: var(--spacing-6); line-height: 1.8;">Lixfly reúne Preflight, Flight Plan, Performance, Navegación y eQRH en una sola aplicación, pensada para que vueles con los datos que necesitas siempre a mano.</p>
+          <div class="app-downloads">
+            <a href="/es/centro-ayuda/lixfly/" class="btn btn-secondary">Centro de ayuda</a>
+            <a href="/es/beta-lixfly/" class="btn btn-primary">¿Quieres ser beta tester de Lixfly?</a>
+          </div>
+        </div>
+        <div style="width: 100%;">
+          <img src="/es/images/lixflyicon2.webp" alt="Aplicación Lixfly para MSFS" style="width: 100%; max-width: 320px; margin: 0 auto; display: block;">
+        </div>
+      </div>
+    </section>
+
+    <section class="features-detail">
+      <h2>Funcionalidades principales</h2>
+
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>🛫 Preflight</h3>
+          <p>Configura tu vuelo en minutos: aircraft, ruta, versión del aeropuerto y combustible. Lixfly deja el avión listo para despegar.</p>
+        </div>
+        <div class="feature-image">
+          <img src="/es/images/lixfly.png" alt="Preflight de Lixfly" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>🗺️ Flight Plan</h3>
+          <p>Introduce origen, destino y altitud. Lixfly genera una ruta optimizada con NOTAMs y meteorología actualizados.</p>
+        </div>
+        <div class="feature-image">
+          <img src="/es/images/lixfly.png" alt="Flight Plan de Lixfly" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>📊 Performance</h3>
+          <p>Calcula combustible, pesos y balance con la calculadora integrada de Lixfly, con resultados adaptados a cada aeronave.</p>
+        </div>
+        <div class="feature-image">
+          <img src="/es/images/lixfly.png" alt="Performance de Lixfly" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>🧭 Navegación</h3>
+          <p>Mapas, waypoints y navegación en vuelo. Activa el GPS externo y calibra la brújula para una navegación precisa.</p>
+        </div>
+        <div class="feature-image">
+          <img src="/es/images/lixfly.png" alt="Navegación de Lixfly" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>📖 eQRH</h3>
+          <p>Manual de operaciones de la compañía siempre disponible, con búsqueda rápida de procedimientos y listas de comprobación.</p>
+        </div>
+        <div class="feature-image">
+          <img src="/es/images/lixfly.png" alt="eQRH de Lixfly" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="security-section">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Diseñada para volar</h2>
+        <div class="security-grid">
+          <div class="security-item">
+            <div class="security-item-icon">☁️</div>
+            <h3>Planes en la nube</h3>
+            <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Tus planes de vuelo se guardan y están disponibles sin conexión.</p>
+          </div>
+          <div class="security-item">
+            <div class="security-item-icon">⚡</div>
+            <h3>Listo en segundos</h3>
+            <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Arranque rápido para que no pierdas tiempo entre vuelos.</p>
+          </div>
+          <div class="security-item">
+            <div class="security-item-icon">🛩️</div>
+            <h3>MSFS2020 y MSFS2024</h3>
+            <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Compatible con ambas versiones y con el Pilot2Ryan workflow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); text-align: center;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Empieza a volar con Lixfly</h2>
+        <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Únete al programa beta y prueba todas las novedades antes que nadie</p>
+        <div class="app-downloads" style="justify-content: center;">
+          <a href="/es/beta-lixfly/" class="btn" style="background-color: var(--color-white); color: #1e3a8a;">¿Quieres ser beta tester de Lixfly?</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../main.js" defer></script>
+</body>
+</html>

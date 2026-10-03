@@ -48,7 +48,7 @@ if (searchForm && searchInput) {
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const query = searchInput.value.trim();
-    const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
+    const url = query ? `/es/buscar/?q=${encodeURIComponent(query)}` : "/es/buscar/";
     window.location.href = url;
   });
 }

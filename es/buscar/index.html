@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-search">
+<head>
+  <script>
+    if (location.pathname.endsWith('/index.html')) {
+      location.replace(location.href.replace('/index.html', '/'));
+    }
+  </script>
+  <base href="/es/">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <link rel="canonical" href="https://lixby.es/es/buscar/">
+  <link rel="alternate" href="https://lixby.es/es/buscar/" hreflang="es-ES">
+
+  <link rel="stylesheet" href="/globalheader.css">
+  <link rel="stylesheet" href="/globalfooter.css">
+  <link rel="stylesheet" href="/localnav.css">
+  <link rel="stylesheet" href="/es/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <title>Buscador | Lixby</title>
+  <meta name="description" content="Busca en todo Lixby: productos, apps, ayuda, pedidos y novedades. Encuentra la página que necesitas al instante.">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lixby.es/es/buscar/">
+  <meta property="og:title" content="Buscador | Lixby">
+  <meta property="og:description" content="Busca en todo Lixby: productos, apps, ayuda, pedidos y novedades.">
+  <meta property="og:site_name" content="Lixby (España)">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://lixby.es/images/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buscador | Lixby">
+  <meta name="twitter:description" content="Busca en todo Lixby: productos, apps, ayuda, pedidos y novedades.">
+
+  <style>
+    .search-page {
+      --spacing-5: 1.25rem;
+      --font-size-md: 1rem;
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0 5rem;
+      min-height: 60vh;
+    }
+
+    .search-page-head {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .search-page-head h1 {
+      margin: 0 0 .75rem;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      letter-spacing: -.04em;
+      line-height: 1.05;
+    }
+
+    .search-page-head .lead {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .search-box input[type="search"] {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      outline: none;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.65' y1='16.65' x2='21' y2='21'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 18px center;
+      box-shadow: var(--shadow-md);
+      font-size: var(--font-size-md);
+      color: var(--text);
+    }
+
+    .search-box input[type="search"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 4px 20px rgba(15, 61, 255, .18);
+    }
+
+    .search-results {
+      max-width: 760px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .search-results[hidden] {
+      display: none;
+    }
+
+    .search-result {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background-color: #fff;
+      text-decoration: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .search-result:hover,
+    .search-result:focus-visible {
+      border-color: rgba(15, 61, 255, .35);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .search-result-thumb {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: var(--line-subtle);
+    }
+
+    .search-result-body {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .search-result-url {
+      font-size: .82rem;
+      color: #006621;
+      word-break: break-word;
+    }
+
+    .search-result-title {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.3;
+      letter-spacing: -.01em;
+    }
+
+    .search-result-snippet {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .search-result-snippet mark,
+    .search-result-title mark {
+      background-color: #ffe08a;
+      color: #111;
+      font-weight: 700;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .search-count {
+      max-width: 680px;
+      margin: 1rem auto 0;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .search-count:empty {
+      display: none;
+    }
+
+    .search-separator {
+      max-width: 760px;
+      margin: 2.5rem auto 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .search-separator[hidden] {
+      display: none;
+    }
+
+    .search-pagination {
+      max-width: 760px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+    }
+
+    .search-pagination[hidden] {
+      display: none;
+    }
+
+    .search-page-btn {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 .75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .search-page-btn:hover:not(:disabled) {
+      border-color: rgba(15, 61, 255, .35);
+      background: #eaf0ff;
+      color: var(--primary);
+    }
+
+    .search-page-btn[aria-current="page"] {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .search-page-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .search-page-ellipsis {
+      padding: 0 .25rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .search-empty {
+      max-width: 760px;
+      margin: 2rem auto 0;
+      padding: 2.5rem 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background-color: #fff;
+      text-align: center;
+      color: var(--color-gray-600);
+    }
+
+    .search-empty[hidden] {
+      display: none;
+    }
+
+    .search-empty strong {
+      display: block;
+      margin-bottom: .5rem;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .search-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .search-suggestions a {
+      display: inline-block;
+      padding: .45rem .9rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .search-suggestions a:hover {
+      border-color: rgba(15, 61, 255, .35);
+      background: #eaf0ff;
+    }
+
+    @media (max-width: 560px) {
+      .search-result-thumb {
+        width: 56px;
+        height: 56px;
+        flex-basis: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/es/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/es/tienda/" class="nav-link">Tienda</a>
+        <a href="/es/productos/" class="nav-link">Productos</a>
+        <a href="/es/apps/" class="nav-link">Apps</a>
+        <a href="/es/support/" class="nav-link">Soporte</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/es/buscar/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Buscar en Lixby..."
+            aria-label="Buscar en Lixby"
+          >
+        </form>
+        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
+          <img src="/es/images/Bolsa.png" alt="Cesta">
+        </a>
+        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
+          <img src="/es/images/cuenta.png" alt="Cuenta">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+    <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Principal móvil">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Tienda</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/es/tienda/">Entrar a tienda</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">Auriculares LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/comprar-cascos/lixbuds-one/">Comprar ahora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/novedades/">Novedades</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Productos</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Soporte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/es/support/">Ir a soporte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/contacto/">Contacto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/devoluciones/">Devoluciones</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Cesta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Ver cesta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Finalizar compra</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuenta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Entrar a mi cuenta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mis pedidos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mi perfil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Configuración</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/iniciar-sesion/">Iniciar sesión</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/verificacion-2-pasos/">Verificación en 2 pasos</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="search-page">
+    <section class="search-page-head container">
+      <h1>Busca en Lixby</h1>
+      <p class="lead">Productos, apps, ayuda, pedidos y novedades. Escribe lo que buscas y te mostramos la página exacta.</p>
+      <form class="search-box" id="searchPageForm" action="/es/buscar/" method="get" role="search">
+        <input
+          type="search"
+          id="searchInput"
+          name="q"
+          placeholder="Buscar en Lixby..."
+          aria-label="Buscar en Lixby"
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </form>
+      <p class="search-count" role="status" aria-live="polite" id="searchStatus"></p>
+    </section>
+
+    <section class="container">
+      <div class="search-results" id="searchResults" hidden></div>
+      <div class="search-empty" id="searchEmpty" hidden>
+        <strong>No hemos encontrado resultados.</strong>
+        <span>Prueba con otras palabras o busca desde una de estas páginas.</span>
+        <ul class="search-suggestions">
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></li>
+          <li><a href="/es/pages/apps/lixney/">Lixney</a></li>
+          <li><a href="/es/pages/apps/lixfly/">Lixfly</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+          <li><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <hr class="search-separator" id="searchSeparator" hidden>
+      <nav class="search-pagination" id="searchPagination" aria-label="Paginación de resultados" hidden></nav>
+    </section>
+  </main>
+
+<footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/es/tienda/">Tienda</a></li>
+          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/es/apps/">Apps</a></li>
+          <li><a href="/es/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/es/support/">Página inicial soporte</a></li>
+          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/es/track/">Pedidos</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
+          <li><a href="/es/cuenta/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/es/about/">Nosotros</a></li>
+          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/novedades/">Novedades</a></li>
+          <li><a href="/es/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
+        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
+        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
+        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/es/search-index.js"></script>
+  <script src="/es/main.js" defer></script>
+  <script>
+    (() => {
+      const input = document.getElementById('searchInput');
+      const resultsBox = document.getElementById('searchResults');
+      const status = document.getElementById('searchStatus');
+      const empty = document.getElementById('searchEmpty');
+      const separator = document.getElementById('searchSeparator');
+      const pagination = document.getElementById('searchPagination');
+      if (!input || !resultsBox) return;
+
+      const perPage = 8;
+      let currentPage = 1;
+
+      const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const escapeHtml = (value) => String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      const index = (window.LIXBY_SEARCH_INDEX || []).map((page) => ({
+        ...page,
+        nTitle: normalize(page.title),
+        nDesc: normalize(page.description),
+        nKeywords: normalize(page.keywords),
+        nUrl: normalize(page.url)
+      }));
+
+      const highlight = (text, words) => {
+        if (!text) return '';
+        const safe = escapeHtml(text);
+        if (!words.length) return safe;
+        const pattern = words
+          .map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+          .filter(Boolean)
+          .join('|');
+        if (!pattern) return safe;
+        return safe.replace(new RegExp(`(${pattern})`, 'gi'), '<mark>$1</mark>');
+      };
+
+      const scorePhrase = (page, phrase) => {
+        let score = 0;
+        if (page.nTitle === phrase) score += 200;
+        else if (page.nTitle.startsWith(phrase)) score += 90;
+        if (page.nTitle.includes(phrase)) score += 60;
+        if (page.nUrl.includes(phrase)) score += 40;
+        if (page.nKeywords.includes(phrase)) score += 30;
+        if (page.nDesc.includes(phrase)) score += 20;
+        return score;
+      };
+
+      const scoreWord = (page, word) => {
+        let score = 0;
+        if (page.nTitle.includes(word)) score += 30;
+        if (page.nUrl.includes(word)) score += 20;
+        if (page.nKeywords.includes(word)) score += 14;
+        if (page.nDesc.includes(word)) score += 8;
+        return score;
+      };
+
+      const findMatches = (words, phrase) => {
+        const scored = [];
+        index.forEach((page) => {
+          let wordScore = 0;
+          let matched = 0;
+          words.forEach((word) => {
+            const points = scoreWord(page, word);
+            if (points > 0) matched += 1;
+            wordScore += points;
+          });
+          if (matched === 0) return;
+          const phraseScore = phrase ? scorePhrase(page, phrase) : 0;
+          scored.push({ page, score: phraseScore + wordScore + matched * 15, matched });
+        });
+
+        const all = scored.filter((entry) => entry.matched === words.length);
+        return all.length ? all : scored;
+      };
+
+      const makeSnippet = (text, words) => {
+        if (!text) return '';
+        const lower = normalize(text);
+        let position = -1;
+        for (const word of words) {
+          const found = lower.indexOf(word);
+          if (found !== -1 && (position === -1 || found < position)) position = found;
+        }
+        if (position === -1) return escapeHtml(text.slice(0, 170)) + (text.length > 170 ? '…' : '');
+
+        const start = Math.max(0, position - 60);
+        const end = Math.min(text.length, position + 130);
+        let snippet = text.slice(start, end);
+        if (start > 0) snippet = '… ' + snippet;
+        if (end < text.length) snippet = snippet + ' …';
+        return highlight(snippet, words);
+      };
+
+      const buildPagination = (totalPages) => {
+        if (!pagination) return;
+        pagination.innerHTML = '';
+        pagination.hidden = totalPages < 2;
+        if (totalPages < 2) return;
+
+        const addButton = (label, targetPage, options = {}) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'search-page-btn';
+          button.textContent = label;
+          if (options.disabled) {
+            button.disabled = true;
+          }
+          if (options.current) {
+            button.setAttribute('aria-current', 'page');
+          }
+          if (!options.disabled && !options.current) {
+            button.addEventListener('click', () => goToPage(targetPage));
+          }
+          pagination.appendChild(button);
+        };
+
+        const addEllipsis = () => {
+          const span = document.createElement('span');
+          span.className = 'search-page-ellipsis';
+          span.textContent = '…';
+          pagination.appendChild(span);
+        };
+
+        addButton('Anterior', currentPage - 1, { disabled: currentPage === 1 });
+
+        const pages = [];
+        for (let n = 1; n <= totalPages; n += 1) {
+          if (n === 1 || n === totalPages || Math.abs(n - currentPage) <= 1) pages.push(n);
+          else if (pages[pages.length - 1] !== '…') pages.push('…');
+        }
+        pages.forEach((entry) => {
+          if (entry === '…') {
+            addEllipsis();
+            return;
+          }
+          addButton(String(entry), entry, { current: entry === currentPage });
+        });
+
+        addButton('Siguiente', currentPage + 1, { disabled: currentPage === totalPages });
+      };
+
+      const render = (rawTerm, targetPage = 1) => {
+        const term = rawTerm.trim();
+        resultsBox.innerHTML = '';
+        empty.hidden = true;
+        if (separator) separator.hidden = true;
+        if (pagination) {
+          pagination.innerHTML = '';
+          pagination.hidden = true;
+        }
+
+        if (!term) {
+          resultsBox.hidden = true;
+          if (status) status.textContent = '';
+          currentPage = 1;
+          return;
+        }
+
+        const phrase = normalize(term);
+        const words = phrase.split(' ').filter(Boolean);
+        const matches = findMatches(words, phrase);
+
+        if (!matches.length) {
+          resultsBox.hidden = true;
+          empty.hidden = false;
+          if (status) status.textContent = `Sin resultados para “${term}”.`;
+          currentPage = 1;
+          return;
+        }
+
+        matches.sort((a, b) => b.score - a.score);
+        const total = matches.length;
+        const totalPages = Math.max(1, Math.ceil(total / perPage));
+        currentPage = Math.min(Math.max(1, targetPage), totalPages);
+        const start = (currentPage - 1) * perPage;
+        const visible = matches.slice(start, start + perPage);
+
+        const fragment = document.createDocumentFragment();
+        visible.forEach(({ page }) => {
+          const item = document.createElement('a');
+          item.className = 'search-result';
+          item.href = page.url;
+
+          if (page.image) {
+            const thumb = document.createElement('img');
+            thumb.className = 'search-result-thumb';
+            thumb.src = page.image;
+            thumb.alt = '';
+            thumb.loading = 'lazy';
+            thumb.width = 76;
+            thumb.height = 76;
+            thumb.addEventListener('error', () => thumb.remove());
+            item.appendChild(thumb);
+          }
+
+          const body = document.createElement('span');
+          body.className = 'search-result-body';
+
+          const url = document.createElement('span');
+          url.className = 'search-result-url';
+          url.textContent = `lixby.es${page.url}`;
+
+          const title = document.createElement('span');
+          title.className = 'search-result-title';
+          title.innerHTML = highlight(page.title, words);
+
+          body.appendChild(url);
+          body.appendChild(title);
+
+          if (page.description) {
+            const snippet = document.createElement('span');
+            snippet.className = 'search-result-snippet';
+            snippet.innerHTML = makeSnippet(page.description, words);
+            body.appendChild(snippet);
+          }
+
+          item.appendChild(body);
+          fragment.appendChild(item);
+        });
+
+        resultsBox.appendChild(fragment);
+        resultsBox.hidden = false;
+        if (separator) separator.hidden = false;
+        buildPagination(totalPages);
+
+        if (status) {
+          status.textContent = `${total} ${total === 1 ? 'resultado' : 'resultados'} para “${term}”.`;
+        }
+      };
+
+      const goToPage = (page) => {
+        render(input.value, page);
+        const url = new URL(window.location.href);
+        if (page > 1) {
+          url.searchParams.set('p', String(page));
+        } else {
+          url.searchParams.delete('p');
+        }
+        window.history.replaceState({}, '', url);
+        const top = document.querySelector('.search-page-head');
+        if (top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const initial = params.get('q') || '';
+      const initialPage = parseInt(params.get('p'), 10) || 1;
+      if (initial) {
+        input.value = initial;
+        render(initial, initialPage);
+      }
+
+      input.addEventListener('input', () => {
+        const value = input.value;
+        const url = new URL(window.location.href);
+        if (value.trim()) {
+          url.searchParams.set('q', value);
+        } else {
+          url.searchParams.delete('q');
+        }
+        url.searchParams.delete('p');
+        window.history.replaceState({}, '', url);
+        render(value, 1);
+      });
+    })();
+  </script>
+</body>
+</html>

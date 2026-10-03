@@ -245,6 +245,11 @@
       align-items: center;
     }
 
+    .support-search form {
+      width: 100%;
+      max-width: 560px;
+    }
+
     .support-search input {
       width: 100%;
       max-width: 560px;
@@ -265,80 +270,12 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
-    .search-results {
-      width: 100%;
-      max-width: 560px;
-      margin-top: var(--spacing-4);
-      background-color: #fff;
-      border-radius: 16px;
-      box-shadow: var(--shadow-card);
-      text-align: left;
-      overflow: hidden;
+    .support-search-hint {
+      margin: var(--spacing-3) 0 0;
+      font-size: var(--font-size-md);
+      opacity: 0.85;
     }
 
-    .search-results[hidden] {
-      display: none;
-    }
-
-    .search-result {
-      margin: var(--spacing-2) var(--spacing-3);
-      padding: var(--spacing-4) var(--spacing-5);
-      border-radius: 12px;
-      border-bottom: 1px solid var(--line);
-      cursor: pointer;
-      transition: background-color var(--transition-fast);
-    }
-
-    .search-result:last-child {
-      border-bottom: none;
-    }
-
-    .search-result:hover,
-    .search-result.active {
-      background-color: var(--line-subtle);
-    }
-
-    .search-result-title {
-      display: block;
-      font-size: var(--font-size-lg);
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
-
-    .search-result-url {
-      display: block;
-      font-size: var(--font-size-sm);
-      color: #006621;
-      margin-bottom: 6px;
-    }
-
-    .search-result-snippet {
-      font-size: var(--font-size-sm);
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .search-result-snippet mark {
-      background-color: #ffe08a;
-      color: #111;
-      font-weight: 600;
-      padding: 0 2px;
-      border-radius: 3px;
-      text-decoration: underline;
-    }
-
-    .search-empty {
-      padding: var(--spacing-6);
-      text-align: center;
-      color: var(--color-gray-600);
-    }
-
-    .search-status {
-      margin-top: var(--spacing-6);
-      display: flex;
-      justify-content: center;
-    }
 
     .support-status {
       margin-top: var(--spacing-4);
@@ -553,14 +490,14 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/es/tienda/" method="get">
+        <form id="navSearchForm" action="/es/buscar/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Buscar en Lixby..."
+            aria-label="Buscar en Lixby"
           >
         </form>
         <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
@@ -662,10 +599,11 @@
         <h1>¿Cómo podemos ayudarte?</h1>
         <p>Centro de soporte de Lixby. Encuentra respuestas y contacta con nuestro equipo.</p>
         <div class="support-search">
-          <input type="search" id="supportSearchInput" placeholder="Buscar en soporte..." aria-label="Buscar en soporte" autocomplete="off">
-          <div class="search-results" id="searchResults" hidden></div>
+          <form id="supportSearchForm" action="/es/buscar/" method="get" role="search">
+            <input type="search" id="supportSearchInput" name="q" placeholder="Buscar en todo Lixby..." aria-label="Buscar en todo Lixby" autocomplete="off">
+          </form>
+          <p class="support-search-hint">Busca en todo Lixby: productos, apps, ayuda, pedidos y novedades.</p>
         </div>
-        <div class="search-status" role="status" aria-live="polite" id="searchStatus"></div>
         <div class="support-status" role="status" aria-live="polite">
           <span class="status-dot" aria-hidden="true"></span>
           <span>Estado del servicio: Todo operativo</span>
@@ -1335,7 +1273,6 @@
     };
 
     const visibleFaqLimit = 15;
-    const supportSearchInput = document.querySelector('.support-search input');
     const faqItems = Array.from(document.querySelectorAll('.faq-item'));
     const faqCount = document.getElementById('faq-results-count');
 
@@ -1376,173 +1313,9 @@
       });
     });
 
-    const searchResultsBox = document.getElementById('searchResults');
-    const searchStatus = document.getElementById('searchStatus');
-    const faqSection = document.getElementById('faq');
-
-    const normalize = (value) => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-    const escapeHtml = (value) => value
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-
-    const makeSnippet = (text, term) => {
-      const lower = normalize(text);
-      const idx = lower.indexOf(term);
-      if (idx === -1) return escapeHtml(text.slice(0, 160));
-
-      const start = Math.max(0, idx - 50);
-      const end = Math.min(text.length, idx + term.length + 90);
-      let before = text.slice(start, idx);
-      let match = text.slice(idx, idx + term.length);
-      let after = text.slice(idx + term.length, end);
-
-      if (start > 0) before = '… ' + before;
-      if (end < text.length) after = after + ' …';
-
-      return `${escapeHtml(before)}<mark>${escapeHtml(match)}</mark>${escapeHtml(after)}`;
-    };
-
-    const clearSearchResults = () => {
-      searchResultsBox.innerHTML = '';
-      searchResultsBox.hidden = true;
-      if (searchStatus) searchStatus.textContent = '';
-    };
-
-    const goToFaq = (faq) => {
-      const button = faq.querySelector('.faq-question');
-      if (button) {
-        document.querySelectorAll('.faq-question').forEach((btn) => closeItem(btn));
-        openItem(button);
-      }
-      faq.style.background = '#fff9c4';
-      faq.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      window.setTimeout(() => { faq.style.background = ''; }, 3000);
-    };
-
-    const articleIndex = [
-      { url: '/es/centro-ayuda/lixbuds/', title: 'Soporte LixBuds', description: 'Configura, optimiza el audio y prolonga la vida de tus LixBuds.', keywords: 'lixbuds auriculares emparejamiento bluetooth sonido audio bateria cancelacion ruido limpieza firmware actualizacion conexion calidad' },
-      { url: '/es/centro-ayuda/lixney/', title: 'Soporte Lixney', description: 'Ayuda para cuentas, sincronización y seguridad en Lixney.', keywords: 'lixney app cuenta sincronizacion privacidad contrasena seguridad recuperar' },
-      { url: '/es/centro-ayuda/lixfly/', title: 'Soporte Lixfly', description: 'Guías de configuración, planes de vuelo y uso del EFB para Lixfly.', keywords: 'lixfly vuelo plan efb navegacion instalacion rendimiento sincronizacion' },
-      { url: '/es/centro-ayuda/faq/', title: 'Preguntas frecuentes', description: 'Respuestas rápidas a las dudas más comunes de Lixby.', keywords: 'faq preguntas frecuentes bateria envio devolucion garantia pago restablecer reembolso firmware descuentos limpiar llamadas manual' },
-      { url: '/es/centro-ayuda/solucion-problemas/', title: 'Solución de problemas', description: 'Diagnósticos guiados para incidencias frecuentes.', keywords: 'problemas solucion no enciende audio entrecortado app sincroniza diagnostico' },
-      { url: '/es/centro-ayuda/mi-cuenta/', title: 'Mi cuenta', description: 'Gestiona tu acceso, seguridad y datos personales en Lixby.', keywords: 'cuenta contrasena iniciar sesion crear datos seguridad cerrar' },
-      { url: '/es/centro-ayuda/pedidos-envios/', title: 'Pedidos y envíos', description: 'Consulta el estado de tu pedido, plazos de entrega y seguimiento de envíos.', keywords: 'pedido envio seguimiento entrega direccion paquete perdido estado plazo' },
-      { url: '/es/centro-ayuda/metodos-pago/', title: 'Métodos de pago', description: 'Tarjetas aceptadas, facturación y solución a errores de pago.', keywords: 'pago tarjeta facturacion rechazado metodo reembolso error' },
-      { url: '/es/centro-ayuda/cancelaciones/', title: 'Cancelaciones', description: 'Cómo cancelar un pedido en Lixby antes de su envío.', keywords: 'cancelar pedido cancelacion reembolso plazo' },
-      { url: '/es/centro-ayuda/privacidad-datos/', title: 'Privacidad y datos', description: 'Cómo usamos tus datos, cumplimiento RGPD y tus derechos como usuario.', keywords: 'privacidad datos rgpd cookies derechos solicitud' },
-      { url: '/es/centro-ayuda/accesibilidad/', title: 'Accesibilidad', description: 'Uso de productos Lixby con necesidades especiales y funciones de accesibilidad.', keywords: 'accesibilidad lectores pantalla contraste teclado subtitulos notificaciones' },
-      { url: '/es/centro-ayuda/garantia/', title: 'Garantía Lixby', description: 'Información sobre cobertura y reclamaciones de garantía.', keywords: 'garantia cobertura reclamacion repuestos documentos' },
-      { url: '/es/centro-ayuda/devoluciones/', title: 'Devoluciones y reembolsos', description: 'Gestiona devoluciones y reembolsos de pedidos Lixby.', keywords: 'devolucion reembolso plazo requisito estado producto' },
-      { url: '/es/centro-ayuda/contacto/', title: 'Contacta con soporte', description: 'Contacta con el equipo de soporte de Lixby.', keywords: 'contacto email soporte hablar ayuda horario' },
-      { url: '/es/centro-ayuda/estado-sistema/', title: 'Estado del sistema', description: 'Disponibilidad de servicios Lixby en tiempo real.', keywords: 'estado sistema servicios tienda lixney lixfly sincronizacion nube api' },
-      { url: '/es/centro-ayuda/comunidad/', title: 'Comunidad', description: 'Foro y espacio donde los usuarios de Lixby se ayudan entre sí.', keywords: 'comunidad foro github redes sociales usuarios contribuir' },
-      { url: '/es/centro-ayuda/novedades-actualizaciones/', title: 'Novedades y actualizaciones', description: 'Changelog de apps y firmware Lixby. Mantente al día de las últimas novedades.', keywords: 'novedades actualizaciones changelog firmware versiones suscripcion' }
-    ];
-
-    const renderResults = (term) => {
-      searchResultsBox.innerHTML = '';
-      const matches = [];
-
-      const termWords = term.split(/\s+/).filter(Boolean);
-      const matchesHall = (haystack) => termWords.every((w) => haystack.includes(w));
-
-      faqItems.forEach((faq) => {
-        const questionEl = faq.querySelector('.faq-question span');
-        const answerEl = faq.querySelector('.faq-answer');
-        const question = questionEl ? questionEl.innerText : '';
-        const answer = answerEl ? answerEl.innerText : '';
-        const nQuestion = normalize(question);
-        const nAnswer = normalize(answer);
-
-        if (!matchesHall(nQuestion) && !matchesHall(nAnswer)) return;
-
-        const qIdx = nQuestion.indexOf(term);
-        const aIdx = nAnswer.indexOf(term);
-        const snippet = qIdx !== -1 ? makeSnippet(question, term) : makeSnippet(answer, term);
-        matches.push({ faq, question, snippet });
-      });
-
-      const articleMatches = articleIndex.filter((article) => {
-        const haystack = normalize(`${article.title} ${article.description} ${article.keywords}`);
-        return matchesHall(haystack);
-      }).map((article) => {
-        const snippet = makeSnippet(`${article.description} ${article.title}`, term);
-        return { article, snippet };
-      });
-
-      const totalCount = matches.length + articleMatches.length;
-
-      if (totalCount === 0) {
-        searchResultsBox.innerHTML = '<div class="search-empty">No se encontraron resultados para tu búsqueda.</div>';
-      } else {
-        matches.forEach(({ faq, question, snippet }) => {
-          const item = document.createElement('div');
-          item.className = 'search-result';
-          item.innerHTML =
-            `<span class="search-result-title">${escapeHtml(question)}</span>` +
-            `<span class="search-result-url">lixby.es/soporte #faq</span>` +
-            `<span class="search-result-snippet">${snippet}</span>`;
-          item.addEventListener('click', () => {
-            goToFaq(faq);
-            clearSearchResults();
-            supportSearchInput.value = question;
-          });
-          item.tabIndex = 0;
-          searchResultsBox.appendChild(item);
-        });
-
-        articleMatches.forEach(({ article, snippet }) => {
-          const item = document.createElement('div');
-          item.className = 'search-result';
-          item.innerHTML =
-            `<span class="search-result-title">${escapeHtml(article.title)}</span>` +
-            `<span class="search-result-url">lixby.es${article.url}</span>` +
-            `<span class="search-result-snippet">${snippet}</span>`;
-          item.addEventListener('click', () => {
-            window.location.href = article.url;
-          });
-          item.tabIndex = 0;
-          searchResultsBox.appendChild(item);
-        });
-      }
-
-      searchResultsBox.hidden = false;
-      if (searchStatus) {
-        searchStatus.textContent = totalCount > 0
-          ? `${totalCount} resultado${totalCount === 1 ? '' : 's'} encontrado${totalCount === 1 ? '' : 's'}`
-          : '';
-      }
-    };
-
-    if (supportSearchInput) {
-      supportSearchInput.addEventListener('input', () => {
-        const term = normalize(supportSearchInput.value.trim());
-        if (!term) {
-          clearSearchResults();
-          showInitialFaqSet();
-          faqItems.forEach((faq) => { faq.style.display = 'block'; });
-          if (faqCount) faqCount.textContent = '';
-          return;
-        }
-        showInitialFaqSet();
-        faqItems.forEach((faq) => { faq.style.display = 'block'; });
-        renderResults(term);
-      });
-
-      supportSearchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          clearSearchResults();
-          supportSearchInput.blur();
-        }
-      });
-    }
-
     showInitialFaqSet();
     window.addEventListener('pageshow', (event) => {
-      if (event.persisted && supportSearchInput && !supportSearchInput.value.trim()) {
+      if (event.persisted) {
         showInitialFaqSet();
       }
     });
@@ -1613,7 +1386,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/es/tienda/?q=${encodeURIComponent(query)}` : "/es/tienda/";
+        const url = query ? `/es/buscar/?q=${encodeURIComponent(query)}` : "/es/tienda/";
         window.location.href = url;
       });
     }
