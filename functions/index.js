@@ -1025,3 +1025,5 @@ exports.onCommentVoteWritten = onDocumentWritten(
     await batch.commit();
   }
 );
+
+exports.communitySSR = require("./community-ssr").communitySSR;

@@ -77,6 +77,13 @@
                                                       }
                                      },
                                      {
+                                         "source": "/es/comunidad/**",
+                                         "function":  {
+                                                          "functionId":  "communitySSR",
+                                                          "region":  "europe-west1"
+                                                      }
+                                     },
+                                     {
                                          "source": "/bg",
                                          "destination": "/bg/index.html"
                                      },
