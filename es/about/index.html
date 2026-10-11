@@ -58,11 +58,11 @@
   <meta property="analytics-s-bucket-1" content="lixbyww" />
   <meta property="analytics-s-bucket-2" content="lixbyww" />
 
-  <meta name="Description" content="Conoce la historia de Lixby, una empresa española dedicada a crear tecnología que simplifica la vida de las personas con auriculares premium y apps de finanzas." />
+  <meta name="Description" content="Conoce la historia de Lixby, una empresa española que crea tecnología para acompañarte en tu día a día: auriculares, apps de finanzas, simulación de vuelo y más." />
   <meta name="keywords" content="sobre Lixby, historia, misión, empresa española, tecnología, auriculares, finanzas" />
   <meta name="author" content="Lixby" />
   <meta property="og:title" content="Sobre Lixby | Nuestra Historia y Misión" />
-  <meta property="og:description" content="Descubre la historia de Lixby y nuestro compromiso con la innovación y la calidad." />
+  <meta property="og:description" content="Lixby es una empresa española que crea tecnología para acompañarte en tu día a día: auriculares, apps de finanzas, simulación de vuelo y más." />
   <meta property="og:site_name" content="Lixby (España)" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:locale:alternate" content="en_US" />
@@ -71,7 +71,7 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sobre Lixby | Nuestra Historia y Misión" />
-  <meta name="twitter:description" content="Descubre la historia de Lixby y nuestro compromiso con la innovación." />
+  <meta name="twitter:description" content="Una empresa española que crea tecnología para acompañarte en cada parte de tu día. Así empezó Lixby." />
   <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png" />
 
   <script type="application/ld+json">
@@ -273,7 +273,7 @@
       position: relative;
       border-radius: var(--radius-lg, 18px);
       overflow: hidden;
-      background: linear-gradient(135deg, var(--primary, #0f3dff) 0%, var(--primary-2, #16a7ff) 100%);
+      background: transparent;
       min-height: 340px;
       display: flex;
       align-items: center;
@@ -282,13 +282,11 @@
 
     .mission-visual img {
       max-width: 78%;
-      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.3));
-      margin-top: 30px;
     }
 
     /* === VALORES STICKY CROSSFADE === */
     .values-section { position: relative; }
-    .values-outer { height: calc((5 + 1) * 100vh); height: calc((5 + 1) * 100svh); position: relative; background: #000; background-color: #000; }
+    .values-outer { height: calc((6 + 1) * 100vh); height: calc((6 + 1) * 100svh); position: relative; background: #000; background-color: #000; }
     .values-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; background: #000; background-color: #000; overflow: hidden; }
     .values-slide {
       position: absolute;
@@ -318,6 +316,94 @@
     .fv-p { font-size: 1.05rem; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 480px; }
     .fv-value-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 
+    /* === VARIANTES POR VALOR: cada capítulo con su propia composición === */
+    .values-slide { padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 6vw, 5rem); }
+    .fv-inner { position: relative; }
+    .fv-lead { color: rgba(255, 255, 255, 0.82); }
+    .fv-label { margin: 0; }
+
+    /* 00 · Lo que nos mueve — centrado, mucho aire */
+    .values-slide--v0 .fv-kicker { font-size: clamp(0.8rem, 1.5vw, 1.05rem); }
+    .values-slide--v0 .fv-h--xl { letter-spacing: -0.05em; }
+    .values-slide--v0 .fv-p { font-size: clamp(1rem, 1.7vw, 1.25rem); max-width: 34ch; }
+
+    /* 01 · Pensado para ti — columna a la izquierda, número en círculo, texto grande */
+    .values-slide--v1 { justify-content: flex-start; text-align: left; }
+    .values-slide--v1 .fv-inner { align-items: flex-start; text-align: left; max-width: min(94%, 40rem); gap: clamp(1.1rem, 2.6vh, 1.75rem); }
+    .values-slide--v1 .fv-label { font-size: clamp(0.9rem, 1.4vw, 1.05rem); }
+    .values-slide--v1 .fv-p { font-size: clamp(1.15rem, 2.1vw, 1.9rem); line-height: 1.34; letter-spacing: -0.02em; max-width: min(94%, 33rem); }
+    .values-slide--v1 .fv-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.7rem;
+      height: 2.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      font-size: 0.95rem;
+    }
+
+    /* 02 · Cuidamos cada detalle — pegado a la derecha, tipografía display gigante */
+    .values-slide--v2 { justify-content: flex-end; text-align: right; }
+    .values-slide--v2 .fv-inner { align-items: flex-end; text-align: right; max-width: min(94%, 34rem); gap: clamp(1.1rem, 2.6vh, 1.75rem); }
+    .values-slide--v2 .fv-value-head { justify-content: flex-end; }
+    .values-slide--v2 .fv-label { font-size: clamp(0.8rem, 1.2vw, 0.95rem); color: rgba(255, 255, 255, 0.5); }
+    .values-slide--v2 .fv-p { font-size: clamp(1.45rem, 3.1vw, 2.6rem); line-height: 1.12; letter-spacing: -0.035em; color: #f5f5f6; max-width: min(94%, 29rem); }
+
+    /* 03 · Privacidad y seguridad — centrado, texto pequeño sobre número fantasma */
+    .values-slide--v3 { text-align: center; }
+    .values-slide--v3 .fv-inner { text-align: center; max-width: min(94%, 46rem); gap: clamp(1rem, 2.5vh, 1.75rem); }
+    .values-slide--v3 .fv-value-head { position: static; justify-content: center; }
+    .values-slide--v3 .fv-p { font-size: clamp(0.95rem, 1.5vw, 1.15rem); line-height: 1.7; max-width: 42ch; margin: 0 auto; position: relative; z-index: 1; }
+    .values-slide--v3 .fv-num {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -56%);
+      font-size: clamp(9rem, 24vw, 21rem);
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+      color: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    /* 04 · Comunidad — número enorme apilado, composition editorial abajo a la izquierda */
+    .values-slide--v4 { justify-content: flex-start; align-items: flex-end; }
+    .values-slide--v4 .fv-inner { align-items: flex-start; text-align: left; max-width: min(94%, 42rem); gap: clamp(0.5rem, 1.4vh, 0.9rem); }
+    .values-slide--v4 .fv-value-head { flex-direction: column-reverse; align-items: flex-start; gap: 0.3rem; }
+    .values-slide--v4 .fv-num { font-size: clamp(4.5rem, 12vw, 10rem); line-height: 0.82; letter-spacing: -0.05em; color: rgba(255, 255, 255, 0.92); }
+    .values-slide--v4 .fv-label { font-size: clamp(1.4rem, 2.6vw, 2.1rem); letter-spacing: -0.03em; color: #f5f5f6; }
+    .values-slide--v4 .fv-p { font-size: clamp(0.95rem, 1.5vw, 1.15rem); line-height: 1.7; max-width: 46ch; }
+
+    /* 05 · ¿Y por qué no? — jerarquía invertida: manda el rótulo */
+    .values-slide--v5 .fv-inner { align-items: center; text-align: center; max-width: 900px; gap: clamp(1rem, 2.5vh, 1.75rem); }
+    .values-slide--v5 .fv-value-head { flex-direction: column-reverse; align-items: center; gap: clamp(0.9rem, 2.4vh, 1.5rem); }
+    .values-slide--v5 .fv-label {
+      font-size: clamp(2.6rem, 7.6vw, 6.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      text-transform: none;
+      color: #f5f5f6;
+    }
+    .values-slide--v5 .fv-p { font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: rgba(255, 255, 255, 0.45); max-width: 44ch; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .values-slide { padding: clamp(2rem, 6vh, 3rem) 1.25rem; }
+      .values-slide--v1,
+      .values-slide--v2,
+      .values-slide--v4 { justify-content: center; align-items: center; text-align: left; }
+      .values-slide--v1 .fv-inner,
+      .values-slide--v2 .fv-inner,
+      .values-slide--v4 .fv-inner { align-items: flex-start; text-align: left; max-width: 100%; }
+      .values-slide--v2 .fv-value-head { justify-content: flex-start; }
+      .values-slide--v1 .fv-p,
+      .values-slide--v2 .fv-p { font-size: clamp(1.25rem, 5.6vw, 1.9rem); line-height: 1.28; letter-spacing: -0.02em; }
+      .values-slide--v5 .fv-label { font-size: clamp(2rem, 10vw, 3.2rem); }
+      .values-slide--v1 .fv-num { width: 2.2rem; height: 2.2rem; font-size: 0.85rem; }
+      .values-slide--v3 .fv-num { font-size: clamp(7rem, 42vw, 13rem); }
+      .values-slide--v4 .fv-num { font-size: clamp(3.5rem, 18vw, 6rem); }
+    }
+
     .timeline-section {
       background: var(--color-white, #ffffff);
     }
@@ -333,8 +419,8 @@
       content: '';
       position: absolute;
       left: 12px;
-      top: 6px;
-      bottom: 6px;
+      top: var(--tl-top, 16px);
+      bottom: var(--tl-bottom, 16px);
       width: 2px;
       background: linear-gradient(180deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
       opacity: 0.35;
@@ -345,8 +431,8 @@
       content: '';
       position: absolute;
       left: 12px;
-      top: 6px;
-      bottom: 6px;
+      top: var(--tl-top, 16px);
+      bottom: var(--tl-bottom, 16px);
       width: 2px;
       background: linear-gradient(180deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
       border-radius: 999px;
@@ -357,11 +443,31 @@
 
     .timeline-item {
       position: relative;
+      z-index: 1;
       padding-left: 52px;
       margin-bottom: var(--spacing-12);
     }
 
-    .timeline-item:last-child {
+    /* La linea no termina en el ultimo hito: sigue cortada y se desvanece */
+    .timeline-tail {
+      position: absolute;
+      left: 12px;
+      top: var(--tl-tail-top, 100%);
+      width: 2px;
+      height: 160px;
+      pointer-events: none;
+      border-radius: 999px;
+      background: linear-gradient(180deg,
+        var(--primary-2, #16a7ff) 0%,
+        rgba(22, 167, 255, 0.72) 42%,
+        rgba(22, 167, 255, 0) 100%);
+      opacity: 0.6;
+      -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 20px, rgba(0, 0, 0, 0.08) 20px 32px);
+      mask-image: repeating-linear-gradient(180deg, #000 0 20px, rgba(0, 0, 0, 0.08) 20px 32px);
+    }
+
+    .timeline-item:last-child,
+    .timeline-item:has(+ .timeline-tail) {
       margin-bottom: 0;
     }
 
@@ -542,7 +648,7 @@
 
     .letter-section > .section-shell {
       padding-top: var(--spacing-16);
-      padding-bottom: 0;
+      padding-bottom: var(--spacing-16);
     }
 
     .letter-section .section-head {
@@ -553,86 +659,8 @@
       margin-bottom: 0;
     }
 
-    .letter-outer {
-      height: calc(1.6 * 100vh);
-      height: calc(1.6 * 100svh);
-      position: relative;
-    }
-
-    .letter-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      height: 100svh;
-      overflow: hidden;
-      display: flex;
-    }
-
-    .envelope {
-      --evw: min(430px, 84vw);
-      --evh: 270px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: var(--evw);
-      height: var(--evh);
-      background: #ffffff;
-      border: 1px solid var(--line, #dbe3ef);
-      border-radius: 14px;
-      box-shadow: var(--shadow-soft, 0 20px 50px rgba(16, 24, 40, .08));
-      transform: translate(-50%, -50%) translateX(120vw);
-      z-index: 5;
-      will-change: transform, opacity;
-    }
-
-    .env-back {
-      position: absolute;
-      inset: 0;
-      background: #ffffff;
-      z-index: 1;
-    }
-
-    .env-paper {
-      position: absolute;
-      left: 10%;
-      right: 10%;
-      top: 26px;
-      bottom: 14%;
-      background: #ffffff;
-      border: 1px solid var(--line, #dbe3ef);
-      border-radius: 8px;
-      box-shadow: 0 8px 22px rgba(16, 24, 40, .07);
-      z-index: 2;
-      will-change: transform;
-    }
-
-    .env-front {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 54%;
-      background: #f1f4fa;
-      z-index: 3;
-      clip-path: polygon(0 0, 50% 42%, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .env-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: calc(var(--evw) * .5) solid transparent;
-      border-right: calc(var(--evw) * .5) solid transparent;
-      border-top: calc(var(--evh) * .5) solid #e6ebf5;
-      z-index: 4;
-      transform-origin: top center;
-      backface-visibility: hidden;
-      will-change: transform;
-    }
-
-    .letter-card {
+                                .letter-card {
+      width: 100%;
       max-width: 760px;
       margin: 0 auto;
       padding: clamp(2rem, 5vw, 3.5rem);
@@ -643,21 +671,11 @@
         var(--color-white, #ffffff);
       box-shadow: var(--shadow-soft, 0 20px 50px rgba(16,24,40,.08));
       position: relative;
-      opacity: 0;
-      transform: scale(0.94) translateY(20px);
-      will-change: opacity, transform;
+      opacity: 1;
+      transform: none;
     }
 
-    .letter-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 12%;
-      right: 12%;
-      height: 4px;
-      border-radius: 0 0 999px 999px;
-      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
-    }
+
 
     .letter-intro {
       display: flex;
@@ -800,42 +818,39 @@
     }
 
     /* Síguenos */
-    .follow-section {
-      padding: var(--spacing-20) var(--spacing-6);
-      background: var(--color-white, #ffffff);
-      border-top: 1px solid var(--line, #dbe3ef);
-      text-align: center;
+    .cta-follow {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: var(--spacing-8) auto 0;
+      padding-top: var(--spacing-8);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .follow-inner {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .follow-inner h2 {
-      font-size: var(--font-size-3xl);
+    .cta-follow h3 {
+      font-size: var(--font-size-2xl);
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--text, #111827);
-      margin-bottom: var(--spacing-3);
+      color: #ffffff;
+      margin-bottom: var(--spacing-2);
     }
 
-    .follow-inner p {
-      color: var(--muted, #5f6b7a);
-      font-size: var(--font-size-lg);
-      margin-bottom: var(--spacing-10);
-    }
+    .cta-follow p { color: rgba(255, 255, 255, 0.86); font-size: var(--font-size-lg); margin-bottom: var(--spacing-6); }
 
     .follow-links {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: var(--spacing-4);
       flex-wrap: wrap;
     }
 
+    .follow-link svg { display: block; flex: none; }
+
     .follow-link {
       width: 62px;
       height: 62px;
+      flex: none;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -947,6 +962,7 @@
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -956,9 +972,8 @@
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
           <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -1009,7 +1024,7 @@
       <div class="about-hero-inner">
         <p class="eyebrow">Tecnología pensada para ti</p>
         <h1><span class="typewriter" data-text="Sobre">Sobre</span> <span class="grad">Lixby</span></h1>
-        <p class="lead">Creamos tecnología para simplificar tu vida. Diseñado en España, creado con pasión.</p>
+        <p class="lead">Creamos tecnología para acompañarte en cada parte de tu día. Diseñado en España, creado con pasión.</p>
 
         <div class="about-stats">
           <div class="about-stat">
@@ -1017,11 +1032,11 @@
             <span>Desde nuestros inicios</span>
           </div>
           <div class="about-stat">
-            <strong data-target="100" data-suffix="%">100%</strong>
-            <span>Hecho en España</span>
+            <strong class="stat-type" data-text="Espa&ntilde;a">Espa&ntilde;a</strong>
+            <span>Donde nace Lixby</span>
           </div>
           <div class="about-stat">
-            <strong data-target="2" data-prefix="+">+2</strong>
+            <strong data-target="2">2</strong>
             <span>Apps propias</span>
           </div>
         </div>
@@ -1033,12 +1048,12 @@
         <div class="mission-grid">
           <div class="mission-content">
             <p class="eyebrow">Nuestra misión</p>
-            <h2>La tecnología debe simplificar la vida, no complicarla.</h2>
-            <p>En Lixby creemos que la tecnología debe simplificar la vida, no complicarla. Nuestro objetivo es crear productos y servicios que sean intuitivos, hermosos y útiles.</p>
-            <p>Desde nuestros inicios en 2025, hemos trabajado para ofrecer soluciones innovadoras que realmente marcan la diferencia en la vida de nuestros usuarios.</p>
+            <h2>Ayudarte, estés donde estés.</h2>
+            <p>En Lixby creemos que la tecnología debe estar al servicio de las personas, no al revés. Por eso queremos acompañarte en cada parte de tu día a día, con productos y servicios intuitivos, bonitos y útiles de verdad.</p>
+            <p>Desde nuestros inicios en 2025, trabajamos con una idea clara: cuantos más momentos de tu vida podamos mejorar, más cerca estaremos de cumplir nuestra misión.</p>
           </div>
           <div class="mission-visual">
-            <img src="/es/images/lixbuds-one-white.png" alt="LixBuds One" loading="lazy">
+            <img src="/es/images/logo-white.png" alt="Lixby" loading="lazy">
           </div>
         </div>
       </div>
@@ -1048,7 +1063,7 @@
       <div class="values-outer">
         <div class="values-sticky">
 
-          <div class="values-slide values-slide--head" data-index="0">
+          <div class="values-slide values-slide--head values-slide--v0" data-index="0">
             <div class="fv-inner">
               <span class="fv-kicker">Lo que nos mueve</span>
               <h2 class="fv-h fv-h--xl">Nuestros valores</h2>
@@ -1056,40 +1071,42 @@
             </div>
           </div>
 
-          <div class="values-slide values-slide--value" data-index="1">
+          <div class="values-slide values-slide--value values-slide--v1" data-index="1">
             <div class="fv-inner">
-              <div class="fv-value-head"><span class="fv-num">01</span><span class="fv-label">Enfoque en usuario</span></div>
-              <h3 class="fv-h">Todo lo que hacemos está pensado para mejorar la experiencia del usuario.</h3>
+              <div class="fv-value-head"><span class="fv-num">01</span><h3 class="fv-label">Pensado para ti</h3></div>
+              <p class="fv-p fv-lead">Cada decisión que tomamos empieza por una pregunta: ¿esto mejora de verdad la vida de quien lo usa? Si la respuesta no es un sí claro, lo replanteamos. Creamos para personas reales, con necesidades reales, no para llenar un catálogo.</p>
             </div>
           </div>
 
-          <div class="values-slide values-slide--value" data-index="2">
+          <div class="values-slide values-slide--value values-slide--v2" data-index="2">
             <div class="fv-inner">
-              <div class="fv-value-head"><span class="fv-num">02</span><span class="fv-label">Diseño excelente</span></div>
-              <h3 class="fv-h">Buscamos la perfección en cada detalle, desde lo visual hasta lo funcional.</h3>
+              <div class="fv-value-head"><span class="fv-num">02</span><h3 class="fv-label">Cuidamos cada detalle</h3></div>
+              <p class="fv-p fv-lead">Desde cómo se ve algo hasta cómo se comporta, nos importa que todo se sienta bien. Un buen producto no se nota por lo que tiene, sino por lo poco que te estorba. Por eso revisamos, probamos y pulimos hasta que cada detalle esté en su sitio.</p>
             </div>
           </div>
 
-          <div class="values-slide values-slide--value" data-index="3">
+          <div class="values-slide values-slide--value values-slide--v3" data-index="3">
             <div class="fv-inner">
-              <div class="fv-value-head"><span class="fv-num">03</span><span class="fv-label">Privacidad y seguridad</span></div>
-              <h3 class="fv-h">Creemos en la privacidad de nuestros usuarios y la seguridad de sus datos.</h3>
+              <div class="fv-value-head"><span class="fv-num">03</span><h3 class="fv-label">Privacidad y seguridad</h3></div>
+              <p class="fv-p">Tus datos son tuyos, y punto. Solo usamos lo estrictamente necesario para que nuestros productos funcionen, los protegemos con el máximo cuidado y nunca los vendemos a terceros. Confiar en nosotros no debería requerir leer la letra pequeña.</p>
             </div>
           </div>
 
-          <div class="values-slide values-slide--value" data-index="4">
+          <div class="values-slide values-slide--value values-slide--v4" data-index="4">
             <div class="fv-inner">
-              <div class="fv-value-head"><span class="fv-num">04</span><span class="fv-label">Comunidad</span></div>
-              <h3 class="fv-h">Valoramos a nuestra comunidad y escuchamos sus sugerencias.</h3>
+              <div class="fv-value-head"><span class="fv-num">04</span><h3 class="fv-label">Comunidad</h3></div>
+              <p class="fv-p">Lixby se construye con vosotros. Leemos cada mensaje, cada reseña y cada sugerencia, y muchas de las mejoras que hacemos nacen de ahí. Somos un equipo pequeño, y eso significa que cuando nos escribes, te lee una persona.</p>
             </div>
           </div>
 
-          <div class="values-slide values-slide--value" data-index="5">
+          <div class="values-slide values-slide--value values-slide--v5" data-index="5">
             <div class="fv-inner">
-              <div class="fv-value-head"><span class="fv-num">05</span><span class="fv-label">Innovación</span></div>
-              <h3 class="fv-h">Nos esforzamos por estar siempre a la vanguardia de la tecnología.</h3>
+              <div class="fv-value-head"><span class="fv-num">05</span><h3 class="fv-label">¿Y por qué no?</h3></div>
+              <p class="fv-p">Esta pregunta nos trajo hasta aquí. Nos atrevemos a probar cosas nuevas, a empezar de cero en terrenos que otros dan por cerrados y a pensar en grande aunque seamos pequeños. Si hay una buena idea y una forma de hacerla bien, ¿por qué no intentarlo?</p>
             </div>
           </div>
+
+          <div class="values-slide values-slide--blank" data-index="6" aria-hidden="true"></div>
 
         </div>
       </div>
@@ -1106,7 +1123,7 @@
             <div class="timeline-card">
               <span class="timeline-year">16 ago 2025</span>
               <h3>Fundación de Lixby</h3>
-              <p>Nació Lixby como una startup enfocada en crear tecnología que simplifica la vida.</p>
+              <p>Nació Lixby como una startup con una idea clara: crear tecnología que te ayude estés donde estés.</p>
             </div>
           </div>
 
@@ -1133,6 +1150,8 @@
               <p>Nuestra EFB para simulación aérea en MSFS2020/2024 llega para llevar el vuelo al siguiente nivel.</p>
             </div>
           </div>
+
+          <div class="timeline-tail" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -1144,17 +1163,6 @@
         <div class="section-head">
           <p class="eyebrow">Carta de Fabian</p>
           <h2>Una carta de nuestro fundador</h2>
-        </div>
-      </div>
-
-      <div class="letter-outer" id="letterOuter">
-        <div class="letter-sticky">
-          <div class="envelope" id="envelope" aria-hidden="true">
-            <div class="env-back"></div>
-            <div class="env-paper"></div>
-            <div class="env-front"></div>
-            <div class="env-flap"></div>
-          </div>
         </div>
       </div>
 
@@ -1176,7 +1184,7 @@
       </div>
     </section>
 
-    <section class="faq faq-section full-section">
+    <div class="letter-divider" aria-hidden="true"></div><section class="faq faq-section full-section">
       <div class="container section-shell">
         <div class="section-head">
           <p class="eyebrow">Tu tranquilidad</p>
@@ -1200,7 +1208,7 @@
             <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-answer" id="faq-o2" role="region" aria-labelledby="faq-o2-label">
-              <p class="faq-answer-text">Nuestra sede se encuentra en España, donde diseñamos y desarrollamos todos nuestros productos desde cero.</p>
+              <p class="faq-answer-text">Nuestra sede se encuentra en España, donde diseñamos y desarrollamos nuestros productos.</p>
             </div>
           </div>
 
@@ -1230,7 +1238,7 @@
             <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-answer" id="faq-c1" role="region" aria-labelledby="faq-c1-label">
-              <p class="faq-answer-text">Lixby fue fundada por Fabian, con la idea de crear tecnología que realmente simplifique la vida de las personas. Puedes leer su carta completa <a href="#carta">aquí</a>.</p>
+              <p class="faq-answer-text">Lixby fue fundada por Fabian, con la idea de crear tecnología que ayude a las personas en cada parte de su vida. Puedes leer su carta completa <a href="#carta">aquí</a>.</p>
             </div>
           </div>
 
@@ -1270,7 +1278,7 @@
             <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-answer" id="faq-c5" role="region" aria-labelledby="faq-c5-label">
-              <p class="faq-answer-text">Elegimos proyectos que resuelvan problemas reales que nosotros mismos hemos vivido como usuarios — por eso nuestros productos son tan distintos entre sí, pero comparten la misma filosofía de simplicidad.</p>
+              <p class="faq-answer-text">Elegimos proyectos que resuelvan problemas reales que nosotros mismos hemos vivido como usuarios — por eso nuestros productos son tan distintos entre sí, pero comparten la misma idea: ayudarte de verdad.</p>
             </div>
           </div>
 
@@ -1320,55 +1328,14 @@
             <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-answer" id="faq-c10" role="region" aria-labelledby="faq-c10-label">
-              <p class="faq-answer-text">Puedes seguirnos en nuestras redes sociales o suscribirte a nuestra newsletter, donde compartimos lanzamientos y novedades antes que nadie.</p>
+              <p class="faq-answer-text">Puedes seguirnos en nuestras redes sociales, donde compartimos lanzamientos y novedades antes que nadie.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-section full-section">
-      <div class="container">
-        <div class="cta-card">
-          <h2>Únete a nuestra comunidad</h2>
-          <p>Descubre cómo Lixby puede mejorar tu vida hoy mismo.</p>
-          <a href="/es/productos/" class="btn btn-primary">Explorar productos</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="follow-section full-section">
-      <div class="container follow-inner">
-        <h2>Síguenos</h2>
-        <p>Entérate de nuestras novedades, lanzamientos y detrás de cámaras.</p>
-        <div class="follow-links">
-          <a class="follow-link" href="https://www.instagram.com/lixby2026/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-          <a class="follow-link" href="https://x.com/Lixby2026" target="_blank" rel="noopener" aria-label="X">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-            </svg>
-          </a>
-          <a class="follow-link" href="https://www.tiktok.com/@lixby2026" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path>
-            </svg>
-          </a>
-          <a class="follow-link" href="https://www.youtube.com/@lixby2026" target="_blank" rel="noopener" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+    <section class="cta-section full-section"><div class="container"><div class="cta-card"><h2>&Uacute;nete a nuestra comunidad</h2><p>Descubre c&oacute;mo Lixby puede mejorar tu vida hoy mismo.</p><a href="/es/productos/" class="btn btn-primary">Explorar productos</a><div class="cta-follow"><h3>S&iacute;guenos</h3><p>Ent&eacute;rate de nuestras novedades, lanzamientos y detr&aacute;s de c&aacute;maras.</p><div class="follow-links"><a class="follow-link" href="https://www.instagram.com/lixby2026/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a class="follow-link" href="https://x.com/Lixby2026" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a><a class="follow-link" href="https://www.tiktok.com/@lixby2026" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path></svg></a><a class="follow-link" href="https://www.youtube.com/@lixby2026" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a></div></div></div></div></section></main>
 
 <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
@@ -1387,7 +1354,7 @@
         <ul>
           <li><a href="/es/support/">Página inicial soporte</a></li>
           <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Información de Garantía</a></li>
           <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
       </section>
@@ -1405,9 +1372,9 @@
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Garantía</a></li>
           <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/es/centro-ayuda/contacto/">Contacto</a></li>
         </ul>
       </section>
     </div>
@@ -1544,9 +1511,13 @@
 
       /* Los numeros suben al entrar el hero */
       /* Los numeros suben cuando se revela la web (paso 5) */
+      var STAT_DELAY = 0.4;
+      var STAT_DUR = 1.6;
+
       function startCounters() {
         var counters = document.querySelectorAll(".about-stat strong[data-target]");
-        if (!counters.length) return;
+        var words = document.querySelectorAll(".about-stat strong[data-text]");
+        if (!counters.length && !words.length) return;
         counters.forEach(function (el) {
           var target = +el.getAttribute("data-target");
           var suffix = el.getAttribute("data-suffix") || "";
@@ -1554,13 +1525,21 @@
           var obj = { val: 0 };
           gsap.to(obj, {
             val: target,
-            duration: 1.6,
+            duration: STAT_DUR,
             ease: "power2.out",
-            delay: 0.4,
+            delay: STAT_DELAY,
             onUpdate: function () {
               el.textContent = prefix + Math.round(obj.val) + suffix;
             }
           });
+        });
+        /* "Espana" se escribe letra a letra y acaba a la vez que los numeros */
+        words.forEach(function (el) {
+          var text = el.getAttribute("data-text") || el.textContent;
+          var speed = (STAT_DUR * 1000) / (text.length + 1);
+          setTimeout(function () {
+            typeInto(el, text, speed);
+          }, STAT_DELAY * 1000);
         });
       }
 
@@ -1570,9 +1549,9 @@
         ".mission-grid",
         ".faq-item",
         ".cta-card",
-        ".follow-inner h2",
-        ".follow-inner p",
-        ".follow-link"
+        ".cta-follow h3",
+        ".cta-follow p",
+        ".follow-links"
       ];
 
       document.querySelectorAll(".full-section:not(.hero)").forEach(function (sec) {
@@ -1598,14 +1577,20 @@
       var fsOuter = document.querySelector('.values-outer');
       var fsSlides = Array.from(document.querySelectorAll('.values-slide'));
       var FS_COUNT = fsSlides.length;
+      var FS_BLANK = fsSlides.findIndex(function (s) { return s.classList.contains('values-slide--blank'); });
+      var FS_LAST = FS_BLANK > -1 ? FS_BLANK - 1 : FS_COUNT - 1;
       var fvActive = -1;
+      function sizeValuesOuter() {
+        if (!fsOuter) return;
+        fsOuter.style.height = ((FS_COUNT + 1) * window.innerHeight) + 'px';
+      }
       function updateValueScroll() {
         if (!fsOuter) return;
         var rect = fsOuter.getBoundingClientRect();
         var totalScroll = fsOuter.offsetHeight - window.innerHeight;
         var scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
         var progress = scrolled / totalScroll;
-        var activeIndex = Math.min(FS_COUNT - 1, Math.round(progress * (FS_COUNT - 1)));
+        var activeIndex = Math.min(FS_LAST, Math.max(0, Math.floor(progress * FS_COUNT)));
         if (activeIndex === fvActive) return;
         fvActive = activeIndex;
         fsSlides.forEach(function (slide, i) {
@@ -1615,7 +1600,8 @@
         });
       }
       window.addEventListener('scroll', updateValueScroll, { passive: true });
-      window.addEventListener('resize', updateValueScroll);
+      window.addEventListener('resize', function () { sizeValuesOuter(); updateValueScroll(); });
+      sizeValuesOuter();
       updateValueScroll();
     })();
   </script>
@@ -1629,8 +1615,15 @@
         var rect = list.getBoundingClientRect();
         var vh = window.innerHeight || document.documentElement.clientHeight;
         var anchor = vh * 0.8;
-        var done = anchor - rect.top;
-        var total = list.offsetHeight;
+        var inset = 16;
+        var lastItem = items[items.length - 1];
+        var lastCentre = lastItem ? lastItem.offsetTop + inset : rect.height;
+        var bottomInset = Math.max(inset, rect.height - lastCentre);
+        list.style.setProperty('--tl-top', inset + 'px');
+        list.style.setProperty('--tl-bottom', bottomInset + 'px');
+        list.style.setProperty('--tl-tail-top', lastCentre + 'px');
+        var done = anchor - (rect.top + inset);
+        var total = Math.max(1, lastCentre - inset);
         var progress = total > 0 ? done / total : 0;
         progress = Math.max(0, Math.min(1, progress));
         list.style.setProperty('--tl-progress', progress);
@@ -1664,10 +1657,9 @@
           if (!entry.isIntersecting) return;
           var card = entry.target;
           var index = cards.indexOf(card);
-          var fromX = (index % 2 === 0 ? -1 : 1) * 60;
           gsap.fromTo(card,
-            { x: fromX, scale: 0.96, opacity: 0 },
-            { x: 0, scale: 1, opacity: 1, duration: 0.7, delay: index * 0.12, ease: 'power3.out' }
+            { opacity: 0 },
+            { opacity: 1, duration: 0.7, delay: index * 0.12, ease: 'power2.out' }
           );
           io.unobserve(card);
         });
@@ -1676,65 +1668,119 @@
     })();
   </script>
 
-  <script>
+        <script>
     (function () {
-      var outer = document.getElementById('letterOuter');
-      if (!outer) return;
-      var envelope = document.getElementById('envelope');
       var card = document.getElementById('letterCard');
-      var paper = outer.querySelector('.env-paper');
-      var flap = outer.querySelector('.env-flap');
-      if (!envelope || !card || !paper || !flap) return;
+      if (!card) return;
+      var blocks = [card.querySelector('.letter-body'), card.querySelector('.letter-sign')].filter(Boolean);
+      if (!blocks.length) return;
 
-      function clamp01(v) { return Math.max(0, Math.min(1, v)); }
-      function seg(p, a, b) { return clamp01((p - a) / (b - a)); }
+      var streams = blocks.map(function (el) {
+        var out = [];
+        var prevSpace = true;
+        (el.innerHTML.match(/<[^>]+>|[\s\S]/g) || []).forEach(function (t) {
+          if (t.charAt(0) === '<') { out.push({ tag: t }); prevSpace = false; return; }
+          if (/\s/.test(t)) {
+            if (prevSpace) return;
+            out.push({ ch: ' ' });
+            prevSpace = true;
+            return;
+          }
+          out.push({ ch: t });
+          prevSpace = false;
+        });
+        return out;
+      });
+      var total = streams.reduce(function (acc, s) {
+        return acc + s.filter(function (t) { return t.ch !== undefined; }).length;
+      }, 0);
+      var duration = Math.min(16000, Math.max(6000, total * 11));
+      var started = false;
+      var finished = false;
+      var raf = 0;
+      var lastCount = -1;
+      var original = blocks.map(function (el) { return el.innerHTML; });
+      var shown = original.slice();
 
-      var done = false;
-      var W = typeof window !== 'undefined' ? window : null;
+      function lockHeight() {
+        var prev = card.style.minHeight;
+        card.style.minHeight = '';
+        for (var i = 0; i < blocks.length; i++) blocks[i].innerHTML = original[i];
+        var h = card.getBoundingClientRect().height;
+        for (var j = 0; j < blocks.length; j++) blocks[j].innerHTML = shown[j];
+        card.style.minHeight = Math.ceil(h) + 'px';
+        if (prev && !card.style.minHeight) card.style.minHeight = prev;
+      }
 
-      function updateLetter() {
-        if (done) return;
-        var rect = outer.getBoundingClientRect();
-        var total = outer.offsetHeight - W.innerHeight;
-        var scrolled = Math.min(Math.max(0, -rect.top), total);
-        var p = total > 0 ? scrolled / total : 0;
-
-        var enter = seg(p, 0, 0.4);
-        var off = 1 - enter;
-        var x = off * 85;
-        var y = off * 70;
-
-        var flapT = seg(p, 0.4, 0.55) * 180;
-        var paperY = -seg(p, 0.42, 0.58) * 80;
-        var envFade = 1 - seg(p, 0.5, 0.85);
-        var cardIn = seg(p, 0.6, 0.95);
-        var cardScale = 0.94 + 0.06 * cardIn;
-        var cardY = (1 - cardIn) * 20;
-
-        envelope.style.transform = 'translate(-50%, -50%) translate(' + x + 'vw,' + y + 'vh)';
-        envelope.style.opacity = envFade.toFixed(3);
-        flap.style.transform = 'rotateX(' + flapT + 'deg)';
-        paper.style.transform = 'translateY(' + paperY + 'px)';
-        card.style.opacity = cardIn.toFixed(3);
-        card.style.transform = 'scale(' + cardScale.toFixed(3) + ') translateY(' + cardY.toFixed(1) + 'px)';
-
-        if (p >= 1) {
-          done = true;
-          envelope.style.visibility = 'hidden';
-          card.style.opacity = '1';
-          card.style.transform = 'none';
-          W.removeEventListener('scroll', onScroll);
-          W.removeEventListener('resize', onResize);
+      function render(count) {
+        var left = count;
+        var turn = 0;
+        for (var b = 0; b < streams.length; b++) {
+          if (left > 0) turn = b;
+          var out = '';
+          var used = 0;
+          for (var i = 0; i < streams[b].length; i++) {
+            var t = streams[b][i];
+            if (t.tag !== undefined) { out += t.tag; continue; }
+            if (used < left) { out += t.ch; used++; }
+          }
+          left -= used;
+          blocks[b].innerHTML = out;
+          shown[b] = out;
+          blocks[b].style.visibility = b === turn ? 'visible' : 'hidden';
         }
       }
 
-      function onScroll() { updateLetter(); }
-      function onResize() { updateLetter(); }
+      function finish() {
+        if (finished) return;
+        finished = true;
+        if (raf) cancelAnimationFrame(raf);
+        render(total);
+      }
 
-      W.addEventListener('scroll', onScroll, { passive: true });
-      W.addEventListener('resize', onResize);
-      updateLetter();
+      function start() {
+        if (started) return;
+        started = true;
+        var t0 = null;
+        var step = function (now) {
+          if (t0 === null) t0 = now;
+          var t = Math.min(1, (now - t0) / duration);
+          var count = Math.round(t * total);
+          if (count !== lastCount) {
+            lastCount = count;
+            render(count);
+          }
+          if (t < 1) {
+            raf = requestAnimationFrame(step);
+          } else {
+            finish();
+          }
+        };
+        raf = requestAnimationFrame(step);
+      }
+
+      lockHeight();
+      render(0);
+
+      if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+        document.fonts.ready.then(function () { lockHeight(); });
+      }
+
+      var rt = 0;
+      window.addEventListener('resize', function () {
+        clearTimeout(rt);
+        rt = setTimeout(lockHeight, 150);
+      });
+
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+      if (typeof IntersectionObserver === 'undefined') { finish(); return; }
+
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        start();
+      }, { threshold: 0.2 });
+      io.observe(card);
     })();
-  </script>
-</body>
+  </script></body>
 </html>

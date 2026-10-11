@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8">
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
@@ -37,10 +38,9 @@
   <link rel="alternate" href="https://lixby.es/sv/help-center/system-status" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/help-center/system-status" hreflang="x-default">
 
-          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estado del sistema | Lixby</title>
-  <meta name="description" content="Disponibilidad de servicios Lixby en tiempo real.">
+  <meta name="description" content="Información sobre el estado de los servicios Lixby.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,6 +234,9 @@ html, body { margin: 0; padding: 0; }
       ]
     }
   </script>
+  <noscript>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
 </head>
 <body>
 
@@ -308,6 +311,7 @@ html, body { margin: 0; padding: 0; }
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -317,9 +321,8 @@ html, body { margin: 0; padding: 0; }
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
           <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -368,52 +371,34 @@ html, body { margin: 0; padding: 0; }
     <div class="help-hero-inner reveal" data-delay="0s">
       <span class="badge">Centro de ayuda</span>
       <h1>Estado del <span class="grad">sistema</span></h1>
-      <p class="lead">Disponibilidad de los servicios Lixby en tiempo real.</p>
+      <p class="lead">Información sobre el estado de los servicios Lixby.</p>
     </div>
   </section>
   <section class="help-section">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
         <p class="eyebrow">Estado</p>
-        <h2>Servicios</h2>
+        <h2>Incidencias y disponibilidad</h2>
       </div>
-      <div class="status-card reveal" data-delay="0.05s">
-        <div>
-          <span class="status-indicator operational"></span>
-          <strong>Tienda online</strong>
-        </div>
-        <span>Operativo</span>
+      <div class="note-box reveal" data-delay="0.05s">
+        <strong>No publicamos un panel de estado en tiempo real.</strong> Si tienes un problema con la tienda o con alguna de nuestras apps, escríbenos y lo revisamos.
       </div>
-      <div class="status-card reveal" data-delay="0.10s">
-        <div>
-          <span class="status-indicator operational"></span>
-          <strong>App Lixney</strong>
-        </div>
-        <span>Operativo</span>
-      </div>
-      <div class="status-card reveal" data-delay="0.15s">
-        <div>
-          <span class="status-indicator operational"></span>
-          <strong>App Lixfly</strong>
-        </div>
-        <span>Operativo</span>
-      </div>
-      <div class="status-card reveal" data-delay="0.20s">
-        <div>
-          <span class="status-indicator operational"></span>
-          <strong>Sincronización en la nube</strong>
-        </div>
-        <span>Operativo</span>
-      </div>
-      <div class="status-card reveal" data-delay="0.25s">
-        <div>
-          <span class="status-indicator operational"></span>
-          <strong>API y servicios</strong>
-        </div>
-        <span>Operativo</span>
-      </div>
-      <div class="note-box reveal" data-delay="0.15s">
-        <strong>¿Todo correcto?</strong> Para ver el estado detallado y el historial de incidentes, visita <a href="https://status.lixby.es" target="_blank" rel="noopener noreferrer">status.lixby.es</a>.
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.1s" href="/es/centro-ayuda/contacto/">
+          <h3>Contacto</h3>
+          <p>Cuéntanos qué ocurre y te ayudamos.</p>
+          <span class="btn btn-primary">Escribir</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="/es/centro-ayuda/novedades-actualizaciones/">
+          <h3>Novedades y actualizaciones</h3>
+          <p>Cambios y avisos de apps y firmware.</p>
+          <span class="btn btn-primary">Ver novedades</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.2s" href="/es/centro-ayuda/solucion-problemas/">
+          <h3>Solución de problemas</h3>
+          <p>Diagnósticos guiados para resolverlo tú mismo.</p>
+          <span class="btn btn-primary">Empezar</span>
+        </a>
       </div>
       <a class="back-link btn btn-secondary" href="/es/centro-ayuda/">Volver al centro de ayuda</a>
     </div>
@@ -435,8 +420,8 @@ html, body { margin: 0; padding: 0; }
         <ul>
           <li><a href="/es/support/">Página inicial soporte</a></li>
           <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
       </section>
 
@@ -453,9 +438,9 @@ html, body { margin: 0; padding: 0; }
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Garantía</a></li>
           <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/es/centro-ayuda/contacto/">Contacto</a></li>
         </ul>
       </section>
     </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8">
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
@@ -37,7 +38,6 @@
   <link rel="alternate" href="https://lixby.es/sv/help-center/lixfly" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/help-center/lixfly" hreflang="x-default">
 
-          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte Lixfly | Lixby</title>
   <meta name="description" content="Guías de configuración, planes de vuelo y uso del EFB para Lixfly.">
@@ -191,6 +191,8 @@ html, body { margin: 0; padding: 0; }
     }
     .note-box strong { color: var(--primary); }
     .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--spacing-6); }
+    .help-card[id] { scroll-margin-top: 100px; }
+    .module-meta { display: block; margin-bottom: var(--spacing-2); font-size: .8rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); }
     @media (max-width: 768px) {
       .help-hero { padding: var(--spacing-16) var(--spacing-4); }
       .help-section { padding: var(--spacing-10) var(--spacing-4) var(--spacing-16); }
@@ -210,6 +212,9 @@ html, body { margin: 0; padding: 0; }
       ]
     }
   </script>
+  <noscript>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
 </head>
 <body>
 
@@ -284,6 +289,7 @@ html, body { margin: 0; padding: 0; }
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -293,9 +299,8 @@ html, body { margin: 0; padding: 0; }
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
           <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -356,7 +361,7 @@ html, body { margin: 0; padding: 0; }
       <div class="step-list">
         <div class="step-item reveal" data-delay="0.05s">
           <strong>1. Instalación de Lixfly</strong>
-          <p>Descarga la app desde la tienda oficial, crea tu perfil de piloto y sincroniza tus datos con Lixney.</p>
+          <p>Descarga la app desde la tienda oficial y crea tu perfil de piloto.</p>
         </div>
         <div class="step-item reveal" data-delay="0.10s">
           <strong>2. Plan de vuelo</strong>
@@ -364,22 +369,45 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="step-item reveal" data-delay="0.15s">
           <strong>3. EFB electrónico</strong>
-          <p>Accede a mapas, listas de verificación y documentación aeronáutica directamente desde tu tablet.</p>
+          <p>Accede a mapas, listas de verificación y documentación aeronáutica desde la app.</p>
         </div>
       </div>
+      <div class="section-head reveal" data-delay="0.2s">
+        <p class="eyebrow">Módulos</p>
+        <h2>Explora cada módulo</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.25s">Lixfly organiza el trabajo del piloto en módulos. Accede directamente al que necesitas.</p>
       <div class="help-grid">
-        <div class="help-card reveal" data-delay="0.05s">
+        <article class="help-card reveal" id="preflight" data-delay="0.05s">
+          <span class="module-meta">Preflight</span>
+          <h3>Preflight</h3>
+          <p>Prepara la aeronave antes de arrancar: pesos y balance, combustible, meteorología y estado de la ruta.</p>
+        </article>
+        <article class="help-card reveal" id="flight-plan" data-delay="0.10s">
+          <span class="module-meta">Flight Plan</span>
+          <h3>Flight Plan</h3>
+          <p>Crea, importa y edita planes de vuelo y añade aeródromos, waypoints y procedimientos de salida y llegada.</p>
+        </article>
+        <article class="help-card reveal" id="performance" data-delay="0.15s">
+          <span class="module-meta">Performance</span>
+          <h3>Performance</h3>
+          <p>Calcula despegue, ascenso, crucero y aterrizaje con datos de viento, temperatura y peso de la aeronave.</p>
+        </article>
+        <article class="help-card reveal" id="navegacion" data-delay="0.20s">
+          <span class="module-meta">Navegación</span>
           <h3>Navegación</h3>
-          <p>Activa el GPS externo y calibra la brújula antes de cada vuelo para una navegación precisa.</p>
-        </div>
-        <div class="help-card reveal" data-delay="0.10s">
-          <h3>Rendimiento</h3>
-          <p>Calcula combustible, pesos y balance con la calculadora integrada de Lixfly.</p>
-        </div>
-        <div class="help-card reveal" data-delay="0.15s">
-          <h3>Sincronización</h3>
-          <p>Tus planes de vuelo se guardan en la nube y están disponibles sin conexión.</p>
-        </div>
+          <p>Sigue tu ruta en tiempo real con mapas, GPS y perfiles verticales, incluso con conexión inestable.</p>
+        </article>
+        <article class="help-card reveal" id="eqrh" data-delay="0.25s">
+          <span class="module-meta">eQRH</span>
+          <h3>eQRH</h3>
+          <p>Consulta listas de verificación normales y procedimientos de emergencia (QRH) siempre a mano en formato electrónico.</p>
+        </article>
+        <article class="help-card reveal" id="extras" data-delay="0.30s">
+          <span class="module-meta">Extras</span>
+          <h3>Extras</h3>
+          <p>Herramientas adicionales: calculadoras, registro de vuelo, ajustes de unidades y opciones de interfaz.</p>
+        </article>
       </div>
       <div class="note-box reveal" data-delay="0.15s">
         ¿No encuentras lo que buscas? Consulta nuestras <a href="/es/centro-ayuda/faq/">preguntas frecuentes</a> o <a href="/es/centro-ayuda/contacto/">contacta con soporte</a>.
@@ -404,8 +432,8 @@ html, body { margin: 0; padding: 0; }
         <ul>
           <li><a href="/es/support/">Página inicial soporte</a></li>
           <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
       </section>
 
@@ -422,9 +450,9 @@ html, body { margin: 0; padding: 0; }
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Garantía</a></li>
           <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/es/centro-ayuda/contacto/">Contacto</a></li>
         </ul>
       </section>
     </div>

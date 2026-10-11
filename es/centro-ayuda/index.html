@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8">
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
@@ -34,7 +35,6 @@
   <link rel="alternate" href="https://lixby.es/sv/help-center/" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/help-center/" hreflang="x-default">
 
-          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Centro de ayuda | Lixby</title>
   <meta name="description" content="Accede a guías, soporte y recursos de Lixby.">
@@ -49,6 +49,17 @@
 <link rel="stylesheet" href="/es/style.css">
   <style>
     html, body { margin: 0; padding: 0; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .help-hero {
       position: relative;
       min-height: 72vh;
@@ -57,9 +68,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: calc(7rem) var(--spacing-6) var(--spacing-32);
+      padding: calc(7rem) var(--spacing-6) var(--spacing-20);
       text-align: center;
-      overflow: hidden;
+      overflow: visible;
     }
     .help-hero-inner {
       position: relative;
@@ -114,6 +125,108 @@
       margin: 0 auto;
       line-height: 1.75;
     }
+    .hero-search {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      margin: var(--spacing-10) auto 0;
+      z-index: 5;
+    }
+    .hero-search form { position: relative; }
+    .hero-search input[type="search"] {
+      width: 100%;
+      padding: 18px 22px 18px 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.96);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F3DFF' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.65' y1='16.65' x2='21' y2='21'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 20px center;
+      box-shadow: var(--shadow-card), 0 10px 30px rgba(15, 61, 255, 0.12);
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .hero-search input[type="search"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 4px 24px rgba(15, 61, 255, 0.22);
+    }
+    .hero-search-hint {
+      margin: var(--spacing-3) 0 0;
+      font-size: 0.9rem;
+      color: var(--muted, #5f6b7a);
+    }
+    .hero-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(15, 61, 255, 0.16);
+      padding: 6px;
+      text-align: left;
+      overflow: hidden;
+      z-index: 20;
+    }
+    .hero-search-results[hidden] { display: none; }
+    .help-search-item {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s var(--ease-lix);
+    }
+    .help-search-item:hover,
+    .help-search-item:focus-visible {
+      background: #eef3ff;
+      outline: none;
+    }
+    .help-search-item-title {
+      display: block;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .help-search-item-desc {
+      display: block;
+      color: var(--muted, #5f6b7a);
+      font-size: 0.86rem;
+      margin-top: 2px;
+    }
+    .help-search-empty {
+      padding: 14px;
+      color: var(--muted, #5f6b7a);
+      font-size: 0.92rem;
+    }
+    .help-search-empty a { color: var(--primary); font-weight: 600; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: var(--spacing-8);
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform 0.2s var(--ease-lix), box-shadow 0.2s var(--ease-lix);
+    }
+    .status-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .status-pill .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #94a3b8;
+      box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.2);
+    }
+    .status-pill .status-link { color: var(--primary); }
     .help-section {
       position: relative;
       padding: var(--spacing-12) var(--spacing-6) var(--spacing-20);
@@ -191,6 +304,146 @@
     .help-card h3 { margin: 0 0 var(--spacing-3); font-size: var(--font-size-xl); }
     .help-card p { margin: 0 0 var(--spacing-4); color: var(--muted, #5f6b7a); }
     .help-card .btn { margin-top: auto; align-self: flex-start; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+    }
+    .product-card h3 { margin: 0; font-size: var(--font-size-xl); }
+    .product-card p { margin: 0; color: var(--muted, #5f6b7a); }
+    .product-card .btn { align-self: flex-start; margin-top: auto; }
+    .module-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s var(--ease-lix), border-color 0.2s var(--ease-lix);
+    }
+    .chip:hover { background: #eaf0ff; border-color: rgba(15, 61, 255, 0.35); }
+    .popular-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-10);
+    }
+    .popular-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-4);
+      padding: var(--spacing-6);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      transition: transform 250ms var(--ease-lix), box-shadow 250ms var(--ease-lix);
+    }
+    .popular-link:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .popular-link .arrow { color: var(--primary); font-weight: 800; }
+    .start-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .start-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+    }
+    .start-card h3 { margin: 0; font-size: var(--font-size-xl); }
+    .start-card .btn { align-self: flex-start; margin-top: auto; }
+    .start-card .step-list { margin: 0; }
+    .step-list {
+      display: grid;
+      gap: var(--spacing-3);
+    }
+    .step-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-6);
+      box-shadow: var(--shadow-card);
+    }
+    .step-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .step-item p { margin: 0; color: var(--muted, #5f6b7a); }
+    .contact-band {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-8);
+      padding: clamp(2rem, 4vw, 3rem);
+      border-radius: var(--radius-2xl);
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      box-shadow: 0 24px 50px rgba(15, 61, 255, 0.28);
+    }
+    .contact-band-main { max-width: 560px; }
+    .contact-band .eyebrow { color: rgba(255, 255, 255, 0.85); }
+    .contact-band h2 {
+      margin: 0 0 var(--spacing-3);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .contact-band p { margin: 0; color: rgba(255, 255, 255, 0.92); line-height: 1.6; }
+    .contact-band p a { color: #fff; font-weight: 700; text-decoration: underline; }
+    .contact-band-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-3);
+    }
+    .contact-band .btn-secondary {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+    .contact-band .btn-secondary:hover { background: rgba(255, 255, 255, 0.26); }
+    .contact-band .btn-primary {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+    .contact-band .btn-primary:hover { background: #f2f6ff; }
     .note-box {
       margin-top: var(--spacing-10);
       padding: var(--spacing-6);
@@ -205,9 +458,12 @@
       color: var(--text);
     }
     .note-box strong { color: var(--primary); }
+    .note-box a { color: var(--primary); font-weight: 600; }
     @media (max-width: 768px) {
-      .help-hero { padding: var(--spacing-16) var(--spacing-4); }
+      .help-hero { padding: var(--spacing-16) var(--spacing-4) var(--spacing-12); }
       .help-section { padding: var(--spacing-10) var(--spacing-4) var(--spacing-16); }
+      .contact-band { flex-direction: column; align-items: flex-start; }
+      .contact-band-actions { width: 100%; }
     }
   </style>
   <link rel="icon" href="/favicon.ico">
@@ -224,6 +480,29 @@
       ]
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://lixby.es/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Centro de ayuda",
+          "item": "https://lixby.es/es/centro-ayuda/"
+        }
+      ]
+    }
+  </script>
+  <noscript>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 </head>
@@ -300,6 +579,7 @@
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -309,9 +589,8 @@
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
           <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -361,9 +640,185 @@
       <span class="badge">Centro de ayuda</span>
       <h1>Centro de ayuda <span class="grad">Lixby</span></h1>
       <p class="lead">Encuentra guías, resolución de problemas y contacto directo con nuestro equipo.</p>
+      <div class="hero-search">
+        <form id="helpSearchForm" action="/es/centro-ayuda/faq/" method="get" role="search">
+          <label class="visually-hidden" for="helpSearch">Buscar en el centro de ayuda</label>
+          <input
+            type="search"
+            id="helpSearch"
+            name="q"
+            placeholder="¿En qué podemos ayudarte?"
+            aria-label="Buscar en el centro de ayuda"
+            role="combobox"
+            aria-expanded="false"
+            aria-autocomplete="list"
+            aria-haspopup="listbox"
+            aria-controls="helpSearchResults"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </form>
+        <div class="hero-search-results" id="helpSearchResults" role="listbox" aria-label="Resultados del centro de ayuda" hidden></div>
+        <p class="hero-search-hint">Busca solo en el centro de ayuda: guías, artículos y preguntas frecuentes.</p>
+      </div>
+      <a class="status-pill" href="/es/centro-ayuda/estado-sistema/">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Estado del sistema</span>
+        <span class="status-link">Ver estado →</span>
+      </a>
     </div>
   </section>
-  <section class="help-section">
+
+  <section class="help-section" id="soporte-producto">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Soporte por producto</p>
+        <h2>Elige tu producto</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Accede directamente a las guías del producto que necesitas.</p>
+      <div class="product-grid">
+        <article class="product-card reveal" data-delay="0.1s">
+          <h3>Soporte LixBuds</h3>
+          <p>Emparejamiento, batería, sonido, firmware y limpieza de tus auriculares.</p>
+          <div class="module-chips">
+            <a class="chip" href="/es/centro-ayuda/sincronizacion-bluetooth/">Emparejar</a>
+            <a class="chip" href="/es/centro-ayuda/cuidado-limpieza/">Limpieza</a>
+            <a class="chip" href="/es/centro-ayuda/actualizaciones-firmware/">Firmware</a>
+          </div>
+          <a class="btn btn-primary" href="/es/centro-ayuda/lixbuds/">Ver guías</a>
+        </article>
+        <article class="product-card reveal" data-delay="0.15s">
+          <h3>Soporte Lixney</h3>
+          <p>Cuenta, gestión de tus datos locales y privacidad. Lixney guarda la información en tu dispositivo y puedes exportarla o importarla.</p>
+          <div class="module-chips">
+            <a class="chip" href="/es/centro-ayuda/mi-cuenta/">Mi cuenta</a>
+            <a class="chip" href="/es/centro-ayuda/suscripciones/">Suscripciones</a>
+            <a class="chip" href="/es/centro-ayuda/privacidad-datos/">Privacidad</a>
+          </div>
+          <a class="btn btn-primary" href="/es/centro-ayuda/lixney/">Gestionar</a>
+        </article>
+        <article class="product-card reveal" data-delay="0.2s">
+          <h3>Soporte Lixfly</h3>
+          <p>Configuración, EFB, planes de vuelo y rendimiento para Microsoft Flight Simulator.</p>
+          <div class="module-chips">
+            <a class="chip" href="/es/centro-ayuda/lixfly/#preflight">Preflight</a>
+            <a class="chip" href="/es/centro-ayuda/lixfly/#flight-plan">Flight Plan</a>
+            <a class="chip" href="/es/centro-ayuda/lixfly/#performance">Performance</a>
+            <a class="chip" href="/es/centro-ayuda/lixfly/#navegacion">Navegación</a>
+            <a class="chip" href="/es/centro-ayuda/lixfly/#eqrh">eQRH</a>
+            <a class="chip" href="/es/centro-ayuda/lixfly/#extras">Extras</a>
+          </div>
+          <a class="btn btn-primary" href="/es/centro-ayuda/lixfly/">Explorar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="populares">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Artículos populares</p>
+        <h2>Las dudas más frecuentes</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Los artículos que más se consultan, a un solo clic.</p>
+      <div class="popular-list">
+        <a class="popular-link reveal" data-delay="0.05s" href="/es/centro-ayuda/sincronizacion-bluetooth/">
+          <span>Cómo emparejar LixBuds</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.08s" href="/es/centro-ayuda/lixney/">
+          <span>Cómo hacer una copia de seguridad en Lixney</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.11s" href="/es/centro-ayuda/lixfly/">
+          <span>Cómo importar un plan de vuelo en Lixfly</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.14s" href="/es/centro-ayuda/actualizaciones-firmware/">
+          <span>Cómo actualizar el firmware de LixBuds</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.17s" href="/es/centro-ayuda/devoluciones/">
+          <span>Cómo tramitar una devolución o reembolso</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.2s" href="/es/centro-ayuda/mi-cuenta/">
+          <span>Cómo recuperar el acceso a tu cuenta</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="primeros-pasos">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Primeros pasos</p>
+        <h2>Empieza a usarlo en minutos</h2>
+      </div>
+      <div class="start-grid">
+        <div class="start-card reveal" data-delay="0.05s">
+          <h3>Empieza con Lixney</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <strong>1. Descarga e inicia</strong>
+              <p>Instala Lixney y empieza a registrar tus movimientos. Los datos se guardan en tu propio dispositivo.</p>
+            </div>
+            <div class="step-item">
+              <strong>2. Exporta tu copia</strong>
+              <p>Desde Ajustes puedes exportar tus datos a un archivo JSON para guardarlos donde quieras.</p>
+            </div>
+            <div class="step-item">
+              <strong>3. Importa cuando lo necesites</strong>
+              <p>Restaura o traslada tus datos importando el archivo JSON en la app.</p>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="/es/centro-ayuda/lixney/">Ver guía de Lixney</a>
+        </div>
+        <div class="start-card reveal" data-delay="0.1s">
+          <h3>Empieza con Lixfly</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <strong>1. Instala Lixfly</strong>
+              <p>Descarga la app y crea tu perfil de piloto.</p>
+            </div>
+            <div class="step-item">
+              <strong>2. Crea tu primer plan de vuelo</strong>
+              <p>Introduce origen, destino y altitud para preparar la ruta.</p>
+            </div>
+            <div class="step-item">
+              <strong>3. Consulta el EFB</strong>
+              <p>Revisa mapas, listas de verificación y documentación aeronáutica cuando los necesites.</p>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="/es/centro-ayuda/lixfly/">Ver guía de Lixfly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="compatibilidad">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Antes de instalar</p>
+        <h2>Requisitos y compatibilidad</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Comprueba que tu dispositivo es compatible antes de empezar.</p>
+      <div class="help-grid">
+        <div class="help-card reveal" data-delay="0.1s">
+          <h3>Lixfly</h3>
+          <p>Compatible con Microsoft Flight Simulator 2020 y Microsoft Flight Simulator 2024. Consulta los requisitos y las plataformas compatibles en su soporte.</p>
+          <a class="btn btn-secondary" href="/es/centro-ayuda/lixfly/">Ver compatibilidad</a>
+        </div>
+        <div class="help-card reveal" data-delay="0.15s">
+          <h3>Lixney</h3>
+          <p>Consulta en el soporte de Lixney los dispositivos y versiones compatibles antes de instalar la app.</p>
+          <a class="btn btn-secondary" href="/es/centro-ayuda/lixney/">Ver compatibilidad</a>
+        </div>
+        <div class="help-card reveal" data-delay="0.2s">
+          <h3>LixBuds One</h3>
+          <p>Se conectan por Bluetooth 6.0 y puedes emparejarlos con tu móvil, tablet u ordenador.</p>
+          <a class="btn btn-secondary" href="/es/centro-ayuda/lixbuds/">Ver compatibilidad</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="explora">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
         <p class="eyebrow">Accesos rápidos</p>
@@ -371,53 +826,36 @@
       </div>
       <p class="section-intro reveal" data-delay="0.05s">Elige el tema que mejor se ajuste a tu consulta y te guiaremos paso a paso.</p>
       <div class="help-grid">
-        <a class="help-card reveal" data-delay="0.1s" href="/es/centro-ayuda/lixbuds/">
-          <h3>Soporte LixBuds</h3>
-          <p>Emparejamiento, batería, sonido y limpieza.</p>
-          <span class="btn btn-primary">Ver guías</span>
-        </a>
-        <a class="help-card reveal" data-delay="0.15s" href="/es/centro-ayuda/lixney/">
-          <h3>Soporte Lixney</h3>
-          <p>Cuenta, sincronización y privacidad.</p>
-          <span class="btn btn-primary">Gestionar</span>
-        </a>
-        <a class="help-card reveal" data-delay="0.2s" href="/es/centro-ayuda/lixfly/">
-          <h3>Soporte Lixfly</h3>
-          <p>Configuración, planes de vuelo y EFB.</p>
-          <span class="btn btn-primary">Explorar</span>
-        </a>
-        <a class="help-card reveal" data-delay="0.25s" href="/es/centro-ayuda/faq/">
+        <a class="help-card reveal" data-delay="0.1s" href="/es/centro-ayuda/faq/">
           <h3>Preguntas frecuentes</h3>
           <p>Respuestas rápidas a dudas comunes.</p>
           <span class="btn btn-primary">Ir a FAQ</span>
         </a>
-        <a class="help-card reveal" data-delay="0.3s" href="/es/centro-ayuda/solucion-problemas/">
+        <a class="help-card reveal" data-delay="0.15s" href="/es/centro-ayuda/solucion-problemas/">
           <h3>Solución de problemas</h3>
           <p>Diagnósticos guiados en minutos.</p>
           <span class="btn btn-primary">Empezar</span>
         </a>
-        <a class="help-card reveal" data-delay="0.35s" href="/es/centro-ayuda/sincronizacion-bluetooth/">
+        <a class="help-card reveal" data-delay="0.2s" href="/es/centro-ayuda/sincronizacion-bluetooth/">
           <h3>Sincronización y Bluetooth</h3>
           <p>Emparejar, reconectar y resolver problemas de conexión.</p>
           <span class="btn btn-primary">Conectar</span>
         </a>
-        <a class="help-card reveal" data-delay="0.4s" href="/es/centro-ayuda/cuidado-limpieza/">
+        <a class="help-card reveal" data-delay="0.25s" href="/es/centro-ayuda/cuidado-limpieza/">
           <h3>Cuidado y limpieza</h3>
           <p>Mantenimiento y limpieza de LixBuds y estuches.</p>
           <span class="btn btn-primary">Ver guía</span>
         </a>
-        <a class="help-card reveal" data-delay="0.45s" href="/es/centro-ayuda/actualizaciones-firmware/">
+        <a class="help-card reveal" data-delay="0.3s" href="/es/centro-ayuda/actualizaciones-firmware/">
           <h3>Actualizaciones firmware</h3>
           <p>Cómo actualizar el firmware de LixBuds y apps.</p>
           <span class="btn btn-primary">Actualizar</span>
         </a>
       </div>
-      <div class="note-box reveal" data-delay="0.1s">
-        <strong>Estado del servicio:</strong> Todo operativo. Respuestas habituales en menos de 24 horas.
-      </div>
     </div>
   </section>
-  <section class="help-section">
+
+  <section class="help-section" id="cuenta">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
         <p class="eyebrow">Cuenta y compras</p>
@@ -457,7 +895,8 @@
       </div>
     </div>
   </section>
-  <section class="help-section">
+
+  <section class="help-section" id="confianza">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
         <p class="eyebrow">Confianza y legal</p>
@@ -484,12 +923,7 @@
           <p>Plazos, requisitos y seguimiento.</p>
           <span class="btn btn-primary">Cómo devolver</span>
         </a>
-        <a class="help-card reveal" data-delay="0.3s" href="/es/centro-ayuda/contacto/">
-          <h3>Contacto</h3>
-          <p>Escríbenos o solicita soporte personalizado.</p>
-          <span class="btn btn-primary">Contactar</span>
-        </a>
-        <a class="help-card reveal" data-delay="0.35s" href="/es/centro-ayuda/lixsafe/">
+        <a class="help-card reveal" data-delay="0.3s" href="/es/centro-ayuda/lixsafe/">
           <h3>Soporte LixSafe</h3>
           <p>Garantía extendida: cobertura, alta y reclamaciones.</p>
           <span class="btn btn-primary">Ver detalles</span>
@@ -497,7 +931,8 @@
       </div>
     </div>
   </section>
-  <section class="help-section">
+
+  <section class="help-section" id="mas-ayuda">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
         <p class="eyebrow">Soporte avanzado</p>
@@ -506,7 +941,7 @@
       <div class="help-grid">
         <a class="help-card reveal" data-delay="0.1s" href="/es/centro-ayuda/estado-sistema/">
           <h3>Estado del sistema</h3>
-          <p>Disponibilidad de servicios en tiempo real.</p>
+          <p>Información sobre el estado de los servicios Lixby.</p>
           <span class="btn btn-primary">Ver estado</span>
         </a>
         <a class="help-card reveal" data-delay="0.15s" href="/es/centro-ayuda/comunidad/">
@@ -519,6 +954,26 @@
           <p>Changelog de apps y firmware.</p>
           <span class="btn btn-primary">Ver novedades</span>
         </a>
+      </div>
+      <div class="note-box reveal" data-delay="0.15s">
+        <strong>Estado del servicio:</strong> consulta la información disponible en <a href="/es/centro-ayuda/estado-sistema/">la página de estado</a>.
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="contacto">
+    <div class="help-container">
+      <div class="contact-band reveal" data-delay="0s">
+        <div class="contact-band-main">
+          <p class="eyebrow">¿No encuentras tu duda?</p>
+          <h2>Contacta con soporte</h2>
+          <p>Escríbenos a <a href="mailto:info@lixby.es">info@lixby.es</a>. Respondemos habitualmente en menos de 24 horas (de lunes a viernes).</p>
+        </div>
+        <div class="contact-band-actions">
+          <a class="btn btn-primary" href="mailto:info@lixby.es?subject=Consulta%20de%20soporte%20-%20Lixby">Escribir un correo</a>
+          <a class="btn btn-secondary" href="mailto:info@lixby.es?subject=Reportar%20un%20problema%20-%20Lixby&amp;body=Cu%C3%A9ntanos%20qu%C3%A9%20ha%20pasado%3A%0A%0AProducto%20o%20app%3A%0AVersi%C3%B3n%3A%0APasos%20para%20reproducirlo%3A%0A">Reportar un problema</a>
+          <a class="btn btn-secondary" href="mailto:info@lixby.es?subject=Sugerir%20una%20mejora%20-%20Lixby&amp;body=Cu%C3%A9ntanos%20tu%20idea%20para%20mejorar%20Lixby%3A%0A%0A">Sugerir una mejora</a>
+        </div>
       </div>
     </div>
   </section>
@@ -539,8 +994,8 @@
         <ul>
           <li><a href="/es/support/">Página inicial soporte</a></li>
           <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
       </section>
 
@@ -557,9 +1012,9 @@
         <h3>Acerca de Lixby</h3>
         <ul>
           <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
+          <li><a href="/es/centro-ayuda/garantia/">Garantía</a></li>
           <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/es/centro-ayuda/contacto/">Contacto</a></li>
         </ul>
       </section>
     </div>
@@ -575,7 +1030,126 @@
       </div>
     </div>
   </footer>
+  <script src="/es/search-index.js" defer></script>
   <script src="../main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('helpSearchForm');
+      const input = document.getElementById('helpSearch');
+      const box = document.getElementById('helpSearchResults');
+      if (!form || !input || !box) return;
+
+      const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const escapeHtml = (value) => String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      const items = (window.LIXBY_SEARCH_INDEX || [])
+        .filter((page) => (page.url || '').startsWith('/es/centro-ayuda'))
+        .map((page) => ({
+          ...page,
+          nTitle: normalize(page.title),
+          nDesc: normalize(page.description),
+          nKeywords: normalize(page.keywords)
+        }));
+
+      const close = () => {
+        box.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+      };
+
+      const render = (raw) => {
+        const term = raw.trim();
+        box.innerHTML = '';
+        if (term.length < 2) {
+          close();
+          return;
+        }
+
+        const phrase = normalize(term);
+        const words = phrase.split(' ').filter(Boolean);
+        const scored = [];
+
+        items.forEach((page) => {
+          let score = 0;
+          let matched = 0;
+          words.forEach((word) => {
+            let points = 0;
+            if (page.nTitle.includes(word)) points += 30;
+            if (page.nKeywords.includes(word)) points += 14;
+            if (page.nDesc.includes(word)) points += 8;
+            if (points > 0) matched += 1;
+            score += points;
+          });
+          if (matched === 0) return;
+          if (page.nTitle.includes(phrase)) score += 40;
+          scored.push({ page, score: score + matched * 15 });
+        });
+
+        scored.sort((a, b) => b.score - a.score);
+
+        if (!scored.length) {
+          box.innerHTML = '<div class="help-search-empty">No encontramos artículos para esa búsqueda. Prueba con otra palabra o <a href="/es/centro-ayuda/contacto/">contacta con soporte</a>.</div>';
+          box.hidden = false;
+          input.setAttribute('aria-expanded', 'true');
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        scored.slice(0, 6).forEach(({ page }) => {
+          const link = document.createElement('a');
+          link.className = 'help-search-item';
+          link.href = page.url;
+          link.setAttribute('role', 'option');
+          const title = document.createElement('span');
+          title.className = 'help-search-item-title';
+          title.textContent = page.title || page.url;
+          link.appendChild(title);
+          if (page.description) {
+            const desc = document.createElement('span');
+            desc.className = 'help-search-item-desc';
+            desc.textContent = page.description;
+            link.appendChild(desc);
+          }
+          fragment.appendChild(link);
+        });
+
+        box.appendChild(fragment);
+        box.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+      };
+
+      input.addEventListener('input', () => render(input.value));
+      input.addEventListener('focus', () => {
+        if (input.value.trim().length >= 2) render(input.value);
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const first = box.querySelector('a.help-search-item');
+        if (first) {
+          window.location.href = first.getAttribute('href');
+          return;
+        }
+        window.location.href = '/es/centro-ayuda/faq/';
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!form.contains(event.target) && !box.contains(event.target)) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+    });
+  </script>
 </body>
 </html>
-

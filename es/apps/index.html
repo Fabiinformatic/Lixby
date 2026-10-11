@@ -8,7 +8,32 @@
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="canonical" href="https://lixby.es/es/apps/">
+  <link rel="canonical" href="https://lixby.es/es/apps">
+  <link rel="alternate" href="https://lixby.es/bg/apps" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/apps" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/apps" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/apps" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/apps" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/apps" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/apps" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/apps" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/apps" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/apps" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/apps" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/apps" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/apps" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/apps" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/apps" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/apps" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/apps" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/apps" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/apps" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/apps" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/apps" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/apps" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/apps" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/apps" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/apps" hreflang="x-default">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +48,21 @@
   <title>Apps | Lixby</title>
   <meta name="description" content="Conoce las apps de Lixby: Lixney para tus finanzas personales y Lixfly para tus vuelos en Microsoft Flight Simulator.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lixby.es/es/apps/">
+  <meta property="og:site_name" content="Lixby (España)">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://lixby.es/es/apps">
   <meta property="og:title" content="Apps | Lixby">
-  <meta property="og:description" content="Aplicaciones sencillas para organizar mejor tu vida y tus vuelos.">
-  <meta property="og:image" content="https://lixby.es/es/images/lixneyicon2.webp">
+  <meta property="og:description" content="Lixney para tus finanzas personales y Lixfly para tus vuelos en MSFS2020/2024. Dos apps sencillas para organizar mejor tu vida.">
+  <meta property="og:image" content="https://lixby.es/es/images/apps-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lixney y Lixfly, las apps de Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Apps | Lixby">
+  <meta name="twitter:description" content="Lixney para tus finanzas personales y Lixfly para tus vuelos en MSFS2020/2024. Dos apps sencillas para organizar mejor tu vida.">
+  <meta name="twitter:image" content="https://lixby.es/es/images/apps-og.png">
+  <meta name="twitter:image:alt" content="Lixney y Lixfly, las apps de Lixby">
   <style>
     .apps-hero {
       display: grid;
@@ -38,8 +74,22 @@
 
     .apps-hero h1 { max-width: 680px; font-size: clamp(2.5rem, 6vw, 5.2rem); line-height: 1.03; letter-spacing: -.06em; margin-bottom: 20px; }
     .apps-hero p:not(.eyebrow) { max-width: 620px; color: var(--muted); font-size: 1.1rem; }
-    .apps-hero-media { min-height: 360px; display: grid; place-items: center; border-radius: var(--radius-xl); background: linear-gradient(145deg, #061438, #16A7FF); box-shadow: var(--shadow-strong); overflow: hidden; }
-    .apps-hero-media img { width: min(78%, 330px); height: 330px; object-fit: contain; filter: drop-shadow(0 24px 28px rgba(0,0,0,.25)); }
+    .apps-hero .catalog-actions { margin-top: 34px; }
+    .apps-hero-media { min-height: 360px; display: grid; place-items: center; border-radius: var(--radius-xl); background: #f5f8ff; border: 1px solid rgba(15,61,255,.09); box-shadow: 0 24px 60px rgba(15,61,255,.14); overflow: hidden; }
+    .apps-hero-media img { grid-area: 1 / 1; width: min(78%, 330px); height: 330px; object-fit: contain; filter: drop-shadow(0 24px 28px rgba(9,26,74,.28)); }
+    .apps-hero-icon { opacity: 0; pointer-events: none; will-change: opacity, transform; animation: heroIconSwap 9s cubic-bezier(.45,0,.55,1) infinite; }
+    .apps-hero-icon.is-lixfly { animation-delay: -4.5s; }
+
+    @keyframes heroIconSwap {
+      0%, 38% { opacity: 1; transform: scale(1); }
+      50%, 88% { opacity: 0; transform: scale(.88); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .apps-hero-icon { animation: none; opacity: 0; transform: none; }
+      .apps-hero-icon:first-child { opacity: 1; }
+    }
 
     .apps-section { padding: 42px 0 92px; }
     .apps-section > h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -.04em; margin-bottom: 28px; }
@@ -54,40 +104,63 @@
     .app-card p { color: var(--muted); }
     .app-card ul { list-style: none; display: grid; gap: 8px; margin: 20px 0 24px; }
     .app-card li { color: var(--text); font-weight: 700; }
-    .app-card li::before { content: "✓"; color: var(--primary); margin-right: 8px; }
+    .app-card li::before { content: "\2022"; color: var(--primary); margin-right: 10px; }
     .app-card .catalog-actions { margin-top: auto; }
 
-    .app-note { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; padding: 34px; border-radius: var(--radius-xl); background: linear-gradient(120deg, #eef5ff, #fff); border: 1px solid var(--line); }
-    .app-note h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing: -.04em; }
-    .app-note p { color: var(--muted); margin-top: 10px; }
-    .app-note-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .app-note-points div { padding: 17px; border-radius: 16px; background: rgba(255,255,255,.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.4); font-weight: 700; box-shadow: 0 4px 16px rgba(15,61,255,.05); }
+    .values { padding: 42px 0 0; }
+    .values-intro { max-width: 760px; margin-bottom: 44px; }
+    .values-intro h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -.04em; margin: 6px 0 14px; }
+    .values-intro p:not(.eyebrow) { color: var(--muted); font-size: 1.05rem; }
+    .values-intro-note { margin-top: 10px; font-weight: 700; color: var(--text); }
+    .values-rail { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 34px 0 0; }
+    .values-rail li { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.5); box-shadow: 0 6px 18px rgba(15,61,255,.06); font-weight: 700; }
+    .values-rail span { display: grid; place-items: center; width: 34px; height: 34px; flex: none; border-radius: 50%; background: rgba(15,61,255,.1); color: var(--primary); font-size: .8rem; font-weight: 800; letter-spacing: .04em; }
+    .values-list { display: grid; }
+    .value-slide { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; border-top: 1px solid var(--line); overflow: hidden; }
+    .value-slide:nth-child(even) { background: linear-gradient(120deg, #eef5ff, #fff); }
+    .value-ghost { position: absolute; top: 50%; right: -1%; transform: translateY(-50%); font-size: clamp(150px, 30vw, 400px); font-weight: 800; letter-spacing: -.08em; line-height: .8; color: rgba(15,61,255,.07); pointer-events: none; user-select: none; }
+    .value-slide:nth-child(even) .value-ghost { right: auto; left: -1%; }
+    .value-slide-inner { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 52px; align-items: center; }
+    .value-slide:nth-child(even) .value-lead { order: 2; }
+    .value-index { display: inline-block; font-size: .8rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); }
+    .value-slide h3 { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.045em; margin: 14px 0 16px; }
+    .value-text { max-width: 520px; color: var(--muted); font-size: 1.08rem; }
+    .value-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .value-tags span { padding: 9px 15px; border-radius: 999px; background: rgba(15,61,255,.09); color: var(--primary); font-size: .85rem; font-weight: 700; }
+    .value-panel { padding: 30px; border-radius: var(--radius-xl); background: rgba(255,255,255,.74); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 16px 40px rgba(15,61,255,.09); }
+    .value-panel h4 { font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--primary); margin-bottom: 18px; }
+    .value-panel ul { list-style: none; display: grid; gap: 15px; }
+    .value-panel li { position: relative; padding-left: 26px; color: var(--muted); line-height: 1.5; }
+    .value-panel li::before { content: ""; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgba(15,61,255,.14); }
 
-    .apps-cta { margin: 0 auto 92px; padding: 42px; border-radius: var(--radius-xl); color: #fff; background: linear-gradient(120deg, #0F3DFF, #16A7FF); text-align: center; }
+    .apps-cta { margin: 92px auto; padding: 42px; border-radius: var(--radius-xl); color: #fff; background: linear-gradient(120deg, #0F3DFF, #16A7FF); text-align: center; }
     .apps-cta h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); letter-spacing: -.04em; margin-bottom: 10px; }
     .apps-cta p { max-width: 620px; margin: 0 auto 22px; color: rgba(255,255,255,.86); }
     .apps-cta .btn-secondary { border-color: transparent; }
+    .apps-cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
 
     @media (max-width: 780px) {
-      .apps-hero, .app-note { grid-template-columns: 1fr; }
-      .apps-hero { padding-top: 58px; }
+      .apps-hero { grid-template-columns: 1fr; padding-top: 58px; }
       .apps-hero-media { min-height: 300px; }
       .apps-hero-media img { height: 270px; }
       .apps-grid { grid-template-columns: 1fr; }
-      .app-note-points { grid-template-columns: 1fr 1fr; }
+      .values-rail { grid-template-columns: 1fr 1fr; }
+      .value-slide { min-height: 62vh; min-height: 62svh; }
+      .value-slide-inner { grid-template-columns: 1fr; gap: 34px; }
+      .value-slide:nth-child(even) .value-lead { order: 0; }
+      .value-ghost { font-size: clamp(120px, 40vw, 240px); }
     }
 
     @media (max-width: 520px) {
-      .app-note, .apps-cta { padding: 28px 20px; }
-      .app-note-points { grid-template-columns: 1fr; }
+      .apps-cta { padding: 28px 20px; }
+      .values-rail { grid-template-columns: 1fr; }
+      .value-slide { min-height: auto; padding: 56px 0; }
+      .value-panel { padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
-  <div id="scroll-progress"></div>
-  <div class="background-orb orb-1" aria-hidden="true"></div>
-  <div class="background-orb orb-2" aria-hidden="true"></div>
-  <div class="background-orb orb-4" aria-hidden="true"></div>
+<div id="scroll-progress"></div>
 
   <header class="nav" id="nav">
     <div class="container nav-container">
@@ -153,6 +226,7 @@
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -162,9 +236,8 @@
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
           <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Lixfly</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixsafe/">Lixsafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -214,18 +287,18 @@
     <section class="apps-hero container reveal" data-delay="0s">
       <div>
         <p class="eyebrow">Apps Lixby</p>
-        <h1>Herramientas digitales para vivir y volar mejor.</h1>
+        <h1>Herramientas digitales para tu día a día.</h1>
         <p>Aplicaciones claras, útiles y diseñadas para que tengas más control sobre lo que haces cada día.</p>
         <div class="catalog-actions"><a class="btn btn-primary" href="#apps-disponibles">Ver nuestras apps</a><a class="btn btn-secondary" href="/es/">Volver al inicio</a></div>
       </div>
-      <div class="apps-hero-media"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixney"></div>
+      <div class="apps-hero-media"><img class="apps-hero-icon" src="/es/images/lixneyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixney"><img class="apps-hero-icon is-lixfly" src="/es/images/lixflyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixfly"></div>
     </section>
 
     <section id="apps-disponibles" class="apps-section container" aria-labelledby="apps-title">
       <h2 id="apps-title">Encuentra la app para tu mundo</h2>
       <div class="apps-grid">
         <article class="app-card reveal" data-delay="0.05s">
-          <div class="app-card-media"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixney"></div>
+          <div class="app-card-media dark"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixney"></div>
           <span class="product-label">Finanzas personales</span>
           <h3>Lixney</h3>
           <p>Entiende mejor tu dinero, organiza tus gastos y crea hábitos de ahorro con una experiencia sencilla.</p>
@@ -238,19 +311,109 @@
           <h3>Lixfly</h3>
           <p>Tu EFB para Microsoft Flight Simulator: prepara el vuelo, consulta datos y mantén todo a mano.</p>
           <ul><li>Preflight y Flight Plan</li><li>Performance y navegación</li><li>eQRH y herramientas de vuelo</li></ul>
-          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/centro-ayuda/lixfly/">Centro de ayuda</a><a class="btn btn-primary" href="/es/beta-lixfly/">Solicitar acceso</a></div>
+          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/pages/apps/lixfly/">Conocer Lixfly</a><a class="btn btn-primary" href="/es/beta-lixfly/">Unirme a la beta</a></div>
         </article>
       </div>
     </section>
 
-    <section class="apps-section container" aria-labelledby="apps-values-title">
-      <div class="app-note reveal" data-delay="0s">
-        <div><p class="eyebrow">La filosofía Lixby</p><h2>Menos ruido. Más claridad.</h2><p>Construimos apps que hacen lo complejo más comprensible, con interfaces honestas y funciones que tienen un propósito.</p></div>
-        <div class="app-note-points"><div>Diseño intuitivo</div><div>Datos bajo tu control</div><div>Mejoras continuas</div><div>Soporte cercano</div></div>
+<section class="values" aria-labelledby="values-title">
+      <div class="container values-intro reveal">
+        <p class="eyebrow">La filosofía Lixby</p>
+        <h2 id="values-title">Menos ruido. Más claridad.</h2>
+        <p>Construimos apps que hacen lo complejo más comprensible, con interfaces honestas y funciones que tienen un propósito.</p>
+        <p class="values-intro-note">Cuatro principios que se repiten en cada pantalla de Lixney y Lixfly.</p>
+        <ol class="values-rail">
+          <li><span>01</span>Diseño intuitivo</li>
+          <li><span>02</span>Datos bajo tu control</li>
+          <li><span>03</span>Mejoras continuas</li>
+          <li><span>04</span>Soporte cercano</li>
+        </ol>
+      </div>
+      <div class="values-list">
+        <article class="value-slide reveal">
+          <span class="value-ghost" aria-hidden="true">01</span>
+          <div class="container value-slide-inner">
+            <div class="value-lead">
+              <span class="value-index">01 — Diseño</span>
+              <h3>Diseño intuitivo</h3>
+              <p class="value-text">Cada pantalla se lee de un vistazo: menos menús, menos capas y menos pasos entre tú y la información que buscas.</p>
+              <div class="value-tags"><span>Una acción por pantalla</span><span>Sin tutoriales</span><span>Legible a la primera</span></div>
+            </div>
+            <div class="value-panel">
+              <h4>En la práctica</h4>
+              <ul>
+                <li>Una sola acción principal en cada vista, siempre en el mismo sitio.</li>
+                <li>Sin wizards ni menús anidados: todo se llega en un par de toques.</li>
+                <li>Contrastes altos y tipografía grande, pensado también para el móvil en la mano.</li>
+                <li>Los estados vacíos explican qué hacer, no solo qué falta.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="value-slide reveal">
+          <span class="value-ghost" aria-hidden="true">02</span>
+          <div class="container value-slide-inner">
+            <div class="value-lead">
+              <span class="value-index">02 — Privacidad</span>
+              <h3>Datos bajo tu control</h3>
+              <p class="value-text">Tus gastos y tus vuelos son tuyos. Exportarlos, borrarlos o simplemente entender qué guardamos debe ser fácil.</p>
+              <div class="value-tags"><span>Sin anuncios</span><span>Exportación en un clic</span><span>Borrado real</span></div>
+            </div>
+            <div class="value-panel">
+              <h4>En la práctica</h4>
+              <ul>
+                <li>Puedes exportar tus datos cuando quieras y llevártelos a otro sitio.</li>
+                <li>Borrar la cuenta borra también la información guardada, no solo el acceso.</li>
+                <li>Sin perfiles publicitarios ni venta de datos a terceros.</li>
+                <li>Preferencias locales siempre que la app no necesite conexión.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="value-slide reveal">
+          <span class="value-ghost" aria-hidden="true">03</span>
+          <div class="container value-slide-inner">
+            <div class="value-lead">
+              <span class="value-index">03 — Evolución</span>
+              <h3>Mejoras continuas</h3>
+              <p class="value-text">Publicamos versiones con regularidad y contamos qué cambia. Lo que no aporta, se queda fuera.</p>
+              <div class="value-tags"><span>Notas de versión</span><span>Roadmap en beta</span><span>Correcciones rápidas</span></div>
+            </div>
+            <div class="value-panel">
+              <h4>En la práctica</h4>
+              <ul>
+                <li>Cada actualización viene con sus notas de versión, sin letra pequeña.</li>
+                <li>Lo que llega a la beta se decide con el feedback de quien la usa.</li>
+                <li>Un aviso claro cuando una mejora cambia algo de lo que ya usabas.</li>
+                <li>Si una función no aporta, se quita: menos opciones, menos ruido.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="value-slide reveal">
+          <span class="value-ghost" aria-hidden="true">04</span>
+          <div class="container value-slide-inner">
+            <div class="value-lead">
+              <span class="value-index">04 — Acompañamiento</span>
+              <h3>Soporte cercano</h3>
+              <p class="value-text">Responde una persona del equipo, sin tickets infinitos y sin respuestas copiadas. Personas antes que software.</p>
+              <div class="value-tags"><span>Personas reales</span><span>Sin bots</span><span>Beta con prioridad</span></div>
+            </div>
+            <div class="value-panel">
+              <h4>En la práctica</h4>
+              <ul>
+                <li>Escribes a una persona del equipo, no a un formulario que nadie lee.</li>
+                <li>Sin bots ni respuestas automáticas: si hay que contestar a mano, se contesta.</li>
+                <li>Los problemas de la beta se atienden primero.</li>
+                <li>Documentación en el mismo idioma que la app.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="apps-cta container reveal" data-delay="0s"><h2>¿Quieres probar lo próximo?</h2><p>Únete a las betas de Lixby y ayúdanos a construir herramientas cada vez más útiles.</p><a class="btn btn-secondary" href="/es/beta-lixney/">Participar en la beta</a></section>
+    <section class="apps-cta container reveal" data-delay="0s"><h2>¿Quieres probar lo próximo?</h2><p>Únete a las betas de Lixby y ayúdanos a construir herramientas cada vez más útiles.</p><div class="apps-cta-actions"><a class="btn btn-secondary" href="/es/beta-lixney/">Beta de Lixney</a><a class="btn btn-secondary" href="/es/beta-lixfly/">Beta de Lixfly</a></div></section>
   </main>
 
   <footer class="footer footer-mega">
@@ -271,7 +434,7 @@
           <li><a href="/es/support/">Página inicial soporte</a></li>
           <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
           <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:lixbyinfo@gmail.com">Email al CEO</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
       </section>
 
