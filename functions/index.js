@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const functions = require("firebase-functions");
 const { onRequest, onCall, HttpsError } = require("firebase-functions/v2/https");
+const { onDocumentWritten } = require("firebase-functions/v2/firestore");
 const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const crypto = require("crypto");
@@ -10,9 +11,15 @@ const sgMail = require("@sendgrid/mail");
 const { Resend } = require("resend");
 const sanitizeHtml = require("sanitize-html");
 
-if (admin.getApps().length === 0) {
+if (!admin.apps || admin.apps.length === 0) {
   admin.initializeApp();
 }
+
+// FieldValue vía subpath modular: el emulador de Firebase stubea el namespace
+// legacy de firebase-admin y eso hace que admin.firestore.FieldValue sea
+// undefined en los workers; el subpath "firebase-admin/firestore" no se
+// stubea y funciona igual en producción (v13+) y en v14.
+const { FieldValue } = require("firebase-admin/firestore");
 
 const stripe = new Stripe("TU_STRIPE_SECRET_KEY");
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
@@ -66,11 +73,11 @@ exports.ensureAccountNumber = onCall({
 
       transaction.set(accountNumberRef, {
         uid,
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        createdAt: FieldValue.serverTimestamp(),
       });
       transaction.set(userRef, {
         accountNumber,
-        accountNumberCreatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        accountNumberCreatedAt: FieldValue.serverTimestamp(),
       }, { merge: true });
 
       return { accountNumber };
@@ -239,7 +246,7 @@ exports.sendLixbyEmail = onCall(
       templateId,
       to,
       subject,
-      sentAt: admin.firestore.FieldValue.serverTimestamp(),
+      sentAt: FieldValue.serverTimestamp(),
       variables
     });
 
@@ -344,7 +351,7 @@ exports.sendNewsletter = onCall(
       segment,
       sent,
       total: recipients.length,
-      sentAt: admin.firestore.FieldValue.serverTimestamp()
+      sentAt: FieldValue.serverTimestamp()
     });
 
     return { success: true, sent, total: recipients.length, mode: "live" };
@@ -393,7 +400,7 @@ exports.sendEmailToUser = onCall(
       templateId,
       to,
       subject,
-      sentAt: admin.firestore.FieldValue.serverTimestamp(),
+      sentAt: FieldValue.serverTimestamp(),
       variables,
       source: "manual"
     });
@@ -461,5 +468,560 @@ exports.adminSearchUser = onCall(
       console.error("adminSearchUser error:", error);
       throw new HttpsError("internal", "Error al buscar usuario: " + error.message);
     }
+  }
+);
+
+// =====================================================================
+// Comunidad Lixby (/es/comunidad)
+// Callables + triggers del foro. Región europe-west1.
+// El uid siempre procede de request.auth (token verificado), nunca del cliente.
+// Ver docs/comunidad/modelo-de-datos.md y firestore.rules.
+// =====================================================================
+
+const COMMUNITY_REGION = "europe-west1";
+const COMMUNITY_CORS = ["https://lixby.es", "https://www.lixby.es"];
+const COMMUNITY_CALL_OPTIONS = {
+  region: COMMUNITY_REGION,
+  cors: COMMUNITY_CORS,
+  invoker: "public",
+};
+const COMMUNITY_TAGS = ["pregunta", "idea", "bug", "showcase"];
+const COMMUNITY_REASONS = ["spam", "abuse", "illegal", "off-topic", "other"];
+const COMMUNITY_ROLES = ["owner", "mod", "admin"];
+const POST_TITLE_MIN = 3;
+const POST_TITLE_MAX = 140;
+const POST_BODY_MAX = 10000;
+const COMMENT_BODY_MAX = 4000;
+const COMMENT_MAX_DEPTH = 5;
+const COMMUNITY_RATE_LIMITS = {
+  post: { max: 5, windowMs: 15 * 60 * 1000 },
+  comment: { max: 20, windowMs: 15 * 60 * 1000 },
+  report: { max: 10, windowMs: 60 * 60 * 1000 },
+  profile: { max: 10, windowMs: 60 * 60 * 1000 },
+};
+
+function requireCommunityAuth(request) {
+  const uid = request.auth?.uid;
+  if (!uid) throw new HttpsError("unauthenticated", "Inicia sesión para continuar.");
+  return uid;
+}
+
+function requireCommunityRole(request, roles = COMMUNITY_ROLES) {
+  const uid = requireCommunityAuth(request);
+  if (!roles.includes(request.auth?.token?.role)) {
+    throw new HttpsError("permission-denied", "No tienes permisos para esta acción.");
+  }
+  return uid;
+}
+
+function cleanCommunityText(value, maxLen) {
+  if (typeof value !== "string") return "";
+  const clean = sanitizeHtml(value, {
+    allowedTags: [],
+    allowedAttributes: {},
+    decodeEntities: true,
+  }).trim();
+  return clean.length > maxLen ? clean.slice(0, maxLen) : clean;
+}
+
+async function enforceCommunityRateLimit(uid, action) {
+  const config = COMMUNITY_RATE_LIMITS[action];
+  if (!config) return;
+  const db = admin.firestore();
+  const ref = db.collection("rateLimits").doc(`${uid}_${action}`);
+  const now = Date.now();
+  await db.runTransaction(async (transaction) => {
+    const doc = await transaction.get(ref);
+    const data = doc.exists ? doc.data() : null;
+    if (!data || now - (data.windowStart || 0) > config.windowMs) {
+      transaction.set(ref, {
+        uid,
+        action,
+        count: 1,
+        windowStart: now,
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+    if ((data.count || 0) >= config.max) {
+      throw new HttpsError("resource-exhausted", "Has hecho demasiadas acciones seguidas. Inténtalo más tarde.");
+    }
+    transaction.update(ref, {
+      count: (data.count || 0) + 1,
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+  });
+}
+
+async function resolveCommunityDisplayName(uid) {
+  const db = admin.firestore();
+  const profile = await db.collection("profiles").doc(uid).get();
+  if (profile.exists && profile.data().displayName) return profile.data().displayName;
+
+  const user = await db.collection("users").doc(uid).get();
+  const data = user.exists ? user.data() : {};
+  const nested = data.profile || {};
+  return data.displayName || nested.displayName || data.firstName || nested.firstName || "Usuario";
+}
+
+function communityProfileCounterPayload(uid, field, delta, displayName) {
+  const payload = {
+    uid,
+    [field]: FieldValue.increment(delta),
+    updatedAt: FieldValue.serverTimestamp(),
+  };
+  if (displayName) payload.displayName = displayName;
+  return payload;
+}
+
+exports.communityCreatePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const spaceId = typeof request.data?.spaceId === "string" ? request.data.spaceId : "";
+  const title = cleanCommunityText(request.data?.title, POST_TITLE_MAX);
+  const body = cleanCommunityText(request.data?.body, POST_BODY_MAX);
+  const tags = Array.isArray(request.data?.tags)
+    ? request.data.tags.filter((tag) => COMMUNITY_TAGS.includes(tag)).slice(0, COMMUNITY_TAGS.length)
+    : [];
+
+  if (!spaceId) throw new HttpsError("invalid-argument", "Falta el espacio.");
+  if (title.length < POST_TITLE_MIN) throw new HttpsError("invalid-argument", "El título es demasiado corto.");
+  if (!body) throw new HttpsError("invalid-argument", "El contenido no puede estar vacío.");
+
+  const space = await db.collection("spaces").doc(spaceId).get();
+  if (!space.exists) throw new HttpsError("not-found", "El espacio indicado no existe.");
+
+  await enforceCommunityRateLimit(uid, "post");
+
+  const displayName = await resolveCommunityDisplayName(uid);
+  const postRef = db.collection("posts").doc();
+  await postRef.set({
+    spaceId,
+    authorUid: uid,
+    authorName: displayName,
+    title,
+    body,
+    tags,
+    status: "published",
+    score: 0,
+    upvotes: 0,
+    downvotes: 0,
+    commentCount: 0,
+    createdAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+    lastActivityAt: FieldValue.serverTimestamp(),
+    editedAt: null,
+  });
+
+  return { id: postRef.id };
+});
+
+exports.communityEditPost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const postId = request.data?.postId;
+  if (!postId) throw new HttpsError("invalid-argument", "Falta el identificador del hilo.");
+
+  const postRef = db.collection("posts").doc(postId);
+  const snap = await postRef.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El hilo no existe.");
+  if (snap.data().authorUid !== uid) throw new HttpsError("permission-denied", "No eres el autor de este hilo.");
+  if (snap.data().status !== "published") throw new HttpsError("failed-precondition", "Este hilo ya no se puede editar.");
+
+  const title = cleanCommunityText(request.data?.title, POST_TITLE_MAX);
+  const body = cleanCommunityText(request.data?.body, POST_BODY_MAX);
+  if (title.length < POST_TITLE_MIN) throw new HttpsError("invalid-argument", "El título es demasiado corto.");
+  if (!body) throw new HttpsError("invalid-argument", "El contenido no puede estar vacío.");
+
+  await postRef.update({
+    title,
+    body,
+    editedAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+  });
+  return { success: true };
+});
+
+exports.communityRemovePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const postId = request.data?.postId;
+  if (!postId) throw new HttpsError("invalid-argument", "Falta el identificador del hilo.");
+
+  const postRef = db.collection("posts").doc(postId);
+  const snap = await postRef.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El hilo no existe.");
+
+  const isAuthor = snap.data().authorUid === uid;
+  const isModerator = COMMUNITY_ROLES.includes(request.auth?.token?.role);
+  if (!isAuthor && !isModerator) throw new HttpsError("permission-denied", "No puedes borrar este hilo.");
+
+  await postRef.update({ status: "removed", updatedAt: FieldValue.serverTimestamp() });
+  return { success: true };
+});
+
+exports.communityCreateComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const postId = request.data?.postId;
+  const body = cleanCommunityText(request.data?.body, COMMENT_BODY_MAX);
+  const rawParentId = request.data?.parentCommentId;
+  if (!postId) throw new HttpsError("invalid-argument", "Falta el identificador del hilo.");
+  if (!body) throw new HttpsError("invalid-argument", "El comentario no puede estar vacío.");
+
+  const postRef = db.collection("posts").doc(postId);
+  const postSnap = await postRef.get();
+  if (!postSnap.exists || postSnap.data().status === "removed") {
+    throw new HttpsError("not-found", "El hilo no existe.");
+  }
+  if (postSnap.data().status === "locked") {
+    throw new HttpsError("failed-precondition", "Este hilo está cerrado.");
+  }
+
+  let parentCommentId = null;
+  let depth = 0;
+  let path = [];
+  if (rawParentId) {
+    const parentSnap = await postRef.collection("comments").doc(rawParentId).get();
+    if (!parentSnap.exists || parentSnap.data().status !== "published") {
+      throw new HttpsError("not-found", "El comentario al que respondes no existe.");
+    }
+    parentCommentId = rawParentId;
+    depth = Math.min((parentSnap.data().depth || 0) + 1, COMMENT_MAX_DEPTH);
+    path = [...(parentSnap.data().path || []), rawParentId];
+  }
+
+  await enforceCommunityRateLimit(uid, "comment");
+
+  const displayName = await resolveCommunityDisplayName(uid);
+  const commentRef = postRef.collection("comments").doc();
+  await commentRef.set({
+    postId,
+    parentCommentId,
+    depth,
+    path,
+    authorUid: uid,
+    authorName: displayName,
+    body,
+    status: "published",
+    score: 0,
+    upvotes: 0,
+    downvotes: 0,
+    createdAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+    editedAt: null,
+  });
+
+  return { id: commentRef.id };
+});
+
+exports.communityEditComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const postId = request.data?.postId;
+  const commentId = request.data?.commentId;
+  const body = cleanCommunityText(request.data?.body, COMMENT_BODY_MAX);
+  if (!postId || !commentId) throw new HttpsError("invalid-argument", "Faltan identificadores.");
+  if (!body) throw new HttpsError("invalid-argument", "El comentario no puede estar vacío.");
+
+  const ref = db.collection("posts").doc(postId).collection("comments").doc(commentId);
+  const snap = await ref.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El comentario no existe.");
+  if (snap.data().authorUid !== uid) throw new HttpsError("permission-denied", "No eres el autor de este comentario.");
+  if (snap.data().status !== "published") throw new HttpsError("failed-precondition", "Este comentario ya no se puede editar.");
+
+  await ref.update({
+    body,
+    editedAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+  });
+  return { success: true };
+});
+
+exports.communityRemoveComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const postId = request.data?.postId;
+  const commentId = request.data?.commentId;
+  if (!postId || !commentId) throw new HttpsError("invalid-argument", "Faltan identificadores.");
+
+  const ref = db.collection("posts").doc(postId).collection("comments").doc(commentId);
+  const snap = await ref.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El comentario no existe.");
+
+  const isAuthor = snap.data().authorUid === uid;
+  const isModerator = COMMUNITY_ROLES.includes(request.auth?.token?.role);
+  if (!isAuthor && !isModerator) throw new HttpsError("permission-denied", "No puedes borrar este comentario.");
+
+  await ref.update({ status: "removed", updatedAt: FieldValue.serverTimestamp() });
+  return { success: true };
+});
+
+exports.communityReport = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const targetType = request.data?.targetType;
+  const targetId = request.data?.targetId;
+  const postId = request.data?.postId;
+  const reason = request.data?.reason;
+  const note = cleanCommunityText(request.data?.note, 500);
+
+  if (!["post", "comment"].includes(targetType)) throw new HttpsError("invalid-argument", "Tipo de contenido no válido.");
+  if (!targetId) throw new HttpsError("invalid-argument", "Falta el contenido a reportar.");
+  if (!COMMUNITY_REASONS.includes(reason)) throw new HttpsError("invalid-argument", "Motivo no válido.");
+
+  let targetRef;
+  if (targetType === "post") {
+    targetRef = db.collection("posts").doc(targetId);
+  } else {
+    if (!postId) throw new HttpsError("invalid-argument", "Falta el hilo del comentario.");
+    targetRef = db.collection("posts").doc(postId).collection("comments").doc(targetId);
+  }
+
+  const targetSnap = await targetRef.get();
+  if (!targetSnap.exists) throw new HttpsError("not-found", "El contenido reportado no existe.");
+
+  await enforceCommunityRateLimit(uid, "report");
+
+  const reportRef = db.collection("reports").doc();
+  await reportRef.set({
+    targetType,
+    targetPath: targetRef.path,
+    targetId,
+    targetAuthorUid: targetSnap.data().authorUid || null,
+    reporterUid: uid,
+    reason,
+    note,
+    status: "open",
+    createdAt: FieldValue.serverTimestamp(),
+    resolvedAt: null,
+    resolvedBy: null,
+  });
+
+  return { id: reportRef.id };
+});
+
+exports.communityModerate = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityRole(request);
+  const db = admin.firestore();
+
+  const targetType = request.data?.targetType;
+  const targetId = request.data?.targetId;
+  const postId = request.data?.postId;
+  const action = request.data?.action;
+  const reason = typeof request.data?.reason === "string" ? cleanCommunityText(request.data.reason, 300) : null;
+
+  const allowed = { post: ["remove", "restore", "lock", "unlock"], comment: ["remove", "restore"] };
+  if (!allowed[targetType] || !allowed[targetType].includes(action)) {
+    throw new HttpsError("invalid-argument", "Acción de moderación no válida.");
+  }
+
+  let ref;
+  if (targetType === "post") {
+    ref = db.collection("posts").doc(targetId);
+  } else {
+    if (!postId) throw new HttpsError("invalid-argument", "Falta el hilo del comentario.");
+    ref = db.collection("posts").doc(postId).collection("comments").doc(targetId);
+  }
+
+  const snap = await ref.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El contenido no existe.");
+
+  const status = action === "remove" ? "removed" : action === "lock" ? "locked" : "published";
+
+  const batch = db.batch();
+  batch.update(ref, { status, updatedAt: FieldValue.serverTimestamp() });
+  batch.set(db.collection("moderationLog").doc(), {
+    modUid: uid,
+    action,
+    targetType,
+    targetId,
+    targetPath: ref.path,
+    reason,
+    createdAt: FieldValue.serverTimestamp(),
+  });
+  await batch.commit();
+
+  return { success: true, status };
+});
+
+exports.communityResolveReport = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityRole(request);
+  const db = admin.firestore();
+
+  const reportId = request.data?.reportId;
+  const status = request.data?.status;
+  if (!reportId) throw new HttpsError("invalid-argument", "Falta el identificador del reporte.");
+  if (!["resolved", "dismissed"].includes(status)) throw new HttpsError("invalid-argument", "Estado no válido.");
+
+  const ref = db.collection("reports").doc(reportId);
+  const snap = await ref.get();
+  if (!snap.exists) throw new HttpsError("not-found", "El reporte no existe.");
+
+  await ref.update({
+    status,
+    resolvedAt: FieldValue.serverTimestamp(),
+    resolvedBy: uid,
+  });
+  return { success: true };
+});
+
+exports.communitySaveProfile = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
+  const uid = requireCommunityAuth(request);
+  const db = admin.firestore();
+
+  const displayName = cleanCommunityText(request.data?.displayName, 40);
+  const bio = cleanCommunityText(request.data?.bio, 280);
+  const avatarUrl = typeof request.data?.avatarUrl === "string" ? request.data.avatarUrl.trim().slice(0, 500) : "";
+
+  if (displayName && displayName.length < 2) throw new HttpsError("invalid-argument", "El nombre es demasiado corto.");
+
+  await enforceCommunityRateLimit(uid, "profile");
+
+  const ref = db.collection("profiles").doc(uid);
+  const snap = await ref.get();
+  const payload = { uid, updatedAt: FieldValue.serverTimestamp() };
+  if (displayName) payload.displayName = displayName;
+  payload.bio = bio;
+  payload.avatarUrl = avatarUrl;
+  if (!snap.exists) payload.createdAt = FieldValue.serverTimestamp();
+
+  await ref.set(payload, { merge: true });
+  return { success: true };
+});
+
+// --- Triggers: contadores server-only ---
+
+exports.onPostWritten = onDocumentWritten(
+  { document: "posts/{postId}", region: COMMUNITY_REGION },
+  async (event) => {
+    const before = event.data?.before?.exists ? event.data.before.data() : null;
+    const after = event.data?.after?.exists ? event.data.after.data() : null;
+
+    const delta = (after?.status === "published" ? 1 : 0) - (before?.status === "published" ? 1 : 0);
+    if (delta === 0) return;
+
+    const spaceId = after?.spaceId || before?.spaceId;
+    const authorUid = after?.authorUid || before?.authorUid;
+    const authorName = after?.authorName || before?.authorName;
+    if (!spaceId && !authorUid) return;
+
+    const db = admin.firestore();
+    const batch = db.batch();
+    if (spaceId) {
+      batch.set(db.collection("spaces").doc(spaceId), { postCount: FieldValue.increment(delta) }, { merge: true });
+    }
+    if (authorUid) {
+      const profileRef = db.collection("profiles").doc(authorUid);
+      const profileSnap = await profileRef.get();
+      const payload = communityProfileCounterPayload(authorUid, "postCount", delta, authorName);
+      if (delta > 0 && !profileSnap.exists) payload.createdAt = FieldValue.serverTimestamp();
+      batch.set(profileRef, payload, { merge: true });
+    }
+    await batch.commit();
+  }
+);
+
+exports.onCommentWritten = onDocumentWritten(
+  { document: "posts/{postId}/comments/{commentId}", region: COMMUNITY_REGION },
+  async (event) => {
+    const before = event.data?.before?.exists ? event.data.before.data() : null;
+    const after = event.data?.after?.exists ? event.data.after.data() : null;
+
+    const delta = (after?.status === "published" ? 1 : 0) - (before?.status === "published" ? 1 : 0);
+    if (delta === 0) return;
+
+    const postId = event.params.postId;
+    const authorUid = after?.authorUid || before?.authorUid;
+    const authorName = after?.authorName || before?.authorName;
+
+    const db = admin.firestore();
+    const batch = db.batch();
+    const postRef = db.collection("posts").doc(postId);
+    const postUpdate = { commentCount: FieldValue.increment(delta) };
+    if (delta > 0) postUpdate.lastActivityAt = FieldValue.serverTimestamp();
+    batch.set(postRef, postUpdate, { merge: true });
+
+    if (authorUid) {
+      const profileRef = db.collection("profiles").doc(authorUid);
+      const profileSnap = await profileRef.get();
+      const payload = communityProfileCounterPayload(authorUid, "commentCount", delta, authorName);
+      if (delta > 0 && !profileSnap.exists) payload.createdAt = FieldValue.serverTimestamp();
+      batch.set(profileRef, payload, { merge: true });
+    }
+    await batch.commit();
+  }
+);
+
+exports.onPostVoteWritten = onDocumentWritten(
+  { document: "posts/{postId}/votes/{voteUid}", region: COMMUNITY_REGION },
+  async (event) => {
+    const before = event.data?.before?.exists ? event.data.before.data() : null;
+    const after = event.data?.after?.exists ? event.data.after.data() : null;
+    const beforeValue = before?.value || 0;
+    const afterValue = after?.value || 0;
+    const delta = afterValue - beforeValue;
+    if (delta === 0) return;
+
+    const db = admin.firestore();
+    const postRef = db.collection("posts").doc(event.params.postId);
+    const postSnap = await postRef.get();
+    if (!postSnap.exists) return;
+
+    const upDelta = (afterValue === 1 ? 1 : 0) - (beforeValue === 1 ? 1 : 0);
+    const downDelta = (afterValue === -1 ? 1 : 0) - (beforeValue === -1 ? 1 : 0);
+    const authorUid = postSnap.data().authorUid;
+
+    const batch = db.batch();
+    batch.set(postRef, {
+      upvotes: FieldValue.increment(upDelta),
+      downvotes: FieldValue.increment(downDelta),
+      score: FieldValue.increment(delta),
+    }, { merge: true });
+    if (authorUid) {
+      batch.set(db.collection("profiles").doc(authorUid), { karma: FieldValue.increment(delta) }, { merge: true });
+    }
+    await batch.commit();
+  }
+);
+
+exports.onCommentVoteWritten = onDocumentWritten(
+  { document: "posts/{postId}/comments/{commentId}/votes/{voteUid}", region: COMMUNITY_REGION },
+  async (event) => {
+    const before = event.data?.before?.exists ? event.data.before.data() : null;
+    const after = event.data?.after?.exists ? event.data.after.data() : null;
+    const beforeValue = before?.value || 0;
+    const afterValue = after?.value || 0;
+    const delta = afterValue - beforeValue;
+    if (delta === 0) return;
+
+    const db = admin.firestore();
+    const commentRef = db
+      .collection("posts").doc(event.params.postId)
+      .collection("comments").doc(event.params.commentId);
+    const commentSnap = await commentRef.get();
+    if (!commentSnap.exists) return;
+
+    const upDelta = (afterValue === 1 ? 1 : 0) - (beforeValue === 1 ? 1 : 0);
+    const downDelta = (afterValue === -1 ? 1 : 0) - (beforeValue === -1 ? 1 : 0);
+    const authorUid = commentSnap.data().authorUid;
+
+    const batch = db.batch();
+    batch.set(commentRef, {
+      upvotes: FieldValue.increment(upDelta),
+      downvotes: FieldValue.increment(downDelta),
+      score: FieldValue.increment(delta),
+    }, { merge: true });
+    if (authorUid) {
+      batch.set(db.collection("profiles").doc(authorUid), { karma: FieldValue.increment(delta) }, { merge: true });
+    }
+    await batch.commit();
   }
 );

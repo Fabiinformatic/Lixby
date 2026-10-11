@@ -14,6 +14,34 @@ service cloud.firestore {
       return ["accountNumber", "accountNumberCreatedAt"];
     }
 
+    // ==== Comunidad Lixby: helpers ====
+    function hasRole(roles) {
+      return signedIn() && request.auth.token.get('role', '') in roles;
+    }
+
+    function isMod() {
+      return hasRole(['owner', 'mod', 'admin']);
+    }
+
+    function validVote() {
+      return request.resource.data.keys().hasOnly(['value', 'createdAt'])
+        && request.resource.data.value in [1, -1]
+        && request.resource.data.createdAt == request.time;
+    }
+
+    function validReport() {
+      return signedIn()
+        && request.resource.data.keys().hasOnly([
+          'targetType', 'targetPath', 'targetId', 'targetAuthorUid',
+          'reporterUid', 'reason', 'note', 'status', 'createdAt'
+        ])
+        && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.targetType in ['post', 'comment']
+        && request.resource.data.reason in ['spam', 'abuse', 'illegal', 'off-topic', 'other']
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt == request.time;
+    }
+
     match /users/{uid} {
       allow read, delete: if isOwner(uid);
       allow create: if isOwner(uid)
@@ -29,6 +57,60 @@ service cloud.firestore {
     match /accountNumbers/{accountNumber} {
       allow read: if signedIn() && resource.data.uid == request.auth.uid;
       allow write: if false;
+    }
+
+    // =====================================================================
+    // Comunidad Lixby (/es/comunidad) — BORRADOR v1 (aún NO desplegado)
+    //
+    // Lectura directa desde el cliente. La escritura de contenido sensible
+    // (hilos, comentarios, moderación) se hace vía Cloud Functions con el
+    // Admin SDK, que ignora estas reglas. Los votos SÍ se escriben desde el
+    // cliente (id de documento = uid) y los contadores los mantienen los
+    // triggers de Cloud Functions (campos server-only).
+    // =====================================================================
+
+    // Espacios / subforos: LixBuds, Lixney, Lixfly, General, Ideas, Soporte.
+    match /spaces/{spaceId} {
+      allow read: if true;      // catálogo público (SEO)
+      allow write: if isMod();  // sólo moderación / seed
+    }
+
+    // Hilos (posts)
+    match /posts/{postId} {
+      allow read: if resource.data.status == 'published' || isMod();
+      allow create, update, delete: if false;  // vía Cloud Functions
+    }
+
+    // Comentarios anidados (subcolección de cada hilo)
+    match /posts/{postId}/comments/{commentId} {
+      allow read: if true;   // el cliente comprueba que el hilo sea público
+      allow write: if false; // vía Cloud Functions
+    }
+
+    // Votos de hilo. El id del documento es el uid => un voto por usuario.
+    match /posts/{postId}/votes/{voteUid} {
+      allow read: if isOwner(voteUid);
+      allow create, update: if isOwner(voteUid) && validVote();
+      allow delete: if isOwner(voteUid);
+    }
+
+    // Votos de comentario. Mismo esquema.
+    match /posts/{postId}/comments/{commentId}/votes/{voteUid} {
+      allow read: if isOwner(voteUid);
+      allow create, update: if isOwner(voteUid) && validVote();
+      allow delete: if isOwner(voteUid);
+    }
+
+    // Perfil público (proyección). Separado de users/{uid}, que es privado.
+    match /profiles/{profileUid} {
+      allow read: if true;
+      allow write: if false;  // contadores y datos: sólo servidor
+    }
+
+    // Reportes de contenido (para el panel de moderación)
+    match /reports/{reportId} {
+      allow create: if validReport();
+      allow read, update, delete: if isMod();
     }
 
     match /{document=**} {
