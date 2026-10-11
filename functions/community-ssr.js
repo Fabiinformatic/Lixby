@@ -26,6 +26,24 @@ const esc = (s) =>
     "'": "&#39;",
   }[c]));
 
+// CSP de las paginas SSR. Se emite desde la funcion porque Firebase Hosting NO
+// aplica los headers de firebase.json a las respuestas de rewrites hacia Cloud
+// Functions (verificado en el emulador). Cubre el HTML servido + el cliente de
+// sesion (/es/js/comunidad-client.js) y el SDK de Firebase desde gstatic.
+// Sin 'unsafe-inline': los navegadores no aplican la CSP a un bloque
+// <script type="application/ld+json"> (son datos, no JS); comprobado en Edge
+// con la consola limpia y el JSON-LD intacto en el DOM.
+const COMMUNITY_CSP = [
+  "default-src 'self'",
+  "script-src 'self' https://www.gstatic.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
+  "img-src 'self' data:",
+  "connect-src 'self' https://firestore.googleapis.com wss://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://europe-west1-lixby0.cloudfunctions.net",
+  "object-src 'none'",
+  "base-uri 'self'",
+].join("; ");
+
 function layout({ title, description, canonical, robots, jsonLd, body }) {
   return `<!doctype html>
 <html lang="es">
@@ -43,7 +61,9 @@ function layout({ title, description, canonical, robots, jsonLd, body }) {
   <link rel="stylesheet" href="/es/style.css">
 </head>
 <body>
+  <header class="container"><div id="lx-session"></div></header>
   <main class="container">${body}</main>
+  <script type="module" src="/es/js/comunidad-client.js" defer></script>
 </body>
 </html>`;
 }
@@ -334,6 +354,7 @@ exports.communitySSR = onRequest(
         .status(200)
         .set("Content-Type", "text/html; charset=utf-8")
         .set("Cache-Control", "public, max-age=60, s-maxage=300")
+        .set("Content-Security-Policy", COMMUNITY_CSP)
         .send(html);
     } catch (err) {
       console.error("communitySSR error", err);
