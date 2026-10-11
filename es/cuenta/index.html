@@ -993,6 +993,12 @@
       measurementId: "G-689VDV93C2"
     };
 
+    // 5a: destino tras el login con lista blanca (solo /es/comunidad/**).
+    function nextUrl(fallback = "/es/cuenta/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
+
     const PROFILE_KEY = "lixbyProfile";
     const PAYMENTS_KEY = "lixbyPayments";
     const BILLING_KEY = "lixbyBilling";
@@ -1893,6 +1899,12 @@
       if (!activeUser) {
         hideLoadingScreen();
         window.location.href = "/es/iniciar-sesion/";
+        return;
+      }
+
+      const next = nextUrl();
+      if (next !== "/es/cuenta/") {
+        window.location.href = next;
         return;
       }
 

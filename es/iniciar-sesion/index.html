@@ -967,6 +967,12 @@
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
 
+    // 5a: destino tras el login con lista blanca (solo /es/comunidad/**).
+    function nextUrl(fallback = "/es/cuenta/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
+
      const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
       authDomain: "lixby0.firebaseapp.com",
@@ -1195,7 +1201,7 @@
         } catch (error) {
           console.warn("No se pudo transferir la sesión a la app:", error);
         } finally {
-          window.location.href = "/es/cuenta/";
+          window.location.href = nextUrl();
         }
       }
 
@@ -1279,7 +1285,7 @@
           } catch (error) {
             console.warn("No se pudo transferir la sesión a la app:", error);
           } finally {
-            window.location.href = "/es/cuenta/";
+            window.location.href = nextUrl();
           }
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
@@ -1347,7 +1353,7 @@
           } catch (error) {
             console.warn("No se pudo transferir la sesión a la app:", error);
           } finally {
-            window.location.href = "/es/cuenta/";
+            window.location.href = nextUrl();
           }
         } catch (error) {
           setStatus(`Código inválido: ${error.message}`, "error");
@@ -1432,7 +1438,7 @@
           } catch (error) {
             console.warn("No se pudo transferir la sesión a la app:", error);
           } finally {
-            window.location.href = "/es/cuenta/";
+            window.location.href = nextUrl();
           }
         } catch (error) {
           setStatus(`Error al registrar: ${error.message}`, "error");
@@ -1603,7 +1609,7 @@
           userPanel.classList.add("show");
           userEmail.textContent = `Conectado como ${user.email}`;
           if (!googleRedirectHandled && sessionStorage.getItem("lixby_google_redirect") !== "1") {
-            window.location.href = "/es/cuenta/";
+            window.location.href = nextUrl();
           }
         } else {
           userPanel.classList.remove("show");

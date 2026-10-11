@@ -64,6 +64,15 @@
                                                   "value": "public, max-age=31536000, immutable"
                                               }
                                           ]
+                                      },
+                                      {
+                                          "source": "/es/js/comunidad-client.js",
+                                          "headers": [
+                                              {
+                                                  "key": "Cache-Control",
+                                                  "value": "public, max-age=300"
+                                              }
+                                          ]
                                       }
                                   ],
                     "predeploy":  [
