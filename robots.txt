@@ -3,3 +3,4 @@ Allow: /
 Disallow: /create-checkout-session
 
 Sitemap: https://lixby.es/sitemap.xml
+Sitemap: https://lixby.es/es/comunidad/sitemap.xml

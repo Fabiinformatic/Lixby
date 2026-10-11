@@ -260,12 +260,49 @@ async function renderThread(slug, postId) {
   });
 }
 
+async function renderSitemap() {
+  const [spaces, posts] = await Promise.all([
+    db.collection("spaces").get(),
+    db
+      .collection("posts")
+      .where("status", "==", "published")
+      .orderBy("lastActivityAt", "desc")
+      .limit(5000)
+      .get(),
+  ]);
+
+  const url = (loc, lastmod) =>
+    `<url><loc>https://lixby.es${esc(loc)}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ""}</url>`;
+
+  const entries = [
+    url("/es/comunidad/"),
+    ...spaces.docs.map((d) => url(`/es/comunidad/${d.id}/`)),
+    ...posts.docs.map((d) => {
+      const p = d.data();
+      return url(`/es/comunidad/${p.spaceId}/${d.id}/`, iso(p.lastActivityAt));
+    }),
+  ].join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries}</urlset>`;
+}
+
 exports.communitySSR = onRequest(
   { region: "europe-west1", memory: "256MiB", timeoutSeconds: 15 },
   async (req, res) => {
     try {
       const path = req.path.replace(/\/+$/, "") || "/";
       let html;
+
+      if (path === "/es/comunidad/sitemap.xml") {
+        const xml = await renderSitemap();
+        res
+          .status(200)
+          .set("Content-Type", "application/xml; charset=utf-8")
+          .set("Cache-Control", "public, max-age=600, s-maxage=3600")
+          .send(xml);
+        return;
+      }
 
       if (path === "/es/comunidad") {
         html = await renderHome();
