@@ -79,9 +79,11 @@
       min-height: 100vh;
     }
 
+    /* Los círculos de fondo se quedan quietos: no deben moverse al hacer scroll */
     .background-orb {
-      will-change: transform;
-      transform: translateZ(0);
+      animation: none !important;
+      will-change: auto;
+      transform: none;
     }
 
     /* ── Loading screen ──────────────────────────── */
@@ -186,6 +188,7 @@
       display: grid;
       gap: 8px;
       margin-top: 10px;
+      justify-items: start;
     }
 
     .account-section + .account-section {
@@ -251,18 +254,37 @@
 
     .check-list {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
     .check-row {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
       font-weight: 600;
+      cursor: pointer;
     }
 
     .check-row input {
       width: auto;
+      flex: none;
+      margin-top: 3px;
+      pointer-events: auto;
+    }
+
+    .check-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .check-text strong {
+      font-weight: 700;
+    }
+
+    .check-text span {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--muted);
     }
 
     .action-list {
@@ -281,48 +303,51 @@
       background: #f8fafc;
     }
 
-    .action-item .btn {
+    /* Todos los botones de la cuenta comparten alto, grosor y tipografía */
+    .account-page .btn {
       min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
       text-align: center;
       font-size: 0.95rem;
       font-weight: 700;
-      height: 40px;
-      padding: 0 18px;
+      line-height: 1;
       border-radius: 999px;
     }
 
-    /* Make side actions match the size and border style of other action buttons */
-    .side-actions .btn:not(.btn-primary),
-    .side-actions a.btn:not(.btn-primary) {
-      min-width: 160px;
-      height: 40px;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #f8fafc;
+    .account-page .btn-primary,
+    .account-page .btn-solid {
+      border: 1px solid transparent;
+      color: #fff;
+    }
+
+    .account-page .btn-secondary,
+    .account-page .btn-outline {
+      background: #fff;
       color: #111827;
-      box-shadow: none;
-      position: static;
+      border: 1px solid var(--line);
     }
 
-    .side-actions .btn.btn-primary {
-      min-width: 160px;
-      height: 40px;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 999px;
-      position: relative;
-      overflow: hidden;
+    .account-page .btn-secondary:hover,
+    .account-page .btn-outline:hover {
+      background: #f1f5f9;
+      color: #111827;
+    }
+
+    .account-page .btn-danger {
+      background: #dc2626;
+      border: 1px solid #dc2626;
+      color: #fff;
+    }
+
+    .account-page .btn-danger:hover,
+    .account-page .btn-danger:active {
+      background: #b91c1c;
+      border-color: #b91c1c;
+      color: #fff;
     }
 
     .btn-verified {
@@ -351,6 +376,11 @@
       gap: 8px;
       flex-wrap: wrap;
       margin-top: 4px;
+    }
+
+    /* Separación extra del botón respecto a los campos (p. ej. CVV) */
+    .payment-panel .order-actions {
+      margin-top: 16px;
     }
 
     .payment-panel {
@@ -382,7 +412,8 @@
       font-weight: 700;
     }
 
-    .payment-field input {
+    .payment-field input,
+    .payment-field select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -709,7 +740,7 @@
             </div>
             <div class="field">
               <label for="region">País / Región</label>
-              <input id="region" type="text">
+              <select id="region"></select>
             </div>
             <div class="field">
               <label for="birthDate">Fecha de nacimiento</label>
@@ -717,7 +748,32 @@
             </div>
             <div class="field">
               <label for="language">Idioma</label>
-              <input id="language" type="text">
+              <select id="language">
+                <option value="bg-BG">Български</option>
+                <option value="cs-CZ">Čeština</option>
+                <option value="da-DK">Dansk</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="el-GR">Ελληνικά</option>
+                <option value="en-US">English</option>
+                <option value="es-ES">Español</option>
+                <option value="et-EE">Eesti</option>
+                <option value="fi-FI">Suomi</option>
+                <option value="fr-FR">Français</option>
+                <option value="ga-IE">Gaeilge</option>
+                <option value="hr-HR">Hrvatski</option>
+                <option value="hu-HU">Magyar</option>
+                <option value="it-IT">Italiano</option>
+                <option value="lt-LT">Lietuvių</option>
+                <option value="lv-LV">Latviešu</option>
+                <option value="mt-MT">Malti</option>
+                <option value="nl-NL">Nederlands</option>
+                <option value="pl-PL">Polski</option>
+                <option value="pt-PT">Português</option>
+                <option value="ro-RO">Română</option>
+                <option value="sk-SK">Slovenčina</option>
+                <option value="sl-SI">Slovenščina</option>
+                <option value="sv-SE">Svenska</option>
+              </select>
             </div>
             <div class="field">
               <label for="timezone">Zona horaria</label>
@@ -754,7 +810,7 @@
             </div>
             <div class="field">
               <label for="countryContact">País</label>
-              <input id="countryContact" type="text">
+              <select id="countryContact"></select>
             </div>
             <div class="field full">
               <label for="address">Dirección</label>
@@ -774,11 +830,20 @@
         <section class="account-section">
           <h2>Preferencias</h2>
           <div class="check-list">
-            <label class="check-row"><input id="prefAds" type="checkbox"> Recibir anuncios y marketing</label>
-            <label class="check-row"><input id="prefNews" type="checkbox"> Noticias y novedades</label>
-            <label class="check-row"><input id="prefUpdates" type="checkbox"> Actualizaciones de software</label>
-            <label class="check-row"><input id="prefOffers" type="checkbox"> Ofertas especiales</label>
-            <label class="check-row"><input id="prefSupport" type="checkbox"> Emails de soporte</label>
+            <label class="check-row">
+              <input id="prefAds" type="checkbox">
+              <span class="check-text">
+                <strong>Anuncios</strong>
+                <span>Recibe correos de Lixby sobre anuncios, marketing y recomendaciones de productos.</span>
+              </span>
+            </label>
+            <label class="check-row">
+              <input id="prefOffers" type="checkbox">
+              <span class="check-text">
+                <strong>Apps, música y mucho más</strong>
+                <span>Recibe correos sobre nuevos lanzamientos, contenido exclusivo y ofertas especiales.</span>
+              </span>
+            </label>
           </div>
         </section>
 
@@ -869,7 +934,7 @@
               </div>
               <div class="payment-field">
                 <label for="billCountry">País</label>
-                <input id="billCountry" type="text" placeholder="España">
+                <select id="billCountry"></select>
               </div>
               <div class="payment-field full">
                 <label for="billAddress">Dirección</label>
@@ -885,7 +950,7 @@
               </div>
             </div>
             <div class="order-actions">
-              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Guardar dirección de facturación</button>
+              <button id="saveBillingBtn" class="btn btn-primary" type="button">Guardar dirección de facturación</button>
             </div>
             <div id="billingSummary" class="billing-summary"></div>
           </div>
@@ -894,10 +959,10 @@
         <section class="account-section">
           <h2>Soporte</h2>
           <div class="action-list">
-            <div class="action-item"><span>Contactar soporte</span><a class="btn btn-primary" href="/es/support/">Abrir</a></div>
-            <div class="action-item"><span>Reportar problema</span><a class="btn btn-secondary" href="/es/support/">Reportar</a></div>
-            <div class="action-item"><span>Manual de usuario</span><a class="btn btn-secondary" href="/es/support/">Ver</a></div>
-            <div class="action-item"><span>Garantía del producto</span><a class="btn btn-secondary" href="/es/support/">Consultar</a></div>
+            <div class="action-item"><span>Contactar soporte</span><a class="btn btn-primary" href="/es/centro-ayuda/contacto/">Abrir</a></div>
+            <div class="action-item"><span>Reportar problema</span><a class="btn btn-secondary" href="/es/centro-ayuda/solucion-problemas/">Reportar</a></div>
+            <div class="action-item"><span>Manual de usuario</span><a class="btn btn-secondary" href="/es/centro-ayuda/">Ver</a></div>
+            <div class="action-item"><span>Garantía del producto</span><a class="btn btn-secondary" href="/es/centro-ayuda/garantia/">Consultar</a></div>
           </div>
         </section>
 
@@ -913,7 +978,7 @@
           <h2>Cuenta</h2>
           <div class="action-list">
             <div class="action-item"><span>Cerrar sesión</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Cerrar</button></div>
-            <div class="action-item"><span>Eliminar cuenta</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Eliminar</button></div>
+            <div class="action-item"><span>Eliminar cuenta</span><button id="deleteAccountBtn" class="btn btn-secondary btn-danger" type="button">Eliminar</button></div>
           </div>
         </section>
       </section>
@@ -1052,11 +1117,118 @@
       postalCode: document.getElementById("postalCode"),
       countryContact: document.getElementById("countryContact"),
       prefAds: document.getElementById("prefAds"),
-      prefNews: document.getElementById("prefNews"),
-      prefUpdates: document.getElementById("prefUpdates"),
-      prefOffers: document.getElementById("prefOffers"),
-      prefSupport: document.getElementById("prefSupport")
+      prefOffers: document.getElementById("prefOffers")
     };
+
+    // Idiomas disponibles en Lixby (los mismos que el selector de idioma del sitio)
+    const LANGUAGES = [
+      { value: "bg-BG", label: "Български" },
+      { value: "cs-CZ", label: "Čeština" },
+      { value: "da-DK", label: "Dansk" },
+      { value: "de-DE", label: "Deutsch" },
+      { value: "el-GR", label: "Ελληνικά" },
+      { value: "en-US", label: "English" },
+      { value: "es-ES", label: "Español" },
+      { value: "et-EE", label: "Eesti" },
+      { value: "fi-FI", label: "Suomi" },
+      { value: "fr-FR", label: "Français" },
+      { value: "ga-IE", label: "Gaeilge" },
+      { value: "hr-HR", label: "Hrvatski" },
+      { value: "hu-HU", label: "Magyar" },
+      { value: "it-IT", label: "Italiano" },
+      { value: "lt-LT", label: "Lietuvių" },
+      { value: "lv-LV", label: "Latviešu" },
+      { value: "mt-MT", label: "Malti" },
+      { value: "nl-NL", label: "Nederlands" },
+      { value: "pl-PL", label: "Polski" },
+      { value: "pt-PT", label: "Português" },
+      { value: "ro-RO", label: "Română" },
+      { value: "sk-SK", label: "Slovenčina" },
+      { value: "sl-SI", label: "Slovenščina" },
+      { value: "sv-SE", label: "Svenska" }
+    ];
+
+    // País / Región (nombres en español, España primero)
+    const COUNTRIES = [
+      "España", "Alemania", "Andorra", "Argentina", "Australia", "Austria", "Bélgica",
+      "Bolivia", "Brasil", "Bulgaria", "Canadá", "Chile", "China", "Chipre", "Colombia",
+      "Corea del Sur", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Ecuador", "Egipto",
+      "El Salvador", "Emiratos Árabes Unidos", "Eslovaquia", "Eslovenia", "Estados Unidos",
+      "Estonia", "Filipinas", "Finlandia", "Francia", "Grecia", "Guatemala", "Honduras",
+      "Hong Kong", "Hungría", "India", "Indonesia", "Irlanda", "Islandia", "Israel",
+      "Italia", "Japón", "Letonia", "Lituania", "Luxemburgo", "Malasia", "Malta", "Marruecos",
+      "México", "Mónaco", "Nicaragua", "Noruega", "Nueva Zelanda", "Países Bajos", "Panamá",
+      "Paraguay", "Perú", "Polonia", "Portugal", "Puerto Rico", "Reino Unido", "República Checa",
+      "República Dominicana", "Rumanía", "Singapur", "Sudáfrica", "Suecia", "Suiza", "Tailandia",
+      "Turquía", "Ucrania", "Uruguay", "Venezuela", "Vietnam", "Otro"
+    ];
+
+    // Rellena un <select> con opciones (sin duplicar)
+    function fillSelect(select, values, options = {}) {
+      if (!select) return;
+      const withPlaceholder = options.placeholder !== false;
+      const previous = select.value;
+      const desired = values.map((item) =>
+        typeof item === "string" ? { value: item, label: item } : item
+      );
+      const expectedLength = desired.length + (withPlaceholder ? 1 : 0);
+      const current = Array.from(select.options).map((option) => option.value);
+      const sameShape = current.length === expectedLength &&
+        current[withPlaceholder ? 1 : 0] === desired[0]?.value &&
+        current[current.length - 1] === desired[desired.length - 1]?.value;
+      if (sameShape) {
+        select.value = previous;
+        return;
+      }
+      select.textContent = "";
+      if (withPlaceholder) {
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "";
+        select.appendChild(placeholder);
+      }
+      desired.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.value;
+        option.textContent = item.label;
+        select.appendChild(option);
+      });
+      select.value = previous;
+    }
+
+    // Asigna un valor a un <select> aunque no exista la opción exacta
+    function setSelectValue(select, value) {
+      if (!select) return;
+      const wanted = String(value ?? "").trim();
+      if (!wanted) {
+        select.value = "";
+        return;
+      }
+      const options = Array.from(select.options);
+      const exact = options.find((option) => option.value === wanted);
+      if (exact) {
+        select.value = exact.value;
+        return;
+      }
+      const lower = wanted.toLowerCase();
+      const ci = options.find((option) => option.value.toLowerCase() === lower) ||
+        options.find((option) => option.value.toLowerCase().startsWith(lower)) ||
+        options.find((option) => option.textContent.trim().toLowerCase() === lower);
+      if (ci) {
+        select.value = ci.value;
+        return;
+      }
+      const option = document.createElement("option");
+      option.value = wanted;
+      option.textContent = wanted;
+      select.appendChild(option);
+      select.value = wanted;
+    }
+
+    fillSelect(inputs.region, COUNTRIES);
+    fillSelect(inputs.countryContact, COUNTRIES);
+    fillSelect(billingInputs.country, COUNTRIES);
+    fillSelect(inputs.language, LANGUAGES, { placeholder: false });
 
     let editMode = false;
     let dirty = false;
@@ -1238,6 +1410,9 @@
       const value = String(url || "").trim();
       if (!value) return fallback;
 
+      // Avatares guardados como data URL (evita depender de Cloud Storage)
+      if (/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(value)) return value;
+
       try {
         const parsed = new URL(value, window.location.href);
         if (parsed.protocol === "http:" || parsed.protocol === "https:") {
@@ -1297,7 +1472,7 @@
     async function fillBilling() {
       const billing = await readBilling();
       billingInputs.name.value = billing.name || "";
-      billingInputs.country.value = billing.country || "";
+      setSelectValue(billingInputs.country, billing.country || "");
       billingInputs.address.value = billing.address || "";
       billingInputs.city.value = billing.city || "";
       billingInputs.postalCode.value = billing.postalCode || "";
@@ -1357,11 +1532,8 @@
     function setReadonlyMode() {
       profileForm.classList.add("readonly");
       Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = true;
-        } else {
-          el.readOnly = true;
-        }
+        if (el.type === "checkbox") return; // las preferencias siempre se pueden marcar
+        el.readOnly = true;
       });
       editBtn.textContent = "Editar datos";
       editMode = false;
@@ -1371,11 +1543,8 @@
     function setEditMode() {
       profileForm.classList.remove("readonly");
       Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = false;
-        } else {
-          el.readOnly = false;
-        }
+        if (el.type === "checkbox") return;
+        el.readOnly = false;
       });
       editBtn.textContent = "Guardar perfil";
       editMode = true;
@@ -1393,9 +1562,9 @@
     function fillProfile(user, profile) {
       inputs.firstName.value = profile.firstName || "";
       inputs.lastName.value = profile.lastName || "";
-      inputs.region.value = profile.country || "España";
+      setSelectValue(inputs.region, profile.country || "España");
       inputs.birthDate.value = mapBirth(profile);
-      inputs.language.value = profile.language || navigator.language || "es-ES";
+      setSelectValue(inputs.language, profile.language || navigator.language || "es-ES");
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
       document.getElementById("photoPreview").src = sanitizeImageUrl(inputs.photoUrl.value || user.photoURL);
@@ -1404,12 +1573,9 @@
       inputs.address.value = profile.address || "";
       inputs.city.value = profile.city || "";
       inputs.postalCode.value = profile.postalCode || "";
-      inputs.countryContact.value = profile.countryContact || profile.country || "España";
+      setSelectValue(inputs.countryContact, profile.countryContact || profile.country || "España");
       inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
-      inputs.prefNews.checked = Boolean(profile.prefNews);
-      inputs.prefUpdates.checked = Boolean(profile.prefUpdates);
       inputs.prefOffers.checked = Boolean(profile.prefOffers);
-      inputs.prefSupport.checked = Boolean(profile.prefSupport);
 
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "Tu cuenta Lixby";
@@ -1433,10 +1599,7 @@
         postalCode: inputs.postalCode.value.trim(),
         countryContact: inputs.countryContact.value.trim(),
         prefAds: inputs.prefAds.checked,
-        prefNews: inputs.prefNews.checked,
-        prefUpdates: inputs.prefUpdates.checked,
         prefOffers: inputs.prefOffers.checked,
-        prefSupport: inputs.prefSupport.checked,
         adsOptIn: inputs.prefAds.checked
       };
     }
@@ -1458,6 +1621,24 @@
     Object.values(inputs).forEach((el) => {
       const evt = el.type === "checkbox" ? "change" : "input";
       el.addEventListener(evt, setDirty);
+    });
+
+    // Las preferencias se guardan al momento (siempre se pueden marcar)
+    ["prefAds", "prefOffers"].forEach((key) => {
+      const el = inputs[key];
+      if (!el) return;
+      el.addEventListener("change", async () => {
+        try {
+          const profile = await readProfile();
+          profile[key] = el.checked;
+          if (key === "prefAds") profile.adsOptIn = el.checked;
+          await writeProfile(profile);
+          showStatus("Preferencias guardadas.", "success");
+        } catch (error) {
+          el.checked = !el.checked;
+          showStatus("No se pudieron guardar las preferencias.", "error");
+        }
+      });
     });
 
     paymentInputs.cardNumber.addEventListener("input", () => {
@@ -1797,6 +1978,37 @@
       document.getElementById("photoFile").click();
     });
 
+    // Comprime la imagen en el navegador y la devuelve como data URL.
+    // Así la foto de perfil no depende de Cloud Storage (que ahora devuelve error de cuota).
+    function fileToCompressedDataUrl(file, maxSize = 320, quality = 0.82) {
+      return new Promise((resolve, reject) => {
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+        image.onload = () => {
+          try {
+            const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+            const width = Math.max(1, Math.round(image.width * scale));
+            const height = Math.max(1, Math.round(image.height * scale));
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          } catch (error) {
+            reject(error);
+          } finally {
+            URL.revokeObjectURL(objectUrl);
+          }
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error("No se pudo leer la imagen"));
+        };
+        image.src = objectUrl;
+      });
+    }
+
     document.getElementById("photoFile").addEventListener("change", async (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -1806,30 +2018,34 @@
       const user = auth.currentUser;
       if (!user) return;
 
-      // Validar tamaño máx 2MB
-      if (file.size > 2 * 1024 * 1024) {
+      if (!file.type.startsWith("image/")) {
         msg.style.color = "#ef4444";
-        msg.textContent = "La imagen no puede superar 2MB";
+        msg.textContent = "Selecciona un archivo de imagen";
+        return;
+      }
+
+      // Validar tamaño máx 5MB (luego se comprime)
+      if (file.size > 5 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "La imagen no puede superar 5MB";
         return;
       }
 
       btn.disabled = true;
       msg.style.color = "var(--muted)";
-      msg.textContent = "Subiendo...";
+      msg.textContent = "Procesando...";
 
       try {
-        const storageRef = ref(storage, `avatars/${user.uid}`);
-        await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(storageRef);
+        const dataUrl = await fileToCompressedDataUrl(file);
 
         // Actualizar preview y campo oculto
-        document.getElementById("photoPreview").src = sanitizeImageUrl(url);
-        document.getElementById("photoUrl").value = url;
-        profilePhoto.src = sanitizeImageUrl(url);
+        document.getElementById("photoPreview").src = sanitizeImageUrl(dataUrl);
+        document.getElementById("photoUrl").value = dataUrl;
+        profilePhoto.src = sanitizeImageUrl(dataUrl);
 
         // Guardar en perfil
         const profile = await readProfile();
-        profile.photoUrl = url;
+        profile.photoUrl = dataUrl;
         await writeProfile(profile);
 
         msg.style.color = "#458500";
@@ -1837,10 +2053,11 @@
         showStatus("Foto de perfil actualizada.", "success");
       } catch (err) {
         msg.style.color = "#ef4444";
-        msg.textContent = "Error al subir la foto";
+        msg.textContent = "Error al procesar la foto";
         console.error(err);
       } finally {
         btn.disabled = false;
+        e.target.value = "";
       }
     });
 
