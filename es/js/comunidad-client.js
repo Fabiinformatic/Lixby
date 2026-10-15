@@ -11,9 +11,9 @@
 //   permitiría rastrear a quien ve el hilo; img-src ya lo bloquearía).
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut, connectAuthEmulator, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-import { getFunctions, httpsCallable, connectFunctionsEmulator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
+import { getAuth, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
 
 // Config pública (igual que es/cuenta/index.html).
 const firebaseConfig = {
@@ -26,34 +26,53 @@ const firebaseConfig = {
   measurementId: "G-689VDV93C2"
 };
 
-// ¿Estamos en local (emuladores)? Inerte en producción: lixby.es no es ni
-// 127.0.0.1 ni localhost.
-const IS_EMU = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const functions = getFunctions(app, "europe-west1"); // los callables de comunidad
-
-// Solo en local: apunta Auth/Firestore/Functions a 127.0.0.1.
-if (IS_EMU) {
-  connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
-  connectFirestoreEmulator(db, "127.0.0.1", 8080);
-  connectFunctionsEmulator(functions, "127.0.0.1", 5001);
-}
 
 const saveProfile = httpsCallable(functions, "communitySaveProfile");
 const createPost = httpsCallable(functions, "communityCreatePost");
 const createComment = httpsCallable(functions, "communityCreateComment");
 const trackView = httpsCallable(functions, "communityTrackView");
 
-const nfmt = new Intl.NumberFormat("es-ES", { notation: "compact" });
+// ── Config del SSR (idioma, rutas y textos) ────────────────────────────────
+// El SSR la deja en data-lx-config de <main>. Si faltara, se cae al idioma del
+// documento y a rutas por defecto (la página sigue funcionando, sin traducción).
+const MAIN = document.querySelector(".community-main");
+const CFG = (() => {
+  try {
+    const raw = MAIN && MAIN.dataset ? MAIN.dataset.lxConfig : "";
+    if (raw) return JSON.parse(raw);
+  } catch (err) {
+    console.error("lx-config: no se pudo leer", err);
+  }
+  const lang = document.documentElement.lang || "en";
+  return {
+    lang,
+    base: `/${lang}/comunidad/`,
+    login: `/${lang}/login/`,
+    verified: `/${lang}/verified/`,
+    t: {},
+  };
+})();
+const LANG = CFG.lang;
+const TR = CFG.t || {};
+function tr(key, vars) {
+  let s = TR[key] != null ? TR[key] : key;
+  if (vars) {
+    s = String(s).replace(/\{(\w+)\}/g, (m, k) => (vars[k] != null ? String(vars[k]) : m));
+  }
+  return String(s);
+}
+
+const nfmt = new Intl.NumberFormat(LANG === "pt" ? "pt-PT" : LANG, { notation: "compact" });
 
 const TAGS = [
-  ["pregunta", "Pregunta"],
-  ["idea", "Idea"],
-  ["bug", "Bug"],
-  ["showcase", "Showcase"],
+  ["pregunta", tr("tag_pregunta")],
+  ["idea", tr("tag_idea")],
+  ["bug", tr("tag_bug")],
+  ["showcase", tr("tag_showcase")],
 ];
 const ID_RE = /^[A-Za-z0-9]{1,40}$/;
 const SLUG_RE = /^[a-z0-9-]{1,40}$/;
@@ -68,27 +87,27 @@ const root = document.getElementById("lx-session");
 // Mensajes de error por código de los callables (el servidor responde en
 // español; aquí solo traducimos los códigos que el SDK prefija con "functions/").
 const ERR_TEXT = {
-  "functions/resource-exhausted": "Has hecho demasiadas acciones seguidas. Inténtalo más tarde.",
-  "functions/unauthenticated": "Inicia sesión para continuar.",
-  "functions/permission-denied": "No tienes permisos para esta acción.",
-  "functions/not-found": "El contenido ya no está disponible.",
-  "functions/failed-precondition": "Esta acción no está disponible ahora mismo.",
-  "functions/invalid-argument": "Revisa los datos e inténtalo de nuevo.",
-  "functions/unavailable": "El servicio no está disponible. Inténtalo más tarde.",
+  "functions/resource-exhausted": tr("err_resource_exhausted"),
+  "functions/unauthenticated": tr("err_unauthenticated"),
+  "functions/permission-denied": tr("err_permission_denied"),
+  "functions/not-found": tr("err_not_found"),
+  "functions/failed-precondition": tr("err_failed_precondition"),
+  "functions/invalid-argument": tr("err_invalid_argument"),
+  "functions/unavailable": tr("err_unavailable"),
 };
 
 function errText(error, fallback) {
-  // El servidor ya responde en español. Para invalid-argument preferimos su
-  // mensaje concreto (p. ej. el aviso del filtro de moderación) al genérico.
+  // El servidor responde siempre en español. En la versión española preferimos
+  // su mensaje concreto (p. ej. el aviso del filtro de moderación o el de correo
+  // sin verificar) al genérico; en otros idiomas el servidor aún no traduce, así
+  // que se usa el mensaje genérico traducido para no mezclar idiomas.
   const serverMessage =
     typeof error?.message === "string"
       ? error.message.replace(/^FirebaseError:\s*/, "").trim()
       : "";
-  // invalid-argument (filtro de moderación) y failed-precondition (correo sin
-  // verificar, hilo cerrado…) traen mensajes concretos y ya en español: se
-  // prefieren al genérico de ERR_TEXT para que el aviso sea claro.
-  if (error?.code === "functions/invalid-argument" && serverMessage) return serverMessage;
-  if (error?.code === "functions/failed-precondition" && serverMessage) return serverMessage;
+  const preferServer = LANG === "es";
+  if (preferServer && error?.code === "functions/invalid-argument" && serverMessage) return serverMessage;
+  if (preferServer && error?.code === "functions/failed-precondition" && serverMessage) return serverMessage;
   if (error?.code && ERR_TEXT[error.code]) return ERR_TEXT[error.code];
   return serverMessage || fallback;
 }
@@ -127,17 +146,23 @@ function svgIcon(d) {
 
 function loginUrl() {
   const next = location.pathname + location.search;
-  return `/es/iniciar-sesion/?next=${encodeURIComponent(next)}`;
+  const u = new URL(CFG.login, location.origin);
+  u.searchParams.set("next", next);
+  return u.pathname + u.search;
+}
+
+// Construye un enlace dentro de la comunidad respetando el idioma del SSR.
+function communityUrl(rest = "") {
+  return `${CFG.base}${rest}`;
 }
 
 // ---- Correo verificado ----------------------------------------------------
 // Las callables que escriben (perfil, hilo, comentario, reporte) exigen correo
 // verificado. Sin él la sesión "está" pero no puede participar: el nav y el
 // compositor muestran un aviso con un botón para reenviar el enlace.
-const VERIFY_TEXT =
-  "Verifica tu correo para participar. Te enviamos un enlace al registrarte.";
+const VERIFY_TEXT = tr("verify_text");
 const emailActionSettings = {
-  url: `${location.origin}/es/verificado/`,
+  url: `${location.origin}${CFG.verified}`,
   handleCodeInApp: false,
 };
 
@@ -146,16 +171,16 @@ function isVerified(user) {
 }
 
 function buildVerifyResend(user) {
-  const btn = el("button", { type: "button", className: "btn btn-primary", textContent: "Reenviar correo" });
+  const btn = el("button", { type: "button", className: "btn btn-primary", textContent: tr("resend") });
   const msg = el("small", { className: "lx-verify-msg", role: "status" });
   btn.addEventListener("click", async () => {
     btn.disabled = true;
     msg.textContent = "";
     try {
       await sendEmailVerification(user, emailActionSettings);
-      msg.textContent = "Correo enviado. Revisa tu bandeja (y la carpeta de spam).";
+      msg.textContent = tr("resend_sent");
     } catch (e) {
-      msg.textContent = e?.code || "No se pudo enviar el correo.";
+      msg.textContent = e?.code || tr("resend_error");
     }
     btn.disabled = false;
   });
@@ -223,19 +248,19 @@ function syncComposer() {
 // Sin sesión: el compositor invita a iniciar sesión (la lectura es pública).
 function buildLoginPrompt() {
   return el("p", { className: "composer-login" },
-    "¿Quieres abrir un hilo? ",
-    el("a", { href: loginUrl(), textContent: "Inicia sesión" })
+    tr("open_thread"),
+    el("a", { href: loginUrl(), textContent: tr("login_link") })
   );
 }
 
 function buildComposer(slug) {
   const title = el("input", {
     type: "text", id: "lx-title", minLength: 3, maxLength: 140, required: true,
-    placeholder: "Título del hilo",
+    placeholder: tr("title_ph"),
   });
   const body = el("textarea", {
     id: "lx-body", rows: 8, maxLength: 10000, required: true,
-    placeholder: "Escribe tu mensaje (texto plano)",
+    placeholder: tr("body_ph"),
   });
   const count = el("small", { textContent: "0 / 10000" });
   body.addEventListener("input", () => {
@@ -247,14 +272,14 @@ function buildComposer(slug) {
     return { box, node: el("label", {}, box, ` ${label} `) };
   });
 
-  const btn = el("button", { type: "button", textContent: "Publicar hilo" });
+  const btn = el("button", { type: "button", textContent: tr("publish") });
   const status = el("p", { role: "alert" });
 
   btn.addEventListener("click", async () => {
     const t = title.value.trim();
     const b = body.value.trim();
-    if (t.length < 3) { status.textContent = "El título es demasiado corto."; return; }
-    if (!b) { status.textContent = "El contenido no puede estar vacío."; return; }
+    if (t.length < 3) { status.textContent = tr("title_short"); return; }
+    if (!b) { status.textContent = tr("body_empty"); return; }
 
     const tags = tagBoxes.filter((x) => x.box.checked).map((x) => x.box.value);
 
@@ -264,28 +289,28 @@ function buildComposer(slug) {
     // salta a 100% y se navega al hilo nuevo).
     status.dataset.state = "busy";
     let pct = 0;
-    status.textContent = "Publicando… 0%";
+    status.textContent = tr("publishing", { pct: 0 });
     const tick = setInterval(() => {
       pct = Math.min(90, pct + Math.max(1, Math.round((90 - pct) / 8)));
-      status.textContent = `Publicando… ${pct}%`;
+      status.textContent = tr("publishing", { pct });
     }, 250);
 
     try {
       const { data } = await createPost({ spaceId: slug, title: t, body: b, tags });
       if (!data || !ID_RE.test(data.id || "")) throw new Error("Respuesta inesperada.");
       clearInterval(tick);
-      status.textContent = "Publicando… 100%";
-      location.assign(`/es/comunidad/${slug}/${data.id}/`);
+      status.textContent = tr("publishing", { pct: 100 });
+      location.assign(communityUrl(`${slug}/${data.id}/`));
     } catch (e) {
       clearInterval(tick);
       delete status.dataset.state;
-      status.textContent = errText(e, "No se pudo publicar el hilo.");
+      status.textContent = errText(e, tr("publish_error"));
       btn.disabled = false;
     }
   });
 
   return el("section", {},
-    el("h2", { textContent: "Nuevo hilo" }),
+    el("h2", { textContent: tr("new_thread") }),
     title, body, count,
     el("div", {}, ...tagBoxes.map((x) => x.node)),
     btn, status
@@ -335,24 +360,24 @@ function syncComments() {
 function buildCommentForm(postId, parentId, onSent) {
   const body = el("textarea", {
     rows: 3, maxLength: 5000, required: true,
-    placeholder: parentId ? "Escribe tu respuesta (texto plano)" : "Escribe un comentario (texto plano)",
+    placeholder: parentId ? tr("reply_ph") : tr("comment_ph"),
   });
-  body.setAttribute("aria-label", parentId ? "Escribir una respuesta" : "Escribir un comentario");
-  const btn = el("button", { type: "button", className: "btn btn-primary", textContent: "Comentar" });
+  body.setAttribute("aria-label", parentId ? tr("reply_aria") : tr("comment_aria"));
+  const btn = el("button", { type: "button", className: "btn btn-primary", textContent: tr("comment_btn") });
   const status = el("p", { role: "alert", className: "comment-composer-status" });
 
   btn.addEventListener("click", async () => {
     const text = body.value.trim();
-    if (!text) { status.textContent = "El comentario no puede estar vacío."; return; }
+    if (!text) { status.textContent = tr("comment_empty"); return; }
     btn.disabled = true;
     // Progreso estimado (el callable no informa de avance): sube rápido y se
     // frena en el 90% hasta que llega la respuesta. En azul, no en rojo.
     status.dataset.state = "busy";
     let pct = 0;
-    status.textContent = "Enviando… 0%";
+    status.textContent = tr("sending", { pct: 0 });
     const tick = setInterval(() => {
       pct = Math.min(90, pct + Math.max(1, Math.round((90 - pct) / 8)));
-      status.textContent = `Enviando… ${pct}%`;
+      status.textContent = tr("sending", { pct });
     }, 250);
     try {
       const payload = { postId, body: text };
@@ -360,7 +385,7 @@ function buildCommentForm(postId, parentId, onSent) {
       const { data } = await createComment(payload);
       if (!data || !ID_RE.test(data.id || "")) throw new Error("Respuesta inesperada.");
       clearInterval(tick);
-      status.textContent = "Enviando… 100%";
+      status.textContent = tr("sending", { pct: 100 });
       onSent({ id: data.id, body: text, parentId: parentId || null });
       body.value = "";
       delete status.dataset.state;
@@ -369,7 +394,7 @@ function buildCommentForm(postId, parentId, onSent) {
     } catch (e) {
       clearInterval(tick);
       delete status.dataset.state;
-      status.textContent = errText(e, "No se pudo enviar el comentario.");
+      status.textContent = errText(e, tr("comment_error"));
       btn.disabled = false;
     }
   });
@@ -393,9 +418,9 @@ function insertComment({ id, body, parentId }) {
   };
 
   const header = el("div", { className: "comment-header" },
-    el("strong", { textContent: profileName || "Usuario" }),
+    el("strong", { textContent: profileName || tr("user") }),
     dot(),
-    el("span", { textContent: "ahora" })
+    el("span", { textContent: tr("now") })
   );
 
   const bodyEl = el("div", { className: "comment-body" });
@@ -413,14 +438,14 @@ function insertComment({ id, body, parentId }) {
   const like = el("button", { type: "button", className: "lx-act lx-like lx-comment-like" });
   like.dataset.comment = id;
   like.setAttribute("aria-pressed", "false");
-  like.setAttribute("aria-label", "Me gusta");
+  like.setAttribute("aria-label", tr("like"));
   const score = el("span", { className: "lx-comment-score", textContent: "0" });
   score.dataset.n = "0";
   like.append(svgIcon(ICON_D.heart), score);
 
   const reply = el("button", { type: "button", className: "lx-act lx-reply" });
   reply.dataset.comment = id;
-  reply.setAttribute("aria-label", "Responder");
+  reply.setAttribute("aria-label", tr("reply"));
   const replyCount = el("span", { className: "lx-reply-count", textContent: "0" });
   replyCount.dataset.n = "0";
   reply.append(svgIcon(ICON_D.comment), replyCount);
@@ -428,7 +453,7 @@ function insertComment({ id, body, parentId }) {
 
   const views = el("span", { className: "lx-act lx-comment-views" });
   views.dataset.comment = id;
-  views.setAttribute("aria-label", "Visitas");
+  views.setAttribute("aria-label", tr("views"));
   views.append(
     svgIcon(ICON_D.views),
     el("span", { className: "lx-comment-views-n", textContent: "0" })
@@ -436,7 +461,7 @@ function insertComment({ id, body, parentId }) {
 
   const share = el("button", { type: "button", className: "lx-act lx-comment-share" });
   share.dataset.comment = id;
-  share.setAttribute("aria-label", "Compartir");
+  share.setAttribute("aria-label", tr("share"));
   share.append(svgIcon(ICON_D.share));
 
   const actions = el("div", { className: "comment-actions" }, like, reply, views, share);
@@ -552,7 +577,7 @@ function shareUrl(bar) {
   const postId = bar.dataset.post;
   const slug = bar.dataset.slug;
   if (!ID_RE.test(postId || "") || !SLUG_RE.test(slug || "")) return null;
-  return `${location.origin}/es/comunidad/${slug}/${postId}/`;
+  return `${location.origin}${CFG.base}${slug}/${postId}/`;
 }
 
 function initActionBar(bar) {
@@ -566,7 +591,7 @@ function initActionBar(bar) {
     try {
       if (navigator.share) { await navigator.share({ title: document.title, url }); return; }
       await navigator.clipboard.writeText(url);
-      flash("Enlace copiado", bar);
+      flash(tr("link_copied"), bar);
     } catch (e) {
       if (e?.name !== "AbortError") flash(url, bar);
     }
@@ -585,7 +610,7 @@ function initActionBar(bar) {
       setLikeUI(bar, next);
       bumpScore(bar, next);
     } catch (e) {
-      flash(errText(e, "No se pudo registrar tu me gusta."), bar);
+      flash(errText(e, tr("like_error")), bar);
     }
     like.disabled = false;
   });
@@ -646,7 +671,7 @@ async function onCommentLike(btn) {
     else await setDoc(ref, { value: 1, createdAt: serverTimestamp() });
     setCommentLikeUI(btn, !liked);
   } catch (e) {
-    flash(errText(e, "No se pudo registrar tu me gusta."));
+    flash(errText(e, tr("like_error")));
   }
   btn.disabled = false;
 }
@@ -690,7 +715,7 @@ async function onCommentShare(btn) {
   try {
     if (navigator.share) { await navigator.share({ title: document.title, url }); return; }
     await navigator.clipboard.writeText(url);
-    flash("Enlace copiado");
+    flash(tr("link_copied"));
   } catch (e) {
     if (e?.name !== "AbortError") flash(url);
   }
@@ -720,98 +745,6 @@ function trackCommentViews(postId) {
   });
 }
 
-// ==========================================================================
-// SOLO PARA PRUEBAS EN LOCAL (emulador). No forma parte del sitio: fuera de
-// 127.0.0.1/localhost nunca se monta. NO incluir en el commit.
-// Login en un popup flotante abajo, con el estilo de Lixby. El nav queda limpio.
-// ==========================================================================
-let devLoginEl = null;
-
-function setDevLoginOpen(open) {
-  if (devLoginEl) devLoginEl.dataset.open = open ? "1" : "0";
-}
-
-// El emulador de Auth crea los usuarios con emailVerified=false; como las
-// callables exigen correo verificado, los usuarios de prueba quedarían
-// bloqueados. Se marcan como verificados con la API REST del emulador (solo en
-// local: fuera de 127.0.0.1/localhost IS_EMU es false y no se ejecuta).
-async function markEmulatorVerified(user) {
-  if (!IS_EMU || !user) return;
-  const base =
-    "http://127.0.0.1:9099/identitytoolkit.googleapis.com/v1/accounts:update?key=" +
-    encodeURIComponent(firebaseConfig.apiKey);
-  const body = { localId: user.uid, emailVerified: true };
-  try {
-    // El emulador acepta el endpoint de administración con "Bearer owner".
-    let res = await fetch(base, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: "Bearer owner" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) {
-      // Reintento con el token del propio usuario (por si la build del emulador
-      // no acepta el modo administrador).
-      const idToken = await user.getIdToken();
-      res = await fetch(base, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, emailVerified: true }),
-      });
-    }
-    await user.reload();
-    await user.getIdToken(true); // refresca el token para que lleve email_verified
-  } catch (e) {
-    console.error("emulador: no se pudo marcar el correo como verificado", e);
-  }
-}
-
-function renderDevLogin() {
-  root.replaceChildren(); // el nav no muestra nada
-  if (devLoginEl) return setDevLoginOpen(true);
-
-  const email = el("input", { type: "email", placeholder: "email de prueba", autocomplete: "username" });
-  const pass = el("input", { type: "password", placeholder: "contraseña", autocomplete: "current-password" });
-  const msg = el("small", { className: "lx-devlog-msg", role: "status" });
-  const go = (fn) => async () => {
-    msg.textContent = "";
-    try {
-      const cred = await fn(auth, email.value.trim(), pass.value);
-      await markEmulatorVerified(cred.user);
-      renderSignedIn(cred.user, await loadProfile(cred.user.uid));
-    } catch (e) {
-      msg.textContent = e?.code || "Error";
-    }
-  };
-  const enter = el("button", { type: "button", className: "btn-primary lx-devlog-enter", textContent: "Entrar (emulador)" });
-  const create = el("button", { type: "button", className: "btn-secondary", textContent: "Crear cuenta" });
-  enter.addEventListener("click", go(signInWithEmailAndPassword));
-  create.addEventListener("click", go(createUserWithEmailAndPassword));
-
-  const close = el("button", { type: "button", className: "lx-devlog-close", textContent: "×" });
-  close.setAttribute("aria-label", "Cerrar");
-  close.addEventListener("click", () => setDevLoginOpen(false));
-
-  const trigger = el("button", { type: "button", className: "lx-devlog-trigger", textContent: "Acceso emulador" });
-  trigger.addEventListener("click", () => setDevLoginOpen(true));
-
-  const panel = el("div", { className: "lx-devlog-panel" },
-    el("div", { className: "lx-devlog-head" },
-      el("span", { className: "lx-devlog-badge", textContent: "Emulador" }),
-      el("strong", { textContent: "Acceso de pruebas" }),
-      close
-    ),
-    el("div", { className: "lx-devlog-row" }, email, pass),
-    el("div", { className: "lx-devlog-actions" }, enter, create),
-    msg
-  );
-  panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "Acceso de pruebas (emulador)");
-
-  devLoginEl = el("div", { className: "lx-devlog", id: "lx-devlog" }, trigger, panel);
-  document.body.append(devLoginEl);
-  setDevLoginOpen(true);
-}
-
 function renderSignedOut() {
   signedIn = false;
   hasSession = false;
@@ -823,7 +756,6 @@ function renderSignedOut() {
   syncComments();
   syncVotes();
   syncCommentLikes();
-  if (IS_EMU) return renderDevLogin();
   // Sin enlace de login en el nav: el acceso vive en el compositor.
   root.replaceChildren();
 }
@@ -831,9 +763,9 @@ function renderSignedOut() {
 // El nav solo lleva botones (como el resto del sitio): el nombre se elige en
 // un <dialog> centrado, nunca como formulario dentro de #lx-session.
 function renderNoProfileNav(user) {
-  const pick = el("button", { type: "button", textContent: "Elige tu nombre" });
+  const pick = el("button", { type: "button", textContent: tr("choose_name") });
   pick.addEventListener("click", () => openProfileDialog(user));
-  const out = el("button", { type: "button", textContent: "Cerrar sesión" });
+  const out = el("button", { type: "button", textContent: tr("logout") });
   out.addEventListener("click", () => signOut(auth));
   root.replaceChildren(pick, out);
 }
@@ -853,15 +785,15 @@ function openProfileDialog(user) {
 
   const input = el("input", {
     type: "text", id: "lx-name", maxLength: 40, minLength: 2,
-    required: true, placeholder: "Nombre de usuario", autocomplete: "nickname",
+    required: true, placeholder: tr("name_ph"), autocomplete: "nickname",
   });
-  const btn = el("button", { type: "button", className: "lx-dialog-save", textContent: "Guardar" });
+  const btn = el("button", { type: "button", className: "lx-dialog-save", textContent: tr("save") });
   const status = el("p", { className: "lx-dialog-msg", role: "alert" });
 
   btn.addEventListener("click", async () => {
     const displayName = input.value.trim();
     if (displayName.length < 2) {
-      status.textContent = "El nombre es demasiado corto.";
+      status.textContent = tr("name_short");
       return;
     }
     btn.disabled = true;
@@ -872,14 +804,14 @@ function openProfileDialog(user) {
       dialog.close(); // el evento "close" retira el diálogo del DOM
       renderSignedIn(user, profile);
     } catch (e) {
-      status.textContent = errText(e, "No se pudo guardar el perfil.");
+      status.textContent = errText(e, tr("save_error"));
       btn.disabled = false;
     }
   });
 
   const dialog = el("dialog", { className: "lx-dialog", id: "lx-profile-dialog" },
-    el("h2", { textContent: "Elige tu nombre en la comunidad" }),
-    el("label", { htmlFor: "lx-name", textContent: "Se verá en tus hilos y comentarios" }),
+    el("h2", { textContent: tr("profile_title") }),
+    el("label", { htmlFor: "lx-name", textContent: tr("profile_label") }),
     input, btn, status
   );
   dialog.addEventListener("close", () => dialog.remove());
@@ -890,7 +822,6 @@ function openProfileDialog(user) {
 function renderSignedIn(user, profile) {
   hasSession = true;
   currentUser = user;
-  if (IS_EMU && devLoginEl) setDevLoginOpen(false); // cierra el popup de pruebas
   if (!isVerified(user)) {
     // Sesión sin correo verificado: no se puede publicar ni guardar el perfil
     // (las callables lo rechazan). El nav muestra el aviso y el compositor y el
@@ -901,9 +832,9 @@ function renderSignedIn(user, profile) {
     syncComments();
     syncVotes();
     syncCommentLikes();
-    const resend = el("button", { type: "button", textContent: "Verifica tu correo" });
+    const resend = el("button", { type: "button", textContent: tr("verify_nav") });
     resend.addEventListener("click", () => focusVerifyNotice(user));
-    const out = el("button", { type: "button", textContent: "Cerrar sesión" });
+    const out = el("button", { type: "button", textContent: tr("logout") });
     out.addEventListener("click", () => signOut(auth));
     root.replaceChildren(resend, out);
     return;
@@ -926,7 +857,7 @@ function renderSignedIn(user, profile) {
   syncVotes();
   syncCommentLikes();
 
-  const out = el("button", { type: "button", textContent: "Cerrar sesión" });
+  const out = el("button", { type: "button", textContent: tr("logout") });
   out.addEventListener("click", () => signOut(auth));
   root.replaceChildren(
     el("span", { className: "lx-name", textContent: profile.displayName }),

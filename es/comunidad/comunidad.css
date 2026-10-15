@@ -1020,8 +1020,19 @@ img.space-card-emoji {
 }
 .space-card-arrow {
   margin-left: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--muted);
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), color 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.space-card-arrow svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.space-card:hover .space-card-arrow {
   color: var(--primary);
-  font-weight: 800;
+  transform: translateX(3px);
 }
 
 .space-link .space-name {
@@ -1486,13 +1497,25 @@ a.community-page-btn:hover {
   color: var(--text);
 }
 .home-block-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: var(--primary);
   font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
 }
+.home-block-more svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 .home-block-more:hover {
   text-decoration: underline;
+}
+.home-block-more:hover svg {
+  transform: translateX(3px);
 }
 .home-columns {
   display: grid;
@@ -1500,19 +1523,30 @@ a.community-page-btn:hover {
   gap: var(--spacing-6);
   align-items: start;
 }
-.home-block-aside {
-  position: sticky;
-  top: 88px;
+/* "Mejor valorados" ya NO es sticky: así no se mueve respecto a "Actividad
+   reciente" al bajar (antes se pegaba a top:88px y daba sensación de movimiento).
+   Mantiene el mismo fondo de la comunidad, igual que "Cómo participar" y
+   "Normas y moderación". */
+
+/* Sin fondo propio en la comunidad: todas las secciones usan el fondo general
+   de la web (se quitó la banda con tinte azul que las agrupaba). */
+.home-band {
+  background: none;
+  border: 0;
+}
+.home-section {
+  padding: var(--spacing-10) var(--spacing-6);
+}
+/* Dentro de la sección con padding, el contenedor no debe usar 92vw (desbordaría
+   en móvil); se limita al ancho disponible y sigue centrado. */
+.home-section > .container {
+  width: min(1120px, 100%);
+}
+.home-section > .container > .home-block:first-child {
+  margin-top: 0;
 }
 
-/* Cómo participar */
-.home-participate {
-  margin-top: var(--spacing-10);
-  padding: var(--spacing-10) var(--spacing-6);
-  background: linear-gradient(135deg, rgba(15, 61, 255, 0.06), rgba(22, 167, 255, 0.06));
-  border-top: 1px solid var(--line-subtle);
-  border-bottom: 1px solid var(--line-subtle);
-}
+/* Cómo participar (usa el fondo de .home-band) */
 .home-participate-inner {
   max-width: 1180px;
   margin: 0 auto;
@@ -1567,18 +1601,21 @@ a.community-page-btn:hover {
   font-weight: 700;
 }
 
-/* Bloque legal */
-.home-legal {
-  padding: var(--spacing-10) var(--spacing-6);
-  background: rgba(255, 255, 255, 0.6);
-  border-top: 1px solid var(--line);
-}
+/* Bloque legal: cada columna es una "burbuja" blanca, igual que los pasos de
+   "Cómo participar" (.home-steps li). */
 .home-legal-inner {
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--spacing-6);
+}
+.home-legal-col {
+  padding: var(--spacing-5, 1.25rem);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-card);
 }
 .home-legal-col h2 {
   margin: 0 0 var(--spacing-2);
@@ -1631,135 +1668,4 @@ a.community-page-btn:hover {
   .home-columns {
     grid-template-columns: 1fr;
   }
-  .home-block-aside {
-    position: static;
-  }
-}
-
-/* ==========================================================================
-   DEV (emulador): login de pruebas flotante abajo. NO incluir en el commit.
-   Se monta solo cuando el host es 127.0.0.1/localhost (comunidad-client.js).
-   ========================================================================== */
-.lx-devlog {
-  position: fixed;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  z-index: 3000;
-  width: min(560px, calc(100vw - 32px));
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-.lx-devlog > * {
-  pointer-events: auto;
-}
-.lx-devlog[data-open="0"] .lx-devlog-panel {
-  display: none;
-}
-.lx-devlog[data-open="1"] .lx-devlog-trigger {
-  display: none;
-}
-
-.lx-devlog-trigger {
-  border: none;
-  border-radius: 999px;
-  padding: 11px 22px;
-  font: inherit;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  box-shadow: 0 12px 24px rgba(15, 61, 255, 0.3);
-  cursor: pointer;
-  transition: transform 200ms var(--ease-lix, ease);
-}
-.lx-devlog-trigger:hover {
-  transform: translateY(-2px);
-}
-
-.lx-devlog-panel {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  background: var(--surface);
-  box-shadow: var(--shadow-strong);
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.lx-devlog-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.lx-devlog-head strong {
-  margin-right: auto;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-.lx-devlog-badge {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: rgba(15, 61, 255, 0.08);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-.lx-devlog-close {
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1.3rem;
-  line-height: 1;
-  padding: 0 4px;
-  cursor: pointer;
-}
-.lx-devlog-close:hover {
-  color: var(--text);
-}
-.lx-devlog-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.lx-devlog-row input {
-  flex: 1 1 180px;
-  min-width: 0;
-  box-sizing: border-box;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  font: inherit;
-  font-size: 0.95rem;
-  color: var(--text);
-  background: var(--surface);
-}
-.lx-devlog-row input:focus-visible {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.18);
-}
-.lx-devlog-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.lx-devlog-actions .btn-primary,
-.lx-devlog-actions .btn-secondary {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-}
-.lx-devlog-msg {
-  min-height: 1em;
-  color: #b91c1c;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-.lx-devlog-msg:empty {
-  display: none;
 }

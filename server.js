@@ -268,7 +268,7 @@ async function sendGiftCardEmail(giftCard, role) {
 
     <!-- Footer -->
     <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
-      <p style="color:#9ca3af;font-size:0.78rem;margin:0">La tarjeta no tiene fecha de caducidad · <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">Soporte</a></p>
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">La tarjeta no tiene fecha de caducidad · <a href="mailto:info@lixby.es" style="color:#458500">Soporte</a></p>
     </div>
   </div>
 </body>
@@ -432,7 +432,7 @@ async function sendOrderStatusEmail(order) {
       </a>
     </div>
     <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
-      <p style="color:#9ca3af;font-size:0.78rem;margin:0">Si necesitas ayuda, responde a este email o escríbenos a <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">lixbyinfo@gmail.com</a></p>
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">Si necesitas ayuda, responde a este email o escríbenos a <a href="mailto:info@lixby.es" style="color:#458500">info@lixby.es</a></p>
     </div>
   </div>
 </body>
@@ -965,7 +965,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), generalLimiter, 
       </a>
     </div>
     <div style="padding:20px 40px;border-top:1px solid #e5e7eb;text-align:center">
-      <p style="color:#9ca3af;font-size:0.78rem;margin:0">¿Alguna pregunta? <a href="mailto:lixbyinfo@gmail.com" style="color:#458500">lixbyinfo@gmail.com</a></p>
+      <p style="color:#9ca3af;font-size:0.78rem;margin:0">¿Alguna pregunta? <a href="mailto:info@lixby.es" style="color:#458500">info@lixby.es</a></p>
     </div>
   </div>
 </body>

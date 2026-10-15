@@ -15,7 +15,7 @@ If you discover a security vulnerability in Lixby, please report it responsibly.
 
 ### 📩 How to Report
 
-* Send an email to: **[lixbyinfo@gmail.com](mailto:lixbyinfo@gmail.com)**
+* Send an email to: **[info@lixby.es](mailto:info@lixby.es)**
 * Or open a **private issue** on GitHub
 ### 📝 What to Include
 

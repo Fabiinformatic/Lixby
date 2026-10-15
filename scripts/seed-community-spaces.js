@@ -7,7 +7,7 @@
 // el fichero firebase-service-account.json de la raíz (igual que server.js).
 //
 // Es seguro re-ejecutarlo: crea los que falten y actualiza sólo los campos
-// de presentación (name/slug/description/icon/order), preservando los
+// de presentación (name/slug/description/icon/image/order), preservando los
 // contadores (postCount) y la fecha de creación.
 
 const fs = require("fs");
@@ -40,6 +40,7 @@ const SPACES = [
     slug: "general",
     name: "General",
     icon: "💬",
+    image: "/es/images/Chat.png",
     order: 1,
     description: "Conversación general sobre Lixby y sus productos.",
   },
@@ -47,6 +48,7 @@ const SPACES = [
     slug: "lixbuds",
     name: "LixBuds",
     icon: "🎧",
+    image: "/es/images/lixbuds-one-white.png",
     order: 2,
     description: "Auriculares LixBuds: dudas, trucos y experiencias.",
   },
@@ -54,6 +56,7 @@ const SPACES = [
     slug: "lixney",
     name: "Lixney",
     icon: "📱",
+    image: "/es/images/lixneyicon2.webp",
     order: 3,
     description: "App Lixney para Android: uso, datos locales y preguntas.",
   },
@@ -61,6 +64,7 @@ const SPACES = [
     slug: "lixfly",
     name: "Lixfly",
     icon: "✈️",
+    image: "/es/images/lixflyicon2.webp",
     order: 4,
     description: "Lixfly: planificación y acompañamiento de vuelo.",
   },
@@ -68,6 +72,7 @@ const SPACES = [
     slug: "ideas",
     name: "Ideas y sugerencias",
     icon: "💡",
+    image: "/es/images/Bombilla.png",
     order: 5,
     description: "Propón mejoras y vota las ideas de la comunidad.",
   },
@@ -75,6 +80,7 @@ const SPACES = [
     slug: "soporte",
     name: "Soporte entre usuarios",
     icon: "🤝",
+    image: "/es/images/Mano.png",
     order: 6,
     description: "Ayuda mutua entre usuarios de Lixby.",
   },
@@ -93,6 +99,8 @@ async function seed() {
       order: space.order,
       updatedAt: FieldValue.serverTimestamp(),
     };
+    // Cada espacio lleva `image` (el SSR la usa en vez del emoji).
+    if (space.image) presentation.image = space.image;
 
     if (snap.exists) {
       await ref.set(presentation, { merge: true });
