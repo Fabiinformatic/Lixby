@@ -23,9 +23,11 @@ service cloud.firestore {
       return hasRole(['owner', 'mod', 'admin']);
     }
 
+    // Solo "me gusta" (value == 1): la UI no tiene voto negativo. Los triggers
+    // siguen tolerando -1 por si en el futuro se reactivan los downvotes.
     function validVote() {
       return request.resource.data.keys().hasOnly(['value', 'createdAt'])
-        && request.resource.data.value in [1, -1]
+        && request.resource.data.value == 1
         && request.resource.data.createdAt == request.time;
     }
 
@@ -81,9 +83,12 @@ service cloud.firestore {
       allow create, update, delete: if false;  // vía Cloud Functions
     }
 
-    // Comentarios anidados (subcolección de cada hilo)
+    // Comentarios anidados (subcolección de cada hilo). El cliente NO lee
+    // comentarios directamente (los pinta el SSR); la lectura abierta dejaba
+    // que cualquiera leyera con un cliente de Firestore un comentario retirado
+    // por moderación. Ahora solo lo ven publicados (o los moderadores).
     match /posts/{postId}/comments/{commentId} {
-      allow read: if true;   // el cliente comprueba que el hilo sea público
+      allow read: if resource.data.status == "published" || isMod();
       allow write: if false; // vía Cloud Functions
     }
 
@@ -101,6 +106,13 @@ service cloud.firestore {
       allow delete: if isOwner(voteUid);
     }
 
+    // Estadísticas de hilo (visitas). Solo escritura del servidor (el callable
+    // communityTrackView usa el Admin SDK, que ignora estas reglas).
+    match /postStats/{postId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Perfil público (proyección). Separado de users/{uid}, que es privado.
     match /profiles/{profileUid} {
       allow read: if true;
@@ -111,6 +123,23 @@ service cloud.firestore {
     match /reports/{reportId} {
       allow create: if validReport();
       allow read, update, delete: if isMod();
+    }
+
+    // Registro de moderación (quién hizo qué, sin contenido). Solo escritura
+    // del servidor vía Admin SDK; solo lectura de moderadores.
+    match /moderationLog/{entryId} {
+      allow read: if isMod();
+      allow write: if false;
+    }
+
+    // Colecciones internas: nunca legibles ni escribibles desde el cliente.
+    // (Redundantes con el catch-all de abajo, pero explícitas para que una
+    // revisión o una prueba de reglas lo vea sin tener que deducirlo.)
+    match /rateLimits/{docId} {
+      allow read, write: if false;
+    }
+    match /moderationStats/{docId} {
+      allow read, write: if false;
     }
 
     match /{document=**} {

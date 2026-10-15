@@ -10,6 +10,7 @@ const Stripe = require("stripe");
 const sgMail = require("@sendgrid/mail");
 const { Resend } = require("resend");
 const sanitizeHtml = require("sanitize-html");
+const { checkText, isReservedName } = require("./moderation-filter");
 
 if (!admin.apps || admin.apps.length === 0) {
   admin.initializeApp();
@@ -24,6 +25,11 @@ const { FieldValue } = require("firebase-admin/firestore");
 const stripe = new Stripe("TU_STRIPE_SECRET_KEY");
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 const SENDGRID_API_KEY = defineSecret("SENDGRID_API_KEY");
+// Secreto para hashear la IP de communityTrackView (HMAC-SHA256) antes de
+// guardarla en rateLimits: no se guarda la IP en claro y un volcado de la
+// colección no expone direcciones. Crearlo ANTES de desplegar:
+//   firebase functions:secrets:set IP_HASH_SECRET
+const IP_HASH_SECRET = defineSecret("IP_HASH_SECRET");
 const sitemapPath = path.join(__dirname, "generated", "sitemap.xml");
 
 function generateAccountNumber() {
@@ -409,7 +415,7 @@ exports.sendEmailToUser = onCall(
   }
 );
 
-exports.sitemap = onRequest((req, res) => {
+exports.sitemap = onRequest({ maxInstances: 10 }, (req, res) => {
   if (req.method !== "GET" && req.method !== "HEAD") {
     return res.status(405).send("Method Not Allowed");
   }
@@ -479,11 +485,35 @@ exports.adminSearchUser = onCall(
 // =====================================================================
 
 const COMMUNITY_REGION = "europe-west1";
-const COMMUNITY_CORS = ["https://lixby.es", "https://www.lixby.es"];
+// El emulador de Functions define FUNCTIONS_EMULATOR=true por sí solo; en
+// producción esa variable no existe, así que los orígenes locales extra son
+// inertes fuera del emulador (pero imprescindibles para probar desde
+// 127.0.0.1/localhost:5000, donde el SDK envía el Origin del navegador).
+const COMMUNITY_EMU = process.env.FUNCTIONS_EMULATOR === "true";
+const COMMUNITY_CORS = [
+  "https://lixby.es",
+  "https://www.lixby.es",
+  ...(COMMUNITY_EMU ? ["http://127.0.0.1:5000", "http://localhost:5000"] : []),
+];
 const COMMUNITY_CALL_OPTIONS = {
   region: COMMUNITY_REGION,
   cors: COMMUNITY_CORS,
   invoker: "public",
+  // denial-of-wallet: las callables públicas escalan solas; un ataque no debe
+  // poder disparar la factura. Junto con la alerta de presupuesto de Google
+  // Cloud es la red que evita que un loop de llamadas nos arruine.
+  maxInstances: 10,
+  // TODO(lanzamiento): poner a true SOLO cuando el sitio esté registrado en
+  // App Check (console → App Check) y el cliente inicialice initializeAppCheck
+  // con un reCAPTCHA v3 válido. Con true y sin tokens, TODAS las callables de
+  // la comunidad dejan de responder en producción.
+  enforceAppCheck: false,
+};
+// communityTrackView es la callable más expuesta (pública y escribe en
+// Firestore) y la única que necesita el secreto para hashear la IP.
+const COMMUNITY_TRACK_OPTIONS = {
+  ...COMMUNITY_CALL_OPTIONS,
+  secrets: [IP_HASH_SECRET],
 };
 const COMMUNITY_TAGS = ["pregunta", "idea", "bug", "showcase"];
 const COMMUNITY_REASONS = ["spam", "abuse", "illegal", "off-topic", "other"];
@@ -498,12 +528,29 @@ const COMMUNITY_RATE_LIMITS = {
   comment: { max: 20, windowMs: 15 * 60 * 1000 },
   report: { max: 10, windowMs: 60 * 60 * 1000 },
   profile: { max: 10, windowMs: 60 * 60 * 1000 },
+  view: { max: 60, windowMs: 60 * 60 * 1000 }, // por IP (visitantes sin sesión)
+  commentView: { max: 300, windowMs: 60 * 60 * 1000 }, // por IP (una por comentario visto)
 };
+const POST_ID_RE = /^[A-Za-z0-9]{1,40}$/;
 
 function requireCommunityAuth(request) {
   const uid = request.auth?.uid;
   if (!uid) throw new HttpsError("unauthenticated", "Inicia sesión para continuar.");
   return uid;
+}
+
+// Exige correo verificado en las callables que escriben contenido o perfil.
+// El límite por uid no frena a quien crea cuentas en masa: con correo
+// verificado cada cuenta necesita una bandeja real. El registro de la web ya
+// envía el correo de verificación (es/iniciar-sesion) y la cuenta puede
+// reenviarlo desde /es/cuenta/.
+function requireVerifiedCommunityEmail(request) {
+  if (request.auth?.token?.email_verified !== true) {
+    throw new HttpsError(
+      "failed-precondition",
+      "Verifica tu correo electrónico para participar. Revisa tu bandeja de entrada (y spam) o reenvía el correo desde tu cuenta."
+    );
+  }
 }
 
 function requireCommunityRole(request, roles = COMMUNITY_ROLES) {
@@ -520,25 +567,67 @@ function cleanCommunityText(value, maxLen) {
     allowedTags: [],
     allowedAttributes: {},
     decodeEntities: true,
-  }).trim();
+  })
+    // Caracteres de control bidireccional (U+202E y similares): permiten
+    // invertir lo que se ve y falsear títulos o nombres ("noitamrofni lasnep"
+    // se lee al revés). Fuera también los marcas de dirección LRM/RLM y los
+    // isolados U+2066-U+2069.
+    .replace(/[\u200E\u200F\u202A-\u202E\u2066-\u2069]/g, "")
+    .trim();
   return clean.length > maxLen ? clean.slice(0, maxLen) : clean;
 }
 
-async function enforceCommunityRateLimit(uid, action) {
+const MODERATION_MSG =
+  "Tu mensaje incumple las normas de la comunidad. Reformúlalo sin insultos ni lenguaje ofensivo.";
+
+// Contador de bloqueos por mes y categoría. Nunca guarda uid ni texto. Un fallo
+// aquí no debe dejar pasar el contenido: si falla, se registra y se sigue.
+async function countBlocked(category) {
+  try {
+    const db = admin.firestore();
+    const month = new Date().toISOString().slice(0, 7);
+    await db.doc(`moderationStats/${month}`).set(
+      { [category]: FieldValue.increment(1) },
+      { merge: true }
+    );
+  } catch (e) {
+    console.error("moderationStats", e);
+  }
+}
+
+// Se llama con el texto ya limpiado y antes de escribir nada. El filtro vive
+// solo en el servidor: un filtro en el navegador se saltaría llamando al
+// callable a mano. Es async: hay que awaitarla en TODOS los callables (si falta
+// un await, el filtro no bloquea y no da error).
+async function assertCleanText(...parts) {
+  const result = checkText(parts.filter(Boolean).join("\n"));
+  if (!result.ok) {
+    await countBlocked(result.category);
+    throw new HttpsError("invalid-argument", MODERATION_MSG);
+  }
+}
+
+// `key` es el uid (acciones con sesión) o un identificador de IP (visitantes).
+async function enforceCommunityRateLimitFor(key, action) {
   const config = COMMUNITY_RATE_LIMITS[action];
   if (!config) return;
   const db = admin.firestore();
-  const ref = db.collection("rateLimits").doc(`${uid}_${action}`);
+  const ref = db.collection("rateLimits").doc(`${key}_${action}`);
   const now = Date.now();
   await db.runTransaction(async (transaction) => {
     const doc = await transaction.get(ref);
     const data = doc.exists ? doc.data() : null;
     if (!data || now - (data.windowStart || 0) > config.windowMs) {
       transaction.set(ref, {
-        uid,
+        key,
         action,
         count: 1,
         windowStart: now,
+        // TTL: la colección rateLimits no debe crecer sin fin. Hay que activar
+        // en Firestore la política TTL sobre el campo `expiresAt` (consola →
+        // Firestore → Time-to-live). Un margen extra sobre la ventana evita
+        // borrar un documento que aún está en uso.
+        expiresAt: new Date(now + config.windowMs + 60 * 60 * 1000),
         updatedAt: FieldValue.serverTimestamp(),
       });
       return;
@@ -551,6 +640,32 @@ async function enforceCommunityRateLimit(uid, action) {
       updatedAt: FieldValue.serverTimestamp(),
     });
   });
+}
+
+// La cabecera x-forwarded-for la controla quien llama: puede mandar lo que
+// quiera al PRINCIPIO de la lista. La infraestructura de Google (GFE / Cloud
+// Run functions) añade su entrada al FINAL, así que la última IP es la única
+// que el cliente no puede falsear. Además saltamos las entradas privadas o
+// reservadas (saltos internos de la plataforma) para quedarnos con la primera
+// IP pública empezando por la derecha. Nunca se usa la primera entrada.
+const PRIVATE_IP_RE = /^(?:10\.|127\.|169\.254\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.|0\.0\.0\.0$|::1$|f[cd][0-9a-f]{2}:|fe80:)/i;
+const IP_RE = /^(?:\d{1,3}(?:\.\d{1,3}){3}|[0-9a-f:]+)$/i;
+
+function resolveTrustedClientIp(request) {
+  const fwd = request.rawRequest?.headers?.["x-forwarded-for"];
+  const raw = Array.isArray(fwd) ? fwd.join(",") : String(fwd || "");
+  const parts = raw
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => IP_RE.test(part));
+  for (let i = parts.length - 1; i >= 0; i -= 1) {
+    if (!PRIVATE_IP_RE.test(parts[i])) return parts[i];
+  }
+  return parts[parts.length - 1] || String(request.rawRequest?.ip || "unknown");
+}
+
+async function enforceCommunityRateLimit(uid, action) {
+  return enforceCommunityRateLimitFor(uid, action);
 }
 
 async function resolveCommunityDisplayName(uid) {
@@ -574,8 +689,29 @@ function communityProfileCounterPayload(uid, field, delta, displayName) {
   return payload;
 }
 
+// Retirada de contenido. El cuerpo se vacía siempre en el documento público.
+// Si la retirada la hace moderación, además se conserva en `removedBody` (solo
+// legible por moderadores, porque un documento retirado ya no es legible por
+// el cliente) para atender reclamaciones. Si la retirada la pide el propio
+// autor, no se conserva copia: quiere su contenido fuera.
+function removalUpdate({ body, moderatorUid, reason, archive }) {
+  const update = {
+    status: "removed",
+    body: "",
+    removedAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+  };
+  if (archive) {
+    update.removedBody = typeof body === "string" ? body : "";
+    update.removedByUid = moderatorUid;
+    if (reason) update.removedReason = reason;
+  }
+  return update;
+}
+
 exports.communityCreatePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const spaceId = typeof request.data?.spaceId === "string" ? request.data.spaceId : "";
@@ -588,6 +724,7 @@ exports.communityCreatePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => 
   if (!spaceId) throw new HttpsError("invalid-argument", "Falta el espacio.");
   if (title.length < POST_TITLE_MIN) throw new HttpsError("invalid-argument", "El título es demasiado corto.");
   if (!body) throw new HttpsError("invalid-argument", "El contenido no puede estar vacío.");
+  await assertCleanText(title, body);
 
   const space = await db.collection("spaces").doc(spaceId).get();
   if (!space.exists) throw new HttpsError("not-found", "El espacio indicado no existe.");
@@ -619,6 +756,7 @@ exports.communityCreatePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => 
 
 exports.communityEditPost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const postId = request.data?.postId;
@@ -634,6 +772,7 @@ exports.communityEditPost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const body = cleanCommunityText(request.data?.body, POST_BODY_MAX);
   if (title.length < POST_TITLE_MIN) throw new HttpsError("invalid-argument", "El título es demasiado corto.");
   if (!body) throw new HttpsError("invalid-argument", "El contenido no puede estar vacío.");
+  await assertCleanText(title, body);
 
   await postRef.update({
     title,
@@ -659,12 +798,13 @@ exports.communityRemovePost = onCall(COMMUNITY_CALL_OPTIONS, async (request) => 
   const isModerator = COMMUNITY_ROLES.includes(request.auth?.token?.role);
   if (!isAuthor && !isModerator) throw new HttpsError("permission-denied", "No puedes borrar este hilo.");
 
-  await postRef.update({ status: "removed", updatedAt: FieldValue.serverTimestamp() });
+  await postRef.update(removalUpdate({ body: snap.data().body, moderatorUid: uid, archive: isModerator }));
   return { success: true };
 });
 
 exports.communityCreateComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const postId = request.data?.postId;
@@ -672,6 +812,7 @@ exports.communityCreateComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) 
   const rawParentId = request.data?.parentCommentId;
   if (!postId) throw new HttpsError("invalid-argument", "Falta el identificador del hilo.");
   if (!body) throw new HttpsError("invalid-argument", "El comentario no puede estar vacío.");
+  await assertCleanText(body);
 
   const postRef = db.collection("posts").doc(postId);
   const postSnap = await postRef.get();
@@ -719,8 +860,58 @@ exports.communityCreateComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) 
   return { id: commentRef.id };
 });
 
+// Visitas del hilo y de cada comentario. Sin login (la lectura es pública).
+// Escribe en un documento aparte (postStats/{postId}) para NO tocar el del hilo:
+// un set en posts/{postId} dispararía onPostWritten en cada visita y modificaría
+// updatedAt/lastActivityAt. Las vistas de comentario van en el mapa
+// postStats.comments[cid] (el SSR ya lee ese documento: cero lecturas extra).
+// Límite por IP porque aquí no hay uid. La IP no se guarda en claro: se guarda
+// un HMAC con secreto (IP_HASH_SECRET) en rateLimits, con caducidad (TTL).
+exports.communityTrackView = onCall(COMMUNITY_TRACK_OPTIONS, async (request) => {
+  const postId = typeof request.data?.postId === "string" ? request.data.postId : "";
+  const commentId = typeof request.data?.commentId === "string" ? request.data.commentId : "";
+  if (!POST_ID_RE.test(postId) || (commentId && !POST_ID_RE.test(commentId))) {
+    throw new HttpsError("invalid-argument", "Hilo no válido.");
+  }
+
+  const db = admin.firestore();
+  const postSnap = await db.collection("posts").doc(postId).get();
+  if (!postSnap.exists || postSnap.data().status !== "published") {
+    throw new HttpsError("not-found", "El hilo no existe.");
+  }
+
+  if (commentId) {
+    const cSnap = await db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .doc(commentId)
+      .get();
+    if (!cSnap.exists || cSnap.data().status !== "published") {
+      throw new HttpsError("not-found", "El comentario no existe.");
+    }
+  }
+
+  const clientIp = resolveTrustedClientIp(request);
+  const ipHash = crypto
+    .createHmac("sha256", IP_HASH_SECRET.value())
+    .update(clientIp)
+    .digest("hex")
+    .slice(0, 32);
+  await enforceCommunityRateLimitFor("ip-" + ipHash, commentId ? "commentView" : "view");
+
+  const payload = { updatedAt: FieldValue.serverTimestamp() };
+  if (commentId) payload.comments = { [commentId]: FieldValue.increment(1) };
+  else payload.views = FieldValue.increment(1);
+
+  await db.collection("postStats").doc(postId).set(payload, { merge: true });
+
+  return { ok: true };
+});
+
 exports.communityEditComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const postId = request.data?.postId;
@@ -728,6 +919,7 @@ exports.communityEditComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) =>
   const body = cleanCommunityText(request.data?.body, COMMENT_BODY_MAX);
   if (!postId || !commentId) throw new HttpsError("invalid-argument", "Faltan identificadores.");
   if (!body) throw new HttpsError("invalid-argument", "El comentario no puede estar vacío.");
+  await assertCleanText(body);
 
   const ref = db.collection("posts").doc(postId).collection("comments").doc(commentId);
   const snap = await ref.get();
@@ -759,12 +951,13 @@ exports.communityRemoveComment = onCall(COMMUNITY_CALL_OPTIONS, async (request) 
   const isModerator = COMMUNITY_ROLES.includes(request.auth?.token?.role);
   if (!isAuthor && !isModerator) throw new HttpsError("permission-denied", "No puedes borrar este comentario.");
 
-  await ref.update({ status: "removed", updatedAt: FieldValue.serverTimestamp() });
+  await ref.update(removalUpdate({ body: snap.data().body, moderatorUid: uid, archive: isModerator }));
   return { success: true };
 });
 
 exports.communityReport = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const targetType = request.data?.targetType;
@@ -787,6 +980,20 @@ exports.communityReport = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
 
   const targetSnap = await targetRef.get();
   if (!targetSnap.exists) throw new HttpsError("not-found", "El contenido reportado no existe.");
+
+  // Un reporte abierto por usuario y contenido: sin esto, el mismo usuario (o
+  // cuentas creadas en masa) puede inflar la cola de moderación. NO se oculta
+  // contenido por número de reportes: los reportes solo alimentan la cola que
+  // revisa una persona.
+  const alreadyOpen = await db
+    .collection("reports")
+    .where("reporterUid", "==", uid)
+    .where("targetId", "==", targetId)
+    .limit(10)
+    .get();
+  if (alreadyOpen.docs.some((d) => d.data().status === "open")) {
+    throw new HttpsError("already-exists", "Ya has reportado este contenido. El equipo lo revisará.");
+  }
 
   await enforceCommunityRateLimit(uid, "report");
 
@@ -837,7 +1044,23 @@ exports.communityModerate = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const status = action === "remove" ? "removed" : action === "lock" ? "locked" : "published";
 
   const batch = db.batch();
-  batch.update(ref, { status, updatedAt: FieldValue.serverTimestamp() });
+  if (action === "remove") {
+    // Moderación: el cuerpo sale del documento (ya no lo lee nadie salvo
+    // moderadores) y se guarda en `removedBody` para posibles reclamaciones.
+    batch.update(ref, removalUpdate({ body: snap.data().body, moderatorUid: uid, reason, archive: true }));
+  } else if (action === "restore") {
+    const restore = { status, updatedAt: FieldValue.serverTimestamp() };
+    if (typeof snap.data().removedBody === "string" && snap.data().removedBody) {
+      restore.body = snap.data().removedBody;
+    }
+    restore.removedBody = FieldValue.delete();
+    restore.removedAt = FieldValue.delete();
+    restore.removedByUid = FieldValue.delete();
+    restore.removedReason = FieldValue.delete();
+    batch.update(ref, restore);
+  } else {
+    batch.update(ref, { status, updatedAt: FieldValue.serverTimestamp() });
+  }
   batch.set(db.collection("moderationLog").doc(), {
     modUid: uid,
     action,
@@ -875,6 +1098,7 @@ exports.communityResolveReport = onCall(COMMUNITY_CALL_OPTIONS, async (request) 
 
 exports.communitySaveProfile = onCall(COMMUNITY_CALL_OPTIONS, async (request) => {
   const uid = requireCommunityAuth(request);
+  requireVerifiedCommunityEmail(request);
   const db = admin.firestore();
 
   const displayName = cleanCommunityText(request.data?.displayName, 40);
@@ -882,6 +1106,12 @@ exports.communitySaveProfile = onCall(COMMUNITY_CALL_OPTIONS, async (request) =>
   const avatarUrl = typeof request.data?.avatarUrl === "string" ? request.data.avatarUrl.trim().slice(0, 500) : "";
 
   if (displayName && displayName.length < 2) throw new HttpsError("invalid-argument", "El nombre es demasiado corto.");
+
+  await assertCleanText(displayName, bio);
+  const isStaff = COMMUNITY_ROLES.includes(request.auth?.token?.role);
+  if (displayName && isReservedName(displayName) && !isStaff) {
+    throw new HttpsError("invalid-argument", "Ese nombre no está disponible.");
+  }
 
   await enforceCommunityRateLimit(uid, "profile");
 

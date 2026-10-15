@@ -206,7 +206,7 @@
 /* ---------- Post card ---------- */
 .post-card {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-4);
   padding: var(--spacing-4) var(--spacing-5, 1.25rem);
   background: var(--surface);
@@ -348,8 +348,76 @@
   flex-wrap: wrap;
 }
 
+/* ---------- Barra de acciones del hilo (me gusta, comentarios, visitas, compartir) ---------- */
+.lx-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+.lx-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--lx-muted, #5b6578);
+  background: none;
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 150ms, background 150ms;
+}
+.lx-act:hover {
+  background: rgba(15, 61, 255, 0.08);
+  color: #0f3dff;
+}
+.lx-act svg {
+  width: 18px;
+  height: 18px;
+}
+.lx-like[aria-pressed="true"] {
+  color: #e0245e;
+}
+.lx-like[aria-pressed="true"] svg {
+  fill: currentColor;
+}
+span.lx-act {
+  cursor: default;
+}
+span.lx-act:hover {
+  background: none;
+  color: inherit;
+}
+.lx-act:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.4);
+}
+.lx-flash {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+/* Barra de acciones dentro de una tarjeta del feed: más compacta que la del
+   hilo y separada del autor/fecha. */
+.post-card .lx-actions {
+  gap: 18px;
+  padding: 2px 0;
+  margin: 2px 0 10px;
+}
+.post-card .lx-act {
+  font-size: 0.82rem;
+}
+.post-card .lx-act svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* ---------- Comments ---------- */
-.comments-section h3 {
+.comments-section h2 {
   font-size: 1.15rem;
   margin: 0 0 var(--spacing-4);
 }
@@ -411,6 +479,11 @@
   color: var(--text);
   font-size: 0.88rem;
 }
+/* Comentario retirado por moderación: texto en rojo en vez de "[eliminado]". */
+.comment-removed {
+  color: #b91c1c;
+  font-weight: 600;
+}
 .comment-body {
   font-size: 0.95rem;
   line-height: 1.65;
@@ -420,7 +493,7 @@
 .comment-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
   margin-top: 10px;
 }
 .comment-actions .vote-control {
@@ -430,6 +503,23 @@
   width: 28px;
   height: 28px;
   border-radius: 8px;
+}
+/* "Me gusta", respuestas, visitas y compartir del comentario: más compactos que
+   la barra del hilo. Los contadores van en negrita. */
+.comment-actions .lx-act {
+  padding: 4px 6px;
+  font-size: 0.82rem;
+}
+.comment-actions .lx-act svg {
+  width: 16px;
+  height: 16px;
+}
+.lx-comment-score,
+.lx-reply-count {
+  font-weight: 700;
+}
+.comment-actions .lx-comment-views {
+  cursor: default;
 }
 .comment-action-link {
   background: none;
@@ -451,6 +541,38 @@
   margin-top: var(--spacing-3);
   padding-left: var(--spacing-4);
   border-left: 2px solid var(--line-subtle);
+}
+/* "Responder": el SSR lo sirve con [hidden]; el cliente lo revela salvo en
+   hilos cerrados. */
+.lx-reply[hidden] {
+  display: none;
+}
+/* Formulario de comentario/respuesta (lo monta el cliente en #lx-comment-form o
+   dentro del comentario al responder; reutiliza .comment-composer). */
+#lx-comment-form:empty {
+  display: none;
+}
+#lx-comment-form {
+  margin-bottom: var(--spacing-4);
+}
+.lx-reply-form {
+  margin-top: var(--spacing-3);
+}
+.lx-reply-form .comment-composer-actions {
+  justify-content: flex-start;
+}
+.comment-composer-status {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.comment-composer-status:empty {
+  display: none;
+}
+/* Mientras se envía: azul (no el rojo de error) y con el % de carga. */
+.comment-composer-status[data-state="busy"] {
+  color: var(--primary);
 }
 
 /* ---------- Auth / buttons ---------- */
@@ -656,11 +778,628 @@
   text-align: center;
   padding: var(--spacing-10) var(--spacing-4);
   color: var(--muted);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
 }
 .community-empty .empty-emoji {
   font-size: 2.4rem;
   display: block;
   margin-bottom: var(--spacing-3);
+}
+
+/* ==========================================================================
+   SSR (server-rendered) — ajustes para el layout compartido con el index.
+   Estas vistas las pinta functions/community-ssr.js sobre el nav/footer/fondo
+   de /es/style.css.
+   ========================================================================== */
+
+/* Enlace activo del nav del site */
+.nav-links .nav-link.is-active {
+  color: var(--text);
+}
+.nav-links .nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Sesión dentro del nav (la rellena comunidad-client.js) */
+#lx-session {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+#lx-session:empty {
+  display: none;
+}
+#lx-session a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+#lx-session a:hover {
+  text-decoration: underline;
+}
+#lx-session button {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 200ms, border-color 200ms;
+}
+#lx-session button:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Formulario para elegir nombre (comunidad): en <dialog>, fuera del nav */
+.lx-dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 24px 60px rgba(2, 8, 23, 0.28);
+}
+.lx-dialog::backdrop {
+  background: rgba(2, 8, 23, 0.5);
+}
+.lx-dialog h2 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+.lx-dialog label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.lx-dialog input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+}
+.lx-dialog input[type="text"]:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.18);
+}
+.lx-dialog-save {
+  margin-top: 14px;
+  align-self: flex-start;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  cursor: pointer;
+}
+.lx-dialog-save:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.lx-dialog-msg {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #b91c1c;
+}
+.lx-dialog-msg:empty {
+  display: none;
+}
+
+@media (max-width: 620px) {
+  #lx-session span {
+    display: none;
+  }
+  /* El icono de cuenta de la tienda se oculta en móvil: su función queda
+     cubierta por #lx-session (comunidad) y por el panel del menú. Deja sitio
+     para que el nav no se parta en dos filas en pantallas estrechas. */
+  .nav-actions .nav-icon-account {
+    display: none;
+  }
+}
+
+/* Hero: el nav es sticky (en flujo), así que no hace falta tanto aire arriba */
+.community-hero {
+  padding-top: var(--spacing-8);
+}
+.community-hero-compact {
+  padding-bottom: var(--spacing-6);
+}
+.community-hero h1 .space-emoji {
+  font-size: 0.8em;
+}
+.community-hero .breadcrumb {
+  justify-content: center;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 var(--spacing-4);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+/* Rejilla de espacios (portada) */
+.space-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-4);
+}
+.space-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-5, 1.25rem);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.space-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.space-card-emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Espacios con imagen (LixBuds/Lixney/Lixfly): mismo hueco que el emoji */
+img.space-emoji {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+img.space-card-emoji {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 9px;
+  flex: none;
+}
+.community-hero h1 img.space-emoji {
+  /* El emoji hereda `font-size: 0.8em` del h1; la imagen resetea el font-size
+     para que sus `em` sean los del título y quede a la altura del h1. */
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  border-radius: 0;
+  vertical-align: middle;
+}
+.space-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.space-card-body strong {
+  font-size: 1.05rem;
+}
+.space-card-body span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.space-card-arrow {
+  margin-left: auto;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.space-link .space-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* El selector de orden es un enlace (SSR), no un botón JS */
+a.feed-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Feed: valor estático (los votos llegan en la fase 5c) */
+.vote-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.post-detail .post-meta {
+  margin-top: var(--spacing-4);
+}
+.post-detail-main {
+  min-width: 0;
+}
+.post-body p,
+.comment-body p {
+  margin: 0 0 0.8em;
+}
+.post-body p:last-child,
+.comment-body p:last-child {
+  margin-bottom: 0;
+}
+.post-meta .post-tag {
+  text-transform: uppercase;
+}
+
+/* Paginador (Anterior 1 2 … N Siguiente), igual que el buscador principal */
+.community-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: var(--spacing-6);
+}
+.community-page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+a.community-page-btn:hover {
+  border-color: rgba(15, 61, 255, 0.35);
+  background: #eaf0ff;
+  color: var(--primary);
+}
+.community-page-btn.is-current {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+  cursor: default;
+}
+.community-page-btn.is-disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.community-page-dots {
+  padding: 0 0.25rem;
+  color: var(--muted);
+  font-weight: 700;
+  user-select: none;
+}
+
+/* ---------- Buscador ---------- */
+.community-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--spacing-4);
+}
+.community-search input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.92rem;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.community-search input[type="search"]:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.25);
+}
+.community-search button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 150ms, border-color 150ms;
+}
+.community-search button:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+/* Variante ancha (portada) */
+.community-search:not(.is-compact) {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.community-search:not(.is-compact) input[type="search"] {
+  font-size: 1rem;
+  padding: 14px 18px;
+}
+.community-search:not(.is-compact) button {
+  width: 52px;
+}
+
+/* Filtros del buscador (página de resultados) */
+.community-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.filter-field > span {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.filter-field input,
+.filter-field select {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.filter-field input:focus-visible,
+.filter-field select:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.25);
+}
+.filter-grow {
+  flex: 1 1 220px;
+}
+.community-filters .btn {
+  align-self: end;
+}
+
+.community-note {
+  margin: 0 0 var(--spacing-4);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.feed-count {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.post-space {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.post-space:hover {
+  text-decoration: underline;
+}
+
+/* Hilo (detalle + comentarios) a ancho de lectura cómodo */
+.community-thread {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6) var(--spacing-16);
+}
+.thread-notice {
+  margin: 0 0 var(--spacing-4);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Compositor de hilo (hueco #lx-composer rellenado por el cliente) */
+#lx-composer {
+  margin-bottom: var(--spacing-4);
+}
+#lx-composer:empty {
+  display: none;
+}
+#lx-composer .composer-login {
+  margin: 0;
+  padding: var(--spacing-5, 1.25rem) var(--spacing-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+#lx-composer .composer-login a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+#lx-composer .composer-login a:hover {
+  text-decoration: underline;
+}
+/* Aviso de correo sin verificar (nav, compositor y formulario de comentario). */
+.lx-verify-prompt {
+  margin: 0;
+  padding: var(--spacing-5, 1.25rem) var(--spacing-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+.lx-verify-text {
+  margin: 0 0 var(--spacing-3);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.lx-verify-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+.lx-verify-msg:empty {
+  display: none;
+}
+.lx-verify-msg {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.lx-verify-banner {
+  margin: 0 0 var(--spacing-4);
+}
+.lx-verify-banner:empty {
+  display: none;
+}
+#lx-composer section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+#lx-composer h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+#lx-composer input[type="text"],
+#lx-composer textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+}
+#lx-composer textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+#lx-composer input[type="text"]:focus-visible,
+#lx-composer textarea:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.18);
+}
+#lx-composer small {
+  align-self: flex-end;
+  margin-top: -6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+#lx-composer section > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+#lx-composer label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+}
+#lx-composer input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+#lx-composer button[type="button"] {
+  align-self: flex-start;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 12px 24px rgba(15, 61, 255, 0.3);
+  cursor: pointer;
+  transition: transform 200ms var(--ease-lix), box-shadow 200ms var(--ease-lix), background 200ms var(--ease-lix);
+}
+#lx-composer button[type="button"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(15, 61, 255, 0.38);
+}
+#lx-composer button[type="button"]:disabled {
+  background: var(--primary-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+#lx-composer p[role="alert"] {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+#lx-composer p[role="alert"]:empty {
+  display: none;
+}
+/* Mientras se publica: azul (en vez del rojo de error) y con el % de carga. */
+#lx-composer p[role="alert"][data-state="busy"] {
+  color: var(--primary);
 }
 
 /* ---------- Toast ---------- */
@@ -706,12 +1445,11 @@
   }
 }
 @media (max-width: 560px) {
-  .post-card,
   .post-detail .post-detail-grid {
-    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
   }
   .community-hero {
-    padding-top: calc(6rem);
+    padding-top: var(--spacing-8);
   }
 }
 
@@ -724,4 +1462,304 @@
   .post-card:hover {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   Portada: bloques (espacios, actividad global, cómo participar, legal)
+   ========================================================================== */
+.home-block {
+  margin-top: var(--spacing-8);
+}
+.home-block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-4);
+}
+.home-block-head h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.home-block-more {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.home-block-more:hover {
+  text-decoration: underline;
+}
+.home-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: var(--spacing-6);
+  align-items: start;
+}
+.home-block-aside {
+  position: sticky;
+  top: 88px;
+}
+
+/* Cómo participar */
+.home-participate {
+  margin-top: var(--spacing-10);
+  padding: var(--spacing-10) var(--spacing-6);
+  background: linear-gradient(135deg, rgba(15, 61, 255, 0.06), rgba(22, 167, 255, 0.06));
+  border-top: 1px solid var(--line-subtle);
+  border-bottom: 1px solid var(--line-subtle);
+}
+.home-participate-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.home-participate h2 {
+  margin: 0 0 var(--spacing-5, 1.25rem);
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.home-steps {
+  counter-reset: home-step;
+  list-style: none;
+  margin: 0 0 var(--spacing-6);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-4);
+}
+.home-steps li {
+  position: relative;
+  padding: var(--spacing-5, 1.25rem) var(--spacing-5, 1.25rem) var(--spacing-5, 1.25rem) 3.4rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-card);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.home-steps li::before {
+  counter-increment: home-step;
+  content: counter(home-step);
+  position: absolute;
+  left: var(--spacing-4);
+  top: var(--spacing-5, 1.25rem);
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.home-steps li strong {
+  color: var(--text);
+}
+.home-steps li a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Bloque legal */
+.home-legal {
+  padding: var(--spacing-10) var(--spacing-6);
+  background: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid var(--line);
+}
+.home-legal-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-6);
+}
+.home-legal-col h2 {
+  margin: 0 0 var(--spacing-2);
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.home-legal-col p {
+  margin: 0 0 var(--spacing-3);
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.home-legal-col a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Página de normas */
+.community-page {
+  max-width: 760px;
+  margin: var(--spacing-8) auto 0;
+  padding-bottom: var(--spacing-10);
+}
+.community-page h2 {
+  margin: var(--spacing-6) 0 var(--spacing-2);
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.community-page h2:first-child {
+  margin-top: 0;
+}
+.community-page p,
+.community-page li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+.community-page ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 6px;
+}
+.community-page a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .home-columns {
+    grid-template-columns: 1fr;
+  }
+  .home-block-aside {
+    position: static;
+  }
+}
+
+/* ==========================================================================
+   DEV (emulador): login de pruebas flotante abajo. NO incluir en el commit.
+   Se monta solo cuando el host es 127.0.0.1/localhost (comunidad-client.js).
+   ========================================================================== */
+.lx-devlog {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 3000;
+  width: min(560px, calc(100vw - 32px));
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.lx-devlog > * {
+  pointer-events: auto;
+}
+.lx-devlog[data-open="0"] .lx-devlog-panel {
+  display: none;
+}
+.lx-devlog[data-open="1"] .lx-devlog-trigger {
+  display: none;
+}
+
+.lx-devlog-trigger {
+  border: none;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 12px 24px rgba(15, 61, 255, 0.3);
+  cursor: pointer;
+  transition: transform 200ms var(--ease-lix, ease);
+}
+.lx-devlog-trigger:hover {
+  transform: translateY(-2px);
+}
+
+.lx-devlog-panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-strong);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lx-devlog-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lx-devlog-head strong {
+  margin-right: auto;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.lx-devlog-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(15, 61, 255, 0.08);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.lx-devlog-close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+}
+.lx-devlog-close:hover {
+  color: var(--text);
+}
+.lx-devlog-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lx-devlog-row input {
+  flex: 1 1 180px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+}
+.lx-devlog-row input:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 123, 255, 0.18);
+}
+.lx-devlog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lx-devlog-actions .btn-primary,
+.lx-devlog-actions .btn-secondary {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.lx-devlog-msg {
+  min-height: 1em;
+  color: #b91c1c;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.lx-devlog-msg:empty {
+  display: none;
 }

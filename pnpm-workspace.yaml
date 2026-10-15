@@ -29,3 +29,4 @@ overrides:
   '@fastify/busboy@3': '^3.2.1'
   '@opentelemetry/core@1': '^2.8.0'
   'basic-ftp@5': '^6.2.1'
+  'proxy-addr@<2.0.8': '>=2.0.8'

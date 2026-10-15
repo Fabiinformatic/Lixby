@@ -3,22 +3,40 @@
                     "public":  ".",
                     "ignore":  [
                                    "firebase.json",
+                                   "firestore.rules",
+                                   "firestore.indexes.json",
                                    "sitemap.xml",
                                    "**/.*",
                                    ".git",
                                    ".git/**",
+                                   ".github/**",
+                                   ".config/**",
+                                   ".stripe/**",
+                                   ".agents/**",
+                                   ".continue/**",
+                                   ".firebase/**",
+                                   ".env",
+                                   ".env.*",
+                                   ".gitignore",
+                                   ".firebaserc",
                                    "**/node_modules/**",
                                    "functions/**",
                                    "src/**",
                                    "dataconnect/**",
                                    "docs/**",
                                    "y/**",
+                                   "scripts/**",
                                    "server.js",
+                                   "admin.html",
+                                   "nota.txt",
+                                   "SECURITY.md",
                                    "firebase-service-account.json",
                                    "package.json",
                                    "package-lock.json",
+                                   "pnpm-lock.yaml",
+                                   "pnpm-workspace.yaml",
                                    "README.md",
-                                   "firebase-debug.log",
+                                   "**/*.log",
                                    "*.ps1"
                                ],
                     "cleanUrls":  true,
@@ -237,6 +255,66 @@
                                       },
                                       {
                                           "source": "/firebase-service-account.json.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/firestore.rules",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/firestore.indexes.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/nota.txt",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/SECURITY.md",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/pnpm-lock.yaml",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/pnpm-workspace.yaml",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/scripts/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.github/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.config/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.stripe/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.agents/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.continue/**",
                                           "destination": "/404.html",
                                           "type": 301
                                       },
