@@ -1407,7 +1407,10 @@
 
     function sanitizeImageUrl(url) {
       const fallback = "images/cuenta.png";
-      const value = String(url || "").trim();
+      // Elimina los caracteres meta HTML (<, >, ", ') antes de validar: no pueden
+      // aparecer sin codificar en una URL válida y evitan que el valor se reinterprete
+      // como HTML en el contexto del atributo (XSS basado en DOM).
+      const value = String(url || "").trim().replace(/[<>"']/g, "");
       if (!value) return fallback;
 
       // Avatares guardados como data URL (evita depender de Cloud Storage)
