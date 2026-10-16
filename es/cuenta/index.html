@@ -162,6 +162,12 @@
       padding: 18px;
     }
 
+    /* La tarjeta lateral acompaña al hacer scroll por la cuenta */
+    .account-side {
+      position: sticky;
+      top: 92px;
+    }
+
     .account-side h1 {
       font-size: 1.4rem;
       margin-bottom: 6px;
@@ -777,6 +783,12 @@
       .account-layout {
         grid-template-columns: 1fr;
       }
+
+      /* En una sola columna la tarjeta lateral no debe quedarse pegada */
+      .account-side {
+        position: static;
+        top: auto;
+      }
     }
 
     @media (max-width: 720px) {
@@ -1287,7 +1299,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import { getAuth, getRedirectResult, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
-    import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, updateDoc, addDoc, collection, getDocs, query, orderBy, limit, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
 
     const firebaseConfig = {
@@ -1324,6 +1336,7 @@
     const loginHistoryBtn = document.getElementById("loginHistoryBtn");
     const sessionsModal = document.getElementById("sessionsModal");
     const sessionsBody = document.getElementById("sessionsBody");
+    const sessionsTitleEl = document.getElementById("sessionsTitle");
     const sessionsCloseBtn = document.getElementById("sessionsCloseBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const logoutBtnSecondary = document.getElementById("logoutBtnSecondary");
@@ -2335,18 +2348,26 @@
       if (ls) ls.classList.add("hide");
     }
 
+    // Primero mostramos la cuenta y solo después retiramos la pantalla de carga,
+    // para que no se vean dos pantallas (loader + página aún vacía).
+    function showAccountLayout() {
+      accountLayout.classList.remove("hidden");
+      requestAnimationFrame(() => accountLayout.classList.add("visible"));
+    }
+
     async function loadAccount(user) {
-      hideLoadingScreen();
       await ensureAccountNumber();
       await migrateStoredBilling();
+
+      // Registra/verifica esta sesión: si la cerraron desde otro dispositivo,
+      // el onSnapshot nos saca de aquí.
+      registerSession(user).catch((e) => console.warn("Sesión no registrada:", e));
 
       const { merged, stored } = await loadStoredProfile(user);
       fillProfile(user, merged);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
-      accountLayout.classList.remove("hidden");
-      requestAnimationFrame(() => accountLayout.classList.add("visible"));
       setEditable();
       resetDirty();
 
@@ -2360,11 +2381,14 @@
         }
       }
 
-      // Cargar pedidos y tarjetas regalo
+      // Pedidos y tarjetas regalo: esperamos, pero con un límite de tiempo para
+      // que la pantalla de carga no se quede colgada si el servicio no responde.
       const userEmail = user.email;
       if (userEmail) {
-        loadOrders(userEmail);
-        loadGiftCards(userEmail);
+        await Promise.race([
+          Promise.allSettled([loadOrders(userEmail), loadGiftCards(userEmail)]),
+          new Promise((resolve) => setTimeout(resolve, 6000))
+        ]);
       }
 
       if (verifyEmailBtn) {
@@ -2377,6 +2401,11 @@
         twoFactorBtn.textContent = has2fa ? "Verificado" : "Configurar";
         twoFactorBtn.classList.toggle("btn-verified", has2fa);
       }
+
+      // Todo cargado: mostramos la cuenta y, ya visible, quitamos la pantalla de carga.
+      showAccountLayout();
+      await new Promise((resolve) => setTimeout(resolve, 320));
+      hideLoadingScreen();
     }
 
     onAuthStateChanged(auth, async (user) => {
@@ -2432,7 +2461,73 @@
       }
     });
 
-    // ── Sesiones activas ──────────────────────────────────────────────────
+    // ── Sesiones activas (guardadas en Firestore) ──────────────────────────
+    const SESSION_KEY = "lixbySessionId";
+
+    function getSessionId() {
+      let id = localStorage.getItem(SESSION_KEY);
+      if (!id) {
+        id = makeId();
+        localStorage.setItem(SESSION_KEY, id);
+      }
+      return id;
+    }
+
+    let unsubscribeSession = null;
+
+    // Registra este navegador como una sesión activa y avisa si la cierran
+    // desde otro dispositivo. Un login nuevo (documento inexistente) deja
+    // además constancia en el historial.
+    async function registerSession(user) {
+      const sid = getSessionId();
+      const sessionRef = doc(db, "users", user.uid, "sessions", sid);
+      const snap = await getDoc(sessionRef);
+
+      if (snap.exists() && snap.data().revokedAt) {
+        await forceLogout(user, sessionRef);
+        return;
+      }
+
+      const device = describeDevice();
+
+      if (!snap.exists()) {
+        addDoc(collection(db, "users", user.uid, "loginHistory"), {
+          browser: device.browser,
+          os: device.os,
+          tipo: device.tipo,
+          method: (user.providerData && user.providerData[0] && user.providerData[0].providerId) || "password",
+          createdAt: serverTimestamp()
+        }).catch((e) => console.warn("Historial no registrado:", e));
+      }
+
+      await setDoc(sessionRef, {
+        browser: device.browser,
+        os: device.os,
+        tipo: device.tipo,
+        ...(snap.exists() ? {} : { createdAt: serverTimestamp() }),
+        lastActiveAt: serverTimestamp()
+      }, { merge: true });
+
+      if (unsubscribeSession) unsubscribeSession();
+      unsubscribeSession = onSnapshot(sessionRef, (docSnap) => {
+        if (docSnap.exists() && docSnap.data().revokedAt) {
+          forceLogout(user, sessionRef);
+        }
+      });
+    }
+
+    async function forceLogout(user, sessionRef) {
+      try {
+        if (unsubscribeSession) unsubscribeSession();
+        await deleteDoc(sessionRef);
+      } catch (e) {
+        console.warn("No se pudo limpiar la sesión:", e);
+      }
+      localStorage.removeItem(SESSION_KEY);
+      await signOut(auth);
+      window.location.href = "/es/iniciar-sesion/";
+    }
+
     function describeDevice() {
       const ua = navigator.userAgent || "";
       let browser = "Navegador";
@@ -2463,24 +2558,57 @@
       return date.toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
     }
 
-    function openSessionsModal(user) {
-      const device = describeDevice();
-      const item = el("div", { className: "session-item" });
-      item.appendChild(el("strong", { text: "Este dispositivo" }));
-      item.appendChild(el("span", { text: `${device.tipo} · ${device.os} · ${device.browser}` }));
-      item.appendChild(el("span", { text: `Último acceso: ${formatWhen(user.metadata && user.metadata.lastSignInTime)}` }));
-      item.appendChild(el("span", { text: `Cuenta creada: ${formatWhen(user.metadata && user.metadata.creationTime)}` }));
-      item.appendChild(el("span", { text: user.email || user.uid }));
-      item.appendChild(el("span", { className: "session-badge", text: "Activa ahora" }));
-
-      replaceChildren(sessionsBody, [
-        item,
-        el("span", {
-          style: { fontSize: "0.86rem", color: "var(--muted)" },
-          text: "Firebase no permite listar los inicios de sesión de otros navegadores. Usa “Cerrar sesión en otros dispositivos” para cerrarlas todas."
-        })
-      ]);
+    async function openSessionsModal(user) {
+      sessionsTitleEl.textContent = "Sesiones activas";
+      sessionsBody.textContent = "Cargando…";
       sessionsModal.classList.remove("hidden");
+
+      const currentId = getSessionId();
+      const maxAge = 30 * 24 * 3600 * 1000;
+      let snap;
+
+      try {
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "sessions"),
+          orderBy("lastActiveAt", "desc")
+        ));
+      } catch (error) {
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "No se pudieron cargar las sesiones." })]);
+        return;
+      }
+
+      const items = [];
+      snap.forEach((docSnap) => {
+        const s = docSnap.data();
+        if (s.revokedAt) return;
+        const last = s.lastActiveAt && typeof s.lastActiveAt.toDate === "function" ? s.lastActiveAt.toDate() : null;
+        if (last && Date.now() - last.getTime() > maxAge) return;
+
+        const isCurrent = docSnap.id === currentId;
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", {
+          text: isCurrent ? "Este dispositivo" : `${s.tipo || "Dispositivo"} · ${s.os || "Desconocido"}`
+        }));
+        item.appendChild(el("span", { text: `${s.browser || "Navegador"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `Última actividad: ${formatWhen(s.lastActiveAt)}` }));
+        item.appendChild(el("span", { text: `Inicio: ${formatWhen(s.createdAt)}` }));
+
+        if (isCurrent) {
+          item.appendChild(el("span", { className: "session-badge", text: "Activa ahora" }));
+        } else {
+          item.appendChild(el("button", {
+            className: "btn btn-secondary btn-danger",
+            type: "button",
+            text: "Cerrar sesión",
+            dataset: { revokeSession: docSnap.id },
+            style: { marginTop: "8px", justifySelf: "start" }
+          }));
+        }
+        items.push(item);
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "No hay sesiones registradas." })]);
     }
 
     function closeSessionsModal() {
@@ -2493,7 +2621,7 @@
         showStatus("Sesión no válida.", "error");
         return;
       }
-      openSessionsModal(user);
+      openSessionsModal(user).catch(() => showStatus("No se pudieron cargar las sesiones.", "error"));
     });
 
     sessionsCloseBtn.addEventListener("click", closeSessionsModal);
@@ -2504,30 +2632,45 @@
       if (event.key === "Escape") closeSessionsModal();
     });
 
-    // "Cerrar sesión en otros dispositivos": revoca los refresh tokens en el
-    // servidor (Firebase solo permite hacerlo con la Admin SDK).
+    // Cerrar una sesión concreta desde el botón de su tarjeta en la lista.
+    sessionsBody.addEventListener("click", async (event) => {
+      const button = event.target.closest("button[data-revoke-session]");
+      if (!button) return;
+      const user = auth.currentUser;
+      const sid = button.dataset.revokeSession;
+      if (!user || !sid) return;
+
+      button.disabled = true;
+      try {
+        await updateDoc(doc(db, "users", user.uid, "sessions", sid), { revokedAt: serverTimestamp() });
+        showStatus("Sesión cerrada.", "success");
+        await openSessionsModal(user);
+      } catch (error) {
+        console.error(error);
+        button.disabled = false;
+        showStatus("No se pudo cerrar la sesión.", "error");
+      }
+    });
+
+    // "Cerrar sesión en otros dispositivos": marca como revocadas el resto de
+    // sesiones (esta se mantiene). Cada dispositivo lo detecta con onSnapshot.
     closeOtherSessionsBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
         showStatus("Sesión no válida.", "error");
         return;
       }
-      const confirmed = window.confirm(
-        "¿Cerrar la sesión en todos los otros dispositivos? La sesión de este equipo se mantiene."
-      );
-      if (!confirmed) return;
+      if (!window.confirm("¿Cerrar la sesión en todos los otros dispositivos? La sesión de este equipo se mantiene.")) return;
 
       closeOtherSessionsBtn.disabled = true;
       try {
-        const idToken = await user.getIdToken();
-        const response = await fetch(`${RAILWAY_URL}/auth/revoke-sessions`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${idToken}`
-          }
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const currentId = getSessionId();
+        const snap = await getDocs(collection(db, "users", user.uid, "sessions"));
+        await Promise.all(
+          snap.docs
+            .filter((docSnap) => docSnap.id !== currentId && !docSnap.data().revokedAt)
+            .map((docSnap) => updateDoc(docSnap.ref, { revokedAt: serverTimestamp() }))
+        );
         showStatus("Sesiones cerradas en otros dispositivos.", "success");
       } catch (error) {
         console.error(error);
@@ -2537,9 +2680,65 @@
       }
     });
 
+    // ── Historial de inicio de sesión ─────────────────────────────────────
+    const METHOD_LABELS = {
+      password: "Email y contraseña",
+      "google.com": "Google",
+      "apple.com": "Apple",
+      phone: "Teléfono"
+    };
+
+    async function openLoginHistoryModal(user) {
+      sessionsTitleEl.textContent = "Historial de inicio de sesión";
+      sessionsBody.textContent = "Cargando…";
+      sessionsModal.classList.remove("hidden");
+
+      let snap;
+      try {
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "loginHistory"),
+          orderBy("createdAt", "desc"),
+          limit(20)
+        ));
+      } catch (error) {
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "No se pudo cargar el historial." })]);
+        return;
+      }
+
+      const items = snap.docs.map((docSnap) => {
+        const s = docSnap.data();
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", { text: formatWhen(s.createdAt) }));
+        item.appendChild(el("span", { text: `${s.browser || "Navegador"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `Método: ${METHOD_LABELS[s.method] || s.method || "—"}` }));
+        return item;
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "Aún no hay inicios de sesión registrados." })]);
+    }
+
+    loginHistoryBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sesión no válida.", "error");
+        return;
+      }
+      openLoginHistoryModal(user).catch(() => showStatus("No se pudo cargar el historial.", "error"));
+    });
+
 
 
     async function doLogout() {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          if (unsubscribeSession) unsubscribeSession();
+          await deleteDoc(doc(db, "users", user.uid, "sessions", getSessionId()));
+        } catch (e) {
+          console.warn("No se pudo limpiar la sesión:", e);
+        }
+      }
       await signOut(auth);
       window.location.href = "/es/iniciar-sesion/";
     }

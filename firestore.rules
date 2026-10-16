@@ -51,8 +51,21 @@ service cloud.firestore {
       allow update: if isOwner(uid)
         && !request.resource.data.diff(resource.data).affectedKeys().hasAny(accountNumberFields());
 
-      match /{document=**} {
-        allow read, create, update, delete: if isOwner(uid);
+      // Subcolecciones del usuario (perfil y datos de facturación).
+      match /account/{docId} {
+        allow read, write: if isOwner(uid);
+      }
+
+      // Sesiones activas: cada navegador registra y actualiza la suya.
+      match /sessions/{sessionId} {
+        allow read, write: if isOwner(uid);
+      }
+
+      // Historial de inicio de sesión: se puede crear y leer, pero no editar
+      // ni borrar (queda como registro permanente).
+      match /loginHistory/{entryId} {
+        allow read, create: if isOwner(uid);
+        allow update, delete: if false;
       }
     }
 
