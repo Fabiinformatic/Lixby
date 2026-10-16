@@ -1130,13 +1130,26 @@ app.get("/admin/gift-cards", adminLimiter, async (req, res) => {
   return res.json(giftCards);
 });
 
-app.get("/orders-by-email/:email", adminLimiter, async (req, res) => {
-  const apiKey = req.headers["x-api-key"];
-  if (!adminApiKey || apiKey !== adminApiKey) {
-    return res.status(401).json({ error: "No autorizado" });
+// Datos del área de cliente: el email se obtiene del token de Firebase
+// (nunca de la URL) para que nadie pueda leer pedidos de otra cuenta.
+app.get("/orders-by-email", adminLimiter, async (req, res) => {
+  let email;
+  try {
+    const authHeader = req.headers.authorization || "";
+    const idToken = authHeader.replace("Bearer ", "").trim();
+    if (!idToken) {
+      return res.status(401).json({ error: "No autorizado" });
+    }
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    email = decoded.email;
+  } catch (err) {
+    return res.status(401).json({ error: "Token inválido" });
   }
 
-  const email = decodeURIComponent(req.params.email);
+  if (!email) {
+    return res.status(400).json({ error: "El usuario no tiene email" });
+  }
+
   try {
     const snapshot = await db
       .collection("orders")
@@ -1153,13 +1166,24 @@ app.get("/orders-by-email/:email", adminLimiter, async (req, res) => {
   }
 });
 
-app.get("/gift-cards-by-email/:email", adminLimiter, async (req, res) => {
-  const apiKey = req.headers["x-api-key"];
-  if (!adminApiKey || apiKey !== adminApiKey) {
-    return res.status(401).json({ error: "No autorizado" });
+app.get("/gift-cards-by-email", adminLimiter, async (req, res) => {
+  let email;
+  try {
+    const authHeader = req.headers.authorization || "";
+    const idToken = authHeader.replace("Bearer ", "").trim();
+    if (!idToken) {
+      return res.status(401).json({ error: "No autorizado" });
+    }
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    email = decoded.email;
+  } catch (err) {
+    return res.status(401).json({ error: "Token inválido" });
   }
 
-  const email = decodeURIComponent(req.params.email);
+  if (!email) {
+    return res.status(400).json({ error: "El usuario no tiene email" });
+  }
+
   try {
     const snapshot = await db
       .collection("giftCards")

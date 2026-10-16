@@ -56,15 +56,22 @@ service cloud.firestore {
         allow read, write: if isOwner(uid);
       }
 
-      // Sesiones activas: cada navegador registra y actualiza la suya.
+      // Sesiones activas: cada navegador registra y actualiza la suya. El dueño
+      // puede leer, crear, actualizar (revokedAt / lastActiveAt) y borrar.
       match /sessions/{sessionId} {
-        allow read, write: if isOwner(uid);
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid);
+        allow update: if isOwner(uid);
+        allow delete: if isOwner(uid);
       }
 
-      // Historial de inicio de sesión: se puede crear y leer, pero no editar
-      // ni borrar (queda como registro permanente).
+      // Historial de inicio de sesión: solo se puede crear (con la forma exacta)
+      // y leer; no se puede editar ni borrar (queda como registro permanente).
       match /loginHistory/{entryId} {
-        allow read, create: if isOwner(uid);
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid)
+          && request.resource.data.keys().hasOnly(['browser', 'os', 'tipo', 'method', 'createdAt'])
+          && request.resource.data.createdAt == request.time;
         allow update, delete: if false;
       }
     }

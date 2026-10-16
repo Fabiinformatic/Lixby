@@ -902,7 +902,33 @@
     }
 
     function readPayments() {
-      return JSON.parse(localStorage.getItem(getScopedKey(PAYMENTS_KEY)) || "{\"methods\":[],\"defaultMethodId\":null}");
+      let stored = null;
+      try {
+        stored = JSON.parse(localStorage.getItem(getScopedKey(PAYMENTS_KEY)) || "{\"methods\":[],\"defaultMethodId\":null}");
+      } catch (error) {
+        stored = null;
+      }
+
+      const rawMethods = Array.isArray(stored && stored.methods) ? stored.methods : [];
+      const methods = rawMethods.map((method) => ({
+        id: method.id || makeId(),
+        brand: method.brand || "Card",
+        last4: onlyDigits(method.last4 || method.number || "").slice(-4)
+      }));
+
+      const state = {
+        methods,
+        defaultMethodId: (stored && stored.defaultMethodId) || (methods[0] ? methods[0].id : null)
+      };
+
+      // Nunca guardamos el numero completo de la tarjeta: solo marca y ultimos 4.
+      // Si quedan datos antiguos (numero, titular o caducidad) los purgamos.
+      const hadSensitiveData = rawMethods.some((method) => method.number || method.cardholder || method.expiry || method.cvv || typeof method.last4 !== "string");
+      if (hadSensitiveData) {
+        writePayments(state);
+      }
+
+      return state;
     }
 
     function writePayments(value) {
@@ -1070,15 +1096,12 @@
         const article = el("article", { className: "payment-item" });
         const details = el("div");
         const title = el("strong", {
-          text: `${method.brand || "Card"} ${maskCard(onlyDigits(method.number || ""))}`
+          text: `${method.brand || "Card"} ${maskCard(onlyDigits(method.last4 || method.number || ""))}`
         });
         if (isDefault) {
           title.appendChild(el("span", { className: "payment-default", text: "Προεπιλεγμένη" }));
         }
         details.appendChild(title);
-        details.appendChild(el("small", {
-          text: `Κάτοχος: ${method.cardholder || ""} - Λήγει ${method.expiry || ""}`
-        }));
 
         const actions = el("div", { className: "payment-item-actions" });
         actions.appendChild(el("button", {
@@ -1307,10 +1330,8 @@
       const brandInfo = detectBrand(cardNumber);
       const method = {
         id: makeId(),
-        cardholder,
-        number: cardNumber,
-        expiry,
-        brand: brandInfo.brand
+        brand: brandInfo.brand,
+        last4: cardNumber.slice(-4)
       };
 
       state.methods.push(method);
@@ -1401,7 +1422,6 @@
     });
 
     const RAILWAY_URL = "https://lixby-production.up.railway.app";
-    const ACCOUNT_API_KEY = "lixby-admin-2026";
 
     function badge(text, colors) {
       return el("span", {
@@ -1541,9 +1561,9 @@
 
       try {
         const res = await fetch(
-          `${RAILWAY_URL}/orders-by-email/${encodeURIComponent(email)}`,
+          `${RAILWAY_URL}/orders-by-email`,
           {
-            headers: { "x-api-key": ACCOUNT_API_KEY }
+            headers: { Authorization: `Bearer ${await auth.currentUser.getIdToken()}` }
           }
         );
         const orders = await res.json();
@@ -1569,9 +1589,9 @@
 
       try {
         const res = await fetch(
-          `${RAILWAY_URL}/gift-cards-by-email/${encodeURIComponent(email)}`,
+          `${RAILWAY_URL}/gift-cards-by-email`,
           {
-            headers: { "x-api-key": ACCOUNT_API_KEY }
+            headers: { Authorization: `Bearer ${await auth.currentUser.getIdToken()}` }
           }
         );
         const cards = await res.json();
