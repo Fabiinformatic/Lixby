@@ -1194,6 +1194,26 @@ app.post("/auth/custom-token", authLimiter, async (req, res) => {
   }
 });
 
+// Cierra la sesión en el resto de dispositivos revocando sus refresh tokens.
+app.post("/auth/revoke-sessions", authLimiter, async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization || "";
+    const idToken = authHeader.replace("Bearer ", "");
+
+    if (!idToken) {
+      return res.status(401).json({ error: "Token requerido" });
+    }
+
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    await admin.auth().revokeRefreshTokens(decoded.uid);
+
+    return res.json({ ok: true });
+  } catch (err) {
+    console.error("Error revocando sesiones:", err.message);
+    return res.status(401).json({ error: "Token inválido" });
+  }
+});
+
 function getLocalized404Page(requestPath) {
   const match = requestPath.match(/^\/([a-z]{2})(?:\/|$)/i);
   const lang = match ? match[1].toLowerCase() : "es";

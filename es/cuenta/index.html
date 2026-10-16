@@ -186,9 +186,15 @@
 
     .side-actions {
       display: grid;
-      gap: 8px;
-      margin-top: 10px;
-      justify-items: start;
+      gap: 10px;
+      margin-top: 14px;
+      justify-items: stretch;
+    }
+
+    /* Los botones de la tarjeta lateral ocupan todo el ancho de la tarjeta blanca */
+    .side-actions .btn {
+      width: 100%;
+      min-width: 0;
     }
 
     .account-section + .account-section {
@@ -236,6 +242,26 @@
       min-height: 72px;
     }
 
+    /* Desplegables con la flecha y el foco de Lixby */
+    .field select,
+    .payment-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23697380' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px 16px;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .field select:focus,
+    .field select:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.15);
+    }
+
     .field-grid.three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -259,17 +285,68 @@
 
     .check-row {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: flex-start;
       font-weight: 600;
       cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 15px;
+      background: #fff;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .check-row input {
-      width: auto;
+    .check-row:hover {
+      border-color: rgba(15, 61, 255, 0.4);
+      background: #f7f9ff;
+    }
+
+    .check-row:has(input:checked) {
+      border-color: var(--primary);
+      background: #f2f5ff;
+      box-shadow: 0 10px 24px rgba(15, 61, 255, 0.12);
+    }
+
+    /* Casilla con el diseño de Lixby */
+    .check-row input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
       flex: none;
-      margin-top: 3px;
-      pointer-events: auto;
+      margin: 1px 0 0;
+      border: 2px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .check-row input[type="checkbox"]:hover {
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:checked {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.25);
+    }
+
+    .check-row input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 11px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg);
     }
 
     .check-text {
@@ -519,26 +596,49 @@
       margin-left: 6px;
     }
 
+    /* Barra inferior: aparece cuando hay cambios sin guardar */
     .save-bar {
       position: fixed;
       left: 50%;
       bottom: 18px;
-      transform: translateX(-50%) translateY(120%);
-      background: #0f172a;
-      color: #fff;
-      border-radius: 999px;
-      padding: 10px 14px;
+      transform: translateX(-50%) translateY(140%);
+      background: #fff;
+      color: #0f172a;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      z-index: 2000;
-      transition: transform 0.25s ease;
-      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.35);
+      gap: 14px;
+      z-index: 2100;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.18);
+      max-width: calc(100% - 24px);
+      opacity: 0;
+      pointer-events: none;
     }
 
     .save-bar.show {
       transform: translateX(-50%) translateY(0);
-      animation: pulseSave 0.45s ease;
+      opacity: 1;
+      pointer-events: auto;
+      animation: pulseSave 0.35s ease;
+    }
+
+    .save-bar-text {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .save-bar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .save-bar-actions .btn {
+      min-width: 0;
+      height: 38px;
+      padding: 0 16px;
     }
 
     @keyframes pulseSave {
@@ -546,8 +646,131 @@
       100% { transform: translateX(-50%) translateY(0) scale(1); }
     }
 
+    /* Modal (sesiones activas) */
+    .account-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2200;
+    }
+
+    .account-modal.hidden {
+      display: none;
+    }
+
+    .account-modal-panel {
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px;
+      width: min(520px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 14px;
+    }
+
+    .account-modal-panel h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .session-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .session-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+      display: grid;
+      gap: 3px;
+    }
+
+    .session-item strong {
+      font-weight: 700;
+    }
+
+    .session-item span {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .session-badge {
+      justify-self: start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 999px;
+      padding: 3px 9px;
+      margin-top: 4px;
+    }
+
+    .account-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* Aviso tipo "bocadillo" (toast) */
+    .toast-msg {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-160%);
+      background: #0f172a;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 20px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      z-index: 2300;
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.3);
+      transition: transform 0.28s ease, opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+      max-width: calc(100% - 24px);
+      text-align: center;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-msg.success {
+      background: #15803d;
+    }
+
+    .toast-msg.error {
+      background: #b91c1c;
+    }
+
     .hidden {
       display: none;
+    }
+
+    @media (max-width: 560px) {
+      .save-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: calc(100% - 24px);
+        border-radius: 18px;
+      }
+
+      .save-bar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 960px) {
@@ -712,21 +935,18 @@
   </div>
 
   <main class="container account-page">
-    <!-- statusMsg removed per request -->
-
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
         <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Foto de perfil">
         <h1 id="sideName">Tu cuenta Lixby</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
-          <button id="editBtn" class="btn btn-secondary" type="button">Editar datos</button>
           <a class="btn btn-secondary" href="/es/cesta/">Ver pedidos</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Cerrar sesión</button>
         </div>
       </aside>
 
-      <section id="profileForm" class="account-main readonly">
+      <section id="profileForm" class="account-main">
         <section class="account-section">
           <h2>Datos personales</h2>
           <div class="field-grid">
@@ -851,11 +1071,11 @@
           <h2>Seguridad</h2>
           <div class="action-list">
             <div class="action-item"><span>Cambiar contraseña</span><a class="btn btn-secondary" href="/es/cambiar-contrasena/">Gestionar</a></div>
-            <div class="action-item"><span>Ver sesiones activas</span><button class="btn btn-secondary" type="button">Ver</button></div>
-            <div class="action-item"><span>Cerrar sesión en otros dispositivos</span><button class="btn btn-secondary" type="button">Cerrar</button></div>
+            <div class="action-item"><span>Ver sesiones activas</span><button id="viewSessionsBtn" class="btn btn-secondary" type="button">Ver</button></div>
+            <div class="action-item"><span>Cerrar sesión en otros dispositivos</span><button id="closeOtherSessionsBtn" class="btn btn-secondary btn-danger" type="button">Cerrar</button></div>
             <div class="action-item"><span>Activar verificación en 2 pasos</span><a id="twoFactorBtn" class="btn btn-secondary" href="/es/verificacion-2-pasos/">Configurar</a></div>
-            <div class="action-item"><span>Verificar email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Enviar</button></div>
-            <div class="action-item"><span>Historial de inicio de sesión</span><button class="btn btn-secondary" type="button">Ver historial</button></div>
+            <div class="action-item"><span>Verificar email</span><button id="verifyEmailBtn" class="btn btn-verified" type="button">Enviar</button></div>
+            <div class="action-item"><span>Historial de inicio de sesión</span><button id="loginHistoryBtn" class="btn btn-secondary" type="button">Ver historial</button></div>
           </div>
         </section>
 
@@ -985,7 +1205,28 @@
     </section>
   </main>
 
-  <!-- saveBar removed: UI handled inline, avoid persistent bar -->
+  <!-- Barra inferior: solo aparece cuando hay cambios sin guardar -->
+  <div id="saveBar" class="save-bar" role="region" aria-live="polite" aria-label="Cambios sin guardar">
+    <span class="save-bar-text">Tienes cambios sin guardar</span>
+    <div class="save-bar-actions">
+      <button id="discardChangesBtn" class="btn btn-ghost" type="button">Descartar cambios</button>
+      <button id="saveChangesBtn" class="btn btn-primary" type="button">Guardar cambios</button>
+    </div>
+  </div>
+
+  <!-- Sesiones activas -->
+  <div id="sessionsModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="sessionsTitle">
+    <div class="account-modal-panel">
+      <h3 id="sessionsTitle">Sesiones activas</h3>
+      <div id="sessionsBody" class="session-list"></div>
+      <div class="account-modal-actions">
+        <button id="sessionsCloseBtn" class="btn btn-secondary" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aviso (bocadillo) -->
+  <div id="toast" class="toast-msg" role="status" aria-live="polite"></div>
 
 <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
@@ -1069,13 +1310,21 @@
     const PAYMENTS_KEY = "lixbyPayments";
     const BILLING_KEY = "lixbyBilling";
 
-    const statusMsg = document.getElementById("statusMsg");
+    const toastEl = document.getElementById("toast");
     const accountLayout = document.getElementById("accountLayout");
     const profileForm = document.getElementById("profileForm");
     const sideName = document.getElementById("sideName");
     const sideEmail = document.getElementById("sideEmail");
     const profilePhoto = document.getElementById("profilePhoto");
-    const editBtn = document.getElementById("editBtn");
+    const saveBar = document.getElementById("saveBar");
+    const saveChangesBtn = document.getElementById("saveChangesBtn");
+    const discardChangesBtn = document.getElementById("discardChangesBtn");
+    const viewSessionsBtn = document.getElementById("viewSessionsBtn");
+    const closeOtherSessionsBtn = document.getElementById("closeOtherSessionsBtn");
+    const loginHistoryBtn = document.getElementById("loginHistoryBtn");
+    const sessionsModal = document.getElementById("sessionsModal");
+    const sessionsBody = document.getElementById("sessionsBody");
+    const sessionsCloseBtn = document.getElementById("sessionsCloseBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const logoutBtnSecondary = document.getElementById("logoutBtnSecondary");
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
@@ -1230,7 +1479,6 @@
     fillSelect(billingInputs.country, COUNTRIES);
     fillSelect(inputs.language, LANGUAGES, { placeholder: false });
 
-    let editMode = false;
     let dirty = false;
 
     async function readProfile() {
@@ -1247,6 +1495,16 @@
         ...profile,
         updatedAt: serverTimestamp()
       }, { merge: true });
+    }
+
+    // El registro guarda los datos en users/{uid} y esta página en
+    // users/{uid}/account/profile. Leemos los dos y damos prioridad al perfil
+    // editable, para no perder lo que el usuario eligió al crear la cuenta.
+    async function loadStoredProfile(user) {
+      const rootSnap = await getDoc(doc(db, "users", user.uid)).catch(() => null);
+      const root = rootSnap && rootSnap.exists() ? rootSnap.data() : {};
+      const stored = await readProfile();
+      return { merged: { ...root, ...stored }, stored, root };
     }
 
     function getScopedKey(baseKey) {
@@ -1525,33 +1783,26 @@
       replaceChildren(billingSummaryEl, [details, actions]);
     }
 
+    let toastTimer = null;
     function showStatus(text, type = "") {
-      if (statusMsg) {
-        statusMsg.textContent = text;
-        statusMsg.className = `status-msg ${type}`.trim();
-      }
+      if (!toastEl || !text) return;
+      toastEl.textContent = text;
+      toastEl.className = `toast-msg ${type} show`.trim();
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3600);
     }
 
-    function setReadonlyMode() {
-      profileForm.classList.add("readonly");
-      Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") return; // las preferencias siempre se pueden marcar
-        el.readOnly = true;
-      });
-      editBtn.textContent = "Editar datos";
-      editMode = false;
-      dirty = false;
-    }
-
-    function setEditMode() {
+    // Los datos del perfil están siempre editables: ya no hay botón "Editar datos".
+    function setEditable() {
       profileForm.classList.remove("readonly");
       Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") return;
         el.readOnly = false;
       });
-      editBtn.textContent = "Guardar perfil";
-      editMode = true;
+    }
+
+    function resetDirty() {
       dirty = false;
+      if (saveBar) saveBar.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1577,8 +1828,8 @@
       inputs.city.value = profile.city || "";
       inputs.postalCode.value = profile.postalCode || "";
       setSelectValue(inputs.countryContact, profile.countryContact || profile.country || "España");
-      inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
-      inputs.prefOffers.checked = Boolean(profile.prefOffers);
+      inputs.prefAds.checked = Boolean(profile.prefAds ?? profile.adsOptIn ?? false);
+      inputs.prefOffers.checked = Boolean(profile.prefOffers ?? profile.mediaOptIn ?? false);
 
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "Tu cuenta Lixby";
@@ -1603,27 +1854,41 @@
         countryContact: inputs.countryContact.value.trim(),
         prefAds: inputs.prefAds.checked,
         prefOffers: inputs.prefOffers.checked,
-        adsOptIn: inputs.prefAds.checked
+        adsOptIn: inputs.prefAds.checked,
+        mediaOptIn: inputs.prefOffers.checked
       };
     }
 
+    // Perfil editable siempre: el guardado se controla con la barra inferior.
     async function saveProfile() {
       const data = collectProfileData();
       await writeProfile(data);
       const user = auth.currentUser;
       if (!user) return;
       fillProfile(user, data);
-      setReadonlyMode();
+      resetDirty();
+      showStatus("Cambios guardados.", "success");
+    }
+
+    async function discardChanges() {
+      const user = auth.currentUser;
+      if (!user) return;
+      const { merged } = await loadStoredProfile(user);
+      fillProfile(user, merged);
+      resetDirty();
+      showStatus("Cambios descartados.", "info");
     }
 
     function setDirty() {
-      if (!editMode) return;
       dirty = true;
+      if (saveBar) saveBar.classList.add("show");
     }
 
+    // Todos los campos marcan cambios pendientes, menos las preferencias
+    // (esas se guardan al instante más abajo).
     Object.values(inputs).forEach((el) => {
-      const evt = el.type === "checkbox" ? "change" : "input";
-      el.addEventListener(evt, setDirty);
+      if (el === inputs.prefAds || el === inputs.prefOffers) return;
+      el.addEventListener("input", setDirty);
     });
 
     // Las preferencias se guardan al momento (siempre se pueden marcar)
@@ -1635,6 +1900,7 @@
           const profile = await readProfile();
           profile[key] = el.checked;
           if (key === "prefAds") profile.adsOptIn = el.checked;
+          if (key === "prefOffers") profile.mediaOptIn = el.checked;
           await writeProfile(profile);
           showStatus("Preferencias guardadas.", "success");
         } catch (error) {
@@ -2074,15 +2340,25 @@
       await ensureAccountNumber();
       await migrateStoredBilling();
 
-      const stored = await readProfile();
-      fillProfile(user, stored);
+      const { merged, stored } = await loadStoredProfile(user);
+      fillProfile(user, merged);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
-      showStatus("Cuenta cargada correctamente.", "success");
       accountLayout.classList.remove("hidden");
       requestAnimationFrame(() => accountLayout.classList.add("visible"));
-      setReadonlyMode();
+      setEditable();
+      resetDirty();
+
+      // Si la cuenta es recién creada y aún no tenía perfil, guardamos lo elegido
+      // en el registro para que quede todo seleccionado en la próxima visita.
+      if (!Object.keys(stored).length) {
+        try {
+          await writeProfile(collectProfileData());
+        } catch (error) {
+          console.warn("No se pudieron guardar las preferencias iniciales:", error);
+        }
+      }
 
       // Cargar pedidos y tarjetas regalo
       const userEmail = user.email;
@@ -2094,7 +2370,6 @@
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
         verifyEmailBtn.textContent = user.emailVerified ? "Verificado" : "Enviar";
-        verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
       }
       if (twoFactorBtn) {
         const has2fa = multiFactor(user).enrolledFactors
@@ -2132,11 +2407,133 @@
       await loadAccount(activeUser);
     });
 
-    editBtn.addEventListener("click", async () => {
-      if (editMode) {
+    // ── Barra inferior: guardar o descartar cambios ────────────────────────
+    saveChangesBtn.addEventListener("click", async () => {
+      saveChangesBtn.disabled = true;
+      try {
         await saveProfile();
-      } else {
-        setEditMode();
+      } catch (error) {
+        console.error(error);
+        showStatus("No se pudieron guardar los cambios.", "error");
+      } finally {
+        saveChangesBtn.disabled = false;
+      }
+    });
+
+    discardChangesBtn.addEventListener("click", async () => {
+      discardChangesBtn.disabled = true;
+      try {
+        await discardChanges();
+      } catch (error) {
+        console.error(error);
+        showStatus("No se pudieron descartar los cambios.", "error");
+      } finally {
+        discardChangesBtn.disabled = false;
+      }
+    });
+
+    // ── Sesiones activas ──────────────────────────────────────────────────
+    function describeDevice() {
+      const ua = navigator.userAgent || "";
+      let browser = "Navegador";
+      if (/Edg\//.test(ua)) browser = "Microsoft Edge";
+      else if (/OPR\/|Opera\//.test(ua)) browser = "Opera";
+      else if (/Chrome\//.test(ua)) browser = "Google Chrome";
+      else if (/Firefox\//.test(ua)) browser = "Firefox";
+      else if (/Safari\//.test(ua)) browser = "Safari";
+
+      let os = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "Dispositivo";
+      if (/Windows/.test(ua)) os = "Windows";
+      else if (/Android/.test(ua)) os = "Android";
+      else if (/iPhone|iPad|iPod/.test(ua)) os = "iOS";
+      else if (/Mac OS X|Macintosh/.test(ua)) os = "macOS";
+      else if (/Linux/.test(ua)) os = "Linux";
+
+      return {
+        browser,
+        os,
+        tipo: /Mobi|Android|iPhone|iPad/i.test(ua) ? "Móvil" : "Ordenador"
+      };
+    }
+
+    function formatWhen(value) {
+      if (!value) return "—";
+      const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
+      if (Number.isNaN(date.getTime())) return "—";
+      return date.toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    function openSessionsModal(user) {
+      const device = describeDevice();
+      const item = el("div", { className: "session-item" });
+      item.appendChild(el("strong", { text: "Este dispositivo" }));
+      item.appendChild(el("span", { text: `${device.tipo} · ${device.os} · ${device.browser}` }));
+      item.appendChild(el("span", { text: `Último acceso: ${formatWhen(user.metadata && user.metadata.lastSignInTime)}` }));
+      item.appendChild(el("span", { text: `Cuenta creada: ${formatWhen(user.metadata && user.metadata.creationTime)}` }));
+      item.appendChild(el("span", { text: user.email || user.uid }));
+      item.appendChild(el("span", { className: "session-badge", text: "Activa ahora" }));
+
+      replaceChildren(sessionsBody, [
+        item,
+        el("span", {
+          style: { fontSize: "0.86rem", color: "var(--muted)" },
+          text: "Firebase no permite listar los inicios de sesión de otros navegadores. Usa “Cerrar sesión en otros dispositivos” para cerrarlas todas."
+        })
+      ]);
+      sessionsModal.classList.remove("hidden");
+    }
+
+    function closeSessionsModal() {
+      sessionsModal.classList.add("hidden");
+    }
+
+    viewSessionsBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sesión no válida.", "error");
+        return;
+      }
+      openSessionsModal(user);
+    });
+
+    sessionsCloseBtn.addEventListener("click", closeSessionsModal);
+    sessionsModal.addEventListener("click", (event) => {
+      if (event.target === sessionsModal) closeSessionsModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSessionsModal();
+    });
+
+    // "Cerrar sesión en otros dispositivos": revoca los refresh tokens en el
+    // servidor (Firebase solo permite hacerlo con la Admin SDK).
+    closeOtherSessionsBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Sesión no válida.", "error");
+        return;
+      }
+      const confirmed = window.confirm(
+        "¿Cerrar la sesión en todos los otros dispositivos? La sesión de este equipo se mantiene."
+      );
+      if (!confirmed) return;
+
+      closeOtherSessionsBtn.disabled = true;
+      try {
+        const idToken = await user.getIdToken();
+        const response = await fetch(`${RAILWAY_URL}/auth/revoke-sessions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`
+          }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        showStatus("Sesiones cerradas en otros dispositivos.", "success");
+      } catch (error) {
+        console.error(error);
+        showStatus("No se pudo cerrar la sesión en otros dispositivos.", "error");
+      } finally {
+        closeOtherSessionsBtn.disabled = false;
       }
     });
 
@@ -2168,7 +2565,6 @@
         if (verifyEmailBtn) {
           verifyEmailBtn.disabled = user.emailVerified;
           verifyEmailBtn.textContent = user.emailVerified ? "Verificado" : "Enviar";
-          verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
         }
         showStatus("Email enviado. Revisa Spam y Promociones.", "success");
       } catch (error) {
