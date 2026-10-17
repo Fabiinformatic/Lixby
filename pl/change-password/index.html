@@ -213,7 +213,7 @@
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
+    <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
       <h1>Zmień hasło</h1>
@@ -232,6 +232,13 @@
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
+      <div id="mfaBlock" class="field" style="display:none">
+        <label for="smsCode">Kod SMS</label>
+        <input id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <p class="helper" id="mfaHint"></p>
+      </div>
+      <div id="recaptchaContainer"></div>
+
       <div class="actions">
         <button id="savePasswordBtn" class="btn btn-primary" type="button">Zapisz zmiany</button>
         <a class="btn btn-secondary" href="/pl/account/">Wróć na moje konto</a>
@@ -239,9 +246,63 @@
     </section>
   </main>
 
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/pl/shop/">Tienda</a></li>
+          <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="/pl/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/pl/support/">Página inicial soporte</a></li>
+          <li><a href="/pl/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/pl/support/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/pl/track/">Pedidos</a></li>
+          <li><a href="/pl/account/">Mi cuenta</a></li>
+          <li><a href="/pl/account/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/pl/about/">Nosotros</a></li>
+          <li><a href="/pl/support/">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="/pl/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/pl/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/pl/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/pl/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/pl/support/">Ventas y reembolsos</a>
+        <a href="/pl/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -265,6 +326,7 @@
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.hidden = !text;
     }
 
     function clearInputs() {
@@ -277,46 +339,130 @@
       return value.length >= 8;
     }
 
+    const mfaBlock = document.getElementById("mfaBlock");
+    const smsCode = document.getElementById("smsCode");
+    const mfaHint = document.getElementById("mfaHint");
+
+    let mfaResolver = null;
+    let verificationId = null;
+    let recaptchaVerifier = null;
+    let pendingPassword = null;
+
+    const ERRORS = {
+      "auth/wrong-password": "Obecne hasło jest nieprawidłowe.",
+      "auth/invalid-credential": "Obecne hasło jest nieprawidłowe.",
+      "auth/too-many-requests": "Zbyt wiele prób. Spróbuj ponownie później.",
+      "auth/weak-password": "Nowe hasło jest zbyt słabe.",
+      "auth/invalid-verification-code": "Kod SMS jest nieprawidłowy.",
+      "auth/code-expired": "Kod wygasł. Zacznij od nowa.",
+      "auth/requires-recent-login": "Zaloguj się ponownie, aby zmienić hasło.",
+      "auth/network-request-failed": "Błąd sieci. Sprawdź połączenie."
+    };
+
+    function friendlyError(error) {
+      return ERRORS[error?.code] || "Nie udało się zaktualizować hasła.";
+    }
+
+    function resetFlow() {
+      mfaResolver = null;
+      verificationId = null;
+      pendingPassword = null;
+      mfaBlock.style.display = "none";
+      smsCode.value = "";
+      savePasswordBtn.textContent = "Zapisz zmiany";
+      if (recaptchaVerifier) {
+        try { recaptchaVerifier.clear(); } catch (e) {}
+        recaptchaVerifier = null;
+      }
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "/pl/login/";
+        return;
+      }
+      const hasPassword = user.providerData.some((p) => p.providerId === "password");
+      if (!hasPassword) {
+        savePasswordBtn.disabled = true;
+        showStatus("Twoje konto loguje się przez Google lub innego dostawcę i nie ma własnego hasła.", "error");
       }
     });
 
-    savePasswordBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user || !user.email) {
-        showStatus("Nieprawidłowa sesja.", "error");
-        return;
-      }
+    async function sendSms(resolver) {
+      const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+      if (!hint) throw new Error("Nie skonfigurowano numeru telefonu do weryfikacji.");
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
-
-      if (!current) {
-        showStatus("Wprowadź obecne hasło.", "error");
-        return;
+      if (!recaptchaVerifier) {
+        recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
       }
+      const provider = new PhoneAuthProvider(auth);
+      verificationId = await provider.verifyPhoneNumber(
+        { multiFactorHint: hint, session: resolver.session },
+        recaptchaVerifier
+      );
+      mfaHint.textContent = `Wysłaliśmy kod na numer ${hint.phoneNumber}.`;
+    }
 
-      if (!isStrongEnough(next)) {
-        showStatus("Nowe hasło musi mieć co najmniej 8 znaków.", "error");
-        return;
-      }
+    async function finish(user, next) {
+      await updatePassword(user, next);
+      resetFlow();
+      clearInputs();
+      showStatus("Hasło zostało pomyślnie zaktualizowane.", "success");
+    }
 
-      if (next !== confirm) {
-        showStatus("Hasła nie są zgodne.", "error");
-        return;
-      }
+    async function startChange(user) {
+      const current = currentPassword.value;
+      const next = newPassword.value;
+      const confirm = confirmPassword.value;
+
+      if (!current) return showStatus("Wprowadź obecne hasło.", "error");
+      if (!isStrongEnough(next)) return showStatus("Nowe hasło musi mieć co najmniej 8 znaków.", "error");
+      if (next !== confirm) return showStatus("Hasła nie są zgodne.", "error");
 
       try {
-        const credential = EmailAuthProvider.credential(user.email, current);
-        await reauthenticateWithCredential(user, credential);
-        await updatePassword(user, next);
-        clearInputs();
-        showStatus("Hasło zostało pomyślnie zaktualizowane.", "success");
+        await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
       } catch (error) {
-        showStatus(`Nie udało się zaktualizować: ${error.message}`, "error");
+        if (error.code === "auth/multi-factor-auth-required") {
+          pendingPassword = next;
+          mfaResolver = getMultiFactorResolver(auth, error);
+          await sendSms(mfaResolver);
+          mfaBlock.style.display = "grid";
+          savePasswordBtn.textContent = "Potwierdź kod i zmień";
+          showStatus("Wprowadź kod SMS, który wysłaliśmy.", "info");
+          return;
+        }
+        throw error;
+      }
+
+      await finish(user, next);
+    }
+
+    async function completeWithSms() {
+      const code = smsCode.value.trim();
+      if (!/^\d{6}$/.test(code)) return showStatus("Wprowadź 6-cyfrowy kod.", "error");
+
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      const assertion = PhoneMultiFactorGenerator.assertion(credential);
+      await mfaResolver.resolveSignIn(assertion);
+      await finish(auth.currentUser, pendingPassword);
+    }
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) return showStatus("Nieprawidłowa sesja.", "error");
+
+      savePasswordBtn.disabled = true;
+      try {
+        if (mfaResolver) await completeWithSms();
+        else await startChange(user);
+      } catch (error) {
+        console.error(error);
+        showStatus(friendlyError(error), "error");
+        if (["auth/code-expired", "auth/too-many-requests"].includes(error?.code) || !verificationId) {
+          resetFlow();
+        }
+      } finally {
+        savePasswordBtn.disabled = false;
       }
     });
   </script>

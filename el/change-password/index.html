@@ -201,7 +201,7 @@
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
+    <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
       <h1>Αλλαγή κωδικού πρόσβασης</h1>
@@ -220,6 +220,13 @@
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
+      <div id="mfaBlock" class="field" style="display:none">
+        <label for="smsCode">Κωδικός SMS</label>
+        <input id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <p class="helper" id="mfaHint"></p>
+      </div>
+      <div id="recaptchaContainer"></div>
+
       <div class="actions">
         <button id="savePasswordBtn" class="btn btn-primary" type="button">Αποθήκευση αλλαγών</button>
         <a class="btn btn-secondary" href="/el/account/">Επιστροφή στον λογαριασμό μου</a>
@@ -227,9 +234,63 @@
     </section>
   </main>
 
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Προβολή και αγορά</h3>
+        <ul>
+          <li><a href="/el/shop/">Κατάστημα</a></li>
+          <li><a href="/el/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Εφαρμογές</a></li>
+          <li><a href="/el/support/">Υποστήριξη</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Υποστήριξη</h3>
+        <ul>
+          <li><a href="/el/support/">Αρχική σελίδα υποστήριξης</a></li>
+          <li><a href="/el/support/#faq">Συχνές ερωτήσεις ηλεκτρονικού καταστήματος</a></li>
+          <li><a href="/el/support/">Πληροφορίες εγγύησης</a></li>
+          <li><a href="mailto:info@lixby.es">Email προς τον CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Λογαριασμός</h3>
+        <ul>
+          <li><a href="/el/track/">Παραγγελίες</a></li>
+          <li><a href="/el/account/">Ο λογαριασμός μου</a></li>
+          <li><a href="/el/account/">Κουπόνια</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Σχετικά με τη Lixby</h3>
+        <ul>
+          <li><a href="/el/about/">Η εταιρεία μας</a></li>
+          <li><a href="/el/support/">Εγγύηση</a></li>
+          <li><a href="#">Εκδηλώσεις</a></li>
+          <li><a href="/el/support/">Επικοινωνία</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Με την επιφύλαξη παντός δικαιώματος.</p>
+      <div class="footer-legal-links">
+        <a href="/el/pages/legal/privacy/">Πολιτική απορρήτου</a>
+        <a href="/el/pages/legal/cookies/">Χρήση cookies</a>
+        <a href="/el/pages/legal/terms/">Όροι χρήσης</a>
+        <a href="/el/support/">Πωλήσεις και επιστροφές</a>
+        <a href="/el/pages/legal/legal-notice/">Νομικές σημειώσεις</a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -253,6 +314,7 @@
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.hidden = !text;
     }
 
     function clearInputs() {
@@ -265,46 +327,130 @@
       return value.length >= 8;
     }
 
+    const mfaBlock = document.getElementById("mfaBlock");
+    const smsCode = document.getElementById("smsCode");
+    const mfaHint = document.getElementById("mfaHint");
+
+    let mfaResolver = null;
+    let verificationId = null;
+    let recaptchaVerifier = null;
+    let pendingPassword = null;
+
+    const ERRORS = {
+      "auth/wrong-password": "Ο τρέχων κωδικός δεν είναι σωστός.",
+      "auth/invalid-credential": "Ο τρέχων κωδικός δεν είναι σωστός.",
+      "auth/too-many-requests": "Πολλές προσπάθειες. Δοκιμάστε ξανά αργότερα.",
+      "auth/weak-password": "Ο νέος κωδικός είναι πολύ αδύναμος.",
+      "auth/invalid-verification-code": "Ο κωδικός SMS δεν είναι σωστός.",
+      "auth/code-expired": "Ο κωδικός έληξε. Ξεκινήστε ξανά.",
+      "auth/requires-recent-login": "Συνδεθείτε ξανά για να αλλάξετε τον κωδικό.",
+      "auth/network-request-failed": "Σφάλμα δικτύου. Ελέγξτε τη σύνδεσή σας."
+    };
+
+    function friendlyError(error) {
+      return ERRORS[error?.code] || "Δεν ήταν δυνατή η ενημέρωση του κωδικού.";
+    }
+
+    function resetFlow() {
+      mfaResolver = null;
+      verificationId = null;
+      pendingPassword = null;
+      mfaBlock.style.display = "none";
+      smsCode.value = "";
+      savePasswordBtn.textContent = "Αποθήκευση αλλαγών";
+      if (recaptchaVerifier) {
+        try { recaptchaVerifier.clear(); } catch (e) {}
+        recaptchaVerifier = null;
+      }
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "/el/login/";
+        return;
+      }
+      const hasPassword = user.providerData.some((p) => p.providerId === "password");
+      if (!hasPassword) {
+        savePasswordBtn.disabled = true;
+        showStatus("Ο λογαριασμός σας συνδέεται με Google ή άλλο πάροχο και δεν έχει δικό του κωδικό πρόσβασης.", "error");
       }
     });
 
-    savePasswordBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user || !user.email) {
-        showStatus("Η συνεδρία δεν είναι έγκυρη.", "error");
-        return;
-      }
+    async function sendSms(resolver) {
+      const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+      if (!hint) throw new Error("Δεν έχει ρυθμιστεί αριθμός τηλεφώνου για την επαλήθευση.");
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
-
-      if (!current) {
-        showStatus("Εισάγετε τον τρέχοντα κωδικό.", "error");
-        return;
+      if (!recaptchaVerifier) {
+        recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
       }
+      const provider = new PhoneAuthProvider(auth);
+      verificationId = await provider.verifyPhoneNumber(
+        { multiFactorHint: hint, session: resolver.session },
+        recaptchaVerifier
+      );
+      mfaHint.textContent = `Στείλαμε έναν κωδικό στο ${hint.phoneNumber}.`;
+    }
 
-      if (!isStrongEnough(next)) {
-        showStatus("Ο νέος κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες.", "error");
-        return;
-      }
+    async function finish(user, next) {
+      await updatePassword(user, next);
+      resetFlow();
+      clearInputs();
+      showStatus("Ο κωδικός ενημερώθηκε με επιτυχία.", "success");
+    }
 
-      if (next !== confirm) {
-        showStatus("Οι κωδικοί δεν ταιριάζουν.", "error");
-        return;
-      }
+    async function startChange(user) {
+      const current = currentPassword.value;
+      const next = newPassword.value;
+      const confirm = confirmPassword.value;
+
+      if (!current) return showStatus("Εισάγετε τον τρέχοντα κωδικό.", "error");
+      if (!isStrongEnough(next)) return showStatus("Ο νέος κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες.", "error");
+      if (next !== confirm) return showStatus("Οι κωδικοί δεν ταιριάζουν.", "error");
 
       try {
-        const credential = EmailAuthProvider.credential(user.email, current);
-        await reauthenticateWithCredential(user, credential);
-        await updatePassword(user, next);
-        clearInputs();
-        showStatus("Ο κωδικός ενημερώθηκε με επιτυχία.", "success");
+        await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
       } catch (error) {
-        showStatus(`Αδυναμία ενημέρωσης: ${error.message}`, "error");
+        if (error.code === "auth/multi-factor-auth-required") {
+          pendingPassword = next;
+          mfaResolver = getMultiFactorResolver(auth, error);
+          await sendSms(mfaResolver);
+          mfaBlock.style.display = "grid";
+          savePasswordBtn.textContent = "Επιβεβαίωση κωδικού και αλλαγή";
+          showStatus("Εισάγετε τον κωδικό SMS που σας στείλαμε.", "info");
+          return;
+        }
+        throw error;
+      }
+
+      await finish(user, next);
+    }
+
+    async function completeWithSms() {
+      const code = smsCode.value.trim();
+      if (!/^\d{6}$/.test(code)) return showStatus("Εισάγετε τον 6ψήφιο κωδικό.", "error");
+
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      const assertion = PhoneMultiFactorGenerator.assertion(credential);
+      await mfaResolver.resolveSignIn(assertion);
+      await finish(auth.currentUser, pendingPassword);
+    }
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) return showStatus("Η συνεδρία δεν είναι έγκυρη.", "error");
+
+      savePasswordBtn.disabled = true;
+      try {
+        if (mfaResolver) await completeWithSms();
+        else await startChange(user);
+      } catch (error) {
+        console.error(error);
+        showStatus(friendlyError(error), "error");
+        if (["auth/code-expired", "auth/too-many-requests"].includes(error?.code) || !verificationId) {
+          resetFlow();
+        }
+      } finally {
+        savePasswordBtn.disabled = false;
       }
     });
   </script>

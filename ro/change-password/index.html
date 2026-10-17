@@ -38,7 +38,7 @@
 
         <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cambiar contrasena | Lixby</title>
+  <title>Schimbă parola | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -201,35 +201,96 @@
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
+    <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
-      <h1>Cambiar contrasena</h1>
-      <p class="helper">Por seguridad, te pedimos tu contrasena actual.</p>
+      <h1>Schimbă parola</h1>
+      <p class="helper">Pentru siguranță, îți cerem parola actuală.</p>
 
       <div class="field">
-        <label for="currentPassword">Contrasena actual</label>
+        <label for="currentPassword">Parola actuală</label>
         <input id="currentPassword" type="password" autocomplete="current-password">
       </div>
       <div class="field">
-        <label for="newPassword">Nueva contrasena</label>
+        <label for="newPassword">Parolă nouă</label>
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Confirmar nueva contrasena</label>
+        <label for="confirmPassword">Confirmă parola nouă</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
+      <div id="mfaBlock" class="field" style="display:none">
+        <label for="smsCode">Cod SMS</label>
+        <input id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <p class="helper" id="mfaHint"></p>
+      </div>
+      <div id="recaptchaContainer"></div>
+
       <div class="actions">
-        <button id="savePasswordBtn" class="btn btn-primary" type="button">Guardar cambios</button>
-        <a class="btn btn-secondary" href="/ro/account/">Volver a mi cuenta</a>
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">Salvează modificările</button>
+        <a class="btn btn-secondary" href="/ro/account/">Înapoi la contul meu</a>
       </div>
     </section>
   </main>
 
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/ro/shop/">Tienda</a></li>
+          <li><a href="/ro/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="/ro/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/ro/support/">Página inicial soporte</a></li>
+          <li><a href="/ro/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/ro/support/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/ro/track/">Pedidos</a></li>
+          <li><a href="/ro/account/">Mi cuenta</a></li>
+          <li><a href="/ro/account/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/ro/about/">Nosotros</a></li>
+          <li><a href="/ro/support/">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="/ro/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/ro/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/ro/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/ro/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/ro/support/">Ventas y reembolsos</a>
+        <a href="/ro/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -253,6 +314,7 @@
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.hidden = !text;
     }
 
     function clearInputs() {
@@ -265,46 +327,130 @@
       return value.length >= 8;
     }
 
+    const mfaBlock = document.getElementById("mfaBlock");
+    const smsCode = document.getElementById("smsCode");
+    const mfaHint = document.getElementById("mfaHint");
+
+    let mfaResolver = null;
+    let verificationId = null;
+    let recaptchaVerifier = null;
+    let pendingPassword = null;
+
+    const ERRORS = {
+      "auth/wrong-password": "Parola actuală este incorectă.",
+      "auth/invalid-credential": "Parola actuală este incorectă.",
+      "auth/too-many-requests": "Prea multe încercări. Încearcă din nou mai târziu.",
+      "auth/weak-password": "Noua parolă este prea slabă.",
+      "auth/invalid-verification-code": "Codul SMS este incorect.",
+      "auth/code-expired": "Codul a expirat. Începe din nou.",
+      "auth/requires-recent-login": "Conectează-te din nou pentru a schimba parola.",
+      "auth/network-request-failed": "Eroare de rețea. Verifică conexiunea."
+    };
+
+    function friendlyError(error) {
+      return ERRORS[error?.code] || "Parola nu a putut fi actualizată.";
+    }
+
+    function resetFlow() {
+      mfaResolver = null;
+      verificationId = null;
+      pendingPassword = null;
+      mfaBlock.style.display = "none";
+      smsCode.value = "";
+      savePasswordBtn.textContent = "Salvează modificările";
+      if (recaptchaVerifier) {
+        try { recaptchaVerifier.clear(); } catch (e) {}
+        recaptchaVerifier = null;
+      }
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "/ro/login/";
+        return;
+      }
+      const hasPassword = user.providerData.some((p) => p.providerId === "password");
+      if (!hasPassword) {
+        savePasswordBtn.disabled = true;
+        showStatus("Contul tău se conectează cu Google sau alt furnizor și nu are o parolă proprie.", "error");
       }
     });
 
-    savePasswordBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user || !user.email) {
-        showStatus("Sesion no valida.", "error");
-        return;
-      }
+    async function sendSms(resolver) {
+      const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+      if (!hint) throw new Error("Nu este configurat niciun număr de telefon pentru verificare.");
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
-
-      if (!current) {
-        showStatus("Introduce la contrasena actual.", "error");
-        return;
+      if (!recaptchaVerifier) {
+        recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
       }
+      const provider = new PhoneAuthProvider(auth);
+      verificationId = await provider.verifyPhoneNumber(
+        { multiFactorHint: hint, session: resolver.session },
+        recaptchaVerifier
+      );
+      mfaHint.textContent = `Am trimis un cod la ${hint.phoneNumber}.`;
+    }
 
-      if (!isStrongEnough(next)) {
-        showStatus("La nueva contrasena debe tener al menos 8 caracteres.", "error");
-        return;
-      }
+    async function finish(user, next) {
+      await updatePassword(user, next);
+      resetFlow();
+      clearInputs();
+      showStatus("Parolă actualizată cu succes.", "success");
+    }
 
-      if (next !== confirm) {
-        showStatus("Las contrasenas no coinciden.", "error");
-        return;
-      }
+    async function startChange(user) {
+      const current = currentPassword.value;
+      const next = newPassword.value;
+      const confirm = confirmPassword.value;
+
+      if (!current) return showStatus("Introdu parola actuală.", "error");
+      if (!isStrongEnough(next)) return showStatus("Noua parolă trebuie să aibă cel puțin 8 caractere.", "error");
+      if (next !== confirm) return showStatus("Parolele nu se potrivesc.", "error");
 
       try {
-        const credential = EmailAuthProvider.credential(user.email, current);
-        await reauthenticateWithCredential(user, credential);
-        await updatePassword(user, next);
-        clearInputs();
-        showStatus("Contrasena actualizada correctamente.", "success");
+        await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
       } catch (error) {
-        showStatus(`No se pudo actualizar: ${error.message}`, "error");
+        if (error.code === "auth/multi-factor-auth-required") {
+          pendingPassword = next;
+          mfaResolver = getMultiFactorResolver(auth, error);
+          await sendSms(mfaResolver);
+          mfaBlock.style.display = "grid";
+          savePasswordBtn.textContent = "Confirmă codul și schimbă";
+          showStatus("Introdu codul SMS pe care ți l-am trimis.", "info");
+          return;
+        }
+        throw error;
+      }
+
+      await finish(user, next);
+    }
+
+    async function completeWithSms() {
+      const code = smsCode.value.trim();
+      if (!/^\d{6}$/.test(code)) return showStatus("Introdu codul din 6 cifre.", "error");
+
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      const assertion = PhoneMultiFactorGenerator.assertion(credential);
+      await mfaResolver.resolveSignIn(assertion);
+      await finish(auth.currentUser, pendingPassword);
+    }
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) return showStatus("Sesiune invalidă.", "error");
+
+      savePasswordBtn.disabled = true;
+      try {
+        if (mfaResolver) await completeWithSms();
+        else await startChange(user);
+      } catch (error) {
+        console.error(error);
+        showStatus(friendlyError(error), "error");
+        if (["auth/code-expired", "auth/too-many-requests"].includes(error?.code) || !verificationId) {
+          resetFlow();
+        }
+      } finally {
+        savePasswordBtn.disabled = false;
       }
     });
   </script>

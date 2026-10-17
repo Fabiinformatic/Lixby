@@ -213,7 +213,7 @@
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
+    <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
       <h1>Athraigh pasfhocal</h1>
@@ -232,6 +232,13 @@
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
+      <div id="mfaBlock" class="field" style="display:none">
+        <label for="smsCode">Cód SMS</label>
+        <input id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <p class="helper" id="mfaHint"></p>
+      </div>
+      <div id="recaptchaContainer"></div>
+
       <div class="actions">
         <button id="savePasswordBtn" class="btn btn-primary" type="button">Sábháil athruithe</button>
         <a class="btn btn-secondary" href="/ga/account/">Fill ar mo chuntas</a>
@@ -239,9 +246,63 @@
     </section>
   </main>
 
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Féach agus ceannaigh</h3>
+        <ul>
+          <li><a href="/ga/shop/">Siopa</a></li>
+          <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Aipeanna</a></li>
+          <li><a href="/ga/support/">Tacaíocht</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Tacaíocht</h3>
+        <ul>
+          <li><a href="/ga/support/">Leathanach tosaigh tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">CCanna Siopa ar líne</a></li>
+          <li><a href="/ga/support/">Eolas ar Bharántas</a></li>
+          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an POF</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuntas</h3>
+        <ul>
+          <li><a href="/ga/track/">Orduithe</a></li>
+          <li><a href="/ga/account/">Mo chuntas</a></li>
+          <li><a href="/ga/account/">Cúpóin</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Maidir le Lixby</h3>
+        <ul>
+          <li><a href="/ga/about/">Fúinn</a></li>
+          <li><a href="/ga/support/">Barántas</a></li>
+          <li><a href="#">Imeachtaí</a></li>
+          <li><a href="/ga/support/">Teagmháil</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Cóipcheart © 2026 Lixby. Gach ceart ar cosaint.</p>
+      <div class="footer-legal-links">
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachais</a>
+        <a href="/ga/pages/legal/cookies/">Úsáid fianáin</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí úsáide</a>
+        <a href="/ga/support/">Díolacháin agus aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/legal-notice/">Fógraí dlíthiúla</a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -265,6 +326,7 @@
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.hidden = !text;
     }
 
     function clearInputs() {
@@ -277,46 +339,130 @@
       return value.length >= 8;
     }
 
+    const mfaBlock = document.getElementById("mfaBlock");
+    const smsCode = document.getElementById("smsCode");
+    const mfaHint = document.getElementById("mfaHint");
+
+    let mfaResolver = null;
+    let verificationId = null;
+    let recaptchaVerifier = null;
+    let pendingPassword = null;
+
+    const ERRORS = {
+      "auth/wrong-password": "Tá an pasfhocal reatha mícheart.",
+      "auth/invalid-credential": "Tá an pasfhocal reatha mícheart.",
+      "auth/too-many-requests": "An iomarca iarrachtaí. Bain triail eile as níos déanaí.",
+      "auth/weak-password": "Tá an pasfhocal nua ró-lag.",
+      "auth/invalid-verification-code": "Tá an cód SMS mícheart.",
+      "auth/code-expired": "Tá an cód imithe in éag. Tosaigh arís.",
+      "auth/requires-recent-login": "Sínigh isteach arís chun an pasfhocal a athrú.",
+      "auth/network-request-failed": "Earráid líonra. Seiceáil do nasc."
+    };
+
+    function friendlyError(error) {
+      return ERRORS[error?.code] || "Níorbh fhéidir an pasfhocal a nuashonrú.";
+    }
+
+    function resetFlow() {
+      mfaResolver = null;
+      verificationId = null;
+      pendingPassword = null;
+      mfaBlock.style.display = "none";
+      smsCode.value = "";
+      savePasswordBtn.textContent = "Sábháil athruithe";
+      if (recaptchaVerifier) {
+        try { recaptchaVerifier.clear(); } catch (e) {}
+        recaptchaVerifier = null;
+      }
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "/ga/login/";
+        return;
+      }
+      const hasPassword = user.providerData.some((p) => p.providerId === "password");
+      if (!hasPassword) {
+        savePasswordBtn.disabled = true;
+        showStatus("Síníonn do chuntas isteach le Google nó le soláthraí eile agus níl a phasfhocal féin aige.", "error");
       }
     });
 
-    savePasswordBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user || !user.email) {
-        showStatus("Seisiún neamhbhailí.", "error");
-        return;
-      }
+    async function sendSms(resolver) {
+      const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+      if (!hint) throw new Error("Níl aon uimhir theileafóin socraithe le haghaidh fíoraithe.");
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
-
-      if (!current) {
-        showStatus("Iontráil an pasfhocal reatha.", "error");
-        return;
+      if (!recaptchaVerifier) {
+        recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
       }
+      const provider = new PhoneAuthProvider(auth);
+      verificationId = await provider.verifyPhoneNumber(
+        { multiFactorHint: hint, session: resolver.session },
+        recaptchaVerifier
+      );
+      mfaHint.textContent = `Sheolamar cód chuig ${hint.phoneNumber}.`;
+    }
 
-      if (!isStrongEnough(next)) {
-        showStatus("Ní mór don phasfhocal nua a bheith 8 gcarachtar ar a laghad.", "error");
-        return;
-      }
+    async function finish(user, next) {
+      await updatePassword(user, next);
+      resetFlow();
+      clearInputs();
+      showStatus("Pasfhocal nuashonraithe go rathúil.", "success");
+    }
 
-      if (next !== confirm) {
-        showStatus("Ní hionann na pasfhocail.", "error");
-        return;
-      }
+    async function startChange(user) {
+      const current = currentPassword.value;
+      const next = newPassword.value;
+      const confirm = confirmPassword.value;
+
+      if (!current) return showStatus("Iontráil do phasfhocal reatha.", "error");
+      if (!isStrongEnough(next)) return showStatus("Ní mór don phasfhocal nua a bheith 8 gcarachtar ar a laghad.", "error");
+      if (next !== confirm) return showStatus("Ní hionann na pasfhocail.", "error");
 
       try {
-        const credential = EmailAuthProvider.credential(user.email, current);
-        await reauthenticateWithCredential(user, credential);
-        await updatePassword(user, next);
-        clearInputs();
-        showStatus("Pasfhocal nuashonraithe go rathúil.", "success");
+        await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
       } catch (error) {
-        showStatus(`Níorbh fhéidir nuashonrú: ${error.message}`, "error");
+        if (error.code === "auth/multi-factor-auth-required") {
+          pendingPassword = next;
+          mfaResolver = getMultiFactorResolver(auth, error);
+          await sendSms(mfaResolver);
+          mfaBlock.style.display = "grid";
+          savePasswordBtn.textContent = "Deimhnigh an cód agus athraigh";
+          showStatus("Iontráil an cód SMS a sheolamar chugat.", "info");
+          return;
+        }
+        throw error;
+      }
+
+      await finish(user, next);
+    }
+
+    async function completeWithSms() {
+      const code = smsCode.value.trim();
+      if (!/^\d{6}$/.test(code)) return showStatus("Iontráil an cód 6 dhigit.", "error");
+
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      const assertion = PhoneMultiFactorGenerator.assertion(credential);
+      await mfaResolver.resolveSignIn(assertion);
+      await finish(auth.currentUser, pendingPassword);
+    }
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) return showStatus("Seisiún neamhbhailí.", "error");
+
+      savePasswordBtn.disabled = true;
+      try {
+        if (mfaResolver) await completeWithSms();
+        else await startChange(user);
+      } catch (error) {
+        console.error(error);
+        showStatus(friendlyError(error), "error");
+        if (["auth/code-expired", "auth/too-many-requests"].includes(error?.code) || !verificationId) {
+          resetFlow();
+        }
+      } finally {
+        savePasswordBtn.disabled = false;
       }
     });
   </script>

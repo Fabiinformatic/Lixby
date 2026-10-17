@@ -38,7 +38,7 @@
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cambiar contrasena | Lixby</title>
+  <title>Vaihda salasana | Lixby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -201,35 +201,96 @@
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
+    <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
-      <h1>Cambiar contrasena</h1>
-      <p class="helper">Por seguridad, te pedimos tu contrasena actual.</p>
+      <h1>Vaihda salasana</h1>
+      <p class="helper">Turvallisuuden vuoksi kysymme nykyisen salasanasi.</p>
 
       <div class="field">
-        <label for="currentPassword">Contrasena actual</label>
+        <label for="currentPassword">Nykyinen salasana</label>
         <input id="currentPassword" type="password" autocomplete="current-password">
       </div>
       <div class="field">
-        <label for="newPassword">Nueva contrasena</label>
+        <label for="newPassword">Uusi salasana</label>
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Confirmar nueva contrasena</label>
+        <label for="confirmPassword">Vahvista uusi salasana</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
+      <div id="mfaBlock" class="field" style="display:none">
+        <label for="smsCode">SMS-koodi</label>
+        <input id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <p class="helper" id="mfaHint"></p>
+      </div>
+      <div id="recaptchaContainer"></div>
+
       <div class="actions">
-        <button id="savePasswordBtn" class="btn btn-primary" type="button">Guardar cambios</button>
-        <a class="btn btn-secondary" href="/fi/account/">Volver a mi cuenta</a>
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">Tallenna muutokset</button>
+        <a class="btn btn-secondary" href="/fi/account/">Takaisin tililleni</a>
       </div>
     </section>
   </main>
 
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ver y comprar</h3>
+        <ul>
+          <li><a href="/fi/shop/">Tienda</a></li>
+          <li><a href="/fi/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="/fi/support/">Soporte</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="/fi/support/">Página inicial soporte</a></li>
+          <li><a href="/fi/support/#faq">FAQs Tienda online</a></li>
+          <li><a href="/fi/support/">Información de Garantía</a></li>
+          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuenta</h3>
+        <ul>
+          <li><a href="/fi/track/">Pedidos</a></li>
+          <li><a href="/fi/account/">Mi cuenta</a></li>
+          <li><a href="/fi/account/">Cupones</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Acerca de Lixby</h3>
+        <ul>
+          <li><a href="/fi/about/">Nosotros</a></li>
+          <li><a href="/fi/support/">Garantía</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="/fi/support/">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="/fi/pages/legal/privacy/">Política de privacidad</a>
+        <a href="/fi/pages/legal/cookies/">Uso de cookies</a>
+        <a href="/fi/pages/legal/terms/">Condiciones de uso</a>
+        <a href="/fi/support/">Ventas y reembolsos</a>
+        <a href="/fi/pages/legal/legal-notice/">Avisos legales</a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -253,6 +314,7 @@
     function showStatus(text, type = "") {
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.hidden = !text;
     }
 
     function clearInputs() {
@@ -265,46 +327,130 @@
       return value.length >= 8;
     }
 
+    const mfaBlock = document.getElementById("mfaBlock");
+    const smsCode = document.getElementById("smsCode");
+    const mfaHint = document.getElementById("mfaHint");
+
+    let mfaResolver = null;
+    let verificationId = null;
+    let recaptchaVerifier = null;
+    let pendingPassword = null;
+
+    const ERRORS = {
+      "auth/wrong-password": "Nykyinen salasana on virheellinen.",
+      "auth/invalid-credential": "Nykyinen salasana on virheellinen.",
+      "auth/too-many-requests": "Liian monta yritystä. Yritä myöhemmin uudelleen.",
+      "auth/weak-password": "Uusi salasana on liian heikko.",
+      "auth/invalid-verification-code": "SMS-koodi on virheellinen.",
+      "auth/code-expired": "Koodi on vanhentunut. Aloita alusta.",
+      "auth/requires-recent-login": "Kirjaudu uudelleen sisään vaihtaaksesi salasanan.",
+      "auth/network-request-failed": "Verkkovirhe. Tarkista yhteytesi."
+    };
+
+    function friendlyError(error) {
+      return ERRORS[error?.code] || "Salasanaa ei voitu päivittää.";
+    }
+
+    function resetFlow() {
+      mfaResolver = null;
+      verificationId = null;
+      pendingPassword = null;
+      mfaBlock.style.display = "none";
+      smsCode.value = "";
+      savePasswordBtn.textContent = "Tallenna muutokset";
+      if (recaptchaVerifier) {
+        try { recaptchaVerifier.clear(); } catch (e) {}
+        recaptchaVerifier = null;
+      }
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "/fi/login/";
+        return;
+      }
+      const hasPassword = user.providerData.some((p) => p.providerId === "password");
+      if (!hasPassword) {
+        savePasswordBtn.disabled = true;
+        showStatus("Tilisi kirjautuu sisään Googlella tai muulla palveluntarjoajalla, eikä sillä ole omaa salasanaa.", "error");
       }
     });
 
-    savePasswordBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user || !user.email) {
-        showStatus("Sesion no valida.", "error");
-        return;
-      }
+    async function sendSms(resolver) {
+      const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
+      if (!hint) throw new Error("Vahvistusta varten ei ole määritetty puhelinnumeroa.");
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
-
-      if (!current) {
-        showStatus("Introduce la contrasena actual.", "error");
-        return;
+      if (!recaptchaVerifier) {
+        recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
       }
+      const provider = new PhoneAuthProvider(auth);
+      verificationId = await provider.verifyPhoneNumber(
+        { multiFactorHint: hint, session: resolver.session },
+        recaptchaVerifier
+      );
+      mfaHint.textContent = `Lähetimme koodin numeroon ${hint.phoneNumber}.`;
+    }
 
-      if (!isStrongEnough(next)) {
-        showStatus("La nueva contrasena debe tener al menos 8 caracteres.", "error");
-        return;
-      }
+    async function finish(user, next) {
+      await updatePassword(user, next);
+      resetFlow();
+      clearInputs();
+      showStatus("Salasana päivitetty onnistuneesti.", "success");
+    }
 
-      if (next !== confirm) {
-        showStatus("Las contrasenas no coinciden.", "error");
-        return;
-      }
+    async function startChange(user) {
+      const current = currentPassword.value;
+      const next = newPassword.value;
+      const confirm = confirmPassword.value;
+
+      if (!current) return showStatus("Syötä nykyinen salasanasi.", "error");
+      if (!isStrongEnough(next)) return showStatus("Uuden salasanan on oltava vähintään 8 merkkiä.", "error");
+      if (next !== confirm) return showStatus("Salasanat eivät täsmää.", "error");
 
       try {
-        const credential = EmailAuthProvider.credential(user.email, current);
-        await reauthenticateWithCredential(user, credential);
-        await updatePassword(user, next);
-        clearInputs();
-        showStatus("Contrasena actualizada correctamente.", "success");
+        await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
       } catch (error) {
-        showStatus(`No se pudo actualizar: ${error.message}`, "error");
+        if (error.code === "auth/multi-factor-auth-required") {
+          pendingPassword = next;
+          mfaResolver = getMultiFactorResolver(auth, error);
+          await sendSms(mfaResolver);
+          mfaBlock.style.display = "grid";
+          savePasswordBtn.textContent = "Vahvista koodi ja vaihda";
+          showStatus("Syötä lähettämämme SMS-koodi.", "info");
+          return;
+        }
+        throw error;
+      }
+
+      await finish(user, next);
+    }
+
+    async function completeWithSms() {
+      const code = smsCode.value.trim();
+      if (!/^\d{6}$/.test(code)) return showStatus("Syötä 6-numeroinen koodi.", "error");
+
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      const assertion = PhoneMultiFactorGenerator.assertion(credential);
+      await mfaResolver.resolveSignIn(assertion);
+      await finish(auth.currentUser, pendingPassword);
+    }
+
+    savePasswordBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user || !user.email) return showStatus("Virheellinen istunto.", "error");
+
+      savePasswordBtn.disabled = true;
+      try {
+        if (mfaResolver) await completeWithSms();
+        else await startChange(user);
+      } catch (error) {
+        console.error(error);
+        showStatus(friendlyError(error), "error");
+        if (["auth/code-expired", "auth/too-many-requests"].includes(error?.code) || !verificationId) {
+          resetFlow();
+        }
+      } finally {
+        savePasswordBtn.disabled = false;
       }
     });
   </script>
