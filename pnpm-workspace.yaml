@@ -3,6 +3,14 @@ allowBuilds:
   protobufjs: true
   re2: true
 
+minimumReleaseAgeExclude:
+  - hono@4.13.11
+  - ip-address@10.7.4
+  - zod@4.6.6
+  - body-parser@1.20.9 || 2.4.0
+  - undici@6.29.1 || 8.12.2
+  - fast-uri@3.1.9
+
 overrides:
   'websocket-driver@<0.7.5': '>=0.7.5'
   'brace-expansion@1': '^1.1.21'
