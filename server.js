@@ -114,6 +114,7 @@ app.use(generalLimiter);
 app.use(express.static(path.join(__dirname)));
 
 // Parser de JSON
+app.use("/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
 
 function appendQueryParam(rawUrl, key, value) {
@@ -732,7 +733,7 @@ app.post("/create-checkout-session", express.json(), checkoutLimiter, async (req
   }
 });
 
-app.post("/webhook", express.raw({ type: "application/json" }), generalLimiter, async (req, res) => {
+app.post("/webhook", generalLimiter, async (req, res) => {
   const sig = req.headers["stripe-signature"];
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event;
