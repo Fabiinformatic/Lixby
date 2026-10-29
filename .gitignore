@@ -4,14 +4,56 @@ node_modules/
 
 # Environment variables
 .env
+.env.*
+!.env.example
+!.env.*.example
 .env.local
 .env.*.local
 *.env
+.envrc
+
+# Credentials and private keys — never commit secrets or local login material
+secrets/
+**/secrets/**
+.secrets/
+**/.secrets/**
+credentials/
+**/credentials/**
+.credentials/
+**/.credentials/**
+**/*service-account*.json
+**/*serviceaccount*.json
+**/firebase-adminsdk-*.json
+**/client_secret*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+.npmrc
+**/.npmrc
+.netrc
+**/.netrc
+.git-credentials
+**/.git-credentials
+.aws/
+.azure/
+.gcloud/
+.config/gcloud/
 
 # Firebase
 firebase-service-account.json
 firebase-service-account.json.json
 .firebase/
+firebase-debug.log*
+firestore-debug.log*
+database-debug.log*
+ui-debug.log*
+functions-debug.log*
+firebase-export-*/
+emulator-data/
 
 # Sensitive files
 secrets/
@@ -42,3 +84,11 @@ coverage/
 /artifacts/security/
 .cache/
 .next/
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Local reports, temporary files and backups
+*.tmp
+*.bak
+*.orig

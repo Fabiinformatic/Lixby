@@ -56,20 +56,26 @@ if (searchForm && searchInput) {
 const mobilePanel = document.getElementById("navMobilePanel");
 const searchToggle = document.querySelector(".nav-search-toggle");
 const menuToggle = document.querySelector(".nav-menu-toggle");
+const setIconState = (open) => {
+  [searchToggle, menuToggle].forEach((btn) => {
+    if (!btn) return;
+    btn.classList.toggle("nav-open-x", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+};
+
 const closeNav = () => {
   document.body.classList.remove("nav-open", "menu-open");
   nav.classList.remove("nav-open");
   mobilePanel?.setAttribute("aria-hidden", "true");
-  searchToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-expanded", "false");
+  setIconState(false);
 };
 
 const openNav = (focusSearch = false) => {
   document.body.classList.add("nav-open", "menu-open");
   nav.classList.add("nav-open");
   mobilePanel?.setAttribute("aria-hidden", "false");
-  searchToggle?.setAttribute("aria-expanded", "true");
-  menuToggle?.setAttribute("aria-expanded", "true");
+  setIconState(true);
   if (focusSearch && searchInput) {
     setTimeout(() => searchInput.focus(), 270);
   }

@@ -51,19 +51,32 @@
 
   <title>Beta Tester de Lixfly | Lixby</title>
   <meta name="description" content="Apúntate a la beta de Lixfly y cuéntanos por qué quieres probar antes que nadie nuestro EFB para MSFS2020 y MSFS2024." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://lixby.es/es/beta-lixfly">
+  <meta property="og:title" content="Beta Tester de Lixfly | Lixby">
+  <meta property="og:description" content="Apúntate a la beta de Lixfly y cuéntanos por qué quieres probar antes que nadie nuestro EFB para MSFS2020 y MSFS2024.">
+  <meta property="og:image" content="https://lixby.es/es/images/lixflyicon2.webp">
+  <meta property="og:image:alt" content="Lixfly, EFB para simulación de vuelo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Beta Tester de Lixfly | Lixby">
+  <meta name="twitter:description" content="Apúntate a la beta de Lixfly y cuéntanos por qué quieres probar antes que nadie nuestro EFB para MSFS2020 y MSFS2024.">
+  <meta name="twitter:image" content="https://lixby.es/es/images/lixflyicon2.webp">
+  <meta name="twitter:image:alt" content="Lixfly, EFB para simulación de vuelo">
   <meta name="keywords" content="Lixfly beta, beta tester, EFB, MSFS2020, MSFS2024, Lixby, formulario beta" />
   <meta name="author" content="Lixby" />
-  <meta property="og:title" content="Beta Tester de Lixfly | Lixby" />
-  <meta property="og:description" content="Completa el cuestionario y solicita acceso anticipado a la beta de Lixfly." />
-  <meta property="og:site_name" content="Lixby (España)" />
-  <meta property="og:locale" content="es_ES" />
-  <meta property="og:image" content="https://lixby.es/es/images/lixflyicon2.webp" />
-  <meta property="og:url" content="https://lixby.es/es/beta-lixfly" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Beta Tester de Lixfly | Lixby" />
-  <meta name="twitter:description" content="Solicita tu plaza para probar la beta de Lixfly." />
-  <meta name="twitter:image" content="https://lixby.es/es/images/lixflyicon2.webp" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   
 
@@ -440,6 +453,7 @@
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -654,19 +668,39 @@
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+                setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+                setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

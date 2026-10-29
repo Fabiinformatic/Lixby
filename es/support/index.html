@@ -59,20 +59,33 @@
   <meta property="analytics-s-bucket-2" content="lixbyww" />
 
   <meta name="Description" content="Centro de soporte de Lixby. Encuentra respuestas, contacta con nuestro equipo y accede a recursos de ayuda para tu compra." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://lixby.es/es/support">
+  <meta property="og:title" content="Centro de Soporte | Lixby - Ayuda y atención al cliente">
+  <meta property="og:description" content="Centro de soporte de Lixby. Encuentra respuestas, contacta con nuestro equipo y accede a recursos de ayuda para tu compra.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Productos y servicios de Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Centro de Soporte | Lixby - Ayuda y atención al cliente">
+  <meta name="twitter:description" content="Centro de soporte de Lixby. Encuentra respuestas, contacta con nuestro equipo y accede a recursos de ayuda para tu compra.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Productos y servicios de Lixby">
   <meta name="keywords" content="soporte, ayuda, atención al cliente, preguntas frecuentes, contacto, devoluciones, garantía" />
   <meta name="author" content="Lixby" />
-  <meta property="og:title" content="Centro de Soporte | Lixby" />
-  <meta property="og:description" content="Obtén ayuda de nuestro equipo de soporte de Lixby. Respuestas rápidas a tus preguntas." />
-  <meta property="og:site_name" content="Lixby (España)" />
-  <meta property="og:locale" content="es_ES" />
+  
+  
+  
+  
   <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png" />
-  <meta property="og:url" content="https://lixby.es/es/support" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Centro de Soporte | Lixby" />
-  <meta name="twitter:description" content="Obtén ayuda de Lixby. Estamos aquí para ti." />
-  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png" />
+  
+  
+  
+  
+  
+  
+  
 
   
   <script type="application/ld+json">
@@ -278,22 +291,55 @@
 
 
     .support-status {
-      margin-top: var(--spacing-4);
+      margin-top: var(--spacing-6);
       display: inline-flex;
       align-items: center;
-      gap: var(--spacing-2);
+      gap: var(--spacing-3);
+      font-size: 0.95rem;
       font-weight: 600;
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 8px 12px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 10px 20px;
       border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(9, 30, 66, 0.18);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .support-status:hover {
+      background: rgba(255, 255, 255, 0.24);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(9, 30, 66, 0.26);
+    }
+
+    .support-status a {
+      color: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
+      flex: none;
       border-radius: 50%;
-      background-color: #94a3b8;
-      box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.2);
+      background-color: #34d05e;
+      box-shadow: 0 0 0 4px rgba(52, 208, 94, 0.35);
+      animation: status-pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes status-pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(52, 208, 94, 0.35); }
+      50% { box-shadow: 0 0 0 7px rgba(52, 208, 94, 0.12); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot { animation: none; }
+      .support-status { transition: none; }
     }
 
     .faq-section {
@@ -348,7 +394,7 @@
 
     .contact-section {
       padding: var(--spacing-24) var(--spacing-6);
-      background-color: var(--color-white);
+      background: linear-gradient(160deg, var(--color-gray-50) 0%, #eef4ff 100%);
     }
 
     .contact-grid {
@@ -362,28 +408,64 @@
 
     .contact-info {
       display: grid;
-      gap: var(--spacing-8);
+      gap: var(--spacing-6);
     }
 
     .contact-info-item {
       display: flex;
       gap: var(--spacing-4);
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 24px rgba(15, 61, 255, 0.06);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .contact-info-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(15, 61, 255, 0.1);
     }
 
     .contact-info-icon {
-      font-size: 2rem;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
       flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(15, 61, 255, 0.09);
+      color: var(--color-blue);
+      font-size: 1.25rem;
     }
 
     .contact-info-icon i {
-      width: 2rem;
-      height: 2rem;
+      width: 1.35rem;
+      height: 1.35rem;
       display: inline-block;
     }
 
     .contact-info-content h3 {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gray-500);
       margin-bottom: var(--spacing-1);
+    }
+
+    .contact-info-content p {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .contact-panel {
+      padding: var(--spacing-8);
+      border-radius: var(--radius-2xl);
+      background: #ffffff;
+      border: 1px solid var(--color-gray-200);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
     }
 
     .contact-form {
@@ -400,17 +482,35 @@
 
     .form-group label {
       font-weight: 600;
+      font-size: 0.95rem;
       color: var(--color-gray-700);
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
-      padding: var(--spacing-3) var(--spacing-4);
-      border: 1px solid var(--color-gray-300);
-      border-radius: var(--radius-lg);
+      padding: 13px 16px;
+      border: 1.5px solid var(--color-gray-300);
+      border-radius: 14px;
       font-family: var(--font-family);
       font-size: var(--font-size-sm);
+      background: var(--color-gray-50);
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .form-group input:hover,
+    .form-group textarea:hover,
+    .form-group select:hover {
+      border-color: #b9c7e6;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--color-blue);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(15, 61, 255, 0.12);
     }
 
     #form-status {
@@ -452,6 +552,35 @@
     .form-group textarea {
       min-height: 120px;
       resize: vertical;
+    }
+
+    .contact-form .btn {
+      min-height: 50px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(120deg, #0f3dff, #16a7ff);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .contact-form .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.25);
+    }
+
+    .contact-form .btn:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact-panel {
+        padding: var(--spacing-6) var(--spacing-4);
+      }
     }
 
     @media (max-width: 768px) {
@@ -537,6 +666,7 @@
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -606,7 +736,7 @@
         </div>
         <div class="support-status">
           <span class="status-dot" aria-hidden="true"></span>
-          <span><a href="/es/centro-ayuda/estado-sistema/">Estado del servicio</a></span>
+          <a href="/es/centro-ayuda/estado-sistema/">Estado del servicio</a>
         </div>
       </div>
     </section>
@@ -732,7 +862,7 @@
           <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
-          <p class="faq-answer-text">Sí, ofrecemos 30 días de período de devolución. Para más detalles, consulta nuestra política de devoluciones.</p>
+          <p class="faq-answer-text">Puedes ejercer tu derecho legal de desistimiento durante los 14 días naturales desde la recepción del pedido, sin indicar el motivo. Consulta las condiciones y los gastos de devolución.</p>
         </div>
       </div>
 
@@ -752,7 +882,7 @@
           <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="faq-answer" id="faq7" role="region" aria-labelledby="faq7-label">
-          <p class="faq-answer-text">El envío estándar tarda entre 5 y 7 días laborables. En períodos de alta demanda puede variar.</p>
+          <p class="faq-answer-text">El plazo estimado del envío estándar es de 8 a 15 días hábiles.</p>
         </div>
       </div>
 
@@ -762,7 +892,7 @@
           <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="faq-answer" id="faq8" role="region" aria-labelledby="faq8-label">
-          <p class="faq-answer-text">La garantía cubre defectos de fabricación durante 2 años. No cubre daños por uso indebido o accidentes.</p>
+          <p class="faq-answer-text">Los productos físicos cuentan con 3 años de garantía legal desde la entrega. No cubre daños por uso indebido o accidentes.</p>
         </div>
       </div>
 
@@ -872,7 +1002,7 @@
           <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="faq-answer" id="faq19" role="region" aria-labelledby="faq19-label">
-          <p class="faq-answer-text">Tras aprobar la devolución, el reembolso se procesa normalmente en 3-7 días laborables según el banco o método de pago.</p>
+          <p class="faq-answer-text">Emitimos el reembolso en cuanto recibimos y revisamos tu devolución, y siempre dentro de los 14 días naturales desde que nos comunicas el desistimiento. Una vez emitido, tu banco puede tardar entre 5 y 10 días laborables en reflejarlo en tu cuenta.</p>
         </div>
       </div>
 
@@ -1051,11 +1181,12 @@
 
     <section class="contact-section">
       <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Contacta con nosotros</h2>
+        <h2 style="font-size: var(--font-size-4xl); font-weight: 700; margin-bottom: var(--spacing-3); text-align: center;">Contacta con nosotros</h2>
+        <p style="max-width: 560px; margin: 0 auto var(--spacing-10); text-align: center; color: var(--color-gray-600); font-size: 1.05rem;">Cuéntanos qué necesitas y te respondemos lo antes posible, siempre con una persona del equipo.</p>
 
         <div class="contact-grid">
           <div class="contact-info">
-            <h3 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--spacing-6);">Información de contacto</h3>
+            <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-6);">Información de contacto</h3>
 
             <div class="contact-info-item">
               <div class="contact-info-icon"><i data-lucide="mail"></i></div>
@@ -1082,7 +1213,7 @@
             </div>
           </div>
 
-          <form class="contact-form" action="https://formspree.io/f/xaqpbjjo" method="POST" data-formspree-recaptcha>
+          <form class="contact-form contact-panel" action="https://formspree.io/f/xaqpbjjo" method="POST" data-formspree-recaptcha>
             <input type="text" name="_gotcha" style="display:none">
             <div class="form-group">
               <label for="name">Nombre</label>
@@ -1182,19 +1313,25 @@
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+        [searchToggle, menuToggle].forEach(function (btn) {
+          if (!btn) return;
+          btn.classList.toggle("nav-open-x", open);
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      };
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+        setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+        setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

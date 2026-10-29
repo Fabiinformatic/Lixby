@@ -41,6 +41,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lixney - App de Finanzas Personales | Lixby</title>
   <meta name="description" content="Lixney: app de finanzas personales para Android que te ayuda a gestionar dinero, rastrear gastos y ahorrar de forma inteligente.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://lixby.es/es/pages/apps/lixney">
+  <meta property="og:title" content="Lixney - App de Finanzas Personales | Lixby">
+  <meta property="og:description" content="Lixney: app de finanzas personales para Android que te ayuda a gestionar dinero, rastrear gastos y ahorrar de forma inteligente.">
+  <meta property="og:image" content="https://lixby.es/es/images/lixneyicon2.webp">
+  <meta property="og:image:alt" content="Lixney, aplicación de finanzas personales">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lixney - App de Finanzas Personales | Lixby">
+  <meta name="twitter:description" content="Lixney: app de finanzas personales para Android que te ayuda a gestionar dinero, rastrear gastos y ahorrar de forma inteligente.">
+  <meta name="twitter:image" content="https://lixby.es/es/images/lixneyicon2.webp">
+  <meta name="twitter:image:alt" content="Lixney, aplicación de finanzas personales">
   <meta name="keywords" content="app finanzas, gestor de gastos, presupuesto personal, ahorro, dinero, Lixney">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -290,6 +303,7 @@
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -502,19 +516,39 @@
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+                setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+                setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

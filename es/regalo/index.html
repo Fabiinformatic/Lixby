@@ -59,20 +59,33 @@
   <meta property="analytics-s-bucket-2" content="lixbyww" />
 
   <meta name="Description" content="Regala la experiencia Lixby. Tarjetas regalo digitales desde 5€ — llegan en minutos por email. Perfectas para cualquier ocasión." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://lixby.es/es/regalo">
+  <meta property="og:title" content="Tarjeta Regalo Lixby | Regala tecnología premium">
+  <meta property="og:description" content="Regala la experiencia Lixby. Tarjetas regalo digitales desde 5€ — llegan en minutos por email. Perfectas para cualquier ocasión.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Productos y servicios de Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tarjeta Regalo Lixby | Regala tecnología premium">
+  <meta name="twitter:description" content="Regala la experiencia Lixby. Tarjetas regalo digitales desde 5€ — llegan en minutos por email. Perfectas para cualquier ocasión.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Productos y servicios de Lixby">
   <meta name="keywords" content="tarjeta regalo, regalo Lixby, auriculares regalo, regalo digital, gift card, regalo tecnología" />
   <meta name="author" content="Lixby" />
-  <meta property="og:title" content="Tarjeta Regalo Lixby | Regala tecnología premium" />
-  <meta property="og:description" content="Regala la experiencia Lixby con nuestras tarjetas regalo digitales. Instantáneas y flexibles." />
-  <meta property="og:site_name" content="Lixby (España)" />
-  <meta property="og:locale" content="es_ES" />
+  
+  
+  
+  
   <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png" />
-  <meta property="og:url" content="https://lixby.es/es/regalo" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Tarjeta Regalo Lixby" />
-  <meta name="twitter:description" content="Regala tecnología premium con nuestras tarjetas regalo digitales." />
-  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png" />
+  
+  
+  
+  
+  
+  
+  
 
   
   <script type="application/ld+json">
@@ -673,6 +686,7 @@
       <div class="nav-mobile-answer" id="sub-productos">
         <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
         <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
         <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
         <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
       </div>
@@ -993,19 +1007,39 @@
     var menuToggle = document.querySelector(".nav-menu-toggle");
     var searchInput = document.getElementById("navSearch");
 
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
     var closeNav = function () {
       if (document.body) document.body.classList.remove("nav-open", "menu-open");
       if (nav) nav.classList.remove("nav-open");
       if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-      if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-      if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+            setIconState(false);
     };
     var openNav = function () {
       if (document.body) document.body.classList.add("nav-open", "menu-open");
       if (nav) nav.classList.add("nav-open");
       if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-      if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-      if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+            setIconState(true);
     };
     var toggleNav = function () {
       if (nav && nav.classList.contains("nav-open")) {

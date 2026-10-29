@@ -243,6 +243,7 @@
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -342,19 +343,39 @@
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+                setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+                setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

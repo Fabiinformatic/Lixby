@@ -285,6 +285,7 @@
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -457,7 +458,9 @@
       const color = entry.color || "—";
       const plan = entry.insurancePlan || "Sin LixSafe";
       const price = Number(entry.insurancePrice) || 0;
-      return `${id}|${color}|${plan}|${price}`;
+      const engraving = entry.engraving || "";
+      const base = `${id}|${color}|${plan}|${price}`;
+      return engraving ? `${base}|${engraving}` : base;
     }
 
     function resolveBasePrice(entry, product) {
@@ -528,11 +531,29 @@
         const quantity = Math.max(1, Number(item.qty) || 1);
         const productPriceId = resolveProductPriceId(item);
         if (productPriceId) {
-          lineItems.push({ priceId: productPriceId, quantity });
+          lineItems.push({
+            priceId: productPriceId,
+            quantity,
+            type: "product",
+            id: item.id,
+            name: item.name,
+            color: item.color,
+            engraving: item.engraving || "",
+            lineId: item.lineId
+          });
         }
         const insurancePriceId = resolveInsurancePriceId(item.insurancePlan);
         if (insurancePriceId) {
-          lineItems.push({ priceId: insurancePriceId, quantity });
+          lineItems.push({
+            priceId: insurancePriceId,
+            quantity,
+            type: "insurance",
+            id: item.id,
+            name: `LixSafe ${item.insurancePlan}`,
+            color: item.color,
+            engraving: "",
+            lineId: item.lineId
+          });
         }
       });
       return lineItems;
@@ -564,7 +585,8 @@
           unitPrice,
           lineTotal,
           insurancePlan: entry.insurancePlan || "Sin LixSafe",
-          insurancePrice
+          insurancePrice,
+          engraving: entry.engraving || ""
         };
       });
 
@@ -658,6 +680,7 @@
             <div>
               <h3>${esc(displayName)}</h3>
               <p>${money(unitPrice)} / unidad</p>
+              ${entry.engraving ? `<p class="cart-item-meta engraving-line">Grabado: ${esc(entry.engraving)}</p>` : ""}
               <p class="cart-item-meta">Color: ${esc(color)}</p>
               <p class="cart-item-meta">LixSafe: ${esc(insuranceLabel)}</p>
               <div class="cart-controls">
@@ -665,7 +688,7 @@
                 <span>${qty}</span>
                 <button type="button" data-action="plus" data-id="${esc(entry.lineId)}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${esc(entry.lineId)}">Quitar</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${esc(entry.lineId)}" style="background:none;border:none;color:#dc2626;font-size:0.9rem;text-decoration:none;padding:0;cursor:pointer;margin-top:4px;">Eliminar</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
           </article>
@@ -776,6 +799,11 @@
 
       const orderId = generateOrderId();
       const summary = calculateSummary(cart);
+      const hasEngraving = summary.items.some((item) => Boolean(item.engraving));
+      const engravingCount = summary.items.reduce(
+        (total, item) => total + (item.engraving ? Math.max(1, Number(item.qty) || 1) : 0),
+        0
+      );
       const orderPayload = {
         orderId,
         status: "pending_payment",
@@ -783,6 +811,8 @@
         currency: "EUR",
         subtotal: Number(summary.subtotal.toFixed(2)),
         items: summary.items,
+        hasEngraving,
+        engravingCount,
         createdAt: serverTimestamp(),
         uid: auth.currentUser?.uid || null
       };
@@ -846,19 +876,39 @@
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+                setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+                setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

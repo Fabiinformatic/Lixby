@@ -41,13 +41,9 @@
     wait_for_update: 500
   });
 
+  /* El banner solo solicita analítica: no autoriza publicidad ni personalización. */
   var GRANTED = {
-    ad_storage: "granted",
-    ad_user_data: "granted",
-    ad_personalization: "granted",
-    analytics_storage: "granted",
-    functionality_storage: "granted",
-    personalization_storage: "granted"
+    analytics_storage: "granted"
   };
 
   function readChoice() {

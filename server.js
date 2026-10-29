@@ -152,6 +152,7 @@ app.use(express.static(path.join(__dirname)));
 
 // Parser de JSON
 app.use("/webhook", express.raw({ type: "application/json" }));
+
 app.use(express.json());
 
 function appendQueryParam(rawUrl, key, value) {
@@ -178,6 +179,7 @@ function sendEmailJsEmail(order) {
     name: item.productName,
     units: item.quantity || 1,
     price: item.unitAmount ? (item.unitAmount / 100).toFixed(2) : "0.00",
+    engraving: item.engraving || "",
     image_url: "https://lixby.es/images/lixbuds-product.jpg"
   }));
 
@@ -219,7 +221,7 @@ function sendEmailJsEmail(order) {
           const ok = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
           res.on("data", () => {});
           res.on("end", () => {
-            console.log(ok ? "✅ Email enviado a:" : "❌ Email fallido:", order.email);
+            console.log(ok ? "✅ Email enviado" : "❌ Email fallido");
             resolve(ok);
           });
         }
@@ -329,7 +331,7 @@ async function sendGiftCardEmail(giftCard, role) {
       subject,
       html
     });
-    console.log("✅ Gift card email enviado a:", toEmail);
+    console.log("✅ Email de tarjeta regalo enviado");
     return true;
   } catch (err) {
     console.error("❌ Gift card email error:", err.message);
@@ -352,6 +354,7 @@ function sendAdminEmail(order) {
     name: item.productName,
     units: item.quantity || 1,
     price: item.unitAmount ? (item.unitAmount / 100).toFixed(2) : "0.00",
+    engraving: item.engraving || "",
     image_url: "https://lixby.es/images/lixbuds-product.jpg"
   }));
 
@@ -511,9 +514,107 @@ function formatAddress(address) {
   return parts.length ? parts.join(", ") : null;
 }
 
+const ENGRAVING_MAX_GRAPHEMES = 12;
+const ENGRAVING_ALLOWED_CHARS =
+  /^[\p{L}\p{N}\p{M}\p{Extended_Pictographic}\p{Emoji_Modifier}\p{Regional_Indicator}\u200D\uFE0F\u20E3\u{E0020}-\u{E007F} ]+$/u;
+const engravingSegmenter =
+  typeof Intl !== "undefined" && typeof Intl.Segmenter === "function"
+    ? new Intl.Segmenter("es", { granularity: "grapheme" })
+    : null;
+
+function engravingGraphemes(value) {
+  if (engravingSegmenter) {
+    return Array.from(engravingSegmenter.segment(value), (part) => part.segment);
+  }
+  return Array.from(value);
+}
+
+// Valida y normaliza el grabado. Devuelve { ok, value } o { ok:false, error }.
+function normalizeEngraving(raw) {
+  if (raw == null || raw === "") return { ok: true, value: "" };
+  if (typeof raw !== "string") {
+    return { ok: false, error: "El grabado no es válido." };
+  }
+
+  let cleaned = raw
+    .normalize("NFC")
+    .replace(/[\s\u00A0]+/gu, " ")
+    .trim();
+  if (!cleaned) return { ok: true, value: "" };
+
+  cleaned = cleaned.toUpperCase();
+  if (engravingGraphemes(cleaned).length > ENGRAVING_MAX_GRAPHEMES) {
+    return {
+      ok: false,
+      error: `El grabado no puede superar los ${ENGRAVING_MAX_GRAPHEMES} caracteres.`
+    };
+  }
+  if (!ENGRAVING_ALLOWED_CHARS.test(cleaned)) {
+    return {
+      ok: false,
+      error: "El grabado solo admite letras, números, espacios y emojis."
+    };
+  }
+
+  return { ok: true, value: cleaned };
+}
+
+function isLixbudsOneItem(item) {
+  if (!item || typeof item !== "object") return false;
+  const candidates = [item.id, item.productId, item.name, item.productName]
+    .filter(Boolean)
+    .map((value) => String(value).toLowerCase());
+  return candidates.some((value) => value.includes("lixbuds one") || value.includes("lixbuds-one"));
+}
+
+// Serializa el mapa de grabados en un valor de metadata de Stripe (máx. 500).
+function buildEngravingMetadata(engravingMap) {
+  if (!Array.isArray(engravingMap) || !engravingMap.length) return "";
+  const compact = engravingMap.map(({ i, e, c }) => [i, e, c || ""]);
+  let json = JSON.stringify(compact);
+  while (json.length > 500 && compact.length > 1) {
+    compact.pop();
+    json = JSON.stringify(compact);
+  }
+  return json.length <= 500 ? json : "";
+}
+
+function parseEngravingMetadata(raw) {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((entry) => {
+        if (Array.isArray(entry)) {
+          return { i: Number(entry[0]), e: entry[1], c: entry[2] || "" };
+        }
+        if (entry && typeof entry === "object") {
+          return { i: Number(entry.i), e: entry.e, c: entry.c || "" };
+        }
+        return null;
+      })
+      .filter((entry) => entry && Number.isFinite(entry.i) && entry.e);
+  } catch (error) {
+    return [];
+  }
+}
+
+function escapeHtml(value) {
+  return String(value == null ? "" : value).replace(/[&<>"']/g, (ch) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[ch] || ch);
+}
+
+// Devuelve las líneas de Stripe y en qué índice va cada grabado.
 function buildStripeLineItems(items) {
-  if (!Array.isArray(items)) return [];
+  if (!Array.isArray(items)) return { lineItems: [], engravings: [] };
   const lineItems = [];
+  const engravings = [];
   items.forEach((item) => {
     const qty = Math.max(1, Number(item.qty) || 1);
     const basePrice = Number(item.price) || 0;
@@ -524,6 +625,9 @@ function buildStripeLineItems(items) {
     const displayName =
       color !== "—" && !baseName.includes(color) ? `${baseName} (${color})` : baseName;
     if (basePrice > 0) {
+      if (item.engraving) {
+        engravings.push({ i: lineItems.length, e: item.engraving, c: color });
+      }
       lineItems.push({
         price_data: {
           currency: "eur",
@@ -533,7 +637,8 @@ function buildStripeLineItems(items) {
             metadata: {
               item_id: item.lineId || item.id || "",
               color,
-              plan
+              plan,
+              engraving: item.engraving || ""
             }
           }
         },
@@ -559,7 +664,7 @@ function buildStripeLineItems(items) {
       });
     }
   });
-  return lineItems;
+  return { lineItems, engravings };
 }
 
 app.post("/create-gift-card-session", express.json(), giftCardLimiter, async (req, res) => {
@@ -671,7 +776,6 @@ app.post("/use-gift-card", express.json(), giftCardLimiter, async (req, res) => 
 });
 
 app.post("/create-checkout-session", express.json(), checkoutLimiter, async (req, res) => {
-  console.log("📦 BODY RECIBIDO:", JSON.stringify(req.body, null, 2));
   const {
     orderId: rawOrderId,
     successUrl,
@@ -689,18 +793,57 @@ app.post("/create-checkout-session", express.json(), checkoutLimiter, async (req
   );
   const cancelWithOrder =
     cancelUrl || process.env.STRIPE_CANCEL_URL || "https://tusitio.com/cancel";
-  try {
-    const priceIdLineItems = Array.isArray(items)
-      ? items
-          .map((item) => ({
-            price: item && item.priceId ? item.priceId : null,
-            quantity: Math.max(1, Number((item && (item.quantity || item.qty)) || 1))
-          }))
-          .filter((item) => Boolean(item.price))
-      : [];
 
-    const dynamicLineItems =
-      priceIdLineItems.length > 0 ? priceIdLineItems : buildStripeLineItems(items);
+  // Validación y normalización server-side del grabado (nunca se confía en el cliente).
+  const validatedItems = [];
+  const rawItems = Array.isArray(items) ? items : [];
+  for (const rawItem of rawItems) {
+    const item = rawItem && typeof rawItem === "object" ? rawItem : {};
+    const normalized = normalizeEngraving(item.engraving);
+    if (!normalized.ok) {
+      return res.status(400).json({ error: normalized.error });
+    }
+    if (normalized.value) {
+      if (item.type === "insurance" || !isLixbudsOneItem(item)) {
+        return res.status(400).json({
+          error: "El grabado solo está disponible para LixBuds One."
+        });
+      }
+    }
+    validatedItems.push({ ...item, engraving: normalized.value });
+  }
+
+  try {
+    const priceIdEntries = validatedItems
+      .map((item) => {
+        if (!item.priceId) return null;
+        return {
+          line: {
+            price: item.priceId,
+            quantity: Math.max(1, Number(item.quantity || item.qty) || 1)
+          },
+          source: item
+        };
+      })
+      .filter(Boolean);
+
+    let dynamicLineItems = [];
+    let engravingMap = [];
+    if (priceIdEntries.length > 0) {
+      dynamicLineItems = priceIdEntries.map((entry) => entry.line);
+      engravingMap = priceIdEntries
+        .map((entry, index) =>
+          entry.source.engraving
+            ? { i: index, e: entry.source.engraving, c: entry.source.color || "" }
+            : null
+        )
+        .filter(Boolean);
+    } else {
+      const built = buildStripeLineItems(validatedItems);
+      dynamicLineItems = built.lineItems;
+      engravingMap = built.engravings;
+    }
+    const engravingMetadata = buildEngravingMetadata(engravingMap);
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -770,7 +913,8 @@ app.post("/create-checkout-session", express.json(), checkoutLimiter, async (req
             ],
       metadata: {
         orderId,
-        items: JSON.stringify(items || [])
+        items: JSON.stringify(items || []),
+        ...(engravingMetadata ? { engravings: engravingMetadata } : {})
       },
       client_reference_id: orderId,
       locale: "auto",
@@ -829,7 +973,7 @@ app.post("/webhook", generalLimiter, async (req, res) => {
       };
 
       await db.collection("giftCards").doc(code).set(giftCard);
-      console.log("🎁 Tarjeta regalo creada:", code);
+      console.log("🎁 Tarjeta regalo creada");
 
       await sendGiftCardEmail(giftCard, "sender");
       if (giftCard.recipientEmail) {
@@ -845,7 +989,7 @@ app.post("/webhook", generalLimiter, async (req, res) => {
     let lineItems = [];
     try {
       const items = await stripe.checkout.sessions.listLineItems(session.id, {
-        limit: 10,
+        limit: 100,
         expand: ["data.price.product"]
       });
       lineItems = items && items.data ? items.data : [];
@@ -853,7 +997,10 @@ app.post("/webhook", generalLimiter, async (req, res) => {
       console.warn("No se pudieron cargar los line items:", error.message);
     }
 
-    const orderItems = lineItems.map((item) => {
+    const engravingEntries = parseEngravingMetadata(
+      session.metadata && session.metadata.engravings
+    );
+    const orderItems = lineItems.map((item, index) => {
       const productName =
         (item.price &&
           item.price.product &&
@@ -861,13 +1008,26 @@ app.post("/webhook", generalLimiter, async (req, res) => {
           item.price.product.name) ||
         item.description ||
         "Producto";
+      const engravingEntry = engravingEntries.find((entry) => entry.i === index);
+      const normalizedEngraving = engravingEntry
+        ? normalizeEngraving(engravingEntry.e)
+        : { ok: true, value: "" };
       return {
         productName,
         priceId: item.price ? item.price.id : null,
         quantity: item.quantity || 1,
-        unitAmount: item.price ? item.price.unit_amount : null
+        unitAmount: item.price ? item.price.unit_amount : null,
+        engraving: normalizedEngraving.ok ? normalizedEngraving.value : "",
+        ...(engravingEntry && engravingEntry.c ? { color: engravingEntry.c } : {})
       };
     });
+
+    const hasEngraving = orderItems.some((item) => Boolean(item.engraving));
+    const engravingCount = orderItems.reduce(
+      (total, item) =>
+        total + (item.engraving ? Math.max(1, Number(item.quantity) || 1) : 0),
+      0
+    );
 
     const product =
       orderItems.length > 0
@@ -911,6 +1071,8 @@ app.post("/webhook", generalLimiter, async (req, res) => {
         null,
       product,
       items: orderItems,
+      hasEngraving,
+      engravingCount,
       status: "Pedido recibido",
       statusHistory: [
         {
@@ -942,7 +1104,7 @@ app.post("/webhook", generalLimiter, async (req, res) => {
       createdAt: new Date().toISOString()
     };
 
-    console.log(order);
+    console.log("Pedido recibido desde Stripe", { sessionId: order.sessionId });
     const existing = await db
       .collection("orders")
       .where("sessionId", "==", order.sessionId)
@@ -969,6 +1131,11 @@ app.post("/webhook", generalLimiter, async (req, res) => {
         <div>
           <div style="font-weight:700">${item.productName}</div>
           <div style="color:#6b7280">x${item.quantity}</div>
+          ${
+            item.engraving
+              ? `<div style="color:#458500;font-weight:700;margin-top:4px">Grabado: ${escapeHtml(item.engraving)}</div>`
+              : ""
+          }
         </div>
         <div style="font-weight:800">${item.unitAmount ? (item.unitAmount / 100).toFixed(2).replace(".", ",") + " €" : "—"}</div>
       </div>
@@ -1026,7 +1193,7 @@ app.post("/webhook", generalLimiter, async (req, res) => {
 </body>
 </html>`
         });
-        console.log("✅ Email Resend enviado a:", order.email);
+        console.log("✅ Email de confirmación enviado");
       } catch (error) {
         console.warn("No se pudo enviar el email Resend:", error.message);
       }
@@ -1043,6 +1210,9 @@ app.get("/track", (req, res) => {
 app.get("/track/:orderId", (req, res) => {
   res.sendFile(path.join(__dirname, "track.html"));
 });
+
+// Route to verify Sentry integration
+
 
 app.get("/track-order/:orderId", async (req, res) => {
   const orderId = req.params.orderId;

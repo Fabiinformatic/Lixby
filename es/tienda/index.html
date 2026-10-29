@@ -119,6 +119,19 @@ document.addEventListener('readystatechange', () => {
 
 <title>Tienda | Lixby</title>
 <meta name="description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://lixby.es/es/tienda">
+  <meta property="og:title" content="Tienda | Lixby">
+  <meta property="og:description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Auriculares LixBuds One de Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tienda | Lixby">
+  <meta name="twitter:description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Auriculares LixBuds One de Lixby">
 
 <link rel="preconnect" href="https://lixby.es">
 <link rel="dns-prefetch" href="https://lixby.es">
@@ -662,6 +675,7 @@ document.documentElement.classList.replace("nojs", "js");
         <div class="nav-mobile-answer" id="sub-productos">
           <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
           <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
         </div>
@@ -808,7 +822,7 @@ document.documentElement.classList.replace("nojs", "js");
             <div class="trust-icon" style="background:#d97706">
               <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
             </div>
-            <p><strong style="color:#d97706">Devolución en 30 días.</strong> Si algo no te convence, lo devuelves <strong style="color:#d97706">sin preguntas y sin complicaciones</strong>.</p>
+            <p><strong style="color:#d97706">Devolución en 14 días naturales.</strong> Puedes ejercer tu derecho de desistimiento <strong style="color:#d97706">sin indicar el motivo</strong>.</p>
           </a>
           <a class="trust-card" href="/es/support/#faq">
             <div class="trust-icon" style="background:#2563eb">
@@ -826,7 +840,7 @@ document.documentElement.classList.replace("nojs", "js");
             <div class="trust-icon" style="background:#16a34a">
               <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
             </div>
-            <p><strong style="color:#16a34a">Garantía oficial.</strong> Todos los productos Lixby incluyen <strong style="color:#16a34a">dos años de garantía</strong> conforme a la normativa europea.</p>
+            <p><strong style="color:#16a34a">Garantía oficial.</strong> Los productos físicos cuentan con <strong style="color:#16a34a">tres años de garantía legal</strong> desde la entrega.</p>
           </a>
           <a class="trust-card" href="/es/apps/">
             <div class="trust-icon" style="background:#6366f1">
@@ -860,7 +874,7 @@ document.documentElement.classList.replace("nojs", "js");
             <span class="trust-icon" style="background:#10b981">
               <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
             </span>
-            <p><strong style="color:#10b981">Devoluciones sin complicaciones.</strong> Tienes <strong style="color:#10b981">30 días para devolver tu pedido</strong>, con etiqueta de envío gratuita.</p>
+            <p><strong style="color:#10b981">Derecho de desistimiento.</strong> Tienes <strong style="color:#10b981">14 días naturales desde la entrega</strong> para solicitarlo. Consulta las condiciones y los gastos de devolución.</p>
           </a>
           <a class="trust-card" href="/es/centro-ayuda/contacto/">
             <span class="trust-icon" style="background:#8b5cf6">
@@ -1219,27 +1233,25 @@ document.documentElement.classList.replace("nojs", "js");
     var KB = {
       envios: { items: [
         { q: '¿Cuánto tarda el envío estándar?',
-          a: 'El envío estándar tarda entre 5 y 10 días hábiles. Recibirás un email con número de seguimiento en cuanto salga de nuestro almacén.' },
-        { q: '¿Ofrecen envío express?',
-          a: 'Sí, envío express en 24-48 h para pedidos antes de las 13:00 h (días laborables). Disponible en la península. Selecciónalo al finalizar la compra.' },
+          a: 'El envío estándar tarda entre 8 y 15 días hábiles. Recibirás un email con número de seguimiento en cuanto salga de nuestro almacén.' },
         { q: '¿El envío es gratis?',
           a: 'Envío completamente gratuito.' },
         { q: '¿Enviáis a Canarias y Baleares?',
-          a: 'Sí, enviamos a todo el territorio nacional. Los plazos para Canarias, Baleares, Ceuta y Melilla pueden ser de 5 a 8 días hábiles.' },
+          a: 'Sí, enviamos a todo el territorio nacional. El plazo estimado de entrega es de 8 a 15 días hábiles.' },
         { q: '¿Enviáis fuera de España?',
-          a: 'Sí, realizamos envíos a toda la Unión Europea. El coste y plazo se calculan automáticamente al introducir tu dirección.' }
+          a: 'Sí, enviamos a toda la Unión Europea. El envío es gratuito y el plazo estimado es de 8 a 15 días hábiles.' }
       ]},
       devoluciones: { items: [
         { q: '¿Cuántos días tengo para devolver?',
-          a: 'Tienes 30 días naturales desde la recepción para solicitar devolución o cambio, sin necesidad de justificación.' },
+          a: 'Tienes 14 días naturales desde la recepción para ejercer tu derecho de desistimiento, sin necesidad de indicar el motivo.' },
         { q: '¿Cómo inicio una devolución?',
-          a: 'Accede a "Mi cuenta → Mis pedidos", selecciona el artículo y pulsa "Solicitar devolución". Recibirás etiqueta de envío gratuita en menos de 24 h.' },
+          a: 'Comunica tu decisión de desistir a info@lixby.es e indica tu número de pedido. Los gastos directos de devolución corren por tu cuenta, salvo si el producto es defectuoso o el envío fue incorrecto.' },
         { q: '¿En qué condiciones debo devolver el artículo?',
-          a: 'El producto debe estar sin usar, con todas las etiquetas y en su embalaje original. No aceptamos artículos con signos de uso.' },
+          a: 'Puedes examinar el producto como lo harías en una tienda. El derecho de desistimiento tiene las excepciones legales, por ejemplo, ciertos productos precintados por higiene que se hayan desprecintado.' },
         { q: '¿Cuándo recibo el reembolso?',
-          a: 'Tras recibir y revisar el artículo (1-2 días), el reembolso se procesa en 5-7 días hábiles al mismo método de pago.' },
+          a: 'Emitimos el reembolso en cuanto recibimos y revisamos tu devolución, y siempre dentro de los 14 días naturales desde que nos comunicas el desistimiento. Una vez emitido, tu banco puede tardar entre 5 y 10 días laborables en reflejarlo en tu cuenta.' },
         { q: '¿Puedo cambiar talla o color?',
-          a: 'Sí, gestionamos cambios si hay stock. Solicítalo igual que una devolución e indica "cambio" como motivo. Sin coste adicional.' }
+          a: 'El derecho legal es de desistimiento durante 14 días naturales. Si quieres otra variante, puedes realizar un nuevo pedido tras comunicar el desistimiento.' }
       ]},
       pagos: { items: [
         { q: '¿Qué métodos de pago aceptáis?',
@@ -1261,7 +1273,7 @@ document.documentElement.classList.replace("nojs", "js");
         { q: '¿Puedo modificar o cancelar mi pedido?',
           a: 'Puedes cancelarlo o modificarlo durante las 2 primeras horas. Escríbenos a info@lixby.es lo antes posible.' },
         { q: '¿Qué hago si llega dañado?',
-          a: 'Envíanos foto del artículo y embalaje a info@lixby.es en 48 h. Te enviamos un reemplazo o hacemos el reembolso completo sin coste.' },
+          a: 'Si el paquete llega dañado durante el transporte o contiene un artículo incorrecto, escríbenos a info@lixby.es, preferiblemente en las primeras 48 h, y adjunta fotos para agilizar la gestión. Este aviso no reduce la garantía legal de 3 años.' },
         { q: '¿Puedo añadir productos a un pedido ya hecho?',
           a: 'No es posible añadir productos a un pedido en curso. Si aún no está en preparación puedes cancelarlo y hacer uno nuevo.' }
       ]},
@@ -1271,7 +1283,7 @@ document.documentElement.classList.replace("nojs", "js");
         { q: '¿Qué es la app Lixney?',
           a: 'Lixney es nuestra app gratuita para ahorrar, planificar y entender tus gastos personales. Disponible para Android.' },
         { q: '¿Hay garantía en los productos?',
-          a: 'Sí, todos nuestros productos incluyen 2 años de garantía oficial. Más info en la sección de Garantía del soporte.' },
+          a: 'Los productos físicos cuentan con 3 años de garantía legal desde la entrega. Más información en la sección de Garantía del soporte.' },
         { q: '¿Los LixBuds One son compatibles con todos los dispositivos?',
           a: 'Sí, los LixBuds One son compatibles con cualquier dispositivo con Bluetooth 6.0 o superior: iOS, Android, Windows y macOS.' },
         { q: '¿Cuándo llegan nuevos productos?',
@@ -1417,19 +1429,39 @@ document.documentElement.classList.replace("nojs", "js");
       var menuToggle = document.querySelector(".nav-menu-toggle");
       var searchInput = document.getElementById("navSearch");
 
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
       var closeNav = function () {
         if (document.body) document.body.classList.remove("nav-open", "menu-open");
         if (nav) nav.classList.remove("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+                setIconState(false);
       };
       var openNav = function () {
         if (document.body) document.body.classList.add("nav-open", "menu-open");
         if (nav) nav.classList.add("nav-open");
         if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
-        if (searchToggle) searchToggle.setAttribute("aria-expanded", "true");
-        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+                setIconState(true);
       };
       var toggleNav = function () {
         if (nav && nav.classList.contains("nav-open")) {

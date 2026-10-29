@@ -526,15 +526,15 @@ body.menu-open {
   transform-origin: center;
 }
 
-.nav-icon-button[aria-expanded="true"] svg line:first-child {
+.nav-icon-button.nav-open-x svg line:first-child {
   transform: translateY(4px) rotate(45deg);
 }
 
-.nav-icon-button[aria-expanded="true"] svg line:last-child {
+.nav-icon-button.nav-open-x svg line:last-child {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-.nav-icon-button[aria-expanded="true"] svg line {
+.nav-icon-button.nav-open-x svg line {
   stroke-width: 2.8;
 }
 
@@ -2005,4 +2005,22 @@ body.menu-open {
   font-size: 16px;
   line-height: 1.65;
   color: var(--text-secondary);
+}
+
+.lixsafe-inline-link,
+.lixsafe-inline-link:visited,
+.lixsafe-inline-link:hover,
+.lixsafe-inline-link:active {
+  color: #111827;
+  text-decoration: none;
+}
+
+.lixsafe-inline-link {
+  font: inherit;
+}
+
+.lixsafe-inline-link:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
