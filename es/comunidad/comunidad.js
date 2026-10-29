@@ -3,6 +3,7 @@
 // docs/comunidad/modelo-de-datos.md.
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 import {
   getFirestore,
@@ -32,6 +33,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+await initializeLixbyAppCheck(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const fns = getFunctions(app, "europe-west1");

@@ -39,5 +39,6 @@ yarn-error.log*
 dist/
 build/
 coverage/
+/artifacts/security/
 .cache/
 .next/

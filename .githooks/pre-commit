@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "Gitleaks no está instalado; instala Gitleaks antes de crear commits." >&2
+  exit 1
+fi
+
+if git -C "$repo_root" diff --cached --quiet --ignore-submodules --; then
+  exit 0
+fi
+
+echo "Analizando los cambios preparados con Gitleaks..."
+gitleaks protect \
+  --source "$repo_root" \
+  --staged \
+  --redact \
+  --no-banner

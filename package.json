@@ -10,6 +10,7 @@
     "seed:spaces": "node scripts/seed-community-spaces.js",
     "test:firestore-rules": "firebase emulators:exec --only firestore --project demo-lixby \"node --test tests/firestore.rules.test.js\"",
     "test:functions-auth": "firebase emulators:exec --only auth,firestore,functions --project demo-lixby \"node tests/functions-auth-emulator.test.js\"",
+    "test:sentry-scrub": "node --test tests/sentry-scrub.test.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

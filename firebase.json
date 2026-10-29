@@ -74,6 +74,15 @@
                                           ]
                                       },
                                       {
+                                          "source":  "/js/firebase-app-check-config.json",
+                                          "headers":  [
+                                              {
+                                                  "key":  "Cache-Control",
+                                                  "value":  "public, max-age=300"
+                                              }
+                                          ]
+                                      },
+                                      {
                                           "source": "**/*.js",
                                           "headers": [
                                               {

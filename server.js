@@ -7,6 +7,8 @@ const path = require("path");
 const fs = require("fs");
 const { Resend } = require("resend");
 const rateLimit = require("express-rate-limit");
+const Sentry = require("@sentry/node");
+const { scrubSentryEvent } = require("./security/sentry-scrub");
 require("dotenv").config();
 
 if (process.env.WEBHOOK_TEST_MODE === "1") {
@@ -35,6 +37,16 @@ if (process.env.WEBHOOK_TEST_MODE === "1") {
 const emailDryRun =
   process.env.WEBHOOK_TEST_MODE === "1" && process.env.EMAIL_DRY_RUN === "1";
 const app = express();
+
+// Initialize Sentry
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  environment: process.env.NODE_ENV || "development",
+  sendDefaultPii: false,
+  tracesSampleRate: 0,
+  integrations: [Sentry.expressIntegration()],
+  beforeSend: scrubSentryEvent,
+});
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY || "TU_SECRET_KEY");
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFrom = process.env.RESEND_FROM;
@@ -1293,6 +1305,9 @@ function getLocalized404Page(requestPath) {
 
   return candidates.find((filePath) => fs.existsSync(filePath));
 }
+
+// Sentry error handler must be before other error handlers and after routes
+Sentry.setupExpressErrorHandler(app);
 
 app.use((req, res) => {
   const page404 = getLocalized404Page(req.path);
