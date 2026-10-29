@@ -14,13 +14,94 @@ service cloud.firestore {
       return ["accountNumber", "accountNumberCreatedAt"];
     }
 
+    function optionalStringField(key, maxLength) {
+      return !(key in request.resource.data)
+        || (request.resource.data[key] is string
+          && request.resource.data[key].size() <= maxLength);
+    }
+
+    function optionalBooleanField(key) {
+      return !(key in request.resource.data)
+        || request.resource.data[key] is bool;
+    }
+
+    function validUpdatedAt() {
+      return "updatedAt" in request.resource.data
+        && request.resource.data.updatedAt is timestamp;
+    }
+
+    function validProfile() {
+      return request.resource.data.keys().hasOnly([
+          "address", "adsOptIn", "birthDate", "city", "country",
+          "countryContact", "email", "firstName", "language", "lastName",
+          "phone", "photoUrl", "postalCode", "prefAds", "prefNews",
+          "prefOffers", "prefSupport", "prefUpdates", "timezone", "updatedAt"
+        ])
+        && optionalStringField("address", 200)
+        && optionalStringField("birthDate", 20)
+        && optionalStringField("city", 100)
+        && optionalStringField("country", 100)
+        && optionalStringField("countryContact", 100)
+        && optionalStringField("email", 254)
+        && optionalStringField("firstName", 100)
+        && optionalStringField("language", 35)
+        && optionalStringField("lastName", 100)
+        && optionalStringField("phone", 32)
+        && optionalStringField("photoUrl", 2048)
+        && (!("photoUrl" in request.resource.data)
+          || request.resource.data.photoUrl == ""
+          || request.resource.data.photoUrl.matches("^https://.*$"))
+        && optionalStringField("postalCode", 20)
+        && optionalBooleanField("adsOptIn")
+        && optionalBooleanField("prefAds")
+        && optionalBooleanField("prefNews")
+        && optionalBooleanField("prefOffers")
+        && optionalBooleanField("prefSupport")
+        && optionalBooleanField("prefUpdates")
+        && optionalStringField("timezone", 100)
+        && validUpdatedAt();
+    }
+
+    function validBilling() {
+      return request.resource.data.keys().hasOnly([
+          "address", "city", "country", "name", "postalCode", "updatedAt"
+        ])
+        && optionalStringField("address", 200)
+        && optionalStringField("city", 100)
+        && optionalStringField("country", 100)
+        && optionalStringField("name", 100)
+        && optionalStringField("postalCode", 20)
+        && validUpdatedAt();
+    }
+
     // ==== Comunidad Lixby: helpers ====
     function hasRole(roles) {
       return signedIn() && request.auth.token.get('role', '') in roles;
     }
 
+    function realUser() {
+      return signedIn()
+        && request.auth.token.firebase.sign_in_provider != "anonymous";
+    }
+
     function isMod() {
       return hasRole(['owner', 'mod', 'admin']);
+    }
+
+    function postIsPublished(postId) {
+      let postPath = /databases/$(database)/documents/posts/$(postId);
+      return exists(postPath) && get(postPath).data.status == "published";
+    }
+
+    function commentIsPublished(postId, commentId) {
+      let commentPath = /databases/$(database)/documents/posts/$(postId)/comments/$(commentId);
+      return exists(commentPath) && get(commentPath).data.status == "published";
+    }
+
+    function optionalReportString(key, maxLength) {
+      return !(key in request.resource.data)
+        || (request.resource.data[key] is string
+          && request.resource.data[key].size() <= maxLength);
     }
 
     // Solo "me gusta" (value == 1): la UI no tiene voto negativo. Los triggers
@@ -32,7 +113,7 @@ service cloud.firestore {
     }
 
     function validReport() {
-      return signedIn()
+      return realUser()
         && request.resource.data.keys().hasOnly([
           'targetType', 'targetPath', 'targetId', 'targetAuthorUid',
           'reporterUid', 'reason', 'note', 'status', 'createdAt'
@@ -40,6 +121,10 @@ service cloud.firestore {
         && request.resource.data.reporterUid == request.auth.uid
         && request.resource.data.targetType in ['post', 'comment']
         && request.resource.data.reason in ['spam', 'abuse', 'illegal', 'off-topic', 'other']
+        && optionalReportString('targetPath', 512)
+        && optionalReportString('targetId', 128)
+        && optionalReportString('targetAuthorUid', 128)
+        && optionalReportString('note', 1000)
         && request.resource.data.status == 'open'
         && request.resource.data.createdAt == request.time;
     }
@@ -51,9 +136,14 @@ service cloud.firestore {
       allow update: if isOwner(uid)
         && !request.resource.data.diff(resource.data).affectedKeys().hasAny(accountNumberFields());
 
-      // Subcolecciones del usuario (perfil y datos de facturación).
-      match /account/{docId} {
-        allow read, write: if isOwner(uid);
+      match /account/profile {
+        allow read, delete: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validProfile();
+      }
+
+      match /account/billing {
+        allow read, delete: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validBilling();
       }
 
       // Sesiones activas: cada navegador registra y actualiza la suya. El dueño
@@ -61,7 +151,10 @@ service cloud.firestore {
       match /sessions/{sessionId} {
         allow read: if isOwner(uid);
         allow create: if isOwner(uid);
-        allow update: if isOwner(uid);
+        allow update: if isOwner(uid)
+          && (!('revokedAt' in resource.data)
+            || resource.data.revokedAt == null
+            || request.resource.data.get('revokedAt', null) == resource.data.revokedAt);
         allow delete: if isOwner(uid);
       }
 
@@ -94,7 +187,7 @@ service cloud.firestore {
     // Espacios / subforos: LixBuds, Lixney, Lixfly, General, Ideas, Soporte.
     match /spaces/{spaceId} {
       allow read: if true;      // catálogo público (SEO)
-      allow write: if isMod();  // sólo moderación / seed
+      allow write: if hasRole(['owner', 'admin']);  // sólo owner/admin
     }
 
     // Hilos (posts)
@@ -115,14 +208,20 @@ service cloud.firestore {
     // Votos de hilo. El id del documento es el uid => un voto por usuario.
     match /posts/{postId}/votes/{voteUid} {
       allow read: if isOwner(voteUid);
-      allow create, update: if isOwner(voteUid) && validVote();
+      allow create, update: if realUser()
+        && isOwner(voteUid)
+        && validVote()
+        && postIsPublished(postId);
       allow delete: if isOwner(voteUid);
     }
 
     // Votos de comentario. Mismo esquema.
     match /posts/{postId}/comments/{commentId}/votes/{voteUid} {
       allow read: if isOwner(voteUid);
-      allow create, update: if isOwner(voteUid) && validVote();
+      allow create, update: if realUser()
+        && isOwner(voteUid)
+        && validVote()
+        && commentIsPublished(postId, commentId);
       allow delete: if isOwner(voteUid);
     }
 

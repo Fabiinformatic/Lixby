@@ -439,6 +439,13 @@ exports.sitemap = onRequest({ maxInstances: 10 }, (req, res) => {
 exports.adminSearchUser = onCall(
   { region: "europe-west1", invoker: "public" },
   async (request) => {
+    if (!request.auth?.uid) {
+      throw new HttpsError("unauthenticated", "No autenticado");
+    }
+    if (!["owner", "admin"].includes(request.auth.token.role)) {
+      throw new HttpsError("permission-denied", "No tienes permisos para buscar usuarios.");
+    }
+
     const { email, nlx } = request.data;
     const db = admin.firestore();
 

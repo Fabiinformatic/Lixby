@@ -9,6 +9,31 @@ const { Resend } = require("resend");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
+if (process.env.WEBHOOK_TEST_MODE === "1") {
+  const missingTestSafeguards = [];
+  const firestoreEmulatorHost = process.env.FIRESTORE_EMULATOR_HOST || "";
+  if (!/^(localhost|127\.0\.0\.1|\[::1\]):\d+$/.test(firestoreEmulatorHost)) {
+    missingTestSafeguards.push("a local FIRESTORE_EMULATOR_HOST");
+  }
+  if (!process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_")) {
+    missingTestSafeguards.push("a Stripe test key (STRIPE_SECRET_KEY=sk_test_…)");
+  }
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    missingTestSafeguards.push("STRIPE_WEBHOOK_SECRET");
+  }
+  if (process.env.EMAIL_DRY_RUN !== "1") {
+    missingTestSafeguards.push("EMAIL_DRY_RUN=1");
+  }
+  if (missingTestSafeguards.length) {
+    console.error(
+      `WEBHOOK_TEST_MODE refused to start; missing safeguards: ${missingTestSafeguards.join(", ")}.`
+    );
+    process.exit(1);
+  }
+}
+
+const emailDryRun =
+  process.env.WEBHOOK_TEST_MODE === "1" && process.env.EMAIL_DRY_RUN === "1";
 const app = express();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY || "TU_SECRET_KEY");
 const resendApiKey = process.env.RESEND_API_KEY;
@@ -128,6 +153,11 @@ function appendQueryParam(rawUrl, key, value) {
 }
 
 function sendEmailJsEmail(order) {
+  if (emailDryRun) {
+    console.log("EMAIL_DRY_RUN=1: email omitido");
+    return Promise.resolve(false);
+  }
+
   if (!emailjsServiceId || !emailjsTemplateId || !emailjsPublicKey || !order.email) {
     return Promise.resolve(false);
   }
@@ -196,6 +226,11 @@ function sendEmailJsEmail(order) {
 }
 
 async function sendGiftCardEmail(giftCard, role) {
+  if (emailDryRun) {
+    console.log("EMAIL_DRY_RUN=1: email omitido");
+    return false;
+  }
+
   if (!resend || !resendFrom) return false;
 
   const isRecipient = role === "recipient";
@@ -291,6 +326,11 @@ async function sendGiftCardEmail(giftCard, role) {
 }
 
 function sendAdminEmail(order) {
+  if (emailDryRun) {
+    console.log("EMAIL_DRY_RUN=1: email omitido");
+    return Promise.resolve(false);
+  }
+
   const adminTemplateId = process.env.EMAILJS_ADMIN_TEMPLATE_ID;
   if (!emailjsServiceId || !adminTemplateId || !emailjsPublicKey) {
     return Promise.resolve(false);
@@ -905,7 +945,9 @@ app.post("/webhook", generalLimiter, async (req, res) => {
     const emailSent = await sendEmailJsEmail(order);
     await sendAdminEmail(order);
 
-    if (resend && resendFrom && order.email) {
+    if (emailDryRun) {
+      console.log("EMAIL_DRY_RUN=1: email omitido");
+    } else if (resend && resendFrom && order.email) {
       try {
         const trackUrl = `https://lixby.es/track?orderId=${order.id}`;
         const itemsHtml = order.items

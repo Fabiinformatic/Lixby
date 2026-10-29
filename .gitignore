@@ -16,6 +16,7 @@ firebase-service-account.json.json
 # Sensitive files
 secrets/
 admin.html
+gitleaks-report.json
 
 # IDE
 .vscode/
