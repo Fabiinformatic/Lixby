@@ -47,6 +47,13 @@
                                    "admin.html",
                                    "nota.txt",
                                    "SECURITY.md",
+                                   "SECURITY-ACCEPTED.md",
+                                   "gitleaks-report.json",
+                                   "Cesta",
+                                   "artifacts/**",
+                                   "tests/**",
+                                   "security/**",
+                                   ".githooks/**",
                                    "firebase-service-account.json",
                                    "package.json",
                                    "package-lock.json",
@@ -295,6 +302,41 @@
                                       },
                                       {
                                           "source": "/SECURITY.md",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/SECURITY-ACCEPTED.md",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/gitleaks-report.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/Cesta",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/artifacts/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/tests/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/security/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.githooks/**",
                                           "destination": "/404.html",
                                           "type": 301
                                       },
