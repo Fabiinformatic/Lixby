@@ -19,7 +19,10 @@ const ignoredTopLevel = new Set([
   "src",
   "dataconnect",
   "y",
-  "scripts"
+  "scripts",
+  "artifacts",
+  "tests",
+  "security"
 ]);
 
 const excludedPageNames = new Set([
