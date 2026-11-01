@@ -47,6 +47,13 @@
                                    "admin.html",
                                    "nota.txt",
                                    "SECURITY.md",
+                                   "SECURITY-ACCEPTED.md",
+                                   "gitleaks-report.json",
+                                   "Cesta",
+                                   "artifacts/**",
+                                   "tests/**",
+                                   "security/**",
+                                   ".githooks/**",
                                    "firebase-service-account.json",
                                    "package.json",
                                    "package-lock.json",
@@ -128,174 +135,6 @@
                                          "source":  "/sitemap.xml",
                                          "function":  {
                                                           "functionId":  "sitemap"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/bg/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/cs/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/da/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/de/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/el/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/es/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/et/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/fi/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/fr/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/ga/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/hr/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/hu/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/it/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/lt/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/lv/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/mt/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/nl/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/pl/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/pt/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/ro/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/sk/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/sl/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/sv/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
-                                                      }
-                                     },
-                                     {
-                                         "source": "/en/comunidad/**",
-                                         "function":  {
-                                                          "functionId":  "communitySSR",
-                                                          "region":  "europe-west1"
                                                       }
                                      },
                                      {
@@ -463,6 +302,41 @@
                                       },
                                       {
                                           "source": "/SECURITY.md",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/SECURITY-ACCEPTED.md",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/gitleaks-report.json",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/Cesta",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/artifacts/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/tests/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/security/**",
+                                          "destination": "/404.html",
+                                          "type": 301
+                                      },
+                                      {
+                                          "source": "/.githooks/**",
                                           "destination": "/404.html",
                                           "type": 301
                                       },
