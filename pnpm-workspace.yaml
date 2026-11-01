@@ -10,6 +10,9 @@ minimumReleaseAgeExclude:
   - body-parser@1.20.9 || 2.4.0
   - undici@6.29.1 || 8.12.2
   - fast-uri@3.1.9
+  # TODO(2026-11-15): quitar estas dos exclusiones cuando glob 14.0.x y
+  # minimatch 11.0.x ya superen la edad minima. Solo estan para desbloquear
+  # los parches de seguridad aplicados en #16; no deben quedarse fijas.
   - glob@14.0.2 || 14.0.3
   - minimatch@11.0.1 || 11.0.2 || 11.0.3
 
