@@ -32,7 +32,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
-    "protobufjs": "^8.7.2",
+    "protobufjs": "^8.8.1",
     "resend": "^6.12.4",
     "stripe": "^20.4.1"
   },
