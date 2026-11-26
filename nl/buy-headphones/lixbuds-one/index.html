@@ -36,7 +36,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koop LixBuds One | draadloze hoofdtelefoon Lixby</title>
+  <title>Koop LixBuds One | Draadloze hoofdtelefoon Lixby</title>
   <meta name="description" content="koop LixBuds One, bekijk de kenmerken ervan en personaliseer het hoesje gratis met gravure. Controleer ook de inhoud van de doos en LixSafe.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lixby">
@@ -1728,7 +1728,7 @@
         addToCartBtn.disabled = true;
         const cart = readCart();
         const colorLabel = document.getElementById("colorLabel");
-        const selectedColor = colorLabel ? colorLabel.textContent.replace("Kleur -", "") : "Blanco";
+        const selectedColor = colorLabel ? colorLabel.textContent.replace("Kleur - ", "") : "Blanco";
         const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice, selectedEngraving);
         const existing = cart.find((item) => (item.lineId || buildLineId(
           item.color || "Blanco",
@@ -1855,13 +1855,13 @@
     document.querySelectorAll(".color-swatch").forEach((swatch) => {
       swatch.addEventListener("mouseenter", () => {
         if (colorLabel && swatch.dataset.color) {
-          colorLabel.textContent = `kleur - ${swatch.dataset.color}`;
+          colorLabel.textContent = `Kleur - ${swatch.dataset.color}`;
         }
       });
 
       swatch.addEventListener("mouseleave", () => {
         if (colorLabel) {
-          colorLabel.textContent = `kleur - ${selectedColorName}`;
+          colorLabel.textContent = `Kleur - ${selectedColorName}`;
         }
       });
 
@@ -1870,7 +1870,7 @@
         swatch.classList.add("active");
         if (colorLabel) {
           selectedColorName = swatch.dataset.color || "Blanco";
-          colorLabel.textContent = `kleur - ${selectedColorName}`;
+          colorLabel.textContent = `Kleur - ${selectedColorName}`;
         }
         if (swatch.dataset.image) {
           selectedImageForCart = swatch.dataset.image;
@@ -2270,7 +2270,7 @@
         const color = swatch.dataset.color || "";
         const cl = document.getElementById("colorLabel") || colorLabelEl;
         if (cl) {
-          cl.textContent = `kleur - ${color}`;
+          cl.textContent = `Kleur - ${color}`;
         }
         const summaryColorText = document.getElementById("summaryColorText");
         if (summaryColorText) {

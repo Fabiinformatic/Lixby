@@ -1294,7 +1294,7 @@
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Ще изпратим SMS код на ${hint.phoneNumber || "tu teléfono"}.`;
+            mfaHint.textContent = `Ще изпратим SMS код на ${hint.phoneNumber || "телефонния ти номер"}.`;
             mfaPanel.classList.add("active");
             setStatus("Изисква се потвърждаване в две стъпки.", "info");
             return;

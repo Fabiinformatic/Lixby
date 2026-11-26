@@ -1728,7 +1728,7 @@
         addToCartBtn.disabled = true;
         const cart = readCart();
         const colorLabel = document.getElementById("colorLabel");
-        const selectedColor = colorLabel ? colorLabel.textContent.replace("Farbe -", "") : "Blanco";
+        const selectedColor = colorLabel ? colorLabel.textContent.replace("Farbe - ", "") : "Blanco";
         const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice, selectedEngraving);
         const existing = cart.find((item) => (item.lineId || buildLineId(
           item.color || "Blanco",
