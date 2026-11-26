@@ -49,17 +49,30 @@
 
   <meta name="author" content="Lixby" />
 
-  
-
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pl/style.css">
   <style>
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     .account-page {
       padding: 34px 0 84px;
+    }
+
+    /* En el body usamos "clip" en vez de "hidden": hidden convierte el body en
+       un contenedor de scroll y rompe el position: sticky de la barra lateral. */
+    body {
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     body {
@@ -69,47 +82,71 @@
       min-height: 100vh;
     }
 
-    .orb-3 {
-      bottom: -120px;
-      left: 35%;
-      background: rgba(22, 167, 255, 0.2);
-      animation: drift 11s ease-in-out infinite;
+    /* Los círculos de fondo se quedan quietos: no deben moverse al hacer scroll */
+    .background-orb {
+      animation: none !important;
+      will-change: auto;
+      transform: none;
     }
 
-    .orb-4 {
-      top: 18%;
-      left: 55%;
-      background: rgba(15, 61, 255, 0.16);
-      animation: drift 12s ease-in-out infinite reverse;
+    /* ── Loading screen ──────────────────────────── */
+    #loadingScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: var(--bg, #f6f8fb);
+      font-family: var(--font-family, "Inter", "Inter", sans-serif);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+    #loadingScreen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--line, #dbe3ef);
+      border-top-color: var(--primary, #0f3dff);
+      border-radius: 50%;
+      animation: loadSpin 0.75s linear infinite;
+    }
+    .loading-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted, #5f6b7a);
+      letter-spacing: 0.01em;
+    }
+    @keyframes loadSpin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes loadPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.06); opacity: 1; }
     }
 
-    .orb-5 {
-      bottom: 10%;
-      right: 20%;
-      background: rgba(22, 167, 255, 0.14);
-      animation: drift 13s ease-in-out infinite;
+    #accountLayout {
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .status-msg {
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 600;
+    #accountLayout.visible {
+      opacity: 1;
     }
 
-    .status-msg.error {
-      border-color: #fecaca;
-      background: #fef2f2;
-      color: #b91c1c;
-    }
+    .orb-1 { top: -80px; left: -60px; }
+    .orb-2 { top: 40%; right: -80px; }
+    .orb-3 { bottom: -80px; left: 35%; }
+    .orb-4 { top: 18%; left: 55%; }
+    .orb-5 { bottom: 10%; right: 10%; }
 
-    .status-msg.success {
-      border-color: #a7f3d0;
-      background: #ecfdf5;
-      color: #047857;
+    .status-msg.fade-out {
+      animation: statusFadeOut 0.35s ease forwards;
     }
 
     .account-layout {
@@ -126,6 +163,12 @@
       border-radius: 18px;
       box-shadow: var(--shadow-soft);
       padding: 18px;
+    }
+
+    /* La tarjeta lateral acompaña al hacer scroll por la cuenta */
+    .account-side {
+      position: sticky;
+      top: 92px;
     }
 
     .account-side h1 {
@@ -152,8 +195,15 @@
 
     .side-actions {
       display: grid;
-      gap: 8px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 14px;
+      justify-items: stretch;
+    }
+
+    /* Los botones de la tarjeta lateral ocupan todo el ancho de la tarjeta blanca */
+    .side-actions .btn {
+      width: 100%;
+      min-width: 0;
     }
 
     .account-section + .account-section {
@@ -201,6 +251,26 @@
       min-height: 72px;
     }
 
+    /* Desplegables con la flecha y el foco de Lixby */
+    .field select,
+    .payment-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23697380' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px 16px;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .field select:focus,
+    .field select:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.15);
+    }
+
     .field-grid.three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -219,18 +289,88 @@
 
     .check-list {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
     .check-row {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
       font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 15px;
+      background: #fff;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .check-row input {
-      width: auto;
+    .check-row:hover {
+      border-color: rgba(15, 61, 255, 0.4);
+      background: #f7f9ff;
+    }
+
+    .check-row:has(input:checked) {
+      border-color: var(--primary);
+      background: #f2f5ff;
+      box-shadow: 0 10px 24px rgba(15, 61, 255, 0.12);
+    }
+
+    /* Casilla con el diseño de Lixby */
+    .check-row input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      flex: none;
+      margin: 1px 0 0;
+      border: 2px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .check-row input[type="checkbox"]:hover {
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:checked {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.25);
+    }
+
+    .check-row input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 11px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg);
+    }
+
+    .check-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .check-text strong {
+      font-weight: 700;
+    }
+
+    .check-text span {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--muted);
     }
 
     .action-list {
@@ -249,15 +389,51 @@
       background: #f8fafc;
     }
 
-    .action-item .btn {
+    /* Todos los botones de la cuenta comparten alto, grosor y tipografía */
+    .account-page .btn {
       min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
       text-align: center;
       font-size: 0.95rem;
       font-weight: 700;
-      height: 40px;
-      padding: 0 18px;
+      line-height: 1;
       border-radius: 999px;
+    }
+
+    .account-page .btn-primary,
+    .account-page .btn-solid {
+      border: 1px solid transparent;
+      color: #fff;
+    }
+
+    .account-page .btn-secondary,
+    .account-page .btn-outline {
+      background: #fff;
+      color: #111827;
+      border: 1px solid var(--line);
+    }
+
+    .account-page .btn-secondary:hover,
+    .account-page .btn-outline:hover {
+      background: #f1f5f9;
+      color: #111827;
+    }
+
+    .account-page .btn-danger {
+      background: #dc2626;
+      border: 1px solid #dc2626;
+      color: #fff;
+    }
+
+    .account-page .btn-danger:hover,
+    .account-page .btn-danger:active {
+      background: #b91c1c;
+      border-color: #b91c1c;
+      color: #fff;
     }
 
     .btn-verified {
@@ -286,6 +462,11 @@
       gap: 8px;
       flex-wrap: wrap;
       margin-top: 4px;
+    }
+
+    /* Separación extra del botón respecto a los campos (p. ej. CVV) */
+    .payment-panel .order-actions {
+      margin-top: 16px;
     }
 
     .payment-panel {
@@ -317,7 +498,8 @@
       font-weight: 700;
     }
 
-    .payment-field input {
+    .payment-field input,
+    .payment-field select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -423,26 +605,49 @@
       margin-left: 6px;
     }
 
+    /* Barra inferior: aparece cuando hay cambios sin guardar */
     .save-bar {
       position: fixed;
       left: 50%;
       bottom: 18px;
-      transform: translateX(-50%) translateY(120%);
-      background: #0f172a;
-      color: #fff;
-      border-radius: 999px;
-      padding: 10px 14px;
+      transform: translateX(-50%) translateY(140%);
+      background: #fff;
+      color: #0f172a;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      z-index: 2000;
-      transition: transform 0.25s ease;
-      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.35);
+      gap: 14px;
+      z-index: 2100;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.18);
+      max-width: calc(100% - 24px);
+      opacity: 0;
+      pointer-events: none;
     }
 
     .save-bar.show {
       transform: translateX(-50%) translateY(0);
-      animation: pulseSave 0.45s ease;
+      opacity: 1;
+      pointer-events: auto;
+      animation: pulseSave 0.35s ease;
+    }
+
+    .save-bar-text {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .save-bar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .save-bar-actions .btn {
+      min-width: 0;
+      height: 38px;
+      padding: 0 16px;
     }
 
     @keyframes pulseSave {
@@ -450,13 +655,142 @@
       100% { transform: translateX(-50%) translateY(0) scale(1); }
     }
 
+    /* Modal (sesiones activas) */
+    .account-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2200;
+    }
+
+    .account-modal.hidden {
+      display: none;
+    }
+
+    .account-modal-panel {
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px;
+      width: min(520px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 14px;
+    }
+
+    .account-modal-panel h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .session-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .session-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+      display: grid;
+      gap: 3px;
+    }
+
+    .session-item strong {
+      font-weight: 700;
+    }
+
+    .session-item span {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .session-badge {
+      justify-self: start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 999px;
+      padding: 3px 9px;
+      margin-top: 4px;
+    }
+
+    .account-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* Aviso tipo "bocadillo" (toast) */
+    .toast-msg {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-160%);
+      background: #0f172a;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 20px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      z-index: 2300;
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.3);
+      transition: transform 0.28s ease, opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+      max-width: calc(100% - 24px);
+      text-align: center;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-msg.success {
+      background: #15803d;
+    }
+
+    .toast-msg.error {
+      background: #b91c1c;
+    }
+
     .hidden {
       display: none;
+    }
+
+    @media (max-width: 560px) {
+      .save-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: calc(100% - 24px);
+        border-radius: 18px;
+      }
+
+      .save-bar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 960px) {
       .account-layout {
         grid-template-columns: 1fr;
+      }
+
+      /* En una sola columna la tarjeta lateral no debe quedarse pegada */
+      .account-side {
+        position: static;
+        top: auto;
       }
     }
 
@@ -487,83 +821,209 @@
 </head>
 <body>
 
+  <div id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">ładowanie konta...</p>
+  </div>
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
   <div class="background-orb orb-4" aria-hidden="true"></div>
   <div class="background-orb orb-5" aria-hidden="true"></div>
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Główna">
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
         <a href="/pl/shop/" class="nav-link">Sklep</a>
-        <a href="/pl/#productos" class="nav-link">Produkty</a>
-        <a href="/pl/#apps" class="nav-link">Aplikacje</a>
-        <a href="/pl/support/" class="nav-link">Pomoc</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
+        <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/pl/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
+          >
+        </form>
         <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
-          <img src="images/Bolsa.png" alt="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
         </a>
         <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="images/cuenta.png" alt="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Sklep</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkty</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Wsparcie</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Koszyk</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container account-page">
-    <div id="statusMsg" class="status-msg">Sprawdzanie sesji...</div>
-
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
-        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Zdjęcie profilowe">
+        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="zdjęcie profilowe">
         <h1 id="sideName">Twoje konto Lixby</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
-          <button id="editBtn" class="btn btn-secondary" type="button">Edytuj dane</button>
-          <a class="btn btn-secondary" href="/pl/cart/">Zobacz zamówienia</a>
+          <a class="btn btn-secondary" href="/pl/cart/">zobacz rozkazy</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Wyloguj się</button>
         </div>
       </aside>
 
-      <section id="profileForm" class="account-main readonly">
+      <section id="profileForm" class="account-main">
         <section class="account-section">
-          <h2>Dane osobowe</h2>
+          <h2>dane osobowe</h2>
           <div class="field-grid">
             <div class="field">
               <label for="firstName">Imię</label>
               <input id="firstName" type="text">
             </div>
             <div class="field">
-              <label for="lastName">Nazwisko</label>
+              <label for="lastName">nazwiska</label>
               <input id="lastName" type="text">
             </div>
             <div class="field">
-              <label for="region">Kraj / Region</label>
-              <input id="region" type="text">
+              <label for="region">kraj/region</label>
+              <select id="region"></select>
             </div>
             <div class="field">
-              <label for="birthDate">Data urodzenia</label>
+              <label for="birthDate">data urodzin</label>
               <input id="birthDate" type="text">
             </div>
             <div class="field">
-              <label for="language">Język</label>
-              <input id="language" type="text">
+              <label for="language">język</label>
+              <select id="language">
+                <option value="bg-BG">Български</option>
+                <option value="cs-CZ">Čeština</option>
+                <option value="da-DK">Dansk</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="el-GR">Ελληνικά</option>
+                <option value="en-US">English</option>
+                <option value="es-ES">Hiszpański</option>
+                <option value="et-EE">Eesti</option>
+                <option value="fi-FI">Suomi</option>
+                <option value="fr-FR">Français</option>
+                <option value="ga-IE">Gaeilge</option>
+                <option value="hr-HR">Hrvatski</option>
+                <option value="hu-HU">Magyar</option>
+                <option value="it-IT">Italiano</option>
+                <option value="lt-LT">Lietuvių</option>
+                <option value="lv-LV">Latviešu</option>
+                <option value="mt-MT">Malti</option>
+                <option value="nl-NL">Nederlands</option>
+                <option value="pl-PL">Polski</option>
+                <option value="pt-PT">Português</option>
+                <option value="ro-RO">Română</option>
+                <option value="sk-SK">Slovenčina</option>
+                <option value="sl-SI">Slovenščina</option>
+                <option value="sv-SE">Svenska</option>
+              </select>
             </div>
             <div class="field">
-              <label for="timezone">Strefa czasowa</label>
+              <label for="timezone">strefa czasowa</label>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label>Zdjęcie profilowe</label>
+              <label>zdjęcie profilowe</label>
               <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-                <img id="photoPreview" src="images/cuenta.png" alt="Podgląd"
+                <img id="photoPreview" src="images/cuenta.png" alt="zapowiedź"
                   style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
                 <div>
                   <input id="photoFile" type="file" accept="image/*" style="display:none">
                   <button id="uploadPhotoBtn" class="btn btn-secondary" type="button" style="font-size:0.85rem">
-                    Prześlij zdjęcie
+                    prześlij zdjęcie
                   </button>
                   <div id="uploadPhotoMsg" style="font-size:0.78rem;color:var(--muted);margin-top:4px"></div>
                 </div>
@@ -581,99 +1041,109 @@
               <input id="email" type="email">
             </div>
             <div class="field">
-              <label for="phone">Numer telefonu</label>
+              <label for="phone">numer telefonu</label>
               <input id="phone" type="text">
             </div>
             <div class="field">
               <label for="countryContact">Kraj</label>
-              <input id="countryContact" type="text">
+              <select id="countryContact"></select>
             </div>
             <div class="field full">
               <label for="address">Adres</label>
               <textarea id="address"></textarea>
             </div>
             <div class="field">
-              <label for="city">Miasto</label>
+              <label for="city">miasto</label>
               <input id="city" type="text">
             </div>
             <div class="field">
-              <label for="postalCode">Kod pocztowy</label>
+              <label for="postalCode">kod pocztowy</label>
               <input id="postalCode" type="text">
             </div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Preferencje</h2>
+          <h2>preferencje</h2>
           <div class="check-list">
-            <label class="check-row"><input id="prefAds" type="checkbox"> Otrzymuj reklamy i marketing</label>
-            <label class="check-row"><input id="prefNews" type="checkbox"> Wiadomości i nowości</label>
-            <label class="check-row"><input id="prefUpdates" type="checkbox"> Aktualizacje oprogramowania</label>
-            <label class="check-row"><input id="prefOffers" type="checkbox"> Oferty specjalne</label>
-            <label class="check-row"><input id="prefSupport" type="checkbox"> E-maile pomocy technicznej</label>
+            <label class="check-row">
+              <input id="prefAds" type="checkbox">
+              <span class="check-text">
+                <strong>reklamy</strong>
+                <span>otrzymywać e-maile od Lixby dotyczące reklam, marketingu i rekomendacji produktów.</span>
+              </span>
+            </label>
+            <label class="check-row">
+              <input id="prefOffers" type="checkbox">
+              <span class="check-text">
+                <strong>aplikacje, muzyka i wiele więcej</strong>
+                <span>Otrzymuj e-maile o nowościach, ekskluzywnych treściach i ofertach specjalnych.</span>
+              </span>
+            </label>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Bezpieczeństwo</h2>
+          <h2>bezpieczeństwo</h2>
           <div class="action-list">
-            <div class="action-item"><span>Zmień hasło</span><a class="btn btn-secondary" href="/pl/change-password/">Zarządzaj</a></div>
-            <div class="action-item"><span>Zobacz aktywne sesje</span><button class="btn btn-secondary" type="button">Zobacz</button></div>
-            <div class="action-item"><span>Wyloguj się na innych urządzeniach</span><button class="btn btn-secondary" type="button">Wyloguj</button></div>
-            <div class="action-item"><span>Aktywuj weryfikację dwuetapową</span><a id="twoFactorBtn" class="btn btn-secondary" href="/pl/two-step verification/">Skonfiguruj</a></div>
-            <div class="action-item"><span>Zweryfikuj email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Wyślij</button></div>
-            <div class="action-item"><span>Historia logowań</span><button class="btn btn-secondary" type="button">Zobacz historię</button></div>
+            <div class="action-item"><span>zmień hasło</span><a class="btn btn-secondary" href="/pl/change-password/">zarządzać</a></div>
+            <div class="action-item"><span>przeglądaj aktywne sesje</span><button id="viewSessionsBtn" class="btn btn-secondary" type="button">Widzieć</button></div>
+            <div class="action-item"><span>wyloguj się z innych urządzeń</span><button id="closeOtherSessionsBtn" class="btn btn-secondary btn-danger" type="button">Zamknij</button></div>
+            <div class="action-item"><span>aktywuj weryfikację dwuetapową</span><a id="twoFactorBtn" class="btn btn-secondary" href="/pl/two-step-verification/">organizować coś</a></div>
+            <div class="action-item"><span>zweryfikuj e-mail</span><button id="verifyEmailBtn" class="btn btn-verified" type="button">Wyślij</button></div>
+            <div class="action-item"><span>historia logowania</span><button id="loginHistoryBtn" class="btn btn-secondary" type="button">zobacz historię</button></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Zamówienia</h2>
-          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">Ładowanie zamówień...</div>
+          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">ładuję zamówienia...</div>
           <div id="ordersList" style="display:none;display:grid;gap:10px"></div>
           <div id="ordersEmpty" style="display:none">
             <article class="order-card">
-              <strong>Nie masz jeszcze zamówień</strong>
-              <span>Gdy dokonasz zakupu, pojawi się on tutaj.</span>
+              <strong>nie masz jeszcze zamówień</strong>
+              <span>Kiedy dokonasz zakupu, pojawi się ono tutaj.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/pl/shop/">Idź do sklepu</a>
+                <a class="btn btn-primary" href="/pl/shop/">idź do sklepu</a>
               </div>
             </article>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Karty podarunkowe</h2>
-          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Ładowanie kart...</div>
+          <h2>karty podarunkowe</h2>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">ładowanie kart...</div>
           <div id="giftCardsList" style="display:none;gap:10px"></div>
           <div id="giftCardsEmpty" style="display:none">
             <article class="order-card">
-              <strong>Nie masz kart podarunkowych</strong>
+              <strong>nie masz kart podarunkowych</strong>
               <span>Kup kartę podarunkową dla siebie lub kogoś wyjątkowego.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/pl/gift/">Zobacz karty podarunkowe</a>
+                <a class="btn btn-primary" href="/pl/gift/">zobacz karty podarunkowe</a>
               </div>
             </article>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Płatności</h2>
+          <h2>płatności</h2>
           <div class="payment-panel" id="paymentsSection">
-            <h3>Zapisane karty</h3>
+            <h3>zapisane karty</h3>
+            <form id="paymentForm" onsubmit="return false" autocomplete="off">
             <div class="payment-grid">
               <div class="payment-field">
-                <label for="payCardholder">Posiadacz</label>
-                <input id="payCardholder" type="text" placeholder="Imię i nazwisko">
+                <label for="payCardholder">uchwyt</label>
+                <input id="payCardholder" type="text" placeholder="imię i nazwisko">
               </div>
               <div class="payment-field">
-                <label for="payCardNumber">Numer karty</label>
+                <label for="payCardNumber">numer karty</label>
                 <div class="card-input">
-                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Karta">
+                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="karta">
                   <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
                 </div>
               </div>
               <div class="payment-field">
-                <label for="payExpiry">Ważność (MM/RR)</label>
+                <label for="payExpiry">data ważności (mm/rr)</label>
                 <input id="payExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="08/29">
               </div>
               <div class="payment-field">
@@ -682,98 +1152,117 @@
               </div>
             </div>
             <div class="order-actions">
-              <button id="addPaymentBtn" class="btn btn-primary" type="button">Dodaj metodę płatności</button>
+              <button id="addPaymentBtn" class="btn btn-primary" type="button">dodaj metodę płatności</button>
             </div>
+            </form>
             <div id="paymentMethods" class="payment-methods"></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Adres do faktury</h2>
+          <h2>adres rozliczeniowy</h2>
           <div class="payment-panel">
-            <h3>Dane do faktury</h3>
+            <h3>szczegóły rozliczeniowe</h3>
             <div class="payment-grid two">
               <div class="payment-field">
-                <label for="billName">Nazwa podatkowa</label>
-                <input id="billName" type="text" placeholder="Pełna nazwa">
+                <label for="billName">nazwa podatkowa</label>
+                <input id="billName" type="text" placeholder="pełne imię i nazwisko">
               </div>
               <div class="payment-field">
                 <label for="billCountry">Kraj</label>
-                <input id="billCountry" type="text" placeholder="Polska">
+                <select id="billCountry"></select>
               </div>
               <div class="payment-field full">
                 <label for="billAddress">Adres</label>
-                <input id="billAddress" type="text" placeholder="Ulica, numer, miasto">
+                <input id="billAddress" type="text" placeholder="ulica, numer, miasto">
               </div>
               <div class="payment-field">
-                <label for="billCity">Miasto</label>
-                <input id="billCity" type="text" placeholder="Warszawa">
+                <label for="billCity">miasto</label>
+                <input id="billCity" type="text" placeholder="Madrid">
               </div>
               <div class="payment-field">
-                <label for="billPostal">Kod pocztowy</label>
-                <input id="billPostal" type="text" placeholder="00-001">
+                <label for="billPostal">kod pocztowy</label>
+                <input id="billPostal" type="text" placeholder="28001">
               </div>
             </div>
             <div class="order-actions">
-              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Zapisz adres do faktury</button>
+              <button id="saveBillingBtn" class="btn btn-primary" type="button">zapisz adres rozliczeniowy</button>
             </div>
             <div id="billingSummary" class="billing-summary"></div>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>Pomoc</h2>
+          <h2>Wsparcie</h2>
           <div class="action-list">
-            <div class="action-item"><span>Skontaktuj się z pomocą</span><a class="btn btn-primary" href="/pl/support/">Otwórz</a></div>
-            <div class="action-item"><span>Zgłoś problem</span><a class="btn btn-secondary" href="/pl/support/">Zgłoś</a></div>
-            <div class="action-item"><span>Instrukcja użytkownika</span><a class="btn btn-secondary" href="/pl/support/">Zobacz</a></div>
-            <div class="action-item"><span>Gwarancja produktu</span><a class="btn btn-secondary" href="/pl/support/">Sprawdź</a></div>
+            <div class="action-item"><span>skontaktuj się z pomocą techniczną</span><a class="btn btn-primary" href="/pl/help-center/contact/">Otwarte</a></div>
+            <div class="action-item"><span>zgłoś problem</span><a class="btn btn-secondary" href="/pl/help-center/troubleshooting/">raport</a></div>
+            <div class="action-item"><span>instrukcja obsługi</span><a class="btn btn-secondary" href="/pl/help-center/">Widzieć</a></div>
+            <div class="action-item"><span>gwarancja produktu</span><a class="btn btn-secondary" href="/pl/help-center/warranty/">konsultować</a></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Prywatność</h2>
           <div class="action-list">
-            <div class="action-item"><span>Polityka prywatności</span><a class="btn btn-secondary" href="/pl/pages/legal/privacy/">Zobacz</a></div>
-            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="/pl/pages/legal/cookies/">Zobacz</a></div>
+            <div class="action-item"><span>Polityka prywatności</span><a class="btn btn-secondary" href="/pl/pages/legal/privacy/">Widzieć</a></div>
+            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="/pl/pages/legal/cookies/">Widzieć</a></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Konto</h2>
           <div class="action-list">
-            <div class="action-item"><span>Wyloguj się</span><button id="logoutBtnSecondary" class="btn btn-secondary" type="button">Wyloguj</button></div>
-            <div class="action-item"><span>Usuń konto</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Usuń</button></div>
+            <div class="action-item"><span>Wyloguj się</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Zamknij</button></div>
+            <div class="action-item"><span>usuń konto</span><button id="deleteAccountBtn" class="btn btn-secondary btn-danger" type="button">wyeliminować</button></div>
           </div>
         </section>
       </section>
     </section>
   </main>
 
-  <div id="saveBar" class="save-bar" aria-live="polite">
-    <span>Wykryto zmiany</span>
-    <button id="saveChangesBtn" class="btn btn-primary" type="button">Zapisz zmiany</button>
+  <!-- Barra inferior: solo aparece cuando hay cambios sin guardar -->
+  <div id="saveBar" class="save-bar" role="region" aria-live="polite" aria-label="niezapisane zmiany">
+    <span class="save-bar-text">masz niezapisane zmiany</span>
+    <div class="save-bar-actions">
+      <button id="discardChangesBtn" class="btn btn-ghost" type="button">odrzucić zmiany</button>
+      <button id="saveChangesBtn" class="btn btn-primary" type="button">zapisz zmiany</button>
+    </div>
   </div>
 
-  <footer class="footer footer-mega">
+  <!-- Sesiones activas -->
+  <div id="sessionsModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="sessionsTitle">
+    <div class="account-modal-panel">
+      <h3 id="sessionsTitle">aktywne sesje</h3>
+      <div id="sessionsBody" class="session-list"></div>
+      <div class="account-modal-actions">
+        <button id="sessionsCloseBtn" class="btn btn-secondary" type="button">Zamknij</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aviso (bocadillo) -->
+  <div id="toast" class="toast-msg" role="status" aria-live="polite"></div>
+
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Przeglądaj i kupuj</h3>
+        <h3>Zobacz i kup</h3>
         <ul>
           <li><a href="/pl/shop/">Sklep</a></li>
           <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/pl/#apps">Aplikacje</a></li>
-          <li><a href="/pl/support/">Pomoc</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
+          <li><a href="/pl/support/">Wsparcie</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Pomoc</h3>
+        <h3>Wsparcie</h3>
         <ul>
-          <li><a href="/pl/support/">Strona główna pomocy</a></li>
-          <li><a href="/pl/support/#faq">FAQ Sklep internetowy</a></li>
+          <li><a href="/pl/support/">Strona główna wsparcia</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
           <li><a href="/pl/support/">Informacje o gwarancji</a></li>
-          <li><a href="mailto:info@lixby.es">Email do CEO</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
         </ul>
       </section>
 
@@ -783,15 +1272,16 @@
           <li><a href="/pl/track/">Zamówienia</a></li>
           <li><a href="/pl/account/">Moje konto</a></li>
           <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>O Lixby</h3>
         <ul>
-          <li><a href="#">Newsroom</a></li>
+          <li><a href="/pl/about/">O nas</a></li>
           <li><a href="/pl/support/">Gwarancja</a></li>
-          <li><a href="#">Wydarzenia</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
           <li><a href="/pl/support/">Kontakt</a></li>
         </ul>
       </section>
@@ -801,9 +1291,9 @@
       <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
       <div class="footer-legal-links">
         <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
-        <a href="/pl/pages/legal/cookies/">Używanie plików cookie</a>
-        <a href="/pl/pages/legal/terms/">Warunki użytkowania</a>
-        <a href="/pl/support/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
         <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
       </div>
     </div>
@@ -812,9 +1302,9 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
-    import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, getRedirectResult, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
-    import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, updateDoc, addDoc, collection, getDocs, query, orderBy, limit, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
 
     const firebaseConfig = {
@@ -827,24 +1317,37 @@
       measurementId: "G-689VDV93C2"
     };
 
+    // 5a: destino tras el login con lista blanca (solo /pl/community/**).
+    function nextUrl(fallback = "/pl/account/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
+
     const PROFILE_KEY = "lixbyProfile";
     const PAYMENTS_KEY = "lixbyPayments";
     const BILLING_KEY = "lixbyBilling";
 
-    const statusMsg = document.getElementById("statusMsg");
+    const toastEl = document.getElementById("toast");
     const accountLayout = document.getElementById("accountLayout");
     const profileForm = document.getElementById("profileForm");
     const sideName = document.getElementById("sideName");
     const sideEmail = document.getElementById("sideEmail");
     const profilePhoto = document.getElementById("profilePhoto");
-    const editBtn = document.getElementById("editBtn");
+    const saveBar = document.getElementById("saveBar");
+    const saveChangesBtn = document.getElementById("saveChangesBtn");
+    const discardChangesBtn = document.getElementById("discardChangesBtn");
+    const viewSessionsBtn = document.getElementById("viewSessionsBtn");
+    const closeOtherSessionsBtn = document.getElementById("closeOtherSessionsBtn");
+    const loginHistoryBtn = document.getElementById("loginHistoryBtn");
+    const sessionsModal = document.getElementById("sessionsModal");
+    const sessionsBody = document.getElementById("sessionsBody");
+    const sessionsTitleEl = document.getElementById("sessionsTitle");
+    const sessionsCloseBtn = document.getElementById("sessionsCloseBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const logoutBtnSecondary = document.getElementById("logoutBtnSecondary");
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
     const verifyEmailBtn = document.getElementById("verifyEmailBtn");
     const twoFactorBtn = document.getElementById("twoFactorBtn");
-    const saveBar = document.getElementById("saveBar");
-    const saveChangesBtn = document.getElementById("saveChangesBtn");
     const addPaymentBtn = document.getElementById("addPaymentBtn");
     const paymentMethodsEl = document.getElementById("paymentMethods");
     const saveBillingBtn = document.getElementById("saveBillingBtn");
@@ -881,32 +1384,145 @@
       postalCode: document.getElementById("postalCode"),
       countryContact: document.getElementById("countryContact"),
       prefAds: document.getElementById("prefAds"),
-      prefNews: document.getElementById("prefNews"),
-      prefUpdates: document.getElementById("prefUpdates"),
-      prefOffers: document.getElementById("prefOffers"),
-      prefSupport: document.getElementById("prefSupport")
+      prefOffers: document.getElementById("prefOffers")
     };
 
-    let editMode = false;
-    let dirty = false;
+    // Idiomas disponibles en Lixby (los mismos que el selector de idioma del sitio)
+    const LANGUAGES = [
+      { value: "bg-BG", label: "Български" },
+      { value: "cs-CZ", label: "Čeština" },
+      { value: "da-DK", label: "Dansk" },
+      { value: "de-DE", label: "Deutsch" },
+      { value: "el-GR", label: "Ελληνικά" },
+      { value: "en-US", label: "English" },
+      { value: "pl-PL", label: "Hiszpański" },
+      { value: "et-EE", label: "Eesti" },
+      { value: "fi-FI", label: "Suomi" },
+      { value: "fr-FR", label: "Français" },
+      { value: "ga-IE", label: "Gaeilge" },
+      { value: "hr-HR", label: "Hrvatski" },
+      { value: "hu-HU", label: "Magyar" },
+      { value: "it-IT", label: "Italiano" },
+      { value: "lt-LT", label: "Lietuvių" },
+      { value: "lv-LV", label: "Latviešu" },
+      { value: "mt-MT", label: "Malti" },
+      { value: "nl-NL", label: "Nederlands" },
+      { value: "pl-PL", label: "Polski" },
+      { value: "pt-PT", label: "Português" },
+      { value: "ro-RO", label: "Română" },
+      { value: "sk-SK", label: "Slovenčina" },
+      { value: "sl-SI", label: "Slovenščina" },
+      { value: "sv-SE", label: "Svenska" }
+    ];
 
-    function readProfile() {
-      return JSON.parse(localStorage.getItem(PROFILE_KEY) || "{}");
+    // País / Región (nombres en español, España primero)
+    const COUNTRIES = [
+      "Hiszpania", "Niemcy", "Andorra", "Argentina", "Australia", "Austria", "Belgia",
+      "Bolivia", "Brazylia", "Bulgaria", "Kanada", "Chile", "China", "Cypr", "Colombia",
+      "Korea Południowa", "Costa Rica", "Chorwacja", "Cuba", "Dania", "Ecuador", "Egipt",
+      "El Salvador", "Emiraty Arabskie", "Słowacja", "Słowenia", "USA",
+      "Estonia", "Filipiny", "Finlandia", "Francja", "Grecja", "Guatemala", "Honduras",
+      "Hong Kong", "Węgry", "India", "Indonesia", "Irlandia", "Islandia", "Israel",
+      "Włochy", "Japonia", "Łotwa", "Litwa", "Luksemburg", "Malezja", "Malta", "Maroko",
+      "Meksyk", "Monako", "Nicaragua", "Norwegia", "Nowa Zelandia", "Niderlandy", "Panama",
+      "Paraguay", "Peru", "Polska", "Portugal", "Puerto Rico", "Zjednoczone Królestwo", "Czechy",
+      "Republika Dominikany", "Rumunia", "Singapur", "Republika Południowej Afryki", "Szwecja", "szwajcarski", "Tajlandia",
+      "Turcja", "Ukraina", "Uruguay", "Venezuela", "Vietnam", "Inny"
+    ];
+
+    // Rellena un <select> con opciones (sin duplicar)
+    function fillSelect(select, values, options = {}) {
+      if (!select) return;
+      const withPlaceholder = options.placeholder !== false;
+      const previous = select.value;
+      const desired = values.map((item) =>
+        typeof item === "string" ? { value: item, label: item } : item
+      );
+      const expectedLength = desired.length + (withPlaceholder ? 1 : 0);
+      const current = Array.from(select.options).map((option) => option.value);
+      const sameShape = current.length === expectedLength &&
+        current[withPlaceholder ? 1 : 0] === desired[0]?.value &&
+        current[current.length - 1] === desired[desired.length - 1]?.value;
+      if (sameShape) {
+        select.value = previous;
+        return;
+      }
+      select.textContent = "";
+      if (withPlaceholder) {
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "";
+        select.appendChild(placeholder);
+      }
+      desired.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.value;
+        option.textContent = item.label;
+        select.appendChild(option);
+      });
+      select.value = previous;
     }
 
-        function writeProfile(profile) {
-      const cachedProfile = {
-        language: profile.language,
-        timezone: profile.timezone,
-        photoUrl: profile.photoUrl,
-        prefAds: profile.prefAds,
-        prefNews: profile.prefNews,
-        prefUpdates: profile.prefUpdates,
-        prefOffers: profile.prefOffers,
-        prefSupport: profile.prefSupport,
-        adsOptIn: profile.adsOptIn
-      };
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(cachedProfile));
+    // Asigna un valor a un <select> aunque no exista la opción exacta
+    function setSelectValue(select, value) {
+      if (!select) return;
+      const wanted = String(value ?? "").trim();
+      if (!wanted) {
+        select.value = "";
+        return;
+      }
+      const options = Array.from(select.options);
+      const exact = options.find((option) => option.value === wanted);
+      if (exact) {
+        select.value = exact.value;
+        return;
+      }
+      const lower = wanted.toLowerCase();
+      const ci = options.find((option) => option.value.toLowerCase() === lower) ||
+        options.find((option) => option.value.toLowerCase().startsWith(lower)) ||
+        options.find((option) => option.textContent.trim().toLowerCase() === lower);
+      if (ci) {
+        select.value = ci.value;
+        return;
+      }
+      const option = document.createElement("option");
+      option.value = wanted;
+      option.textContent = wanted;
+      select.appendChild(option);
+      select.value = wanted;
+    }
+
+    fillSelect(inputs.region, COUNTRIES);
+    fillSelect(inputs.countryContact, COUNTRIES);
+    fillSelect(billingInputs.country, COUNTRIES);
+    fillSelect(inputs.language, LANGUAGES, { placeholder: false });
+
+    let dirty = false;
+
+    async function readProfile() {
+      const user = auth.currentUser;
+      if (!user) return {};
+      const snap = await getDoc(doc(db, "users", user.uid, "account", "profile"));
+      return snap.exists() ? snap.data() : {};
+    }
+
+    async function writeProfile(profile) {
+      const user = auth.currentUser;
+      if (!user) return;
+      await setDoc(doc(db, "users", user.uid, "account", "profile"), {
+        ...profile,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+    }
+
+    // El registro guarda los datos en users/{uid} y esta página en
+    // users/{uid}/account/profile. Leemos los dos y damos prioridad al perfil
+    // editable, para no perder lo que el usuario eligió al crear la cuenta.
+    async function loadStoredProfile(user) {
+      const rootSnap = await getDoc(doc(db, "users", user.uid)).catch(() => null);
+      const root = rootSnap && rootSnap.exists() ? rootSnap.data() : {};
+      const stored = await readProfile();
+      return { merged: { ...root, ...stored }, stored, root };
     }
 
     function getScopedKey(baseKey) {
@@ -973,9 +1589,20 @@
     }
 
     async function ensureAccountNumber() {
-      const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
-      const result = await ensureAccountNumberFn();
-      return result.data.accountNumber;
+      try {
+        const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
+        const result = await ensureAccountNumberFn();
+        return result.data.accountNumber || null;
+      } catch (error) {
+        console.warn("Nie można wygenerować numeru konta z backendu, sprawdzam Firestore:", error?.message || error);
+        try {
+          const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+          return userDoc.exists() ? (userDoc.data().accountNumber || null) : null;
+        } catch (firestoreError) {
+          console.warn("Nie udało się również odczytać numeru konta Firestore:", firestoreError?.message || firestoreError);
+          return null;
+        }
+      }
     }
 
     async function migrateStoredBilling() {
@@ -986,7 +1613,7 @@
         await writeBilling(JSON.parse(storedBilling));
         localStorage.removeItem(getScopedKey(BILLING_KEY));
       } catch (error) {
-        console.error("Could not migrate billing address.", error);
+        console.error("Nie można przenieść adresu rozliczeniowego.", error);
       }
     }
 
@@ -1024,7 +1651,7 @@
 
     function detectBrand(cardNumber) {
       const digits = onlyDigits(cardNumber);
-      if (!digits) return { brand: "Karta", icon: "card.svg" };
+      if (!digits) return { brand: "karta", icon: "card.svg" };
 
       const first1 = digits.slice(0, 1);
       const first2 = digits.slice(0, 2);
@@ -1045,7 +1672,7 @@
       if (first4 === "9792") return { brand: "Troy", icon: "troy.svg" };
       if (n4 >= 2200 && n4 <= 2204) return { brand: "MIR", icon: "mir.svg" };
       if (first2 === "50" || (n2 >= 56 && n2 <= 69)) return { brand: "Maestro", icon: "maestro.svg" };
-      return { brand: "Karta", icon: "card.svg" };
+      return { brand: "karta", icon: "card.svg" };
     }
 
     function maskCard(cardNumber) {
@@ -1082,8 +1709,14 @@
 
     function sanitizeImageUrl(url) {
       const fallback = "images/cuenta.png";
-      const value = String(url || "").trim();
+      // Elimina los caracteres meta HTML (<, >, ", ') antes de validar: no pueden
+      // aparecer sin codificar en una URL válida y evitan que el valor se reinterprete
+      // como HTML en el contexto del atributo (XSS basado en DOM).
+      const value = String(url || "").trim().replace(/[<>"']/g, "");
       if (!value) return fallback;
+
+      // Avatares guardados como data URL (evita depender de Cloud Storage)
+      if (/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(value)) return value;
 
       try {
         const parsed = new URL(value, window.location.href);
@@ -1099,7 +1732,7 @@
       const state = readPayments();
       if (!state.methods.length) {
         replaceChildren(paymentMethodsEl, [
-          el("p", { text: "Brak zapisanych kart.", style: { color: "var(--muted)" } })
+          el("p", { text: "nie ma zapisanych kart.", style: { color: "var(--muted)" } })
         ]);
         return;
       }
@@ -1112,7 +1745,7 @@
           text: `${method.brand || "Card"} ${maskCard(onlyDigits(method.last4 || method.number || ""))}`
         });
         if (isDefault) {
-          title.appendChild(el("span", { className: "payment-default", text: "Domyślna" }));
+          title.appendChild(el("span", { className: "payment-default", text: "domyślny" }));
         }
         details.appendChild(title);
 
@@ -1120,13 +1753,13 @@
         actions.appendChild(el("button", {
           className: "btn btn-secondary",
           type: "button",
-          text: "Domyślna",
+          text: "domyślny",
           dataset: { paymentAction: "default", id: method.id || "" }
         }));
         actions.appendChild(el("button", {
           className: "btn btn-secondary",
           type: "button",
-          text: "Usuń",
+          text: "wyeliminować",
           dataset: { paymentAction: "remove", id: method.id || "" }
         }));
 
@@ -1141,7 +1774,7 @@
     async function fillBilling() {
       const billing = await readBilling();
       billingInputs.name.value = billing.name || "";
-      billingInputs.country.value = billing.country || "";
+      setSelectValue(billingInputs.country, billing.country || "");
       billingInputs.address.value = billing.address || "";
       billingInputs.city.value = billing.city || "";
       billingInputs.postalCode.value = billing.postalCode || "";
@@ -1153,77 +1786,64 @@
       const actions = el("div", { className: "billing-summary-actions" });
 
       if (!billing.name && !billing.address && !billing.country && !billing.city && !billing.postalCode) {
-        details.appendChild(el("p", { text: "Brak zapisanego adresu." }));
+        details.appendChild(el("p", { text: "nie zapisano żadnego adresu." }));
         actions.appendChild(el("button", {
           id: "editBillingBtn",
           className: "btn btn-secondary",
           type: "button",
-          text: "Edytuj dane",
+          text: "edytować dane",
           disabled: true
         }));
         actions.appendChild(el("button", {
           id: "deleteBillingBtn",
           className: "btn btn-secondary",
           type: "button",
-          text: "Usuń",
+          text: "wyeliminować",
           disabled: true
         }));
         replaceChildren(billingSummaryEl, [details, actions]);
         return;
       }
 
-      details.appendChild(el("strong", { text: billing.name || "" }));
-      details.appendChild(el("span", { text: billing.address || "" }));
-      details.appendChild(el("span", { text: `${billing.city || ""} ${billing.postalCode || ""}`.trim() }));
-      details.appendChild(el("span", { text: billing.country || "" }));
+      details.appendChild(el("strong", { text: billing.name || "nazwa podatkowa" }));
+      details.appendChild(el("span", { text: billing.address || "Adres" }));
+      details.appendChild(el("span", { text: `${billing.city || "ciudad"} ${billing.postalCode || ""}`.trim() }));
+      details.appendChild(el("span", { text: billing.country || "Kraj" }));
       actions.appendChild(el("button", {
         id: "editBillingBtn",
         className: "btn btn-secondary",
         type: "button",
-        text: "Edytuj dane"
+        text: "edytować dane"
       }));
       actions.appendChild(el("button", {
         id: "deleteBillingBtn",
         className: "btn btn-secondary",
         type: "button",
-        text: "Usuń"
+        text: "wyeliminować"
       }));
       replaceChildren(billingSummaryEl, [details, actions]);
     }
 
+    let toastTimer = null;
     function showStatus(text, type = "") {
-      statusMsg.textContent = text;
-      statusMsg.className = `status-msg ${type}`.trim();
+      if (!toastEl || !text) return;
+      toastEl.textContent = text;
+      toastEl.className = `toast-msg ${type} show`.trim();
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3600);
     }
 
-    function setReadonlyMode() {
-      profileForm.classList.add("readonly");
-      Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = true;
-        } else {
-          el.readOnly = true;
-        }
-      });
-      editBtn.textContent = "Edytuj dane";
-      editMode = false;
-      dirty = false;
-      saveBar.classList.remove("show");
-    }
-
-    function setEditMode() {
+    // Los datos del perfil están siempre editables: ya no hay botón "edytować dane".
+    function setEditable() {
       profileForm.classList.remove("readonly");
       Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = false;
-        } else {
-          el.readOnly = false;
-        }
+        el.readOnly = false;
       });
-      editBtn.textContent = "Anuluj edycję";
-      editMode = true;
+    }
+
+    function resetDirty() {
       dirty = false;
-      saveBar.classList.remove("show");
+      if (saveBar) saveBar.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1237,9 +1857,9 @@
     function fillProfile(user, profile) {
       inputs.firstName.value = profile.firstName || "";
       inputs.lastName.value = profile.lastName || "";
-      inputs.region.value = profile.country || "Polska";
+      setSelectValue(inputs.region, profile.country || "Hiszpania");
       inputs.birthDate.value = mapBirth(profile);
-      inputs.language.value = profile.language || navigator.language || "pl-PL";
+      setSelectValue(inputs.language, profile.language || navigator.language || "pl-PL");
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
       document.getElementById("photoPreview").src = sanitizeImageUrl(inputs.photoUrl.value || user.photoURL);
@@ -1248,16 +1868,13 @@
       inputs.address.value = profile.address || "";
       inputs.city.value = profile.city || "";
       inputs.postalCode.value = profile.postalCode || "";
-      inputs.countryContact.value = profile.countryContact || profile.country || "Polska";
-      inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
-      inputs.prefNews.checked = Boolean(profile.prefNews);
-      inputs.prefUpdates.checked = Boolean(profile.prefUpdates);
-      inputs.prefOffers.checked = Boolean(profile.prefOffers);
-      inputs.prefSupport.checked = Boolean(profile.prefSupport);
+      setSelectValue(inputs.countryContact, profile.countryContact || profile.country || "Hiszpania");
+      inputs.prefAds.checked = Boolean(profile.prefAds ?? profile.adsOptIn ?? false);
+      inputs.prefOffers.checked = Boolean(profile.prefOffers ?? profile.mediaOptIn ?? false);
 
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "Twoje konto Lixby";
-      sideEmail.textContent = inputs.email.value || "Brak emaila";
+      sideEmail.textContent = inputs.email.value || "brak e-maila";
       profilePhoto.src = sanitizeImageUrl(inputs.photoUrl.value);
     }
 
@@ -1277,23 +1894,61 @@
         postalCode: inputs.postalCode.value.trim(),
         countryContact: inputs.countryContact.value.trim(),
         prefAds: inputs.prefAds.checked,
-        prefNews: inputs.prefNews.checked,
-        prefUpdates: inputs.prefUpdates.checked,
         prefOffers: inputs.prefOffers.checked,
-        prefSupport: inputs.prefSupport.checked,
-        adsOptIn: inputs.prefAds.checked
+        adsOptIn: inputs.prefAds.checked,
+        mediaOptIn: inputs.prefOffers.checked
       };
     }
 
-    function setDirty() {
-      if (!editMode) return;
-      dirty = true;
-      saveBar.classList.add("show");
+    // Perfil editable siempre: el guardado se controla con la barra inferior.
+    async function saveProfile() {
+      const data = collectProfileData();
+      await writeProfile(data);
+      const user = auth.currentUser;
+      if (!user) return;
+      fillProfile(user, data);
+      resetDirty();
+      showStatus("zapisane zmiany.", "success");
     }
 
+    async function discardChanges() {
+      const user = auth.currentUser;
+      if (!user) return;
+      const { merged } = await loadStoredProfile(user);
+      fillProfile(user, merged);
+      resetDirty();
+      showStatus("zmiany odrzucone.", "info");
+    }
+
+    function setDirty() {
+      dirty = true;
+      if (saveBar) saveBar.classList.add("show");
+    }
+
+    // Todos los campos marcan cambios pendientes, menos las preferencias
+    // (esas se guardan al instante más abajo).
     Object.values(inputs).forEach((el) => {
-      const evt = el.type === "checkbox" ? "change" : "input";
-      el.addEventListener(evt, setDirty);
+      if (el === inputs.prefAds || el === inputs.prefOffers) return;
+      el.addEventListener("input", setDirty);
+    });
+
+    // Las preferencias se guardan al momento (siempre se pueden marcar)
+    ["prefAds", "prefOffers"].forEach((key) => {
+      const el = inputs[key];
+      if (!el) return;
+      el.addEventListener("change", async () => {
+        try {
+          const profile = await readProfile();
+          profile[key] = el.checked;
+          if (key === "prefAds") profile.adsOptIn = el.checked;
+          if (key === "prefOffers") profile.mediaOptIn = el.checked;
+          await writeProfile(profile);
+          showStatus("zapisane preferencje.", "success");
+        } catch (error) {
+          el.checked = !el.checked;
+          showStatus("Nie można zapisać preferencji.", "error");
+        }
+      });
     });
 
     paymentInputs.cardNumber.addEventListener("input", () => {
@@ -1310,6 +1965,10 @@
     const app = initializeApp(firebaseConfig);
     await initializeLixbyAppCheck(app);
     const auth = getAuth(app);
+    const redirectResultPromise = getRedirectResult(auth).catch((error) => {
+      console.warn("nie można rozwiązać przekierowania uwierzytelniania:", error);
+      return null;
+    });
     const storage = getStorage(app);
     const db = getFirestore(app);
     const functions = getFunctions(app, "us-central1");
@@ -1321,22 +1980,22 @@
       const cvv = onlyDigits(paymentInputs.cvv.value);
 
       if (!cardholder) {
-        showStatus("Posiadacz karty jest wymagany.", "error");
+        showStatus("wymagany jest posiadacz karty.", "error");
         return;
       }
 
       if (!isValidCardNumber(cardNumber)) {
-        showStatus("Nieprawidłowy numer karty.", "error");
+        showStatus("nieprawidłowy numer karty.", "error");
         return;
       }
 
       if (!isValidExpiry(expiry)) {
-        showStatus("Nieprawidłowa data ważności.", "error");
+        showStatus("nieprawidłowa data ważności.", "error");
         return;
       }
 
       if (cvv.length < 3 || cvv.length > 4) {
-        showStatus("Nieprawidłowy CVV.", "error");
+        showStatus("nieprawidłowe CV", "error");
         return;
       }
 
@@ -1361,9 +2020,9 @@
       paymentInputs.expiry.value = "";
       paymentInputs.cvv.value = "";
       cardBrandIcon.src = "images/icono-de.tarjeta/card.svg";
-      cardBrandIcon.alt = "Karta";
+      cardBrandIcon.alt = "karta";
 
-      showStatus("Metoda płatności zapisana pomyślnie.", "success");
+      showStatus("metoda płatności zapisana poprawnie.", "success");
     });
 
     paymentMethodsEl.addEventListener("click", (event) => {
@@ -1389,7 +2048,7 @@
 
       writePayments(state);
       renderPaymentMethods();
-      showStatus("Płatności zaktualizowane.", "success");
+      showStatus("zaktualizowane płatności.", "success");
     });
 
     saveBillingBtn.addEventListener("click", async () => {
@@ -1402,7 +2061,7 @@
       };
 
       if (!billing.name || !billing.country || !billing.address) {
-        showStatus("Wypełnij nazwę, kraj i adres do faktury.", "error");
+        showStatus("Pełna nazwa, kraj i adres rozliczeniowy.", "error");
         return;
       }
 
@@ -1413,7 +2072,7 @@
       billingInputs.address.value = "";
       billingInputs.city.value = "";
       billingInputs.postalCode.value = "";
-      showStatus("Adres do faktury zapisany.", "success");
+      showStatus("zapisany adres rozliczeniowy.", "success");
     });
 
     billingSummaryEl.addEventListener("click", async (event) => {
@@ -1423,7 +2082,7 @@
       if (target.id === "editBillingBtn") {
         await fillBilling();
         billingInputs.name.focus();
-        showStatus("Możesz edytować adres do faktury.", "success");
+        showStatus("możesz edytować adres rozliczeniowy.", "success");
         return;
       }
 
@@ -1431,7 +2090,7 @@
         await writeBilling({});
         await fillBilling();
         await renderBillingSummary();
-        showStatus("Adres do faktury usunięty.", "success");
+        showStatus("adres rozliczeniowy został usunięty.", "success");
       }
     });
 
@@ -1459,12 +2118,18 @@
         Enviado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
         "En reparto": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
         Entregado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
-      
       };
       const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
-      return badge(status || "Zamówienie odebrane", s);
+      return badge(status || "otrzymane zamówienie", s);
     }
 
+const labels = {
+  "Pedido recibido": "Zamówienie otrzymane",
+  "Preparando pedido": "Przygotowanie zamówienia",
+  Enviado: "Wysłane",
+  "En reparto": "W drodze",
+  Entregado: "Dostarczone"
+};
     function formatDate(iso) {
       if (!iso) return "—";
       return new Date(iso).toLocaleDateString("pl-PL", {
@@ -1475,7 +2140,7 @@
     }
 
     function formatEuro(value) {
-      return value ? `${Number(value).toFixed(2).replace(".", ",")} €` : "—";
+      return value ? `${number(value).toFixed(2).replace(".", ",")} €` : "—";
     }
 
     function renderOrderCard(order) {
@@ -1521,7 +2186,7 @@
       actions.appendChild(el("a", {
         className: "btn btn-secondary",
         href: `/pl/track/?orderId=${encodeURIComponent(order.id || "")}`,
-        text: "Śledź zamówienie",
+        text: "postępuj zgodnie z kolejnością",
         style: { fontSize: "0.85rem" }
       }));
       article.appendChild(actions);
@@ -1543,25 +2208,25 @@
         text: card.code || "",
         style: { fontFamily: "monospace", color: "#458500" }
       }));
-      header.appendChild(badge(card.used ? "Użyta" : "Aktywna", card.used
+      header.appendChild(badge(card.used ? "używany" : "aktywny", card.used
         ? { bg: "#f3f4f6", color: "#6b7280", border: "#e5e7eb" }
         : { bg: "#f0fdf4", color: "#166534", border: "#86efac" }));
       article.appendChild(header);
 
       const balanceRow = el("div", { style: { display: "flex", justifyContent: "space-between" } });
       balanceRow.appendChild(el("span", {
-        text: "Pozostałe saldo",
+        text: "pozostałe saldo",
         style: { fontSize: "0.85rem", color: "var(--muted)" }
       }));
       balanceRow.appendChild(el("strong", {
-        text: `${Number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
+        text: `${number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
         style: { color: "#458500" }
       }));
       article.appendChild(balanceRow);
 
       if (card.recipientName) {
         article.appendChild(el("span", {
-          text: `Dla: ${card.recipientName}`,
+          text: `do: ${card.recipientName}`,
           style: { fontSize: "0.82rem", color: "var(--muted)" }
         }));
       }
@@ -1592,7 +2257,7 @@
         listEl.style.display = "grid";
         replaceChildren(listEl, orders.map(renderOrderCard));
       } catch (e) {
-        loadingEl.textContent = "Błąd ładowania zamówień.";
+        loadingEl.textContent = "błąd podczas ładowania zamówień.";
       }
     }
 
@@ -1620,13 +2285,44 @@
         listEl.style.display = "grid";
         replaceChildren(listEl, cards.map(renderGiftCard));
       } catch (e) {
-        loadingEl.textContent = "Błąd ładowania kart.";
+        loadingEl.textContent = "błąd podczas ładowania kart.";
       }
     }
 
     document.getElementById("uploadPhotoBtn").addEventListener("click", () => {
       document.getElementById("photoFile").click();
     });
+
+    // Comprime la imagen en el navegador y la devuelve como data URL.
+    // Así la foto de perfil no depende de Cloud Storage (que ahora devuelve error de cuota).
+    function fileToCompressedDataUrl(file, maxSize = 320, quality = 0.82) {
+      return new Promise((resolve, reject) => {
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+        image.onload = () => {
+          try {
+            const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+            const width = Math.max(1, Math.round(image.width * scale));
+            const height = Math.max(1, Math.round(image.height * scale));
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          } catch (error) {
+            reject(error);
+          } finally {
+            URL.revokeObjectURL(objectUrl);
+          }
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error("nie udało się odczytać obrazu"));
+        };
+        image.src = objectUrl;
+      });
+    }
 
     document.getElementById("photoFile").addEventListener("change", async (e) => {
       const file = e.target.files[0];
@@ -1637,121 +2333,445 @@
       const user = auth.currentUser;
       if (!user) return;
 
-      // Walidacja maksymalnego rozmiaru 2MB
-      if (file.size > 2 * 1024 * 1024) {
+      if (!file.type.startsWith("image/")) {
         msg.style.color = "#ef4444";
-        msg.textContent = "Obraz nie może przekraczać 2MB";
+        msg.textContent = "wybierz plik obrazu";
+        return;
+      }
+
+      // Validar tamaño máx 5MB (luego se comprime)
+      if (file.size > 5 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "obraz nie może przekraczać 5mb";
         return;
       }
 
       btn.disabled = true;
       msg.style.color = "var(--muted)";
-      msg.textContent = "Przesyłanie...";
+      msg.textContent = "przetwarzanie...";
 
       try {
-        const storageRef = ref(storage, `avatars/${user.uid}`);
-        await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(storageRef);
+        const dataUrl = await fileToCompressedDataUrl(file);
 
-        // Aktualizacja podglądu i ukrytego pola
-        document.getElementById("photoPreview").src = sanitizeImageUrl(url);
-        document.getElementById("photoUrl").value = url;
-        profilePhoto.src = sanitizeImageUrl(url);
+        // Actualizar preview y campo oculto
+        document.getElementById("photoPreview").src = sanitizeImageUrl(dataUrl);
+        document.getElementById("photoUrl").value = dataUrl;
+        profilePhoto.src = sanitizeImageUrl(dataUrl);
 
-        // Zapisz w profilu
-        const profile = readProfile();
-        profile.photoUrl = url;
-        writeProfile(profile);
+        // Guardar en perfil
+        const profile = await readProfile();
+        profile.photoUrl = dataUrl;
+        await writeProfile(profile);
 
         msg.style.color = "#458500";
-        msg.textContent = "Zdjęcie zaktualizowane";
-        showStatus("Zdjęcie profilowe zaktualizowane.", "success");
+        msg.textContent = "zaktualizowane zdjęcie";
+        showStatus("Zaktualizowane zdjęcie profilowe.", "success");
       } catch (err) {
         msg.style.color = "#ef4444";
-        msg.textContent = "Błąd podczas przesyłania zdjęcia";
+        msg.textContent = "błąd podczas przetwarzania zdjęcia";
         console.error(err);
       } finally {
         btn.disabled = false;
+        e.target.value = "";
       }
     });
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        window.location.href = "/pl/login/";
-        return;
-      }
+    function hideLoadingScreen() {
+      const ls = document.getElementById("loadingScreen");
+      if (ls) ls.classList.add("hide");
+    }
 
+    // Primero mostramos la cuenta y solo después retiramos la pantalla de carga,
+    // para que no se vean dos pantallas (loader + página aún vacía).
+    function showAccountLayout() {
+      accountLayout.classList.remove("hidden");
+      requestAnimationFrame(() => accountLayout.classList.add("visible"));
+    }
+
+    async function loadAccount(user) {
       await ensureAccountNumber();
       await migrateStoredBilling();
 
-      const stored = readProfile();
-      fillProfile(user, stored);
+      // Registra/verifica esta sesión: si la cerraron desde otro dispositivo,
+      // el onSnapshot nos saca de aquí.
+      registerSession(user).catch((e) => console.warn("niezarejestrowana sesja:", e));
+
+      const { merged, stored } = await loadStoredProfile(user);
+      fillProfile(user, merged);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
-      showStatus("Konto załadowane pomyślnie.", "success");
-      accountLayout.classList.remove("hidden");
-      setReadonlyMode();
+      setEditable();
+      resetDirty();
 
-      // Ładowanie zamówień i kart podarunkowych
+      // Si la cuenta es recién creada y aún no tenía perfil, guardamos lo elegido
+      // en el registro para que quede todo seleccionado en la próxima visita.
+      if (!Object.keys(stored).length) {
+        try {
+          await writeProfile(collectProfileData());
+        } catch (error) {
+          console.warn("Nie można zapisać preferencji początkowych:", error);
+        }
+      }
+
+      // Pedidos y tarjetas regalo: esperamos, pero con un límite de tiempo para
+      // que la pantalla de carga no se quede colgada si el servicio no responde.
       const userEmail = user.email;
       if (userEmail) {
-        loadOrders(userEmail);
-        loadGiftCards(userEmail);
+        await Promise.race([
+          Promise.allSettled([loadOrders(userEmail), loadGiftCards(userEmail)]),
+          new Promise((resolve) => setTimeout(resolve, 6000))
+        ]);
       }
 
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
-        verifyEmailBtn.textContent = user.emailVerified ? "Zweryfikowany" : "Wyślij";
-        verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
+        verifyEmailBtn.textContent = user.emailVerified ? "zweryfikowane" : "Wyślij";
       }
       if (twoFactorBtn) {
         const has2fa = multiFactor(user).enrolledFactors
           .some((factor) => factor.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
-        twoFactorBtn.textContent = has2fa ? "Zweryfikowany" : "Skonfiguruj";
+        twoFactorBtn.textContent = has2fa ? "zweryfikowane" : "organizować coś";
         twoFactorBtn.classList.toggle("btn-verified", has2fa);
       }
-    });
 
-    editBtn.addEventListener("click", () => {
-      if (editMode) {
-        const user = auth.currentUser;
-        if (!user) return;
-        fillProfile(user, readProfile());
-        setReadonlyMode();
-      } else {
-        setEditMode();
+      // Todo cargado: mostramos la cuenta y, ya visible, quitamos la pantalla de carga.
+      showAccountLayout();
+      await new Promise((resolve) => setTimeout(resolve, 320));
+      hideLoadingScreen();
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      let activeUser = user;
+
+      if (!activeUser) {
+        const redirectResult = await redirectResultPromise;
+        activeUser = redirectResult?.user || auth.currentUser;
       }
+
+      if (!activeUser) {
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        activeUser = auth.currentUser;
+      }
+
+      if (!activeUser) {
+        hideLoadingScreen();
+        window.location.href = "/pl/login/";
+        return;
+      }
+
+      const next = nextUrl();
+      if (next !== "/pl/account/") {
+        window.location.href = next;
+        return;
+      }
+
+      await loadAccount(activeUser);
     });
 
+    // ── Barra inferior: guardar o descartar cambios ────────────────────────
     saveChangesBtn.addEventListener("click", async () => {
-      const user = auth.currentUser;
-      if (!user) {
-        showStatus("Nieprawidłowa sesja.", "error");
+      saveChangesBtn.disabled = true;
+      try {
+        await saveProfile();
+      } catch (error) {
+        console.error(error);
+        showStatus("zmian nie udało się zapisać.", "error");
+      } finally {
+        saveChangesBtn.disabled = false;
+      }
+    });
+
+    discardChangesBtn.addEventListener("click", async () => {
+      discardChangesBtn.disabled = true;
+      try {
+        await discardChanges();
+      } catch (error) {
+        console.error(error);
+        showStatus("nie można wykluczyć zmian.", "error");
+      } finally {
+        discardChangesBtn.disabled = false;
+      }
+    });
+
+    // ── Sesiones activas (guardadas en Firestore) ──────────────────────────
+    const SESSION_KEY = "lixbySessionId";
+
+    function getSessionId() {
+      let id = localStorage.getItem(SESSION_KEY);
+      if (!id) {
+        id = makeId();
+        localStorage.setItem(SESSION_KEY, id);
+      }
+      return id;
+    }
+
+    let unsubscribeSession = null;
+
+    // Registra este navegador como una sesión activa y avisa si la cierran
+    // desde otro dispositivo. Un login nuevo (documento inexistente) deja
+    // además constancia en el historial.
+    async function registerSession(user) {
+      const sid = getSessionId();
+      const sessionRef = doc(db, "users", user.uid, "sessions", sid);
+      const snap = await getDoc(sessionRef);
+
+      if (snap.exists() && snap.data().revokedAt) {
+        await forceLogout(user, sessionRef);
         return;
       }
 
-      if (!dirty) {
-        saveBar.classList.remove("show");
-        return;
+      const device = describeDevice();
+
+      if (!snap.exists()) {
+        addDoc(collection(db, "users", user.uid, "loginHistory"), {
+          browser: device.browser,
+          os: device.os,
+          tipo: device.tipo,
+          method: (user.providerData && user.providerData[0] && user.providerData[0].providerId) || "password",
+          createdAt: serverTimestamp()
+        }).catch((e) => console.warn("niezapisana historia:", e));
       }
 
-      const next = collectProfileData();
+      await setDoc(sessionRef, {
+        browser: device.browser,
+        os: device.os,
+        tipo: device.tipo,
+        ...(snap.exists() ? {} : { createdAt: serverTimestamp() }),
+        lastActiveAt: serverTimestamp()
+      }, { merge: true });
+
+      if (unsubscribeSession) unsubscribeSession();
+      unsubscribeSession = onSnapshot(sessionRef, (docSnap) => {
+        if (docSnap.exists() && docSnap.data().revokedAt) {
+          forceLogout(user, sessionRef);
+        }
+      });
+    }
+
+    async function forceLogout(user, sessionRef) {
+      try {
+        if (unsubscribeSession) unsubscribeSession();
+        await deleteDoc(sessionRef);
+      } catch (e) {
+        console.warn("Nie można wyczyścić sesji:", e);
+      }
+      localStorage.removeItem(SESSION_KEY);
+      await signOut(auth);
+      window.location.href = "/pl/login/";
+    }
+
+    function describeDevice() {
+      const ua = navigator.userAgent || "";
+      let browser = "przeglądarka";
+      if (/Edg\//.test(ua)) browser = "Microsoft Edge";
+      else if (/OPR\/|Opera\//.test(ua)) browser = "Opera";
+      else if (/Chrome\//.test(ua)) browser = "Google Chrome";
+      else if (/Firefox\//.test(ua)) browser = "Firefox";
+      else if (/Safari\//.test(ua)) browser = "Safari";
+
+      let os = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "urządzenie";
+      if (/Windows/.test(ua)) os = "Windows";
+      else if (/Android/.test(ua)) os = "Android";
+      else if (/iPhone|iPad|iPod/.test(ua)) os = "iOS";
+      else if (/Mac OS X|Macintosh/.test(ua)) os = "macOS";
+      else if (/Linux/.test(ua)) os = "Linux";
+
+      return {
+        browser,
+        os,
+        tipo: /Mobi|Android|iPhone|iPad/i.test(ua) ? "przenośny" : "komputer"
+      };
+    }
+
+    function formatWhen(value) {
+      if (!value) return "—";
+      const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
+      if (Number.isNaN(date.getTime())) return "—";
+      return date.toLocaleString("pl-PL", { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    async function openSessionsModal(user) {
+      sessionsTitleEl.textContent = "aktywne sesje";
+      sessionsBody.textContent = "ładowanie…";
+      sessionsModal.classList.remove("hidden");
+
+      const currentId = getSessionId();
+      const maxAge = 30 * 24 * 3600 * 1000;
+      let snap;
 
       try {
-        if (next.email && next.email !== user.email) {
-          await updateEmail(user, next.email);
-        }
-        writeProfile(next);
-        fillProfile(user, next);
-        setReadonlyMode();
-        showStatus("Zmiana wykonana. Dane zapisane.", "success");
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "sessions"),
+          orderBy("lastActiveAt", "desc")
+        ));
       } catch (error) {
-        showStatus(`Nie udało się zapisać: ${error.message}`, "error");
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "nie można wczytać sesji." })]);
+        return;
+      }
+
+      const items = [];
+      snap.forEach((docSnap) => {
+        const s = docSnap.data();
+        if (s.revokedAt) return;
+        const last = s.lastActiveAt && typeof s.lastActiveAt.toDate === "function" ? s.lastActiveAt.toDate() : null;
+        if (last && Date.now() - last.getTime() > maxAge) return;
+
+        const isCurrent = docSnap.id === currentId;
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", {
+          text: isCurrent ? "to urządzenie" : `${s.tipo || "urządzenie"} · ${s.os || "nieznane"}`
+        }));
+        item.appendChild(el("span", { text: `${s.browser || "przeglądarka"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `ostatnia aktywność: ${formatWhen(s.lastActiveAt)}` }));
+        item.appendChild(el("span", { text: `początek: ${formatWhen(s.createdAt)}` }));
+
+        if (isCurrent) {
+          item.appendChild(el("span", { className: "session-badge", text: "aktywuj teraz" }));
+        } else {
+          item.appendChild(el("button", {
+            className: "btn btn-secondary btn-danger",
+            type: "button",
+            text: "Wyloguj się",
+            dataset: { revokeSession: docSnap.id },
+            style: { marginTop: "8px", justifySelf: "start" }
+          }));
+        }
+        items.push(item);
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "nie ma zarejestrowanych żadnych sesji." })]);
+    }
+
+    function closeSessionsModal() {
+      sessionsModal.classList.add("hidden");
+    }
+
+    viewSessionsBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("nieważna sesja.", "error");
+        return;
+      }
+      openSessionsModal(user).catch(() => showStatus("nie można wczytać sesji.", "error"));
+    });
+
+    sessionsCloseBtn.addEventListener("click", closeSessionsModal);
+    sessionsModal.addEventListener("click", (event) => {
+      if (event.target === sessionsModal) closeSessionsModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSessionsModal();
+    });
+
+    // Cerrar una sesión concreta desde el botón de su tarjeta en la lista.
+    sessionsBody.addEventListener("click", async (event) => {
+      const button = event.target.closest("button[data-revoke-session]");
+      if (!button) return;
+      const user = auth.currentUser;
+      const sid = button.dataset.revokeSession;
+      if (!user || !sid) return;
+
+      button.disabled = true;
+      try {
+        await updateDoc(doc(db, "users", user.uid, "sessions", sid), { revokedAt: serverTimestamp() });
+        showStatus("sesja zamknięta.", "success");
+        await openSessionsModal(user);
+      } catch (error) {
+        console.error(error);
+        button.disabled = false;
+        showStatus("Nie można się wylogować.", "error");
       }
     });
 
+    // "wyloguj się z innych urządzeń": marca como revocadas el resto de
+    // sesiones (esta se mantiene). Cada dispositivo lo detecta con onSnapshot.
+    closeOtherSessionsBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("nieważna sesja.", "error");
+        return;
+      }
+      if (!window.confirm("wylogować się ze wszystkich innych urządzeń? Sesja tego zespołu została utrzymana.")) return;
+
+      closeOtherSessionsBtn.disabled = true;
+      try {
+        const currentId = getSessionId();
+        const snap = await getDocs(collection(db, "users", user.uid, "sessions"));
+        await Promise.all(
+          snap.docs
+            .filter((docSnap) => docSnap.id !== currentId && !docSnap.data().revokedAt)
+            .map((docSnap) => updateDoc(docSnap.ref, { revokedAt: serverTimestamp() }))
+        );
+        showStatus("zamknięte sesje na innych urządzeniach.", "success");
+      } catch (error) {
+        console.error(error);
+        showStatus("Nie można się wylogować na innych urządzeniach.", "error");
+      } finally {
+        closeOtherSessionsBtn.disabled = false;
+      }
+    });
+
+    // ── Historial de inicio de sesión ─────────────────────────────────────
+    const METHOD_LABELS = {
+      password: "e-mail i hasło",
+      "google.com": "Google",
+      "apple.com": "Apple",
+      phone: "Telefon"
+    };
+
+    async function openLoginHistoryModal(user) {
+      sessionsTitleEl.textContent = "historia logowania";
+      sessionsBody.textContent = "ładowanie…";
+      sessionsModal.classList.remove("hidden");
+
+      let snap;
+      try {
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "loginHistory"),
+          orderBy("createdAt", "desc"),
+          limit(20)
+        ));
+      } catch (error) {
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "Nie udało się załadować historii." })]);
+        return;
+      }
+
+      const items = snap.docs.map((docSnap) => {
+        const s = docSnap.data();
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", { text: formatWhen(s.createdAt) }));
+        item.appendChild(el("span", { text: `${s.browser || "przeglądarka"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `metoda: ${METHOD_LABELS[s.method] || s.method || "—"}` }));
+        return item;
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "Nie ma jeszcze żadnych zarejestrowanych loginów." })]);
+    }
+
+    loginHistoryBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("nieważna sesja.", "error");
+        return;
+      }
+      openLoginHistoryModal(user).catch(() => showStatus("Nie udało się załadować historii.", "error"));
+    });
+
+
+
     async function doLogout() {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          if (unsubscribeSession) unsubscribeSession();
+          await deleteDoc(doc(db, "users", user.uid, "sessions", getSessionId()));
+        } catch (e) {
+          console.warn("Nie można wyczyścić sesji:", e);
+        }
+      }
       await signOut(auth);
       window.location.href = "/pl/login/";
     }
@@ -1760,28 +2780,27 @@
     logoutBtnSecondary.addEventListener("click", doLogout);
 
     const emailActionSettings = {
-      url: `${window.location.origin}/pl//pl/verified/`,
+      url: `${window.location.origin}/pl/verified/`,
       handleCodeInApp: false
     };
 
     verifyEmailBtn?.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Nieprawidłowa sesja.", "error");
+        showStatus("nieważna sesja.", "error");
         return;
       }
       try {
-        showStatus("Wysyłanie e-maila weryfikacyjnego...", "info");
+        showStatus("wysyłam e-mail weryfikacyjny...", "info");
         await sendEmailVerification(user, emailActionSettings);
         await reload(user);
         if (verifyEmailBtn) {
           verifyEmailBtn.disabled = user.emailVerified;
-          verifyEmailBtn.textContent = user.emailVerified ? "Zweryfikowany" : "Wyślij";
-          verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
+          verifyEmailBtn.textContent = user.emailVerified ? "zweryfikowane" : "Wyślij";
         }
-        showStatus("E-mail wysłany. Sprawdź Spam i Promocje.", "success");
+        showStatus("e-mail wysłany. sprawdzaj spam i promocje.", "success");
       } catch (error) {
-        showStatus(`Nie udało się wysłać: ${error.message || error.code}`, "error");
+        showStatus(`nie można wysłać: ${error.message || error.code}`, "error");
       }
     });
 
@@ -1791,18 +2810,107 @@
 
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Nieprawidłowa sesja.", "error");
+        showStatus("nieważna sesja.", "error");
         return;
       }
 
       try {
         await deleteUser(user);
-        showStatus("Konto usunięte pomyślnie.", "success");
+        showStatus("konto pomyślnie usunięte.", "success");
         window.location.href = "/pl/login/";
       } catch (error) {
-        showStatus(`Nie udało się usunąć konta: ${error.message}`, "error");
+        showStatus(`Nie można usunąć konta: ${error.message}`, "error");
       }
     });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
   </script>
 </body>
 </html>

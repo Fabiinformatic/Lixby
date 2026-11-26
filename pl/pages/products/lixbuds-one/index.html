@@ -37,86 +37,238 @@
   <link rel="alternate" href="https://lixby.es/sv/pages/products/lixbuds-one" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/pages/products/lixbuds-one" hreflang="x-default">
 
-          <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LixBuds One | Premiumowa strona produktu</title>
-  <meta name="description" content="LixBuds One: dźwięk, który na nowo definiuje bezprzewodowość.">
-  <meta property="og:title" content="LixBuds One | Premium Wireless">
-  <meta property="og:description" content="Bezprzewodowe słuchawki z redukcją szumów, dźwiękiem przestrzennym i premiumowym designem.">
+  <title>LixBuds One | Lixby</title>
+  <meta name="description" content="odkryj LixBuds One: słuchawki bezprzewodowe z redukcją szumów, dźwiękiem przestrzennym i wygodną konstrukcją do słuchania przez cały dzień.">
+  <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lixby">
   <meta property="og:locale" content="pl_PL">
-  <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://lixby.es/pl/pages/products/images/lixbuds-product.jpg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LixBuds One | Premium Wireless">
-  <meta name="twitter:description" content="Bezprzewodowe słuchawki z redukcją szumów, dźwiękiem przestrzennym i premiumowym designem.">
-  <meta name="twitter:image" content="https://lixby.es/pl/pages/products/images/lixbuds-product.jpg">
   <meta property="og:url" content="https://lixby.es/pl/pages/products/lixbuds-one">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta property="og:title" content="LixBuds One | Lixby">
+  <meta property="og:description" content="odkryj LixBuds One: słuchawki bezprzewodowe z redukcją szumów, dźwiękiem przestrzennym i wygodną konstrukcją do słuchania przez cały dzień.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Słuchawki LixBuds One firmy Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LixBuds One | Lixby">
+  <meta name="twitter:description" content="odkryj LixBuds One: słuchawki bezprzewodowe z redukcją szumów, dźwiękiem przestrzennym i wygodną konstrukcją do słuchania przez cały dzień.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Słuchawki LixBuds One firmy Lixby">
+  
+  
+  
+  
+  <meta property="og:locale:alternate" content="en_US">
+  
+  
+  
+  
+  
+  
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pl/style.css">
+
   <style>
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary, #0F3DFF), var(--primary-2, #16A7FF));
+  z-index: 2000;
+  transition: width 0.1s linear;
+}
+
+    /* === VARIABLES === */
     :root {
-      --bg: #0b0b0c;
-      --bg-soft: #101114;
-      --ink: #f5f5f6;
-      --muted: #a8abb2;
-      --line: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.06);
-      --accent: #e6e7ea;
-      --accent-soft: rgba(230, 231, 234, 0.15);
-      --glow: rgba(255, 255, 255, 0.24);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --bg: #ffffff;
+      --bg-soft: #f7f8fb;
+      --ink: #111318;
+      --muted: #626a76;
+      --line: rgba(17, 19, 24, 0.12);
+      --glass: rgba(255, 255, 255, 0.82);
+      --shadow: 0 24px 70px rgba(17, 24, 39, 0.12);
+      --primary: #0F3DFF;
+      --primary-2: #16A7FF;
+      --text: #111827;
     }
 
+    /* === RESET === */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "Manrope", "Space Grotesk", sans-serif;
+      font-family: "Inter", sans-serif;
       color: var(--ink);
-      background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.12) 0, transparent 45%),
-                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06) 0, transparent 40%),
-                  var(--bg);
+      background: var(--bg);
       line-height: 1.6;
       overflow-x: hidden;
+      padding-top: 118px;
     }
-
-    body::after {
-      content: "";
-      position: fixed;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 35%, transparent 70%);
-      mix-blend-mode: screen;
-      left: var(--x, -999px);
-      top: var(--y, -999px);
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      opacity: 0.65;
-    }
-
-    h1, h2 {
-      font-family: "Sora", "Space Grotesk", sans-serif;
-      text-transform: none;
-    }
-
+    h1, h2 { font-family: "Inter", sans-serif; font-weight: 600; text-transform: none; }
     .container { width: min(1200px, 92vw); margin: 0 auto; }
-    .scroll-progress {
+
+    /* === NAV === */
+    .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: #ffffff;
-      z-index: 999;
-      box-shadow: 0 0 18px rgba(255,255,255,0.4);
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      z-index: 1200;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px) saturate(170%);
+      -webkit-backdrop-filter: blur(16px) saturate(170%);
+      border-bottom: 1px solid #e6e7eb;
     }
+    .nav-container {
+      max-width: 1120px;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+    .nav.nav-scrolled .nav-container { display: none; }
+    .nav-brand {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 1.28rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+      align-self: center;
+      gap: 20px;
+    }
+    .nav-link,
+    .nav-link > a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      animation: nav-link-in 0.7s ease both;
+      position: relative;
+      line-height: 1.2;
+      padding: 6px 0;
+      font-size: 0.95rem;
+    }
+    .nav-link::after,
+    .nav-link > a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      transition: width 0.25s ease;
+    }
+    .nav-link:nth-child(1) { animation-delay: 0.05s; }
+    .nav-link:nth-child(2) { animation-delay: 0.1s; }
+    .nav-link:nth-child(3) { animation-delay: 0.15s; }
+    .nav-link:nth-child(4) { animation-delay: 0.2s; }
+    .nav-link:hover,
+    .nav-link:focus-within { color: var(--text); }
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after,
+    .nav-link:hover > a::after,
+    .nav-link:focus-within > a::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-search {
+      width: clamp(160px, 18vw, 220px);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-family: inherit;
+      font-weight: 600;
+      outline: none;
+      background: #f8fafc;
+      color: var(--ink);
+    }
+    .nav-icon-link {
+      width: 32px; height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nav-icon-link:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08); }
+    .nav-icon-link img { width: 16px; height: 16px; object-fit: contain; }
+
+    /* === SUBNAV === */
+    .product-subnav {
+      border-top: 1px solid #e6e7eb;
+      background: transparent;
+    }
+    .product-subnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      font-weight: 600;
+      max-width: 1120px;
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+    .product-subnav-title { font-size: 1.1rem; white-space: nowrap; }
+    .product-subnav-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .product-subnav-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .product-subnav-links a:hover,
+    .product-subnav-links a.active { color: var(--ink); }
+    .product-subnav-links .buy-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--ink);
+      box-shadow: 0 12px 24px rgba(17, 24, 39, 0.18);
+    }
+    .product-subnav-links .buy-pill:hover {
+      color: #ffffff;
+      box-shadow: 0 16px 30px rgba(17, 24, 39, 0.24);
+      transform: translateY(-1px);
+    }
+
+    /* === PANEL BASE === */
     .panel {
       min-height: 100vh;
       display: grid;
@@ -125,84 +277,30 @@
       position: relative;
       isolation: isolate;
     }
-
+    #caracteristicas, #sonido, #anc, #bateria, #comprar { scroll-margin-top: 132px; }
     .panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%);
+      background: radial-gradient(circle at 30% 30%, rgba(148, 163, 184, 0.12), transparent 60%);
       opacity: 0.6;
       pointer-events: none;
       z-index: -1;
     }
 
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(8, 8, 10, 0.75);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .top-nav .container {
-      height: 70px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 0.08em;
+    /* === SECTION LABEL & HEAD === */
+    .section-label {
       text-transform: uppercase;
-      font-size: 0.85rem;
-      color: var(--ink);
-    }
-
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a {
-      text-decoration: none;
+      letter-spacing: 0.2em;
+      font-size: 0.68rem;
       color: var(--muted);
-      font-weight: 500;
-      font-size: 0.92rem;
-      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      display: inline-block;
     }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--ink); }
+    .section-head h2 { font-size: clamp(1.8rem, 4.5vw, 3.2rem); letter-spacing: -0.04em; margin-bottom: 10px; }
+    .section-head p { color: var(--muted); max-width: 760px; }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-    }
-
-    .hero p { font-size: 1.15rem; color: var(--muted); }
-
-    .hero-meta {
-      margin: 24px 0 28px;
-      display: grid;
-      gap: 6px;
-      font-weight: 500;
-    }
-
-    .price {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-    }
-
-    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    /* === BUTTONS === */
     .btn {
       border: 1px solid var(--line);
       padding: 14px 28px;
@@ -217,160 +315,170 @@
       position: relative;
       overflow: hidden;
     }
-
     .btn::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
       transform: translateX(-120%);
       transition: transform .45s ease;
     }
-
     .btn:hover::after { transform: translateX(120%); }
     .btn:hover { transform: translateY(-3px) scale(1.02); }
     .btn:active { transform: scale(0.96); }
-    .btn-dark {
-      background: #f4f4f4;
-      color: #0b0b0c;
-      border-color: #f4f4f4;
-      box-shadow: 0 20px 40px rgba(255,255,255,0.15);
-    }
-    .btn-light {
-      background: transparent;
-      color: var(--ink);
-    }
+    .btn-dark { background: var(--ink); color: #ffffff; border-color: var(--ink); box-shadow: 0 20px 40px rgba(17, 24, 39, 0.16); }
+    .btn-light { background: transparent; color: var(--ink); }
 
-    .hero-media {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: linear-gradient(150deg, #0c0d10 0%, #1d1f25 100%);
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      box-shadow: var(--shadow);
+    /* === PRICE === */
+    .price { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 18px; }
+
+    /* === REVEAL & PARALLAX === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+    .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+    .parallax { will-change: transform; }
 
-    .hero-media video,
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-    }
+    /* === INLINE CTA === */
+    .inline-cta { margin-top: 18px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .inline-cta .price { font-size: 1.6rem; margin: 0; }
 
-    .hero-product {
-      position: absolute;
-      width: min(76%, 460px);
-      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.45))
-              drop-shadow(0 0 30px rgba(255,255,255,0.15));
-      animation: floatSpin 12s ease-in-out infinite;
-    }
-
-    .hero-orbs {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 35%),
-                  radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 40%);
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    @keyframes floatSpin {
-      0% { transform: translateY(0) rotateY(0deg); }
-      50% { transform: translateY(-12px) rotateY(180deg); }
-      100% { transform: translateY(0) rotateY(360deg); }
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .section-head p { color: var(--muted); max-width: 760px; }
-
-    .feature-grid {
-      margin-top: 38px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .feature-card {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 180px;
-      display: grid;
-      gap: 8px;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-      backdrop-filter: blur(8px);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,0.22);
-      box-shadow: 0 25px 40px rgba(0,0,0,0.35);
-    }
-
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      background: rgba(255,255,255,0.08);
-      animation: floatIcon 2.8s ease-in-out infinite;
-    }
-    @keyframes floatIcon { 50% { transform: translateY(-6px); } }
-
-    .media-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: center;
-    }
-
+    /* === MEDIA BLOCK & BOX === */
+    .media-block { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
     .media-box {
       border: 1px solid var(--line);
       border-radius: 26px;
       overflow: hidden;
-      background: #111;
+      background: #f3f4f6;
       min-height: 360px;
       position: relative;
       box-shadow: var(--shadow);
     }
+    .media-box video, .media-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-    .media-box video,
-    .media-box img {
-      width: 100%;
+    /* === COMPARISON TABLE === */
+    .compare-table-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .compare-header {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      align-items: center;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .compare-header-col {
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .compare-header-col--Lixby {
+      background: #f4f6fb;
+    }
+    .compare-header-col--other {
+      background: transparent;
+    }
+    .compare-header-divider {
+      width: 1px;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
+      background: var(--line);
+    }
+    .compare-header-img {
+      width: 64px;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    .compare-header-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .compare-header-price {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .compare-header-btn {
+      display: inline-flex;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .compare-header-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(17,24,39,0.18);
+    }
+    .compare-header-icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.92rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .compare-table tr:last-child th,
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+    .compare-table th {
+      font-weight: 500;
+      color: var(--ink);
+      background: transparent;
+    }
+    .compare-table td {
+      width: 34%;
+    }
+    .compare-table td:last-child {
+      width: 34%;
+    }
+    .compare-table .col-Lixby {
+      background: #f4f6fb;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .compare-table .col-other {
+      color: var(--muted);
+    }
+    .compare-check {
+      color: #22c55e;
+      font-weight: 700;
+    }
+    .compare-cross {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      .compare-header {
+        grid-template-columns: 1fr 1px 1fr;
+      }
+      .compare-table th,
+      .compare-table td { padding: 11px 10px; font-size: 0.82rem; }
     }
 
-    .sound-waves::before,
-    .sound-waves::after {
-      content: "";
-      position: absolute;
-      inset: 18% 18%;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 50%;
-      animation: wave 2.6s linear infinite;
-    }
-
-    .sound-waves::after { animation-delay: 1.2s; }
-    @keyframes wave { from { transform: scale(0.8); opacity: 0.8; } to { transform: scale(1.6); opacity: 0; } }
-
+    /* === NOISE DEMO / ANC === */
     .noise-demo {
-      background: linear-gradient(120deg, #0b0b0c 0%, #1b1e26 100%);
-      color: #fff;
+      background: linear-gradient(120deg, #ffffff 0%, #f2f4f8 100%);
+      color: var(--ink);
       border-radius: 26px;
       border: 1px solid var(--line);
       padding: 28px;
@@ -378,305 +486,26 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-
     .noise-city {
       height: 160px;
       border-radius: 18px;
-      background: repeating-linear-gradient(90deg, #2b2b2e 0 12px, #16171a 12px 24px);
+      background: repeating-linear-gradient(90deg, #d6dbe3 0 12px, #eef1f5 12px 24px);
       position: relative;
       margin: 18px 0;
       transition: filter .5s ease, opacity .5s ease, transform .5s ease;
     }
-
     .noise-city::after {
-      content: "HAŁAS MIEJSKI";
+      content: "RUIDO URBANO";
       position: absolute;
-      bottom: 12px;
-      right: 14px;
+      bottom: 12px; right: 14px;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       opacity: 0.5;
     }
-
-    .noise-demo.anc-on .noise-city {
-      filter: blur(3px) grayscale(1);
-      opacity: 0.22;
-      transform: scale(0.98);
-    }
-
+    .noise-demo.anc-on .noise-city { filter: blur(3px) grayscale(1); opacity: 0.22; transform: scale(0.98); }
     .toggle-row { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .spatial-stage {
-      margin-top: 26px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      min-height: 280px;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.01) 65%, transparent 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .head {
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      background: #f4f4f5;
-      position: relative;
-      z-index: 2;
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.18);
-    }
-
-    .ring {
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.4);
-      animation: spin 8s linear infinite;
-    }
-
-    .ring.r2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .fit-visual {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(255,255,255,0.04);
-      padding: 30px;
-      display: grid;
-      place-items: center;
-      min-height: 320px;
-    }
-
-    .earbud-3d { width: min(76%, 360px); animation: rotateEarbud 9s linear infinite; }
-    @keyframes rotateEarbud { to { transform: rotate(360deg); } }
-
-    .touch-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 22px;
-      background: rgba(255,255,255,0.04);
-      display: grid;
-      gap: 14px;
-    }
-
-    .finger {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #f4f4f4;
-      animation: tap 1.8s ease-in-out infinite;
-      justify-self: center;
-    }
-
-    @keyframes tap { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.72); opacity: 0.6; } }
-
-    .touch-actions { display: grid; gap: 8px; }
-    .touch-actions li {
-      list-style: none;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      transition: all .25s ease;
-      color: var(--muted);
-    }
-
-    .touch-actions li.active {
-      background: #f4f4f4;
-      color: #0b0b0c;
-      border-color: #f4f4f4;
-      transform: translateX(4px);
-    }
-
-    .water-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      min-height: 300px;
-      padding: 22px;
-      background: linear-gradient(180deg, #0f1116 0, #0b0b0c 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .drop {
-      position: absolute;
-      width: 9px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(120, 160, 255, 0.35);
-      animation: rain 2.2s linear infinite;
-    }
-
-    .drop:nth-child(1){left:18%; animation-delay:.2s}
-    .drop:nth-child(2){left:34%; animation-delay:.8s}
-    .drop:nth-child(3){left:52%; animation-delay:1.1s}
-    .drop:nth-child(4){left:68%; animation-delay:1.5s}
-    .drop:nth-child(5){left:82%; animation-delay:.5s}
-    @keyframes rain { from{ top:-20px; opacity:0 } 15%{opacity:1} to{ top:110%; opacity:0 } }
-
-    .battery-demo {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 24px;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .battery-body {
-      width: min(460px, 100%);
-      height: 56px;
-      margin: 12px auto 0;
-      border: 2px solid #f4f4f4;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .battery-level {
-      height: 100%;
-      width: 30%;
-      background: linear-gradient(90deg, #f4f4f4, #b5b7be);
-      animation: charge 4.4s ease-in-out infinite;
-    }
-
-    .battery-body::after {
-      content: "";
-      position: absolute;
-      right: -8px;
-      top: 18px;
-      width: 6px;
-      height: 18px;
-      border-radius: 4px;
-      background: #f4f4f4;
-    }
-
-    @keyframes charge { 0%{width:12%} 50%{width:76%} 100%{width:100%} }
-
-    .case-anim {
-      margin-top: 20px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      height: 220px;
-      background: rgba(255,255,255,0.03);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-shell {
-      width: 190px;
-      height: 108px;
-      background: #f4f4f4;
-      border: 2px solid #d1d5db;
-      border-radius: 45px;
-      position: relative;
-      box-shadow: 0 16px 28px rgba(15,23,42,0.24);
-    }
-
-    .case-lid {
-      position: absolute;
-      width: 190px;
-      height: 48px;
-      left: 0;
-      top: -18px;
-      border-radius: 40px 40px 18px 18px;
-      background: #f4f4f4;
-      border: 2px solid #d1d5db;
-      border-bottom: none;
-      transform-origin: bottom center;
-      animation: openCase 3.4s ease-in-out infinite;
-    }
-
-    @keyframes openCase { 0%,100%{ transform: rotateX(0)} 50%{ transform: rotateX(-56deg)} }
-
-    .floating-final {
-      border-radius: 32px;
-      border: 1px solid var(--line);
-      background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-      padding: 46px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .final-product {
-      width: min(340px, 70vw);
-      animation: finalFloat 4s ease-in-out infinite;
-      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.35));
-      margin: 0 auto 18px;
-    }
-
-    @keyframes finalFloat { 50% { transform: translateY(-12px); } }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .parallax { will-change: transform; }
-
-    .float { animation: softFloat 6s ease-in-out infinite; }
-    @keyframes softFloat { 50% { transform: translateY(-10px); } }
-
-    .hero h1 {
-      clip-path: inset(0 100% 0 0);
-      animation: textReveal 1.3s steps(32) forwards;
-    }
-
-    @keyframes textReveal {
-      to { clip-path: inset(0 0 0 0); }
-    }
-
-    .section-label {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.68rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-
-    .inline-cta {
-      margin-top: 18px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .inline-cta .price {
-      font-size: 1.6rem;
-      margin: 0;
-    }
-
-    .audio-demo {
-      margin-top: 18px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .comparison-grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .noise-demo.clean {
-      background: linear-gradient(120deg, #0a0f14 0%, #0f141c 100%);
-      border-color: rgba(255,255,255,0.2);
-    }
-
+    .comparison-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .noise-demo.clean { background: linear-gradient(120deg, #ffffff 0%, #eef6f8 100%); border-color: rgba(17,19,24,0.16); }
     .noise-demo .label {
       display: inline-flex;
       align-items: center;
@@ -688,109 +517,899 @@
       margin-bottom: 8px;
     }
 
-    .why-grid {
-      margin-top: 28px;
+    /* === ANC SECTION === */
+    .anc-section {
+      background: #0b0b0c;
+      color: #ffffff;
+      text-align: center;
+      overflow: hidden;
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+      align-items: center;
     }
-
-    .testimonials-grid,
-    .faq-grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .why-card,
-    .testimonial-card,
-    .faq-item {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
-      display: grid;
-      gap: 10px;
-      backdrop-filter: blur(8px);
-    }
-
-    .why-card span {
-      font-size: 1.5rem;
-    }
-
-    .stars {
+    .anc-label {
+      display: block;
+      text-transform: uppercase;
       letter-spacing: 0.2em;
-      font-size: 0.85rem;
-      color: #f4f4f4;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+    }
+    .anc-title {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .anc-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+    .anc-wave-box {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      height: 160px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .anc-waves {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 4px;
+      padding: 20px 16px;
+      transition: opacity 0.6s ease;
+    }
+    .anc-waves--calm {
+      opacity: 0;
+    }
+    .anc-demo-on .anc-waves--noise {
+      opacity: 0;
+    }
+    .anc-demo-on .anc-waves--calm {
+      opacity: 1;
+    }
+    .anc-wave {
+      width: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      min-height: 4px;
+      flex-shrink: 0;
+      transition: height 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.6s ease;
+    }
+    .anc-waves--noise .anc-wave {
+      animation: waveChaos var(--d, 0.4s) ease-in-out infinite alternate;
+      background: rgba(255,80,80,0.25);
+    }
+    .anc-waves--calm .anc-wave {
+      height: 4px !important;
+      background: rgba(255,255,255,0.06);
+      animation: none;
+    }
+    .anc-demo-on .anc-waves--noise .anc-wave {
+      animation: waveFadeOut 0.5s ease forwards;
+    }
+    @keyframes waveChaos {
+      0% { height: var(--h, 30px); }
+      100% { height: calc(var(--h, 30px) * 0.2); }
+    }
+    @keyframes waveFadeOut {
+      to { height: 4px !important; background: rgba(255,255,255,0.06); }
+    }
+    .anc-toggle-btn {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .anc-toggle-btn:hover { background: rgba(255,255,255,0.12); transform: scale(1.02); }
+    .anc-toggle-btn[aria-pressed="true"] {
+      background: #ffffff;
+      color: #0b0b0c;
+      border-color: #ffffff;
+    }
+    .anc-toggle-btn[aria-pressed="true"]:hover { background: rgba(255,255,255,0.9); }
+    .anc-toggle-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transition: background 0.3s ease;
+    }
+    .anc-toggle-btn[aria-pressed="true"] .anc-toggle-dot {
+      background: #22c55e;
+    }
+    .anc-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .anc-stat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0 12px;
+    }
+    .anc-stat-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .anc-stat-unit {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .anc-stat-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    #anc { scroll-margin-top: 132px; }
+
+    /* === FIT === */
+    .fit-section {
+      background: #0b0b0c;
+      color: #ffffff;
+      text-align: center;
+      overflow: hidden;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+    }
+    .fit-hero {
+      padding: 60px 0 40px;
+    }
+    .fit-hero-img {
+      width: min(280px, 60vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
+    }
+    .fit-hero-tag {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .fit-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+    .fit-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px 18px;
+      text-align: left;
+    }
+    .fit-card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .fit-card-text {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .fit-cards { grid-template-columns: 1fr; }
     }
 
-    .faq-item button {
-      all: unset;
-      cursor: pointer;
+    /* === WATER + BATTERY === */
+    .wb-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+    .wb-block {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .wb-block + .wb-block {
+      margin-top: 64px;
+      padding-top: 64px;
+      border-top: 1px solid var(--line);
+    }
+    .wb-ipx {
+      font-size: clamp(4rem, 12vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .wb-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .wb-icons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+    }
+    .wb-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .wb-icon-item span:first-child {
+      font-size: 1.6rem;
+    }
+    .wb-icon-item span:last-child {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+    .wb-battery-main {
+      font-size: clamp(4rem, 12vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .wb-battery-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .wb-bar {
+      width: 100%;
+      max-width: 400px;
+      height: 8px;
+      border-radius: 999px;
+      background: #e6e7eb;
+      margin: 0 auto 24px;
+      overflow: hidden;
+    }
+    .wb-bar-fill {
+      height: 100%;
+      width: 65%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--ink), #64748b);
+    }
+    .wb-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .wb-stat {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .wb-stat strong {
+      color: var(--ink);
       font-weight: 600;
+    }
+    #bateria { scroll-margin-top: 132px; }
+    @media (max-width: 640px) {
+      .wb-icons { gap: 20px; }
+      .wb-stats-row { flex-direction: column; align-items: center; gap: 8px; }
+    }
+
+    /* === CASE === */
+    .case-section {
+      background: #0b0b0c;
+      color: #ffffff;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+    }
+    .case-top {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .case-top h2 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .case-top p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .case-video {
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .case-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.85;
+    }
+    .case-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .case-feature {
+      padding: 20px 0;
+    }
+    .case-feature + .case-feature {
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .case-feature-value {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .case-feature-desc {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .case-cta {
+      margin-top: 16px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .case-cta .price {
+      color: #ffffff;
+      margin: 0;
+    }
+    .case-cta .btn-dark {
+      background: #ffffff;
+      color: #0b0b0c;
+      border-color: #ffffff;
+    }
+    .case-cta .btn-dark:hover {
+      background: rgba(255,255,255,0.9);
+    }
+    #estuche { scroll-margin-top: 132px; }
+    @media (max-width: 768px) {
+      .case-grid { grid-template-columns: 1fr; gap: 24px; }
+      .case-video { min-height: 240px; }
+    }
+
+    .panel-light { background: #fff; }
+
+    /* === TESTIMONIALS === */
+    .testimonials-rating {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .testimonials-rating-score {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .testimonials-rating-stars {
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: #f5a623;
+      margin: 4px 0 2px;
+    }
+    .testimonials-rating-count {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .testimonials-asymmetric {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 860px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    .testimonial-featured {
+      background: #f4f6fb;
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+    .testimonial-featured .testimonial-text {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .testimonial-side {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .testimonial-card {
+      background: #f4f6fb;
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .testimonial-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .testimonial-text::before { content: "\201C"; }
+    .testimonial-text::after  { content: "\201D"; }
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+    .testimonial-tag {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .testimonial-stars {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #f5a623;
+      margin-top: auto;
+    }
+        /* === FAQ === */
+    .panel-faq {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      color: var(--text, #111827);
+      border-top: 1px solid #e5e7eb;
+    }
+    .section-title { font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 700; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.95rem; color: var(--muted); }
+    .panel-faq .section-title { color: var(--text, #111827); }
+    .panel-faq .section-subtitle { color: var(--muted, #626a76); }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq .faq-item {
+      background: var(--surface, #ffffff);
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(15, 61, 255, 0.06);
+      overflow: hidden;
+      transition: box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open {
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.08);
+    }
+
+.faq .faq-question {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      padding: 20px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text, #111827);
+      text-align: left;
+      transition: color 200ms ease;
     }
 
-    .faq-item button::after {
-      content: "+";
-      font-size: 1.2rem;
-      color: var(--muted);
+    .faq .faq-question:hover {
+      color: var(--primary, #0f3dff);
     }
 
-    .faq-item[open] button::after {
-      content: "−";
-      color: var(--ink);
+    .faq .faq-chevron {
+      flex-shrink: 0;
+      color: var(--primary, #0f3dff);
+      width: 22px;
+      height: 22px;
+      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .faq-answer {
+    .faq .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease;
+      transition: max-height 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-answer-text {
+      padding: 14px 28px 24px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted, #626a76);
+    }
+/* === FINAL BUY === */
+    .panel-final { background: #fff; text-align: center; overflow: hidden; }
+    .final-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .final-stat {
+      flex: 1;
+      padding: 0 10px;
+    }
+    .final-stat-value {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .final-stat-label {
+      font-size: 0.62rem;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
     }
-
-    .faq-item[open] .faq-answer {
-      max-height: 200px;
+    .final-stat + .final-stat {
+      border-left: 1px solid var(--line);
     }
+    .final-hero {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .final-hero-img {
+      width: min(420px, 75vw);
+      filter: drop-shadow(0 26px 40px rgba(17,24,39,0.18));
+      margin: 0 auto 16px;
+    }
+    .final-hero-title {
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .final-hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+    .final-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .final-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: -0.02em;
+    }
+    .btn-final {
+      display: inline-flex;
+      align-items: center;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-final:hover { opacity: 0.85; }
 
+    /* === HERO VIDEO === */
+    .hero-video-wrap { position: relative; width: 100%; height: 100svh; min-height: 560px; overflow: hidden; background: #f5f5f7; }
+    .hero-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-video-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px min(4vw, 48px) 36px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      background: linear-gradient(to top, rgba(255,255,255,0.72) 0%, transparent 100%);
+    }
+    .hero-video-copy { display: grid; gap: 4px; }
+    .hero-video-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+    .hero-video-title { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.03em; color: #111318; line-height: 1.1; }
+    .hero-video-sub { font-size: 1rem; color: rgba(0,0,0,0.55); margin-top: 4px; }
+    .hero-video-cta { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+    .hero-video-price { font-size: 1.4rem; font-weight: 700; color: #111318; letter-spacing: -0.02em; }
+    .hero-buy-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 26px; border-radius: 999px; background: #ffffff; color: #111318; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap; }
+    .hero-buy-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
+
+    /* === FEATURES STICKY CROSSFADE === */
+    .fs-outer { height: calc(7 * 100vh); position: relative; }
+    .fs-sticky { position: sticky; top: 0; height: 100vh; background: #0b0b0c; overflow: hidden; }
+    .fs-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      color: #f5f5f6;
+      opacity: 0;
+      pointer-events: none;
+      will-change: opacity, transform;
+      transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transform: translateY(20px) scale(0.98);
+    }
+    .fs-slide.fs-visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .fs-slide.fs-past { opacity: 0; transform: translateY(-16px) scale(0.99); }
+    .fs-bg-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.12; pointer-events: none; z-index: 0; transform: scale(1.04); transition: transform 1s ease; }
+    .fs-slide.fs-visible .fs-bg-img { transform: scale(1); }
+    .fs-slide--center { justify-content: center; text-align: center; }
+    .fs-center-content { display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; z-index: 2; }
+    .fs-slide--split { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+    .fs-slide--reverse { direction: rtl; }
+    .fs-slide--reverse > * { direction: ltr; }
+    .fs-split-text { display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: 80px min(7vw, 90px); z-index: 2; }
+    .fs-split-img { overflow: hidden; position: relative; }
+    .fs-split-img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fs-slide.fs-visible .fs-split-img img { transform: scale(1); }
+    .fs-slide--stats { align-items: flex-end; padding-bottom: 80px; }
+    .fs-stats-content { display: grid; gap: 24px; position: relative; z-index: 2; }
+    .fs-stats-row { display: flex; gap: 56px; }
+    .fs-stat { display: flex; flex-direction: column; gap: 4px; }
+    .fs-stat-num { font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; color: #f5f5f6; }
+    .fs-stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+    .fs-showcase { width: min(240px, 50vw); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+    .fs-showcase img { width: 100%; height: auto; display: block; }
+    .fs-label { display: block; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.32); }
+    .fs-h { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: #f5f5f6; }
+    .fs-h--xl { font-size: clamp(2.8rem, 5.5vw, 4.6rem); }
+    .fs-h--lg { font-size: clamp(2.4rem, 4.8vw, 4.2rem); }
+    .fs-h--giant { font-size: clamp(3.5rem, 9vw, 7.5rem); letter-spacing: -0.05em; }
+    .fs-p { font-size: 1.05rem; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 480px; }
+
+
+    /* === SONIDO === */
+    #sonido { scroll-margin-top: 132px; background: #ffffff; }
+    #sonido::before { display: none; }
+    .snd-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 24px; overflow: hidden; }
+    .snd-pillar { background: #f7f8fb; padding: 0 0 28px; display: flex; flex-direction: column; }
+    .snd-pillar-img { height: 280px; overflow: hidden; position: relative; margin-bottom: 22px; }
+    .snd-pillar-img--tall { height: 360px; }
+    .snd-pillar-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform 0.7s ease; }
+    .snd-pillar:hover .snd-pillar-img img { transform: scale(1.04); }
+    .snd-pillar-badge { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.08); color: #111318; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; }
+    .snd-pillar h3 { font-size: 1.2rem; font-weight: 600; color: #111318; letter-spacing: -0.02em; margin-bottom: 8px; padding: 0 24px; }
+    .snd-pillar p { font-size: 0.92rem; color: #626a76; line-height: 1.65; padding: 0 24px; }
+    .snd-bottom-inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; padding-top: 48px; border-top: 1px solid rgba(17,19,24,0.08); }
+    .snd-wave-visual { display: flex; align-items: center; gap: 3px; height: 90px; margin-bottom: 12px; }
+    .snd-wave-bar { flex: 1; background: rgba(17,19,24,0.15); border-radius: 999px; animation: wavePulse var(--d, 1.2s) ease-in-out infinite alternate; height: var(--h, 30%); }
+    .snd-wave-bar:nth-child(1)  { --h:20%; --d:1.1s } .snd-wave-bar:nth-child(2)  { --h:40%; --d:0.9s }
+    .snd-wave-bar:nth-child(3)  { --h:65%; --d:1.3s } .snd-wave-bar:nth-child(4)  { --h:90%; --d:0.8s }
+    .snd-wave-bar:nth-child(5)  { --h:55%; --d:1.0s } .snd-wave-bar:nth-child(6)  { --h:80%; --d:1.4s }
+    .snd-wave-bar:nth-child(7)  { --h:100%;--d:0.7s } .snd-wave-bar:nth-child(8)  { --h:70%; --d:1.2s }
+    .snd-wave-bar:nth-child(9)  { --h:85%; --d:0.9s } .snd-wave-bar:nth-child(10) { --h:60%; --d:1.1s }
+    .snd-wave-bar:nth-child(11) { --h:95%; --d:0.8s } .snd-wave-bar:nth-child(12) { --h:75%; --d:1.3s }
+    .snd-wave-bar:nth-child(13) { --h:100%;--d:1.0s } .snd-wave-bar:nth-child(14) { --h:85%; --d:0.7s }
+    .snd-wave-bar:nth-child(15) { --h:70%; --d:1.2s } .snd-wave-bar:nth-child(16) { --h:55%; --d:0.9s }
+    .snd-wave-bar:nth-child(17) { --h:80%; --d:1.4s } .snd-wave-bar:nth-child(18) { --h:65%; --d:1.1s }
+    .snd-wave-bar:nth-child(19) { --h:45%; --d:0.8s } .snd-wave-bar:nth-child(20) { --h:90%; --d:1.3s }
+    .snd-wave-bar:nth-child(21) { --h:75%; --d:1.0s } .snd-wave-bar:nth-child(22) { --h:55%; --d:0.9s }
+    .snd-wave-bar:nth-child(23) { --h:35%; --d:1.2s } .snd-wave-bar:nth-child(24) { --h:60%; --d:0.7s }
+    .snd-wave-bar:nth-child(25) { --h:40%; --d:1.1s } .snd-wave-bar:nth-child(26) { --h:25%; --d:1.3s }
+    .snd-wave-bar:nth-child(27) { --h:45%; --d:0.8s } .snd-wave-bar:nth-child(28) { --h:30%; --d:1.0s }
+    .snd-wave-bar:nth-child(29) { --h:20%; --d:0.9s } .snd-wave-bar:nth-child(30) { --h:15%; --d:1.2s }
+    @keyframes wavePulse { from { height: 6%; } to { height: var(--h, 30%); } }
+    @keyframes nav-link-in {
+      0% { opacity: 0.4; transform: translateY(-6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .snd-freq-row { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 600; color: rgba(17,19,24,0.3); letter-spacing: 0.06em; }
+    .snd-specs { display: grid; gap: 24px; }
+    .snd-spec-item { display: flex; flex-direction: column; gap: 4px; padding-bottom: 24px; border-bottom: 1px solid rgba(17,19,24,0.08); }
+    .snd-spec-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .snd-spec-num { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.04em; color: #111318; line-height: 1; }
+    .snd-spec-lbl { font-size: 0.75rem; color: #626a76; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* === RESPONSIVE === */
     @media (max-width: 980px) {
-      .hero,
-      .media-block,
-      .comparison-grid { grid-template-columns: 1fr; }
-      .feature-grid,
-      .why-grid,
-      .testimonials-grid,
-      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hero-media { min-height: 420px; }
+      body { padding-top: 150px; }
+      .media-block, .comparison-grid { grid-template-columns: 1fr; }
+      .testimonials-asymmetric { grid-template-columns: 1fr; }
+      .nav-search { width: 150px; }
+      .product-subnav-inner { align-items: flex-start; flex-direction: column; }
+      .product-subnav-links { width: 100%; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+      .product-subnav-links::-webkit-scrollbar { display: none; }
+      .snd-pillars { grid-template-columns: 1fr; gap: 2px; }
+      .snd-pillar-img--tall { height: 280px; }
+      .snd-bottom-inner { grid-template-columns: 1fr; gap: 40px; }
+      .anc-stats { max-width: 400px; }
+    }
+
+    @media (max-width: 768px) {
+      .fs-slide--split { grid-template-columns: 1fr; grid-template-rows: 40vh 60vh; }
+      .fs-h--giant { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .fs-stat-num { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .fs-stats-row { gap: 32px; }
+      .fs-split-text { padding: 40px 24px; }
+      .footer-mega-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-mega-grid .footer-section:nth-child(2n) { border-right: 0; }
     }
 
     @media (max-width: 640px) {
+      body { padding-top: 152px; }
       .panel { padding: 8vh 0; }
-      .feature-grid,
-      .why-grid,
-      .testimonials-grid,
-      .faq-grid { grid-template-columns: 1fr; }
+      .testimonials-asymmetric { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero { min-height: auto; }
-      .hero-meta { font-size: 0.95rem; }
-      .btn { min-height: 52px; }
-      .hero-product,
-      .earbud-3d { animation: none; }
-      .ring,
-      .case-lid,
-      .battery-level,
-      .final-product { animation: none; }
+      .nav-search { display: none; }
+      .product-subnav-title { font-size: 1rem; }
+      .product-subnav-links { gap: 14px; font-size: 0.9rem; }
+      .product-subnav-links .buy-pill { min-height: 34px; padding: 8px 15px; }
+      #caracteristicas, #sonido, #anc, #bateria, #comprar { scroll-margin-top: 164px; }
+      .hero-video-bottom { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 20px 28px; }
+      .hero-video-cta { width: 100%; justify-content: space-between; }
+      .ring, .final-product { animation: none; }
+      .anc-stats { flex-direction: column; gap: 16px; }
+      .anc-stat-divider { display: none; }
+      .anc-wave-box { height: 120px; }
+      .footer-mega .footer-section h3 { font-size: 1.35rem; }
+      .footer-mega-grid { grid-template-columns: 1fr; }
+      .footer-mega-grid .footer-section { border-right: 0; border-bottom: 1px solid #d1d5db; }
+      .footer-mega-grid .footer-section:last-child { border-bottom: 0; }
+      .footer-meta { align-items: flex-start; }
+      .footer-legal-links { justify-content: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
       html { scroll-behavior: auto; }
     }
+
+    /* === FOOTER === */
+    .footer-mega {
+      background: #f3f4f6;
+      color: #0f172a;
+      padding: 24px 0 18px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .footer-mega .footer-section h3 {
+      color: #0f172a;
+      font-size: 1.75rem;
+      margin-bottom: 14px;
+    }
+    .footer-mega .footer-section ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .footer-mega .footer-section a {
+      color: #1f2937;
+      text-decoration: none;
+    }
+    .footer-mega .footer-section a:hover {
+      color: var(--primary);
+    }
+    .footer-mega-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid #d1d5db;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .footer-mega-grid .footer-section {
+      padding: 22px 24px 26px;
+      border-right: 1px solid #d1d5db;
+    }
+    .footer-mega-grid .footer-section:last-child {
+      border-right: 0;
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+    }
+    .footer-mega .footer-bottom {
+      margin: 0;
+      color: #4b5563;
+      text-align: left;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .footer-legal-links a {
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .footer-legal-links a:hover {
+      color: var(--primary);
+    }
   </style>
+
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
@@ -800,293 +1419,665 @@
       "name": "Lixby",
       "url": "https://lixby.es",
       "logo": "https://lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
+      "sameAs": ["https://github.com/lixby"]
     }
   </script>
 </head>
 <body>
 
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <header class="top-nav">
-<div class="container">
-      <div class="brand">Lixby</div>
-      <nav class="nav-links">
-        <a href="#caracteristicas">Cechy</a>
-        <a href="#sonido">Dźwięk</a>
-        <a href="#anc">ANC</a>
-        <a href="#bateria">Bateria</a>
-        <a href="#comprar">Kup</a>
+<div id="scroll-progress"></div>
+
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
+        <a href="/pl/shop/" class="nav-link">Sklep</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
+        <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/pl/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
+          >
+        </form>
+        <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
+        </a>
+        <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Sklep</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkty</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Wsparcie</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Koszyk</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
-    <section class="panel" aria-labelledby="hero-title">
-      <div class="container hero">
-        <div class="reveal">
-          <span class="section-label">Produkt</span>
-          <h1 id="hero-title">Słuchaj tego, co ważne.<br>Ignoruj wszystko inne.</h1>
-          <p>Zaprojektowane, aby zanurzyć Cię w muzyce jak nigdy dotąd.</p>
-          <div class="hero-meta">
-            <span>Inteligentna redukcja szumów</span>
-            <span>Immersyjny dźwięk przestrzenny</span>
+
+    <!-- HERO VIDEO -->
+    <section aria-labelledby="hero-title">
+      <div class="hero-video-wrap">
+        <video autoplay muted loop playsinline preload="metadata" poster="/images/lixbuds-hero.jpg">
+          <source src="/pl/media/lixbuds-loop.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-bottom">
+          <div class="hero-video-copy">
+            <span class="hero-video-label">LixBuds One</span>
+            <h1 class="hero-video-title" id="hero-title">posłuchaj tego<br>nic innego się nie liczy.</h1>
+            <p class="hero-video-sub">inteligentna redukcja szumów · dźwięk przestrzenny · ipx5</p>
           </div>
-          <div class="price">99€</div>
-          <div class="cta-row">
-            <a href="/pl/kup-sluchawki/lixbuds-one/" class="btn btn-dark" aria-label="Kup teraz LixBuds One za 99 euro">Kup teraz — 99€</a>
-            <a href="#caracteristicas" class="btn btn-light">Zobacz więcej</a>
+          <div class="hero-video-cta">
+            <span class="hero-video-price">99,00€</span>
+            <a href="/pl/buy-headphones/lixbuds-one/" class="hero-buy-btn" aria-label="kup LixBuds One za 99,00 euro">Kup</a>
           </div>
-        </div>
-        <div class="hero-media reveal parallax" data-speed="0.12">
-          <video autoplay muted loop playsinline preload="metadata" poster="images/lixbuds-hero.jpg">
-            <source src="media/lixbuds-loop.mp4" type="video/mp4">
-          </video>
-          <img class="hero-product" src="images/lixbuds-product.jpg" alt="Bezprzewodowe słuchawki LixBuds One z redukcją szumów" loading="lazy">
-          <div class="hero-orbs"></div>
         </div>
       </div>
     </section>
 
-    <section id="caracteristicas" class="panel" aria-labelledby="features-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Premiumowa technologia</span>
-          <h2 id="features-title">Najważniejsze cechy</h2>
-          <p>Zaawansowana technologia w minimalistycznym designie i profesjonalna wydajność na co dzień.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Poczuj każdą nutę, jakbyś był tam</h3><p>Dźwięk przestrzenny, który otacza słuchacza.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">🔇</div><h3>Absolutna cisza, nawet w środku chaosu</h3><p>Inteligentne ANC, które wycisza hałas.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">👂</div><h3>Słuchaj świata, kiedy Ty decydujesz</h3><p>Adaptacyjna i naturalna przezroczystość.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">👆</div><h3>Pełna kontrola jednym dotykiem</h3><p>Precyzyjne gesty, bez patrzenia.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">🔋</div><h3>Energia na cały dzień</h3><p>Do 8 godzin bez przerwy.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">💧</div><h3>Gotowe na pot, deszcz i ulicę</h3><p>Prawdziwa ochrona IPX5.</p></article>
-          <article class="feature-card reveal"><div class="feature-icon">📦</div><h3>Ładowanie bez kabli, bez wysiłku</h3><p>Premiumowe etui bezprzewodowe.</p></article>
+    <!-- CARACTERÍSTICAS (sticky crossfade) -->
+    <section id="caracteristicas">
+      <div class="fs-outer">
+        <div class="fs-sticky">
+
+          <div class="fs-slide fs-slide--center" data-index="0">
+            <div class="fs-bg-img" style="background-image:url('/images/lixbuds-one-white.png');"></div>
+            <div class="container fs-center-content">
+              <span class="fs-label">dźwięk przestrzenny</span>
+              <h2 class="fs-h fs-h--xl">poczuj każdą nutę<br>jakbyś tam był.</h2>
+              <p class="fs-p">Zaawansowana architektura akustyczna z głębokim basem i profesjonalną sceną dźwiękową.</p>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--split" data-index="1">
+            <div class="fs-split-text">
+              <span class="fs-label">redukcja szumów</span>
+              <h2 class="fs-h">absolutna cisza,<br>nawet w środku<br>chaosu.</h2>
+              <p class="fs-p">Inteligentny ANC, który wykrywa i eliminuje hałas w czasie rzeczywistym.</p>
+            </div>
+            <div class="fs-split-img">
+              <img src="/images/lixbuds-one-white.png" alt="i LixBuds One">
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--split fs-slide--reverse" data-index="2">
+            <div class="fs-split-img">
+              <img src="/images/lixbuds-one-white.png" alt="przezroczystość LixBuds One">
+            </div>
+            <div class="fs-split-text">
+              <span class="fs-label">tryb przezroczystości</span>
+              <h2 class="fs-h">słuchać świata<br>kiedy zdecydujesz.</h2>
+              <p class="fs-p">Adaptacyjna przezroczystość, która zapewnia łączność bez zdejmowania.</p>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--center" data-index="3">
+            <div class="container fs-center-content">
+              <span class="fs-label">sterowanie dotykowe</span>
+              <h2 class="fs-h fs-h--giant">pełna kontrola<br>dotykiem.</h2>
+              <p class="fs-p">Precyzyjne gesty dotyczące muzyki, połączeń i innych. bez patrzenia.</p>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--stats" data-index="4">
+            <div class="fs-bg-img" style="background-image:url('/images/lixbuds-one-white.png');"></div>
+            <div class="container fs-stats-content">
+              <div class="fs-stats-row">
+                <div class="fs-stat">
+                  <span class="fs-stat-num">8h</span>
+                  <span class="fs-stat-lbl">z włączonym anc</span>
+                </div>
+                <div class="fs-stat">
+                  <span class="fs-stat-num">30h</span>
+                  <span class="fs-stat-lbl">z etui</span>
+                </div>
+              </div>
+              <h2 class="fs-h fs-h--xl">energia to<br>towarzyszyć Twojemu dniu.</h2>
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--split" data-index="5">
+            <div class="fs-split-text">
+              <span class="fs-label">wytrzymałość</span>
+              <h2 class="fs-h fs-h--lg">IPX5.<br>deszcz, pot,<br>ulica.</h2>
+              <p class="fs-p">Prawdziwa certyfikacja do codziennego użytku, niezależnie od warunków.</p>
+            </div>
+            <div class="fs-split-img">
+              <img src="/images/lixbuds-one-white.png" alt="IPX5 LixBuds One">
+            </div>
+          </div>
+
+          <div class="fs-slide fs-slide--center" data-index="6">
+            <div class="container fs-center-content">
+              <span class="fs-label">etui ładujące</span>
+              <h2 class="fs-h fs-h--xl">ładowanie bezprzewodowe,<br>łatwy.</h2>
+              <div class="fs-showcase">
+                <img src="/images/lixbuds-one-white.png" alt="sprawa LixBuds One">
+              </div>
+              <p class="fs-p">Bezprzewodowe ładowanie Qi, wskaźnik LED i kompaktowa konstrukcja.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="sonido" class="panel" aria-labelledby="sound-title">
+    <!-- SONIDO -->
+    <section id="sonido" class="panel" style="background:#ffffff; padding:12vh 0;">
       <div class="container">
-        <div class="media-block">
-          <div class="media-box sound-waves reveal parallax" data-speed="0.08">
-            <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-hero.jpg">
-              <source src="media/lixbuds-listening.mp4" type="video/mp4">
+        <div class="section-head reveal" style="margin-bottom:60px;">
+          <span class="section-label">dźwięk</span>
+          <h2 style="font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-0.04em;line-height:1.04;">doświadczenie dźwiękowe<br>nadzwyczajny.</h2>
+          <p style="max-width:600px;margin-top:12px;">Zaprojektowany, aby zapewnić głęboki, czysty i wciągający dźwięk. Każdą piosenkę słychać jak nigdy dotąd.</p>
+        </div>
+
+        <div class="snd-pillars reveal">
+          <div class="snd-pillar">
+            <div class="snd-pillar-img">
+              <img src="/images/lixbuds-one-white.png" alt="poważny LixBuds One">
+              <span class="snd-pillar-badge">poważny</span>
+            </div>
+            <h3>mocniejszy bas.</h3>
+            <p>40-milimetrowy przetwornik zaprojektowany do odtwarzania niskich częstotliwości z precyzją i prawdziwą głębią.</p>
+          </div>
+          <div class="snd-pillar">
+            <div class="snd-pillar-img snd-pillar-img--tall">
+              <img src="/images/lixbuds-one-white.png" alt="głosy LixBuds One">
+              <span class="snd-pillar-badge">głoska bezdźwięczna</span>
+            </div>
+            <h3>wyraźniejsze głosy.</h3>
+            <p>Średnie tony są reprodukowane wyraźnie, dzięki czemu każdy tekst i każdy głos słychać z całkowitą przejrzystością.</p>
+          </div>
+          <div class="snd-pillar">
+            <div class="snd-pillar-img">
+              <img src="/images/lixbuds-one-white.png" alt="dźwięk przestrzenny LixBuds One">
+              <span class="snd-pillar-badge">przestrzeń</span>
+            </div>
+            <h3>szersza scena.</h3>
+            <p>Przestrzenny dźwięk umieszcza każdy instrument na swoim miejscu, tworząc wrażenie zanurzenia w promieniu 360°.</p>
+          </div>
+        </div>
+
+        <div class="snd-bottom-inner reveal" style="margin-top:64px;">
+          <div>
+            <div class="snd-wave-visual" aria-hidden="true">
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+              <div class="snd-wave-bar"></div><div class="snd-wave-bar"></div><div class="snd-wave-bar"></div>
+            </div>
+            <div class="snd-freq-row">
+              <span>20 Hz</span><span>1 kHz</span><span>20 kHz</span>
+            </div>
+            <p style="font-size:0.78rem;color:var(--muted);margin-top:6px;">Pełny zakres częstotliwości — od 20 Hz do 20 kHz</p>
+          </div>
+          <div class="snd-specs">
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">40mm</span>
+              <span class="snd-spec-lbl">precyzyjny sterownik</span>
+            </div>
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">20–20k</span>
+              <span class="snd-spec-lbl">częstotliwość Hz</span>
+            </div>
+            <div class="snd-spec-item">
+              <span class="snd-spec-num">32Ω</span>
+              <span class="snd-spec-lbl">impedancja</span>
+            </div>
+            <button class="btn btn-light" id="audioToggle" aria-pressed="false" style="margin-top:8px;">posłuchaj demonstracji</button>
+            <audio id="audioDemo" preload="none" src="media/LixBuds-demo.mp3"></audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANC -->
+    <section id="anc" class="anc-section" aria-labelledby="anc-title">
+      <div class="container" style="padding:12vh 0;">
+        <span class="anc-label">aktywna redukcja szumów</span>
+        <h2 id="anc-title" class="anc-title">świat zewnętrzny znika.</h2>
+        <p class="anc-sub">4 precyzyjne mikrofony eliminują hałas, zanim go usłyszysz.</p>
+
+        <div class="anc-wave-box" id="ancDemo">
+          <div class="anc-waves anc-waves--noise" id="ancWavesNoise"></div>
+          <div class="anc-waves anc-waves--calm" id="ancWavesCalm"></div>
+          <button class="anc-toggle-btn" id="toggleAnc" aria-pressed="false">
+            <span class="anc-toggle-dot"></span>
+            ANC
+          </button>
+        </div>
+
+        <div class="anc-stats">
+          <div class="anc-stat">
+            <span class="anc-stat-value">4</span>
+            <span class="anc-stat-unit">mikrofony</span>
+          </div>
+          <div class="anc-stat-divider"></div>
+          <div class="anc-stat">
+            <span class="anc-stat-value">40dB</span>
+            <span class="anc-stat-unit">zmniejszenie</span>
+          </div>
+          <div class="anc-stat-divider"></div>
+          <div class="anc-stat">
+            <span class="anc-stat-value">adaptacyjny</span>
+            <span class="anc-stat-unit">w czasie rzeczywistym</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARATIVA -->
+    <section class="panel" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center;">
+          <span class="section-label">porównawczy</span>
+          <h2 id="compare-title">LixBuds One a zwykłe słuchawki</h2>
+          <p>Podobna cena, inne funkcje.</p>
+        </div>
+        <div class="compare-table-wrap reveal">
+          <div class="compare-header">
+            <div class="compare-header-col compare-header-col--lixby">
+              <img class="compare-header-img" src="../../images/lixbuds-one-white.png" alt="LixBuds One">
+              <div class="compare-header-name">LixBuds One</div>
+              <a href="/pl/buy-headphones/lixbuds-one/" class="compare-header-btn">Kup</a>
+            </div>
+            <div class="compare-header-divider"></div>
+            <div class="compare-header-col compare-header-col--other">
+              <span class="compare-header-icon">🎧</span>
+              <div class="compare-header-name">ogólny</div>
+            </div>
+          </div>
+          <table class="compare-table">
+            <thead hidden><tr><th>funkcja</th><th>LixBuds One</th><th>generyczny konkurent</th></tr></thead>
+            <tbody>
+              <tr>
+                <th>cena</th>
+                <td class="col-lixby">99,00€</td>
+                <td class="col-other">99–150 €</td>
+              </tr>
+              <tr>
+                <th>redukcja szumów</th>
+                <td class="col-lixby">adaptacyjny inteligentny anc</td>
+                <td class="col-other">stała podstawowa an</td>
+              </tr>
+              <tr>
+                <th>dźwięk przestrzenny</th>
+                <td class="col-lixby"><span class="compare-check">✓</span> Wciągające 360°</td>
+                <td class="col-other"><span class="compare-cross">✗</span> niedostępne</td>
+              </tr>
+              <tr>
+                <th>tryb przezroczystości</th>
+                <td class="col-lixby"><span class="compare-check">✓</span> naturalny adaptacyjny</td>
+                <td class="col-other">podstawowe lub niedostępne</td>
+              </tr>
+              <tr>
+                <th>wytrzymałość</th>
+                <td class="col-lixby">ipx5 — deszcz i pot</td>
+                <td class="col-other">ipx4 — tylko powitanie</td>
+              </tr>
+              <tr>
+                <th>bateria słuchawek</th>
+                <td class="col-lixby">8h z aktywnym anc</td>
+                <td class="col-other">4–5 godzin z aktywnym anc</td>
+              </tr>
+              <tr>
+                <th>cały akumulator wraz z etui</th>
+                <td class="col-lixby">30h</td>
+                <td class="col-other">15–20h</td>
+              </tr>
+              <tr>
+                <th>ładowanie bezprzewodowe</th>
+                <td class="col-lixby"><span class="compare-check">✓</span> qi w zestawie</td>
+                <td class="col-other"><span class="compare-cross">✗</span> tylko USB-C</td>
+              </tr>
+              <tr>
+                <th>Driver</th>
+                <td class="col-lixby">Precyzja 40 mm</td>
+                <td class="col-other">Typowe 6–10 mm</td>
+              </tr>
+              <tr>
+                <th>Gwarancja</th>
+                <td class="col-lixby">Dostępna 3-letnia gwarancja prawna + LixSafe</td>
+                <td class="col-other">1 rok</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- AJUSTE Y CONFORT -->
+    <section class="fit-section" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="fit-hero">
+          <img class="fit-hero-img" src="/images/lixbuds-one-white.png" alt="LixBuds One" loading="lazy">
+          <div class="fit-hero-tag">ergonomiczne dopasowanie miękki silikon 3 rozmiary w zestawie</div>
+        </div>
+        <div class="fit-cards">
+          <div class="fit-card">
+            <div class="fit-card-title">bezpieczne dopasowanie</div>
+            <p class="fit-card-text">Elastyczne skrzydełko podtrzymujące, które dopasowuje się do kształtu ucha, dzięki czemu nie spadają nawet przy gwałtownym ruchu.</p>
+          </div>
+          <div class="fit-card">
+            <div class="fit-card-title">światło</div>
+            <p class="fit-card-text">tylko 4,8 g na słuchawkę. zapomnij, że nosiłeś je od pierwszej minuty.</p>
+          </div>
+          <div class="fit-card">
+            <div class="fit-card-title">komfortowe godziny</div>
+            <p class="fit-card-text">Hipoalergiczne podkładki silikonowe w trzech rozmiarach dla spersonalizowanego, bezuciskowego dopasowania.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGUA + BATERÍA -->
+    <section class="wb-section" aria-labelledby="water-title">
+      <div class="container">
+        <div class="wb-block">
+          <div class="wb-ipx">IPX5</div>
+          <p class="wb-sub">deszcz, pot, ulica. bez zmartwień.</p>
+          <div class="wb-icons">
+            <div class="wb-icon-item"><span>💧</span><span>deszcz</span></div>
+            <div class="wb-icon-item"><span>💦</span><span>pot</span></div>
+            <div class="wb-icon-item"><span>🌫️</span><span>pył</span></div>
+          </div>
+        </div>
+        <div id="bateria" class="wb-block">
+          <div class="wb-battery-main">8h</div>
+          <p class="wb-battery-sub">30h z walizką</p>
+          <div class="wb-bar"><div class="wb-bar-fill"></div></div>
+          <div class="wb-stats-row">
+            <span class="wb-stat"><strong>8h</strong> aktywny ank</span>
+            <span class="wb-stat"><strong>30h</strong> con estuche</span>
+            <span class="wb-stat"><strong>Qi</strong> ładowanie bezprzewodowe</span>
+          </div>
+          <div class="inline-cta" style="justify-content:center;">
+            <div class="price" style="margin:0;">99,00€</div>
+            <a href="/pl/buy-headphones/lixbuds-one/" class="btn btn-dark" aria-label="kup teraz LixBuds One za 99,00 euro">kup teraz — 99,00 €</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTUCHE -->
+    <section id="estuche" class="case-section" aria-labelledby="case-title">
+      <div class="container" style="padding:8vh 0;">
+        <div class="case-top">
+          <h2 id="case-title">sprawa, która zmienia wszystko.</h2>
+          <p>Kompaktowa konstrukcja z bezprzewodowym ładowaniem i autonomią przez wiele dni.</p>
+        </div>
+        <div class="case-grid">
+          <div class="case-video">
+            <video autoplay muted loop playsinline preload="none" poster="/images/lixbuds-one-white.png">
+              <source src="media/LixBuds-case.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="reveal">
-            <span class="section-label">Doświadczenie</span>
-            <h2 id="sound-title">Niezwykłe wrażenia dźwiękowe.</h2>
-            <p style="color:var(--muted);margin-top:12px;">LixBuds One zostały zaprojektowane, aby zapewnić głęboki, czysty i wciągający dźwięk. Dzięki zaawansowanej architekturze akustycznej każda piosenka brzmi z potężniejszym basem, wyraźniejszym wokalem i szerszą sceną dźwiękową.</p>
-            <p style="color:var(--muted);margin-top:16px;">Fale dźwiękowe i cząsteczki reagują na rytm, tworząc wciągające wrażenia.</p>
-            <div class="audio-demo">
-              <button class="btn btn-light" id="audioToggle" aria-pressed="false">Odsłuchaj demo</button>
-              <audio id="audioDemo" preload="none" src="media/lixbuds-demo.mp3"></audio>
+          <div class="case-features">
+            <div class="case-feature">
+              <div class="case-feature-value">Qi</div>
+              <div class="case-feature-desc">bezprzewodowe ładowanie bez kabli</div>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature-value">LED</div>
+              <div class="case-feature-desc">dokładny wskaźnik baterii</div>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature-value">kompaktowy</div>
+              <div class="case-feature-desc">zmieści się w każdej kieszeni</div>
+            </div>
+            <div class="case-cta">
+              <div class="price">99,00€</div>
+              <a href="/pl/buy-headphones/lixbuds-one/" class="btn btn-dark" aria-label="kup teraz LixBuds One za 99,00 euro">kup teraz — 99,00 €</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="anc" class="panel" aria-labelledby="anc-title">
-      <div class="container media-block">
-        <div class="noise-demo reveal" id="ancDemo">
-          <span class="section-label">Redukcja szumów</span>
-          <h3 id="anc-title">Skoncentruj się tylko na tym, co chcesz usłyszeć.</h3>
-          <p style="color:var(--muted);">Aktywna redukcja szumów wykorzystuje wewnętrzne i zewnętrzne mikrofony do wykrywania dźwięków otoczenia i eliminowania ich w czasie rzeczywistym.</p>
-          <div class="noise-city"></div>
-          <div class="toggle-row">
-            <button class="btn btn-dark" id="toggleAnc" aria-pressed="false">Włącz redukcję</button>
-            <button class="btn btn-light" id="toggleTransparency" aria-pressed="false">Tryb przezroczystości</button>
+    <!-- TESTIMONIOS -->
+    <section class="panel panel-light" aria-labelledby="testimonials-title">
+      <div class="container">
+        <h2 id="testimonials-title" class="section-title reveal" style="text-align:center;margin-bottom:20px;">co mówią ci, którzy ich używają.</h2>
+        <div class="testimonials-rating reveal">
+          <div class="testimonials-rating-score">4.8 / 5</div>
+          <div class="testimonials-rating-stars">★★★★★</div>
+          <div class="testimonials-rating-count">na podstawie 2400 recenzji</div>
+        </div>
+        <div class="testimonials-asymmetric reveal">
+          <div class="testimonial-featured">
+            <div class="testimonial-text">anc zmienił dla mnie metro. Mogę bez stresu pracować, słuchać podcastów, a nawet spać w autobusie. Nigdy bym do nich nie wróciła bez anulowania.</div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">María G.</span>
+              <span class="testimonial-tag">użytkownik · Madryt</span>
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
           </div>
-          <div class="inline-cta">
-            <div class="price">99€</div>
-            <a href="/pl/kup-sluchawki/lixbuds-one/" class="btn btn-dark" aria-label="Kup teraz LixBuds One za 99 euro">Kup teraz — 99€</a>
+          <div class="testimonial-side">
+            <div class="testimonial-card">
+              <div class="testimonial-text">Brzmi głęboko i wyraźnie. nie ma czego pozazdrościć modelom, które kosztują dwa razy więcej.</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">Diego L.</span>
+                <span class="testimonial-tag">sportowiec · barcelona</span>
+              </div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-text">bardzo wygodne do treningu. Etui zmieści się wszędzie, a bateria wytrzymuje cały tydzień.</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">Lucía P.</span>
+                <span class="testimonial-tag">podróżnik · Walencja</span>
+              </div>
+              <div class="testimonial-stars">★★★★☆</div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="panel panel-faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section-title reveal" style="text-align:center;margin-bottom:6px;">wszystko, co musisz wiedzieć.</h2>
+        <p class="section-subtitle reveal" style="text-align:center;margin-bottom:32px;">Szybkie odpowiedzi przed zakupem.</p>
+        <div class="faq-list faq reveal">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p1" aria-labelledby="faq-p1-label">
+              <span id="faq-p1-label">jaka jest polityka zwrotów?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p1" role="region" aria-labelledby="faq-p1-label">
+              <p class="faq-answer-text">Masz 14 dni kalendarzowych od otrzymania zamówienia na skorzystanie z przysługującego Ci prawa do odstąpienia od umowy bez podawania przyczyny.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p2" aria-labelledby="faq-p2-label">
+              <span id="faq-p2-label">Czy są kompatybilne z Androidem i iOS?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p2" role="region" aria-labelledby="faq-p2-label">
+              <p class="faq-answer-text">Tak, współpracują z obydwoma systemami i parują się w ciągu kilku sekund za pośrednictwem Bluetooth 6.0.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p3" aria-labelledby="faq-p3-label">
+              <span id="faq-p3-label">jak długo trwa wysyłka?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p3" role="region" aria-labelledby="faq-p3-label">
+              <p class="faq-answer-text">Szacowany standardowy czas dostawy na terenie Hiszpanii wynosi od 8 do 15 dni roboczych. wysyłka jest bezpłatna.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p4" aria-labelledby="faq-p4-label">
+              <span id="faq-p4-label">Czy LixBuds One są wodoodporne?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p4" role="region" aria-labelledby="faq-p4-label">
+              <p class="faq-answer-text">Tak, posiadają certyfikat IPX5, co czyni je odpornymi na pot, deszcz i zachlapania.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p5" aria-labelledby="faq-p5-label">
+              <span id="faq-p5-label">co zawiera LixSafe?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p5" role="region" aria-labelledby="faq-p5-label">
+              <p class="faq-answer-text">LixSafe obejmuje przypadkowe uszkodzenia przez 24 miesiące. LixSafe+ obejmuje tę ochronę i dodaje ochronę w przypadku utraty lub kradzieży jednego lub obu słuchawek, z szybką wymianą bez dodatkowych kosztów w przypadku zdarzeń objętych ubezpieczeniem. <a class="lixsafe-inline-link" href="/pl/lixsafe/">Sprawdź plany i zasięg LixSafe.</a></p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-p6" aria-labelledby="faq-p6-label">
+              <span id="faq-p6-label">Jak ładowane są LixBuds One?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-p6" role="region" aria-labelledby="faq-p6-label">
+              <p class="faq-answer-text">Ładują się automatycznie po umieszczeniu w etui. Etui ładuje się przez USB-C lub dowolną bezprzewodową bazę ładującą Qi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPRAR -->
+    <section id="comprar" class="panel panel-final" aria-labelledby="buy-title">
+      <div class="container">
         <div class="reveal">
-          <div class="spatial-stage">
-            <div class="ring"></div>
-            <div class="ring r2"></div>
-            <div class="head"></div>
+          <div class="final-stats">
+            <div class="final-stat">
+              <div class="final-stat-value">8h</div>
+              <div class="final-stat-label">i akumulator</div>
+            </div>
+            <div class="final-stat">
+              <div class="final-stat-value">40mm</div>
+              <div class="final-stat-label">Driver</div>
+            </div>
+            <div class="final-stat">
+              <div class="final-stat-value">IPX5</div>
+              <div class="final-stat-label">wytrzymałość</div>
+            </div>
+            <div class="final-stat">
+              <div class="final-stat-value">30h</div>
+              <div class="final-stat-label">z etui</div>
+            </div>
           </div>
-          <p style="margin-top:16px;color:var(--muted);">Immersyjny dźwięk przestrzenny. Poczuj dźwięk w trzech wymiarach, jakbyś był wewnątrz muzyki.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="compare-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Porównanie</span>
-          <h2 id="compare-title">Posłuchaj kontrastu</h2>
-          <p>Dwa światy, realna różnica: hałas bez kontroli vs. inteligentna cisza.</p>
-        </div>
-        <div class="comparison-grid">
-          <div class="noise-demo reveal">
-            <span class="label">Bez LixBuds</span>
-            <h3>Ciągły chaos dźwiękowy</h3>
-            <p style="color:var(--muted);">Wszystko konkuruje o Twoją uwagę.</p>
-            <div class="noise-city"></div>
-          </div>
-          <div class="noise-demo anc-on clean reveal">
-            <span class="label">Z LixBuds</span>
-            <h3>Skoncentrowana cisza</h3>
-            <p style="color:var(--muted);">Twoja muzyka, bez przerw.</p>
-            <div class="noise-city"></div>
+          <div class="final-hero">
+            <img class="final-hero-img" src="/images/lixbuds-one-white.png" alt="LixBuds One" loading="lazy">
+            <h2 id="buy-title" class="final-hero-title">LixBuds One.</h2>
+            <p class="final-hero-sub">posłuchaj tego, nic innego się nie liczy.</p>
+            <div class="final-cta-row">
+              <span class="final-price">99,00€</span>
+              <a href="/pl/buy-headphones/lixbuds-one/" class="btn-final" aria-label="kup teraz LixBuds One za 99,00 euro">Kup teraz</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="panel" aria-labelledby="fit-title">
-      <div class="container media-block">
-        <div class="fit-visual reveal parallax" data-speed="0.06">
-          <img class="earbud-3d" src="images/lixbuds-product.jpg" alt="Model 3D słuchawek LixBuds One" loading="lazy">
-        </div>
-        <div class="reveal">
-          <span class="section-label">Dopasowanie i wygoda</span>
-          <h2 id="fit-title" style="font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:-.04em;">Ergonomiczny i lekki design</h2>
-          <p style="color:var(--muted);margin-top:8px;">Silikonowe wkładki, pewne dopasowanie i miękkie materiały do wielogodzinnego użytkowania.</p>
-          <div class="touch-demo" style="margin-top:16px;">
-            <div class="finger"></div>
-            <ul class="touch-actions" id="touchActions">
-              <li class="active">Odtwarzanie muzyki</li>
-              <li>Pauza</li>
-              <li>Zmiana utworu</li>
-              <li>Odbieranie połączeń</li>
-              <li>Aktywacja redukcji</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="water-title">
-      <div class="container media-block">
-        <div class="water-demo reveal">
-          <div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div>
-          <div style="position:absolute;bottom:16px;left:16px;right:16px;">
-            <span class="section-label">Wodoodporność</span>
-            <h3 id="water-title">Certyfikat IPX5</h3>
-            <p style="color:var(--muted);">Odporność na pot i lekki deszcz. Działają podczas padającego deszczu.</p>
-          </div>
-        </div>
-        <div id="bateria" class="battery-demo reveal" aria-labelledby="battery-title">
-          <span class="section-label">Bateria</span>
-          <h2 id="battery-title" style="font-size:clamp(1.5rem,3.5vw,2.3rem);letter-spacing:-.03em;">Inteligentna energia</h2>
-          <p style="color:var(--muted);margin:6px 0 14px;">Do 8 godzin na jednym ładowaniu. Do 30 godzin z etui.</p>
-          <div class="battery-body"><div class="battery-level"></div></div>
-          <div class="case-anim">
-            <div class="case-shell"><div class="case-lid"></div></div>
-          </div>
-          <div class="inline-cta">
-            <div class="price">99€</div>
-            <a href="/pl/kup-sluchawki/lixbuds-one/" class="btn btn-dark" aria-label="Kup teraz LixBuds One za 99 euro">Kup teraz — 99€</a>
-          </div>
-          <p style="color:var(--muted);margin-top:10px;">Etui do ładowania bezprzewodowego, wskaźnik LED i kompaktowy design.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="case-title">
-      <div class="container media-block">
-        <div class="media-box reveal parallax" data-speed="0.1">
-          <video autoplay muted loop playsinline preload="none" poster="images/lixbuds-product.jpg">
-            <source src="media/lixbuds-case.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="reveal">
-          <span class="section-label">Etui ładujące</span>
-          <h2 id="case-title">Totalny minimalizm, maksymalna kontrola</h2>
-          <p style="color:var(--muted);margin-top:12px;">Ładowanie bezprzewodowe, precyzyjny wskaźnik LED i kompaktowy design, który można zabrać wszędzie.</p>
-          <p style="color:var(--muted);margin-top:12px;">Etui obraca się powoli w 3D, aby pokazać każdy szczegół.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="why-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Dlaczego LixBuds One</span>
-          <h2 id="why-title">Więcej niż słuchawki, lepsza rutyna</h2>
-          <p>Zaprojektowane, aby poprawić Twój dzień dzięki wygodzie, skupieniu i premiumowemu dźwiękowi.</p>
-        </div>
-        <div class="why-grid">
-          <div class="why-card reveal"><span>✨</span><h3>Otaczający dźwięk</h3><p>Szeroka scena, która przenosi do utworu.</p></div>
-          <div class="why-card reveal"><span>🧠</span><h3>Prawdziwe skupienie</h3><p>Inteligentne ANC eliminujące rozpraszacze.</p></div>
-          <div class="why-card reveal"><span>⚡</span><h3>Gotowe natychmiast</h3><p>Szybkie parowanie i precyzyjne sterowanie dotykowe.</p></div>
-          <div class="why-card reveal"><span>🎒</span><h3>Zawsze przy Tobie</h3><p>Kompaktowe etui i ładowanie bezprzewodowe.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="testimonials-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Opinie</span>
-          <h2 id="testimonials-title">Prawdziwe opinie, prawdziwa wartość</h2>
-          <p>W przedziale 99€ to te, które ludzie kupują ponownie.</p>
-        </div>
-        <div class="testimonials-grid">
-          <div class="testimonial-card reveal">
-            <div class="stars">★★★★★</div>
-            <strong>Maria G.</strong>
-            <p>"ANC zmieniło moje dojazdy metrem. Mogę pracować bez stresu."</p>
-          </div>
-          <div class="testimonial-card reveal">
-            <div class="stars">★★★★★</div>
-            <strong>Diego L.</strong>
-            <p>"Brzmi głęboko i czysto. Nie ma czego zazdrościć droższym modelom."</p>
-          </div>
-          <div class="testimonial-card reveal">
-            <div class="stars">★★★★☆</div>
-            <strong>Lucia P.</strong>
-            <p>"Bardzo wygodne do treningu, a etui jest kompaktowe."</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="faq-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">FAQ</span>
-          <h2 id="faq-title">Najczęstsze pytania</h2>
-          <p>Szybkie odpowiedzi przed zakupem.</p>
-        </div>
-        <div class="faq-grid">
-          <div class="faq-item reveal">
-            <button type="button" aria-expanded="false">Jaka jest polityka zwrotów?</button>
-            <div class="faq-answer">Masz 14 dni na zwrot, jeśli nie są dla Ciebie, pod warunkiem, że są w oryginalnym stanie.</div>
-          </div>
-          <div class="faq-item reveal">
-            <button type="button" aria-expanded="false">Czy są kompatybilne z Androidem i iOS?</button>
-            <div class="faq-answer">Tak, działają z obydwoma systemami i parują się w kilka sekund przez Bluetooth.</div>
-          </div>
-          <div class="faq-item reveal">
-            <button type="button" aria-expanded="false">Jak długo trwa wysyłka?</button>
-            <div class="faq-answer">Standardowa wysyłka trwa od 24 do 72 godzin roboczych w Hiszpanii.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="comprar" class="panel" aria-labelledby="buy-title">
-      <div class="container">
-        <div class="floating-final reveal">
-          <img class="final-product parallax" data-speed="0.05" src="images/lixbuds-product.jpg" alt="Latające słuchawki LixBuds One z etui" loading="lazy">
-          <h2 id="buy-title" style="font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1.02;">LixBuds One<br>Wszystko, co potrzebujesz usłyszeć.</h2>
-          <a href="/pl/kup-sluchawki/lixbuds-one/" class="btn btn-dark" style="margin-top:18px;font-size:1.05rem;padding:14px 28px;" aria-label="Kup teraz LixBuds One za 99 euro">Kup teraz — 99€</a>
-
-        </div>
-      </div>
-    </section>
   </main>
 
   <script>
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1095,12 +2086,7 @@
     }, { threshold: 0.16 });
     reveals.forEach((el) => observer.observe(el));
 
-    const root = document.documentElement;
-    window.addEventListener('mousemove', (e) => {
-      root.style.setProperty('--x', `${e.clientX}px`);
-      root.style.setProperty('--y', `${e.clientY}px`);
-    });
-
+    // Parallax
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const parallaxEls = document.querySelectorAll('.parallax');
     if (!reduceMotion.matches) {
@@ -1121,111 +2107,290 @@
       handleParallax();
     }
 
-    const progress = document.querySelector('.scroll-progress');
-    const updateProgress = () => {
-      const h = document.documentElement;
-      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-      progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
+    // Nav hide on scroll
+    const navHeader = document.getElementById('nav');
+    const updateNavUI = () => {
+      navHeader.classList.toggle('nav-scrolled', document.documentElement.scrollTop > 24);
     };
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+    window.addEventListener('scroll', updateNavUI, { passive: true });
+    updateNavUI();
 
-    const ancDemo = document.getElementById('ancDemo');
-    const toggleAnc = document.getElementById('toggleAnc');
-    const toggleTransparency = document.getElementById('toggleTransparency');
-
-    toggleAnc.addEventListener('click', () => {
-      ancDemo.classList.toggle('anc-on');
-      const isOn = ancDemo.classList.contains('anc-on');
-      toggleAnc.textContent = ancDemo.classList.contains('anc-on') ? 'ANC włączone' : 'Włącz redukcję';
-      toggleTransparency.textContent = 'Tryb przezroczystości';
-      toggleAnc.setAttribute('aria-pressed', String(isOn));
-      toggleTransparency.setAttribute('aria-pressed', 'false');
-    });
-
-    toggleTransparency.addEventListener('click', () => {
-      ancDemo.classList.remove('anc-on');
-      toggleAnc.textContent = 'Włącz redukcję';
-      toggleTransparency.textContent = 'Przezroczystość aktywna';
-      toggleAnc.setAttribute('aria-pressed', 'false');
-      toggleTransparency.setAttribute('aria-pressed', 'true');
-    });
-
+    // Wave bars
+    function initWaves(id, count) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      for (let i = 0; i < count; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'anc-wave';
+        const h = 10 + Math.random() * 110;
+        bar.style.setProperty('--h', `${h}px`);
+        bar.style.animationDelay = `${Math.random() * 0.3}s`;
+        el.appendChild(bar);
+      }
+    }
     if (!reduceMotion.matches) {
-      const touchItems = Array.from(document.querySelectorAll('#touchActions li'));
-      let touchIndex = 0;
-      setInterval(() => {
-        touchItems.forEach((li) => li.classList.remove('active'));
-        touchItems[touchIndex].classList.add('active');
-        touchIndex = (touchIndex + 1) % touchItems.length;
-      }, 1600);
+      initWaves('ancWavesNoise', 40);
+      initWaves('ancWavesCalm', 40);
     }
 
+    // ANC toggle
+    const ancDemo = document.getElementById('ancDemo');
+    const toggleAnc = document.getElementById('toggleAnc');
+    if (toggleAnc) {
+      toggleAnc.addEventListener('click', () => {
+        const isOn = ancDemo.classList.toggle('anc-demo-on');
+        toggleAnc.setAttribute('aria-pressed', String(isOn));
+      });
+    }
+
+    // Audio demo
     const audioToggle = document.getElementById('audioToggle');
     const audioDemo = document.getElementById('audioDemo');
     if (audioToggle && audioDemo) {
       audioToggle.addEventListener('click', () => {
         if (audioDemo.paused) {
           audioDemo.play();
-          audioToggle.textContent = 'Wstrzymaj';
+          audioToggle.textContent = 'pauza';
           audioToggle.setAttribute('aria-pressed', 'true');
         } else {
           audioDemo.pause();
-          audioToggle.textContent = 'Odsłuchaj demo';
+          audioToggle.textContent = 'posłuchaj demonstracji';
           audioToggle.setAttribute('aria-pressed', 'false');
         }
       });
       audioDemo.addEventListener('ended', () => {
-        audioToggle.textContent = 'Odsłuchaj demo';
+        audioToggle.textContent = 'posłuchaj demonstracji';
         audioToggle.setAttribute('aria-pressed', 'false');
       });
     }
 
-    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    // Subnav active link
+    const navLinks = Array.from(document.querySelectorAll('.product-subnav-links a'));
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         navLinks.forEach((link) => link.classList.remove('active'));
         const id = entry.target.getAttribute('id');
-        const active = navLinks.find((link) => link.getAttribute('href') === `#${id}`);
+        const active = navLinks.find((link) => link.getAttribute('href').endsWith(`#${id}`));
         if (active) active.classList.add('active');
       });
     }, { threshold: 0.55 });
-
     navLinks.forEach((link) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const hash = link.getAttribute('href').split('#')[1];
+      const target = hash ? document.getElementById(hash) : null;
       if (target) sectionObserver.observe(target);
     });
 
-    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
-    faqItems.forEach((item) => {
-      const btn = item.querySelector('button');
-      if (!btn) return;
+    // FAQ accordion
+    const faqButtons = Array.from(document.querySelectorAll('.faq .faq-question'));
+    faqButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const isOpen = item.hasAttribute('open');
-        faqItems.forEach((el) => {
-          el.removeAttribute('open');
-          const button = el.querySelector('button');
-          if (button) button.setAttribute('aria-expanded', 'false');
+        const item = btn.closest('.faq-item');
+        const answer = btn.nextElementSibling;
+        const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+        faqButtons.forEach((b) => {
+          const it = b.closest('.faq-item');
+          b.setAttribute('aria-expanded', 'false');
+          if (it) it.classList.remove('open');
+          const a = b.nextElementSibling;
+          if (a) a.style.maxHeight = '0px';
         });
-        if (!isOpen) {
-          item.setAttribute('open', '');
+        if (!wasOpen && answer) {
           btn.setAttribute('aria-expanded', 'true');
+          item.classList.add('open');
+          answer.style.maxHeight = '0px';
+          requestAnimationFrame(() => { answer.style.maxHeight = answer.scrollHeight + 'px'; });
         }
       });
     });
 
+    // Mobile: pause videos
     const mobileMedia = window.matchMedia('(max-width: 640px)');
     const handleMobileMedia = (e) => {
       if (e.matches) {
-        document.querySelectorAll('video').forEach((video) => {
-          video.pause();
-          video.removeAttribute('autoplay');
-        });
+        document.querySelectorAll('video').forEach((v) => { v.pause(); v.removeAttribute('autoplay'); });
       }
     };
     handleMobileMedia(mobileMedia);
     mobileMedia.addEventListener('change', handleMobileMedia);
+
+    // Features sticky crossfade
+    const fsOuter = document.querySelector('.fs-outer');
+    const fsSlides = Array.from(document.querySelectorAll('.fs-slide'));
+    const FS_COUNT = fsSlides.length;
+    let fsActive = -1;
+    function updateFeatureScroll() {
+      if (!fsOuter) return;
+      const rect = fsOuter.getBoundingClientRect();
+      const totalScroll = fsOuter.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, Math.min(totalScroll, -rect.top));
+      const progress = scrolled / totalScroll;
+      const activeIndex = Math.min(FS_COUNT - 1, Math.round(progress * (FS_COUNT - 1)));
+      if (activeIndex === fsActive) return;
+      fsActive = activeIndex;
+      fsSlides.forEach((slide, i) => {
+        slide.classList.remove('fs-visible', 'fs-past');
+        if (i === activeIndex) slide.classList.add('fs-visible');
+        else if (i < activeIndex) slide.classList.add('fs-past');
+      });
+    }
+    window.addEventListener('scroll', updateFeatureScroll, { passive: true });
+    updateFeatureScroll();
+  </script>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Zobacz i kup</h3>
+        <ul>
+          <li><a href="/pl/shop/">Sklep</a></li>
+          <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
+          <li><a href="/pl/support/">Wsparcie</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Wsparcie</h3>
+        <ul>
+          <li><a href="/pl/support/">Strona główna wsparcia</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
+          <li><a href="/pl/support/">Informacje o gwarancji</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Konto</h3>
+        <ul>
+          <li><a href="/pl/track/">Zamówienia</a></li>
+          <li><a href="/pl/account/">Moje konto</a></li>
+          <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>O Lixby</h3>
+        <ul>
+          <li><a href="/pl/about/">O nas</a></li>
+          <li><a href="/pl/support/">Gwarancja</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
+          <li><a href="/pl/support/">Kontakt</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
+      <div class="footer-legal-links">
+        <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
+      </div>
+    </div>
+  </footer>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
   </script>
 </body>
 </html>
