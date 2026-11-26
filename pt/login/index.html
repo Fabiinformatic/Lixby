@@ -9,10 +9,8 @@
   <base href="/pt/">
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
-<!-- Gestor de Tags do Google -->
 
-<!-- Fim do Gestor de Tags do Google -->
-  <link rel="canonical" href="https://lixby.es/pt/login" />
+  <link rel="canonical" href="https://lixby.es/pt/login">
   <link rel="alternate" href="https://lixby.es/bg/login" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/login" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/login" hreflang="da-DK">
@@ -38,6 +36,7 @@
   <link rel="alternate" href="https://lixby.es/sl/login" hreflang="sl-SI">
   <link rel="alternate" href="https://lixby.es/sv/login" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/login" hreflang="x-default">
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
@@ -46,20 +45,21 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Iniciar sessão | Lixby</title>
+  <title>fazer login | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
-  <!-- Gestor de Tags do Google -->
   
-  <!-- Fim do Gestor de Tags do Google -->
 
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pt/style.css">
   <style>
     .account-page {
       padding: 40px 0 80px;
@@ -271,9 +271,51 @@
       flex-wrap: wrap;
     }
 
+    .email-verify {
+      display: grid;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+
+    .email-verify .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-verify .sms-row button {
+      flex-shrink: 0;
+      padding: 0 18px;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
     .sms-row input {
       flex: 1 1 180px;
       min-width: 180px;
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .sms-row #verifySmsBtn {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 18px !important;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .captcha-box {
@@ -302,6 +344,139 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+    }
+
+    .btn {
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sms-sent {
+      animation: smsSentPulse 0.5s ease forwards;
+      background-color: #16a34a !important;
+      border-color: #15803d !important;
+      color: white !important;
+    }
+
+    @keyframes smsSentPulse {
+      0% { transform: scale(1); box-shadow: none; }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toggle-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 26px;
+      background: #d1d5db;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+      position: relative;
+      display: block;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-track {
+      background: #1d4ed8;
+    }
+
+    .toggle-switch input:checked + .toggle-track .toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .toggle-switch input:focus-visible + .toggle-track {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .pref-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pref-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pref-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .pref-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+
+    .pref-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SMS verification animations */
+    .sms-success {
+      animation: smsSuccessPulse 0.6s ease forwards;
+    }
+
+    .sms-error {
+      animation: smsErrorShake 0.4s ease;
+    }
+
+    @keyframes smsSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes smsErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .login-primary-btn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .login-primary-btn:hover {
+      transform: none;
     }
 
     .google-icon {
@@ -349,84 +524,184 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
+    <div class="container nav-container">
+      <a href="/pt/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
         <a href="/pt/shop/" class="nav-link">Loja</a>
-        <a href="/pt/#produtos" class="nav-link">Produtos</a>
-        <a href="/pt/#apps" class="nav-link">Apps</a>
+        <a href="/pt/products/" class="nav-link">Produtos</a>
+        <a href="/pt/apps/" class="nav-link">Apps</a>
         <a href="/pt/support/" class="nav-link">Suporte</a>
       </nav>
       <div class="nav-actions">
-        <a href="/pt/cart/" class="nav-icon-link" aria-label="Cesto">
-          <img src="images/Bolsa.png" alt="Cesto">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Pesquisar" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/pt/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Pesquisar na Lixby..."
+            aria-label="Pesquisar na Lixby"
+          >
+        </form>
+        <a href="/pt/cart/" class="nav-icon-link" aria-label="Carrinho">
+          <img src="/pt/images/Bolsa.png" alt="Carrinho">
         </a>
         <a href="/pt/account/" class="nav-icon-link" aria-label="Conta">
-          <img src="images/cuenta.png" alt="Conta">
+          <img src="/pt/images/cuenta.png" alt="Conta">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Navegação principal móvel">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Loja</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pt/shop/">Entrar na loja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/pages/products/lixbuds-one/">Auscultadores LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/buy-headphones/lixbuds-one/">Comprar agora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/news/">Novidades</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produtos</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pt/products/">Ver produtos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/lixsafe/">LixSafe e coberturas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pt/apps/">Ver apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/help-center/lixney/">Suporte da Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/help-center/lixfly/">Suporte da Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Suporte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pt/support/">Ir para o suporte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/help-center/faq/">Perguntas frequentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/help-center/contact/">Contacto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/help-center/returns/">Devoluções</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Carrinho</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pt/cart/">Ver carrinho</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/cart/">Finalizar compra</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Conta</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pt/account/">Entrar na minha conta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/account/">Os meus pedidos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/account/">O meu perfil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/account/">Definições</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/login/">Iniciar sessão</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pt/two-step-verification/">Verificação em 2 passos</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
-        <div id="authStatus" class="auth-status info">Pronto para autenticar.</div>
+        <div id="authStatus" class="auth-status info">pronto para autenticar.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Falta configurar o Firebase. Edita o objeto <code>firebaseConfig</code> em <code>login.html</code> com as tuas credenciais do projeto.
+          O Firebase precisa ser configurado. editar o objeto <code>firebaseConfig</code> nesta página com as credenciais do teu projeto.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Inicia sessão na Lixby</h1>
+            <h1>faça login no Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">Email ou número de telefone</label>
-            <input id="loginIdentifier" type="text" required placeholder="nome@exemplo.com">
+            <label for="loginIdentifier">e-mail ou número de telefone</label>
+            <input id="loginIdentifier" type="text" required placeholder="nome@exemplo.com" autocomplete="username">
 
             <label for="loginPassword">Palavra-passe</label>
-            <input id="loginPassword" type="password" required placeholder="********">
+            <input id="loginPassword" type="password" required placeholder="********" autocomplete="current-password">
 
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                Lembrar-me
+                lembre-me
               </label>
             </div>
 
-            <a href="/pt/forget-password/" class="auth-link">Esqueceu-se da palavra-passe?</a>
+            <a href="/pt/forget-password/" class="auth-link">tu esqueceu tua palavra-passe?</a>
 
-            <button class="btn btn-primary" type="submit">Iniciar sessão</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Iniciar sessão</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Continuar com Google
+              continuar com o Google
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Verificação em 2 passos necessária</strong>
+            <strong>Verificação em duas etapas necessária</strong>
             <p id="mfaHint" class="auth-note">Enviaremos um código SMS para o telefone associado.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar código</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Código SMS">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">enviar código</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="código SMS">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">verificar</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            Ainda não tem uma conta Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">Criar a sua conta Lixby</a>
+            Não tem uma conta Lixby?
+            <a href="#" id="showRegisterLink" class="auth-link">crie tua conta Lixby</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
-            <h1>Criar a sua conta Lixby</h1>
-            <p>Apenas precisa de uma conta Lixby para aceder a todos os serviços da Lixby.</p>
+            <h1>crie tua conta Lixby</h1>
+            <p>Tu só precisa de uma conta Lixby para acessar todos os serviços Lixby.</p>
             <p class="auth-note">
-              Já tem uma conta Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">Iniciar sessão</a>
+              Tu já tem uma conta Lixby?
+              <a href="#" id="showLoginLink" class="auth-link">Conecte-se</a>
             </p>
           </div>
 
@@ -437,61 +712,83 @@
                 <input id="firstName" type="text" required>
               </div>
               <div>
-                <label for="lastName">Apelido</label>
+                <label for="lastName">sobrenomes</label>
                 <input id="lastName" type="text" required>
               </div>
             </div>
 
             <div class="register-grid">
               <div>
-                <label for="country">País/região</label>
+                <label for="country">país/região</label>
                 <select id="country" required>
-                  <option value="PT" selected>Portugal</option>
-                  <option value="ES">Espanha</option>
-                  <option value="BR">Brasil</option>
-                  <option value="FR">França</option>
                   <option value="DE">Alemanha</option>
-                  <option value="IT">Itália</option>
-                  <option value="GB">Reino Unido</option>
-                  <option value="US">Estados Unidos</option>
-                  <option value="CA">Canadá</option>
-                  <option value="MX">México</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">Bélgica</option>
                   <option value="AR">Argentina</option>
-                  <option value="CO">Colômbia</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BR">Brasil</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="CA">Canadá</option>
                   <option value="CL">Chile</option>
-                  <option value="PE">Peru</option>
-                  <option value="EC">Equador</option>
-                  <option value="VE">Venezuela</option>
-                  <option value="UY">Uruguai</option>
-                  <option value="PY">Paraguai</option>
-                  <option value="BO">Bolívia</option>
-                  <option value="DO">República Dominicana</option>
-                  <option value="PA">Panamá</option>
+                  <option value="CY">Chipre</option>
+                  <option value="CO">Colombia</option>
                   <option value="CR">Costa Rica</option>
-                  <option value="GT">Guatemala</option>
+                  <option value="HR">Croácia</option>
+                  <option value="DK">Dinamarca</option>
+                  <option value="EC">Ecuador</option>
                   <option value="SV">El Salvador</option>
+                  <option value="SK">Eslováquia</option>
+                  <option value="SI">Eslovênia</option>
+                  <option value="ES" selected>Espanha</option>
+                  <option value="US">EUA</option>
+                  <option value="EE">Estonia</option>
+                  <option value="FI">Finlândia</option>
+                  <option value="FR">França</option>
+                  <option value="GR">Grécia</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="HU">Hungria</option>
                   <option value="HN">Honduras</option>
-                  <option value="NI">Nicarágua</option>
+                  <option value="IE">Irlanda</option>
+                  <option value="IT">Itália</option>
+                  <option value="LV">letônia</option>
+                  <option value="LT">Lituânia</option>
+                  <option value="LU">Luxemburgo</option>
+                  <option value="MT">Malta</option>
+                  <option value="MX">México</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NL">Holanda</option>
+                  <option value="PA">Panamá</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PL">Polônia</option>
+                  <option value="PT">Portugal</option>
+                  <option value="GB">Reino Unido</option>
+                  <option value="CZ">República Tcheca</option>
+                  <option value="DO">República Dominicana</option>
+                  <option value="RO">Romênia</option>
+                  <option value="SE">Suécia</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="VE">Venezuela</option>
                 </select>
               </div>
               <div>
-                <label for="birthHelp">Ajuda (data de nascimento)</label>
-                <input id="birthHelp" type="text" placeholder="Data de nascimento">
+                <label for="birthHelp">ajuda (aniversário)</label>
+                <input id="birthHelp" type="text" placeholder="data de nascimento">
               </div>
             </div>
 
-            <label>Data de nascimento</label>
+            <label>data de nascimento</label>
             <div class="birth-grid">
               <div>
-                <label for="birthDay">Dia</label>
+                <label for="birthDay">dia</label>
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">Mês</label>
+                <label for="birthMonth">mês</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">Ano</label>
+                <label for="birthYear">ano</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
@@ -499,92 +796,137 @@
             <label for="registerEmail">nome@exemplo.com</label>
             <input id="registerEmail" type="email" required>
 
-            <label for="registerPassword">Palavra-passe</label>
-            <input id="registerPassword" type="password" required minlength="6">
+            <div class="email-verify" id="emailVerifySection" style="display:none;">
+              <div class="sms-row">
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">verificar e-mail</button>
+                <span class="auth-note">Enviaremos a ti um e-mail de verificação.</span>
+              </div>
+              <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
+                <input id="emailVerifyConfirmInput" type="text" readonly autocomplete="username">
+              </div>
+            </div>
 
-            <label for="registerPasswordConfirm">Confirmar palavra-passe</label>
-            <input id="registerPasswordConfirm" type="password" required minlength="6">
+            <label for="registerPassword">Palavra-passe</label>
+            <input id="registerPassword" type="password" required minlength="6" autocomplete="new-password">
+
+            <label for="registerPasswordConfirm">Confirme tua palavra-passe</label>
+            <input id="registerPasswordConfirm" type="password" required minlength="6" autocomplete="new-password">
 
             <div class="register-grid">
               <div>
                 <label for="phoneCountry">País</label>
                 <select id="phoneCountry" required>
-                  <option value="+351" selected>+351 (Portugal)</option>
-                  <option value="+34">+34 (Espanha)</option>
-                  <option value="+55">+55 (Brasil)</option>
-                  <option value="+33">+33 (França)</option>
                   <option value="+49">+49 (Alemanha)</option>
-                  <option value="+39">+39 (Itália)</option>
-                  <option value="+44">+44 (Reino Unido)</option>
-                  <option value="+1">+1 (Estados Unidos/Canadá)</option>
-                  <option value="+52">+52 (México)</option>
+                  <option value="+43">+43 (Austria)</option>
+                  <option value="+32">+32 (Bélgica)</option>
                   <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colômbia)</option>
+                  <option value="+591">+591 (Bolivia)</option>
+                  <option value="+55">+55 (Brasil)</option>
+                  <option value="+359">+359 (Bulgaria)</option>
+                  <option value="+1">+1 (Estados Unidos/Canadá)</option>
                   <option value="+56">+56 (Chile)</option>
-                  <option value="+51">+51 (Peru)</option>
-                  <option value="+593">+593 (Equador)</option>
-                  <option value="+58">+58 (Venezuela)</option>
-                  <option value="+598">+598 (Uruguai)</option>
-                  <option value="+595">+595 (Paraguai)</option>
-                  <option value="+591">+591 (Bolívia)</option>
-                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+357">+357 (Chipre)</option>
+                  <option value="+57">+57 (Colombia)</option>
                   <option value="+506">+506 (Costa Rica)</option>
-                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+385">+385 (Croácia)</option>
+                  <option value="+45">+45 (Dinamarca)</option>
+                  <option value="+593">+593 (Ecuador)</option>
                   <option value="+503">+503 (El Salvador)</option>
+                  <option value="+34" selected>+34 (Espanha)</option>
+                  <option value="+372">+372 (Estonia)</option>
+                  <option value="+358">+358 (Finlândia)</option>
+                  <option value="+33">+33 (França)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+30">+30 (Grécia)</option>
                   <option value="+504">+504 (Honduras)</option>
-                  <option value="+505">+505 (Nicarágua)</option>
+                  <option value="+36">+36 (Hungria)</option>
+                  <option value="+353">+353 (Irlanda)</option>
+                  <option value="+39">+39 (Itália)</option>
+                  <option value="+371">+371 (letônia)</option>
+                  <option value="+370">+370 (Lituânia)</option>
+                  <option value="+352">+352 (luxemburgo)</option>
+                  <option value="+356">+356 (Malta)</option>
+                  <option value="+52">+52 (México)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+31">+31 (Holanda)</option>
+                  <option value="+507">+507 (Panamá)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+51">+51 (perú)</option>
+                  <option value="+48">+48 (Polônia)</option>
+                  <option value="+351">+351 (Portugal)</option>
+                  <option value="+44">+44 (Reino Unido)</option>
+                  <option value="+420">+420 (República Tcheca)</option>
+                  <option value="+40">+40 (Romênia)</option>
+                  <option value="+46">+46 (Suécia)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+58">+58 (Venezuela)</option>
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">Número de telefone</label>
+                <label for="phoneNumber">número de telefone</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
 
             <p class="auth-note">
-              Certifique-se de que insere um número de telefone ao qual possa aceder em qualquer momento. Este número será utilizado para verificar a sua identidade sempre que iniciar sessão num novo dispositivo ou navegador web. Podem ser aplicadas tarifas de dados ou mensagens.
+              Certifique-se de inserir um número de telefone que tu possa acessar a qualquer momento. Este número será usado para verificar tua identidade sempre que tu fizer login em um novo dispositivo ou navegador da web. Taxas de dados ou mensagens podem ser aplicadas.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar código</button>
-                <span class="auth-note">Enviaremos um SMS de verificação.</span>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">enviar código</button>
+                <span class="auth-note">Enviaremos a ti um SMS de verificação.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="Código SMS">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verificar</button>
+                <input id="code" type="text" placeholder="código SMS">
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">verificar</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Anúncios</label>
-            <p class="auth-note">Receba emails e comunicações da Lixby, como anúncios, marketing, recomendações e atualizações sobre os produtos, serviços e software da Lixby.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">anúncios</div>
+                <div class="pref-desc">Receba e-mails da Lixby sobre anúncios, marketing e recomendações de produtos.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="adsOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
-            <label><input type="checkbox" id="mediaOptIn"> Apps, música, TV e muito mais</label>
-            <p class="auth-note">Receba emails e comunicações da Lixby, como novos lançamentos, conteúdo exclusivo e ofertas especiais.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">aplicações, músicas e muito mais</div>
+                <div class="pref-desc">Receba e-mails sobre novos lançamentos, conteúdos exclusivos e ofertas especiais.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="mediaOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
             <div class="captcha-box">
-              <label>Imagem de verificação</label>
-              <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Introduza o código da imagem</label>
+              <label>imagem de verificação</label>
+              <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
+              <label for="captchaInput">digite o código da imagem</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">Código novo</a>
-                <span class="auth-note">Visão limitada</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">novo código</a>
+                <span class="auth-note">não diferencia maiúsculas de minúsculas</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Ícone de Privacidade: As informações da sua conta Lixby são utilizadas para que possa iniciar sessão de forma segura e aceder aos seus dados. A Lixby regista certos dados de utilização para fins relacionados com segurança, suporte e geração de relatórios. Se aceitar, a Lixby poderá utilizar as informações da sua conta para enviar comunicações e emails de marketing. Consulte como os seus dados são geridos.
+              ícone de privacidade: as informações da tua conta Lixby são usadas para que tu possa fazer login com segurança e acessar teus dados. Lixby registra certos dados de uso para fins de segurança, suporte e relatórios. Se tu concordar, a Lixby poderá usar as informações da tua conta para enviar comunicações de marketing e e-mails. Veja como teus dados são geredos.
             </p>
 
-            <button class="btn btn-primary" type="submit">Criar conta</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verificar email</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">criar uma conta</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Registar com Google
+              registre-se no google
             </button>
           </form>
         </section>
@@ -592,7 +934,7 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="/pt/account/" class="btn btn-primary">Ir para minha conta</a>
+            <a href="/pt/account/" class="btn btn-primary">vá para minha conta</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Terminar sessão</button>
           </div>
         </div>
@@ -602,6 +944,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
     import {
       getAuth,
       setPersistence,
@@ -615,13 +958,22 @@
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
       signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
+
+    // 5a: destino tras el login con lista blanca (solo /pt/community/**).
+    function nextUrl(fallback = "/pt/conta/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
 
      const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -645,7 +997,11 @@
     const rememberMe = document.getElementById("rememberMe");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
-    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const sendEmailVerifyBtn = document.getElementById("sendEmailVerifyBtn");
+    const emailVerifySection = document.getElementById("emailVerifySection");
+    const emailVerifyConfirmRow = document.getElementById("emailVerifyConfirmRow");
+    const emailVerifyConfirmInput = document.getElementById("emailVerifyConfirmInput");
+    const registerEmail = document.getElementById("registerEmail");
     const mfaPanel = document.getElementById("mfaPanel");
     const mfaHint = document.getElementById("mfaHint");
     const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
@@ -656,7 +1012,7 @@
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    const captchaImage = document.getElementById("captchaImage");
+    const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -697,8 +1053,8 @@
       }
 
       const months = [
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        "Janeiro", "Fevereiro", "Marchar", "abril", "Poderia", "Junho",
+        "Julho", "Agosto", "Setembro", "outubro", "novembro", "dezembro"
       ];
       months.forEach((month, index) => {
         const option = document.createElement("option");
@@ -716,13 +1072,77 @@
       }
     }
 
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function generateCaptcha() {
       const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       let code = "";
       for (let i = 0; i < 6; i += 1) {
         code += chars[Math.floor(Math.random() * chars.length)];
       }
-      captchaImage.textContent = code;
+
+      const ctx = captchaCanvas.getContext("2d");
+      const w = captchaCanvas.width;
+      const h = captchaCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = `rgb(${rand(220, 245)}, ${rand(220, 245)}, ${rand(220, 245)})`;
+      ctx.fillRect(0, 0, w, h);
+
+      // Ruido de puntos
+      for (let i = 0; i < 120; i += 1) {
+        ctx.fillStyle = `rgba(${rand(100, 180)}, ${rand(100, 180)}, ${rand(100, 180)}, ${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(rand(0, w), rand(0, h), rand(1, 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Líneas de distorsión
+      for (let i = 0; i < 6; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(40, 90)}, ${rand(40, 90)}, ${rand(40, 90)}, 0.2)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
+      const charW = w / 6;
+      code.split("").forEach((char, i) => {
+        ctx.save();
+        ctx.translate(charW * i + charW / 2, h / 2 + rand(-6, 6));
+        ctx.rotate((rand(-35, 35) * Math.PI) / 180);
+
+        ctx.shadowColor = `rgba(${rand(0, 100)}, ${rand(0, 100)}, ${rand(0, 100)}, 0.6)`;
+        ctx.shadowBlur = rand(2, 5);
+        ctx.shadowOffsetX = rand(-3, 3);
+        ctx.shadowOffsetY = rand(-3, 3);
+
+        const bold = rand(0, 1) ? "bold " : "900 ";
+        ctx.font = `${bold}${rand(22, 32)}px Inter, sans-serif`;
+        ctx.fillStyle = `rgb(${rand(10, 70)}, ${rand(10, 70)}, ${rand(30, 90)})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = `rgba(${rand(150, 220)}, ${rand(150, 220)}, ${rand(150, 220)}, 0.4)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.strokeText(char, 0, 0);
+        ctx.fillText(char, 0, 0);
+        ctx.restore();
+      });
+
+      // Capa de ruido final encima de las letras
+      for (let i = 0; i < 18; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(120, 180)}, ${rand(120, 180)}, ${rand(120, 180)}, 0.15)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.lineTo(rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
       return code;
     }
 
@@ -737,7 +1157,7 @@
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Configura o Firebase para ativar registo e início de sessão.", "error");
+      setStatus("configure o firebase para ativar o registo e o login.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -745,16 +1165,67 @@
       googleRegisterBtn.disabled = true;
     } else {
       const app = initializeApp(firebaseConfig);
+      await initializeLixbyAppCheck(app);
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      auth.languageCode = "é";
+      const db = getFirestore(app);
+      const functions = getFunctions(app, "europe-west1");
+      const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
+
+      // Capturar el resultado de Google (popup o redirect) y finalizar sesion
+      let googleRedirectHandled = false;
+
+      async function handleGoogleResult(result) {
+        if (!result?.user) return;
+
+        // Marcar que estamos procesando un login de Google
+        sessionStorage.setItem("lixby_google_redirect", "1");
+
+        const user = result.user;
+
+        const createdAt = new Date(user.metadata.creationTime).getTime();
+        const isNewUser = (Date.now() - createdAt) < 10000;
+
+        if (isNewUser) {
+          const displayName = user.displayName || "usuario";
+          try {
+            await sendWelcomeEmail({ name: displayName, email: user.email });
+            console.log("e-mail de boas-vindas enviado para:", user.email);
+          } catch (err) {
+            console.error("erro ao enviar e-mail:", err);
+          }
+        }
+
+        googleRedirectHandled = true;
+        setStatus("logado com o google.", "success");
+        try {
+          await transferSessionToApp(user);
+        } catch (error) {
+          console.warn("Não foi possível transferir a sessão para a aplicação:", error);
+        } finally {
+          window.location.href = nextUrl();
+        }
+      }
+
+      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
+        sessionStorage.removeItem("lixby_google_redirect");
+        const code = error?.code || "";
+        if (code === "auth/no-current-user" || code === "auth/no-redirect-data" || code === "auth/null-user") return;
+        setStatus(`erro com google: ${error.message}`, "error");
+      });
+
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
 
       function getRecaptcha() {
         if (!recaptchaVerifier) {
-          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible"
+          recaptchaVerifier = new RecaptchaVerifier(auth, "sendSmsBtn", {
+            size: "invisible",
+            callback: () => {},
+            "expired-callback": () => {
+              recaptchaVerifier = null;
+            }
           });
         }
         return recaptchaVerifier;
@@ -791,6 +1262,9 @@
 
       document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
       document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+      registerEmail.addEventListener("input", () => {
+        emailVerifySection.style.display = registerEmail.value.trim() ? "grid" : "none";
+      });
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -800,34 +1274,39 @@
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Para iniciar sessão utilize um endereço de email válido.", "error");
+          setStatus("Para fazer login use um e-mail válido.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Sessão iniciada com sucesso.", "success");
+          setStatus("sessão logada com sucesso.", "success");
           loginForm.reset();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/pt/account/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Não foi possível transferir a sessão para a aplicação:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "o seu telefone"}.`;
+            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "tu teléfono"}.`;
             mfaPanel.classList.add("active");
-            setStatus("É necessária verificação em 2 passos.", "info");
+            setStatus("Verificação em duas etapas necessária.", "info");
             return;
           }
-          setStatus(`Erro ao iniciar sessão: ${error.message}`, "error");
+          setStatus(`erro de login: ${error.message}`, "error");
         }
       });
 
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Não há verificação em 2 passos pendente.", "error");
+          setStatus("não há verificação em duas etapas pendente.", "error");
           return;
         }
 
@@ -842,24 +1321,24 @@
           setStatus("Código SMS enviado.", "success");
         } catch (error) {
           getMfaRecaptcha().clear();
-          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+          setStatus(`Não foi possível enviar SMS: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Não há verificação em 2 passos pendente.", "error");
+          setStatus("não há verificação em duas etapas pendente.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Primeiro envie o código SMS.", "error");
+          setStatus("primeiro envie o código SMS.", "error");
           return;
         }
 
         const code = mfaCodeInput.value.trim();
         if (!code) {
-          setStatus("Introduza o código SMS.", "error");
+          setStatus("Digite o código SMS.", "error");
           return;
         }
 
@@ -871,16 +1350,21 @@
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Sessão iniciada com sucesso.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/pt/account/";
+          setStatus("sessão logada com sucesso.", "success");
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Não foi possível transferir a sessão para a aplicação:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Código inválido: ${error.message}`, "error");
+          setStatus(`código inválido: ${error.message}`, "error");
         }
       });
 
       const emailActionSettings = {
-        url: `/pt/verified/`,
+        url: `${window.location.origin}/pt/verified/`,
         handleCodeInApp: false
       };
 
@@ -903,12 +1387,12 @@
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("As palavras-passe não coincidem.", "error");
+          setStatus("as palavras-passe não coincidem.", "error");
           return;
         }
 
         if (captchaValue !== currentCaptcha) {
-          setStatus("O código da imagem não coincide.", "error");
+          setStatus("O código da imagem não corresponde.", "error");
           currentCaptcha = generateCaptcha();
           return;
         }
@@ -916,10 +1400,23 @@
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
+            // Primero el email de bienvenida
+            console.log("tentando enviar e-mail de boas-vindas...");
+            try {
+              const result = await sendWelcomeEmail({
+                name: firstName,
+                email: email
+              });
+              console.log("e-mail enviado:", result);
+            } catch (err) {
+              console.error("erro ao enviar e-mail:", err);
+            }
+
+            // Luego verificación y base de datos
             await sendEmailVerification(userCredential.user, emailActionSettings);
             
-            // Save profile to Firebase Realtime Database
-            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+            // Guardar el perfil en Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
               firstName,
               lastName,
               email,
@@ -930,75 +1427,98 @@
               phoneCountry: phoneCountryValue,
               phoneNumber,
               adsOptIn,
-              mediaOptIn
-            });
+              mediaOptIn,
+              createdAt: serverTimestamp()
+            }, { merge: true });
           }
-          setStatus("Conta criada com sucesso.", "success");
+          setStatus("conta criada com sucesso.", "success");
           registerForm.reset();
+          sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/pt/account/";
+          // La redirección siempre al final
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Não foi possível transferir a sessão para a aplicação:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Erro ao registar: ${error.message}`, "error");
+          setStatus(`erro ao registrar: ${error.message}`, "error");
         }
       });
 
-      verifyEmailBtn.addEventListener("click", async () => {
+      async function startGoogleSignIn() {
+        try {
+          await setPersistence(auth, browserLocalPersistence);
+          try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await handleGoogleResult(result);
+          } catch (popupError) {
+            const code = popupError?.code || "";
+            if (
+              code === "auth/popup-blocked" ||
+              code === "auth/popup-request-failed" ||
+              code === "auth/cancelled-popup-request" ||
+              code === "auth/operation-not-supported-in-this-environment"
+            ) {
+              // Fallback: redireccion completa cuando el navegador bloquea el popup
+              await signInWithRedirect(auth, googleProvider);
+            } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
+              setStatus("janela fechada do Google.", "info");
+            } else {
+              setStatus(`erro com google: ${popupError.message}`, "error");
+            }
+          }
+        } catch (error) {
+          setStatus(`erro com google: ${error.message}`, "error");
+        }
+      }
+
+      googleAuthBtn.addEventListener("click", startGoogleSignIn);
+
+      googleRegisterBtn.addEventListener("click", startGoogleSignIn);
+
+      sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Inicie sessão para verificar o seu email.", "error");
+          setStatus("o botão está pronto. Ao criar tua conta, o e-mail de verificação será enviado automaticamente.", "info");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email enviado. Verifique a pasta de Spam e Promoções.", "success");
+          saveFormState();
+          setStatus("e-mail de verificação enviado. verifique tua caixa de entrada e spam.", "success");
+          emailVerifyConfirmInput.value = user.email || "e-mail enviado";
+          emailVerifyConfirmRow.style.display = "flex";
         } catch (error) {
-          setStatus(`Não foi possível enviar: ${error.message}`, "error");
-        }
-      });
-
-      googleAuthBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Sessão iniciada com Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/pt/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Início com Google cancelado.", "error");
-            return;
-          }
-          setStatus(`Erro com Google: ${error.message}`, "error");
-        }
-      });
-
-      googleRegisterBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Registo concluído com Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/pt/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Início com Google cancelado.", "error");
-            return;
-          }
-          setStatus(`Erro com Google: ${error.message}`, "error");
+          setStatus(`não foi possível enviar: ${error.message}`, "error");
         }
       });
 
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Introduza um número de telefone antes de enviar o código.", "error");
+          setStatus("Digite um número de telefone antes de enviar o código.", "error");
           return;
         }
         try {
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
-          setStatus("SMS enviado. Verifique o seu telefone.", "success");
+          setStatus("SMS enviado. verifique teu telefone.", "success");
+          const originalText = sendSmsBtn.textContent;
+          sendSmsBtn.textContent = "SMS enviado!";
+          sendSmsBtn.classList.add("sms-sent");
+          setTimeout(() => {
+            sendSmsBtn.classList.remove("sms-sent");
+            sendSmsBtn.textContent = originalText;
+          }, 1600);
         } catch (error) {
-          setStatus(`Não foi possível enviar o SMS: ${error.message}`, "error");
+          if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+          }
+          setStatus(`Não foi possível enviar SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -1006,31 +1526,94 @@
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Primeiro envie o código SMS.", "error");
+          setStatus("primeiro envie o código SMS.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Escreva o código SMS.", "error");
+          setStatus("escreva o código SMS.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
-          setStatus("Telefone verificado com sucesso.", "success");
+          setStatus("telefone verificado com sucesso.", "success");
+          smsCodeInput.classList.add("sms-success");
+          setTimeout(() => {
+            smsCodeInput.disabled = true;
+            verifySmsBtn.style.display = "none";
+          }, 300);
         } catch (error) {
-          setStatus("Código incorreto. Tente novamente.", "error");
+          setStatus("código errado. tente novamente.", "error");
+          smsCodeInput.classList.add("sms-error");
+          setTimeout(() => {
+            smsCodeInput.classList.remove("sms-error");
+          }, 400);
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Sessão terminada.", "info");
+        setStatus("sessão fechada.", "info");
       });
+
+      function saveFormState() {
+        // Solo se persiste estado de UI sin datos personales; nunca texto introducido por el usuario (PII).
+        const fields = {
+          adsOptIn: document.getElementById("adsOptIn")?.checked || false,
+          mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
+          activeSection: registerSection.classList.contains("active") ? "register" : "login"
+        };
+        sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
+      }
+
+      function restoreFormState() {
+        const raw = sessionStorage.getItem("lixby_register_draft");
+        if (!raw) return;
+        try {
+          const f = JSON.parse(raw);
+          document.getElementById("adsOptIn").checked = !!f.adsOptIn;
+          document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
+          if (f.activeSection === "register") openRegister(null);
+        } catch (e) {
+          console.warn("não foi possível restaurar o rascunho:", e);
+        }
+      }
+
+      registerForm.addEventListener("input", saveFormState);
+      registerForm.addEventListener("change", saveFormState);
+
+      // Purga única de borradores legacy que puedan contener datos sensibles (contraseñas, emails, teléfonos).
+      const DRAFT_SCHEMA = "3";
+      if (sessionStorage.getItem("lixby_register_draft_schema") !== DRAFT_SCHEMA) {
+        sessionStorage.removeItem("lixby_register_draft");
+        sessionStorage.setItem("lixby_register_draft_schema", DRAFT_SCHEMA);
+      }
+
+      restoreFormState();
+      const urlParams = new URLSearchParams(window.location.search);
+      const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
+      if (sessionStorage.getItem("lixby_email_verified") === "1") {
+        sessionStorage.removeItem("lixby_email_verified");
+      }
+      if (returningFromVerification) {
+        setStatus("e-mail verificado. podes continuar com tua conta.", "success");
+        if (registerEmail.value) {
+          emailVerifySection.style.display = "grid";
+          emailVerifyConfirmInput.value = registerEmail.value;
+          emailVerifyConfirmRow.style.display = "flex";
+        }
+        urlParams.delete("verified");
+        const cleanedUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanedUrl);
+      }
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Autenticado como ${user.email}`;
+          userEmail.textContent = `conectado como ${user.email}`;
+          if (!googleRedirectHandled && sessionStorage.getItem("lixby_google_redirect") !== "1") {
+            window.location.href = nextUrl();
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
@@ -1038,7 +1621,97 @@
       });
     }
   </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
+
 
 

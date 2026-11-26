@@ -52,7 +52,7 @@ const CFG = (() => {
   const lang = document.documentElement.lang || "en";
   return {
     lang,
-    base: `/${lang}/comunidad/`,
+    base: `/${lang}/${lang === "es" ? "comunidad" : "community"}/`,
     login: `/${lang}/login/`,
     verified: `/${lang}/verified/`,
     t: {},
@@ -87,7 +87,7 @@ let profileName = ""; // displayName del perfil, para pintar el comentario nuevo
 const root = document.getElementById("lx-session");
 
 // Mensajes de error por código de los callables (el servidor responde en
-// español; aquí solo traducimos los códigos que el SDK prefija con "functions/").
+// espanhol; aquí solo traducimos los códigos que el SDK prefija con "functions/").
 const ERR_TEXT = {
   "functions/resource-exhausted": tr("err_resource_exhausted"),
   "functions/unauthenticated": tr("err_unauthenticated"),
@@ -99,7 +99,7 @@ const ERR_TEXT = {
 };
 
 function errText(error, fallback) {
-  // El servidor responde siempre en español. En la versión española preferimos
+  // El servidor responde siempre en espanhol. En la versión espanhola preferimos
   // su mensaje concreto (p. ej. el aviso del filtro de moderación o el de correo
   // sin verificar) al genérico; en otros idiomas el servidor aún no traduce, así
   // que se usa el mensaje genérico traducido para no mezclar idiomas.
@@ -198,7 +198,7 @@ function buildVerifyNotice(user, text) {
 
 // Lleva el foco al aviso de verificación. Si la página no tiene compositor ni
 // formulario de comentario (inicio, normas, buscar), lo inserta al principio
-// del contenido para que el botón "Verifica tu correo" del nav siempre haga algo.
+// del contenido para que el botón "Verifica o teu email" del nav siempre haga algo.
 function focusVerifyNotice(user) {
   let host =
     document.getElementById("lx-composer") ||

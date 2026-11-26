@@ -126,13 +126,13 @@ function formatRelative(ts) {
   if (!date) return "";
   const diff = Date.now() - date.getTime();
   const min = Math.round(diff / 60000);
-  if (min < 1) return "ahora";
-  if (min < 60) return `hace ${min} min`;
+  if (min < 1) return "agora";
+  if (min < 60) return `${min} minutos atrás`;
   const hours = Math.round(min / 60);
-  if (hours < 24) return `hace ${hours} h`;
+  if (hours < 24) return `${hours} horas atrás`;
   const days = Math.round(hours / 24);
-  if (days < 7) return `hace ${days} d`;
-  return date.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" });
+  if (days < 7) return `atrás ${days} d`;
+  return date.toLocaleDateString("pt-PT", { day: "numeric", month: "short", year: "numeric" });
 }
 
 let toastTimer = null;
@@ -152,7 +152,7 @@ function isMod() {
 }
 
 function posterUrl(postId) {
-  return `/es/comunidad/?hilo=${encodeURIComponent(postId)}`;
+  return `/pt/community/?hilo=${encodeURIComponent(postId)}`;
 }
 
 /* ------------------------------ espacios ---------------------------- */
@@ -164,22 +164,21 @@ async function loadSpaces() {
     renderSpaces();
     fillSpaceSelect();
   } catch (error) {
-    console.error("Error cargando espacios:", error);
+    console.error("Erro ao carregar espaços:", error);
     el.spaceList.innerHTML =
-      '<p class="community-status">No se pudieron cargar los espacios.</p>';
+      '<p class="community-status">Não foi possível carregar os espaços.</p>';
   }
 }
 
 function renderSpaces() {
   const total = state.spaces.reduce((sum, s) => sum + (s.postCount || 0), 0);
   const items = [
-    `<a class="space-link${state.spaceSlug ? "" : " is-active"}" href="/es/comunidad/" data-space="">
+    `<a class="space-link${state.spaceSlug ? "" : " is-active"}" href="/pt/community/" data-space="">
       <span class="space-emoji" aria-hidden="true">🏠</span> Todos
       <span class="space-count">${total}</span>
     </a>`,
-    ...state.spaces.map((s) => `
-      <a class="space-link${state.spaceSlug === s.slug ? " is-active" : ""}"
-         href="/es/comunidad/?espacio=${encodeURIComponent(s.slug)}" data-space="${esc(s.slug)}">
+    ...state.spaces.map((s) => `<a class="espaço-link${state.spaceSlug === s.slug ? " is-active" : ""}"
+         href="/pt/community/?espacio=${encodeURIComponent(s.slug)}" data-space="${esc(s.slug)}">
         <span class="space-emoji" aria-hidden="true">${esc(s.icon || "💬")}</span>
         ${esc(s.name)}
         <span class="space-count">${Number(s.postCount || 0)}</span>
@@ -206,7 +205,7 @@ async function loadFeed({ append = false } = {}) {
   state.loading = true;
   el.loadMoreBtn.disabled = true;
   if (!append) {
-    el.feedStatus.textContent = "Cargando hilos…";
+    el.feedStatus.textContent = "Carregando tópicos…";
     el.postList.innerHTML = "";
   }
 
@@ -224,8 +223,8 @@ async function loadFeed({ append = false } = {}) {
     state.posts = append ? state.posts.concat(fetched) : fetched;
     renderFeed();
   } catch (error) {
-    console.error("Error cargando hilos:", error);
-    el.feedStatus.textContent = "No se pudieron cargar los hilos. Inténtalo de nuevo.";
+    console.error("Erro ao carregar tópicos:", error);
+    el.feedStatus.textContent = "Não foi possível carregar os threads. Tente novamente.";
   } finally {
     state.loading = false;
     el.loadMoreBtn.disabled = false;
@@ -235,13 +234,12 @@ async function loadFeed({ append = false } = {}) {
 
 function renderFeed() {
   const space = currentSpace();
-  el.feedTitle.textContent = space ? space.name : "Todos los hilos";
+  el.feedTitle.textContent = space ? space.name : "Todos os tópicos";
   if (!state.posts.length) {
-    el.feedStatus.innerHTML = `
-      <div class="community-empty">
+    el.feedStatus.innerHTML = `<div class="comunidade-empty">
         <span class="empty-emoji" aria-hidden="true">🌱</span>
-        Todavía no hay hilos aquí. ${
-          state.user ? "Sé el primero en publicar." : "Inicia sesión y publica el primero."
+        Ainda não há tópicos aqui. ${
+          state.user ? "Sê o primeiro a publicar." : "Inicia sessão e publica primeiro."
         }
       </div>`;
     el.postList.innerHTML = "";
@@ -255,15 +253,14 @@ function postCardHtml(post) {
   const tags = (post.tags || [])
     .map((t) => `<span class="post-tag">${esc(t)}</span>`)
     .join("");
-  return `
-    <article class="post-card" data-post-id="${esc(post.id)}">
+  return `<artigo class="cartão postal" data-post-id="${esc(post.id)}">
       <div class="vote-control" data-vote-control data-for-post="${esc(post.id)}">
         <button class="vote-btn" type="button" data-vote="up" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto positivo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
         </button>
-        <span class="vote-score" data-score>${Number(post.score || 0)}</span>
+        <span class="vote-score" pontuação de dados>${Number(post.score || 0)}</span>
         <button class="vote-btn" type="button" data-vote="down" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto negativo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
       <div class="post-main">
@@ -273,11 +270,11 @@ function postCardHtml(post) {
         <p class="post-excerpt">${esc(post.body || "")}</p>
         <div class="post-meta">
           <span>${esc(post.authorName || "Usuario")}</span>
-          <span class="dot" aria-hidden="true"></span>
+          <span class="ponto" aria-hidden="true"></span>
           <span>${formatRelative(post.lastActivityAt || post.createdAt)}</span>
-          <span class="dot" aria-hidden="true"></span>
-          <span>${Number(post.commentCount || 0)} comentarios</span>
-          ${tags ? `<span class="dot" aria-hidden="true"></span>${tags}` : ""}
+          <span class="ponto" aria-hidden="true"></span>
+          <span>${Number(post.commentCount || 0)} comentários</span>
+          ${tags ?`<span class="dot" aria-hidden="true"></span>${tags}` : ""}
         </div>
       </div>
     </article>`;
@@ -303,7 +300,7 @@ function voteKey(targetType, postId, commentId) {
 
 async function handleVote(targetType, postId, commentId, direction) {
   if (!state.user) {
-    toast("Inicia sesión para votar.", "error");
+    toast("Faça login para votar.", "error");
     return;
   }
   const uid = state.user.uid;
@@ -335,8 +332,8 @@ async function handleVote(targetType, postId, commentId, direction) {
       applyVote(targetType, postId, commentId, value, value - current);
     }
   } catch (error) {
-    console.error("Error al votar:", error);
-    toast("No se pudo registrar tu voto.", "error");
+    console.error("Erro de votação:", error);
+    toast("Não foi possível registrar seu voto.", "error");
   }
 }
 
@@ -360,7 +357,7 @@ function applyVote(targetType, postId, commentId, value, scoreDelta) {
 async function openPost(postId) {
   el.viewFeed.hidden = true;
   el.viewPost.hidden = false;
-  el.postDetail.innerHTML = '<p class="community-status">Cargando hilo…</p>';
+  el.postDetail.innerHTML = '<p class="community-status">Carregando tópico…</p>';
   el.commentList.innerHTML = "";
   state.replyTo = null;
   updateReplyHint();
@@ -368,7 +365,7 @@ async function openPost(postId) {
   try {
     const snap = await getDoc(doc(db, "posts", postId));
     if (!snap.exists() || (snap.data().status !== "published" && !isMod())) {
-      el.postDetail.innerHTML = '<p class="community-status">Este hilo no está disponible.</p>';
+      el.postDetail.innerHTML = '<p class="community-status">Este tópico não está disponível.</p>';
       return;
     }
     state.currentPost = { id: snap.id, ...snap.data() };
@@ -383,8 +380,8 @@ async function openPost(postId) {
 
     await loadComments(postId);
   } catch (error) {
-    console.error("Error cargando hilo:", error);
-    el.postDetail.innerHTML = '<p class="community-status">No se pudo cargar el hilo.</p>';
+    console.error("Erro ao carregar o tópico:", error);
+    el.postDetail.innerHTML = '<p class="community-status">Não foi possível carregar o tópico.</p>';
   }
 }
 
@@ -392,29 +389,28 @@ function renderPostDetail() {
   const post = state.currentPost;
   if (!post) return;
   const tags = (post.tags || []).map((t) => `<span class="post-tag">${esc(t)}</span>`).join("");
-  el.postDetail.innerHTML = `
-    <div class="post-detail-grid">
+  el.postDetail.innerHTML = `<div class="post-detail-grid">
       <div class="vote-control" data-vote-control data-for-post="${esc(post.id)}">
         <button class="vote-btn" type="button" data-vote="up" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto positivo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
         </button>
-        <span class="vote-score" data-score>${Number(post.score || 0)}</span>
+        <span class="vote-score" pontuação de dados>${Number(post.score || 0)}</span>
         <button class="vote-btn" type="button" data-vote="down" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto negativo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
       <div>
         <h1>${esc(post.title)}</h1>
         <div class="post-meta">
           <span>${esc(post.authorName || "Usuario")}</span>
-          <span class="dot" aria-hidden="true"></span>
+          <span class="ponto" aria-hidden="true"></span>
           <span>${formatRelative(post.createdAt)}</span>
           ${post.editedAt ? '<span class="dot" aria-hidden="true"></span><span>editado</span>' : ""}
-          ${tags ? `<span class="dot" aria-hidden="true"></span>${tags}` : ""}
+          ${tags ?`<span class="dot" aria-hidden="true"></span>${tags}`: ""}
         </div>
         <div class="post-body" style="margin-top:16px">${esc(post.body || "")}</div>
         <div class="post-detail-actions">
-          <button class="comment-action-link" type="button" data-report data-target-type="post" data-post-id="${esc(post.id)}">Reportar</button>
+          <button class="comment-action-link" type="button" data-report data-target-type="post" data-post-id="${esc(post.id)}">Relatório</button>
         </div>
       </div>
     </div>`;
@@ -432,8 +428,8 @@ async function loadComments(postId) {
     state.comments = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
     renderComments();
   } catch (error) {
-    console.error("Error cargando comentarios:", error);
-    el.commentList.innerHTML = '<p class="community-status">No se pudieron cargar los comentarios.</p>';
+    console.error("Erro ao carregar comentários:", error);
+    el.commentList.innerHTML = '<p class="community-status">Não foi possível carregar os comentários.</p>';
   }
 }
 
@@ -454,7 +450,7 @@ function buildCommentTree(comments) {
 function renderComments() {
   const roots = buildCommentTree(state.comments);
   if (!roots.length) {
-    el.commentList.innerHTML = '<p class="community-status">Todavía no hay comentarios.</p>';
+    el.commentList.innerHTML = '<p class="community-status">Ainda não há comentários.</p>';
     return;
   }
   el.commentList.innerHTML = roots.map(commentHtml).join("");
@@ -464,8 +460,7 @@ function commentHtml(node) {
   const children = node.children.length
     ? `<div class="comment-children">${node.children.map(commentHtml).join("")}</div>`
     : "";
-  return `
-    <article class="comment" data-comment-id="${esc(node.id)}">
+  return `<artigo class="comment" data-comment-id="${esc(node.id)}">
       <div class="comment-header">
         <strong>${esc(node.authorName || "Usuario")}</strong>
         <span>·</span>
@@ -476,25 +471,25 @@ function commentHtml(node) {
       <div class="comment-actions">
         <div class="vote-control" data-vote-control data-for-comment="${esc(node.id)}">
           <button class="vote-btn" type="button" data-vote="up" data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}" aria-label="Voto positivo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
           </button>
-          <span class="vote-score" data-score>${Number(node.score || 0)}</span>
+          <span class="vote-score" pontuação de dados>${Number(node.score || 0)}</span>
           <button class="vote-btn" type="button" data-vote="down" data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}" aria-label="Voto negativo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" Stroke="currentColor" Stroke-width="2.4" Stroke-linecap="round" Stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
         <button class="comment-action-link" type="button" data-reply data-comment-id="${esc(node.id)}" data-author="${esc(node.authorName || "")}">Responder</button>
-        <button class="comment-action-link" type="button" data-report data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}">Reportar</button>
+        <button class="comment-action-link" type="button" data-report data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}">Relatório</button>
       </div>
       ${children}
-    </article>`;
+    </artigo>`;
 }
 
 function updateReplyHint() {
   if (state.replyTo) {
     el.replyToHint.hidden = false;
     el.cancelReplyBtn.hidden = false;
-    el.replyToHint.textContent = `Respondiendo a ${state.replyTo.author || "un comentario"}`;
+    el.replyToHint.textContent = `Respondendo a ${state.replyTo.author || "un comentario"}`;
   } else {
     el.replyToHint.hidden = true;
     el.cancelReplyBtn.hidden = true;
@@ -505,7 +500,7 @@ async function submitComment() {
   const body = el.commentBody.value.trim();
   el.commentError.hidden = true;
   if (!body) {
-    el.commentError.textContent = "Escribe algo antes de comentar.";
+    el.commentError.textContent = "Escreva algo antes de comentar.";
     el.commentError.hidden = false;
     return;
   }
@@ -520,10 +515,10 @@ async function submitComment() {
     state.replyTo = null;
     updateReplyHint();
     await loadComments(state.currentPost.id);
-    toast("Comentario publicado.", "success");
+    toast("Comentário postado.", "success");
   } catch (error) {
-    console.error("Error al comentar:", error);
-    el.commentError.textContent = error?.message || "No se pudo publicar el comentario.";
+    console.error("Erro ao comentar:", error);
+    el.commentError.textContent = error?.message || "O comentário não pôde ser publicado.";
     el.commentError.hidden = false;
   } finally {
     el.submitComment.disabled = false;
@@ -552,10 +547,10 @@ async function submitReport(event) {
       note: el.reportNote.value.trim(),
     });
     el.reportDialog.close();
-    toast("Gracias, hemos recibido tu reporte.", "success");
+    toast("Obrigado, recebemos seu relatório.", "success");
   } catch (error) {
-    console.error("Error al reportar:", error);
-    el.reportError.textContent = error?.message || "No se pudo enviar el reporte.";
+    console.error("Erro de relatório:", error);
+    el.reportError.textContent = error?.message || "Não foi possível enviar o relatório.";
     el.reportError.hidden = false;
   }
 }
@@ -573,7 +568,7 @@ async function loadReports() {
       limit(20)
     ));
     if (snap.empty) {
-      el.reportList.innerHTML = '<p class="community-status">Sin reportes abiertos.</p>';
+      el.reportList.innerHTML = '<p class="community-status">Nenhum relatório aberto.</p>';
       return;
     }
     el.reportList.innerHTML = snap.docs.map((d) => {
@@ -584,42 +579,42 @@ async function loadReports() {
         <div class="report-item" data-report-id="${esc(d.id)}">
           <div class="report-reason">${esc(r.reason)}</div>
           <div>${esc(r.targetType)} · ${formatRelative(r.createdAt)}</div>
-          ${r.note ? `<div class="community-status">${esc(r.note)}</div>` : ""}
+          ${r.note ? `<div class="community-status">${esc(r.note)}</div>`: ""}
           <div class="report-actions">
-            <button type="button" data-moderate="remove"
-              data-target-type="${esc(r.targetType)}"
-              data-target-id="${esc(r.targetId)}"
+            <button type="botão" data-moderate="remover"
+              tipo de destino de dados = "${esc(r.targetType)}"
+              id de destino de dados = "${esc(r.targetId)}"
               data-post-id="${esc(r.targetType === "comment" ? parentPostId : "")}">Ocultar</button>
             <button type="button" data-resolve="resolved">Resolver</button>
-            <button type="button" data-resolve="dismissed">Descartar</button>
+            <button type="button" data-resolve="dismissed">Dispensar</button>
           </div>
         </div>`;
     }).join("");
   } catch (error) {
-    console.error("Error cargando reportes:", error);
-    el.reportList.innerHTML = '<p class="community-status">No se pudieron cargar los reportes.</p>';
+    console.error("Erro ao carregar os relatórios:", error);
+    el.reportList.innerHTML = '<p class="community-status">Não foi possível carregar os relatórios.</p>';
   }
 }
 
 async function handleResolve(reportId, status) {
   try {
     await resolveReport({ reportId, status });
-    toast("Reporte actualizado.", "success");
+    toast("Relatório atualizado.", "success");
     await loadReports();
   } catch (error) {
     console.error(error);
-    toast("No se pudo actualizar el reporte.", "error");
+    toast("O relatório não pôde ser atualizado.", "error");
   }
 }
 
 async function handleModerate(targetType, targetId, postId, action) {
   try {
     await moderateContent({ targetType, targetId, postId: postId || null, action });
-    toast("Contenido ocultado.", "success");
+    toast("Conteúdo oculto.", "success");
     await loadReports();
   } catch (error) {
     console.error(error);
-    toast("No se pudo moderar el contenido.", "error");
+    toast("Não foi possível moderar o conteúdo.", "error");
   }
 }
 
@@ -643,7 +638,7 @@ onAuthStateChanged(auth, async (user) => {
       const token = await user.getIdTokenResult();
       state.role = token.claims.role || null;
     } catch (error) {
-      console.error("No se pudieron leer los claims:", error);
+      console.error("As reivindicações não puderam ser lidas:", error);
     }
   }
   updateAuthUi();
@@ -661,12 +656,12 @@ async function submitNewPost(event) {
   const tags = Array.from(el.newPostForm.querySelectorAll('input[name="tags"]:checked')).map((i) => i.value);
 
   if (title.length < 3) {
-    el.newPostError.textContent = "El título es demasiado corto.";
+    el.newPostError.textContent = "O título é muito curto.";
     el.newPostError.hidden = false;
     return;
   }
   if (!body) {
-    el.newPostError.textContent = "El contenido no puede estar vacío.";
+    el.newPostError.textContent = "O conteúdo não pode estar vazio.";
     el.newPostError.hidden = false;
     return;
   }
@@ -679,10 +674,10 @@ async function submitNewPost(event) {
     el.newPostForm.reset();
     await loadSpaces();
     navigate({ postId: res.data.id });
-    toast("Hilo publicado.", "success");
+    toast("Tópico postado.", "success");
   } catch (error) {
-    console.error("Error al publicar:", error);
-    el.newPostError.textContent = error?.message || "No se pudo publicar el hilo.";
+    console.error("Erro ao publicar:", error);
+    el.newPostError.textContent = error?.message || "O tópico não pôde ser publicado.";
     el.newPostError.hidden = false;
   } finally {
     submitBtn.disabled = false;
@@ -696,7 +691,7 @@ function navigate({ space, postId, replace = false } = {}) {
   if (space !== undefined) state.spaceSlug = space || null;
   if (state.spaceSlug) params.set("espacio", state.spaceSlug);
   if (postId) params.set("hilo", postId);
-  const url = `/es/comunidad/${params.toString() ? `?${params}` : ""}`;
+  const url = `/pt/community/${params.toString() ? `?${params}` : ""}`;
   if (replace) history.replaceState({ space: state.spaceSlug, postId }, "", url);
   else history.pushState({ space: state.spaceSlug, postId }, "", url);
 
@@ -758,7 +753,7 @@ document.addEventListener("click", (event) => {
   const reportBtn = event.target.closest("[data-report]");
   if (reportBtn) {
     if (!state.user) {
-      toast("Inicia sesión para reportar.", "error");
+      toast("Faça login para relatar.", "error");
       return;
     }
     openReportDialog({

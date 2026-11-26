@@ -1,11 +1,9 @@
 export async function transferSessionToApp(user) {
-  if (!user) return false;
+  // Transferir a sessão apenas quando executada dentro da app nativa;
+  // na web, a sessão do Firebase persiste por si só.
+  if (!user || !isNativeApp()) return false;
 
   try {
-    if (!isNativeApp()) {
-      return false;
-    }
-
     const idToken = await user.getIdToken();
 
     const res = await fetch("/auth/custom-token", {
@@ -23,7 +21,7 @@ export async function transferSessionToApp(user) {
     redirectToApp(data.customToken);
     return true;
   } catch (error) {
-    console.warn("No se pudo transferir la sesión a la app:", error);
+    console.warn("Não foi possível transferir a sessão para a app:", error);
     return false;
   }
 }
@@ -34,5 +32,5 @@ function isNativeApp() {
 
 function redirectToApp(customToken) {
   // Deep link para Android nativo
-  window.location.href = `lixney://auth?token=${encodeURIComponent(customToken)}`;
+  window.location.href = `Lixney://auth?token=${encodeURIComponent(customToken)}`;
 }
