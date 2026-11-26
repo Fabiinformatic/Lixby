@@ -511,7 +511,7 @@
       }
       const factor = getPhoneFactor(user);
       if (factor) {
-        showStatus(`2fa attivo con ${factor.phonenumber || "telefono"}.`, "success");
+        showStatus(`2fa attivo con ${factor.phoneNumber || "telefono"}.`, "success");
       } else {
         showStatus("2fa non è attivato su questo conto.");
       }

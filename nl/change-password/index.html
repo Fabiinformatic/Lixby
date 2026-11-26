@@ -543,7 +543,7 @@
         { multiFactorHint: hint, session: resolver.session },
         recaptchaVerifier
       );
-      mfaHint.textContent = `We hebben je een code gestuurd naar ${hint.phonenumber}.`;
+      mfaHint.textContent = `We hebben je een code gestuurd naar ${hint.phoneNumber}.`;
     }
 
     async function finish(user, next) {

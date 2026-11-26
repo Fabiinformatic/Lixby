@@ -394,7 +394,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/it/ricerca/?q=${encodeuricomponent(query)}` : "/it/shop/";
+        const url = query ? `/it/ricerca/?q=${encodeURIComponent(query)}` : "/it/shop/";
         window.location.href = url;
       });
     }
@@ -405,7 +405,7 @@
       navSearchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = navSearch.value.trim();
-        const url = query ? `/it/ricerca/?q=${encodeuricomponent(query)}` : "/it/shop/";
+        const url = query ? `/it/ricerca/?q=${encodeURIComponent(query)}` : "/it/shop/";
         window.location.href = url;
       });
     }

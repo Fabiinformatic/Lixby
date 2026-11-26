@@ -1294,7 +1294,7 @@
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Wij sturen een sms-code naar ${hint.phonenumber || "tu teléfono"}.`;
+            mfaHint.textContent = `Wij sturen een sms-code naar ${hint.phoneNumber || "je telefoon"}.`;
             mfaPanel.classList.add("active");
             setStatus("Authenticatie in twee stappen vereist.", "info");
             return;
@@ -1467,7 +1467,7 @@
             } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
               setStatus("gesloten Google-venster.", "info");
             } else {
-              setStatus(`fout met google: ${popuperror.message}`, "error");
+              setStatus(`fout met google: ${popupError.message}`, "error");
             }
           }
         } catch (error) {

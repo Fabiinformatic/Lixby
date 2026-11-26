@@ -1807,7 +1807,7 @@
 
       details.appendChild(el("strong", { text: billing.name || "denominazione fiscale" }));
       details.appendChild(el("span", { text: billing.address || "Indirizzo" }));
-      details.appendChild(el("span", { text: `${billing.city || "città"} ${billing.postalcode || ""}`.trim() }));
+      details.appendChild(el("span", { text: `${billing.city || "città"} ${billing.postalCode || ""}`.trim() }));
       details.appendChild(el("span", { text: billing.country || "Paese" }));
       actions.appendChild(el("button", {
         id: "editBillingBtn",
@@ -2133,7 +2133,7 @@
     }
 
     function formatEuro(value) {
-      return value ? `${number(value).tofixed(2).replace(".", ",")} €` : "—";
+      return value ? `${Number(value).toFixed(2).replace(".", ",")} €` : "—";
     }
 
     function renderOrderCard(order) {
@@ -2178,7 +2178,7 @@
       const actions = el("div", { className: "order-actions" });
       actions.appendChild(el("a", {
         className: "btn btn-secondary",
-        href: `/it/traccia/?orderid=${encodeuricomponent(order.id || "")}`,
+        href: `/it/traccia/?orderId=${encodeURIComponent(order.id || "")}`,
         text: "seguire l'ordine",
         style: { fontSize: "0.85rem" }
       }));
@@ -2212,14 +2212,14 @@
         style: { fontSize: "0.85rem", color: "var(--muted)" }
       }));
       balanceRow.appendChild(el("strong", {
-        text: `${number(card.balance || 0).tofixed(2).replace(".", ",")} €`,
+        text: `${Number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
         style: { color: "#458500" }
       }));
       article.appendChild(balanceRow);
 
       if (card.recipientName) {
         article.appendChild(el("span", {
-          text: `a: ${card.recipientname}`,
+          text: `a: ${card.recipientName}`,
           style: { fontSize: "0.82rem", color: "var(--muted)" }
         }));
       }
@@ -2617,8 +2617,8 @@
           text: isCurrent ? "questo dispositivo" : `${s.tipo || "dispositivo"} · ${s.os || "sconosciuto"}`
         }));
         item.appendChild(el("span", { text: `${s.browser || "browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
-        item.appendChild(el("span", { text: `ultima attività: ${formatwhen(s.lastactiveat)}` }));
-        item.appendChild(el("span", { text: `inizio: ${formatwhen(s.createdat)}` }));
+        item.appendChild(el("span", { text: `ultima attività: ${formatWhen(s.lastActiveAt)}` }));
+        item.appendChild(el("span", { text: `inizio: ${formatWhen(s.createdAt)}` }));
 
         if (isCurrent) {
           item.appendChild(el("span", { className: "session-badge", text: "attiva ora" }));
@@ -2737,7 +2737,7 @@
         const item = el("div", { className: "session-item" });
         item.appendChild(el("strong", { text: formatWhen(s.createdAt) }));
         item.appendChild(el("span", { text: `${s.browser || "browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
-        item.appendChild(el("span", { text: `metodo: ${method_labels[s.method] || s.method || "—"}` }));
+        item.appendChild(el("span", { text: `metodo: ${METHOD_LABELS[s.method] || s.method || "—"}` }));
         return item;
       });
 

@@ -1432,7 +1432,7 @@
         faq.style.background = '';
       });
       if (faqCount) {
-        faqCount.textContent = `toont ${math.min(visiblefaqlimit, faqitems.length)} aanbevolen vragen`;
+        faqCount.textContent = `toont ${Math.min(visibleFaqLimit, faqItems.length)} aanbevolen vragen`;
       }
     };
 
@@ -1524,7 +1524,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/nl/search/?q=${encodeuricomponent(query)}` : "/nl/shop/";
+        const url = query ? `/nl/search/?q=${encodeURIComponent(query)}` : "/nl/shop/";
         window.location.href = url;
       });
     }

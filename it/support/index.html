@@ -1432,7 +1432,7 @@
         faq.style.background = '';
       });
       if (faqCount) {
-        faqCount.textContent = `mostrando le domande in primo piano su ${math.min(visiblefaqlimit, faqitems.length)}`;
+        faqCount.textContent = `mostrando le domande in primo piano su ${Math.min(visibleFaqLimit, faqItems.length)}`;
       }
     };
 
@@ -1524,7 +1524,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/it/ricerca/?q=${encodeuricomponent(query)}` : "/it/shop/";
+        const url = query ? `/it/ricerca/?q=${encodeURIComponent(query)}` : "/it/shop/";
         window.location.href = url;
       });
     }
