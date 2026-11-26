@@ -276,7 +276,7 @@ function postCardHtml(post) {
           <span class="dot" aria-hidden="true"></span>
           <span>${formatRelative(post.lastActivityAt || post.createdAt)}</span>
           <span class="dot" aria-hidden="true"></span>
-          <span>${Number(post.commentCount || 0)} comentarios</span>
+          <span>${Number(post.commentCount || 0)} comments</span>
           ${tags ? `<span class="dot" aria-hidden="true"></span>${tags}` : ""}
         </div>
       </div>
@@ -596,7 +596,7 @@ async function loadReports() {
         </div>`;
     }).join("");
   } catch (error) {
-    console.error("Error cargando reportes:", error);
+    console.error("Error loading reports:", error);
     el.reportList.innerHTML = '<p class="community-status">Could not load reports.</p>';
   }
 }

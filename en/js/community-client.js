@@ -196,9 +196,9 @@ function buildVerifyNotice(user, text) {
   );
 }
 
-// Lleva el foco al aviso de verificación. Si la página no tiene compositor ni
-// formulario de comentario (inicio, normas, buscar), lo inserta al principio
-// del contenido para que el botón "Verifica tu correo" del nav siempre haga algo.
+// Move focus to the verification notice. If the page has no composer or
+// comment form (home, guidelines, search), insert it at the beginning
+// of the content so the "Verify email" button in the nav always does something.
 function focusVerifyNotice(user) {
   let host =
     document.getElementById("lx-composer") ||
