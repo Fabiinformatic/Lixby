@@ -481,7 +481,7 @@
     async function reauthUser(user) {
       const password = currentPassword.value.trim();
       if (!password) {
-        showStatus("Digite tua palavra-passe atual para continuar.", "error");
+        showStatus("introduza tua palavra-passe atual para continuar.", "error");
         throw new Error("missing-password");
       }
       if (!user.email) {
@@ -584,7 +584,7 @@
 
       const code = smsCode.value.trim();
       if (!code) {
-        showStatus("Digite o código SMS.", "error");
+        showStatus("introduza o código SMS.", "error");
         return;
       }
 

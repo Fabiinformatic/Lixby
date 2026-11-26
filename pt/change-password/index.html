@@ -558,7 +558,7 @@
       const next = newPassword.value;
       const confirm = confirmPassword.value;
 
-      if (!current) return showStatus("Digite a palavra-passe atual.", "error");
+      if (!current) return showStatus("introduza a palavra-passe atual.", "error");
       if (!isStrongEnough(next)) return showStatus("A nova palavra-passe deve ter pelo menos 8 caracteres.", "error");
       if (next !== confirm) return showStatus("as palavras-passe não coincidem.", "error");
 
@@ -571,7 +571,7 @@
           await sendSms(mfaResolver);
           mfaBlock.style.display = "grid";
           savePasswordBtn.textContent = "confirme o código e altere";
-          showStatus("Digite o código SMS que lhe enviamos.", "info");
+          showStatus("introduza o código SMS que lhe enviamos.", "info");
           return;
         }
         throw error;
@@ -582,7 +582,7 @@
 
     async function completeWithSms() {
       const code = smsCode.value.trim();
-      if (!/^\d{6}$/.test(code)) return showStatus("Digite o código de 6 dígitos.", "error");
+      if (!/^\d{6}$/.test(code)) return showStatus("introduza o código de 6 dígitos.", "error");
 
       const credential = PhoneAuthProvider.credential(verificationId, code);
       const assertion = PhoneMultiFactorGenerator.assertion(credential);

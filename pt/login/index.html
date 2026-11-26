@@ -909,7 +909,7 @@
             <div class="captcha-box">
               <label>imagem de verificação</label>
               <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
-              <label for="captchaInput">digite o código da imagem</label>
+              <label for="captchaInput">introduza o código da imagem</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">novo código</a>
@@ -1338,7 +1338,7 @@
 
         const code = mfaCodeInput.value.trim();
         if (!code) {
-          setStatus("Digite o código SMS.", "error");
+          setStatus("introduza o código SMS.", "error");
           return;
         }
 
@@ -1499,7 +1499,7 @@
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Digite um número de telefone antes de enviar o código.", "error");
+          setStatus("introduza um número de telefone antes de enviar o código.", "error");
           return;
         }
         try {
