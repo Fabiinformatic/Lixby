@@ -991,7 +991,7 @@
                 <option value="de-DE">Deutsch</option>
                 <option value="el-GR">Ελληνικά</option>
                 <option value="en-US">English</option>
-                <option value="es-ES">Spaans</option>
+                <option value="nl-NL">Spaans</option>
                 <option value="et-EE">Eesti</option>
                 <option value="fi-FI">Suomi</option>
                 <option value="fr-FR">Français</option>
@@ -1395,7 +1395,7 @@
       { value: "de-DE", label: "Deutsch" },
       { value: "el-GR", label: "Ελληνικά" },
       { value: "en-US", label: "English" },
-      { value: "es-ES", label: "Spaans" },
+      { value: "nl-NL", label: "Spaans" },
       { value: "et-EE", label: "Eesti" },
       { value: "fi-FI", label: "Suomi" },
       { value: "fr-FR", label: "Français" },
@@ -1859,7 +1859,7 @@
       inputs.lastName.value = profile.lastName || "";
       setSelectValue(inputs.region, profile.country || "Spanje");
       inputs.birthDate.value = mapBirth(profile);
-      setSelectValue(inputs.language, profile.language || navigator.language || "es-es");
+      setSelectValue(inputs.language, profile.language || navigator.language || "nl-NL");
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
       document.getElementById("photoPreview").src = sanitizeImageUrl(inputs.photoUrl.value || user.photoURL);
@@ -2119,13 +2119,20 @@
         "En reparto": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
         Entregado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
       };
-      const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
-      return badge(status || "bestelling ontvangen", s);
+      const labels = {
+"Pedido recibido": "Bestelling ontvangen",
+"Preparando pedido": "Bestelling voorbereiden",
+Enviado: "Verzonden",
+"En reparto": "Onderweg",
+Entregado: "Bezorgd"
+};
+const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
+      return badge(labels[status] || status || "bestelling ontvangen", s);
     }
 
     function formatDate(iso) {
       if (!iso) return "—";
-      return new Date(iso).toLocaleDateString("es-es", {
+      return new Date(iso).toLocaleDateString("nl-NL", {
         day: "numeric",
         month: "short",
         year: "numeric"
@@ -2581,7 +2588,7 @@
       if (!value) return "—";
       const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
       if (Number.isNaN(date.getTime())) return "—";
-      return date.toLocaleString("es-es", { dateStyle: "medium", timeStyle: "short" });
+      return date.toLocaleString("nl-NL", { dateStyle: "medium", timeStyle: "short" });
     }
 
     async function openSessionsModal(user) {

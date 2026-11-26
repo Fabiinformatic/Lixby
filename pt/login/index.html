@@ -1294,7 +1294,7 @@
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "tu teléfono"}.`;
+            mfaHint.textContent = `Enviaremos um código SMS para ${hint.phoneNumber || "o teu número de telefone"}.`;
             mfaPanel.classList.add("active");
             setStatus("Verificação em duas etapas necessária.", "info");
             return;

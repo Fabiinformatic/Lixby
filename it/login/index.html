@@ -1294,7 +1294,7 @@
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phoneNumber || "tu teléfono"}.`;
+            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phoneNumber || "il tuo numero di telefono"}.`;
             mfaPanel.classList.add("active");
             setStatus("È richiesta la verifica in due passaggi.", "info");
             return;

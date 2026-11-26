@@ -1587,7 +1587,7 @@
           <li><a href="/it/support/">Pagina iniziale del supporto</a></li>
           <li><a href="/it/support/#faq">FAQ del negozio online</a></li>
           <li><a href="/it/support/">Informazioni sulla garanzia</a></li>
-          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+          <li><a href="mailto:info@lixby.es">Scrivi al CEO</a></li>
         </ul>
       </section>
 
@@ -1728,7 +1728,7 @@
         addToCartBtn.disabled = true;
         const cart = readCart();
         const colorLabel = document.getElementById("colorLabel");
-        const selectedColor = colorLabel ? colorLabel.textContent.replace("Colore -", "") : "Blanco";
+        const selectedColor = colorLabel ? colorLabel.textContent.replace("Colore - ", "") : "Blanco";
         const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice, selectedEngraving);
         const existing = cart.find((item) => (item.lineId || buildLineId(
           item.color || "Blanco",
@@ -1855,13 +1855,13 @@
     document.querySelectorAll(".color-swatch").forEach((swatch) => {
       swatch.addEventListener("mouseenter", () => {
         if (colorLabel && swatch.dataset.color) {
-          colorLabel.textContent = `colore - ${swatch.dataset.color}`;
+          colorLabel.textContent = `Colore - ${swatch.dataset.color}`;
         }
       });
 
       swatch.addEventListener("mouseleave", () => {
         if (colorLabel) {
-          colorLabel.textContent = `colore - ${selectedColorName}`;
+          colorLabel.textContent = `Colore - ${selectedColorName}`;
         }
       });
 
@@ -1870,7 +1870,7 @@
         swatch.classList.add("active");
         if (colorLabel) {
           selectedColorName = swatch.dataset.color || "Blanco";
-          colorLabel.textContent = `colore - ${selectedColorName}`;
+          colorLabel.textContent = `Colore - ${selectedColorName}`;
         }
         if (swatch.dataset.image) {
           selectedImageForCart = swatch.dataset.image;
@@ -2270,7 +2270,7 @@
         const color = swatch.dataset.color || "";
         const cl = document.getElementById("colorLabel") || colorLabelEl;
         if (cl) {
-          cl.textContent = `colore - ${color}`;
+          cl.textContent = `Colore - ${color}`;
         }
         const summaryColorText = document.getElementById("summaryColorText");
         if (summaryColorText) {

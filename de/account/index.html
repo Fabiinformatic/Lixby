@@ -991,7 +991,7 @@
                 <option value="de-DE">Deutsch</option>
                 <option value="el-GR">Ελληνικά</option>
                 <option value="en-US">English</option>
-                <option value="es-ES">Spanisch</option>
+                <option value="de-DE">Spanisch</option>
                 <option value="et-EE">Eesti</option>
                 <option value="fi-FI">Suomi</option>
                 <option value="fr-FR">Français</option>
@@ -1395,7 +1395,7 @@
       { value: "de-DE", label: "Deutsch" },
       { value: "el-GR", label: "Ελληνικά" },
       { value: "en-US", label: "English" },
-      { value: "es-ES", label: "Spanisch" },
+      { value: "de-DE", label: "Spanisch" },
       { value: "et-EE", label: "Eesti" },
       { value: "fi-FI", label: "Suomi" },
       { value: "fr-FR", label: "Français" },
@@ -2119,8 +2119,15 @@
         "En reparto": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
         Entregado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
       };
-      const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
-      return badge(status || "Bestellung erhalten", s);
+      const labels = {
+"Pedido recibido": "Bestellung erhalten",
+"Preparando pedido": "Bestellung wird vorbereitet",
+Enviado: "Versendet",
+"En reparto": "Unterwegs",
+Entregado: "Zugestellt"
+};
+const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
+      return badge(labels[status] || status || "Bestellung erhalten", s);
     }
 
     function formatDate(iso) {
