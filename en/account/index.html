@@ -53,10 +53,13 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/en/style.css">
   <style>
-    html, body {
+    html {
       overflow-x: hidden;
       max-width: 100%;
     }
@@ -65,8 +68,11 @@
       padding: 34px 0 84px;
     }
 
-    html, body {
-      overflow-x: hidden;
+    /* On the body we use "clip" instead of "hidden": hidden turns the body into
+       a scroll container and breaks the sidebar's position: sticky. */
+    body {
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     body {
@@ -76,9 +82,52 @@
       min-height: 100vh;
     }
 
+    /* The background circles stay still: they must not move on scroll */
     .background-orb {
-      will-change: transform;
-      transform: translateZ(0);
+      animation: none !important;
+      will-change: auto;
+      transform: none;
+    }
+
+    /* ── Loading screen ──────────────────────────── */
+    #loadingScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: var(--bg, #f6f8fb);
+      font-family: var(--font-family, "Inter", "Inter", sans-serif);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+    #loadingScreen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--line, #dbe3ef);
+      border-top-color: var(--primary, #0f3dff);
+      border-radius: 50%;
+      animation: loadSpin 0.75s linear infinite;
+    }
+    .loading-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted, #5f6b7a);
+      letter-spacing: 0.01em;
+    }
+    @keyframes loadSpin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes loadPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.06); opacity: 1; }
     }
 
     #accountLayout {
@@ -116,6 +165,12 @@
       padding: 18px;
     }
 
+    /* The side card follows along as you scroll through the account */
+    .account-side {
+      position: sticky;
+      top: 92px;
+    }
+
     .account-side h1 {
       font-size: 1.4rem;
       margin-bottom: 6px;
@@ -140,8 +195,15 @@
 
     .side-actions {
       display: grid;
-      gap: 8px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 14px;
+      justify-items: stretch;
+    }
+
+    /* The side card buttons span the full width of the white card */
+    .side-actions .btn {
+      width: 100%;
+      min-width: 0;
     }
 
     .account-section + .account-section {
@@ -189,6 +251,26 @@
       min-height: 72px;
     }
 
+    /* Dropdowns with the Lixby arrow and focus ring */
+    .field select,
+    .payment-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23697380' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px 16px;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .field select:focus,
+    .field select:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.15);
+    }
+
     .field-grid.three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -207,18 +289,88 @@
 
     .check-list {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
     .check-row {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
       font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 15px;
+      background: #fff;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .check-row input {
-      width: auto;
+    .check-row:hover {
+      border-color: rgba(15, 61, 255, 0.4);
+      background: #f7f9ff;
+    }
+
+    .check-row:has(input:checked) {
+      border-color: var(--primary);
+      background: #f2f5ff;
+      box-shadow: 0 10px 24px rgba(15, 61, 255, 0.12);
+    }
+
+    /* Checkbox with the Lixby design */
+    .check-row input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      flex: none;
+      margin: 1px 0 0;
+      border: 2px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .check-row input[type="checkbox"]:hover {
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:checked {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .check-row input[type="checkbox"]:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(15, 61, 255, 0.25);
+    }
+
+    .check-row input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 11px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg);
+    }
+
+    .check-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .check-text strong {
+      font-weight: 700;
+    }
+
+    .check-text span {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--muted);
     }
 
     .action-list {
@@ -237,48 +389,51 @@
       background: #f8fafc;
     }
 
-    .action-item .btn {
+    /* All account buttons share the same height, weight and typography */
+    .account-page .btn {
       min-width: 160px;
+      height: 40px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
       text-align: center;
       font-size: 0.95rem;
       font-weight: 700;
-      height: 40px;
-      padding: 0 18px;
+      line-height: 1;
       border-radius: 999px;
     }
 
-    /* Make side actions match the size and border style of other action buttons */
-    .side-actions .btn:not(.btn-primary),
-    .side-actions a.btn:not(.btn-primary) {
-      min-width: 160px;
-      height: 40px;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #f8fafc;
+    .account-page .btn-primary,
+    .account-page .btn-solid {
+      border: 1px solid transparent;
+      color: #fff;
+    }
+
+    .account-page .btn-secondary,
+    .account-page .btn-outline {
+      background: #fff;
       color: #111827;
-      box-shadow: none;
-      position: static;
+      border: 1px solid var(--line);
     }
 
-    .side-actions .btn.btn-primary {
-      min-width: 160px;
-      height: 40px;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 999px;
-      position: relative;
-      overflow: hidden;
+    .account-page .btn-secondary:hover,
+    .account-page .btn-outline:hover {
+      background: #f1f5f9;
+      color: #111827;
+    }
+
+    .account-page .btn-danger {
+      background: #dc2626;
+      border: 1px solid #dc2626;
+      color: #fff;
+    }
+
+    .account-page .btn-danger:hover,
+    .account-page .btn-danger:active {
+      background: #b91c1c;
+      border-color: #b91c1c;
+      color: #fff;
     }
 
     .btn-verified {
@@ -307,6 +462,11 @@
       gap: 8px;
       flex-wrap: wrap;
       margin-top: 4px;
+    }
+
+    /* Extra spacing between the button and the fields (e.g. CVV) */
+    .payment-panel .order-actions {
+      margin-top: 16px;
     }
 
     .payment-panel {
@@ -338,7 +498,8 @@
       font-weight: 700;
     }
 
-    .payment-field input {
+    .payment-field input,
+    .payment-field select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -444,26 +605,49 @@
       margin-left: 6px;
     }
 
+    /* Bottom bar: appears when there are unsaved changes */
     .save-bar {
       position: fixed;
       left: 50%;
       bottom: 18px;
-      transform: translateX(-50%) translateY(120%);
-      background: #0f172a;
-      color: #fff;
-      border-radius: 999px;
-      padding: 10px 14px;
+      transform: translateX(-50%) translateY(140%);
+      background: #fff;
+      color: #0f172a;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      z-index: 2000;
-      transition: transform 0.25s ease;
-      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.35);
+      gap: 14px;
+      z-index: 2100;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.18);
+      max-width: calc(100% - 24px);
+      opacity: 0;
+      pointer-events: none;
     }
 
     .save-bar.show {
       transform: translateX(-50%) translateY(0);
-      animation: pulseSave 0.45s ease;
+      opacity: 1;
+      pointer-events: auto;
+      animation: pulseSave 0.35s ease;
+    }
+
+    .save-bar-text {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .save-bar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .save-bar-actions .btn {
+      min-width: 0;
+      height: 38px;
+      padding: 0 16px;
     }
 
     @keyframes pulseSave {
@@ -471,13 +655,142 @@
       100% { transform: translateX(-50%) translateY(0) scale(1); }
     }
 
+    /* Modal (active sessions) */
+    .account-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2200;
+    }
+
+    .account-modal.hidden {
+      display: none;
+    }
+
+    .account-modal-panel {
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px;
+      width: min(520px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 14px;
+    }
+
+    .account-modal-panel h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .session-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .session-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+      display: grid;
+      gap: 3px;
+    }
+
+    .session-item strong {
+      font-weight: 700;
+    }
+
+    .session-item span {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .session-badge {
+      justify-self: start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 999px;
+      padding: 3px 9px;
+      margin-top: 4px;
+    }
+
+    .account-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* "Speech bubble" style notice (toast) */
+    .toast-msg {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-160%);
+      background: #0f172a;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 20px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      z-index: 2300;
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.3);
+      transition: transform 0.28s ease, opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+      max-width: calc(100% - 24px);
+      text-align: center;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-msg.success {
+      background: #15803d;
+    }
+
+    .toast-msg.error {
+      background: #b91c1c;
+    }
+
     .hidden {
       display: none;
+    }
+
+    @media (max-width: 560px) {
+      .save-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: calc(100% - 24px);
+        border-radius: 18px;
+      }
+
+      .save-bar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 960px) {
       .account-layout {
         grid-template-columns: 1fr;
+      }
+
+      /* In a single column the side card must not stay sticky */
+      .account-side {
+        position: static;
+        top: auto;
       }
     }
 
@@ -508,47 +821,148 @@
 </head>
 <body>
 
+  <div id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Loading your account…</p>
+  </div>
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
   <div class="background-orb orb-4" aria-hidden="true"></div>
   <div class="background-orb orb-5" aria-hidden="true"></div>
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
+    <div class="container nav-container">
+      <a href="/en/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/store/" class="nav-link">Store</a>
-        <a href="/en/#products" class="nav-link">Products</a>
-        <a href="/en/#apps" class="nav-link">Apps</a>
+        <a href="/en/shop/" class="nav-link">Store</a>
+        <a href="/en/products/" class="nav-link">Products</a>
+        <a href="/en/apps/" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/en/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Search Lixby..."
+            aria-label="Search Lixby"
+          >
+        </form>
         <a href="/en/cart/" class="nav-icon-link" aria-label="Cart">
-          <img src="images/Bolsa.png" alt="Cart">
+          <img src="/en/images/Bolsa.png" alt="Cart">
         </a>
         <a href="/en/account/" class="nav-icon-link" aria-label="Account">
-          <img src="images/cuenta.png" alt="Account">
+          <img src="/en/images/account.png" alt="Account">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile main">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Store</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/en/shop/">Go to store</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One headphones</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/buy-headphones/lixbuds-one/">Buy now</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/news/">News</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Products</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/en/products/">View products</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/lixsafe/">LixSafe and coverage</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/en/apps/">View apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixney/">Lixney support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixfly/">Lixfly support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/en/support/">Go to support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/faq/">Frequently asked questions</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/returns/">Returns</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Cart</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">View cart</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">Checkout</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Go to my account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My orders</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My profile</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Settings</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/login/">Sign in</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/two-step-verification/">Two-step verification</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container account-page">
-    <!-- statusMsg removed per request -->
-
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
-        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Profile picture">
+        <img id="profilePhoto" class="avatar" src="images/account.png" alt="Profile photo">
         <h1 id="sideName">Your Lixby account</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
-          <button id="editBtn" class="btn btn-secondary" type="button">Edit details</button>
           <a class="btn btn-secondary" href="/en/cart/">View orders</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Sign out</button>
         </div>
       </aside>
 
-      <section id="profileForm" class="account-main readonly">
+      <section id="profileForm" class="account-main">
         <section class="account-section">
           <h2>Personal details</h2>
           <div class="field-grid">
@@ -562,7 +976,7 @@
             </div>
             <div class="field">
               <label for="region">Country / Region</label>
-              <input id="region" type="text">
+              <select id="region"></select>
             </div>
             <div class="field">
               <label for="birthDate">Date of birth</label>
@@ -570,16 +984,41 @@
             </div>
             <div class="field">
               <label for="language">Language</label>
-              <input id="language" type="text">
+              <select id="language">
+                <option value="bg-BG">Български</option>
+                <option value="cs-CZ">Čeština</option>
+                <option value="da-DK">Dansk</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="el-GR">Ελληνικά</option>
+                <option value="en-US">English</option>
+                <option value="es-ES">Español</option>
+                <option value="et-EE">Eesti</option>
+                <option value="fi-FI">Suomi</option>
+                <option value="fr-FR">Français</option>
+                <option value="ga-IE">Gaeilge</option>
+                <option value="hr-HR">Hrvatski</option>
+                <option value="hu-HU">Magyar</option>
+                <option value="it-IT">Italiano</option>
+                <option value="lt-LT">Lietuvių</option>
+                <option value="lv-LV">Latviešu</option>
+                <option value="mt-MT">Malti</option>
+                <option value="nl-NL">Nederlands</option>
+                <option value="pl-PL">Polski</option>
+                <option value="pt-PT">Português</option>
+                <option value="ro-RO">Română</option>
+                <option value="sk-SK">Slovenčina</option>
+                <option value="sl-SI">Slovenščina</option>
+                <option value="sv-SE">Svenska</option>
+              </select>
             </div>
             <div class="field">
-              <label for="timezone">Timezone</label>
+              <label for="timezone">Time zone</label>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label>Profile picture</label>
+              <label>Profile photo</label>
               <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-                <img id="photoPreview" src="images/cuenta.png" alt="Preview"
+                <img id="photoPreview" src="images/account.png" alt="Preview"
                   style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
                 <div>
                   <input id="photoFile" type="file" accept="image/*" style="display:none">
@@ -607,7 +1046,7 @@
             </div>
             <div class="field">
               <label for="countryContact">Country</label>
-              <input id="countryContact" type="text">
+              <select id="countryContact"></select>
             </div>
             <div class="field full">
               <label for="address">Address</label>
@@ -627,11 +1066,20 @@
         <section class="account-section">
           <h2>Preferences</h2>
           <div class="check-list">
-            <label class="check-row"><input id="prefAds" type="checkbox"> Receive advertising and marketing</label>
-            <label class="check-row"><input id="prefNews" type="checkbox"> News and updates</label>
-            <label class="check-row"><input id="prefUpdates" type="checkbox"> Software updates</label>
-            <label class="check-row"><input id="prefOffers" type="checkbox"> Special offers</label>
-            <label class="check-row"><input id="prefSupport" type="checkbox"> Support emails</label>
+            <label class="check-row">
+              <input id="prefAds" type="checkbox">
+              <span class="check-text">
+                <strong>Ads</strong>
+                <span>Receive emails from Lixby about ads, marketing and product recommendations.</span>
+              </span>
+            </label>
+            <label class="check-row">
+              <input id="prefOffers" type="checkbox">
+              <span class="check-text">
+                <strong>Apps, music and much more</strong>
+                <span>Receive emails about new launches, exclusive content and special offers.</span>
+              </span>
+            </label>
           </div>
         </section>
 
@@ -639,11 +1087,11 @@
           <h2>Security</h2>
           <div class="action-list">
             <div class="action-item"><span>Change password</span><a class="btn btn-secondary" href="/en/change-password/">Manage</a></div>
-            <div class="action-item"><span>View active sessions</span><button class="btn btn-secondary" type="button">View</button></div>
-            <div class="action-item"><span>Sign out on other devices</span><button class="btn btn-secondary" type="button">Sign out</button></div>
-            <div class="action-item"><span>Enable two-step verification</span><a id="twoFactorBtn" class="btn btn-secondary" href="/en/two-factor-verification/">Set up</a></div>
-            <div class="action-item"><span>Verify email</span><button id="verifyEmailBtn" class="btn btn-secondary" type="button">Send</button></div>
-            <div class="action-item"><span>Login history</span><button class="btn btn-secondary" type="button">View history</button></div>
+            <div class="action-item"><span>View active sessions</span><button id="viewSessionsBtn" class="btn btn-secondary" type="button">View</button></div>
+            <div class="action-item"><span>Sign out on other devices</span><button id="closeOtherSessionsBtn" class="btn btn-secondary btn-danger" type="button">Sign out</button></div>
+            <div class="action-item"><span>Enable two-step verification</span><a id="twoFactorBtn" class="btn btn-secondary" href="/en/two-step-verification/">Set up</a></div>
+            <div class="action-item"><span>Verify email</span><button id="verifyEmailBtn" class="btn btn-verified" type="button">Send</button></div>
+            <div class="action-item"><span>Sign-in history</span><button id="loginHistoryBtn" class="btn btn-secondary" type="button">View history</button></div>
           </div>
         </section>
 
@@ -654,9 +1102,9 @@
           <div id="ordersEmpty" style="display:none">
             <article class="order-card">
               <strong>You have no orders yet</strong>
-              <span>When you make a purchase it will appear here.</span>
+              <span>When you make a purchase, it will appear here.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/en/store/">Go to store</a>
+                <a class="btn btn-primary" href="/en/shop/">Go to the shop</a>
               </div>
             </article>
           </div>
@@ -664,7 +1112,7 @@
 
         <section class="account-section">
           <h2>Gift cards</h2>
-          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Loading gift cards...</div>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Loading cards...</div>
           <div id="giftCardsList" style="display:none;gap:10px"></div>
           <div id="giftCardsEmpty" style="display:none">
             <article class="order-card">
@@ -681,10 +1129,11 @@
           <h2>Payments</h2>
           <div class="payment-panel" id="paymentsSection">
             <h3>Saved cards</h3>
+            <form id="paymentForm" onsubmit="return false" autocomplete="off">
             <div class="payment-grid">
               <div class="payment-field">
-                <label for="payCardholder">Cardholder name</label>
-                <input id="payCardholder" type="text" placeholder="Full name">
+                <label for="payCardholder">Cardholder</label>
+                <input id="payCardholder" type="text" placeholder="First and last name">
               </div>
               <div class="payment-field">
                 <label for="payCardNumber">Card number</label>
@@ -705,6 +1154,7 @@
             <div class="order-actions">
               <button id="addPaymentBtn" class="btn btn-primary" type="button">Add payment method</button>
             </div>
+            </form>
             <div id="paymentMethods" class="payment-methods"></div>
           </div>
         </section>
@@ -720,7 +1170,7 @@
               </div>
               <div class="payment-field">
                 <label for="billCountry">Country</label>
-                <input id="billCountry" type="text" placeholder="Spain">
+                <select id="billCountry"></select>
               </div>
               <div class="payment-field full">
                 <label for="billAddress">Address</label>
@@ -736,7 +1186,7 @@
               </div>
             </div>
             <div class="order-actions">
-              <button id="saveBillingBtn" class="btn btn-secondary" type="button">Save billing address</button>
+              <button id="saveBillingBtn" class="btn btn-primary" type="button">Save billing address</button>
             </div>
             <div id="billingSummary" class="billing-summary"></div>
           </div>
@@ -745,17 +1195,17 @@
         <section class="account-section">
           <h2>Support</h2>
           <div class="action-list">
-            <div class="action-item"><span>Contact support</span><a class="btn btn-primary" href="/en/support/">Open</a></div>
-            <div class="action-item"><span>Report issue</span><a class="btn btn-secondary" href="/en/support/">Report</a></div>
-            <div class="action-item"><span>User manual</span><a class="btn btn-secondary" href="/en/support/">View</a></div>
-            <div class="action-item"><span>Product warranty</span><a class="btn btn-secondary" href="/en/support/">Check</a></div>
+            <div class="action-item"><span>Contact support</span><a class="btn btn-primary" href="/en/help-center/contact/">Open</a></div>
+            <div class="action-item"><span>Report a problem</span><a class="btn btn-secondary" href="/en/help-center/troubleshooting/">Report</a></div>
+            <div class="action-item"><span>User manual</span><a class="btn btn-secondary" href="/en/help-center/">View</a></div>
+            <div class="action-item"><span>Product warranty</span><a class="btn btn-secondary" href="/en/help-center/warranty/">Check</a></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Privacy</h2>
           <div class="action-list">
-            <div class="action-item"><span>Privacy policy</span><a class="btn btn-secondary" href="/en/pages/legal/privacy/">View</a></div>
+            <div class="action-item"><span>Privacy Policy</span><a class="btn btn-secondary" href="/en/pages/legal/privacy/">View</a></div>
             <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="/en/pages/legal/cookies/">View</a></div>
           </div>
         </section>
@@ -764,23 +1214,44 @@
           <h2>Account</h2>
           <div class="action-list">
             <div class="action-item"><span>Sign out</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Sign out</button></div>
-            <div class="action-item"><span>Delete account</span><button id="deleteAccountBtn" class="btn btn-secondary" type="button">Delete</button></div>
+            <div class="action-item"><span>Delete account</span><button id="deleteAccountBtn" class="btn btn-secondary btn-danger" type="button">Delete</button></div>
           </div>
         </section>
       </section>
     </section>
   </main>
 
-  <!-- saveBar removed: UI handled inline, avoid persistent bar -->
+  <!-- Barra inferior: solo aparece cuando hay cambios sin guardar -->
+  <div id="saveBar" class="save-bar" role="region" aria-live="polite" aria-label="Unsaved changes">
+    <span class="save-bar-text">You have unsaved changes</span>
+    <div class="save-bar-actions">
+      <button id="discardChangesBtn" class="btn btn-ghost" type="button">Discard changes</button>
+      <button id="saveChangesBtn" class="btn btn-primary" type="button">Save changes</button>
+    </div>
+  </div>
 
-  <footer class="footer footer-mega">
+  <!-- Sesiones activas -->
+  <div id="sessionsModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="sessionsTitle">
+    <div class="account-modal-panel">
+      <h3 id="sessionsTitle">Active sessions</h3>
+      <div id="sessionsBody" class="session-list"></div>
+      <div class="account-modal-actions">
+        <button id="sessionsCloseBtn" class="btn btn-secondary" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aviso (bocadillo) -->
+  <div id="toast" class="toast-msg" role="status" aria-live="polite"></div>
+
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>View and buy</h3>
+        <h3>Shop and buy</h3>
         <ul>
-          <li><a href="/en/store/">Store</a></li>
+          <li><a href="/en/shop/">Store</a></li>
           <li><a href="/en/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/en/#apps">Apps</a></li>
+          <li><a href="/en/apps/">Apps</a></li>
           <li><a href="/en/support/">Support</a></li>
         </ul>
       </section>
@@ -788,9 +1259,9 @@
       <section class="footer-section">
         <h3>Support</h3>
         <ul>
-          <li><a href="/en/support/">Support home page</a></li>
-          <li><a href="/en/support/#faq">Online Store FAQs</a></li>
-          <li><a href="/en/support/">Warranty Information</a></li>
+          <li><a href="/en/support/">Support home</a></li>
+          <li><a href="/en/support/#faq">Online store FAQs</a></li>
+          <li><a href="/en/support/">Warranty information</a></li>
           <li><a href="mailto:info@lixby.es">Email the CEO</a></li>
         </ul>
       </section>
@@ -801,15 +1272,16 @@
           <li><a href="/en/track/">Orders</a></li>
           <li><a href="/en/account/">My account</a></li>
           <li><a href="/en/account/">Coupons</a></li>
+          <li><a href="/en/community/">Community</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>About Lixby</h3>
         <ul>
-          <li><a href="#">Newsroom</a></li>
+          <li><a href="/en/about/">About us</a></li>
           <li><a href="/en/support/">Warranty</a></li>
-          <li><a href="#">Events</a></li>
+          <li><a href="/en/news/">News</a></li>
           <li><a href="/en/support/">Contact</a></li>
         </ul>
       </section>
@@ -818,10 +1290,10 @@
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
-        <a href="/en/pages/legal/privacy/">Privacy policy</a>
-        <a href="/en/pages/legal/cookies/">Cookie use</a>
-        <a href="/en/pages/legal/terms/">Terms of use</a>
-        <a href="/en/support/">Sales and refunds</a>
+        <a href="/en/pages/legal/privacy/">Privacy Policy</a>
+        <a href="/en/pages/legal/cookies/">Cookie Policy</a>
+        <a href="/en/pages/legal/terms/">Terms and Conditions</a>
+        <a href="/en/pages/legal/sales-refunds/">Sales and refunds</a>
         <a href="/en/pages/legal/legal-notice/">Legal notices</a>
       </div>
     </div>
@@ -830,9 +1302,9 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
-    import { getAuth, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, getRedirectResult, onAuthStateChanged, signOut, updateEmail, deleteUser, sendEmailVerification, reload, multiFactor, PhoneMultiFactorGenerator } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
-    import { getFirestore, doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, updateDoc, addDoc, collection, getDocs, query, orderBy, limit, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
 
     const firebaseConfig = {
@@ -845,17 +1317,32 @@
       measurementId: "G-689VDV93C2"
     };
 
+    // 5a: post-login destination with an allowlist (only /en/community/**).
+    function nextUrl(fallback = "/en/account/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/en\/community\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
+
     const PROFILE_KEY = "lixbyProfile";
     const PAYMENTS_KEY = "lixbyPayments";
     const BILLING_KEY = "lixbyBilling";
 
-    const statusMsg = document.getElementById("statusMsg");
+    const toastEl = document.getElementById("toast");
     const accountLayout = document.getElementById("accountLayout");
     const profileForm = document.getElementById("profileForm");
     const sideName = document.getElementById("sideName");
     const sideEmail = document.getElementById("sideEmail");
     const profilePhoto = document.getElementById("profilePhoto");
-    const editBtn = document.getElementById("editBtn");
+    const saveBar = document.getElementById("saveBar");
+    const saveChangesBtn = document.getElementById("saveChangesBtn");
+    const discardChangesBtn = document.getElementById("discardChangesBtn");
+    const viewSessionsBtn = document.getElementById("viewSessionsBtn");
+    const closeOtherSessionsBtn = document.getElementById("closeOtherSessionsBtn");
+    const loginHistoryBtn = document.getElementById("loginHistoryBtn");
+    const sessionsModal = document.getElementById("sessionsModal");
+    const sessionsBody = document.getElementById("sessionsBody");
+    const sessionsTitleEl = document.getElementById("sessionsTitle");
+    const sessionsCloseBtn = document.getElementById("sessionsCloseBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const logoutBtnSecondary = document.getElementById("logoutBtnSecondary");
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
@@ -897,13 +1384,119 @@
       postalCode: document.getElementById("postalCode"),
       countryContact: document.getElementById("countryContact"),
       prefAds: document.getElementById("prefAds"),
-      prefNews: document.getElementById("prefNews"),
-      prefUpdates: document.getElementById("prefUpdates"),
-      prefOffers: document.getElementById("prefOffers"),
-      prefSupport: document.getElementById("prefSupport")
+      prefOffers: document.getElementById("prefOffers")
     };
 
-    let editMode = false;
+    // Languages available on Lixby (the same as the site's language selector)
+    const LANGUAGES = [
+      { value: "bg-BG", label: "Български" },
+      { value: "cs-CZ", label: "Čeština" },
+      { value: "da-DK", label: "Dansk" },
+      { value: "de-DE", label: "Deutsch" },
+      { value: "el-GR", label: "Ελληνικά" },
+      { value: "en-US", label: "English" },
+      { value: "es-ES", label: "Español" },
+      { value: "et-EE", label: "Eesti" },
+      { value: "fi-FI", label: "Suomi" },
+      { value: "fr-FR", label: "Français" },
+      { value: "ga-IE", label: "Gaeilge" },
+      { value: "hr-HR", label: "Hrvatski" },
+      { value: "hu-HU", label: "Magyar" },
+      { value: "it-IT", label: "Italiano" },
+      { value: "lt-LT", label: "Lietuvių" },
+      { value: "lv-LV", label: "Latviešu" },
+      { value: "mt-MT", label: "Malti" },
+      { value: "nl-NL", label: "Nederlands" },
+      { value: "pl-PL", label: "Polski" },
+      { value: "pt-PT", label: "Português" },
+      { value: "ro-RO", label: "Română" },
+      { value: "sk-SK", label: "Slovenčina" },
+      { value: "sl-SI", label: "Slovenščina" },
+      { value: "sv-SE", label: "Svenska" }
+    ];
+
+    // Country / Region (English names, Spain first)
+    const COUNTRIES = [
+      "Spain", "Germany", "Andorra", "Argentina", "Australia", "Austria", "Belgium",
+      "Bolivia", "Brazil", "Bulgaria", "Canada", "Chile", "China", "Cyprus", "Colombia",
+      "South Korea", "Costa Rica", "Croatia", "Cuba", "Denmark", "Ecuador", "Egypt",
+      "El Salvador", "United Arab Emirates", "Slovakia", "Slovenia", "United States",
+      "Estonia", "Philippines", "Finland", "France", "Greece", "Guatemala", "Honduras",
+      "Hong Kong", "Hungary", "India", "Indonesia", "Ireland", "Iceland", "Israel",
+      "Italy", "Japan", "Latvia", "Lithuania", "Luxembourg", "Malaysia", "Malta", "Morocco",
+      "Mexico", "Monaco", "Nicaragua", "Norway", "New Zealand", "Netherlands", "Panama",
+      "Paraguay", "Peru", "Poland", "Portugal", "Puerto Rico", "United Kingdom", "Czech Republic",
+      "Dominican Republic", "Romania", "Singapore", "South Africa", "Sweden", "Switzerland", "Thailand",
+      "Turkey", "Ukraine", "Uruguay", "Venezuela", "Vietnam", "Other"
+    ];
+
+    // Fills a <select> with options (without duplicates)
+    function fillSelect(select, values, options = {}) {
+      if (!select) return;
+      const withPlaceholder = options.placeholder !== false;
+      const previous = select.value;
+      const desired = values.map((item) =>
+        typeof item === "string" ? { value: item, label: item } : item
+      );
+      const expectedLength = desired.length + (withPlaceholder ? 1 : 0);
+      const current = Array.from(select.options).map((option) => option.value);
+      const sameShape = current.length === expectedLength &&
+        current[withPlaceholder ? 1 : 0] === desired[0]?.value &&
+        current[current.length - 1] === desired[desired.length - 1]?.value;
+      if (sameShape) {
+        select.value = previous;
+        return;
+      }
+      select.textContent = "";
+      if (withPlaceholder) {
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "";
+        select.appendChild(placeholder);
+      }
+      desired.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.value;
+        option.textContent = item.label;
+        select.appendChild(option);
+      });
+      select.value = previous;
+    }
+
+    // Sets a value on a <select> even if the exact option does not exist
+    function setSelectValue(select, value) {
+      if (!select) return;
+      const wanted = String(value ?? "").trim();
+      if (!wanted) {
+        select.value = "";
+        return;
+      }
+      const options = Array.from(select.options);
+      const exact = options.find((option) => option.value === wanted);
+      if (exact) {
+        select.value = exact.value;
+        return;
+      }
+      const lower = wanted.toLowerCase();
+      const ci = options.find((option) => option.value.toLowerCase() === lower) ||
+        options.find((option) => option.value.toLowerCase().startsWith(lower)) ||
+        options.find((option) => option.textContent.trim().toLowerCase() === lower);
+      if (ci) {
+        select.value = ci.value;
+        return;
+      }
+      const option = document.createElement("option");
+      option.value = wanted;
+      option.textContent = wanted;
+      select.appendChild(option);
+      select.value = wanted;
+    }
+
+    fillSelect(inputs.region, COUNTRIES);
+    fillSelect(inputs.countryContact, COUNTRIES);
+    fillSelect(billingInputs.country, COUNTRIES);
+    fillSelect(inputs.language, LANGUAGES, { placeholder: false });
+
     let dirty = false;
 
     async function readProfile() {
@@ -920,6 +1513,16 @@
         ...profile,
         updatedAt: serverTimestamp()
       }, { merge: true });
+    }
+
+    // The registration stores the data in users/{uid} and this page in
+    // users/{uid}/account/profile. We read both and give priority to the
+    // editable profile, so we don't lose what the user chose when creating the account.
+    async function loadStoredProfile(user) {
+      const rootSnap = await getDoc(doc(db, "users", user.uid)).catch(() => null);
+      const root = rootSnap && rootSnap.exists() ? rootSnap.data() : {};
+      const stored = await readProfile();
+      return { merged: { ...root, ...stored }, stored, root };
     }
 
     function getScopedKey(baseKey) {
@@ -947,8 +1550,8 @@
         defaultMethodId: (stored && stored.defaultMethodId) || (methods[0] ? methods[0].id : null)
       };
 
-      // Nunca guardamos el numero completo de la tarjeta: solo marca y ultimos 4.
-      // Si quedan datos antiguos (numero, titular o caducidad) los purgamos.
+      // We never store the full card number: only the brand and last 4 digits.
+      // If old data remains (number, cardholder or expiry), we purge it.
       const hadSensitiveData = rawMethods.some((method) => method.number || method.cardholder || method.expiry || method.cvv || typeof method.last4 !== "string");
       if (hadSensitiveData) {
         writePayments(state);
@@ -986,9 +1589,20 @@
     }
 
     async function ensureAccountNumber() {
-      const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
-      const result = await ensureAccountNumberFn();
-      return result.data.accountNumber;
+      try {
+        const ensureAccountNumberFn = httpsCallable(functions, "ensureAccountNumber");
+        const result = await ensureAccountNumberFn();
+        return result.data.accountNumber || null;
+      } catch (error) {
+        console.warn("Could not generate the account number from the backend, checking Firestore:", error?.message || error);
+        try {
+          const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+          return userDoc.exists() ? (userDoc.data().accountNumber || null) : null;
+        } catch (firestoreError) {
+          console.warn("Could not read the account number from Firestore either:", firestoreError?.message || firestoreError);
+          return null;
+        }
+      }
     }
 
     async function migrateStoredBilling() {
@@ -999,7 +1613,7 @@
         await writeBilling(JSON.parse(storedBilling));
         localStorage.removeItem(getScopedKey(BILLING_KEY));
       } catch (error) {
-        console.error("Unable to migrate billing address.", error);
+        console.error("Could not migrate the billing address.", error);
       }
     }
 
@@ -1095,8 +1709,14 @@
 
     function sanitizeImageUrl(url) {
       const fallback = "images/cuenta.png";
-      const value = String(url || "").trim();
+      // Removes HTML meta characters (<, >, ", ') before validating: they cannot
+      // appear unencoded in a valid URL and prevent the value from being reinterpreted
+      // as HTML in the attribute context (DOM-based XSS).
+      const value = String(url || "").trim().replace(/[<>"']/g, "");
       if (!value) return fallback;
+
+      // Avatars stored as data URLs (avoids depending on Cloud Storage)
+      if (/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(value)) return value;
 
       try {
         const parsed = new URL(value, window.location.href);
@@ -1133,13 +1753,13 @@
         actions.appendChild(el("button", {
           className: "btn btn-secondary",
           type: "button",
-          text: "Set default",
+          text: "Set as default",
           dataset: { paymentAction: "default", id: method.id || "" }
         }));
         actions.appendChild(el("button", {
           className: "btn btn-secondary",
           type: "button",
-          text: "Delete",
+          text: "Remove",
           dataset: { paymentAction: "remove", id: method.id || "" }
         }));
 
@@ -1154,7 +1774,7 @@
     async function fillBilling() {
       const billing = await readBilling();
       billingInputs.name.value = billing.name || "";
-      billingInputs.country.value = billing.country || "";
+      setSelectValue(billingInputs.country, billing.country || "");
       billingInputs.address.value = billing.address || "";
       billingInputs.city.value = billing.city || "";
       billingInputs.postalCode.value = billing.postalCode || "";
@@ -1178,14 +1798,14 @@
           id: "deleteBillingBtn",
           className: "btn btn-secondary",
           type: "button",
-          text: "Delete",
+          text: "Remove",
           disabled: true
         }));
         replaceChildren(billingSummaryEl, [details, actions]);
         return;
       }
 
-      details.appendChild(el("strong", { text: billing.name || "Tax name" }));
+      details.appendChild(el("strong", { text: billing.name || "Billing name" }));
       details.appendChild(el("span", { text: billing.address || "Address" }));
       details.appendChild(el("span", { text: `${billing.city || "City"} ${billing.postalCode || ""}`.trim() }));
       details.appendChild(el("span", { text: billing.country || "Country" }));
@@ -1199,44 +1819,31 @@
         id: "deleteBillingBtn",
         className: "btn btn-secondary",
         type: "button",
-        text: "Delete"
+        text: "Remove"
       }));
       replaceChildren(billingSummaryEl, [details, actions]);
     }
 
+    let toastTimer = null;
     function showStatus(text, type = "") {
-      if (statusMsg) {
-        statusMsg.textContent = text;
-        statusMsg.className = `status-msg ${type}`.trim();
-      }
+      if (!toastEl || !text) return;
+      toastEl.textContent = text;
+      toastEl.className = `toast-msg ${type} show`.trim();
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3600);
     }
 
-    function setReadonlyMode() {
-      profileForm.classList.add("readonly");
-      Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = true;
-        } else {
-          el.readOnly = true;
-        }
-      });
-      editBtn.textContent = "Edit details";
-      editMode = false;
-      dirty = false;
-    }
-
-    function setEditMode() {
+    // Profile data is always editable: there is no longer an "Edit data" button.
+    function setEditable() {
       profileForm.classList.remove("readonly");
       Object.values(inputs).forEach((el) => {
-        if (el.type === "checkbox") {
-          el.disabled = false;
-        } else {
-          el.readOnly = false;
-        }
+        el.readOnly = false;
       });
-      editBtn.textContent = "Save profile";
-      editMode = true;
+    }
+
+    function resetDirty() {
       dirty = false;
+      if (saveBar) saveBar.classList.remove("show");
     }
 
     function mapBirth(profile) {
@@ -1250,9 +1857,9 @@
     function fillProfile(user, profile) {
       inputs.firstName.value = profile.firstName || "";
       inputs.lastName.value = profile.lastName || "";
-      inputs.region.value = profile.country || "Spain";
+      setSelectValue(inputs.region, profile.country || "Spain");
       inputs.birthDate.value = mapBirth(profile);
-      inputs.language.value = profile.language || navigator.language || "en-US";
+      setSelectValue(inputs.language, profile.language || navigator.language || "en-US");
       inputs.timezone.value = profile.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
       inputs.photoUrl.value = profile.photoUrl || user.photoURL || "";
       document.getElementById("photoPreview").src = sanitizeImageUrl(inputs.photoUrl.value || user.photoURL);
@@ -1261,12 +1868,9 @@
       inputs.address.value = profile.address || "";
       inputs.city.value = profile.city || "";
       inputs.postalCode.value = profile.postalCode || "";
-      inputs.countryContact.value = profile.countryContact || profile.country || "Spain";
-      inputs.prefAds.checked = Boolean(profile.adsOptIn || profile.prefAds);
-      inputs.prefNews.checked = Boolean(profile.prefNews);
-      inputs.prefUpdates.checked = Boolean(profile.prefUpdates);
-      inputs.prefOffers.checked = Boolean(profile.prefOffers);
-      inputs.prefSupport.checked = Boolean(profile.prefSupport);
+      setSelectValue(inputs.countryContact, profile.countryContact || profile.country || "Spain");
+      inputs.prefAds.checked = Boolean(profile.prefAds ?? profile.adsOptIn ?? false);
+      inputs.prefOffers.checked = Boolean(profile.prefOffers ?? profile.mediaOptIn ?? false);
 
       const fullName = `${inputs.firstName.value} ${inputs.lastName.value}`.trim();
       sideName.textContent = fullName || "Your Lixby account";
@@ -1290,31 +1894,61 @@
         postalCode: inputs.postalCode.value.trim(),
         countryContact: inputs.countryContact.value.trim(),
         prefAds: inputs.prefAds.checked,
-        prefNews: inputs.prefNews.checked,
-        prefUpdates: inputs.prefUpdates.checked,
         prefOffers: inputs.prefOffers.checked,
-        prefSupport: inputs.prefSupport.checked,
-        adsOptIn: inputs.prefAds.checked
+        adsOptIn: inputs.prefAds.checked,
+        mediaOptIn: inputs.prefOffers.checked
       };
     }
 
+    // Profile always editable: saving is controlled by the bottom bar.
     async function saveProfile() {
       const data = collectProfileData();
       await writeProfile(data);
       const user = auth.currentUser;
       if (!user) return;
       fillProfile(user, data);
-      setReadonlyMode();
+      resetDirty();
+      showStatus("Changes saved.", "success");
+    }
+
+    async function discardChanges() {
+      const user = auth.currentUser;
+      if (!user) return;
+      const { merged } = await loadStoredProfile(user);
+      fillProfile(user, merged);
+      resetDirty();
+      showStatus("Changes discarded.", "info");
     }
 
     function setDirty() {
-      if (!editMode) return;
       dirty = true;
+      if (saveBar) saveBar.classList.add("show");
     }
 
+    // All fields mark pending changes except the preferences
+    // (those are saved instantly below).
     Object.values(inputs).forEach((el) => {
-      const evt = el.type === "checkbox" ? "change" : "input";
-      el.addEventListener(evt, setDirty);
+      if (el === inputs.prefAds || el === inputs.prefOffers) return;
+      el.addEventListener("input", setDirty);
+    });
+
+    // Preferences are saved immediately (they can always be checked)
+    ["prefAds", "prefOffers"].forEach((key) => {
+      const el = inputs[key];
+      if (!el) return;
+      el.addEventListener("change", async () => {
+        try {
+          const profile = await readProfile();
+          profile[key] = el.checked;
+          if (key === "prefAds") profile.adsOptIn = el.checked;
+          if (key === "prefOffers") profile.mediaOptIn = el.checked;
+          await writeProfile(profile);
+          showStatus("Preferences saved.", "success");
+        } catch (error) {
+          el.checked = !el.checked;
+          showStatus("Could not save preferences.", "error");
+        }
+      });
     });
 
     paymentInputs.cardNumber.addEventListener("input", () => {
@@ -1331,6 +1965,10 @@
     const app = initializeApp(firebaseConfig);
     await initializeLixbyAppCheck(app);
     const auth = getAuth(app);
+    const redirectResultPromise = getRedirectResult(auth).catch((error) => {
+      console.warn("Could not resolve the authentication redirect:", error);
+      return null;
+    });
     const storage = getStorage(app);
     const db = getFirestore(app);
     const functions = getFunctions(app, "us-central1");
@@ -1342,7 +1980,7 @@
       const cvv = onlyDigits(paymentInputs.cvv.value);
 
       if (!cardholder) {
-        showStatus("Cardholder name is required.", "error");
+        showStatus("The cardholder name is required.", "error");
         return;
       }
 
@@ -1423,7 +2061,7 @@
       };
 
       if (!billing.name || !billing.country || !billing.address) {
-        showStatus("Complete name, country and billing address.", "error");
+        showStatus("Complete the name, country and billing address.", "error");
         return;
       }
 
@@ -1452,7 +2090,7 @@
         await writeBilling({});
         await fillBilling();
         await renderBillingSummary();
-        showStatus("Billing address deleted.", "success");
+        showStatus("Billing address removed.", "success");
       }
     });
 
@@ -1475,19 +2113,26 @@
 
     function statusBadge(status) {
       const map = {
-        "Order received": { bg: "#eff6ff", color: "#1d4ed8", border: "#bfdbfe" },
-        "Preparing order": { bg: "#fefce8", color: "#854d0e", border: "#fde047" },
-        Shipped: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
-        "Out for delivery": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
-        Delivered: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+        "Pedido recibido": { bg: "#eff6ff", color: "#1d4ed8", border: "#bfdbfe" },
+        "Preparando pedido": { bg: "#fefce8", color: "#854d0e", border: "#fde047" },
+        Enviado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" },
+        "En reparto": { bg: "#fff7ed", color: "#9a3412", border: "#fdba74" },
+        Entregado: { bg: "#f0fdf4", color: "#166534", border: "#86efac" }
+      };
+      const labels = {
+        "Pedido recibido": "Order received",
+        "Preparando pedido": "Preparing order",
+        Enviado: "Shipped",
+        "En reparto": "Out for delivery",
+        Entregado: "Delivered"
       };
       const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
-      return badge(status || "Order received", s);
+      return badge(labels[status] || status || "Order received", s);
     }
 
     function formatDate(iso) {
       if (!iso) return "—";
-      return new Date(iso).toLocaleDateString("en-US", {
+      return new Date(iso).toLocaleDateString("en-GB", {
         day: "numeric",
         month: "short",
         year: "numeric"
@@ -1495,7 +2140,7 @@
     }
 
     function formatEuro(value) {
-      return value ? `${Number(value).toFixed(2).replace(".", ",")} €` : "—";
+      return value ? `${Number(value).toFixed(2)} €` : "—";
     }
 
     function renderOrderCard(order) {
@@ -1574,7 +2219,7 @@
         style: { fontSize: "0.85rem", color: "var(--muted)" }
       }));
       balanceRow.appendChild(el("strong", {
-        text: `${Number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
+        text: `${Number(card.balance || 0).toFixed(2)} €`,
         style: { color: "#458500" }
       }));
       article.appendChild(balanceRow);
@@ -1640,13 +2285,44 @@
         listEl.style.display = "grid";
         replaceChildren(listEl, cards.map(renderGiftCard));
       } catch (e) {
-        loadingEl.textContent = "Error loading gift cards.";
+        loadingEl.textContent = "Error loading cards.";
       }
     }
 
     document.getElementById("uploadPhotoBtn").addEventListener("click", () => {
       document.getElementById("photoFile").click();
     });
+
+    // Compresses the image in the browser and returns it as a data URL.
+    // This way the profile photo does not depend on Cloud Storage (which now returns a quota error).
+    function fileToCompressedDataUrl(file, maxSize = 320, quality = 0.82) {
+      return new Promise((resolve, reject) => {
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+        image.onload = () => {
+          try {
+            const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+            const width = Math.max(1, Math.round(image.width * scale));
+            const height = Math.max(1, Math.round(image.height * scale));
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          } catch (error) {
+            reject(error);
+          } finally {
+            URL.revokeObjectURL(objectUrl);
+          }
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error("Could not read the image"));
+        };
+        image.src = objectUrl;
+      });
+    }
 
     document.getElementById("photoFile").addEventListener("change", async (e) => {
       const file = e.target.files[0];
@@ -1657,96 +2333,447 @@
       const user = auth.currentUser;
       if (!user) return;
 
-      // Validate max size 2MB
-      if (file.size > 2 * 1024 * 1024) {
+      if (!file.type.startsWith("image/")) {
         msg.style.color = "#ef4444";
-        msg.textContent = "Image cannot exceed 2MB";
+        msg.textContent = "Select an image file";
+        return;
+      }
+
+      // Validate max size 5MB (it is compressed afterwards)
+      if (file.size > 5 * 1024 * 1024) {
+        msg.style.color = "#ef4444";
+        msg.textContent = "The image cannot exceed 5MB";
         return;
       }
 
       btn.disabled = true;
       msg.style.color = "var(--muted)";
-      msg.textContent = "Uploading...";
+      msg.textContent = "Processing...";
 
       try {
-        const storageRef = ref(storage, `avatars/${user.uid}`);
-        await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(storageRef);
+        const dataUrl = await fileToCompressedDataUrl(file);
 
-        // Update preview and hidden field
-        document.getElementById("photoPreview").src = sanitizeImageUrl(url);
-        document.getElementById("photoUrl").value = url;
-        profilePhoto.src = sanitizeImageUrl(url);
+        // Update the preview and hidden field
+        document.getElementById("photoPreview").src = sanitizeImageUrl(dataUrl);
+        document.getElementById("photoUrl").value = dataUrl;
+        profilePhoto.src = sanitizeImageUrl(dataUrl);
 
         // Save to profile
         const profile = await readProfile();
-        profile.photoUrl = url;
+        profile.photoUrl = dataUrl;
         await writeProfile(profile);
 
         msg.style.color = "#458500";
         msg.textContent = "Photo updated";
-        showStatus("Profile picture updated.", "success");
+        showStatus("Profile photo updated.", "success");
       } catch (err) {
         msg.style.color = "#ef4444";
-        msg.textContent = "Error uploading photo";
+        msg.textContent = "Error processing the photo";
         console.error(err);
       } finally {
         btn.disabled = false;
+        e.target.value = "";
       }
     });
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        window.location.href = "/en/sign-in/";
-        return;
-      }
+    function hideLoadingScreen() {
+      const ls = document.getElementById("loadingScreen");
+      if (ls) ls.classList.add("hide");
+    }
 
+    // First we show the account and only then remove the loading screen,
+    // so two screens are never visible (loader + still-empty page).
+    function showAccountLayout() {
+      accountLayout.classList.remove("hidden");
+      requestAnimationFrame(() => accountLayout.classList.add("visible"));
+    }
+
+    async function loadAccount(user) {
       await ensureAccountNumber();
       await migrateStoredBilling();
 
-      const stored = await readProfile();
-      fillProfile(user, stored);
+      // Registers/verifies this session: if it was signed out from another device,
+      // the onSnapshot takes us out of here.
+      registerSession(user).catch((e) => console.warn("Session not registered:", e));
+
+      const { merged, stored } = await loadStoredProfile(user);
+      fillProfile(user, merged);
       await fillBilling();
       await renderBillingSummary();
       renderPaymentMethods();
-      showStatus("Account loaded successfully.", "success");
-      accountLayout.classList.remove("hidden");
-      requestAnimationFrame(() => accountLayout.classList.add("visible"));
-      setReadonlyMode();
+      setEditable();
+      resetDirty();
 
-      // Load orders and gift cards
+      // If the account is newly created and had no profile yet, we save the selection
+      // to the record so everything stays selected on the next visit.
+      if (!Object.keys(stored).length) {
+        try {
+          await writeProfile(collectProfileData());
+        } catch (error) {
+          console.warn("Could not save the initial preferences:", error);
+        }
+      }
+
+      // Orders and gift cards: we wait, but with a time limit so
+      // the loading screen doesn't hang if the service does not respond.
       const userEmail = user.email;
       if (userEmail) {
-        loadOrders(userEmail);
-        loadGiftCards(userEmail);
+        await Promise.race([
+          Promise.allSettled([loadOrders(userEmail), loadGiftCards(userEmail)]),
+          new Promise((resolve) => setTimeout(resolve, 6000))
+        ]);
       }
 
       if (verifyEmailBtn) {
         verifyEmailBtn.disabled = user.emailVerified;
         verifyEmailBtn.textContent = user.emailVerified ? "Verified" : "Send";
-        verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
       }
       if (twoFactorBtn) {
         const has2fa = multiFactor(user).enrolledFactors
           .some((factor) => factor.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
-        twoFactorBtn.textContent = has2fa ? "Verified" : "Set up";
+        twoFactorBtn.textContent = has2fa ? "Verified" : "Configure";
         twoFactorBtn.classList.toggle("btn-verified", has2fa);
+      }
+
+      // Everything loaded: we show the account and, once visible, remove the loading screen.
+      showAccountLayout();
+      await new Promise((resolve) => setTimeout(resolve, 320));
+      hideLoadingScreen();
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      let activeUser = user;
+
+      if (!activeUser) {
+        const redirectResult = await redirectResultPromise;
+        activeUser = redirectResult?.user || auth.currentUser;
+      }
+
+      if (!activeUser) {
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        activeUser = auth.currentUser;
+      }
+
+      if (!activeUser) {
+        hideLoadingScreen();
+        window.location.href = "/en/login/";
+        return;
+      }
+
+      const next = nextUrl();
+      if (next !== "/en/account/") {
+        window.location.href = next;
+        return;
+      }
+
+      await loadAccount(activeUser);
+    });
+
+    // ── Bottom bar: save or discard changes ────────────────────────
+    saveChangesBtn.addEventListener("click", async () => {
+      saveChangesBtn.disabled = true;
+      try {
+        await saveProfile();
+      } catch (error) {
+        console.error(error);
+        showStatus("Could not save the changes.", "error");
+      } finally {
+        saveChangesBtn.disabled = false;
       }
     });
 
-    editBtn.addEventListener("click", async () => {
-      if (editMode) {
-        await saveProfile();
-      } else {
-        setEditMode();
+    discardChangesBtn.addEventListener("click", async () => {
+      discardChangesBtn.disabled = true;
+      try {
+        await discardChanges();
+      } catch (error) {
+        console.error(error);
+        showStatus("Could not discard the changes.", "error");
+      } finally {
+        discardChangesBtn.disabled = false;
       }
+    });
+
+    // ── Active sessions (stored in Firestore) ──────────────────────────
+    const SESSION_KEY = "lixbySessionId";
+
+    function getSessionId() {
+      let id = localStorage.getItem(SESSION_KEY);
+      if (!id) {
+        id = makeId();
+        localStorage.setItem(SESSION_KEY, id);
+      }
+      return id;
+    }
+
+    let unsubscribeSession = null;
+
+    // Registers this browser as an active session and warns if it is signed out
+    // from another device. A new login (nonexistent document) also
+    // leaves a record in the history.
+    async function registerSession(user) {
+      const sid = getSessionId();
+      const sessionRef = doc(db, "users", user.uid, "sessions", sid);
+      const snap = await getDoc(sessionRef);
+
+      if (snap.exists() && snap.data().revokedAt) {
+        await forceLogout(user, sessionRef);
+        return;
+      }
+
+      const device = describeDevice();
+
+      if (!snap.exists()) {
+        addDoc(collection(db, "users", user.uid, "loginHistory"), {
+          browser: device.browser,
+          os: device.os,
+          tipo: device.tipo,
+          method: (user.providerData && user.providerData[0] && user.providerData[0].providerId) || "password",
+          createdAt: serverTimestamp()
+        }).catch((e) => console.warn("History not recorded:", e));
+      }
+
+      await setDoc(sessionRef, {
+        browser: device.browser,
+        os: device.os,
+        tipo: device.tipo,
+        ...(snap.exists() ? {} : { createdAt: serverTimestamp() }),
+        lastActiveAt: serverTimestamp()
+      }, { merge: true });
+
+      if (unsubscribeSession) unsubscribeSession();
+      unsubscribeSession = onSnapshot(sessionRef, (docSnap) => {
+        if (docSnap.exists() && docSnap.data().revokedAt) {
+          forceLogout(user, sessionRef);
+        }
+      });
+    }
+
+    async function forceLogout(user, sessionRef) {
+      try {
+        if (unsubscribeSession) unsubscribeSession();
+        await deleteDoc(sessionRef);
+      } catch (e) {
+        console.warn("Could not clean up the session:", e);
+      }
+      localStorage.removeItem(SESSION_KEY);
+      await signOut(auth);
+      window.location.href = "/en/login/";
+    }
+
+    function describeDevice() {
+      const ua = navigator.userAgent || "";
+      let browser = "Browser";
+      if (/Edg\//.test(ua)) browser = "Microsoft Edge";
+      else if (/OPR\/|Opera\//.test(ua)) browser = "Opera";
+      else if (/Chrome\//.test(ua)) browser = "Google Chrome";
+      else if (/Firefox\//.test(ua)) browser = "Firefox";
+      else if (/Safari\//.test(ua)) browser = "Safari";
+
+      let os = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "Device";
+      if (/Windows/.test(ua)) os = "Windows";
+      else if (/Android/.test(ua)) os = "Android";
+      else if (/iPhone|iPad|iPod/.test(ua)) os = "iOS";
+      else if (/Mac OS X|Macintosh/.test(ua)) os = "macOS";
+      else if (/Linux/.test(ua)) os = "Linux";
+
+      return {
+        browser,
+        os,
+        tipo: /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop"
+      };
+    }
+
+    function formatWhen(value) {
+      if (!value) return "—";
+      const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
+      if (Number.isNaN(date.getTime())) return "—";
+      return date.toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    async function openSessionsModal(user) {
+      sessionsTitleEl.textContent = "Active sessions";
+      sessionsBody.textContent = "Loading…";
+      sessionsModal.classList.remove("hidden");
+
+      const currentId = getSessionId();
+      const maxAge = 30 * 24 * 3600 * 1000;
+      let snap;
+
+      try {
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "sessions"),
+          orderBy("lastActiveAt", "desc")
+        ));
+      } catch (error) {
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "Could not load sessions." })]);
+        return;
+      }
+
+      const items = [];
+      snap.forEach((docSnap) => {
+        const s = docSnap.data();
+        if (s.revokedAt) return;
+        const last = s.lastActiveAt && typeof s.lastActiveAt.toDate === "function" ? s.lastActiveAt.toDate() : null;
+        if (last && Date.now() - last.getTime() > maxAge) return;
+
+        const isCurrent = docSnap.id === currentId;
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", {
+          text: isCurrent ? "This device" : `${s.tipo || "Device"} · ${s.os || "Unknown"}`
+        }));
+        item.appendChild(el("span", { text: `${s.browser || "Browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `Last activity: ${formatWhen(s.lastActiveAt)}` }));
+        item.appendChild(el("span", { text: `Started: ${formatWhen(s.createdAt)}` }));
+
+        if (isCurrent) {
+          item.appendChild(el("span", { className: "session-badge", text: "Active now" }));
+        } else {
+          item.appendChild(el("button", {
+            className: "btn btn-secondary btn-danger",
+            type: "button",
+            text: "Sign out",
+            dataset: { revokeSession: docSnap.id },
+            style: { marginTop: "8px", justifySelf: "start" }
+          }));
+        }
+        items.push(item);
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "No sessions registered." })]);
+    }
+
+    function closeSessionsModal() {
+      sessionsModal.classList.add("hidden");
+    }
+
+    viewSessionsBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Invalid session.", "error");
+        return;
+      }
+      openSessionsModal(user).catch(() => showStatus("Could not load sessions.", "error"));
+    });
+
+    sessionsCloseBtn.addEventListener("click", closeSessionsModal);
+    sessionsModal.addEventListener("click", (event) => {
+      if (event.target === sessionsModal) closeSessionsModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSessionsModal();
+    });
+
+    // Sign out a specific session from the button on its card in the list.
+    sessionsBody.addEventListener("click", async (event) => {
+      const button = event.target.closest("button[data-revoke-session]");
+      if (!button) return;
+      const user = auth.currentUser;
+      const sid = button.dataset.revokeSession;
+      if (!user || !sid) return;
+
+      button.disabled = true;
+      try {
+        await updateDoc(doc(db, "users", user.uid, "sessions", sid), { revokedAt: serverTimestamp() });
+        showStatus("Session signed out.", "success");
+        await openSessionsModal(user);
+      } catch (error) {
+        console.error(error);
+        button.disabled = false;
+        showStatus("Could not sign out the session.", "error");
+      }
+    });
+
+    // "Sign out of other devices": marks the remaining sessions as revoked
+    // (this one stays). Each device detects it via onSnapshot.
+    closeOtherSessionsBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Invalid session.", "error");
+        return;
+      }
+      if (!window.confirm("Sign out of all other devices? The session on this device will stay signed in.")) return;
+
+      closeOtherSessionsBtn.disabled = true;
+      try {
+        const currentId = getSessionId();
+        const snap = await getDocs(collection(db, "users", user.uid, "sessions"));
+        await Promise.all(
+          snap.docs
+            .filter((docSnap) => docSnap.id !== currentId && !docSnap.data().revokedAt)
+            .map((docSnap) => updateDoc(docSnap.ref, { revokedAt: serverTimestamp() }))
+        );
+        showStatus("Sessions signed out on other devices.", "success");
+      } catch (error) {
+        console.error(error);
+        showStatus("Could not sign out the session on other devices.", "error");
+      } finally {
+        closeOtherSessionsBtn.disabled = false;
+      }
+    });
+
+    // ── Sign-in history ─────────────────────────────────────
+    const METHOD_LABELS = {
+      password: "Email and password",
+      "google.com": "Google",
+      "apple.com": "Apple",
+      phone: "Phone"
+    };
+
+    async function openLoginHistoryModal(user) {
+      sessionsTitleEl.textContent = "Sign-in history";
+      sessionsBody.textContent = "Loading…";
+      sessionsModal.classList.remove("hidden");
+
+      let snap;
+      try {
+        snap = await getDocs(query(
+          collection(db, "users", user.uid, "loginHistory"),
+          orderBy("createdAt", "desc"),
+          limit(20)
+        ));
+      } catch (error) {
+        console.error(error);
+        replaceChildren(sessionsBody, [el("span", { text: "Could not load the history." })]);
+        return;
+      }
+
+      const items = snap.docs.map((docSnap) => {
+        const s = docSnap.data();
+        const item = el("div", { className: "session-item" });
+        item.appendChild(el("strong", { text: formatWhen(s.createdAt) }));
+        item.appendChild(el("span", { text: `${s.browser || "Browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `Method: ${METHOD_LABELS[s.method] || s.method || "—"}` }));
+        return item;
+      });
+
+      replaceChildren(sessionsBody, items.length ? items : [el("span", { text: "No sign-ins recorded yet." })]);
+    }
+
+    loginHistoryBtn.addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("Invalid session.", "error");
+        return;
+      }
+      openLoginHistoryModal(user).catch(() => showStatus("Could not load the history.", "error"));
     });
 
 
 
     async function doLogout() {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          if (unsubscribeSession) unsubscribeSession();
+          await deleteDoc(doc(db, "users", user.uid, "sessions", getSessionId()));
+        } catch (e) {
+          console.warn("Could not clean up the session:", e);
+        }
+      }
       await signOut(auth);
-      window.location.href = "/en/sign-in/";
+      window.location.href = "/en/login/";
     }
 
     logoutBtn.addEventListener("click", doLogout);
@@ -1770,7 +2797,6 @@
         if (verifyEmailBtn) {
           verifyEmailBtn.disabled = user.emailVerified;
           verifyEmailBtn.textContent = user.emailVerified ? "Verified" : "Send";
-          verifyEmailBtn.classList.toggle("btn-verified", user.emailVerified);
         }
         showStatus("Email sent. Check Spam and Promotions.", "success");
       } catch (error) {
@@ -1791,11 +2817,102 @@
       try {
         await deleteUser(user);
         showStatus("Account deleted successfully.", "success");
-        window.location.href = "/en/sign-in/";
+        window.location.href = "/en/login/";
       } catch (error) {
-        showStatus(`Could not delete account: ${error.message}`, "error");
+        showStatus(`Could not delete the account: ${error.message}`, "error");
       }
     });
   </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
+
+

@@ -10,16 +10,56 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://www.lixby.es/de/cart">
+  <link rel="canonical" href="https://lixby.es/de/cart">
+  <link rel="alternate" href="https://lixby.es/bg/cart" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/cart" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/cart" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/cart" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/cart" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/cart" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/cesta" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/cart" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/cart" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/cart" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/cart" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/cart" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/cart" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/cart" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/cart" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/cart" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/cart" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/cart" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/cart" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/cart" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/cart" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/cart" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/cart" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/cart" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/cart" hreflang="x-default">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warenkorb | Lixby</title>
-  <meta name="robots" content="noindex, nofollow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
+
+  <title>Einkaufskorb | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/de/style.css">
   <style>
     .cart-page {
       padding: 36px 0 70px;
@@ -167,15 +207,13 @@
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
+      "url": "https://lixby.es",
+      "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
       ]
@@ -186,28 +224,128 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
+      <a href="/de/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
       <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="/de/shop/" class="nav-link">Shop</a>
-        <a href="/de/#produkte" class="nav-link">Produkte</a>
-        <a href="/de/#apps" class="nav-link">Apps</a>
+        <a href="/de/products/" class="nav-link">Produkte</a>
+        <a href="/de/apps/" class="nav-link">Apps</a>
         <a href="/de/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Suchen" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/de/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Auf Lixby suchen..."
+            aria-label="Auf Lixby suchen"
+          >
+        </form>
         <a href="/de/cart/" class="nav-icon-link" aria-label="Warenkorb">
-          <img src="images/Tasche.png" alt="Warenkorb">
+          <img src="/de/images/Bolsa.png" alt="Warenkorb">
         </a>
         <a href="/de/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="images/konto.png" alt="Konto">
+          <img src="/de/images/cuenta.png" alt="Konto">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menü" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile Hauptnavigation">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Shop</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/de/shop/">Zum Shop</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One Kopfhörer</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/buy-headphones/lixbuds-one/">Jetzt kaufen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/news/">Neuigkeiten</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/de/products/">Produkte ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/lixsafe/">LixSafe und Garantien</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/de/apps/">Apps ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixney/">Lixney Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixfly/">Lixfly Support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/de/support/">Zum Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/faq/">Häufige Fragen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/returns/">Rücksendungen</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Warenkorb</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Warenkorb ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Bestellung abschließen</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Zu meinem Konto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Meine Bestellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Mein Profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Einstellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/login/">Anmelden</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/two-step-verification/">Zwei-Schritt-Verifizierung</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container cart-page">
     <section class="cart-head">
-      <h1>Dein Warenkorb</h1>
-      <p>Überprüfe deine Produkte vor dem Kaufabschluss.</p>
+      <h1>Ihr Warenkorb</h1>
+      <p>Überprüfen Sie Ihre Produkte, bevor Sie den Kauf abschließen.</p>
     </section>
 
     <section class="cart-layout">
@@ -215,12 +353,22 @@
 
       <aside class="cart-summary">
         <h2>Zusammenfassung</h2>
-        <div class="cart-row"><span>Zwischensumme</span><span id="subtotal">0 EUR</span></div>
+        <div class="cart-row"><span>Subtotal</span><span id="subtotal">0 EUR</span></div>
         <div class="cart-row"><span>Versand</span><span>Kostenlos</span></div>
-        <div class="cart-row cart-total"><span>Gesamt</span><span id="total">0 EUR</span></div>
+        <div class="cart-row cart-total"><span>Total</span><span id="total">0 EUR</span></div>
         <div class="cart-actions">
-          <button id="checkoutBtn" class="btn btn-primary" type="button">Zur Kasse gehen</button>
-          <button id="clearCartBtn" class="btn btn-secondary" type="button">Warenkorb leeren</button>
+          <div id="giftCardSection" style="margin-bottom:12px">
+            <div style="display:flex;gap:8px">
+              <input type="text" id="giftCodeInput" placeholder="Geschenkcode (Lixby-xxxx-xxxx)"
+                style="flex:1;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;font-family:Inter,sans-serif;font-size:0.9rem;outline:none">
+              <button type="button" id="applyGiftBtn" class="btn btn-secondary" style="white-space:nowrap;padding:10px 16px">
+                anwenden
+              </button>
+            </div>
+            <div id="giftCardMsg" style="font-size:0.82rem;margin-top:6px;display:none"></div>
+          </div>
+          <a id="checkoutBtn" class="btn btn-primary" href="#" role="button">Bestellung abschließen</a>
+          <button id="clearCartBtn" class="btn btn-secondary" type="button">leerer Korb</button>
         </div>
       </aside>
     </section>
@@ -233,9 +381,16 @@
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
-    const CHECKOUT_ENDPOINT = "/create-checkout-session";
-    const SUCCESS_URL = new URL("/de/thank-you/", window.location.href).toString();
+    const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
+    const SUCCESS_URL = new URL("/de/Danke/", window.location.href).toString();
     const CANCEL_URL = window.location.href;
+
+    const PRICES = {
+      negro: "price_1T9gzS4JmdPA7hphzMXa8s7T",
+      blanco: "price_1TD6xx4JmdPA7hphNSWAJLJM",
+      LixSafe: "price_1TD70q4JmdPA7hphQ9KJNOXV",
+      lixsafe_plus: "price_1TD71L4JmdPA7hphdYbs0z0i"
+    };
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -263,10 +418,10 @@
     const LAST_ORDER_KEY = "lixbyLastOrder";
 
     const productCatalog = {
-      "lixbuds-one": {
-        id: "lixbuds-one",
+      "LixBuds-one": {
+        id: "LixBuds-one",
         name: "LixBuds One",
-        price: 99.99,
+        price: 99.00,
         image: "images/lixbuds-product.jpg"
       }
     };
@@ -276,13 +431,49 @@
     const totalEl = document.getElementById("total");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const checkoutBtn = document.getElementById("checkoutBtn");
+    let appliedGiftCard = null;
 
     function readCart() {
-      return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      let changed = false;
+      const normalized = cart.map((entry) => {
+        const lineId = entry.lineId || buildLineId(entry);
+        if (!entry.lineId || entry.lineId !== lineId) {
+          changed = true;
+        }
+        return { ...entry, lineId };
+      });
+      if (changed) {
+        writeCart(normalized);
+      }
+      return normalized;
     }
 
     function writeCart(cart) {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function buildLineId(entry) {
+      const id = entry.id || "item";
+      const color = entry.color || "—";
+      const plan = entry.insurancePlan || "Sin LixSafe";
+      const price = Number(entry.insurancePrice) || 0;
+      const engraving = entry.engraving || "";
+      const base = `${id}|${color}|${plan}|${price}`;
+      return engraving ? `${base}|${engraving}` : base;
+    }
+
+    function resolveBasePrice(entry, product) {
+      const raw = Number(entry.price);
+      const productPrice = Number(product.price) || 0;
+      const insurancePrice = Number(entry.insurancePrice) || 0;
+      if (!Number.isNaN(raw) && raw > 0) {
+        if (insurancePrice > 0 && Math.abs(raw - (productPrice + insurancePrice)) < 0.01) {
+          return raw - insurancePrice;
+        }
+        return raw;
+      }
+      return productPrice;
     }
 
     function money(value) {
@@ -304,6 +495,70 @@
       return `LX-${yyyy}${mm}${dd}-${rand}`;
     }
 
+    function normalizeColorKey(value) {
+      if (!value) return null;
+      const normalized = String(value).toLowerCase();
+      if (normalized.includes("negro") || normalized.includes("black")) return "negro";
+      if (normalized.includes("blanco") || normalized.includes("white")) return "blanco";
+      return null;
+    }
+
+    function resolveProductPriceId(item) {
+      const colorKey =
+        normalizeColorKey(item.color) ||
+        normalizeColorKey(item.name) ||
+        normalizeColorKey(item.id);
+      return PRICES[colorKey || "blanco"];
+    }
+
+    function resolveInsurancePriceId(plan) {
+      if (!plan) return null;
+      const normalized = String(plan).toLowerCase().trim();
+      if (normalized === "sin LixSafe" || normalized === "sin seguro") return null;
+      if (normalized.includes("LixSafe+") || normalized.includes("plus")) {
+        return PRICES.lixsafe_plus;
+      }
+      if (normalized === "LixSafe") {
+        return PRICES.LixSafe;
+      }
+      return null;
+    }
+
+    function buildCheckoutItems(items) {
+      if (!Array.isArray(items)) return [];
+      const lineItems = [];
+      items.forEach((item) => {
+        const quantity = Math.max(1, Number(item.qty) || 1);
+        const productPriceId = resolveProductPriceId(item);
+        if (productPriceId) {
+          lineItems.push({
+            priceId: productPriceId,
+            quantity,
+            type: "product",
+            id: item.id,
+            name: item.name,
+            color: item.color,
+            engraving: item.engraving || "",
+            lineId: item.lineId
+          });
+        }
+        const insurancePriceId = resolveInsurancePriceId(item.insurancePlan);
+        if (insurancePriceId) {
+          lineItems.push({
+            priceId: insurancePriceId,
+            quantity,
+            type: "insurance",
+            id: item.id,
+            name: `LixSafe ${item.insurancePlan}`,
+            color: item.color,
+            engraving: "",
+            lineId: item.lineId
+          });
+        }
+      });
+      return lineItems;
+    }
+
     function calculateSummary(cart) {
       let subtotal = 0;
       const items = cart.map((entry) => {
@@ -313,7 +568,7 @@
           price: Number(entry.price) || 0,
           image: "images/lixbuds-hero.jpg"
         };
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
@@ -324,24 +579,33 @@
           id: product.id,
           name: product.name,
           price: basePrice,
+          lineId: entry.lineId || buildLineId(entry),
+          color: entry.color || "—",
           qty,
+          unitPrice,
           lineTotal,
-          insurancePlan: entry.insurancePlan || "Ohne LixSafe",
-          insurancePrice
+          insurancePlan: entry.insurancePlan || "Sin LixSafe",
+          insurancePrice,
+          engraving: entry.engraving || ""
         };
       });
+
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        subtotal = Math.max(0, subtotal - discount);
+      }
 
       return { items, subtotal };
     }
 
-    function updateQuantity(productId, delta) {
+    function updateQuantity(lineId, delta) {
       const cart = readCart();
-      const item = cart.find((entry) => entry.id === productId);
+      const item = cart.find((entry) => (entry.lineId || buildLineId(entry)) === lineId);
       if (!item) return;
 
       item.qty += delta;
       if (item.qty <= 0) {
-        const next = cart.filter((entry) => entry.id !== productId);
+        const next = cart.filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
         writeCart(next);
       } else {
         writeCart(cart);
@@ -350,8 +614,8 @@
       renderCart();
     }
 
-    function removeItem(productId) {
-      const next = readCart().filter((entry) => entry.id !== productId);
+    function removeItem(lineId) {
+      const next = readCart().filter((entry) => (entry.lineId || buildLineId(entry)) !== lineId);
       writeCart(next);
       renderCart();
     }
@@ -370,7 +634,7 @@
       const cart = readCart();
 
       if (cart.length === 0) {
-        cartListEl.innerHTML = `<p class="cart-empty">Dein Warenkorb ist leer. <a href="/de/shop/">Zum Shop</a>.</p>`;
+        cartListEl.innerHTML = `<p class="cart-empty">Ihr Warenkorb ist leer. <a href="/de/shop/">Zum Shop gehen</a>.</p>`;
         subtotalEl.textContent = money(0);
         totalEl.textContent = money(0);
         return;
@@ -386,16 +650,16 @@
           image: "images/lixbuds-hero.jpg"
         };
 
-        const basePrice = Number(entry.price) || product.price || 0;
+        const basePrice = resolveBasePrice(entry, product);
         const insurancePrice = Number(entry.insurancePrice) || 0;
         const qty = Number(entry.qty) || 1;
         const unitPrice = basePrice + insurancePrice;
         const lineTotal = unitPrice * qty;
         subtotal += lineTotal;
 
-        const insurancePlan = entry.insurancePlan || "Ohne LixSafe";
+        const insurancePlan = entry.insurancePlan || "Sin LixSafe";
         const color = entry.color || "—";
-        const insuranceLabel = insurancePlan === "Ohne LixSafe" ? "Ohne LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
+        const insuranceLabel = insurancePlan === "Sin LixSafe" ? "ohne LixSafe" : `${insurancePlan} (+${money(insurancePrice)})`;
         const baseName = entry.name || product.name || "Produkt";
         let displayName = baseName;
         if (color !== "—") {
@@ -415,23 +679,28 @@
             <img class="cart-item-image" src="${esc(productImage)}" alt="${esc(displayName)}">
             <div>
               <h3>${esc(displayName)}</h3>
-              <p>${money(unitPrice)} / Einheit</p>
+              <p>${money(unitPrice)} / unidad</p>
+              ${entry.engraving ? `<p class="cart-item-meta engraving-line">Grabado: ${esc(entry.engraving)}</p>`: ""}
               <p class="cart-item-meta">Farbe: ${esc(color)}</p>
               <p class="cart-item-meta">LixSafe: ${esc(insuranceLabel)}</p>
               <div class="cart-controls">
-                <button type="button" data-action="minus" data-id="${esc(product.id)}">-</button>
+                <button type="button" data-action="minus" data-id="${esc(entry.lineId)}">-</button>
                 <span>${qty}</span>
-                <button type="button" data-action="plus" data-id="${esc(product.id)}">+</button>
+                <button type="button" data-action="plus" data-id="${esc(entry.lineId)}">+</button>
               </div>
-              <button type="button" class="cart-remove" data-action="remove" data-id="${esc(product.id)}">Entfernen</button>
+              <button type="button" class="cart-remove" data-action="remove" data-id="${esc(entry.lineId)}" style="background:none;border:none;color:#dc2626;font-size:0.9rem;text-decoration:none;padding:0;cursor:pointer;margin-top:4px;">Entfernen</button>
             </div>
             <div class="cart-item-total">${money(lineTotal)}</div>
-          </article>
-        `;
+          </article>`;
       }).join("");
 
       subtotalEl.textContent = money(subtotal);
-      totalEl.textContent = money(subtotal);
+      let total = subtotal;
+      if (appliedGiftCard) {
+        const discount = Math.min(appliedGiftCard.balance, subtotal);
+        total = Math.max(0, subtotal - discount);
+      }
+      totalEl.textContent = money(total);
     }
 
     cartListEl.addEventListener("click", (event) => {
@@ -439,12 +708,12 @@
       if (!(target instanceof HTMLElement)) return;
 
       const action = target.getAttribute("data-action");
-      const productId = target.getAttribute("data-id");
-      if (!action || !productId) return;
+      const lineId = target.getAttribute("data-id");
+      if (!action || !lineId) return;
 
-      if (action === "plus") updateQuantity(productId, 1);
-      if (action === "minus") updateQuantity(productId, -1);
-      if (action === "remove") removeItem(productId);
+      if (action === "plus") updateQuantity(lineId, 1);
+      if (action === "minus") updateQuantity(lineId, -1);
+      if (action === "remove") removeItem(lineId);
     });
 
     clearCartBtn.addEventListener("click", () => {
@@ -452,33 +721,88 @@
       renderCart();
     });
 
-    checkoutBtn.addEventListener("click", async () => {
+    const applyGiftBtn = document.getElementById("applyGiftBtn");
+    if (applyGiftBtn) {
+      applyGiftBtn.addEventListener("click", async () => {
+        const codeInput = document.getElementById("giftCodeInput");
+        const msg = document.getElementById("giftCardMsg");
+        if (!codeInput || !msg) return;
+
+        const code = codeInput.value.trim().toUpperCase();
+        if (!code) return;
+
+        applyGiftBtn.disabled = true;
+        applyGiftBtn.textContent = "...";
+
+        try {
+          const res = await fetch("https://lixby-production.up.railway.app/redeem-gift-card", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code })
+          });
+          const data = await res.json();
+
+          if (!res.ok || !data.valid) {
+            msg.style.color = "#ef4444";
+            msg.textContent = "❌ " + (data.error || "Ungültiger Code");
+            msg.style.display = "block";
+            appliedGiftCard = null;
+          } else {
+            appliedGiftCard = data;
+            msg.style.color = "#458500";
+            msg.textContent = `✅ Geschenkkarte angewendet – ${data.balance
+              .toFixed(2)
+              .replace(".", ",")} € Guthaben`;
+            msg.style.display = "block";
+            renderCart();
+          }
+        } catch (e) {
+          msg.style.color = "#ef4444";
+          msg.textContent = "❌ Fehlerverifizierungscode";
+          msg.style.display = "block";
+        } finally {
+          applyGiftBtn.disabled = false;
+          applyGiftBtn.textContent = "anwenden";
+        }
+      });
+    }
+
+    checkoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
       const cart = readCart();
       if (cart.length === 0) {
-        alert("Dein Warenkorb ist leer.");
+        alert("Ihr Warenkorb ist leer.");
         return;
       }
 
-      checkoutBtn.disabled = true;
+      checkoutBtn.setAttribute("aria-disabled", "true");
+      checkoutBtn.classList.add("disabled");
       const originalCheckoutLabel = checkoutBtn.textContent;
-      checkoutBtn.textContent = "Wird verarbeitet...";
+      checkoutBtn.textContent = "Verarbeitung...";
 
       if (!authReady) {
-        alert("Sitzung wird geladen. Bitte in ein paar Sekunden erneut versuchen.");
-        checkoutBtn.disabled = false;
+        alert("Ladesitzung. Versuchen Sie es in ein paar Sekunden noch einmal.");
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
         return;
       }
 
       if (!isAuthenticated) {
-        checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute("aria-disabled");
+        checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
-        window.location.href = "/de/login/";
+        window.location.href = "/de/login-sitzung/";
         return;
       }
 
       const orderId = generateOrderId();
       const summary = calculateSummary(cart);
+      const hasEngraving = summary.items.some((item) => Boolean(item.engraving));
+      const engravingCount = summary.items.reduce(
+        (total, item) => total + (item.engraving ? Math.max(1, Number(item.qty) || 1) : 0),
+        0
+      );
       const orderPayload = {
         orderId,
         status: "pending_payment",
@@ -486,6 +810,8 @@
         currency: "EUR",
         subtotal: Number(summary.subtotal.toFixed(2)),
         items: summary.items,
+        hasEngraving,
+        engravingCount,
         createdAt: serverTimestamp(),
         uid: auth.currentUser?.uid || null
       };
@@ -505,13 +831,23 @@
       }
 
       try {
+        // Leer perfil guardado
+                const customerName = auth.currentUser?.displayName || null;
+
+        const checkoutItems = buildCheckoutItems(summary.items);
+        const itemsForCheckout = checkoutItems.length ? checkoutItems : summary.items;
         const response = await fetch(CHECKOUT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             orderId,
             successUrl: SUCCESS_URL,
-            cancelUrl: CANCEL_URL
+            cancelUrl: CANCEL_URL,
+            items: itemsForCheckout,
+            giftCardCode: appliedGiftCard ? appliedGiftCard.code : null,
+            customerEmail: auth.currentUser?.email || null,
+            customerName,
+            customerPhone: auth.currentUser?.phoneNumber || null
           })
         });
         const data = await response.json();
@@ -529,6 +865,96 @@
     });
 
     renderCart();
+  </script>
+
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
   </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 export async function transferSessionToApp(user) {
-  if (!user) return false;
+  // Transférer la session uniquement lors de l'exécution dans l'application native ;
+  // sur le web, la session Firebase persiste d'elle-même.
+  if (!user || !isNativeApp()) return false;
 
   try {
     const idToken = await user.getIdToken();
@@ -19,7 +21,7 @@ export async function transferSessionToApp(user) {
     redirectToApp(data.customToken);
     return true;
   } catch (error) {
-    console.warn("No se pudo transferir la sesión a la app:", error);
+    console.warn("Impossible de transférer la session à l'application :", error);
     return false;
   }
 }

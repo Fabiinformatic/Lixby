@@ -6,11 +6,8 @@
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
-  <base href="/de/">
-  <script src="/gtm.js"></script>
-  <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/es/verificado">
+  <link rel="canonical" href="https://lixby.es/de/verified">
   <link rel="alternate" href="https://lixby.es/bg/verified" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/verified" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/verified" hreflang="da-DK">
@@ -45,7 +42,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>E-Mail verifiziert | Lixby</title>
+  <title>bestätigte E-Mail | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,38 +52,84 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/de/style.css">
   <style>
-    .verify-page {
-      padding: 40px 0 84px;
-      min-height: 70vh;
-      display: grid;
-      place-items: center;
-    }
+  .verified-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
 
-    .verify-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
-      max-width: 520px;
-      text-align: center;
-      display: grid;
-      gap: 12px;
-    }
+  .verified-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 48px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+  }
 
-    .verify-card p {
-      color: var(--muted);
-    }
+  .verified-icon {
+    width: 72px;
+    height: 72px;
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
 
-    .verify-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .verified-icon svg {
+    width: 36px;
+    height: 36px;
+    color: #16a34a;
+  }
+
+  .verified-card h1 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    color: #0f172a;
+  }
+
+  .verified-card p {
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .verified-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .error-card .verified-icon {
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+
+  .error-card .verified-icon svg {
+    color: #dc2626;
+  }
+
+  .login-primary-btn {
+    width: 100%;
+    border: 0;
+    font: inherit;
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .login-primary-btn:hover {
+    transform: none;
+  }
   </style>
   <script type="application/ld+json">
     {
@@ -100,39 +143,350 @@
       ]
     }
   </script>
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
 </head>
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Hauptmenü">
+    <div class="container nav-container">
+      <a href="/de/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="/de/shop/" class="nav-link">Shop</a>
-        <a href="/de/#productos" class="nav-link">Produkte</a>
-        <a href="/de/#apps" class="nav-link">Apps</a>
+        <a href="/de/products/" class="nav-link">Produkte</a>
+        <a href="/de/apps/" class="nav-link">Apps</a>
         <a href="/de/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Suchen" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/de/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Auf Lixby suchen..."
+            aria-label="Auf Lixby suchen"
+          >
+        </form>
         <a href="/de/cart/" class="nav-icon-link" aria-label="Warenkorb">
-          <img src="images/Bolsa.png" alt="Warenkorb">
+          <img src="/de/images/Bolsa.png" alt="Warenkorb">
         </a>
         <a href="/de/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="images/cuenta.png" alt="Konto">
+          <img src="/de/images/cuenta.png" alt="Konto">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menü" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile Hauptnavigation">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Shop</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/de/shop/">Zum Shop</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One Kopfhörer</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/buy-headphones/lixbuds-one/">Jetzt kaufen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/news/">Neuigkeiten</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/de/products/">Produkte ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/lixsafe/">LixSafe und Garantien</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/de/apps/">Apps ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixney/">Lixney Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixfly/">Lixfly Support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/de/support/">Zum Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/faq/">Häufige Fragen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/returns/">Rücksendungen</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Warenkorb</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Warenkorb ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Bestellung abschließen</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Zu meinem Konto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Meine Bestellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Mein Profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Einstellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/login/">Anmelden</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/two-step-verification/">Zwei-Schritt-Verifizierung</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <main class="container verify-page">
-    <section class="verify-card">
-      <h1>E-Mail verifiziert</h1>
-      <p>Deine E-Mail wurde erfolgreich verifiziert.</p>
-      <div class="verify-actions">
-        <a class="btn btn-primary" href="/de/account/">Zu meinem Konto</a>
-        <a class="btn btn-secondary" href="/de/login/">Anmelden</a>
+  <main class="container verified-page">
+    <section id="verifiedCard" class="verified-card">
+      <div class="verified-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+      </div>
+      <h1>verifizierte E-Mail</h1>
+      <p>Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Sie können jetzt auf alle Lixby-Dienste zugreifen.</p>
+      <div class="verified-actions">
+        <button id="backBtn" class="btn btn-primary login-primary-btn" type="button">geh zurück</button>
+        <a class="btn btn-secondary" href="/de/">zurück zum Anfang</a>
       </div>
     </section>
   </main>
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ansehen und kaufen</h3>
+        <ul>
+          <li><a href="/de/shop/">Shop</a></li>
+          <li><a href="/de/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/de/apps/">Apps</a></li>
+          <li><a href="/de/support/">Support</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="/de/support/">Support-Startseite</a></li>
+          <li><a href="/de/support/#faq">FAQ zum Online-Shop</a></li>
+          <li><a href="/de/support/">Garantieinformationen</a></li>
+          <li><a href="mailto:info@lixby.es">E-Mail an den CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Konto</h3>
+        <ul>
+          <li><a href="/de/track/">Bestellungen</a></li>
+          <li><a href="/de/account/">Mein Konto</a></li>
+          <li><a href="/de/account/">Gutscheine</a></li>
+          <li><a href="/de/community/">Community</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Über Lixby</h3>
+        <ul>
+          <li><a href="/de/about/">Über uns</a></li>
+          <li><a href="/de/support/">Garantie</a></li>
+          <li><a href="/de/news/">Neuigkeiten</a></li>
+          <li><a href="/de/support/">Kontakt</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal-links">
+        <a href="/de/pages/legal/privacy/">Datenschutzerklärung</a>
+        <a href="/de/pages/legal/cookies/">Cookie-Richtlinie</a>
+        <a href="/de/pages/legal/terms/">Nutzungsbedingungen</a>
+        <a href="/de/pages/legal/sales-refunds/">Verkäufe und Erstattungen</a>
+        <a href="/de/pages/legal/legal-notice/">Impressum</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAuth, applyActionCode, reload } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+    authDomain: "lixby0.firebaseapp.com",
+    projectId: "lixby0",
+    storageBucket: "lixby0.firebasestorage.app",
+    messagingSenderId: "1058088945026",
+    appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode");
+  const oobCode = params.get("oobCode");
+  const card = document.getElementById("verifiedCard");
+
+  function showError(msg) {
+    card.classList.add("error-card");
+    card.querySelector(".verified-icon svg").innerHTML = '';
+    card.querySelector("h1").textContent = "etwas ist schief gelaufen";
+    card.querySelector("p").textContent = msg;
+  }
+
+  if (mode === "verifyEmail" && oobCode) {
+    applyActionCode(auth, oobCode)
+      .then(async () => {
+        sessionStorage.setItem("lixby_email_verified", "1");
+        const user = auth.currentUser;
+        if (user) await reload(user);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-action-code") {
+          showError("Der Link wurde bereits verwendet oder ist abgelaufen. Fordern Sie über Ihr Konto ein neues an.");
+        } else {
+          showError(`E-Mail konnte nicht bestätigt werden: ${error.message}`);
+        }
+      });
+  } else if (mode) {
+    showError("ungültiger Link.");
+  }
+
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes("/de/login-session")) {
+        window.history.back();
+      } else {
+        window.location.href = "/en/login-session/?verified=1";
+      }
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    document.getElementById("nav").classList.toggle("nav-scrolled", window.scrollY > 20);
+  }, { passive: true });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 

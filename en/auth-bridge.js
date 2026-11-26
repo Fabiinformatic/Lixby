@@ -21,7 +21,7 @@ export async function transferSessionToApp(user) {
     redirectToApp(data.customToken);
     return true;
   } catch (error) {
-    console.warn("No se pudo transferir la sesión a la app:", error);
+    console.warn("Could not transfer the session to the app:", error);
     return false;
   }
 }

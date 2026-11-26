@@ -21,7 +21,6 @@
   <link rel="alternate" href="https://lixby.es/et/pages/apps/lixney" hreflang="et-EE">
   <link rel="alternate" href="https://lixby.es/fi/pages/apps/lixney" hreflang="fi-FI">
   <link rel="alternate" href="https://lixby.es/fr/pages/apps/lixney" hreflang="fr-FR">
-  <link rel="alternate" href="https://lixby.es/en/pages/apps/lixney" hreflang="x-default" />
   <link rel="alternate" href="https://lixby.es/ga/pages/apps/lixney" hreflang="ga-IE">
   <link rel="alternate" href="https://lixby.es/hr/pages/apps/lixney" hreflang="hr-HR">
   <link rel="alternate" href="https://lixby.es/hu/pages/apps/lixney" hreflang="hu-HU">
@@ -36,16 +35,33 @@
   <link rel="alternate" href="https://lixby.es/sk/pages/apps/lixney" hreflang="sk-SK">
   <link rel="alternate" href="https://lixby.es/sl/pages/apps/lixney" hreflang="sl-SI">
   <link rel="alternate" href="https://lixby.es/sv/pages/apps/lixney" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/pages/apps/lixney" hreflang="x-default">
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lixney - App de Finances Personnelles | Lixby</title>
-  <meta name="description" content="Lixney : App de finances personnelles qui vous aide à gérer votre argent, suivre vos dépenses et économiser intelligemment. Disponible sur iOS et Android.">
-  <meta name="keywords" content="app finances, gestionnaire de dépenses, budget personnel, épargne, argent, Lixney">
+  <title>Lixney - application de finances personnelles | Lixby</title>
+  <meta name="description" content="Lixney : application de finances personnelles pour Android qui vous aide à gérer votre argent, à suivre vos dépenses et à économiser intelligemment.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://lixby.es/fr/pages/apps/lixney">
+  <meta property="og:title" content="Lixney - application de finances personnelles | Lixby">
+  <meta property="og:description" content="Lixney : application de finances personnelles pour Android qui vous aide à gérer votre argent, à suivre vos dépenses et à économiser intelligemment.">
+  <meta property="og:image" content="https://lixby.es/fr/images/lixneyicon2.webp">
+  <meta property="og:image:alt" content="Lixney, application de finances personnelles">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lixney - application de finances personnelles | Lixby">
+  <meta name="twitter:description" content="Lixney : application de finances personnelles pour Android qui vous aide à gérer votre argent, à suivre vos dépenses et à économiser intelligemment.">
+  <meta name="twitter:image" content="https://lixby.es/fr/images/lixneyicon2.webp">
+  <meta name="twitter:image:alt" content="Lixney, application de finances personnelles">
+  <meta name="keywords" content="application finances, gestionnaire de dépenses, budget personnel, épargne, argent, Lixney">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/fr/style.css">
   <style>
     .app-hero {
       min-height: 80vh;
@@ -221,18 +237,128 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
   
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/fr/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/fr/#productos" class="nav-link">Produits</a>
-        <a href="/fr/#apps" class="nav-link">Applications</a>
-        <a href="/fr/support/" class="nav-link">Assistance</a>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/fr/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Accueil">
+        <a href="/fr/shop/" class="nav-link">Boutique</a>
+        <a href="/fr/products/" class="nav-link">Produits</a>
+        <a href="/fr/apps/" class="nav-link">Apps</a>
+        <a href="/fr/support/" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Rechercher" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/fr/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Rechercher sur Lixby..."
+            aria-label="Rechercher sur Lixby"
+          >
+        </form>
+        <a href="/fr/cart/" class="nav-icon-link" aria-label="Panier">
+          <img src="/fr/images/Bolsa.png" alt="Panier">
+        </a>
+        <a href="/fr/account/" class="nav-icon-link" aria-label="Compte">
+          <img src="/fr/images/cuenta.png" alt="Compte">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
-      <div class="nav-right"></div>
     </div>
-  </nav>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Principal mobile">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Boutique</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/fr/shop/">Aller à la boutique</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/products/lixbuds-one/">Écouteurs LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/buy-headphones/lixbuds-one/">Acheter maintenant</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/news/">Actualités</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produits</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/fr/products/">Voir les produits</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/lixsafe/">LixSafe et garanties</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/fr/apps/">Voir les applications</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/lixney/">Support Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/lixfly/">Support Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/fr/support/">Accéder au support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/faq/">Questions fréquentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/returns/">Retours</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Panier</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/fr/cart/">Voir le panier</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/cart/">Finaliser la commande</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Compte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Accéder à mon compte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Mes commandes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Mon profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Paramètres</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/login/">Se connecter</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/two-step-verification/">Vérification en 2 étapes</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="app-hero">
     <div class="app-hero-content">
@@ -241,10 +367,6 @@
         <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);">Contrôlez votre argent de manière simple et intelligente.</p>
         <p style="font-size: var(--font-size-lg); color: var(--color-gray-700); margin-bottom: var(--spacing-6); line-height: 1.8;">Lixney vous aide à gérer vos finances personnelles avec des outils puissants et une interface intuitive. Suivez vos dépenses, établissez des budgets et atteignez vos objectifs financiers.</p>
         <div class="app-downloads">
-          <a href="#" class="download-badge">
-            <span>🍎</span>
-            <span>App Store</span>
-          </a>
           <a href="#" class="download-badge">
             <span>🤖</span>
             <span>Google Play</span>
@@ -260,67 +382,67 @@
   </section>
 
   <section class="features-detail">
-    <h2>Fonctionnalités principales</h2>
+    <h2>Principales fonctionnalités</h2>
 
     <div class="feature-row">
       <div class="feature-content">
-        <h3>💰 Suivi des dépenses</h3>
-        <p>Enregistrez automatiquement vos dépenses et catégorisez-les. Visualisez où va votre argent avec des graphiques détaillés et des rapports.</p>
+        <h3>💰 suivi des dépenses</h3>
+        <p>Enregistrez automatiquement vos dépenses et catégorisez-les. Visualisez où va votre argent avec des graphiques et des rapports détaillés.</p>
       </div>
       <div class="feature-image">
-        <img src="../../images/lixbuds-hero.jpg" alt="Suivi des dépenses">
+        <img src="../../images/lixbuds-hero.jpg" alt="suivi des dépenses">
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-content">
-        <h3>📊 Gestion des budgets</h3>
+        <h3>📊 gestion budgétaire</h3>
         <p>Créez des budgets personnalisés et recevez des alertes lorsque vous approchez de la limite. Contrôlez vos dépenses de manière proactive.</p>
       </div>
       <div class="feature-image">
-        <img src="../../images/lixbuds-hero.jpg" alt="Gestion des budgets">
+        <img src="../../images/lixbuds-hero.jpg" alt="gestion budgétaire">
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-content">
-        <h3>📈 Analyse financière</h3>
-        <p>Obtenez des insights profonds sur vos habitudes de dépense. Identifiez des schémas et améliorez vos décisions financières.</p>
+        <h3>📈 analyse financière</h3>
+        <p>Obtenez des informations approfondies sur vos habitudes de dépenses. Identifiez les modèles et améliorez vos décisions financières.</p>
       </div>
       <div class="feature-image">
-        <img src="../../images/lixbuds-hero.jpg" alt="Analyse financière">
+        <img src="../../images/lixbuds-hero.jpg" alt="analyse financière">
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-content">
-        <h3>🎯 Objectifs d'épargne</h3>
-        <p>Fixez des objectifs d'épargne et suivez votre progression. Lixney vous motive à atteindre vos objectifs financiers.</p>
+        <h3>🎯 objectifs d'épargne</h3>
+        <p>Fixez-vous des objectifs d’épargne et suivez vos progrès. Lixney vous motive à atteindre vos objectifs financiers.</p>
       </div>
       <div class="feature-image">
-        <img src="../../images/lixbuds-hero.jpg" alt="Objectifs d'épargne">
+        <img src="../../images/lixbuds-hero.jpg" alt="objectifs d'épargne">
       </div>
     </div>
   </section>
 
   <section class="security-section">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Votre sécurité est primordiale</h2>
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Votre sécurité est la priorité</h2>
       <div class="security-grid">
         <div class="security-item">
           <div class="security-item-icon">🔒</div>
-          <h3>Chiffrement de bout en bout</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Vos données sont protégées avec la plus stricte confidentialité.</p>
+          <h3>Confidentialité dès la conception</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Vos données sont enregistrées sur votre appareil, pas dans le cloud.</p>
         </div>
         <div class="security-item">
           <div class="security-item-icon">🔐</div>
           <h3>Authentification à deux facteurs</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Protection supplémentaire pour votre compte.</p>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Une protection supplémentaire pour votre compte.</p>
         </div>
         <div class="security-item">
           <div class="security-item-icon">✅</div>
-          <h3>Certifié RGPD</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Conforme aux réglementations européennes sur la confidentialité.</p>
+          <h3>Conformité RGPD</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Nous suivons les réglementations européennes en matière de confidentialité.</p>
         </div>
       </div>
     </div>
@@ -328,7 +450,7 @@
 
   <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Commencez à économiser dès aujourd'hui</h2>
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Commencez à économiser aujourd'hui</h2>
       <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Téléchargez Lixney gratuitement sur votre téléphone</p>
       <div class="app-downloads">
         <a href="#" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Télécharger Lixney</a>
@@ -345,7 +467,7 @@
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Applications</h3>
+        <h3>Apps</h3>
         <ul class="footer-links">
           <li><a href="/fr/pages/apps/lixney/">Lixney</a></li>
         </ul>
@@ -358,10 +480,11 @@
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Légal</h3>
+        <h3>Legal</h3>
         <ul class="footer-links">
           <li><a href="/fr/pages/legal/privacy/">Confidentialité</a></li>
           <li><a href="/fr/pages/legal/terms/">Conditions</a></li>
+          <li><a href="/fr/pages/legal/sales-refunds/">Ventes et remboursements</a></li>
           <li><a href="/fr/pages/legal/cookies/">Cookies</a></li>
           <li><a href="/fr/pages/legal/legal-notice/">Mentions légales</a></li>
         </ul>
@@ -374,5 +497,105 @@
 
   <script src="/js/gsap.min.js"></script>
   <script src="../../script.js"></script>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>

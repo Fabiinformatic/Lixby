@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/en/style.css">
 
   <style>
     :root {
@@ -84,7 +87,7 @@
       padding: 48px 0 80px;
     }
 
-    /* Animated check */
+    /* Check animado */
     .success-icon {
       width: 72px;
       height: 72px;
@@ -266,7 +269,7 @@
     .order-total-row span { font-weight: 700; }
     .order-total-row strong { font-size: 1.2rem; font-weight: 800; color: var(--green); }
 
-    /* Actions */
+    /* Acciones */
     .thank-actions {
       display: flex;
       gap: 10px;
@@ -308,28 +311,128 @@
 <canvas id="confetti-canvas"></canvas>
 
 <header class="nav" id="nav">
-  <div class="container nav-container">
-    <a href="./" class="nav-brand">Lixby</a>
-    <nav class="nav-links" aria-label="Main">
-      <a href="/en/store/" class="nav-link">Store</a>
-      <a href="/en/#products" class="nav-link">Products</a>
-      <a href="/en/#apps" class="nav-link">Apps</a>
-      <a href="/en/support/" class="nav-link">Support</a>
+    <div class="container nav-container">
+      <a href="/en/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="/en/shop/" class="nav-link">Store</a>
+        <a href="/en/products/" class="nav-link">Products</a>
+        <a href="/en/apps/" class="nav-link">Apps</a>
+        <a href="/en/support/" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/en/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Search Lixby..."
+            aria-label="Search Lixby"
+          >
+        </form>
+        <a href="/en/cart/" class="nav-icon-link" aria-label="Cart">
+          <img src="/en/images/Bolsa.png" alt="Cart">
+        </a>
+        <a href="/en/account/" class="nav-icon-link" aria-label="Account">
+          <img src="/en/images/account.png" alt="Account">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile main">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Store</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/en/shop/">Go to store</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One headphones</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/buy-headphones/lixbuds-one/">Buy now</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/news/">News</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Products</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/en/products/">View products</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/lixsafe/">LixSafe and coverage</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/en/apps/">View apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixney/">Lixney support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixfly/">Lixfly support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/en/support/">Go to support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/faq/">Frequently asked questions</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/returns/">Returns</a></p>
+        </div>
+      </div>
     </nav>
-    <div class="nav-actions">
-      <a href="/en/cart/" class="nav-icon-link" aria-label="Cart">
-        <img src="images/Bolsa.png" alt="Cart">
-      </a>
-      <a href="/en/account/" class="nav-icon-link" aria-label="Account">
-        <img src="images/cuenta.png" alt="Account">
-      </a>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Cart</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">View cart</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">Checkout</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Go to my account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My orders</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My profile</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Settings</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/login/">Sign in</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/two-step-verification/">Two-step verification</a></p>
+        </div>
+      </div>
     </div>
   </div>
-</header>
 
 <main class="container thank-you-page">
   <div class="thank-card">
-    <!-- Animated check -->
+    <!-- Check animado -->
     <div class="success-icon">
       <svg viewBox="0 0 24 24" fill="none">
         <polyline points="20 6 9 17 4 12"/>
@@ -338,15 +441,15 @@
 
     <p class="thank-eyebrow">Order confirmed</p>
     <h1 class="thank-title">Thank you for your purchase!</h1>
-    <p class="thank-sub">We will send you a confirmation email. You can track your order at any time.</p>
+    <p class="thank-sub">We'll send you a confirmation by email. You can track your order at any time.</p>
 
-    <!-- Order number -->
+    <!-- Número de pedido -->
     <div class="order-number-badge">
       <span>Order</span>
       <strong id="orderNumber">—</strong>
     </div>
 
-    <!-- Customer info -->
+    <!-- Info del cliente -->
     <div class="info-section" id="customerSection" style="display:none">
       <h3>Delivery information</h3>
       <div class="info-grid">
@@ -377,9 +480,9 @@
       <strong id="totalValue">—</strong>
     </div>
 
-    <!-- Actions -->
+    <!-- Acciones -->
     <div class="thank-actions">
-      <a class="btn btn-primary" href="/en/store/">Continue shopping</a>
+      <a class="btn btn-primary" href="/en/shop/">Continue shopping</a>
       <a class="btn btn-secondary" id="trackBtn" href="/en/track/">Track order</a>
     </div>
   </div>
@@ -431,14 +534,14 @@
     draw();
   })();
 
-  // ── Order data ──────────────────────────────────────────────
+  // ── Order data ──────────────────────────────────────
   const LAST_ORDER_KEY = 'lixbyCart';
   const params = new URLSearchParams(window.location.search);
   const orderId = params.get('orderId');
 
   function money(v) {
     const n = Number(v) || 0;
-    return n.toFixed(2).replace('.', ',') + ' €';
+    return n.toFixed(2) + ' €';
   }
 
   function show(id) {
@@ -527,12 +630,103 @@
       show('totalRow');
     }
 
-    // Clear cart after successful purchase
+    // Clear the cart after a successful purchase
     localStorage.removeItem('lixbyCart');
     localStorage.removeItem('lixbyLastOrder');
   }
 
   init();
 </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
+
+

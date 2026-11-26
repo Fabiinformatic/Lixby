@@ -10,7 +10,7 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/es/track">
+  <link rel="canonical" href="https://lixby.es/de/track">
   <link rel="alternate" href="https://lixby.es/bg/track" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/track" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/track" hreflang="da-DK">
@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Bestellverfolgung | Lixby</title>
+  <title>Auftragsverfolgung | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/de/style.css">
 
   <style>
     :root {
@@ -69,7 +72,7 @@
 
     body {
       background: #f5f7fa;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       margin: 0;
       color: #1a1a1a;
       min-height: 100vh;
@@ -149,7 +152,7 @@
       padding: 12px 14px;
       border: none;
       font-size: 1rem;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       outline: none;
       min-width: 0;
     }
@@ -162,7 +165,7 @@
       color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
@@ -497,8 +500,6 @@
 <body>
 
 
-  <div id="scroll-progress"></div>
-
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -507,11 +508,11 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Hauptmenü">
+      <a href="/de/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="/de/shop/" class="nav-link">Shop</a>
-        <a href="/de/#productos" class="nav-link">Produkte</a>
-        <a href="/de/#apps" class="nav-link">Apps</a>
+        <a href="/de/products/" class="nav-link">Produkte</a>
+        <a href="/de/apps/" class="nav-link">Apps</a>
         <a href="/de/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
@@ -521,122 +522,172 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/de/shop/" method="get">
+        <form id="navSearchForm" action="/de/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Produkt suchen..."
-            aria-label="Produkt suchen"
+            placeholder="Auf Lixby suchen..."
+            aria-label="Auf Lixby suchen"
           >
         </form>
         <a href="/de/cart/" class="nav-icon-link" aria-label="Warenkorb">
-          <img src="images/Bolsa.png" alt="Warenkorb">
+          <img src="/de/images/Bolsa.png" alt="Warenkorb">
         </a>
         <a href="/de/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="images/cuenta.png" alt="Konto">
+          <img src="/de/images/cuenta.png" alt="Konto">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menü" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/de/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Suchen"
-          aria-label="Produkt suchen"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Menü schließen">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Hauptmenü mobil">
-      <a href="/de/shop/">Shop</a>
-      <a href="/de/#productos">Produkte</a>
-      <a href="/de/#apps">Apps</a>
-      <a href="/de/support/">Support</a>
+    <nav class="nav-mobile-links" aria-label="Mobile Hauptnavigation">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Shop</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/de/shop/">Zum Shop</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One Kopfhörer</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/buy-headphones/lixbuds-one/">Jetzt kaufen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/news/">Neuigkeiten</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/de/products/">Produkte ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/lixsafe/">LixSafe und Garantien</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/de/apps/">Apps ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixney/">Lixney Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixfly/">Lixfly Support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/de/support/">Zum Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/faq/">Häufige Fragen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/returns/">Rücksendungen</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/de/cart/">Warenkorb</a>
-      <a href="/de/account/">Konto</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Warenkorb</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Warenkorb ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Bestellung abschließen</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Zu meinem Konto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Meine Bestellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Mein Profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Einstellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/login/">Anmelden</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/two-step-verification/">Zwei-Schritt-Verifizierung</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
 <div class="track-page">
 
-  <!-- Suche -->
+  <!-- Búsqueda -->
   <div class="search-card">
-    <h1>Bestellverfolgung</h1>
-    <p>Gib deine Bestellnummer ein, um den Status deiner Lieferung zu sehen.</p>
+    <h1>Auftragsverfolgung</h1>
+    <p>Geben Sie Ihre Bestellnummer ein, um den Status Ihrer Sendung anzuzeigen.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
         <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Bestellnummer">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">Abfragen</button>
+      <button class="btn-search" id="searchBtn" type="button">konsultieren</button>
     </div>
   </div>
 
-  <!-- Laden -->
+  <!-- Loading -->
   <div id="loadingEl" style="display:none">
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Suche nach deiner Bestellung...</p>
+        <p>Ich suche Ihre Bestellung...</p>
       </div>
     </div>
   </div>
 
-  <!-- Fehler -->
+  <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
     <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Bestellung nicht gefunden</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
-      Wir haben keine Bestellung mit dieser Nummer gefunden.<br>
-      Überprüfe die Nummer – du findest sie in deiner Bestätigungs-E-Mail.
+      Wir haben keine Bestellungen mit dieser Nummer gefunden.<br>
+      Überprüfen Sie, ob die Nummer korrekt ist – Sie finden sie in der Bestätigungs-E-Mail.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:info@lixby.es" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Support kontaktieren
+        Kontaktieren Sie den Support
       </a>
       <a href="/de/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Zurück zum Shop
+        geh zurück in den Laden
       </a>
     </div>
   </div>
 
-  <!-- Ergebnis -->
+  <!-- Resultado -->
   <div class="result-card" id="resultCard">
 
-    <!-- Kopfzeile -->
+    <!-- Header -->
     <div class="order-header">
       <div>
         <div class="order-number-badge">
-          <span>Bestellung</span>
+          <span>Befehl</span>
           <strong id="resOrderNumber">—</strong>
         </div>
         <div class="order-date" id="resDate"></div>
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        Zahlung bestätigt
+        bestätigte Zahlung
       </div>
     </div>
 
-    <!-- Fortschritt -->
+    <!-- Progreso -->
     <div class="progress-section">
       <h3>Versandstatus</h3>
       <div class="progress-steps" id="progressSteps">
@@ -644,19 +695,19 @@
       </div>
     </div>
 
-    <!-- Sendungsnummer -->
+    <!-- Número de seguimiento -->
     <div class="tracking-info" id="trackingInfo" style="display:none">
       <div class="tracking-icon">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div class="tracking-details">
-        <label>Sendungsnummer</label>
+        <label>Tracking-Nummer</label>
         <strong id="trackingNumber">—</strong>
         <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
       </div>
     </div>
 
-    <!-- Kundeninfo -->
+    <!-- Info cliente -->
     <div class="info-section" id="resCustomerSection" style="display:none">
       <h3>Lieferinformationen</h3>
       <div class="info-grid">
@@ -665,32 +716,32 @@
           <strong id="resName">—</strong>
         </div>
         <div class="info-item">
-          <label>E-Mail</label>
+          <label>Email</label>
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Lieferadresse</label>
+          <label>Postanschrift</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Produkte -->
+    <!-- Productos -->
     <div id="resProductsSection" style="display:none">
       <div class="info-section" style="background:#fff">
         <h3>Produkte</h3>
         <div id="resProductsList"></div>
         <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
-          <span>Gesamtbetrag</span>
+          <span>insgesamt bezahlt</span>
           <strong id="resTotalValue">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Aktionen -->
+    <!-- Acciones -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="/de/shop/" class="btn-primary">Weiter einkaufen</a>
-      <a href="mailto:info@lixby.es" class="btn-secondary">Support kontaktieren</a>
+      <a href="/de/shop/" class="btn-primary">weiter einkaufen</a>
+      <a href="mailto:info@lixby.es" class="btn-secondary">Kontaktieren Sie den Support</a>
     </div>
   </div>
 </div>
@@ -698,11 +749,11 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ansehen & kaufen</h3>
+        <h3>Ansehen und kaufen</h3>
         <ul>
           <li><a href="/de/shop/">Shop</a></li>
           <li><a href="/de/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/de/#apps">Apps</a></li>
+          <li><a href="/de/apps/">Apps</a></li>
           <li><a href="/de/support/">Support</a></li>
         </ul>
       </section>
@@ -711,7 +762,7 @@
         <h3>Support</h3>
         <ul>
           <li><a href="/de/support/">Support-Startseite</a></li>
-          <li><a href="/de/support/#faq">Online-Shop FAQs</a></li>
+          <li><a href="/de/support/#faq">FAQ zum Online-Shop</a></li>
           <li><a href="/de/support/">Garantieinformationen</a></li>
           <li><a href="mailto:info@lixby.es">E-Mail an den CEO</a></li>
         </ul>
@@ -723,6 +774,7 @@
           <li><a href="/de/track/">Bestellungen</a></li>
           <li><a href="/de/account/">Mein Konto</a></li>
           <li><a href="/de/account/">Gutscheine</a></li>
+          <li><a href="/de/community/">Community</a></li>
         </ul>
       </section>
 
@@ -731,33 +783,122 @@
         <ul>
           <li><a href="/de/about/">Über uns</a></li>
           <li><a href="/de/support/">Garantie</a></li>
-          <li><a href="#">Veranstaltungen</a></li>
+          <li><a href="/de/news/">Neuigkeiten</a></li>
           <li><a href="/de/support/">Kontakt</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Urheberrecht © 2026 Lixby. Alle Rechte vorbehalten.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle Rechte vorbehalten.</p>
       <div class="footer-legal-links">
         <a href="/de/pages/legal/privacy/">Datenschutzerklärung</a>
         <a href="/de/pages/legal/cookies/">Cookie-Richtlinie</a>
         <a href="/de/pages/legal/terms/">Nutzungsbedingungen</a>
-        <a href="/de/support/">Verkäufe & Rückgaben</a>
-        <a href="/de/pages/legal/legal-notice/">Rechtliche Hinweise</a>
+        <a href="/de/pages/legal/sales-refunds/">Verkäufe und Erstattungen</a>
+        <a href="/de/pages/legal/legal-notice/">Impressum</a>
       </div>
     </div>
   </footer>
 
 <script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var mobilePanel = document.getElementById("navMobilePanel");
+    var searchToggle = document.querySelector(".nav-search-toggle");
+    var menuToggle = document.querySelector(".nav-menu-toggle");
+    var searchInput = document.getElementById("navSearch");
+
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
+    var closeNav = function () {
+      if (document.body) document.body.classList.remove("nav-open", "menu-open");
+      if (nav) nav.classList.remove("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+            setIconState(false);
+    };
+    var openNav = function () {
+      if (document.body) document.body.classList.add("nav-open", "menu-open");
+      if (nav) nav.classList.add("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+            setIconState(true);
+    };
+    var toggleNav = function () {
+      if (nav && nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+    if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+    document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+      var btn = item.querySelector(".nav-mobile-question");
+      var answer = item.querySelector(".nav-mobile-answer");
+      if (!btn || !answer) return;
+
+      btn.addEventListener("click", function () {
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+          var ob = other.querySelector(".nav-mobile-question");
+          var oa = other.querySelector(".nav-mobile-answer");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          other.classList.remove("open");
+          if (oa) {
+            oa.classList.remove("active");
+            oa.style.maxHeight = "0px";
+          }
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          item.classList.add("open");
+          answer.classList.add("active");
+          answer.style.maxHeight = "0px";
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
+    });
+  })();
+</script>
+<script>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Empfangen',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Vorbereitung', icon: '🔧' },
-    { key: 'Enviado',           label: 'Versendet',    icon: '🚚' },
-    { key: 'En reparto',        label: 'Zugestellt',   icon: '📍' },
-    { key: 'Entregado',         label: 'Geliefert',    icon: '✅' }
+    { key: 'Pedido recibido',   label: 'erhalten',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'vorbereiten', icon: '🔧' },
+    { key: 'Enviado',           label: 'gesendet',     icon: '🚚' },
+    { key: 'En reparto',        label: 'im Vertrieb',  icon: '📍' },
+    { key: 'Entregado',         label: 'geliefert',   icon: '✅' }
   ];
 
   function money(v) {
@@ -778,10 +919,10 @@
     const container = document.getElementById('progressSteps');
     const fill = document.getElementById('progressFill');
 
-    // Linie beibehalten
+    // Mantener la línea
     const line = container.querySelector('.progress-line');
 
-    // Vorherige Schritte löschen
+    // Limpiar pasos anteriores
     container.querySelectorAll('.step-item').forEach(el => el.remove());
 
     STATUS_STEPS.forEach((step, idx) => {
@@ -804,23 +945,23 @@
       container.appendChild(item);
     });
 
-    // Fortschrittslinie animieren
+    // Animar la línea de progreso
     const pct = currentIndex <= 0 ? 0 : (currentIndex / (STATUS_STEPS.length - 1)) * 100;
     setTimeout(() => { fill.style.width = pct + '%'; }, 100);
   }
 
   function renderOrder(data) {
-    // Nummer und Datum
+    // Número y fecha
     document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
     const dateEl = document.getElementById('resDate');
     if (data.paidAt || data.createdAt) {
-      dateEl.textContent = 'Bestellt am ' + formatDate(data.paidAt || data.createdAt);
+      dateEl.textContent = 'gemacht am' + formatDate(data.paidAt || data.createdAt);
     }
 
-    // Fortschritt
+    // Progreso
     renderProgress(data.status || 'Pedido recibido');
 
-    // Sendungsnummer
+    // Número de seguimiento
     if (data.trackingNumber) {
       document.getElementById('trackingNumber').textContent = data.trackingNumber;
       if (data.trackingCarrier) {
@@ -829,7 +970,7 @@
       show('trackingInfo', 'flex');
     }
 
-    // Kunde
+    // Cliente
     const name = data.customerName;
     const email = data.email;
     const address = data.address;
@@ -840,7 +981,7 @@
       show('resCustomerSection', 'block');
     }
 
-    // Produkte
+    // Productos
     const items = data.items || [];
     if (items.length) {
       const list = document.getElementById('resProductsList');
@@ -848,15 +989,13 @@
         const name = item.productName || item.name || 'Produkt';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
-        return `
-          <div class="product-item">
+        return `<div class="product-item">
             <div>
               <div class="product-item-name">${name}</div>
               <div class="product-item-sub">Menge: ${qty}</div>
             </div>
             <div class="product-item-price">${price}</div>
-          </div>
-        `;
+          </div>`;
       }).join('');
 
       if (data.amountTotal) {
@@ -876,7 +1015,7 @@
     hide('errorCard');
     show('loadingEl', 'block');
 
-    // ID normalisieren – akzeptiert mit oder ohne LXB-
+    // Normalizar ID — acepta con o sin LXB-
     let normalized = id.trim().toUpperCase();
     if (!normalized.startsWith('LXB-') && !normalized.startsWith('LX-') && !normalized.startsWith('TEST-')) {
       normalized = 'LXB-' + normalized;
@@ -899,7 +1038,7 @@
     }
   }
 
-  // Suchbutton
+  // Botón buscar
   document.getElementById('searchBtn').addEventListener('click', () => {
     const val = document.getElementById('orderInput').value.trim();
     if (val) fetchOrder(val);
@@ -912,7 +1051,7 @@
     }
   });
 
-  // Automatische Suche, wenn orderId in der URL steht
+  // Auto-buscar si viene orderId en la URL
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const autoId = params.get('orderId') || params.get('id');
@@ -924,5 +1063,13 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 

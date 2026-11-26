@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <script>
+    if (location.pathname.endsWith('/index.html')) {
+      location.replace(location.href.replace('/index.html', '/'));
+    }
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="canonical" href="https://lixby.es/de/products/">
+  <link rel="alternate" href="https://lixby.es/es/productos/" hreflang="es-ES">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+  <link rel="stylesheet" href="/globalfooter.css">
+  <link rel="stylesheet" href="/localnav.css">
+  <link rel="stylesheet" href="/de/style.css">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+  <title>Produkte | Lixby</title>
+  <meta name="description" content="Entdecken Sie die Produkte von Lixby: LixBuds One, kabellose Kopfhörer mit beeindruckendem Klang und Geräuschunterdrückung.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://lixby.es/de/products/">
+  <meta property="og:title" content="Produkte | Lixby">
+  <meta property="og:description" content="Entdecken Sie die Produkte von Lixby: LixBuds One, kabellose Kopfhörer mit beeindruckendem Klang und Geräuschunterdrückung.">
+  <meta property="og:image" content="https://lixby.es/de/images/lixbuds-one-black.png">
+  <meta property="og:image:alt" content="LixBuds One Kopfhörer von Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Produkte | Lixby">
+  <meta name="twitter:description" content="Entdecken Sie die Produkte von Lixby: LixBuds One, kabellose Kopfhörer mit beeindruckendem Klang und Geräuschunterdrückung.">
+  <meta name="twitter:image" content="https://lixby.es/de/images/lixbuds-one-black.png">
+  <meta name="twitter:image:alt" content="LixBuds One Kopfhörer von Lixby">
+  
+  
+  
+  
+  
+  <style>
+    .catalog-hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 42px;
+      align-items: center;
+      padding: 86px 0 52px;
+    }
+
+    .catalog-hero h1 {
+      max-width: 680px;
+      font-size: clamp(2.5rem, 6vw, 5.3rem);
+      line-height: 1.03;
+      letter-spacing: -.06em;
+      margin-bottom: 20px;
+    }
+
+    .catalog-hero p:not(.eyebrow) {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .catalog-actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .catalog-visual {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, #fff 0%, #eef5ff 100%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .catalog-visual img { width: min(92%, 500px); height: 390px; object-fit: contain; }
+
+    .catalog-section { padding: 48px 0 92px; }
+
+    .catalog-section > h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -.04em;
+      margin-bottom: 28px;
+    }
+
+    .product-showcase {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 20px 50px rgba(15,61,255,.12);
+    }
+
+    .product-showcase-media {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-lg);
+      background: #f7f9fc;
+    }
+
+    .product-showcase-media img { width: 100%; max-width: 430px; height: 360px; object-fit: contain; }
+
+    .product-label { color: var(--primary); font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .product-showcase h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.05em; margin: 8px 0 14px; }
+    .product-showcase-copy > p { color: var(--muted); font-size: 1.05rem; }
+
+    .feature-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 24px 0; }
+    .feature-list li { padding: 13px 14px; border: 1px solid var(--line); border-radius: var(--radius-md); font-weight: 700; }
+    .feature-list li::before { content: "✓"; color: var(--primary); margin-right: 8px; }
+
+    .benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .benefit-card { padding: 24px; background: rgba(255,255,255,.72); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,.55); border-radius: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 12px 28px rgba(15,61,255,.08); }
+    .benefit-card span { font-size: 1.7rem; }
+    .benefit-card h3 { margin: 10px 0 6px; }
+    .benefit-card p { color: var(--muted); }
+
+    .catalog-cta { margin: 0 auto 92px; padding: 42px; border-radius: var(--radius-xl); color: #fff; background: linear-gradient(120deg, #0F3DFF, #16A7FF); text-align: center; }
+    .catalog-cta h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); letter-spacing: -.04em; margin-bottom: 10px; }
+    .catalog-cta p { max-width: 620px; margin: 0 auto 22px; color: rgba(255,255,255,.86); }
+    .catalog-cta .btn-secondary { border-color: transparent; }
+
+    @media (max-width: 780px) {
+      .catalog-hero, .product-showcase { grid-template-columns: 1fr; }
+      .catalog-hero { padding-top: 58px; }
+      .catalog-visual, .catalog-visual img { min-height: 300px; height: 300px; }
+      .product-showcase { padding: 18px; gap: 24px; }
+      .product-showcase-media, .product-showcase-media img { min-height: 280px; height: 280px; }
+      .benefit-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .feature-list { grid-template-columns: 1fr; }
+      .catalog-cta { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/de/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="/de/shop/" class="nav-link">Shop</a>
+        <a href="/de/products/" class="nav-link">Produkte</a>
+        <a href="/de/apps/" class="nav-link">Apps</a>
+        <a href="/de/support/" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Suchen" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/de/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Auf Lixby suchen..."
+            aria-label="Auf Lixby suchen"
+          >
+        </form>
+        <a href="/de/cart/" class="nav-icon-link" aria-label="Warenkorb">
+          <img src="/de/images/Bolsa.png" alt="Warenkorb">
+        </a>
+        <a href="/de/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/de/images/cuenta.png" alt="Konto">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menü" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+    <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile Hauptnavigation">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Shop</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/de/shop/">Zum Shop</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One Kopfhörer</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/buy-headphones/lixbuds-one/">Jetzt kaufen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/news/">Neuigkeiten</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/de/products/">Produkte ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/lixsafe/">LixSafe und Garantien</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/de/apps/">Apps ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixney/">Lixney Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/lixfly/">Lixfly Support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/de/support/">Zum Support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/faq/">Häufige Fragen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/help-center/returns/">Rücksendungen</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Warenkorb</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Warenkorb ansehen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/cart/">Bestellung abschließen</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Zu meinem Konto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Meine Bestellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Mein Profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/account/">Einstellungen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/login/">Anmelden</a></p>
+          <p class="nav-mobile-answer-text"><a href="/de/two-step-verification/">Zwei-Schritt-Verifizierung</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <main>
+    <section class="catalog-hero container reveal" data-delay="0s">
+      <div>
+        <p class="eyebrow">Lixby-Produkte</p>
+        <h1>Entwickelt, um mehr zuzuhören und weniger kompliziert zu machen.</h1>
+        <p>Entdecken Sie Geräte, die Sie bei der Arbeit, auf Reisen und in allen wichtigen Momenten begleiten.</p>
+        <div class="catalog-actions"><a class="btn btn-primary" href="#LixBuds-one">Treffen Sie LixBuds One</a><a class="btn btn-secondary" href="/de/shop/">geh in den Laden</a></div>
+      </div>
+      <div class="catalog-visual"><img src="/de/images/lixbuds-one-white.png" width="1024" height="1024" alt="LixBuds eins in Weiß"></div>
+    </section>
+
+    <section id="lixbuds-one" class="catalog-section container">
+      <h2>Audio für Ihr tägliches Leben</h2>
+      <article class="product-showcase reveal" data-delay="0.08s">
+        <div class="product-showcase-media"><img src="/de/images/lixbuds-one-black.png" width="1024" height="1024" loading="lazy" alt="LixBuds One in Schwarz mit Ladeetui"></div>
+        <div class="product-showcase-copy">
+          <span class="product-label">LixBuds</span>
+          <h2>LixBuds One</h2>
+          <p>Leichte, immersive kabellose Kopfhörer, die mit Ihnen Schritt halten können, mit einfacher Steuerung und einem Ladeetui im ​​Lieferumfang enthalten.</p>
+          <ul class="feature-list"><li>immersiver Klang</li><li>Geräuschunterdrückung</li><li>bis zu 30 Stunden Autonomie</li><li>schnelles Aufladen</li></ul>
+          <div class="catalog-actions"><a class="btn btn-primary" href="/de/buy-headphones/lixbuds-one/">Jetzt kaufen</a><a class="btn btn-secondary" href="/de/pages/products/lixbuds-one/">siehe Spezifikationen</a><a class="btn btn-secondary" href="/de/lixsafe/">Lernen Sie LixSafe kennen</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="catalog-section container" aria-labelledby="beneficios-title">
+      <h2 id="beneficios-title">eine einfache Erfahrung vom ersten Tag an</h2>
+      <div class="benefit-grid">
+        <article class="benefit-card reveal"><span aria-hidden="true">◉</span><h3>mühelose Verbindung</h3><p>Koppeln Sie Ihre Kopfhörer und hören Sie in wenigen Sekunden noch einmal zu.</p></article>
+        <article class="benefit-card reveal" data-delay="0.1s"><span aria-hidden="true">◌</span><h3>langanhaltender Komfort</h3><p>ein Format, das Sie stundenlang begleiten soll.</p></article>
+        <article class="benefit-card reveal" data-delay="0.2s"><span aria-hidden="true">✓</span><h3>Spanische Unterstützung</h3><p>Wir sind vor, während und nach Ihrem Kauf für Sie da.</p></article>
+      </div>
+    </section>
+
+    <section class="catalog-cta container reveal" data-delay="0s"><h2>Sind Sie bereit, den Unterschied zu hören?</h2><p>Sehen Sie sich alle Details zu LixBuds One an und finden Sie das Modell, das zu Ihnen passt.</p><a class="btn btn-secondary" href="/de/shop/">Erkunden Sie den Laden</a></section>
+  </main>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Ansehen und kaufen</h3>
+        <ul>
+          <li><a href="/de/shop/">Shop</a></li>
+          <li><a href="/de/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/de/apps/">Apps</a></li>
+          <li><a href="/de/support/">Support</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="/de/support/">Support-Startseite</a></li>
+          <li><a href="/de/support/#faq">FAQ zum Online-Shop</a></li>
+          <li><a href="/de/support/">Garantieinformationen</a></li>
+          <li><a href="mailto:info@lixby.es">E-Mail an den CEO</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Konto</h3>
+        <ul>
+          <li><a href="/de/track/">Bestellungen</a></li>
+          <li><a href="/de/account/">Mein Konto</a></li>
+          <li><a href="/de/account/">Gutscheine</a></li>
+          <li><a href="/de/community/">Community</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Über Lixby</h3>
+        <ul>
+          <li><a href="/de/about/">Über uns</a></li>
+          <li><a href="/de/support/">Garantie</a></li>
+          <li><a href="/de/news/">Neuigkeiten</a></li>
+          <li><a href="/de/support/">Kontakt</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal-links">
+        <a href="/de/pages/legal/privacy/">Datenschutzerklärung</a>
+        <a href="/de/pages/legal/cookies/">Cookie-Richtlinie</a>
+        <a href="/de/pages/legal/terms/">Nutzungsbedingungen</a>
+        <a href="/de/pages/legal/sales-refunds/">Verkäufe und Erstattungen</a>
+        <a href="/de/pages/legal/legal-notice/">Impressum</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/de/main.js" defer></script>
+</body>
+</html>

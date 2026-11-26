@@ -36,11 +36,24 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buy LixBuds One | Lixby</title>
-  <meta name="description" content="Buy LixBuds One and personalize your engraving for free.">
+  <title>Buy LixBuds One | Lixby wireless headphones</title>
+  <meta name="description" content="Buy LixBuds One, check its features and personalise the case with free engraving. Also review the box contents and LixSafe.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://lixby.es/en/buy-headphones/lixbuds-one/">
+  <meta property="og:title" content="Buy LixBuds One | Lixby wireless headphones">
+  <meta property="og:description" content="Buy LixBuds One, check its features and personalise the case with free engraving. Also review the box contents and LixSafe.">
+  <meta property="og:image" content="https://lixby.es/en/images/lixbuds-one-black.png">
+  <meta property="og:image:alt" content="LixBuds One headphones de Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buy LixBuds One | Lixby wireless headphones">
+  <meta name="twitter:description" content="Buy LixBuds One, check its features and personalise the case with free engraving. Also review the box contents and LixSafe.">
+  <meta name="twitter:image" content="https://lixby.es/en/images/lixbuds-one-black.png">
+  <meta name="twitter:image:alt" content="LixBuds One headphones de Lixby">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
 <style>
     :root {
@@ -58,7 +71,7 @@
 
     body {
       color: var(--buy-ink);
-      font-family: "Inter", "Manrope", sans-serif;
+      font-family: "Inter", "Inter", sans-serif;
       padding-top: 112px;
     }
 
@@ -111,6 +124,10 @@
       background: transparent;
       position: static;
       z-index: auto;
+    }
+
+    body.nav-open .product-subnav {
+      display: none;
     }
 
     .nav.nav-scrolled .product-subnav {
@@ -169,6 +186,36 @@
       color: #0b0c0f;
     }
 
+    .lixsafe-info-card {
+      background: #ffffff;
+      border: 1px solid #e6e7eb;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+    }
+
+    .lixsafe-info-card h3 {
+      color: #111827;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+
+    .lixsafe-info-card p {
+      color: #374151;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0 0 12px;
+    }
+
+    .lixsafe-info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lixsafe-info-card a {
+      font-weight: 700;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -177,7 +224,7 @@
     }
 
     .hero-copy h1 {
-      font-family: "Inter", "Manrope", sans-serif;
+      font-family: "Inter", "Inter", sans-serif;
       font-size: clamp(2.2rem, 3vw, 3rem);
       letter-spacing: -0.02em;
       margin-bottom: 10px;
@@ -276,9 +323,12 @@
     }
 
     .hero-slider {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 28px;
-      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
       padding: 18px 10px;
     }
 
@@ -304,10 +354,13 @@
       min-height: unset;
       display: grid;
       place-items: center;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 28px;
       padding: 44px 32px;
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
       isolation: isolate;
     }
 
@@ -395,7 +448,7 @@
     }
 
     .section-block h2 {
-      font-family: "Inter", "Manrope", sans-serif;
+      font-family: "Inter", "Inter", sans-serif;
       font-size: 1.5rem;
     }
 
@@ -477,11 +530,27 @@
       color: var(--buy-muted);
     }
 
+    .summary-row-inline[hidden] {
+      display: none !important;
+    }
+
     .summary-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
       font-size: 2rem;
       font-weight: 800;
       color: var(--buy-ink);
       letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-top: -10px;
+    }
+
+    .summary-price-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--buy-ink);
     }
 
     .summary-price.price-flash {
@@ -568,86 +637,6 @@
       margin-bottom: 18px;
     }
 
-    .faq-card {
-      background: #ffffff;
-      overflow: hidden;
-    }
-
-    .buy-faq .faq-card {
-      border: 1px solid var(--buy-line);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 0;
-      background: #ffffff;
-    }
-
-    .faq-item {
-      list-style: none;
-      padding: 18px 20px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      font-weight: 700;
-      color: #111827;
-      cursor: pointer;
-    }
-
-    .buy-faq .faq-item {
-      border: none;
-      border-radius: 0;
-      overflow: visible;
-      margin-bottom: 0;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .faq-item::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #6b7280;
-      font-size: 1.1rem;
-      font-weight: 800;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .buy-faq .faq-card[open] .faq-item {
-      background: #f8fafc;
-    }
-
-    .faq-card[open] .faq-icon {
-      transform: rotate(45deg);
-      color: #111827;
-    }
-
-    .buy-faq .faq-answer {
-      display: block !important;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      padding: 0 20px;
-      transform: translateY(-4px);
-      transition:
-        max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.45s ease,
-        padding 0.45s ease,
-        transform 0.45s ease;
-    }
-
-    .buy-faq .faq-card[open] .faq-answer {
-      max-height: 420px;
-      opacity: 1;
-      padding: 16px 20px 20px;
-      transform: translateY(0);
-    }
-
     .hero-sep {
       margin: 18px 0 22px;
     }
@@ -732,6 +721,405 @@
       opacity: 1;
     }
 
+    /* === GRABADO === */
+    .engrave-choices {
+      display: grid;
+      gap: 12px;
+    }
+
+    .engrave-option {
+      width: 100%;
+      display: grid;
+      gap: 6px;
+      text-align: left;
+      font: inherit;
+      color: var(--buy-ink);
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .engrave-option:hover {
+      border-color: #c9d2e3;
+    }
+
+    .engrave-option[aria-checked="true"]::before {
+      border-color: var(--buy-accent);
+    }
+
+    .engrave-option:focus-visible {
+      outline: 2px solid var(--buy-accent);
+      outline-offset: 2px;
+    }
+
+    .engrave-option-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .engrave-free {
+      flex: none;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--buy-accent-soft);
+      color: #0847c4;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .engrave-option-desc {
+      color: var(--buy-muted);
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .engrave-saved {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      color: var(--buy-ink);
+      font-size: 0.95rem;
+    }
+
+    .engrave-saved strong {
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .engrave-edit {
+      flex: none;
+      padding: 0;
+      border: none;
+      background: none;
+      color: #0847c4;
+      font: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .engrave-edit:focus-visible {
+      outline: 2px solid var(--buy-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .engrave-saved[hidden],
+    .engrave-choices[hidden],
+    .engrave-summary-row[hidden],
+    .engrave-modal[hidden] {
+      display: none !important;
+    }
+
+    .engrave-summary-row {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .engrave-summary-row strong {
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .engrave-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.45);
+      animation: engrave-fade 0.25s ease both;
+    }
+
+    .engrave-panel {
+      position: relative;
+      display: grid;
+      gap: 10px;
+      width: 100%;
+      max-width: 720px;
+      max-height: min(95vh, 920px);
+      padding: 28px 28px 24px;
+      overflow-y: auto;
+      border-radius: 24px;
+      background: var(--buy-surface);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      animation: engrave-rise 0.25s ease both;
+    }
+
+    .engrave-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: none;
+      border-radius: 999px;
+      background: #eef0f4;
+      color: #1f2937;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .engrave-close:hover {
+      background: #e2e5ea;
+    }
+
+    .engrave-close:focus-visible {
+      outline: 2px solid var(--buy-accent);
+      outline-offset: 2px;
+    }
+
+    .engrave-modal-title {
+      margin: 6px 28px 0;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: var(--buy-ink);
+    }
+
+    .engrave-modal-subtitle {
+      max-width: 46ch;
+      margin: 0 auto;
+      color: var(--buy-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .engrave-preview {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: transparent;
+    }
+
+    .engrave-preview img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+    }
+
+    .engrave-preview-text {
+      position: absolute;
+      top: 64%;
+      left: 50%;
+      width: 48%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-align: center;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      mix-blend-mode: normal;
+      filter: grayscale(1) contrast(0.9);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .engrave-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--buy-line);
+      border-radius: 12px;
+      background: var(--buy-surface);
+      color: var(--buy-ink);
+      font: inherit;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      outline: none;
+    }
+
+    .engrave-input::placeholder {
+      color: #6b7280;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .engrave-input:focus {
+      border-color: var(--buy-accent);
+      box-shadow: 0 0 0 3px var(--buy-accent-soft);
+    }
+
+    .engrave-emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      max-height: 180px;
+      padding: 6px;
+      overflow-y: auto;
+      border: 1px solid var(--buy-line);
+      border-radius: 14px;
+      background: var(--buy-surface);
+    }
+
+    .engrave-emoji {
+      padding: 6px 0;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .engrave-emoji:hover {
+      background: var(--buy-soft);
+    }
+
+    .engrave-emoji:focus-visible {
+      outline: 2px solid var(--buy-accent);
+      outline-offset: -2px;
+      background: var(--buy-accent-soft);
+    }
+
+    .engrave-counter {
+      margin-top: -4px;
+      color: var(--buy-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .engrave-save {
+      width: 100%;
+      height: 48px;
+      border: none;
+      border-radius: 12px;
+      background: var(--buy-accent);
+      color: #ffffff;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .engrave-save:disabled {
+      background: #e5e7eb;
+      color: #4b5563;
+      cursor: not-allowed;
+    }
+
+    .engrave-save:focus-visible {
+      outline: 2px solid var(--buy-ink);
+      outline-offset: 2px;
+    }
+
+    .engrave-cancel {
+      justify-self: center;
+      padding: 4px 8px;
+      border: none;
+      background: none;
+      color: #dc2626;
+      font: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .engrave-cancel:focus-visible {
+      outline: 2px solid var(--buy-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    @keyframes engrave-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes engrave-rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .lixsafe-info-card {
+        padding: 24px 20px;
+        border-radius: 20px;
+      }
+
+      .lixsafe-info-card h3 {
+        font-size: 1.15rem;
+      }
+
+      .engrave-modal {
+        padding: 0;
+        align-items: stretch;
+      }
+
+      .engrave-panel {
+        max-width: none;
+        max-height: 100dvh;
+        min-height: 100%;
+        padding: 24px 18px calc(20px + env(safe-area-inset-bottom));
+        border-radius: 0;
+      }
+
+      .engrave-modal-title {
+        margin-right: 20px;
+        margin-left: 20px;
+        font-size: 1.35rem;
+      }
+
+      .engrave-preview {
+        height: 380px;
+      }
+
+      .engrave-preview img {
+        max-height: 380px;
+      }
+
+      .engrave-emoji-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .engrave-modal,
+      .engrave-panel {
+        animation: none;
+      }
+
+      .engrave-option {
+        transition: none;
+      }
+    }
+
     @keyframes hero-enter {
       from {
         opacity: 0;
@@ -809,7 +1197,7 @@
         {
           "@type": "Product",
           "name": "LixBuds One",
-          "description": "Buy LixBuds One and personalize your engraving for free.",
+          "description": "Buy LixBuds One and personalise your engraving for free.",
           "image": "https://lixby.es/images/lixbuds-one-white.png",
           "brand": {
             "@type": "Brand",
@@ -818,7 +1206,7 @@
           "offers": {
             "@type": "Offer",
             "priceCurrency": "EUR",
-            "price": "99.99",
+            "price": "99.00",
             "availability": "https://schema.org/InStock",
             "url": "https://lixby.es/en/buy-headphones/lixbuds-one/"
           }
@@ -836,29 +1224,24 @@
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
 
-  <div class="cookie-banner" id="cookieBanner">
-    <p>We use cookies to improve your experience.</p>
-    <button type="button" id="acceptCookies">Accept</button>
-  </div>
-
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="/en/" class="nav-brand">Lixby</a>
+      <a href="/en/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/en/store/" class="nav-link">Store</a>
-        <a href="/en/#products" class="nav-link">Products</a>
-        <a href="/en/#apps" class="nav-link">Apps</a>
+        <a href="/en/shop/" class="nav-link">Store</a>
+        <a href="/en/products/" class="nav-link">Products</a>
+        <a href="/en/apps/" class="nav-link">Apps</a>
         <a href="/en/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
-        <form id="navSearchForm" action="/en/store/" method="get">
+        <form id="navSearchForm" action="/en/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Search product..."
-            aria-label="Search product"
+            placeholder="Search Lixby..."
+            aria-label="Search Lixby"
           >
         </form>
         <a href="/en/cart/" class="nav-icon-link" aria-label="Cart">
@@ -867,18 +1250,102 @@
         <a href="/en/account/" class="nav-icon-link" aria-label="Account">
           <img src="../../images/cuenta.png" alt="Account">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
     <div class="product-subnav">
       <div class="container product-subnav-inner">
         <div class="product-subnav-title"><span class="product-subnav-badge">New</span> LixBuds One</div>
         <div class="product-subnav-links">
-          <a href="#description">Description</a>
-          <a href="/en/pages/products/lixbuds-one/">Specifications</a>
+          <a href="#descripcion">Description</a>
+          <a href="/en/pages/products/lixbuds-one/">Especificaciones</a>
         </div>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobile main">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-tienda" aria-labelledby="buy-sub-tienda-label">
+          <span id="buy-sub-tienda-label">Store</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/en/shop/">Go to store</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One headphones</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/buy-headphones/lixbuds-one/">Buy now</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/news/">News</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-productos" aria-labelledby="buy-sub-productos-label">
+          <span id="buy-sub-productos-label">Products</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/en/products/">View products</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/lixsafe/">LixSafe and coverage</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/pages/apps/lixney/">Lixney</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-apps" aria-labelledby="buy-sub-apps-label">
+          <span id="buy-sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/en/apps/">View apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixney/">Lixney support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixfly/">Lixfly support</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-soporte" aria-labelledby="buy-sub-soporte-label">
+          <span id="buy-sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/en/support/">Go to support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/faq/">Frequently asked questions</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/lixsafe/">Support de LixSafe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/help-center/returns/">Returns</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-cesta" aria-labelledby="buy-sub-cesta-label">
+          <span id="buy-sub-cesta-label">Cart</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">View cart</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/cart/">Checkout</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="buy-sub-cuenta" aria-labelledby="buy-sub-cuenta-label">
+          <span id="buy-sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="buy-sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Go to my account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My orders</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">My profile</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/account/">Settings</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/login/">Sign in</a></p>
+          <p class="nav-mobile-answer-text"><a href="/en/two-step-verification/">Two-step verification</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="section container purchase-hero reveal" data-delay="0s">
@@ -894,50 +1361,77 @@
 
         <div class="hero-copy">
           <h1 class="hero-title">Buy LixBuds One</h1>
-          <p class="hero-description">Immerse yourself in sound like never before: state-of-the-art active noise cancellation, powerful and crystal-clear audio, and up to 8 hours of battery life to keep you going non-stop. Designed so you can forget the world… and only hear what matters.</p>
+          <p class="hero-description">Immerse yourself in sound like never before: next-generation active noise cancellation, powerful, crystal-clear audio and up to 8 hours of battery life to keep you going non-stop. Designed so you can forget the world… and only hear what matters.</p>
           <div class="summary-divider hero-sep"></div>
 
           <div class="section-block" style="border-top:none; padding-top:0;">
-            <h2>Color. <span class="muted-title">Choose your favorite.</span></h2>
-            <div class="finish-label" id="colorLabel">Color - White</div>
+            <h2>Colour. <span class="muted-title">Choose your favourite.</span></h2>
+            <div class="finish-label" id="colorLabel">Select a colour</div>
             <div class="color-row">
-              <button class="color-swatch active" type="button" data-color="White" data-image="../../images/comprar/lixbuds-one-whitebase.png" aria-label="White color" style="background:#f4f4f5;"></button>
-              <button class="color-swatch" type="button" data-color="Black" data-image="../../images/comprar/lixbuds-one-blackbase.png" aria-label="Black color" style="background:#111827;"></button>
+              <button class="color-swatch" type="button" data-color="Blanco" data-image="../../images/comprar/lixbuds-one-whitebase.png" aria-label="White colour" style="background:#f4f4f5;"></button>
+              <button class="color-swatch" type="button" data-color="Negro" data-image="../../images/comprar/lixbuds-one-blackbase.png" aria-label="Black colour" style="background:#111827;"></button>
+            </div>
+          </div>
+
+          <div class="section-block" id="grabado">
+            <h2>Personalise it for free. <span class="muted-title">Add your touch.</span></h2>
+            <div class="engrave-choices" id="grabadoChoices" role="radiogroup" aria-label="Engraving" style="opacity:0.4;pointer-events:none;filter:grayscale(0.8);user-select:none;">
+              <button type="button" class="care-details engrave-option" id="engraveChoiceAdd" role="radio" aria-checked="false" tabindex="-1" disabled>
+                <span class="engrave-option-head">
+                  <span>Add engraving</span>
+                  <span class="engrave-free">Free</span>
+                </span>
+                <span class="engrave-option-desc">And why not make them unique? Engrave them with your name, initials, numbers or emojis. Free.</span>
+              </button>
+              <button type="button" class="care-details engrave-option" id="engraveChoiceNone" role="radio" aria-checked="false" tabindex="-1" disabled>
+                <span class="engrave-option-head">
+                  <span>No engraving</span>
+                </span>
+              </button>
+            </div>
+            <div class="engrave-saved" id="engraveSaved" hidden>
+              <span>Engraving: <strong id="engraveSavedText"></strong></span>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <button type="button" class="summary-link" id="engraveEditBtn" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Edit</button>
+                <button type="button" class="engrave-edit" id="engraveRemoveBtn" style="text-decoration:none;color:#dc2626;">Remove</button>
+              </div>
             </div>
           </div>
 
           <div class="section-block" id="lixsafe">
-            <h2>LixSafe. Protect your LixBuds One.</h2>
-            <div class="care-grid">
-              <details class="care-details" data-plan="LixSafe+" data-price="€69.00">
+            <h2>LixSafe. <span class="muted-title">Protect your LixBuds One.</span></h2>
+            <div class="care-grid" id="lixsafeGrid" style="opacity:0.4;pointer-events:none;filter:grayscale(0.8);user-select:none;">
+              <details class="care-details" data-plan="LixSafe+" data-price="+69.00 €">
                 <summary class="care-summary">
-                  <span>LixSafe+ with loss coverage</span>
-                  <span class="care-price">€69.00</span>
+                  <span>LixSafe+ with loss and theft cover</span>
+                  <span class="care-price">+69.00 €</span>
                 </summary>
                 <div class="care-body">
                   <ul class="care-list">
-                    <li>All LixSafe benefits.</li>
-                    <li>Coverage in case of loss of one or both earbuds.</li>
+                    <li>All the benefits of LixSafe.</li>
+                    <li>24 months of cover.</li>
+                    <li>Cover if one or both earbuds are lost or stolen.</li>
                     <li>Fast replacement wherever you are.</li>
                   </ul>
                 </div>
               </details>
-              <details class="care-details" data-plan="LixSafe" data-price="€49.00">
+              <details class="care-details" data-plan="LixSafe" data-price="+49.00 €">
                 <summary class="care-summary">
                   <span>LixSafe</span>
-                  <span class="care-price">€49.00</span>
+                  <span class="care-price">+49.00 €</span>
                 </summary>
                 <div class="care-body">
                   <ul class="care-list">
+                    <li>24 months of cover.</li>
                     <li>Unlimited repairs for accidental damage.</li>
-                    <li>Official technical service with genuine LixBuds parts.</li>
-                    <li>Quick replacement so you're never without music.</li>
-                    <li>Priority support when you need it.</li>
-                    <li>Includes taxes and processing fees.</li>
+                    <li>Official technical service with original LixBuds parts.</li>
+                    <li>Fast replacement so you never run out of music.</li>
+                    <li>Priority support whenever you need it.</li>
+                    <li>Includes taxes and handling fees.</li>
                   </ul>
                 </div>
               </details>
-              <details class="care-details" data-plan="No LixSafe" data-price="">
+              <details class="care-details" data-plan="Sin LixSafe" data-price="">
                 <summary class="care-summary">
                   <span>No LixSafe</span>
                 </summary>
@@ -951,106 +1445,138 @@
           <div class="summary-box">
             <div class="summary-title">LixBuds One</div>
             <div class="summary-divider"></div>
-            <div class="summary-section-title">LixSafe</div>
-            <div class="summary-row-inline" id="summaryProtection">Protection: No LixSafe</div>
-            <div class="summary-upsell" id="summaryUpsell">
+            <div class="summary-row-inline" id="summaryColor">Colour: <strong id="summaryColorText">—</strong></div>
+            <div class="summary-row-inline" id="summaryEngravingStatus">Engraving: <strong id="summaryEngravingStatusText">No engraving</strong></div>
+            <div class="summary-row-inline engrave-summary-row" id="summaryEngraving" hidden>Engraving: <strong id="summaryEngravingText"></strong></div>
+            <div class="summary-row-inline" id="summaryProtection">Protection: <strong id="summaryProtectionText">No LixSafe</strong></div>
+            <div class="summary-upsell" id="summaryUpsell" style="display:none;">
               <strong>Last chance</strong>
               <span class="hero-text">Add LixSafe and protect your LixBuds One.</span>
               <a class="summary-link" href="#lixsafe" id="addLixSafeLink">Add LixSafe</a>
             </div>
             <div class="summary-divider"></div>
-            <div class="summary-price" id="summaryPrice">€99.99</div>
+            <div class="summary-row-inline"><span>LixBuds One</span><span>99.00 €</span></div>
+            <div class="summary-row-inline" id="summaryLixSafeCostLine" hidden><span id="summaryLixSafeCostName">LixSafe</span><span id="summaryLixSafeCostValue">+49.00 €</span></div>
+            <div class="summary-divider"></div>
+            <div class="summary-price-label">Total:</div>
+            <div class="summary-price"><strong id="summaryPrice">99.00 €</strong></div>
             <div class="summary-actions">
-              <button id="addToCartBtn" class="btn btn-primary" type="button">Add to bag</button>
+              <button id="addToCartBtn" class="btn" type="button" disabled style="background:#e5e7eb;color:#6b7280;cursor:not-allowed;border:1px solid #d1d5db;">Add to bag</button>
             </div>
-            <div class="hero-text">Need a moment? Save all your selections by bookmarking this device to your Favorites.</div>
-            <a class="summary-link" href="#">Save for later</a>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section container purchase-details">
-      <div class="content-grid product-info" id="description">
-        <div class="section-block">
-          <h2>Product information</h2>
-          <p class="hero-text"><strong>Overview</strong></p>
-          <p class="hero-text"><strong>LixBuds One</strong></p>
-          <p class="hero-text">Enjoy spectacular sound with advanced active noise cancellation in in-ear headphones designed for everyday use. Immerse yourself in your music, calls, and content without distractions, with crisp and powerful audio quality.</p>
-          <p class="hero-text">Train smarter with activity tracking, featuring real-time data like heart rate and calories.</p>
-          <p class="hero-text">The design has been fully optimized to provide a more comfortable and secure fit, while the internal architecture improves acoustic performance for a more immersive experience.</p>
-          <p class="hero-text">Enjoy up to 8 hours of battery life with active noise cancellation enabled on a single charge. Plus, they are resistant to water, sweat, and dust to accompany you in any situation.</p>
-        </div>
-        <div class="section-block">
-          <h2>Box contents</h2>
-          <ul class="care-list">
+      <div style="height:1px;background:#e6e7eb;width:100%;margin-top:56px;"></div>
+      <h2 style="font-size:1.8rem;font-weight:800;margin:28px 0 18px;color:#111827;">Product information</h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:18px;">
+        <section style="background:#ffffff;border:1px solid #e6e7eb;border-radius:24px;padding:36px;box-shadow:0 20px 40px rgba(15,23,42,0.04);">
+          <p style="font-size:1.25rem;font-weight:700;margin:0 0 14px;color:#111827;">Overview</p>
+          <p style="font-size:1.05rem;font-weight:700;margin:0 0 10px;color:#111827;">LixBuds One</p>
+          <p style="color:#374151;line-height:1.8;font-size:1rem;margin:0 0 12px;">Enjoy spectacular sound with advanced active noise cancellation in in-ear headphones designed for everyday use. Immerse yourself in your music, calls and content without distractions, with crisp, powerful audio quality.</p>
+          <p style="color:#374151;line-height:1.8;font-size:1rem;margin:0 0 12px;">Train smarter thanks to activity tracking, with real-time data such as heart rate and calories.</p>
+          <p style="color:#374151;line-height:1.8;font-size:1rem;margin:0 0 12px;">Its design has been fully optimised for a more comfortable, secure fit, while its internal architecture improves acoustic performance for a more immersive experience.</p>
+          <p style="color:#374151;line-height:1.8;font-size:1rem;margin:0;">Enjoy up to 8 hours of battery life with active noise cancellation on a single charge. They are also resistant to water, sweat and dust to keep up with you in any situation.</p>
+        </section>
+        <div style="height:1px;background:#e6e7eb;width:100%;"></div>
+        <section style="background:#ffffff;border:1px solid #e6e7eb;border-radius:24px;padding:36px;box-shadow:0 20px 40px rgba(15,23,42,0.04);">
+          <p style="font-size:1.25rem;font-weight:700;margin:0 0 14px;color:#111827;">Box contents</p>
+          <ul style="margin:0;padding-left:20px;display:grid;gap:10px;color:#374151;line-height:1.7;">
             <li>LixBuds One</li>
             <li>USB-C charging case</li>
-            <li>Silicon ear tips (five sizes: XXS, XS, S, M, and L)</li>
+            <li>Silicone ear tips (five sizes: XXS, XS, S, M and L)</li>
             <li>Documentation</li>
           </ul>
-        </div>
+        </section>
+        <div style="height:1px;background:#e6e7eb;width:100%;" aria-hidden="true"></div>
+        <section class="lixsafe-info-card" aria-labelledby="lixsafe-info-title">
+          <h3 id="lixsafe-info-title">Protect your LixBuds One with LixSafe</h3>
+          <p>LixSafe includes 24 months of cover, unlimited repairs for accidental damage, official technical service with original parts, fast replacement and priority support.</p>
+          <p>With LixSafe+ you also get cover if one or both earbuds are lost or stolen, plus fast replacement wherever you are.</p>
+          <p><a class="lixsafe-inline-link" href="/en/lixsafe/">View LixSafe plans and cover</a></p>
+        </section>
       </div>
 
       <div class="section-block">
+        <div style="height:1px;background:#e6e7eb;width:100%;margin:0 0 18px;"></div>
         <h2 class="faq-title">Frequently asked questions</h2>
         <p class="faq-subtitle">Quick answers to common questions.</p>
-        <div class="faq-list buy-faq">
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>What is the battery life of LixBuds One?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">Up to 8 hours with active noise cancellation on a single charge, plus extra charges from the case.</div>
-          </details>
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>Are LixBuds One water resistant?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">Yes, they are resistant to water, sweat, and dust for daily use.</div>
-          </details>
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>Which devices are LixBuds One compatible with?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">They work with iOS and Android via Bluetooth.</div>
-          </details>
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>Is my information secure on LixBuds One?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">Your data is processed securely following best privacy practices.</div>
-          </details>
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>Can I return my purchase?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">Yes, you can request a return within the period indicated in the sales policy.</div>
-          </details>
-          <details class="faq-card">
-            <summary class="faq-item">
-              <span>How do I report a technical issue?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">Contact support from the help page or from your account.</div>
-          </details>
+        <div class="faq-list faq">
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq1" aria-labelledby="buy-faq1-label">
+              <span id="buy-faq1-label">What is the battery life of LixBuds One?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq1" role="region" aria-labelledby="buy-faq1-label">
+              <p class="faq-answer-text">Up to 8 hours with active noise cancellation on a single charge, plus extra charge from the case.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq2" aria-labelledby="buy-faq2-label">
+              <span id="buy-faq2-label">Are LixBuds One water resistant?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq2" role="region" aria-labelledby="buy-faq2-label">
+              <p class="faq-answer-text">Yes, they are resistant to water, sweat and dust for daily use.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq3" aria-labelledby="buy-faq3-label">
+              <span id="buy-faq3-label">Which devices are LixBuds One compatible with?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq3" role="region" aria-labelledby="buy-faq3-label">
+              <p class="faq-answer-text">They work with iOS and Android via Bluetooth.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq4" aria-labelledby="buy-faq4-label">
+              <span id="buy-faq4-label">Is my information safe on LixBuds One?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq4" role="region" aria-labelledby="buy-faq4-label">
+              <p class="faq-answer-text">Your data is processed securely and following best privacy practices.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq5" aria-labelledby="buy-faq5-label">
+              <span id="buy-faq5-label">Can I return my purchase?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq5" role="region" aria-labelledby="buy-faq5-label">
+              <p class="faq-answer-text">Yes, you can request a return within the period stated in the sales policy.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="buy-faq6" aria-labelledby="buy-faq6-label">
+              <span id="buy-faq6-label">How do I report a technical problem?</span>
+              <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer" id="buy-faq6" role="region" aria-labelledby="buy-faq6-label">
+              <p class="faq-answer-text">Contact support from the help page or from your account.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>View and buy</h3>
+        <h3>Shop and buy</h3>
         <ul>
-          <li><a href="/en/store/">Store</a></li>
+          <li><a href="/en/shop/">Store</a></li>
           <li><a href="/en/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/en/#apps">Apps</a></li>
+          <li><a href="/en/apps/">Apps</a></li>
           <li><a href="/en/support/">Support</a></li>
         </ul>
       </section>
@@ -1059,7 +1585,7 @@
         <h3>Support</h3>
         <ul>
           <li><a href="/en/support/">Support home</a></li>
-          <li><a href="/en/support/#faq">Online Store FAQs</a></li>
+          <li><a href="/en/support/#faq">Online store FAQs</a></li>
           <li><a href="/en/support/">Warranty information</a></li>
           <li><a href="mailto:info@lixby.es">Email the CEO</a></li>
         </ul>
@@ -1068,18 +1594,19 @@
       <section class="footer-section">
         <h3>Account</h3>
         <ul>
-          <li><a href="/en/cart/">Orders</a></li>
+          <li><a href="/en/track/">Orders</a></li>
           <li><a href="/en/account/">My account</a></li>
           <li><a href="/en/account/">Coupons</a></li>
+          <li><a href="/en/community/">Community</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>About Lixby</h3>
         <ul>
-          <li><a href="#">Newsroom</a></li>
+          <li><a href="/en/about/">About us</a></li>
           <li><a href="/en/support/">Warranty</a></li>
-          <li><a href="#">Events</a></li>
+          <li><a href="/en/news/">News</a></li>
           <li><a href="/en/support/">Contact</a></li>
         </ul>
       </section>
@@ -1088,28 +1615,42 @@
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. All rights reserved.</p>
       <div class="footer-legal-links">
-        <a href="/en/pages/legal/privacy/">Privacy policy</a>
-        <a href="/en/pages/legal/cookies/">Cookie policy</a>
-        <a href="/en/pages/legal/terms/">Terms of use</a>
-        <a href="/en/support/">Sales and refunds</a>
+        <a href="/en/pages/legal/privacy/">Privacy Policy</a>
+        <a href="/en/pages/legal/cookies/">Cookie Policy</a>
+        <a href="/en/pages/legal/terms/">Terms and Conditions</a>
+        <a href="/en/pages/legal/sales-refunds/">Sales and refunds</a>
         <a href="/en/pages/legal/legal-notice/">Legal notices</a>
       </div>
     </div>
   </footer>
 
+  <div class="engrave-modal" id="engraveModal" role="dialog" aria-modal="true" aria-labelledby="engraveModalTitle" hidden>
+    <div class="engrave-panel">
+      <button type="button" class="engrave-close" id="engraveClose" aria-label="Close">×</button>
+      <h2 class="engrave-modal-title" id="engraveModalTitle">Personalise your LixBuds One.</h2>
+      <p class="engrave-modal-subtitle" style="margin-top:-10px;margin-bottom:0px;">Type up to 12 characters or tap an emoji. What you see here is what we will engrave.</p>
+      <div class="engrave-preview" style="margin-top:-120px;margin-bottom:-40px;">
+        <img id="engravePreviewImage" src="../../images/comprar/Grabado_white.png" alt="LixBuds One case preview">
+        <div class="engrave-preview-text" id="engravePreviewText" aria-hidden="true"></div>
+      </div>
+      <input
+        type="text"
+        class="engrave-input"
+        id="engraveInput"
+        placeholder="YOUR MESSAGE"
+        autocomplete="off"
+        aria-label="Engraving message"
+        aria-describedby="engraveCounter"
+      >
+      <div class="engrave-emoji-grid" id="engraveEmojiGrid" role="group" aria-label="Available emojis"></div>
+      <div class="engrave-counter" id="engraveCounter" aria-live="polite">0 / 12</div>
+      <button type="button" class="engrave-save" id="engraveSave" disabled>Save</button>
+      <button type="button" class="engrave-cancel" id="engraveCancel">Cancel</button>
+    </div>
+  </div>
+
   <script>
-    const cookieBanner = document.getElementById("cookieBanner");
-    const acceptCookiesButton = document.getElementById("acceptCookies");
-
-    if (localStorage.getItem("cookiesAccepted") === "true") {
-      cookieBanner.style.display = "none";
-    }
-
-    acceptCookiesButton.addEventListener("click", () => {
-      localStorage.setItem("cookiesAccepted", "true");
-      cookieBanner.style.display = "none";
-    });
-
+    (() => {
     const progressBar = document.getElementById("scroll-progress");
     const nav = document.getElementById("nav");
 
@@ -1148,7 +1689,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/en/store/?q=${encodeURIComponent(query)}` : "/en/store/";
+        const url = query ? `/en/search/?q=${encodeURIComponent(query)}` : "/en/shop/";
         window.location.href = url;
       });
     }
@@ -1165,17 +1706,26 @@
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    function buildLineId(color, plan, planPrice) {
-      return `lixbuds-one|${color}|${plan}|${Number(planPrice) || 0}`;
+    function buildLineId(color, plan, planPrice, engraving) {
+      const base = `lixbuds-one|${color}|${plan}|${Number(planPrice) || 0}`;
+      return engraving ? `${base}|${engraving}` : base;
     }
 
     let selectedImageForCart = "../../images/comprar/lixbuds-one-whitebase.png";
-    let selectedColorName = "White";
-    let selectedLixSafePlan = "No LixSafe";
+    let selectedColorName = "Blanco";
+    function colorDisplay(name) {
+      if (name === "Blanco") return "White";
+      if (name === "Negro") return "Black";
+      return name;
+    }
+    let selectedLixSafePlan = "Sin LixSafe";
     let selectedLixSafePrice = 0;
+    let selectedEngraving = "";
 
     if (addToCartBtn) {
       addToCartBtn.addEventListener("click", () => {
+        if (!personalizationDone || !protectionDone) return;
+        if (addToCartBtn.disabled) return;
         if (isAddingToCart) return;
         isAddingToCart = true;
         addToCartBtn.classList.add("btn-bounce");
@@ -1183,12 +1733,13 @@
         addToCartBtn.disabled = true;
         const cart = readCart();
         const colorLabel = document.getElementById("colorLabel");
-        const selectedColor = colorLabel ? colorLabel.textContent.replace("Color - ", "") : "White";
-        const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice);
+        const selectedColor = selectedColorName || "Blanco";
+        const lineId = buildLineId(selectedColor, selectedLixSafePlan, selectedLixSafePrice, selectedEngraving);
         const existing = cart.find((item) => (item.lineId || buildLineId(
-          item.color || "White",
-          item.insurancePlan || "No LixSafe",
-          item.insurancePrice || 0
+          item.color || "Blanco",
+          item.insurancePlan || "Sin LixSafe",
+          item.insurancePrice || 0,
+          item.engraving || ""
         )) === lineId);
 
         if (existing) {
@@ -1197,10 +1748,11 @@
           cart.push({
             id: "lixbuds-one",
             name: `LixBuds One (${selectedColor})`,
-            price: 99.99,
+            price: 99.00,
             color: selectedColor,
             insurancePlan: selectedLixSafePlan,
             insurancePrice: selectedLixSafePrice,
+            engraving: selectedEngraving,
             lineId,
             qty: 1,
             image: selectedImageForCart.replace("../../", "").replace("../../", "")
@@ -1219,17 +1771,17 @@
     const heroDots = document.getElementById("heroDots");
     let fadePending = false;
     const heroImageSets = {
-      White: [
+      Blanco: [
         "../../images/comprar/lixbuds-one-whitebase.png"
       ],
-      Black: [
+      Negro: [
         "../../images/comprar/lixbuds-one-blackbase.png",
         "../../images/comprar/lixbuds-one-black1.png",
         "../../images/comprar/lixbuds-one-black2.png",
         "../../images/comprar/lixbuds-one-black3.png"
       ]
     };
-    let heroImages = heroImageSets.White.slice();
+    let heroImages = heroImageSets.Blanco.slice();
     let heroIndex = 0;
 
     function renderHeroDots() {
@@ -1256,7 +1808,7 @@
     }
 
     function setHeroImagesForColor(color, preferredImage) {
-      const nextSet = heroImageSets[color] || heroImageSets.White;
+      const nextSet = heroImageSets[color] || heroImageSets.Blanco;
       heroImages = nextSet.slice();
       if (preferredImage) {
         const preferredIndex = heroImages.indexOf(preferredImage);
@@ -1265,6 +1817,22 @@
         heroIndex = 0;
       }
       updateHeroImage();
+    }
+
+    function engravingHeroImage() {
+      return selectedColorName === "Negro"
+        ? "../../images/comprar/Grabado_black.png"
+        : "../../images/comprar/Grabado_white.png";
+    }
+
+    function isEngravingActive() {
+      const modal = document.getElementById("engraveModal");
+      return Boolean(selectedEngraving) || Boolean(modal && !modal.hidden);
+    }
+
+    function syncEngravingHero() {
+      // Do not change the main image when adding engraving
+      return;
     }
 
     const prevBtn = document.querySelector(".hero-arrow.left");
@@ -1292,13 +1860,13 @@
     document.querySelectorAll(".color-swatch").forEach((swatch) => {
       swatch.addEventListener("mouseenter", () => {
         if (colorLabel && swatch.dataset.color) {
-          colorLabel.textContent = `Color - ${swatch.dataset.color}`;
+          colorLabel.textContent = `Colour - ${colorDisplay(swatch.dataset.color)}`;
         }
       });
 
       swatch.addEventListener("mouseleave", () => {
         if (colorLabel) {
-          colorLabel.textContent = `Color - ${selectedColorName}`;
+          colorLabel.textContent = `Colour - ${colorDisplay(selectedColorName)}`;
         }
       });
 
@@ -1306,72 +1874,559 @@
         document.querySelectorAll(".color-swatch").forEach((el) => el.classList.remove("active"));
         swatch.classList.add("active");
         if (colorLabel) {
-          selectedColorName = swatch.dataset.color || "White";
-          colorLabel.textContent = `Color - ${selectedColorName}`;
+          selectedColorName = swatch.dataset.color || "Blanco";
+          colorLabel.textContent = `Colour - ${colorDisplay(selectedColorName)}`;
         }
         if (swatch.dataset.image) {
           selectedImageForCart = swatch.dataset.image;
         }
         setHeroImagesForColor(selectedColorName, swatch.dataset.image);
+        syncEngravingHero();
+        if (engravePreviewImage && engraveModal && !engraveModal.hidden) {
+          engravePreviewImage.src = selectedColorName === "Negro"
+            ? "../../images/comprar/Grabado_black.png"
+            : "../../images/comprar/Grabado_white.png";
+        }
+        if (engravePreviewText) {
+          engravePreviewText.style.color = selectedColorName === "Negro" ? "#DEDEDE" : "#a6a6a6";
+        }
       });
     });
 
-    const careDetails = document.querySelectorAll(".care-details");
+    const ENGRAVE_MAX = 12;
+    const ENGRAVE_EMOJIS = [
+      "😀", "😎", "🥰", "😍", "🤩", "😊", "😂", "😢", "🥳", "🤗",
+      "👍", "👏", "🙌", "✌️", "🤞", "❤️", "🧡", "💛", "💚", "💙",
+      "⭐", "🌟", "✨", "🔥", "🌈", "☀️", "🌙", "🐶", "🐱", "🦊",
+      "⚽", "🏀", "🏆", "🎧", "🎵", "🎸", "🚀", "💯", "🎮", "🦋"
+    ];
+    const engraveChoices = document.querySelector(".engrave-choices");
+    const engraveChoiceAdd = document.getElementById("engraveChoiceAdd");
+    const engraveChoiceNone = document.getElementById("engraveChoiceNone");
+    const engraveSaved = document.getElementById("engraveSaved");
+    const engraveSavedText = document.getElementById("engraveSavedText");
+    const engraveEditBtn = document.getElementById("engraveEditBtn");
+    const engraveRemoveBtn = document.getElementById("engraveRemoveBtn");
+    const summaryEngraving = document.getElementById("summaryEngraving");
+    const summaryEngravingText = document.getElementById("summaryEngravingText");
+    const engraveModal = document.getElementById("engraveModal");
+    const engraveClose = document.getElementById("engraveClose");
+    const engraveCancel = document.getElementById("engraveCancel");
+    const engraveSave = document.getElementById("engraveSave");
+    const engraveInput = document.getElementById("engraveInput");
+    const engraveCounter = document.getElementById("engraveCounter");
+    const engraveEmojiGrid = document.getElementById("engraveEmojiGrid");
+    const engravePreviewImage = document.getElementById("engravePreviewImage");
+    const engravePreviewText = document.getElementById("engravePreviewText");
+    let engraveReturnFocus = null;
+    let engraveBodyOverflow = "";
+
+    const engraveSegmenter = (typeof Intl !== "undefined" && typeof Intl.Segmenter === "function")
+      ? new Intl.Segmenter("en", { granularity: "grapheme" })
+      : null;
+
+    const ENGRAVE_INVALID_CHARS = /[^\p{L}\p{N}\p{M}\p{Extended_Pictographic}\p{Emoji_Modifier}\p{Regional_Indicator}\u200D\uFE0F\u20E3\u{E0020}-\u{E007F} ]/gu;
+
+    function engraveGraphemes(value) {
+      if (engraveSegmenter) {
+        return Array.from(engraveSegmenter.segment(value), (part) => part.segment);
+      }
+      return Array.from(value);
+    }
+
+    function sanitizeEngraving(raw, trimEnd) {
+      let cleaned = String(raw == null ? "" : raw).replace(ENGRAVE_INVALID_CHARS, "");
+      cleaned = cleaned.replace(/ +/g, " ").replace(/^ /, "");
+      if (trimEnd) {
+        cleaned = cleaned.replace(/ +$/, "");
+      }
+      return engraveGraphemes(cleaned).slice(0, ENGRAVE_MAX).join("");
+    }
+
+    function syncEngraveRadio(activeChoice) {
+      if (!engraveChoiceAdd || !engraveChoiceNone) return;
+      let addActive = false;
+      let noneActive = false;
+      if (selectedEngraving) {
+        addActive = activeChoice !== "none";
+        noneActive = !addActive;
+      } else if (activeChoice === "none") {
+        noneActive = true;
+      } else if (activeChoice === "add") {
+        addActive = true;
+      }
+      engraveChoiceAdd.setAttribute("aria-checked", addActive ? "true" : "false");
+      engraveChoiceNone.setAttribute("aria-checked", noneActive ? "true" : "false");
+      engraveChoiceAdd.tabIndex = addActive ? 0 : -1;
+      engraveChoiceNone.tabIndex = noneActive ? 0 : -1;
+      const statusRow = document.getElementById("summaryEngravingStatus");
+      const statusText = document.getElementById("summaryEngravingStatusText");
+      if (statusRow && statusText) {
+        statusRow.hidden = false;
+        statusText.textContent = selectedEngraving || (addActive ? "Add engraving" : "No engraving");
+      }
+    }
+
+    function updateEngravingUI() {
+      const hasEngraving = Boolean(selectedEngraving);
+      if (engraveChoices) engraveChoices.hidden = hasEngraving;
+      if (engraveSaved) engraveSaved.hidden = !hasEngraving;
+      if (engraveSavedText) engraveSavedText.textContent = selectedEngraving;
+      if (summaryEngraving) summaryEngraving.hidden = true;
+      if (summaryEngravingText) summaryEngravingText.textContent = selectedEngraving;
+      syncEngraveRadio();
+      syncEngravingHero();
+    }
+
+    function updateEngraveDraftPreview() {
+      if (!engraveInput) return;
+      const value = engraveInput.value;
+      if (engravePreviewText) {
+        engravePreviewText.textContent = value.toUpperCase();
+        engravePreviewText.style.color = selectedColorName === "Negro" ? "#DEDEDE" : "#a6a6a6";
+        const len = engraveGraphemes(value).length;
+        if (len > 0) {
+          if (len <= 4) engravePreviewText.style.fontSize = "clamp(0.9rem, 2.6vw, 1.15rem)";
+          else if (len <= 6) engravePreviewText.style.fontSize = "clamp(0.8rem, 2.4vw, 1.05rem)";
+          else if (len <= 8) engravePreviewText.style.fontSize = "clamp(0.7rem, 2.2vw, 0.95rem)";
+          else engravePreviewText.style.fontSize = "clamp(0.6rem, 2vw, 0.85rem)";
+        } else {
+          engravePreviewText.style.fontSize = "clamp(0.7rem, 2.2vw, 1rem)";
+        }
+      }
+      if (engraveCounter) engraveCounter.textContent = `${engraveGraphemes(value).length} / ${ENGRAVE_MAX}`;
+      if (engraveSave) engraveSave.disabled = !value.trim();
+    }
+
+    function engraveFocusableElements() {
+      if (!engraveModal) return [];
+      return Array.from(engraveModal.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+      ));
+    }
+
+    function handleEngraveKeydown(event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeEngraveModal();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = engraveFocusableElements();
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey) {
+        if (document.activeElement === first || !engraveModal.contains(document.activeElement)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (document.activeElement === last || !engraveModal.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    function openEngraveModal() {
+      if (!engraveModal || !engraveInput) return;
+      engraveReturnFocus = document.activeElement;
+      engraveInput.value = selectedEngraving;
+      updateEngraveDraftPreview();
+      if (engravePreviewImage) {
+        engravePreviewImage.src = selectedColorName === "Negro"
+          ? "../../images/comprar/Grabado_black.png"
+          : "../../images/comprar/Grabado_white.png";
+      }
+      if (engravePreviewText) {
+        engravePreviewText.style.color = selectedColorName === "Negro" ? "#DEDEDE" : "#a6a6a6";
+      }
+      engraveBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      engraveModal.hidden = false;
+      syncEngravingHero();
+      syncEngraveRadio("add");
+      document.addEventListener("keydown", handleEngraveKeydown);
+      engraveInput.focus();
+    }
+
+    function closeEngraveModal() {
+      if (!engraveModal || engraveModal.hidden) return;
+      engraveModal.hidden = true;
+      syncEngravingHero();
+      document.body.style.overflow = engraveBodyOverflow;
+      document.removeEventListener("keydown", handleEngraveKeydown);
+      if (engraveInput) {
+        engraveInput.value = selectedEngraving;
+      }
+      updateEngraveDraftPreview();
+      syncEngraveRadio();
+      if (engraveReturnFocus && document.contains(engraveReturnFocus) && typeof engraveReturnFocus.focus === "function") {
+        engraveReturnFocus.focus();
+      }
+      engraveReturnFocus = null;
+    }
+
+    function saveEngraving() {
+      if (!engraveInput) return;
+      if (!personalizationDone) return;
+      const next = sanitizeEngraving(engraveInput.value, true);
+      if (!next) return;
+      selectedEngraving = sanitizeEngraving(next.toUpperCase(), true);
+      if (!selectedEngraving) return;
+      updateEngravingUI();
+      closeEngraveModal();
+      enableProtection();
+      formComplete = true;
+    }
+
+    if (engraveChoiceAdd) {
+      engraveChoiceAdd.addEventListener("click", () => {
+        if (!personalizationDone) return;
+        syncEngraveRadio("add");
+        openEngraveModal();
+        enableProtection();
+        formComplete = true;
+      });
+    }
+
+    if (engraveChoiceNone) {
+      engraveChoiceNone.addEventListener("click", () => {
+        if (!personalizationDone) return;
+        selectedEngraving = "";
+        syncEngraveRadio("none");
+        engraveChoices.hidden = false;
+        if (engraveSaved) engraveSaved.hidden = true;
+        if (summaryEngraving) summaryEngraving.hidden = true;
+        enableProtection();
+        formComplete = true;
+      });
+    }
+
+    if (engraveChoices) {
+      engraveChoices.addEventListener("keydown", (event) => {
+        if (!personalizationDone) return;
+        const keys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+        if (!keys.includes(event.key)) return;
+        event.preventDefault();
+        const buttons = [engraveChoiceAdd, engraveChoiceNone].filter(Boolean);
+        if (!buttons.length) return;
+        const currentIndex = Math.max(0, buttons.indexOf(document.activeElement));
+        let nextIndex;
+        if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = buttons.length - 1;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        } else {
+          nextIndex = (currentIndex + 1) % buttons.length;
+        }
+        buttons[nextIndex].focus();
+        buttons[nextIndex].click();
+      });
+    }
+
+    if (engraveEditBtn) {
+      engraveEditBtn.addEventListener("click", () => {
+        if (!personalizationDone) return;
+        if (!selectedEngraving) return;
+        syncEngraveRadio("add");
+        openEngraveModal();
+      });
+    }
+
+    if (engraveRemoveBtn) {
+      engraveRemoveBtn.addEventListener("click", () => {
+        if (!personalizationDone) return;
+        selectedEngraving = "";
+        updateEngravingUI();
+        if (engraveChoiceNone) {
+          engraveChoiceNone.click();
+        }
+      });
+    }
+
+    if (engraveInput) {
+      engraveInput.addEventListener("input", () => {
+        const sanitized = sanitizeEngraving(engraveInput.value, false);
+        if (engraveInput.value !== sanitized) {
+          engraveInput.value = sanitized;
+        }
+        updateEngraveDraftPreview();
+      });
+    }
+
+    if (engraveEmojiGrid) {
+      ENGRAVE_EMOJIS.forEach((emoji) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "engrave-emoji";
+        button.dataset.emoji = emoji;
+        button.setAttribute("aria-label", `Add ${emoji}`);
+        button.textContent = emoji;
+        button.addEventListener("click", () => {
+          if (!engraveInput) return;
+          engraveInput.value = sanitizeEngraving(engraveInput.value + emoji, false);
+          updateEngraveDraftPreview();
+          engraveInput.focus();
+        });
+        engraveEmojiGrid.appendChild(button);
+      });
+    }
+
+    if (engraveSave) {
+      engraveSave.addEventListener("click", saveEngraving);
+    }
+
+    if (engraveCancel) {
+      engraveCancel.addEventListener("click", closeEngraveModal);
+    }
+
+    if (engraveClose) {
+      engraveClose.addEventListener("click", closeEngraveModal);
+    }
+
+    if (engraveModal) {
+      engraveModal.addEventListener("click", (event) => {
+        if (event.target === engraveModal) {
+          closeEngraveModal();
+        }
+      });
+    }
+
+    updateEngravingUI();
+
+    const careDetails = document.querySelectorAll(".care-grid .care-details");
     const summaryProtection = document.getElementById("summaryProtection");
     const summaryUpsell = document.getElementById("summaryUpsell");
     const summaryPrice = document.getElementById("summaryPrice");
     const addLixSafeLink = document.getElementById("addLixSafeLink");
-    const BASE_PRICE = 99.99;
+    const BASE_PRICE = 99.00;
+    let formComplete = false;
+    const colorSwatches = document.querySelectorAll(".color-swatch");
+    const colorLabelEl = document.getElementById("colorLabel");
+    const grabadoChoices = document.getElementById("grabadoChoices");
+    const lixsafeGrid = document.getElementById("lixsafeGrid");
+    const addToCartBtnEl = document.getElementById("addToCartBtn");
+    let colorSelected = false;
+    let personalizationDone = false;
+    let protectionDone = false;
+
+    function enablePersonalization() {
+      personalizationDone = true;
+      if (grabadoChoices) {
+        grabadoChoices.style.opacity = "1";
+        grabadoChoices.style.pointerEvents = "auto";
+        grabadoChoices.style.filter = "none";
+        grabadoChoices.style.userSelect = "auto";
+        const buttons = grabadoChoices.querySelectorAll("button");
+        buttons.forEach((btn) => {
+          btn.disabled = false;
+          btn.removeAttribute("tabindex");
+        });
+        if (engraveChoiceNone) {
+          engraveChoiceNone.setAttribute("tabindex", "0");
+          engraveChoiceNone.setAttribute("aria-checked", "false");
+        }
+        if (engraveChoiceAdd) {
+          engraveChoiceAdd.setAttribute("tabindex", "-1");
+          engraveChoiceAdd.setAttribute("aria-checked", "false");
+        }
+      }
+    }
+
+    function enableProtection() {
+      if (lixsafeGrid) {
+        lixsafeGrid.style.opacity = "1";
+        lixsafeGrid.style.pointerEvents = "auto";
+        lixsafeGrid.style.filter = "none";
+        lixsafeGrid.style.userSelect = "auto";
+        lixsafeGrid.querySelectorAll(".care-details").forEach((detail) => {
+          detail.style.pointerEvents = "auto";
+          detail.style.cursor = "pointer";
+        });
+      }
+    }
+
+    function enableCart() {
+      protectionDone = true;
+      const cartBtn = document.getElementById("addToCartBtn") || addToCartBtnEl;
+      if (cartBtn) {
+        cartBtn.disabled = false;
+        cartBtn.style.background = "#0b5fff";
+        cartBtn.style.color = "#ffffff";
+        cartBtn.style.cursor = "pointer";
+        cartBtn.style.border = "1px solid #0b5fff";
+      }
+    }
+
+    function enablePurchaseOptions() {
+      colorSelected = true;
+      enablePersonalization();
+    }
+
+    colorSwatches.forEach((swatch) => {
+      swatch.addEventListener("click", () => {
+        colorSwatches.forEach((s) => s.classList.remove("active"));
+        swatch.classList.add("active");
+        const color = swatch.dataset.color || "";
+        const cl = document.getElementById("colorLabel") || colorLabelEl;
+        if (cl) {
+          cl.textContent = `Colour - ${colorDisplay(color)}`;
+        }
+        const summaryColorText = document.getElementById("summaryColorText");
+        if (summaryColorText) {
+          summaryColorText.textContent = colorDisplay(color);
+        }
+        const image = swatch.dataset.image;
+        const heroImg = document.getElementById("lixbudsHeroImage");
+        if (heroImg && image) {
+          heroImg.src = image;
+        }
+        if (typeof selectedColorName !== "undefined") {
+          selectedColorName = color;
+        }
+        enablePurchaseOptions();
+      });
+    });
 
     function parsePrice(value) {
       if (!value) return 0;
-      const normalized = value.replace("€", "").trim().replace(".", "").replace(",", ".");
+      let normalized = String(value).replace(/[^0-9.,]/g, "");
+      if (normalized.includes(",") && normalized.includes(".")) {
+        normalized = normalized.replace(/\./g, "").replace(",", ".");
+      } else if (normalized.includes(",")) {
+        normalized = normalized.replace(",", ".");
+      }
       const num = Number(normalized);
       return Number.isFinite(num) ? num : 0;
     }
 
     function setLixSafeSummary(plan, priceText) {
       if (!summaryProtection || !summaryUpsell || !summaryPrice) return;
-      summaryProtection.textContent = `Protection: ${plan}`;
-      summaryUpsell.style.display = plan === "No LixSafe" ? "grid" : "none";
-      const addon = plan === "No LixSafe" ? 0 : parsePrice(priceText);
+      const summaryProtectionText = document.getElementById("summaryProtectionText");
+      if (summaryProtectionText) {
+        summaryProtectionText.textContent = plan === "Sin LixSafe" ? "No LixSafe" : plan;
+      }
+      if (plan === "Sin LixSafe" && protectionDone) {
+        summaryUpsell.style.display = "grid";
+      } else {
+        summaryUpsell.style.display = "none";
+      }
+      const addon = plan === "Sin LixSafe" ? 0 : parsePrice(priceText);
       selectedLixSafePlan = plan;
       selectedLixSafePrice = addon;
-      const total = (BASE_PRICE + addon).toFixed(2).replace(".", ",");
-      summaryPrice.textContent = `€${total}`;
+      const summaryLixSafeCostLine = document.getElementById("summaryLixSafeCostLine");
+      const summaryLixSafeCostName = document.getElementById("summaryLixSafeCostName");
+      const summaryLixSafeCostValue = document.getElementById("summaryLixSafeCostValue");
+      if (summaryLixSafeCostLine && summaryLixSafeCostName && summaryLixSafeCostValue) {
+        if (plan === "Sin LixSafe") {
+          summaryLixSafeCostLine.hidden = true;
+        } else {
+          summaryLixSafeCostLine.hidden = false;
+          summaryLixSafeCostName.textContent = plan;
+          summaryLixSafeCostValue.textContent = priceText && priceText.startsWith("+") ? priceText.replace(",", ".") : `+${priceText}`;
+        }
+      }
+      const total = (BASE_PRICE + addon).toFixed(2);
+      summaryPrice.textContent = `${total} €`;
       summaryPrice.classList.remove("price-flash");
       void summaryPrice.offsetWidth;
       summaryPrice.classList.add("price-flash");
     }
 
-    setLixSafeSummary("No LixSafe", "");
+    setLixSafeSummary("Sin LixSafe", "");
+    if (summaryUpsell) {
+      summaryUpsell.style.display = "none";
+    }
+    protectionDone = false;
+    if (lixsafeGrid) {
+      lixsafeGrid.style.opacity = "0.4";
+      lixsafeGrid.style.pointerEvents = "none";
+      lixsafeGrid.style.filter = "grayscale(0.8)";
+      lixsafeGrid.style.userSelect = "none";
+    }
+    const cartBtnInit = document.getElementById("addToCartBtn") || addToCartBtnEl;
+    if (cartBtnInit) {
+      cartBtnInit.disabled = true;
+      cartBtnInit.style.background = "#e5e7eb";
+      cartBtnInit.style.color = "#6b7280";
+      cartBtnInit.style.cursor = "not-allowed";
+      cartBtnInit.style.border = "1px solid #d1d5db";
+    }
     careDetails.forEach((detail) => {
       detail.addEventListener("toggle", () => {
+        if (!personalizationDone) {
+          detail.removeAttribute("open");
+          return;
+        }
         if (detail.open) {
           careDetails.forEach((other) => {
             if (other !== detail) {
               other.removeAttribute("open");
             }
           });
-          const plan = detail.dataset.plan || "No LixSafe";
+          const plan = detail.dataset.plan || "Sin LixSafe";
           const priceText = detail.dataset.price || "";
           setLixSafeSummary(plan, priceText);
+          enableCart();
+          if (plan === "Sin LixSafe" && summaryUpsell) {
+            summaryUpsell.style.display = "grid";
+          } else if (summaryUpsell) {
+            summaryUpsell.style.display = "none";
+          }
         }
       });
     });
 
     if (addLixSafeLink) {
       addLixSafeLink.addEventListener("click", () => {
+        if (!personalizationDone) return;
         const preferred = document.querySelector('.care-details[data-plan="LixSafe"]');
         if (preferred) {
           preferred.setAttribute("open", "");
+          careDetails.forEach((other) => {
+            if (other !== preferred) {
+              other.removeAttribute("open");
+            }
+          });
           const plan = preferred.dataset.plan || "LixSafe";
           const priceText = preferred.dataset.price || "";
           setLixSafeSummary(plan, priceText);
+          enableCart();
+          if (summaryUpsell) {
+            summaryUpsell.style.display = "none";
+          }
         }
       });
     }
 
+    document.querySelectorAll('.faq .faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = btn.nextElementSibling;
+        const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq .faq-question').forEach((b) => {
+          const it = b.closest('.faq-item');
+          b.setAttribute('aria-expanded', 'false');
+          if (it) it.classList.remove('open');
+          const a = b.nextElementSibling;
+          if (a) a.style.maxHeight = '0px';
+        });
+        if (!wasOpen && answer) {
+          btn.setAttribute('aria-expanded', 'true');
+          item.classList.add('open');
+          answer.style.maxHeight = '0px';
+          requestAnimationFrame(() => { answer.style.maxHeight = answer.scrollHeight + 'px'; });
+        }
+      });
+    });
+
+    })();
   </script>
+  <script src="../../main.js" defer></script>
 </body>
 </html>

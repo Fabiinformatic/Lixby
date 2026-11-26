@@ -9,9 +9,7 @@
   <base href="/fr/">
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
-<!-- Gestionnaire de balises Google -->
 
-<!-- Fin du Gestionnaire de balises Google -->
   <link rel="canonical" href="https://lixby.es/fr/track">
   <link rel="alternate" href="https://lixby.es/bg/track" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/track" hreflang="cs-CZ">
@@ -38,6 +36,7 @@
   <link rel="alternate" href="https://lixby.es/sl/track" hreflang="sl-SI">
   <link rel="alternate" href="https://lixby.es/sv/track" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/track" hreflang="x-default">
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
@@ -46,22 +45,21 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Suivi de commande | Lixby</title>
+  <title>Suivi des commandes | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
-  <!-- Gestionnaire de balises Google -->
   
-  <!-- Fin du Gestionnaire de balises Google -->
 
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/fr/style.css">
 
   <style>
     :root {
@@ -74,7 +72,7 @@
 
     body {
       background: #f5f7fa;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       margin: 0;
       color: #1a1a1a;
       min-height: 100vh;
@@ -89,7 +87,7 @@
       flex: 1;
     }
 
-    /* Carte de recherche */
+    /* Search card */
     .search-card {
       background: #fff;
       border: 1px solid var(--line);
@@ -154,7 +152,7 @@
       padding: 12px 14px;
       border: none;
       font-size: 1rem;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       outline: none;
       min-width: 0;
     }
@@ -167,7 +165,7 @@
       color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
@@ -176,7 +174,7 @@
     .btn-search:hover { background: #366a00; }
     .btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
 
-    /* Carte de résultat */
+    /* Result card */
     .result-card {
       background: #fff;
       border: 1px solid var(--line);
@@ -187,7 +185,7 @@
       display: none;
     }
 
-    /* Erreur */
+    /* Error */
     .error-card {
       background: #fff5f5;
       border-color: #fecaca;
@@ -197,7 +195,7 @@
       display: none;
     }
 
-    /* En-tête de commande */
+    /* Order header */
     .order-header {
       display: flex;
       justify-content: space-between;
@@ -243,7 +241,7 @@
       color: #15803d;
     }
 
-    /* Barre de progression */
+    /* Progress bar */
     .progress-section {
       margin-bottom: 28px;
     }
@@ -328,7 +326,7 @@
     .step-label.active { color: var(--green); font-weight: 700; }
     .step-label.done { color: #374151; }
 
-    /* Sections d'informations */
+    /* Info sections */
     .info-section {
       background: #f9fafb;
       border: 1px solid var(--line);
@@ -364,7 +362,7 @@
       font-weight: 700;
     }
 
-    /* Numéro de suivi */
+    /* Tracking number */
     .tracking-info {
       background: #eff6ff;
       border: 1px solid #bfdbfe;
@@ -408,7 +406,7 @@
       font-weight: 800;
     }
 
-    /* Produits */
+    /* Products */
     .product-item {
       display: flex;
       justify-content: space-between;
@@ -473,7 +471,7 @@
 
     .btn-secondary:hover { border-color: #9ca3af; }
 
-    /* Chargement */
+    /* Loading */
     .loading {
       text-align: center;
       padding: 32px;
@@ -502,8 +500,6 @@
 <body>
 
 
-  <div id="scroll-progress"></div>
-
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -512,11 +508,11 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/fr/buy/" class="nav-link">Boutique</a>
-        <a href="/fr/#productos" class="nav-link">Produits</a>
-        <a href="/fr/#apps" class="nav-link">Apps</a>
+      <a href="/fr/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Accueil">
+        <a href="/fr/shop/" class="nav-link">Boutique</a>
+        <a href="/fr/products/" class="nav-link">Produits</a>
+        <a href="/fr/apps/" class="nav-link">Apps</a>
         <a href="/fr/support/" class="nav-link">Support</a>
       </nav>
       <div class="nav-actions">
@@ -526,107 +522,157 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/fr/buy/" method="get">
+        <form id="navSearchForm" action="/fr/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Rechercher un produit..."
-            aria-label="Rechercher un produit"
+            placeholder="Rechercher sur Lixby..."
+            aria-label="Rechercher sur Lixby"
           >
         </form>
         <a href="/fr/cart/" class="nav-icon-link" aria-label="Panier">
-          <img src="images/Bolsa.png" alt="Panier">
+          <img src="/fr/images/Bolsa.png" alt="Panier">
         </a>
         <a href="/fr/account/" class="nav-icon-link" aria-label="Compte">
-          <img src="images/cuenta.png" alt="Compte">
+          <img src="/fr/images/cuenta.png" alt="Compte">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/fr/buy/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Rechercher"
-          aria-label="Rechercher un produit"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Fermer le menu">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
     <nav class="nav-mobile-links" aria-label="Principal mobile">
-      <a href="/fr/buy/">Boutique</a>
-      <a href="/fr/#productos">Produits</a>
-      <a href="/fr/#apps">Apps</a>
-      <a href="/fr/support/">Support</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Boutique</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/fr/shop/">Aller à la boutique</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/products/lixbuds-one/">Écouteurs LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/buy-headphones/lixbuds-one/">Acheter maintenant</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/news/">Actualités</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produits</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/fr/products/">Voir les produits</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/lixsafe/">LixSafe et garanties</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/fr/apps/">Voir les applications</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/lixney/">Support Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/lixfly/">Support Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/fr/support/">Accéder au support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/faq/">Questions fréquentes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/help-center/returns/">Retours</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/fr/cart/">Panier</a>
-      <a href="/fr/account/">Compte</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Panier</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/fr/cart/">Voir le panier</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/cart/">Finaliser la commande</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Compte</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Accéder à mon compte</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Mes commandes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Mon profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/account/">Paramètres</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/login/">Se connecter</a></p>
+          <p class="nav-mobile-answer-text"><a href="/fr/two-step-verification/">Vérification en 2 étapes</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
 <div class="track-page">
 
-  <!-- Recherche -->
+  <!-- Búsqueda -->
   <div class="search-card">
-    <h1>Suivi de commande</h1>
-    <p>Entrez votre numéro de commande pour voir l'état de votre livraison.</p>
+    <h1>Suivi des commandes</h1>
+    <p>Entrez votre numéro de commande pour voir le statut de votre envoi.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
-        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Numéro de commande">
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="numéro de commande">
       </div>
       <button class="btn-search" id="searchBtn" type="button">Consulter</button>
     </div>
   </div>
 
-  <!-- Chargement -->
+  <!-- Loading -->
   <div id="loadingEl" style="display:none">
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Recherche de votre commande...</p>
+        <p>Je recherche votre commande...</p>
       </div>
     </div>
   </div>
 
-  <!-- Erreur -->
+  <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
     <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Commande introuvable</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
-      Aucune commande trouvée avec ce numéro.<br>
-      Vérifiez que le numéro est correct — vous le trouverez dans l'email de confirmation.
+      Nous n'avons trouvé aucune commande portant ce numéro.<br>
+      Vérifiez que le numéro est correct, vous le trouverez dans l'e-mail de confirmation.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:info@lixby.es" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Contacter le support
+        contacter l'assistance
       </a>
-      <a href="/fr/buy/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Retour à la boutique
+      <a href="/fr/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
+        retourner au magasin
       </a>
     </div>
   </div>
 
-  <!-- Résultat -->
+  <!-- Resultado -->
   <div class="result-card" id="resultCard">
 
-    <!-- En-tête -->
+    <!-- Header -->
     <div class="order-header">
       <div>
         <div class="order-number-badge">
@@ -637,19 +683,19 @@
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        Paiement confirmé
+        paiement confirmé
       </div>
     </div>
 
-    <!-- Progression -->
+    <!-- Progreso -->
     <div class="progress-section">
-      <h3>État de l'expédition</h3>
+      <h3>Statut d'expédition</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
     </div>
 
-    <!-- Numéro de suivi -->
+    <!-- Número de seguimiento -->
     <div class="tracking-info" id="trackingInfo" style="display:none">
       <div class="tracking-icon">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
@@ -661,7 +707,7 @@
       </div>
     </div>
 
-    <!-- Infos client -->
+    <!-- Info cliente -->
     <div class="info-section" id="resCustomerSection" style="display:none">
       <h3>Informations de livraison</h3>
       <div class="info-grid">
@@ -674,13 +720,13 @@
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Adresse de livraison</label>
+          <label>Adresse postale</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Produits -->
+    <!-- Productos -->
     <div id="resProductsSection" style="display:none">
       <div class="info-section" style="background:#fff">
         <h3>Produits</h3>
@@ -692,10 +738,10 @@
       </div>
     </div>
 
-    <!-- Actions -->
+    <!-- Acciones -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="/fr/buy/" class="btn-primary">Continuer mes achats</a>
-      <a href="mailto:info@lixby.es" class="btn-secondary">Contacter le support</a>
+      <a href="/fr/shop/" class="btn-primary">Continuer mes achats</a>
+      <a href="mailto:info@lixby.es" class="btn-secondary">Contacter l'assistance</a>
     </div>
   </div>
 </div>
@@ -705,9 +751,9 @@
       <section class="footer-section">
         <h3>Voir et acheter</h3>
         <ul>
-          <li><a href="/fr/buy/">Boutique</a></li>
+          <li><a href="/fr/shop/">Boutique</a></li>
           <li><a href="/fr/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/fr/#apps">Apps</a></li>
+          <li><a href="/fr/apps/">Apps</a></li>
           <li><a href="/fr/support/">Support</a></li>
         </ul>
       </section>
@@ -715,10 +761,10 @@
       <section class="footer-section">
         <h3>Support</h3>
         <ul>
-          <li><a href="/fr/support/">Page d'accueil support</a></li>
-          <li><a href="/fr/support/#faq">FAQ Boutique en ligne</a></li>
+          <li><a href="/fr/support/">Page d'accueil du support</a></li>
+          <li><a href="/fr/support/#faq">FAQ de la boutique en ligne</a></li>
           <li><a href="/fr/support/">Informations sur la garantie</a></li>
-          <li><a href="mailto:info@lixby.es">Email au PDG</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail au PDG</a></li>
         </ul>
       </section>
 
@@ -728,6 +774,7 @@
           <li><a href="/fr/track/">Commandes</a></li>
           <li><a href="/fr/account/">Mon compte</a></li>
           <li><a href="/fr/account/">Coupons</a></li>
+          <li><a href="/fr/community/">Communauté</a></li>
         </ul>
       </section>
 
@@ -736,7 +783,7 @@
         <ul>
           <li><a href="/fr/about/">Notre entreprise</a></li>
           <li><a href="/fr/support/">Garantie</a></li>
-          <li><a href="#">Événements</a></li>
+          <li><a href="/fr/news/">Actualités</a></li>
           <li><a href="/fr/support/">Contact</a></li>
         </ul>
       </section>
@@ -746,23 +793,112 @@
       <p class="footer-bottom">Copyright © 2026 Lixby. Tous droits réservés.</p>
       <div class="footer-legal-links">
         <a href="/fr/pages/legal/privacy/">Politique de confidentialité</a>
-        <a href="/fr/pages/legal/cookies/">Utilisation des cookies</a>
+        <a href="/fr/pages/legal/cookies/">Politique des cookies</a>
         <a href="/fr/pages/legal/terms/">Conditions d'utilisation</a>
-        <a href="/fr/support/">Ventes et remboursements</a>
+        <a href="/fr/pages/legal/sales-refunds/">Ventes et remboursements</a>
         <a href="/fr/pages/legal/legal-notice/">Mentions légales</a>
       </div>
     </div>
   </footer>
 
 <script>
-  const RAILWAY_URL = 'https://lixby-production.up.railway.app';
+  (function () {
+    var nav = document.getElementById("nav");
+    var mobilePanel = document.getElementById("navMobilePanel");
+    var searchToggle = document.querySelector(".nav-search-toggle");
+    var menuToggle = document.querySelector(".nav-menu-toggle");
+    var searchInput = document.getElementById("navSearch");
+
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
+    var closeNav = function () {
+      if (document.body) document.body.classList.remove("nav-open", "menu-open");
+      if (nav) nav.classList.remove("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+            setIconState(false);
+    };
+    var openNav = function () {
+      if (document.body) document.body.classList.add("nav-open", "menu-open");
+      if (nav) nav.classList.add("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+            setIconState(true);
+    };
+    var toggleNav = function () {
+      if (nav && nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+    if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+    document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+      var btn = item.querySelector(".nav-mobile-question");
+      var answer = item.querySelector(".nav-mobile-answer");
+      if (!btn || !answer) return;
+
+      btn.addEventListener("click", function () {
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+          var ob = other.querySelector(".nav-mobile-question");
+          var oa = other.querySelector(".nav-mobile-answer");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          other.classList.remove("open");
+          if (oa) {
+            oa.classList.remove("active");
+            oa.style.maxHeight = "0px";
+          }
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          item.classList.add("open");
+          answer.classList.add("active");
+          answer.style.maxHeight = "0px";
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
+    });
+  })();
+</script>
+<script>
+  const RAILWAY_URL = 'https://Lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Reçue',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Préparation', icon: '🔧' },
-    { key: 'Enviado',           label: 'Expédiée',     icon: '🚚' },
-    { key: 'En reparto',        label: 'En livraison',  icon: '📍' },
-    { key: 'Entregado',         label: 'Livrée',   icon: '✅' }
+    { key: 'Pedido recibido',   label: 'reçu',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'préparation', icon: '🔧' },
+    { key: 'Enviado',           label: 'envoyé',     icon: '🚚' },
+    { key: 'En reparto',        label: 'en distribution',  icon: '📍' },
+    { key: 'Entregado',         label: 'livré',   icon: '✅' }
   ];
 
   function money(v) {
@@ -772,7 +908,7 @@
   function formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso);
-    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('es-es', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   function show(id, display = 'block') { document.getElementById(id).style.display = display; }
@@ -783,10 +919,10 @@
     const container = document.getElementById('progressSteps');
     const fill = document.getElementById('progressFill');
 
-    // Garder la ligne
+    // Mantener la línea
     const line = container.querySelector('.progress-line');
 
-    // Nettoyer les étapes précédentes
+    // Limpiar pasos anteriores
     container.querySelectorAll('.step-item').forEach(el => el.remove());
 
     STATUS_STEPS.forEach((step, idx) => {
@@ -809,23 +945,23 @@
       container.appendChild(item);
     });
 
-    // Animer la ligne de progression
+    // Animar la línea de progreso
     const pct = currentIndex <= 0 ? 0 : (currentIndex / (STATUS_STEPS.length - 1)) * 100;
     setTimeout(() => { fill.style.width = pct + '%'; }, 100);
   }
 
   function renderOrder(data) {
-    // Numéro et date
+    // Número y fecha
     document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
     const dateEl = document.getElementById('resDate');
     if (data.paidAt || data.createdAt) {
-      dateEl.textContent = 'Réalisée le ' + formatDate(data.paidAt || data.createdAt);
+      dateEl.textContent = 'fait sur' + formatDate(data.paidAt || data.createdAt);
     }
 
-    // Progression
+    // Progreso
     renderProgress(data.status || 'Pedido recibido');
 
-    // Numéro de suivi
+    // Número de seguimiento
     if (data.trackingNumber) {
       document.getElementById('trackingNumber').textContent = data.trackingNumber;
       if (data.trackingCarrier) {
@@ -834,7 +970,7 @@
       show('trackingInfo', 'flex');
     }
 
-    // Client
+    // Cliente
     const name = data.customerName;
     const email = data.email;
     const address = data.address;
@@ -845,23 +981,21 @@
       show('resCustomerSection', 'block');
     }
 
-    // Produits
+    // Productos
     const items = data.items || [];
     if (items.length) {
       const list = document.getElementById('resProductsList');
       list.innerHTML = items.map(item => {
-        const name = item.productName || item.name || 'Produit';
+        const name = item.productName || item.name || 'produit';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
-        return `
-          <div class="product-item">
+        return `<div class="product-item">
             <div>
               <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Quantité : ${qty}</div>
+              <div class="product-item-sub">Quantité : ${qty}</div>
             </div>
             <div class="product-item-price">${price}</div>
-          </div>
-        `;
+          </div>`;
       }).join('');
 
       if (data.amountTotal) {
@@ -881,7 +1015,7 @@
     hide('errorCard');
     show('loadingEl', 'block');
 
-    // Normaliser l'ID — accepte avec ou sans LXB-
+    // Normalizar ID — acepta con o sin LXB-
     let normalized = id.trim().toUpperCase();
     if (!normalized.startsWith('LXB-') && !normalized.startsWith('LX-') && !normalized.startsWith('TEST-')) {
       normalized = 'LXB-' + normalized;
@@ -904,7 +1038,7 @@
     }
   }
 
-  // Bouton rechercher
+  // Botón buscar
   document.getElementById('searchBtn').addEventListener('click', () => {
     const val = document.getElementById('orderInput').value.trim();
     if (val) fetchOrder(val);
@@ -917,7 +1051,7 @@
     }
   });
 
-  // Recherche automatique si orderId est dans l'URL
+  // Auto-buscar si viene orderId en la URL
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const autoId = params.get('orderId') || params.get('id');
@@ -929,5 +1063,13 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
