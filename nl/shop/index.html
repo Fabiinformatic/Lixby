@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="nojs es-es lixby consumer eu es" lang="nl">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -10,50 +10,151 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://www.lixby.es/nl/shop">
-  <link rel="alternate" href="https://www.lixby.es/bg/shop" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/shop" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/shop" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/shop" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/shop" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/shop" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/tienda" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/shop" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/shop" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/shop" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/shop" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/shop" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/shop" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/shop" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/shop" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/shop" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/shop" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/shop" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/shop" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/shop" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/shop" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/shop" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/shop" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/shop" hreflang="sv-SE">
-
-          <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda | Lixby</title>
-  <meta name="description" content="Tienda oficial de Lixby. Descubre LixBuds One y Lixney.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body.shop-page {
-      background: #f5f5f7;
+<script>
+window.LIXBY_CONFIG = {
+    metadata: {
+        environment: "production",
+        region: "eu",
+        country: "ES",
+        locale: "es-es",
+        brand: "Lixby",
+        page: "store",
+        referer: document.referrer
+    },
+    config: {
+        pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
+        app: "com.Lixby.web",
+        sendPageViewData: true,
+        sendErrors: true,
+        performanceTracking: true,
+        delay: 300
     }
+};
+
+window.LIXBY_CONFIG.preLoadErrors = [];
+window.addEventListener("error", e => {
+    window.LIXBY_CONFIG.preLoadErrors.push(e);
+});
+</script>
+
+<script>
+document.addEventListener('readystatechange', () => {
+    if (document.readyState === "interactive" && window.IntersectionObserver) {
+        let lastVisibleTime = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lastVisibleTime = performance.now();
+                }
+            });
+
+            observer.disconnect();
+
+            window.dispatchEvent(new CustomEvent("lixbyPerformance", {
+                detail: {
+                    type: "viewportLoad",
+                    time: lastVisibleTime
+                }
+            }));
+        });
+
+        document.querySelectorAll("*").forEach(el => observer.observe(el));
+    }
+});
+</script>
+
+<script>
+(function () {
+    try {
+        const { app, pageViewId } = window.LIXBY_CONFIG.config;
+        const url = new URL(window.location);
+        const cleanPath = url.pathname.split('%')[0];
+
+        const trackingURL = `https://lixby.es/api/track?app=${app}&id=${pageViewId}&url=${url.origin + cleanPath}`;
+
+        const img = new Image();
+        img.src = trackingURL;
+
+    } catch (e) {
+        console.error(e);
+    }
+})();
+</script>
+
+<noscript>
+    <img src="https://lixby.es/api/track?nojs=true" width="1" height="1">
+</noscript>
+
+
+  <link rel="canonical" href="https://lixby.es/nl/shop">
+  <link rel="alternate" href="https://lixby.es/bg/shop" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/shop" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/shop" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/shop" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/shop" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/shop" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/tienda" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/shop" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/shop" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/shop" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/shop" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/shop" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/shop" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/shop" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/shop" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/shop" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/shop" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/shop" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/shop" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/shop" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/shop" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/shop" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/shop" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/shop" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/shop" hreflang="x-default">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Winkel | Lixby</title>
+<meta name="description" content="Lixby officiële winkel. Ontdek LixBuds One en Lixney.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:url" content="https://lixby.es/nl/shop">
+  <meta property="og:title" content="Winkel | Lixby">
+  <meta property="og:description" content="Lixby officiële winkel. Ontdek LixBuds One en Lixney.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="LixBuds One-koptelefoons van Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Winkel | Lixby">
+  <meta name="twitter:description" content="Lixby officiële winkel. Ontdek LixBuds One en Lixney.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="LixBuds One-koptelefoons van Lixby">
+
+<link rel="preconnect" href="https://lixby.es">
+<link rel="dns-prefetch" href="https://lixby.es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/nl/style.css">
+<style>
+      body.shop-page {
+        background: #f5f5f7;
+        overflow-x: hidden;
+      }
 
     .shop-hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      gap: 28px;
       padding: 56px 0 20px;
     }
 
@@ -61,52 +162,137 @@
       font-size: clamp(2.2rem, 7vw, 5rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
+      text-align: left;
     }
 
     .shop-hero-side {
-      justify-self: end;
-      text-align: right;
-      max-width: 420px;
+      justify-self: start;
+      text-align: left;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .shop-hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px 28px;
+      width: 100%;
     }
 
     .shop-hero-side h2 {
-      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-size: clamp(1.25rem, 2.4vw, 2.1rem);
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 14px;
+      margin-bottom: 0;
     }
 
     .shop-hero-side a {
-      display: block;
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      margin-top: 6px;
+    }
+
+    .shop-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-left: auto;
+    }
+
+    .shop-hero-side a.shop-hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 61, 255, 0.24);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 8px 20px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1), background-color 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-top: 1.6px solid currentColor;
+      border-right: 1.6px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15, 61, 255, 0.14);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover::after {
+      transform: rotate(45deg) translate(2px, -2px);
+    }
+
+    .shop-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 24px);
+      z-index: 1200;
+      max-width: min(92vw, 460px);
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: #111827;
+      color: #fff;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 240ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1), visibility 240ms ease;
+    }
+
+    .shop-toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .shop-toast.is-warning {
+      background: #b42318;
     }
 
     .shop-categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
       padding: 24px 0 56px;
-      max-width: 540px;
     }
 
     .shop-category {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       padding: 18px;
       text-align: center;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+      min-width: 0;
+      flex: 1;
     }
 
     .shop-category:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
     }
 
     .shop-category-icon {
@@ -119,15 +305,18 @@
       display: grid;
       place-items: center;
     }
+
     .shop-category-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    .shop-category-icon img.shop-category-icon-contain {
-      object-fit: contain;
+ .shop-category-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
     .shop-category span {
       font-weight: 700;
     }
@@ -142,26 +331,91 @@
       margin-bottom: 20px;
     }
 
-    .shop-latest h3 strong {
-      color: #111827;
-    }
+    .shop-latest h3 strong { color: #111827; }
+    .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
-    .shop-latest h3 span {
-      color: #6b7280;
-      font-weight: 600;
+    .shop-cards-wrapper {
+      position: relative;
+      overflow: visible;
     }
+    .shop-cards,
+    .trust-cards {
+      --gutter: calc((100vw - min(1120px, 92vw)) / 2);
 
-    .shop-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      margin-left: calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+      scroll-padding-left: var(--gutter);
+      scroll-padding-right: var(--gutter);
+      overflow-anchor: none;
     }
+
+
+    .shop-cards::-webkit-scrollbar { display: none; }
+
+    .shop-cards > .shop-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(50% - 11px);
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .shop-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229,231,235,0.5);
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #111827;
+      font-size: 1.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .shop-arrow-left  { left: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+    .shop-arrow-right { right: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+
+    .shop-arrow:active { transform: translateY(-50%) scale(0.92); }
+
+    .shop-cards-wrapper:hover .shop-arrow:not(.arrow-hidden) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .shop-arrow.arrow-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
 
     .shop-card {
       border-radius: 28px;
       padding: 30px;
       min-height: 430px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -198,18 +452,25 @@
       margin-top: auto;
       padding-top: 18px;
       display: flex;
-      align-items: end;
+      flex: 1 1 0%;
+      align-items: flex-end;
       justify-content: center;
+      min-height: 0;
     }
 
     .shop-card-media img {
-      width: min(88%, 480px);
-      border-radius: 20px;
+      display: block;
+      width: auto;
+      height: 230px;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      border-radius: 20px 20px 28px 28px;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     .shop-card-product {
-      background: linear-gradient(165deg, #ffffff, #e5edf9);
+      background: linear-gradient(165deg, rgba(255,255,255,.85), rgba(229,237,249,.65));
     }
 
     .shop-card-app {
@@ -218,186 +479,582 @@
       border-color: rgba(255, 255, 255, 0.15);
     }
 
-    .shop-card-app .shop-card-eyebrow {
-      color: #fbbf24;
+    .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
+    .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
+
+    .shop-card-Lixfly {
+      background: linear-gradient(165deg, #0c1220, #1e3a8a);
+      color: #fff;
+      border-color: rgba(96, 165, 250, 0.2);
     }
 
-    .shop-card-app small {
-      color: rgba(255, 255, 255, 0.8);
+    .shop-card-Lixfly .shop-card-eyebrow { color: #60a5fa; }
+    .shop-card-Lixfly small { color: rgba(148, 163, 184, 0.9); }
+
+    .shop-card.card-white-solid {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ── Trust section ─────────────────────────── */
+    .trust-section {
+      padding: 20px 0 80px;
+    }
+    .trust-section h3 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .trust-section h3 strong { color: #111827; }
+    .trust-section h3 span   { color: #6b7280; font-weight: 600; }
+    .trust-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      scroll-snap-align: start;
+      flex: 0 0 calc(33.33% - 15px);
+      min-width: 0;
+      min-height: 240px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+    }
+    .trust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-card p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    button.trust-card {
+      font: inherit;
+      text-align: left;
+      align-items: stretch;
+      cursor: pointer;
+    }
+    @media (max-width: 980px) { .trust-card { flex: 0 0 50%; } }
+    @media (max-width: 640px) { .trust-card { flex: 0 0 85%; } }
+
+    @media (min-width: 981px) {
+      .shop-hero-side h2 { white-space: nowrap; }
     }
 
     @media (max-width: 980px) {
-      .shop-hero {
-        grid-template-columns: 1fr;
-      }
-
-      .shop-hero-side {
-        text-align: left;
-        justify-self: start;
-      }
+      .shop-hero { gap: 20px; }
+      .shop-hero-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 760px) {
-      .shop-categories,
-      .shop-cards {
-        grid-template-columns: 1fr;
-      }
+      .shop-categories { flex-direction: column; }
+      .shop-cards > .shop-card { flex: 0 0 85%; }
+      .shop-arrow { width: 46px; height: 46px; font-size: 1.3rem; }
+      .shop-arrow-left  { left: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
+      .shop-arrow-right { right: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": [
-        "https://github.com/lixby"
-      ]
-    }
-  </script>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lixby",
+  "url": "https://lixby.es",
+  "logo": "https://lixby.es/logo.png",
+  "sameAs": ["https://github.com/lixby"]
+}
+</script>
+
+<script>
+window.LIXBY_UI = {
+    theme: "light",
+    animations: true,
+    version: "1.0.0"
+};
+</script>
+
+<script>
+document.documentElement.classList.replace("nojs", "js");
+</script>
+
 </head>
 <body class="shop-page">
 
   <div id="scroll-progress"></div>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/nl/shop/" class="nav-link">Tienda</a>
-        <a href="/nl/#productos" class="nav-link">Productos</a>
-        <a href="/nl/#apps" class="nav-link">Apps</a>
-        <a href="/nl/support/" class="nav-link">Soporte</a>
+    <div class="container nav-container">
+      <a href="/nl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Hoofdnavigatie">
+        <a href="/nl/shop/" class="nav-link">Winkel</a>
+        <a href="/nl/products/" class="nav-link">Producten</a>
+        <a href="/nl/apps/" class="nav-link">Apps</a>
+        <a href="/nl/support/" class="nav-link">Ondersteuning</a>
       </nav>
-      <a href="/nl/#productos" class="btn btn-primary nav-cta">Ver cat�logo</a>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Zoeken" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/nl/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Zoeken in Lixby..."
+            aria-label="Zoeken in Lixby"
+          >
+        </form>
+        <a href="/nl/cart/" class="nav-icon-link" aria-label="Winkelwagen">
+          <img src="/nl/images/Bolsa.png" alt="Winkelwagen">
+        </a>
+        <a href="/nl/account/" class="nav-icon-link" aria-label="Account">
+          <img src="/nl/images/cuenta.png" alt="Account">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Hoofdnavigatie mobiel">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Winkel</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/nl/shop/">Ga naar de winkel</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/pages/products/lixbuds-one/">LixBuds One-koptelefoons</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/buy-headphones/lixbuds-one/">Nu kopen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/news/">Nieuws</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Producten</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/nl/products/">Bekijk producten</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/lixsafe/">LixSafe en dekking</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/nl/apps/">Bekijk apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/help-center/lixney/">Ondersteuning van Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/help-center/lixfly/">Ondersteuning van Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Ondersteuning</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/nl/support/">Ga naar ondersteuning</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/help-center/faq/">Veelgestelde vragen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/help-center/contact/">Contact</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/help-center/returns/">Retouren</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Winkelwagen</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/nl/cart/">Bekijk winkelwagen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/cart/">Afrekenen</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/nl/account/">Ga naar je account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/account/">Mijn bestellingen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/account/">Mijn profiel</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/account/">Instellingen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/login/">Inloggen</a></p>
+          <p class="nav-mobile-answer-text"><a href="/nl/two-step-verification/">Twee-factor-verificatie</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container">
     <section class="shop-hero">
-      <h1>Tienda</h1>
+      <h1>Winkel</h1>
       <div class="shop-hero-side">
-        <h2>La mejor forma de comprar tus productos favoritos.</h2>
-        <a href="/nl/support/">Habla con un especialista</a>
-        <a href="/nl/support/">Encuentra ayuda de soporte</a>
-        <p id="shopSearchStatus"></p>
+        <div class="shop-hero-row">
+          <h2>Alle Lixby, op één plek.</h2>
+          <div class="shop-hero-actions">
+<a class="shop-hero-link" href="/nl/support/">Praat met een specialist</a>
+          <a class="shop-hero-link" href="/nl/track/">Volg je bestelling</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="shop-categories" aria-label="Categorias">
-      <a class="shop-category" data-searchable="lixbuds one auriculares cascos mixmax" href="/nl/pages/products/lixbuds-one/">
+    <section class="shop-categories" aria-label="Categorieën">
+      <a class="shop-category" data-searchable="LixBuds One koptelefoons mixmax" href="/nl/pages/products/lixbuds-one/">
         <div class="shop-category-icon">
-          <img src="images/lixbuds-product.jpg" alt="LixBuds One">
+          <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
-      <a class="shop-category" data-searchable="lixney app finanzas" href="/nl/pages/apps/lixney/">
+      <a class="shop-category" data-searchable="Lixney financiële app" href="/nl/pages/apps/lixney/">
         <div class="shop-category-icon">
-          <img src="images/LixneyIcon.png" alt="App Lixney">
+          <img class="shop-category-icon-contain" src="images/lixneyicon2.webp" alt="App Lixney">
         </div>
         <span>Lixney</span>
+      </a>
+      <a class="shop-category" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/nl/pages/apps/lixfly/">
+        <div class="shop-category-icon">
+          <img class="shop-category-icon-contain" src="images/lixflyicon2.webp" alt="App Lixfly">
+        </div>
+        <span>Lixfly</span>
       </a>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>Lo ultimo.</strong> <span>Echa un vistazo a las novedades.</span></h3>
-      <div class="shop-cards">
-        <a class="shop-card shop-card-product" data-searchable="lixbuds one auriculares cascos mixmax" href="/nl/pages/products/lixbuds-one/">
-          <p class="shop-card-eyebrow">Disponible ahora</p>
-          <h4>LixBuds One</h4>
-          <p>Sonido premium con cancelacion de ruido inteligente.</p>
-          <small>Desde 129 EUR</small>
-          <div class="shop-card-media">
-            <img src="images/lixbuds-product.jpg" alt="Auriculares LixBuds One">
-          </div>
-        </a>
+      <h3><strong>De nieuwste.</strong> <span>Kijk eens wat er nieuw is.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left" aria-label="Voormalig">‹</button>
+        <button class="shop-arrow shop-arrow-right" aria-label="Volgende">›</button>
+        <div class="shop-cards">
+          <a class="shop-card shop-card-product card-white-solid" data-searchable="LixBuds One koptelefoons mixmax" href="/nl/pages/products/lixbuds-one/">
+            <p class="shop-card-eyebrow">Nu beschikbaar</p>
+            <h4>LixBuds One</h4>
+            <p>Eersteklas geluid met intelligente ruisonderdrukking.</p>
+            <small>Vanaf 99 euro</small>
+            <div class="shop-card-media">
+              <img src="images/lixbuds-one-white.png" alt="LixBuds One-koptelefoons">
+            </div>
+          </a>
 
-        <a class="shop-card shop-card-app" data-searchable="lixney app finanzas" href="/nl/pages/apps/lixney/">
-          <p class="shop-card-eyebrow">Nueva version</p>
-          <h4>Lixney</h4>
-          <p>Tu app para ahorrar, planificar y entender tus gastos.</p>
-          <small>Descarga gratuita</small>
+          <a class="shop-card shop-card-app" data-searchable="Lixney financiële app" href="/nl/pages/apps/lixney/">
+            <p class="shop-card-eyebrow">Remake</p>
+            <h4>Lixney</h4>
+            <p>Je app om je uitgaven op te slaan, te plannen en te begrijpen.</p>
+            <small>Gratis downloaden</small>
+            <div class="shop-card-media">
+              <img src="images/lixneyicon2.webp" alt="Lixney-applicatie">
+            </div>
+          </a>
+
+        <a class="shop-card shop-card-lixfly" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/nl/pages/apps/lixfly/">
+          <p class="shop-card-eyebrow">Open bèta</p>
+          <h4>Lixfly</h4>
+          <p>Je EFB voor MSFS2020/2024: preflight, vluchtplan, prestaties, navigatie, eqrh en nog veel meer.</p>
+          <small>Gratis bèta</small>
           <div class="shop-card-media">
-            <img src="images/lixbuds-hero.jpg" alt="Aplicacion Lixney">
+            <img src="images/lixflyicon2.webp" alt="Lixfly-applicatie">
           </div>
         </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Zo verzorgen wij je aankoop.</strong> <span>Eenvoudig, veilig en zonder verrassingen.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Voormalig">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Volgende">›</button>
+        <div class="shop-cards trust-cards">
+          <a class="trust-card" href="/nl/support/#faq">
+            <div class="trust-icon" style="background:#059669">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+            </div>
+            <p><strong style="color:#059669">Gratis verzending.</strong> Al je bestellingen komen thuis <strong style="color:#059669">geen extra kosten</strong>, ongeacht het bedrag.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/returns/">
+            <div class="trust-icon" style="background:#d97706">
+              <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
+            </div>
+            <p><strong style="color:#d97706">Retourneren binnen 14 kalenderdagen.</strong> Je kunt je herroepingsrecht uitoefenen <strong style="color:#d97706">zonder opgave van de reden</strong>.</p>
+          </a>
+          <a class="trust-card" href="/nl/support/#faq">
+            <div class="trust-icon" style="background:#2563eb">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p><strong style="color:#2563eb">Veilige betaling.</strong> Elke transactie is <strong style="color:#2563eb">gecodeerd en beschermd</strong> zodat je met een gerust hart kunt kopen.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/contact/">
+            <div class="trust-icon" style="background:#7c3aed">
+              <svg viewBox="0 0 24 24"><path d="M3 11v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3"/><path d="M21 12v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+            </div>
+            <p><strong style="color:#7c3aed">Ondersteuning in het spaans.</strong> Ons team staat klaar om je te helpen, <strong style="color:#7c3aed">in jouw taal</strong> en wanneer je het nodig hebt.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/warranty/">
+            <div class="trust-icon" style="background:#16a34a">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <p><strong style="color:#16a34a">Officiële garantie.</strong> Fysieke producten hebben <strong style="color:#16a34a">drie jaar wettelijke garantie</strong> sinds de levering.</p>
+          </a>
+          <a class="trust-card" href="/nl/apps/">
+            <div class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A9 9 0 1 0 4.16 7.51"/></svg>
+            </div>
+            <p><strong style="color:#6366f1">Gratis updates.</strong> Je applicaties altijd up-to-date, <strong style="color:#6366f1">geen extra kosten</strong> en voor altijd.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Wij zijn hier.</strong> <span>Hulp wanneer en hoe je het nodig heeft.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Voormalig">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Volgende">›</button>
+        <div class="shop-cards trust-cards">
+          <button type="button" class="trust-card" data-open-bot>
+            <span class="trust-icon" style="background:#0ea5e9">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <p><strong style="color:#0ea5e9">Praat met de assistent.</strong> Je twijfels onmiddellijk oplossen, <strong style="color:#0ea5e9">24 uur per dag</strong>, vanaf elke pagina in de winkel.</p>
+          </button>
+          <a class="trust-card" href="/nl/news/">
+            <span class="trust-icon" style="background:#f59e0b">
+              <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+            </span>
+            <p><strong style="color:#f59e0b">Nieuws.</strong> Ontdekken <strong style="color:#f59e0b">releases, updates en aankondigingen</strong> Lixby ambtenaren.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/returns/">
+            <span class="trust-icon" style="background:#10b981">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            </span>
+            <p><strong style="color:#10b981">Herroepingsrecht.</strong> Hebben <strong style="color:#10b981">14 kalenderdagen vanaf levering</strong> om het aan te vragen. Bekijk de voorwaarden en retourkosten.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/contact/">
+            <span class="trust-icon" style="background:#8b5cf6">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <p><strong style="color:#8b5cf6">Schrijf ons.</strong> Wij antwoorden je <strong style="color:#8b5cf6">zo spoedig mogelijk, op werkdagen</strong>.</p>
+          </a>
+          <a class="trust-card" href="/nl/help-center/faq/">
+            <span class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </span>
+            <p><strong style="color:#6366f1">Veelgestelde vragen.</strong> Antwoorden vinden over <strong style="color:#6366f1">verzending, betalingen, garantie</strong> en nog veel meer.</p>
+          </a>
+          <a class="trust-card" href="/nl/apps/">
+            <span class="trust-icon" style="background:#ec4899">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </span>
+            <p><strong style="color:#ec4899">Hulp bij je apps.</strong> Gidsen en ondersteuning voor <strong style="color:#ec4899">Lixney en Lixfly</strong>, altijd in het Spaans.</p>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Bekijk en koop</h3>
         <ul>
-          <li><a href="#">Tienda</a></li>
+          <li><a href="/nl/shop/">Winkel</a></li>
           <li><a href="/nl/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/nl/#apps">Apps</a></li>
-          <li><a href="/nl/support/">Soporte</a></li>
+          <li><a href="/nl/apps/">Apps</a></li>
+          <li><a href="/nl/support/">Ondersteuning</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Ondersteuning</h3>
         <ul>
-          <li><a href="/nl/support/">P�gina inicial soporte</a></li>
-          <li><a href="/nl/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/nl/support/">Informaci�n de Garant�a</a></li>
-          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+          <li><a href="/nl/support/">Startpagina ondersteuning</a></li>
+          <li><a href="/nl/support/#faq">Veelgestelde vragen online winkel</a></li>
+          <li><a href="/nl/support/">Garantie-informatie</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail naar de CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Account</h3>
         <ul>
-          <li><a href="/nl/cart/">Pedidos</a></li>
-          <li><a href="/nl/account/">Mi cuenta</a></li>
-          <li><a href="/nl/account/">Cupones</a></li>
+          <li><a href="/nl/track/">Bestellingen</a></li>
+          <li><a href="/nl/account/">Mijn account</a></li>
+          <li><a href="/nl/account/">Coupons</a></li>
+          <li><a href="/nl/community/">Community</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>Over Lixby</h3>
         <ul>
-          <li><a href="#">Newsroom</a></li>
-          <li><a href="/nl/support/">Garant�a</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="/nl/support/">Contacto</a></li>
+          <li><a href="/nl/about/">Over ons</a></li>
+          <li><a href="/nl/support/">Garantie</a></li>
+          <li><a href="/nl/news/">Nieuws</a></li>
+          <li><a href="/nl/support/">Contact</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright � 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Alle rechten voorbehouden.</p>
       <div class="footer-legal-links">
-        <a href="/nl/pages/legal/privacy/">Pol�tica de privacidad</a>
-        <a href="/nl/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/nl/pages/legal/terms/">Condiciones de uso</a>
-        <a href="/nl/support/">Ventas y reembolsos</a>
-        <a href="/nl/pages/legal/legal-notice/">Avisos legales</a>
+        <a href="/nl/pages/legal/privacy/">Privacybeleid</a>
+        <a href="/nl/pages/legal/cookies/">Cookiebeleid</a>
+        <a href="/nl/pages/legal/terms/">Algemene voorwaarden</a>
+        <a href="/nl/pages/legal/sales-refunds/">Verkoop en terugbetalingen</a>
+        <a href="/nl/pages/legal/legal-notice/">Juridische informatie</a>
       </div>
     </div>
   </footer>
 
+  <div class="shop-toast" id="shopToast" role="status" aria-live="polite"></div>
+
   <script>
     const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
-    const statusEl = document.getElementById("shopSearchStatus");
+    const toastEl = document.getElementById("shopToast");
+    let toastTimer = null;
+
+    function showShopToast(message, variant) {
+      if (!toastEl) return;
+      toastEl.textContent = message;
+      toastEl.classList.toggle("is-warning", variant === "warning");
+      toastEl.classList.add("is-visible");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toastEl.classList.remove("is-visible");
+      }, 3800);
+    }
 
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = height > 0 ? (top / height) * 100 : 0;
-
       progressBar.style.width = progress + "%";
       nav.classList.toggle("nav-scrolled", top > 20);
     };
 
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
+
+    const shopCards = document.querySelector(".shop-cards");
+    const leftArrow = document.querySelector(".shop-arrow-left");
+    const rightArrow = document.querySelector(".shop-arrow-right");
+
+    if (shopCards && leftArrow && rightArrow) {
+      const scrollAmount = () => {
+        const card = shopCards.querySelector(".shop-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      leftArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const updateArrows = () => {
+        const maxScroll = shopCards.scrollWidth - shopCards.clientWidth;
+        leftArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft <= 4);
+        rightArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft >= maxScroll - 4);
+      };
+
+      shopCards.addEventListener("scroll", () => {
+        updateArrows();
+      }, { passive: true });
+      updateArrows();
+    }
+
+    document.querySelectorAll(".trust-cards").forEach((trustCards) => {
+      const trustSection = trustCards.closest(".trust-section");
+      const trustArrowLeft = trustSection && trustSection.querySelector(".trust-arrow-left");
+      const trustArrowRight = trustSection && trustSection.querySelector(".trust-arrow-right");
+
+      if (!trustSection || !trustCards || !trustArrowLeft || !trustArrowRight) return;
+
+      const trustScrollAmount = () => {
+        const card = trustCards.querySelector(".trust-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      trustArrowLeft.addEventListener("click", () => {
+        trustCards.scrollBy({ left: -trustScrollAmount(), behavior: "smooth" });
+      });
+
+      trustArrowRight.addEventListener("click", () => {
+        trustCards.scrollBy({ left: trustScrollAmount(), behavior: "smooth" });
+      });
+
+      const updateTrustArrows = () => {
+        const maxScroll = trustCards.scrollWidth - trustCards.clientWidth;
+        trustArrowLeft.classList.toggle("arrow-hidden", trustCards.scrollLeft <= 4);
+        trustArrowRight.classList.toggle("arrow-hidden", trustCards.scrollLeft >= maxScroll - 4);
+      };
+
+      trustCards.addEventListener("scroll", () => {
+        updateTrustArrows();
+      }, { passive: true });
+      updateTrustArrows();
+    });
+
+    document.querySelectorAll("[data-open-bot]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const botWindow = document.getElementById("lixbot-window");
+        const botToggle = document.getElementById("lixbot-toggle");
+        if (botWindow && botToggle && botWindow.classList.contains("lixbot-hidden")) {
+          botToggle.click();
+        }
+      });
+    });
 
     const query = new URLSearchParams(window.location.search).get("q");
     if (query) {
@@ -409,22 +1066,451 @@
         item.style.display = match ? "" : "none";
         if (match) matches += 1;
       });
-
-      if (statusEl) {
-        if (matches > 0) {
-          statusEl.textContent = `Resultados para: ${query}`;
-        } else {
-          statusEl.textContent = `No hay resultados para: ${query}`;
-        }
+      if (matches > 0) {
+        showShopToast(`resultaten voor: ${query}`);
+      } else {
+        showShopToast(`geen resultaten voor: ${query}`, "warning");
       }
     }
   </script>
+
+  <!-- =====================================================
+       MINIBOT Lixby
+  ====================================================== -->
+  <style>
+    #lixbot-toggle {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #111827; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.25); z-index: 9999;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #lixbot-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 26px rgba(15,23,42,0.32); }
+    #lixbot-badge {
+      position: absolute; top: -2px; right: -2px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #ef4444; border: 2px solid #f5f5f7;
+    }
+    #lixbot-window {
+      position: fixed; bottom: 90px; right: 24px;
+      width: 348px; max-height: 520px;
+      background: #fff; border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 44px rgba(15,23,42,0.14);
+      display: flex; flex-direction: column;
+      overflow: hidden; z-index: 9998;
+      font-family: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    #lixbot-window.lixbot-hidden { opacity: 0; pointer-events: none; transform: translateY(14px); }
+    #lixbot-header {
+      background: #111827; color: #fff;
+      padding: 14px 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .lixbot-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    #lixbot-header .lixbot-title { font-size: 13.5px; font-weight: 700; }
+    #lixbot-header .lixbot-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    #lixbot-close {
+      margin-left: auto; background: none; border: none;
+      color: rgba(255,255,255,0.55); cursor: pointer;
+      font-size: 17px; line-height: 1; padding: 2px 4px; transition: color 0.15s;
+    }
+    #lixbot-close:hover { color: #fff; }
+    #lixbot-messages {
+      flex: 1; overflow-y: auto; padding: 14px 14px 6px;
+      display: flex; flex-direction: column; gap: 10px; background: #f9fafb;
+    }
+    #lixbot-messages::-webkit-scrollbar { width: 4px; }
+    #lixbot-messages::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+    .lixbot-msg {
+      max-width: 87%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13.5px; line-height: 1.55;
+    }
+    .lixbot-msg.lixbot-bot {
+      background: #fff; border: 1px solid #e5e7eb;
+      align-self: flex-start; color: #111827; border-bottom-left-radius: 3px;
+    }
+    .lixbot-msg.lixbot-user {
+      background: #111827; color: #fff;
+      align-self: flex-end; border-bottom-right-radius: 3px;
+    }
+    #lixbot-cats {
+      padding: 8px 12px 4px; display: flex; flex-wrap: wrap; gap: 6px;
+      background: #f9fafb; flex-shrink: 0; border-top: 1px solid #f3f4f6;
+    }
+    .lixbot-cat {
+      font-size: 11.5px; padding: 5px 11px; border-radius: 20px;
+      border: 1px solid #d1d5db; background: #fff; cursor: pointer;
+      color: #111827; font-weight: 600; transition: all 0.15s; white-space: nowrap;
+    }
+    .lixbot-cat:hover, .lixbot-cat.lixbot-active {
+      background: #111827; color: #fff; border-color: #111827;
+    }
+    #lixbot-qs {
+      padding: 0 12px 8px; display: flex; flex-wrap: wrap; gap: 6px;
+      background: #f9fafb; flex-shrink: 0;
+    }
+    .lixbot-q {
+      font-size: 11.5px; padding: 5px 11px; border-radius: 10px;
+      border: 1px solid #bfdbfe; background: #eff6ff; cursor: pointer;
+      color: #1e40af; font-weight: 600; transition: all 0.15s; text-align: left;
+    }
+    .lixbot-q:hover { background: #1e40af; color: #fff; border-color: #1e40af; }
+    #lixbot-footer {
+      display: flex; border-top: 1px solid #f3f4f6;
+      background: #fff; flex-shrink: 0; align-items: center;
+    }
+    #lixbot-search-icon { padding: 0 8px 0 14px; color: #9ca3af; font-size: 14px; }
+    #lixbot-input {
+      flex: 1; border: none; outline: none;
+      padding: 12px 6px; font-size: 13px;
+      background: transparent; color: #111827;
+      font-family: 'Inter, sans-serif;
+    }
+    #lixbot-input::placeholder { color: #c4c9d4; }
+    #lixbot-clearbtn {
+      padding: 0 14px; border: none; background: none;
+      color: #9ca3af; cursor: pointer; font-size: 15px;
+      display: none; transition: color 0.15s;
+    }
+    #lixbot-clearbtn:hover { color: #111827; }
+    @media (max-width: 400px) {
+      #lixbot-window { width: calc(100vw - 24px); right: 12px; }
+      #lixbot-toggle { right: 12px; bottom: 12px; }
+    }
+  </style>
+
+  <button id="lixbot-toggle" aria-label="Open de Lixby-wizard">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span id="lixbot-badge"></span>
+  </button>
+
+  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Assistent Lixby">
+    <div id="lixbot-header">
+      <div class="lixbot-avatar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="lixbot-title">Assistent Lixby</div>
+        <div class="lixbot-sub">Onmiddellijke antwoorden</div>
+      </div>
+      <button id="lixbot-close" aria-label="Sluiten">✕</button>
+    </div>
+
+    <div id="lixbot-messages"></div>
+
+    <div id="lixbot-cats">
+      <button class="lixbot-cat" data-cat="envios">📦 Zendingen</button>
+      <button class="lixbot-cat" data-cat="devoluciones">↩️ Retourneert</button>
+      <button class="lixbot-cat" data-cat="pagos">💳Betalingen</button>
+      <button class="lixbot-cat" data-cat="pedidos">🛒 Bestellingen</button>
+      <button class="lixbot-cat" data-cat="productos">🎧Producten</button>
+      <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
+    </div>
+
+    <div id="lixbot-qs"></div>
+
+    <div id="lixbot-footer">
+      <span id="lixbot-search-icon">🔍</span>
+      <input id="lixbot-input" type="text" placeholder="Zoek je vraag..." autocomplete="off" maxlength="120" />
+      <button id="lixbot-clearbtn" aria-label="Schoon">✕</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var KB = {
+      envios: { items: [
+        { q: 'Hoe lang duurt een standaard verzending?',
+          a: 'Standaard verzending duurt 8-15 werkdagen. Je ontvangt een e-mail met een trackingnummer zodra het ons magazijn verlaat.' },
+        { q: 'Is verzending gratis?',
+          a: 'volledig gratis verzending.' },
+        { q: 'Verstuurt je naar de Canarische Eilanden en de Balearen?',
+          a: 'Ja, wij verzenden naar het gehele nationale grondgebied. De geschatte levertijd bedraagt ​​8 tot 15 werkdagen.' },
+        { q: 'Verstuurt je buiten Spanje?',
+          a: 'Ja, wij verzenden naar de gehele Europese Unie. Verzending is gratis en de geschatte levertijd bedraagt ​​8 tot 15 werkdagen.' }
+      ]},
+      devoluciones: { items: [
+        { q: 'Hoeveel dagen heb ik om terug te keren?',
+          a: 'Je hebt vanaf ontvangst 14 kalenderdagen de tijd om je herroepingsrecht uit te oefenen, zonder dat je de reden hoeft op te geven.' },
+        { q: 'Hoe start ik een retourzending?',
+          a: 'geef je besluit tot herroeping door aan info@Lixby.es en vermeld je bestelnummer. De directe retourkosten zijn voor je rekening, tenzij het product defect is of de verzending onjuist was.' },
+        { q: 'Onder welke voorwaarden moet ik het artikel retourneren?',
+          a: 'Je kunt het product bekijken zoals je dat in een winkel zou doen. Er zijn wettelijke uitzonderingen op het herroepingsrecht, bijvoorbeeld voor bepaalde producten die om hygiëne zijn verzegeld en waarvan de verzegeling is verbroken.' },
+        { q: 'wanneer ontvang ik de terugbetaling?',
+          a: 'We betalen de terugbetaling zodra we je retourzending hebben ontvangen en beoordeeld, en altijd binnen 14 kalenderdagen vanaf het moment waarop je ons op de hoogte stelt van de herroeping. Eenmaal uitgegeven, kan het tussen de 5 en 10 werkdagen duren voordat je bank het op je rekening weergeeft.' },
+        { q: 'Kan ik de maat of kleur veranderen?',
+          a: 'Het wettelijke herroepingsrecht bedraagt ​​14 kalenderdagen. Als je een andere variant wilt, kunt je na het doorgeven van je herroeping een nieuwe bestelling plaatsen.' }
+      ]},
+      pagos: { items: [
+        { q: 'Welke betaalmethoden accepteert je?',
+          a: 'Wij accepteren kaarten (Visa, Mastercard, Amex), PayPal, Bizum en bankoverschrijvingen. Alle betalingen zijn beveiligd met SSL-codering.' },
+        { q: 'Zijn de prijzen inclusief BTW?',
+          a: 'Ja, alle prijzen in de winkel zijn al inclusief BTW. Er zullen geen verrassingen zijn wanneer je bij de kassa arriveert.' },
+        { q: 'Heeft je kortingen of promotiecodes?',
+          a: 'Wij publiceren aanbiedingen in het gedeelte "aanbiedingen" en sturen exclusieve codes naar de nieuwsbrief. Abonneer je zodat je niets mist!' },
+        { q: 'Kan ik in termijnen betalen?',
+          a: 'Nee, er zijn alleen eenmalige betalingen' },
+        { q: 'Biedt je cadeaubonnen aan?',
+          a: 'ja, cadeaubonnen van € 10 tot € 200. Ze worden direct per e-mail verzonden en zijn 1 jaar geldig.' }
+      ]},
+      pedidos: { items: [
+        { q: 'Waar zie ik de status van mijn bestelling?',
+          a: 'In "mijn account → mijn bestellingen" kunt je de status in realtime zien. Bovendien ontvangt je bij elke statuswijziging automatisch een e-mail.' },
+        { q: 'Hoe kan ik volgen?',
+          a: 'Wanneer de bestelling het magazijn verlaat, ontvangt je een e-mail met het trackingnummer en een directe link naar de vervoerder.' },
+        { q: 'Kan ik mijn bestelling wijzigen of annuleren?',
+          a: 'Gedurende de eerste 2 uur kunt je je abonnement annuleren of wijzigen. schrijf ons zo snel mogelijk op info@Lixby.es.' },
+        { q: 'Wat moet ik doen als het beschadigd aankomt?',
+          a: 'Als het pakket tijdens het transport beschadigd aankomt of een verkeerd artikel bevat, schrijf ons dan bij voorkeur binnen 48 uur op info@Lixby.es en voeg foto\'s toe om de verwerking te versnellen. Deze kennisgeving vermindert de wettelijke garantie van 3 jaar niet.' },
+        { q: 'Kan ik producten toevoegen aan een reeds geplaatste bestelling?',
+          a: 'Het is niet mogelijk om producten toe te voegen aan een lopende bestelling. Als het nog niet in voorbereiding is, kunt je het annuleren en een nieuw maken.' }
+      ]},
+      productos: { items: [
+        { q: 'wat is LixBuds One?',
+          a: 'LixBuds One is onze premium slimme hoofdtelefoon met ruisonderdrukking. verkrijgbaar vanaf € 99,00.' },
+        { q: 'Wat is de Lixney-app?',
+          a: 'Lixney is onze gratis app waarmee je je persoonlijke uitgaven kunt opslaan, plannen en begrijpen. beschikbaar voor Android.' },
+        { q: 'Zit er garantie op de producten?',
+          a: 'Fysieke producten hebben een wettelijke garantie van 3 jaar vanaf levering. Meer informatie vindt je in het garantiegedeelte van de ondersteuning.' },
+        { q: 'Zijn LixBuds One compatibel met alle apparaten?',
+          a: 'Ja, de LixBuds One zijn compatibel met elk apparaat met Bluetooth 6.0 of hoger: iOS, Android, Windows en Macos.' },
+        { q: 'wanneer komen er nieuwe producten?',
+          a: 'We kondigen nieuws aan in onze nieuwsbrief en sociale netwerken. Abonneer je om de eerste te ontdekken.' }
+      ]},
+      faq: { items: [
+        { q: 'Heb ik een account nodig om te kopen?',
+          a: 'Nee, je kunt als gast kopen. Met een account kun je eenvoudig bestellingen volgen, adressen opslaan en je historie bekijken.' },
+        { q: 'Is het veilig om bij Lixby te kopen?',
+          a: 'Ja. We gebruiken SSL-codering op de hele website en slaan geen kaartgegevens op. Betalingen verwerkt met PCI-DSS-gecertificeerde platforms.' },
+        { q: 'Heeft je een fysieke winkel?',
+          a: 'Momenteel zijn wij 100% online. Je kunt tijdens onze openingstijden contact met ons opnemen via chat, e-mail of telefoon.' },
+        { q: 'Wat zijn de openingstijden?',
+          a: 'Maandag tot en met vrijdag van 9.00 tot 18.00 uur. Wij reageren per e-mail binnen 24 uur. Deze assistent is 24/7 beschikbaar.' },
+        { q: 'Hoe neem ik contact op met Lixby?',
+          a: 'schrijf ons op info@Lixby.es of gebruik het formulier in /nl/support/. Wij reageren binnen 24 uur.' }
+      ]}
+    };
+
+    var toggle   = document.getElementById('lixbot-toggle');
+    var win      = document.getElementById('lixbot-window');
+    var closeBtn = document.getElementById('lixbot-close');
+    var msgList  = document.getElementById('lixbot-messages');
+    var catBtns  = document.querySelectorAll('.lixbot-cat');
+    var qsDiv    = document.getElementById('lixbot-qs');
+    var input    = document.getElementById('lixbot-input');
+    var clearBtn = document.getElementById('lixbot-clearbtn');
+    var badge    = document.getElementById('lixbot-badge');
+    var opened   = false;
+
+    function openBot() {
+      win.classList.remove('lixbot-hidden');
+      badge.style.display = 'none';
+      if (!opened) { addMsg('Hoi! 👋 Kies een categorie of schrijf je vraag in de zoekmachine.', 'lixbot-bot'); opened = true; }
+      input.focus();
+    }
+
+    toggle.addEventListener('click', function () {
+      win.classList.contains('lixbot-hidden') ? openBot() : win.classList.add('lixbot-hidden');
+    });
+    closeBtn.addEventListener('click', function () { win.classList.add('lixbot-hidden'); });
+
+    function addMsg(text, cls) {
+      var d = document.createElement('div');
+      d.className = 'lixbot-msg ' + cls;
+      d.textContent = text;
+      msgList.appendChild(d);
+      msgList.scrollTop = msgList.scrollHeight;
+    }
+
+    catBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+        btn.classList.add('lixbot-active');
+        input.value = '';
+        clearBtn.style.display = 'none';
+        renderQs(KB[btn.dataset.cat].items);
+      });
+    });
+
+    function renderQs(items) {
+      qsDiv.innerHTML = '';
+      items.forEach(function (item) {
+        var b = document.createElement('button');
+        b.className = 'lixbot-q';
+        b.textContent = item.q;
+        b.addEventListener('click', function () {
+          addMsg(item.q, 'lixbot-user');
+          setTimeout(function () { addMsg(item.a, 'lixbot-bot'); }, 260);
+        });
+        qsDiv.appendChild(b);
+      });
+    }
+
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      clearBtn.style.display = q ? 'block' : 'none';
+      if (!q) return;
+      catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+      var all = [];
+      Object.values(KB).forEach(function (cat) { cat.items.forEach(function (i) { all.push(i); }); });
+      var results = all.filter(function (i) {
+        return i.q.toLowerCase().includes(q) || i.a.toLowerCase().includes(q);
+      });
+      qsDiv.innerHTML = '';
+      if (!results.length) {
+        var p = document.createElement('p');
+        p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
+        p.textContent = 'geen resultaten. Probeer andere woorden.';
+        qsDiv.appendChild(p);
+        return;
+      }
+      renderQs(results);
+    });
+
+    clearBtn.addEventListener('click', function () {
+      input.value = '';
+      clearBtn.style.display = 'none';
+      qsDiv.innerHTML = '';
+      catBtns.forEach(function (b) { b.classList.remove('lixbot-active'); });
+      input.focus();
+    });
+  })();
+  </script>
+  <!-- FIN MINIBOT Lixby -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.shop-card');
+
+      function fixShopCards() {
+        cards.forEach(card => {
+          const media = card.querySelector('.shop-card-media');
+          if (!media) return;
+
+          const cardRect = card.getBoundingClientRect();
+          const mediaRect = media.getBoundingClientRect();
+
+          const gap = cardRect.bottom - mediaRect.bottom;
+
+          if (Math.abs(gap) > 0.5) {
+            media.style.marginBottom = `${-gap}px`;
+          }
+        });
+      }
+
+      fixShopCards();
+      window.addEventListener('resize', fixShopCards);
+
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(fixShopCards);
+        cards.forEach(card => {
+          if (card.querySelector('.shop-card-media')) ro.observe(card);
+        });
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
 
 
