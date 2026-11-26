@@ -1471,7 +1471,7 @@
         if (sb && gr) {
           /* ocultar "Lixby" mientras se escribe "um"; aparece 1 s después */
           gsap.set(gr, { autoAlpha: 0 });
-          typeInto(sb, sb.getAttribute("data-text") || "um", 140, function () {
+          typeInto(sb, sb.getAttribute("data-text") || "Über", 140, function () {
             setTimeout(appearBrand, 1000);
           });
         } else {
