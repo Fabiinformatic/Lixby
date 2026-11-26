@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="nojs pl-pl lixby konsument eu pl" lang="pl-PL">
+<html class="nojs es-es lixby consumer eu es" lang="pl">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -13,17 +13,17 @@
 <script>
 window.LIXBY_CONFIG = {
     metadata: {
-        environment: "produkcja",
+        environment: "production",
         region: "eu",
-        country: "PL",
-        locale: "pl-pl",
+        country: "ES",
+        locale: "es-es",
         brand: "Lixby",
-        page: "sklep",
+        page: "store",
         referer: document.referrer
     },
     config: {
         pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
-        app: "com.lixby.web",
+        app: "com.Lixby.web",
         sendPageViewData: true,
         sendErrors: true,
         performanceTracking: true,
@@ -87,7 +87,7 @@ document.addEventListener('readystatechange', () => {
 </noscript>
 
 
-  <link rel="canonical" href="https://lixby.es/pl/sklep">
+  <link rel="canonical" href="https://lixby.es/pl/shop">
   <link rel="alternate" href="https://lixby.es/bg/shop" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/shop" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/shop" hreflang="da-DK">
@@ -118,26 +118,43 @@ document.addEventListener('readystatechange', () => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sklep | Lixby</title>
-<meta name="description" content="Oficjalny sklep Lixby. Odkryj LixBuds One i Lixney.">
+<meta name="description" content="Lixby oficjalny sklep. odkryj LixBuds One i Lixney.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://lixby.es/pl/shop">
+  <meta property="og:title" content="sklep | Lixby">
+  <meta property="og:description" content="Lixby oficjalny sklep. odkryj LixBuds One i Lixney.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Słuchawki LixBuds One firmy Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="sklep | Lixby">
+  <meta name="twitter:description" content="Lixby oficjalny sklep. odkryj LixBuds One i Lixney.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Słuchawki LixBuds One firmy Lixby">
 
 <link rel="preconnect" href="https://lixby.es">
 <link rel="dns-prefetch" href="https://lixby.es">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pl/style.css">
 <style>
-    body.shop-page {
-      background: #f5f5f7;
-    }
+      body.shop-page {
+        background: #f5f5f7;
+        overflow-x: hidden;
+      }
 
     .shop-hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      gap: 28px;
       padding: 56px 0 20px;
     }
 
@@ -145,52 +162,137 @@ document.addEventListener('readystatechange', () => {
       font-size: clamp(2.2rem, 7vw, 5rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
+      text-align: left;
     }
 
     .shop-hero-side {
-      justify-self: end;
-      text-align: right;
-      max-width: 420px;
+      justify-self: start;
+      text-align: left;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .shop-hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px 28px;
+      width: 100%;
     }
 
     .shop-hero-side h2 {
-      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-size: clamp(1.25rem, 2.4vw, 2.1rem);
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 14px;
+      margin-bottom: 0;
     }
 
     .shop-hero-side a {
-      display: block;
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      margin-top: 6px;
+    }
+
+    .shop-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-left: auto;
+    }
+
+    .shop-hero-side a.shop-hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 61, 255, 0.24);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 8px 20px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1), background-color 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-top: 1.6px solid currentColor;
+      border-right: 1.6px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15, 61, 255, 0.14);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover::after {
+      transform: rotate(45deg) translate(2px, -2px);
+    }
+
+    .shop-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 24px);
+      z-index: 1200;
+      max-width: min(92vw, 460px);
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: #111827;
+      color: #fff;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 240ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1), visibility 240ms ease;
+    }
+
+    .shop-toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .shop-toast.is-warning {
+      background: #b42318;
     }
 
     .shop-categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
       padding: 24px 0 56px;
-      max-width: 540px;
     }
 
     .shop-category {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       padding: 18px;
       text-align: center;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+      min-width: 0;
+      flex: 1;
     }
 
     .shop-category:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
     }
 
     .shop-category-icon {
@@ -232,17 +334,88 @@ document.addEventListener('readystatechange', () => {
     .shop-latest h3 strong { color: #111827; }
     .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
-    .shop-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+    .shop-cards-wrapper {
+      position: relative;
+      overflow: visible;
     }
+    .shop-cards,
+    .trust-cards {
+      --gutter: calc((100vw - min(1120px, 92vw)) / 2);
+
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      margin-left: calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+      scroll-padding-left: var(--gutter);
+      scroll-padding-right: var(--gutter);
+      overflow-anchor: none;
+    }
+
+
+    .shop-cards::-webkit-scrollbar { display: none; }
+
+    .shop-cards > .shop-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(50% - 11px);
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .shop-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229,231,235,0.5);
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #111827;
+      font-size: 1.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .shop-arrow-left  { left: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+    .shop-arrow-right { right: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+
+    .shop-arrow:active { transform: translateY(-50%) scale(0.92); }
+
+    .shop-cards-wrapper:hover .shop-arrow:not(.arrow-hidden) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .shop-arrow.arrow-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
 
     .shop-card {
       border-radius: 28px;
       padding: 30px;
       min-height: 430px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -279,19 +452,25 @@ document.addEventListener('readystatechange', () => {
       margin-top: auto;
       padding-top: 18px;
       display: flex;
-      align-items: end;
+      flex: 1 1 0%;
+      align-items: flex-end;
       justify-content: center;
+      min-height: 0;
     }
 
     .shop-card-media img {
-      width: min(85%, 320px);
-      border-radius: 20px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      display: block;
+      width: auto;
+      height: 230px;
+      max-width: 100%;
       object-fit: contain;
+      object-position: center bottom;
+      border-radius: 20px 20px 28px 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     .shop-card-product {
-      background: linear-gradient(165deg, #ffffff, #e5edf9);
+      background: linear-gradient(165deg, rgba(255,255,255,.85), rgba(229,237,249,.65));
     }
 
     .shop-card-app {
@@ -303,19 +482,102 @@ document.addEventListener('readystatechange', () => {
     .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
     .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
 
+    .shop-card-Lixfly {
+      background: linear-gradient(165deg, #0c1220, #1e3a8a);
+      color: #fff;
+      border-color: rgba(96, 165, 250, 0.2);
+    }
+
+    .shop-card-Lixfly .shop-card-eyebrow { color: #60a5fa; }
+    .shop-card-Lixfly small { color: rgba(148, 163, 184, 0.9); }
+
     .shop-card.card-white-solid {
-      background: #ffffff;
-      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ── Trust section ─────────────────────────── */
+    .trust-section {
+      padding: 20px 0 80px;
+    }
+    .trust-section h3 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .trust-section h3 strong { color: #111827; }
+    .trust-section h3 span   { color: #6b7280; font-weight: 600; }
+    .trust-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      scroll-snap-align: start;
+      flex: 0 0 calc(33.33% - 15px);
+      min-width: 0;
+      min-height: 240px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+    }
+    .trust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-card p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    button.trust-card {
+      font: inherit;
+      text-align: left;
+      align-items: stretch;
+      cursor: pointer;
+    }
+    @media (max-width: 980px) { .trust-card { flex: 0 0 50%; } }
+    @media (max-width: 640px) { .trust-card { flex: 0 0 85%; } }
+
+    @media (min-width: 981px) {
+      .shop-hero-side h2 { white-space: nowrap; }
     }
 
     @media (max-width: 980px) {
-      .shop-hero { grid-template-columns: 1fr; }
-      .shop-hero-side { text-align: left; justify-self: start; }
+      .shop-hero { gap: 20px; }
+      .shop-hero-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 760px) {
-      .shop-categories,
-      .shop-cards { grid-template-columns: 1fr; }
+      .shop-categories { flex-direction: column; }
+      .shop-cards > .shop-card { flex: 0 0 85%; }
+      .shop-arrow { width: 46px; height: 46px; font-size: 1.3rem; }
+      .shop-arrow-left  { left: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
+      .shop-arrow-right { right: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
     }
   </style>
 
@@ -335,7 +597,7 @@ document.addEventListener('readystatechange', () => {
 
 <script>
 window.LIXBY_UI = {
-    theme: "jasny",
+    theme: "light",
     animations: true,
     version: "1.0.0"
 };
@@ -351,78 +613,300 @@ document.documentElement.classList.replace("nojs", "js");
   <div id="scroll-progress"></div>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Główne">
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
         <a href="/pl/shop/" class="nav-link">Sklep</a>
-        <a href="/pl/#productos" class="nav-link">Produkty</a>
-        <a href="/pl/#apps" class="nav-link">Aplikacje</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
         <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
-      <a href="/pl/#productos" class="btn btn-primary nav-cta">Zobacz katalog</a>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/pl/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
+          >
+        </form>
+        <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
+        </a>
+        <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Sklep</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkty</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Wsparcie</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Koszyk</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container">
     <section class="shop-hero">
       <h1>Sklep</h1>
       <div class="shop-hero-side">
-        <h2>Najlepszy sposób na zakup ulubionych produktów.</h2>
-        <a href="/pl/support/">Porozmawiaj z ekspertem</a>
-        <a href="/pl/support/">Znajdź pomoc</a>
-        <p id="shopSearchStatus"></p>
+        <div class="shop-hero-row">
+          <h2>wszystko Lixby w jednym miejscu.</h2>
+          <div class="shop-hero-actions">
+<a class="shop-hero-link" href="/pl/support/">porozmawiaj ze specjalistą</a>
+          <a class="shop-hero-link" href="/pl/track/">postępuj zgodnie z zamówieniem</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="shop-categories" aria-label="Kategorie">
-      <a class="shop-category" data-searchable="lixbuds one słuchawki headsety mixmax" href="/pl/pages/products/lixbuds-one/">
+    <section class="shop-categories" aria-label="kategorie">
+      <a class="shop-category" data-searchable="LixBuds One słuchawki mixmax" href="/pl/pages/products/lixbuds-one/">
         <div class="shop-category-icon">
           <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
-      <a class="shop-category" data-searchable="lixney app finanse" href="/pl/pages/apps/lixney/">
+      <a class="shop-category" data-searchable="aplikacja finansowa Lixney" href="/pl/pages/apps/lixney/">
         <div class="shop-category-icon">
-          <img class="shop-category-icon-contain" src="images/LixneyIcon.png" alt="Aplikacja Lixney">
+          <img class="shop-category-icon-contain" src="images/lixneyicon2.webp" alt="aplikacja Lixney">
         </div>
         <span>Lixney</span>
+      </a>
+      <a class="shop-category" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/pl/pages/apps/lixfly/">
+        <div class="shop-category-icon">
+          <img class="shop-category-icon-contain" src="images/lixflyicon2.webp" alt="aplikacja Lixfly">
+        </div>
+        <span>Lixfly</span>
       </a>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>Najnowsze.</strong> <span>Sprawdź nowości.</span></h3>
-      <div class="shop-cards">
-        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one słuchawki headsety mixmax" href="/pl/pages/products/lixbuds-one/">
-          <p class="shop-card-eyebrow">Dostępne teraz</p>
-          <h4>LixBuds One</h4>
-          <p>Premiumowy dźwięk z inteligentną redukcją szumów.</p>
-          <small>Od 99 EUR</small>
-          <div class="shop-card-media">
-            <img src="images/lixbuds-one-white.png" alt="Słuchawki LixBuds One">
-          </div>
-        </a>
+      <h3><strong>najnowszy.</strong> <span>spójrz, co nowego.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left" aria-label="dawny">‹</button>
+        <button class="shop-arrow shop-arrow-right" aria-label="następny">›</button>
+        <div class="shop-cards">
+          <a class="shop-card shop-card-product card-white-solid" data-searchable="LixBuds One słuchawki mixmax" href="/pl/pages/products/lixbuds-one/">
+            <p class="shop-card-eyebrow">dostępne teraz</p>
+            <h4>LixBuds One</h4>
+            <p>Dźwięk najwyższej jakości z inteligentną redukcją szumów.</p>
+            <small>od 99 euro</small>
+            <div class="shop-card-media">
+              <img src="images/lixbuds-one-white.png" alt="LixBuds One">
+            </div>
+          </a>
 
-        <a class="shop-card shop-card-app" data-searchable="lixney app finanse" href="/pl/pages/apps/lixney/">
-          <p class="shop-card-eyebrow">Nowa wersja</p>
-          <h4>Lixney</h4>
-          <p>Twoja aplikacja do oszczędzania, planowania i kontroli wydatków.</p>
-          <small>Darmowe pobieranie</small>
+          <a class="shop-card shop-card-app" data-searchable="aplikacja finansowa Lixney" href="/pl/pages/apps/lixney/">
+            <p class="shop-card-eyebrow">przerobić</p>
+            <h4>Lixney</h4>
+            <p>Twoja aplikacja, aby oszczędzać, planować i rozumieć swoje wydatki.</p>
+            <small>bezpłatne pobieranie</small>
+            <div class="shop-card-media">
+              <img src="images/lixneyicon2.webp" alt="Aplikacja Lixney">
+            </div>
+          </a>
+
+        <a class="shop-card shop-card-lixfly" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/pl/pages/apps/lixfly/">
+          <p class="shop-card-eyebrow">otwarta beta</p>
+          <h4>Lixfly</h4>
+          <p>Twój EFB na MSFS2020/2024: lot wstępny, plan lotu, osiągi, nawigacja, eqrh i wiele więcej.</p>
+          <small>darmowa wersja beta</small>
           <div class="shop-card-media">
-            <img src="images/lixney1.png" alt="Aplikacja Lixney">
+            <img src="images/lixflyicon2.webp" alt="Aplikacja Lixfly">
           </div>
         </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>W ten sposób dbamy o Twój zakup.</strong> <span>proste, bezpieczne i bez niespodzianek.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="dawny">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="następny">›</button>
+        <div class="shop-cards trust-cards">
+          <a class="trust-card" href="/pl/support/#faq">
+            <div class="trust-icon" style="background:#059669">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+            </div>
+            <p><strong style="color:#059669">darmowa wysyłka.</strong> wszystkie Twoje zamówienia docierają do domu <strong style="color:#059669">bez dodatkowych kosztów</strong>niezależnie od kwoty.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/returns/">
+            <div class="trust-icon" style="background:#d97706">
+              <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
+            </div>
+            <p><strong style="color:#d97706">zwrot w ciągu 14 dni kalendarzowych.</strong> możesz skorzystać z prawa do odstąpienia od umowy <strong style="color:#d97706">bez podania przyczyny</strong>.</p>
+          </a>
+          <a class="trust-card" href="/pl/support/#faq">
+            <div class="trust-icon" style="background:#2563eb">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p><strong style="color:#2563eb">bezpieczna płatność.</strong> każda transakcja jest <strong style="color:#2563eb">szyfrowane i chronione</strong> dzięki czemu możesz kupować z pełnym spokojem.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/contact/">
+            <div class="trust-icon" style="background:#7c3aed">
+              <svg viewBox="0 0 24 24"><path d="M3 11v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3"/><path d="M21 12v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+            </div>
+            <p><strong style="color:#7c3aed">wsparcie w języku hiszpańskim.</strong> nasz zespół jest tutaj, aby Ci pomóc, <strong style="color:#7c3aed">w twoim języku</strong> i kiedy tego potrzebujesz.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/warranty/">
+            <div class="trust-icon" style="background:#16a34a">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <p><strong style="color:#16a34a">oficjalna gwarancja.</strong> produkty fizyczne mają <strong style="color:#16a34a">trzyletnia gwarancja prawna</strong> od dostawy.</p>
+          </a>
+          <a class="trust-card" href="/pl/apps/">
+            <div class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A9 9 0 1 0 4.16 7.51"/></svg>
+            </div>
+            <p><strong style="color:#6366f1">bezpłatne aktualizacje.</strong> Twoje aplikacje zawsze aktualne, <strong style="color:#6366f1">bez dodatkowych kosztów</strong> i na zawsze.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>jesteśmy tutaj.</strong> <span>pomagaj kiedy i jak tego potrzebujesz.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="dawny">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="następny">›</button>
+        <div class="shop-cards trust-cards">
+          <button type="button" class="trust-card" data-open-bot>
+            <span class="trust-icon" style="background:#0ea5e9">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <p><strong style="color:#0ea5e9">porozmawiaj z asystentem.</strong> błyskawicznie rozwiejesz swoje wątpliwości, <strong style="color:#0ea5e9">24 godziny na dobę</strong>z dowolnej strony sklepu.</p>
+          </button>
+          <a class="trust-card" href="/pl/news/">
+            <span class="trust-icon" style="background:#f59e0b">
+              <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+            </span>
+            <p><strong style="color:#f59e0b">aktualności.</strong> odkryć <strong style="color:#f59e0b">wydania, aktualizacje i ogłoszenia</strong> Urzędnicy Lixby.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/returns/">
+            <span class="trust-icon" style="background:#10b981">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            </span>
+            <p><strong style="color:#10b981">prawo do odstąpienia od umowy.</strong> Posiadać <strong style="color:#10b981">14 dni kalendarzowych od dostawy</strong> o to poprosić. Sprawdź warunki i koszty zwrotu.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/contact/">
+            <span class="trust-icon" style="background:#8b5cf6">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <p><strong style="color:#8b5cf6">napisz do nas.</strong> odpowiadamy <strong style="color:#8b5cf6">możliwie najszybciej, w dni robocze</strong>.</p>
+          </a>
+          <a class="trust-card" href="/pl/help-center/faq/">
+            <span class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </span>
+            <p><strong style="color:#6366f1">często zadawane pytania.</strong> znaleźć odpowiedzi na temat <strong style="color:#6366f1">wysyłka, płatności, gwarancja</strong> i wiele więcej.</p>
+          </a>
+          <a class="trust-card" href="/pl/apps/">
+            <span class="trust-icon" style="background:#ec4899">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </span>
+            <p><strong style="color:#ec4899">Pomoc dotycząca aplikacji.</strong> przewodniki i wsparcie dla <strong style="color:#ec4899">Lixney i Lixfly</strong>, zawsze po hiszpańsku.</p>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Przeglądaj i kupuj</h3>
+        <h3>Zobacz i kup</h3>
         <ul>
           <li><a href="/pl/shop/">Sklep</a></li>
           <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/pl/#apps">Aplikacje</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
           <li><a href="/pl/support/">Wsparcie</a></li>
         </ul>
       </section>
@@ -430,28 +914,29 @@ document.documentElement.classList.replace("nojs", "js");
       <section class="footer-section">
         <h3>Wsparcie</h3>
         <ul>
-          <li><a href="/pl/support/">Strona główna pomocy</a></li>
-          <li><a href="/pl/support/#faq">FAQ Sklep internetowy</a></li>
+          <li><a href="/pl/support/">Strona główna wsparcia</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
           <li><a href="/pl/support/">Informacje o gwarancji</a></li>
-          <li><a href="mailto:info@lixby.es">Email do CEO</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Konto</h3>
         <ul>
-          <li><a href="/pl/cart/">Zamówienia</a></li>
+          <li><a href="/pl/track/">Zamówienia</a></li>
           <li><a href="/pl/account/">Moje konto</a></li>
           <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>O Lixby</h3>
         <ul>
-          <li><a href="#">Biuro prasowe</a></li>
+          <li><a href="/pl/about/">O nas</a></li>
           <li><a href="/pl/support/">Gwarancja</a></li>
-          <li><a href="#">Wydarzenia</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
           <li><a href="/pl/support/">Kontakt</a></li>
         </ul>
       </section>
@@ -461,18 +946,32 @@ document.documentElement.classList.replace("nojs", "js");
       <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
       <div class="footer-legal-links">
         <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
-        <a href="/pl/pages/legal/cookies/">Użycie plików cookie</a>
-        <a href="/pl/pages/legal/terms/">Warunki użytkowania</a>
-        <a href="/pl/support/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
         <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
       </div>
     </div>
   </footer>
 
+  <div class="shop-toast" id="shopToast" role="status" aria-live="polite"></div>
+
   <script>
     const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
-    const statusEl = document.getElementById("shopSearchStatus");
+    const toastEl = document.getElementById("shopToast");
+    let toastTimer = null;
+
+    function showShopToast(message, variant) {
+      if (!toastEl) return;
+      toastEl.textContent = message;
+      toastEl.classList.toggle("is-warning", variant === "warning");
+      toastEl.classList.add("is-visible");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toastEl.classList.remove("is-visible");
+      }, 3800);
+    }
 
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
@@ -485,6 +984,78 @@ document.documentElement.classList.replace("nojs", "js");
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
 
+    const shopCards = document.querySelector(".shop-cards");
+    const leftArrow = document.querySelector(".shop-arrow-left");
+    const rightArrow = document.querySelector(".shop-arrow-right");
+
+    if (shopCards && leftArrow && rightArrow) {
+      const scrollAmount = () => {
+        const card = shopCards.querySelector(".shop-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      leftArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const updateArrows = () => {
+        const maxScroll = shopCards.scrollWidth - shopCards.clientWidth;
+        leftArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft <= 4);
+        rightArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft >= maxScroll - 4);
+      };
+
+      shopCards.addEventListener("scroll", () => {
+        updateArrows();
+      }, { passive: true });
+      updateArrows();
+    }
+
+    document.querySelectorAll(".trust-cards").forEach((trustCards) => {
+      const trustSection = trustCards.closest(".trust-section");
+      const trustArrowLeft = trustSection && trustSection.querySelector(".trust-arrow-left");
+      const trustArrowRight = trustSection && trustSection.querySelector(".trust-arrow-right");
+
+      if (!trustSection || !trustCards || !trustArrowLeft || !trustArrowRight) return;
+
+      const trustScrollAmount = () => {
+        const card = trustCards.querySelector(".trust-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      trustArrowLeft.addEventListener("click", () => {
+        trustCards.scrollBy({ left: -trustScrollAmount(), behavior: "smooth" });
+      });
+
+      trustArrowRight.addEventListener("click", () => {
+        trustCards.scrollBy({ left: trustScrollAmount(), behavior: "smooth" });
+      });
+
+      const updateTrustArrows = () => {
+        const maxScroll = trustCards.scrollWidth - trustCards.clientWidth;
+        trustArrowLeft.classList.toggle("arrow-hidden", trustCards.scrollLeft <= 4);
+        trustArrowRight.classList.toggle("arrow-hidden", trustCards.scrollLeft >= maxScroll - 4);
+      };
+
+      trustCards.addEventListener("scroll", () => {
+        updateTrustArrows();
+      }, { passive: true });
+      updateTrustArrows();
+    });
+
+    document.querySelectorAll("[data-open-bot]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const botWindow = document.getElementById("lixbot-window");
+        const botToggle = document.getElementById("lixbot-toggle");
+        if (botWindow && botToggle && botWindow.classList.contains("lixbot-hidden")) {
+          botToggle.click();
+        }
+      });
+    });
+
     const query = new URLSearchParams(window.location.search).get("q");
     if (query) {
       const normalizedQuery = query.toLowerCase().trim();
@@ -495,18 +1066,16 @@ document.documentElement.classList.replace("nojs", "js");
         item.style.display = match ? "" : "none";
         if (match) matches += 1;
       });
-      if (statusEl) {
-        if (matches > 0) {
-          statusEl.textContent = `Wyniki dla: ${query}`;
-        } else {
-          statusEl.textContent = `Brak wyników dla: ${query}`;
-        }
+      if (matches > 0) {
+        showShopToast(`wyniki dla: ${query}`);
+      } else {
+        showShopToast(`brak wyników dla: ${query}`, "warning");
       }
     }
   </script>
 
   <!-- =====================================================
-       MINIBOT LIXBY
+       MINIBOT Lixby
   ====================================================== -->
   <style>
     #lixbot-toggle {
@@ -531,7 +1100,7 @@ document.documentElement.classList.replace("nojs", "js");
       box-shadow: 0 12px 44px rgba(15,23,42,0.14);
       display: flex; flex-direction: column;
       overflow: hidden; z-index: 9998;
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif;
       transition: opacity 0.2s, transform 0.2s;
     }
     #lixbot-window.lixbot-hidden { opacity: 0; pointer-events: none; transform: translateY(14px); }
@@ -601,7 +1170,7 @@ document.documentElement.classList.replace("nojs", "js");
       flex: 1; border: none; outline: none;
       padding: 12px 6px; font-size: 13px;
       background: transparent; color: #111827;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
     }
     #lixbot-input::placeholder { color: #c4c9d4; }
     #lixbot-clearbtn {
@@ -616,7 +1185,7 @@ document.documentElement.classList.replace("nojs", "js");
     }
   </style>
 
-  <button id="lixbot-toggle" aria-label="Otwórz asystenta Lixby">
+  <button id="lixbot-toggle" aria-label="otwórz kreatora Lixby">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
          stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -624,17 +1193,17 @@ document.documentElement.classList.replace("nojs", "js");
     <span id="lixbot-badge"></span>
   </button>
 
-  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Asystent Lixby">
+  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="asystent Lixby">
     <div id="lixbot-header">
       <div class="lixbot-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
              stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
       </div>
       <div>
-        <div class="lixbot-title">Asystent Lixby</div>
-        <div class="lixbot-sub">Natychmiastowe odpowiedzi</div>
+        <div class="lixbot-title">asystent Lixby</div>
+        <div class="lixbot-sub">natychmiastowe odpowiedzi</div>
       </div>
       <button id="lixbot-close" aria-label="Zamknij">✕</button>
     </div>
@@ -642,11 +1211,11 @@ document.documentElement.classList.replace("nojs", "js");
     <div id="lixbot-messages"></div>
 
     <div id="lixbot-cats">
-      <button class="lixbot-cat" data-cat="envios">📦 Wysyłka</button>
-      <button class="lixbot-cat" data-cat="devoluciones">↩️ Zwroty</button>
-      <button class="lixbot-cat" data-cat="pagos">💳 Płatności</button>
-      <button class="lixbot-cat" data-cat="pedidos">🛒 Zamówienia</button>
-      <button class="lixbot-cat" data-cat="productos">🎧 Produkty</button>
+      <button class="lixbot-cat" data-cat="envios">📦 przesyłki</button>
+      <button class="lixbot-cat" data-cat="devoluciones">↩️powraca</button>
+      <button class="lixbot-cat" data-cat="pagos">💳 płatności</button>
+      <button class="lixbot-cat" data-cat="pedidos">🛒 zamówienia</button>
+      <button class="lixbot-cat" data-cat="productos">🎧 produkty</button>
       <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
     </div>
 
@@ -654,8 +1223,8 @@ document.documentElement.classList.replace("nojs", "js");
 
     <div id="lixbot-footer">
       <span id="lixbot-search-icon">🔍</span>
-      <input id="lixbot-input" type="text" placeholder="Wyszukaj pytanie..." autocomplete="off" maxlength="120" />
-      <button id="lixbot-clearbtn" aria-label="Wyczyść">✕</button>
+      <input id="lixbot-input" type="text" placeholder="wyszukaj swoje pytanie..." autocomplete="off" maxlength="120" />
+      <button id="lixbot-clearbtn" aria-label="czysty">✕</button>
     </div>
   </div>
 
@@ -663,76 +1232,74 @@ document.documentElement.classList.replace("nojs", "js");
   (function () {
     var KB = {
       envios: { items: [
-        { q: 'Ile trwa standardowa wysyłka?',
-          a: 'Standardowa wysyłka trwa od 5 do 10 dni roboczych. Otrzymasz e-mail z numerem śledzenia, gdy paczka opuści nasz magazyn.' },
-        { q: 'Czy oferują Państwo wysyłkę ekspresową?',
-          a: 'Tak, wysyłka ekspresowa w ciągu 24-48 h dla zamówień złożonych przed godziną 13:00 (dni robocze). Dostępna na terenie kraju. Wybierz ją przy finalizacji zakupu.' },
+        { q: 'Jak długo trwa standardowa wysyłka?',
+          a: 'Wysyłka standardowa trwa 8-15 dni roboczych. Gdy tylko przesyłka opuści nasz magazyn, otrzymasz e-mail z numerem przesyłki.' },
         { q: 'Czy wysyłka jest bezpłatna?',
-          a: 'Wysyłka jest całkowicie bezpłatna.' },
-        { q: 'Czy wysyłacie do Wysp Kanaryjskich i Balearów?',
-          a: 'Tak, wysyłamy na cały teren kraju. Czas dostawy na Wyspy Kanaryjskie, Baleary, do Ceuty i Melilli może wynosić od 5 do 8 dni roboczych.' },
+          a: 'całkowicie darmowa wysyłka.' },
+        { q: 'Czy wysyłacie na Wyspy Kanaryjskie i Baleary?',
+          a: 'Tak, wysyłamy na terenie całego kraju. Szacowany czas dostawy wynosi od 8 do 15 dni roboczych.' },
         { q: 'Czy wysyłacie poza Hiszpanię?',
-          a: 'Tak, realizujemy wysyłki do całej Unii Europejskiej. Koszt i czas dostawy są obliczane automatycznie po wprowadzeniu adresu.' }
+          a: 'Tak, wysyłamy na terenie całej Unii Europejskiej. Wysyłka jest bezpłatna, a szacowany czas dostawy wynosi od 8 do 15 dni roboczych.' }
       ]},
       devoluciones: { items: [
-        { q: 'Ile dni mam na zwrot?',
-          a: 'Masz 14 dni kalendarzowych od daty otrzymania przesyłki na żądanie zwrotu lub wymiany, bez podawania przyczyny.' },
+        { q: 'Ile dni mam na powrót?',
+          a: 'Masz 14 dni kalendarzowych od daty otrzymania, aby skorzystać z prawa do odstąpienia od umowy, bez konieczności podawania przyczyny.' },
         { q: 'Jak zainicjować zwrot?',
-          a: 'Wejdź w "Moje konto → Moje zamówienia", wybierz przedmiot i kliknij "Zażądaj zwrotu". Otrzymasz darmowy etykietę wysyłkową w ciągu 24 godzin.' },
-        { q: 'W jakim stanie powinien być zwracany przedmiot?',
-          a: 'Produkt musi być nieużywany, z wszystkimi metkami i w oryginalnym opakowaniu. Nie przyjmujemy artykułów ze śladami użytkowania.' },
-        { q: 'Kiedy otrzymam zwrot pieniędzy?',
-          a: 'Po otrzymaniu i sprawdzeniu przedmiotu (1-2 dni), zwrot jest przetwarzany w ciągu 5-7 dni roboczych na tę samą metodę płatności.' },
+          a: 'poinformuj o swojej decyzji o odstąpieniu info@lixby.es i podaj numer zamówienia. Bezpośrednie koszty zwrotu pokrywasz Ty, chyba że produkt jest wadliwy lub wysyłka była nieprawidłowa.' },
+        { q: 'Na jakich warunkach powinienem zwrócić przedmiot?',
+          a: 'Możesz obejrzeć produkt tak samo jak w sklepie. Prawo do odstąpienia od umowy ma wyjątki prawne, na przykład w przypadku niektórych produktów zapieczętowanych ze względów higienicznych, które zostały otwarte.' },
+        { q: 'kiedy otrzymam zwrot pieniędzy?',
+          a: 'Zwrot środków dokonamy niezwłocznie po otrzymaniu i sprawdzeniu Twojego zwrotu, ale zawsze w ciągu 14 dni kalendarzowych od momentu powiadomienia nas o odstąpieniu od umowy. Po wydaniu przelewu może minąć od 5 do 10 dni roboczych, zanim Twój bank odzwierciedli go na Twoim koncie.' },
         { q: 'Czy mogę zmienić rozmiar lub kolor?',
-          a: 'Tak, realizujemy wymiany, jeśli towar jest dostępny. Złóż żądanie tak jak przy zwrocie i wskaż "wymiana" jako powód. Bez dodatkowych kosztów.' }
+          a: 'Prawo do odstąpienia od umowy wynosi 14 dni kalendarzowych. Jeśli chcesz inny wariant, możesz złożyć nowe zamówienie po powiadomieniu o wycofaniu.' }
       ]},
       pagos: { items: [
         { q: 'Jakie metody płatności akceptujecie?',
           a: 'Akceptujemy karty (Visa, Mastercard, Amex), PayPal, Bizum i przelew bankowy. Wszystkie płatności są bezpieczne dzięki szyfrowaniu SSL.' },
-        { q: 'Czy ceny zawierają VAT?',
-          a: 'Tak, wszystkie ceny w sklepie zawierają już VAT. Żadnych niespodzianek przy kasie.' },
-        { q: 'Czy macie zniżki lub kody promocyjne?',
-          a: 'Publikujemy oferty w sekcji "Promocje" i wysyłamy ekskluzywne kody w newsletterze. Zapisz się, aby niczego nie przegapić!' },
-        { q: 'Czy mogę płacić w ratach?',
-          a: 'Nie, możliwe są tylko płatności jednorazowe.' },
+        { q: 'Czy ceny zawierają podatek VAT?',
+          a: 'Tak, wszystkie ceny w sklepie zawierają już podatek VAT. Kiedy dotrzesz do kasy, nie będzie żadnych niespodzianek.' },
+        { q: 'Czy masz zniżki lub kody promocyjne?',
+          a: 'Oferty publikujemy w dziale „oferty” oraz wysyłamy ekskluzywne kody do newslettera. Subskrybuj, aby żadnego nie przegapić!' },
+        { q: 'Czy mogę zapłacić w ratach?',
+          a: 'nie, są tylko jednorazowe płatności' },
         { q: 'Czy oferujecie karty podarunkowe?',
-          a: 'Tak, karty podarunkowe od 10 € do 200 €. Są dostarczane e-mailem natychmiast i ważne przez 1 rok.' }
+          a: 'tak, karty podarunkowe od 10 do 200 euro. Są dostarczane natychmiast e-mailem i są ważne przez 1 rok.' }
       ]},
       pedidos: { items: [
-        { q: 'Gdzie mogę sprawdzić status mojego zamówienia?',
-          a: 'W "Moje konto → Moje zamówienia" możesz sprawdzić status w czasie rzeczywistym. Otrzymasz również automatyczne e-maile przy każdej zmianie statusu.' },
-        { q: 'Jak śledzić przesyłkę?',
-          a: 'Gdy zamówienie opuści magazyn, otrzymasz e-mail z numerem śledzenia i bezpośrednim linkiem do przewoźnika.' },
-        { q: 'Czy mogę zmodyfikować lub anulować zamówienie?',
-          a: 'Możesz je anulować lub zmodyfikować w ciągu pierwszych 2 godzin. Napisz do nas na info@lixby.es tak szybko, jak to możliwe.' },
-        { q: 'Co zrobić, jeśli zamówienie przyszło uszkodzone?',
-          a: 'Wyślij nam zdjęcie przedmiotu i opakowania na info@lixby.es w ciągu 48 godzin. Wyślemy ci zamiennik lub dokonamy pełnego zwrotu bez kosztów.' },
+        { q: 'Gdzie mogę zobaczyć status mojego zamówienia?',
+          a: 'W zakładce „moje konto → moje zamówienia” możesz zobaczyć status zamówienia w czasie rzeczywistym. Będziesz także otrzymywać automatyczne e-maile z każdą zmianą statusu.' },
+        { q: 'Jak śledzić?',
+          a: 'Gdy zamówienie opuści magazyn, otrzymasz wiadomość e-mail z numerem przesyłki i bezpośrednim linkiem do przewoźnika.' },
+        { q: 'Czy mogę zmodyfikować lub anulować swoje zamówienie?',
+          a: 'Możesz go anulować lub zmodyfikować w ciągu pierwszych 2 godzin. napisz do nas na adres info@lixby.es tak szybko, jak to możliwe.' },
+        { q: 'Co mam zrobić, jeśli przesyłka dotrze uszkodzona?',
+          a: 'Jeśli przesyłka dotrze do Ciebie uszkodzona w transporcie lub zawiera niewłaściwy element, napisz do nas na adres info@lixby.es, najlepiej w ciągu 48 godzin, i dołącz zdjęcia, aby przyspieszyć realizację. Niniejsza uwaga nie ogranicza 3-letniej gwarancji prawnej.' },
         { q: 'Czy mogę dodać produkty do już złożonego zamówienia?',
-          a: 'Nie jest możliwe dodanie produktów do realizowanego zamówienia. Jeśli nie jest jeszcze przygotowywane, możesz je anulować i złożyć nowe.' }
+          a: 'Nie ma możliwości dodania produktów do trwającego zamówienia. Jeśli nie jest jeszcze w przygotowaniu, możesz go anulować i stworzyć nowy.' }
       ]},
       productos: { items: [
-        { q: 'Czym są LixBuds One?',
-          a: 'LixBuds One to nasze premiumowe słuchawki z inteligentną redukcją szumów. Dostępne od 99 €.' },
-        { q: 'Czym jest aplikacja Lixney?',
-          a: 'Lixney to nasza darmowa aplikacja do oszczędzania, planowania i kontroli osobistych wydatków. Dostępna na iOS i Androida.' },
-        { q: 'Czy produkty mają gwarancję?',
-          a: 'Tak, wszystkie nasze produkty mają 3 lata oficjalnej gwarancji. Więcej informacji w sekcji Gwarancja w dziale pomocy.' },
-        { q: 'Czy LixBuds One są kompatybilne ze wszystkimi urządzeniami?',
-          a: 'Tak, LixBuds One są kompatybilne z każdym urządzeniem z Bluetooth 5.0 lub nowszym: iOS, Android, Windows i macOS.' },
-        { q: 'Kiedy pojawiają się nowe produkty?',
-          a: 'Ogłaszamy nowości w naszym newsletterze i mediach społecznościowych. Zapisz się, aby dowiedzieć się jako pierwszy.' }
+        { q: 'co to jest LixBuds One?',
+          a: 'LixBuds One to nasze wysokiej klasy inteligentne słuchawki z redukcją szumów. dostępne od 99,00 €.' },
+        { q: 'Co to jest aplikacja Lixney?',
+          a: 'Lixney to nasza bezpłatna aplikacja do zapisywania, planowania i analizowania Twoich osobistych wydatków. dostępne dla Androida.' },
+        { q: 'Czy istnieje gwarancja na produkty?',
+          a: 'Produkty fizyczne objęte są 3-letnią gwarancją prawną od daty dostawy. Więcej informacji w części dotyczącej gwarancji w ramach wsparcia.' },
+        { q: 'Czy LixBuds One jest kompatybilny ze wszystkimi urządzeniami?',
+          a: 'Tak, LixBuds One są kompatybilne z każdym urządzeniem z Bluetooth 6.0 lub nowszym: iOS, Android, Windows i Macos.' },
+        { q: 'kiedy pojawiają się nowe produkty?',
+          a: 'O nowościach informujemy w naszym newsletterze i na portalach społecznościowych. Zapisz się, aby dowiedzieć się pierwszego.' }
       ]},
       faq: { items: [
         { q: 'Czy potrzebuję konta, aby dokonać zakupu?',
-          a: 'Nie, możesz kupić jako gość. Dzięki koncie będziesz mógł śledzić zamówienia, zapisywać adresy i łatwo przeglądać swoją historię.' },
-        { q: 'Czy zakupy w Lixby są bezpieczne?',
-          a: 'Tak. Używamy szyfrowania SSL na całej stronie i nie przechowujemy danych karty. Płatności są przetwarzane przez platformy certyfikowane PCI-DSS.' },
-        { q: 'Czy macie sklep stacjonarny?',
-          a: 'Obecnie działamy w 100% online. Możesz się z nami skontaktować przez czat, e-mail lub telefon w godzinach naszej obsługi.' },
-        { q: 'Jakie są godziny obsługi?',
-          a: 'Poniedziałek - piątek od 9:00 do 18:00. Na e-maile odpowiadamy w ciągu 24 godzin. Ten asystent jest dostępny 24/7.' },
+          a: 'nie, możesz dokonać zakupu jako gość. Posiadając konto możesz łatwo śledzić zamówienia, zapisywać adresy i przeglądać swoją historię.' },
+        { q: 'Czy kupowanie w Lixby jest bezpieczne?',
+          a: 'Tak. Na całej stronie używamy szyfrowania SSL i nie przechowujemy danych kart. Płatności przetwarzane za pomocą platform z certyfikatem PCI-DSS.' },
+        { q: 'Czy masz sklep fizyczny?',
+          a: 'Obecnie jesteśmy w 100% online. Możesz skontaktować się z nami przez czat, e-mail lub telefon w godzinach pracy.' },
+        { q: 'Jakie są godziny otwarcia?',
+          a: 'Od poniedziałku do piątku od 9:00 do 18:00 Odpowiadamy e-mailem w mniej niż 24 godziny. Asystent ten jest dostępny 24 godziny na dobę, 7 dni w tygodniu.' },
         { q: 'Jak skontaktować się z Lixby?',
-          a: 'Napisz do nas na info@lixby.es lub użyj formularza na pages/support.html. Odpowiadamy w ciągu 24 godzin.' }
+          a: 'napisz do nas na info@lixby.es lub skorzystaj z formularza w /pl/support/. Odpowiadamy w mniej niż 24 godziny.' }
       ]}
     };
 
@@ -750,7 +1317,7 @@ document.documentElement.classList.replace("nojs", "js");
     function openBot() {
       win.classList.remove('lixbot-hidden');
       badge.style.display = 'none';
-      if (!opened) { addMsg('Cześć! 👋 Wybierz kategorię lub wpisz pytanie w wyszukiwarce.', 'lixbot-bot'); opened = true; }
+      if (!opened) { addMsg('Witam! 👋 Wybierz kategorię lub wpisz pytanie w wyszukiwarce.', 'lixbot-bot'); opened = true; }
       input.focus();
     }
 
@@ -805,7 +1372,7 @@ document.documentElement.classList.replace("nojs", "js");
       if (!results.length) {
         var p = document.createElement('p');
         p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
-        p.textContent = 'Brak wyników. Spróbuj innych słów.';
+        p.textContent = 'żadnych wyników. Spróbuj innych słów.';
         qsDiv.appendChild(p);
         return;
       }
@@ -821,8 +1388,128 @@ document.documentElement.classList.replace("nojs", "js");
     });
   })();
   </script>
-  <!-- KONIEC MINIBOTA LIXBY -->
+  <!-- FIN MINIBOT Lixby -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.shop-card');
+
+      function fixShopCards() {
+        cards.forEach(card => {
+          const media = card.querySelector('.shop-card-media');
+          if (!media) return;
+
+          const cardRect = card.getBoundingClientRect();
+          const mediaRect = media.getBoundingClientRect();
+
+          const gap = cardRect.bottom - mediaRect.bottom;
+
+          if (Math.abs(gap) > 0.5) {
+            media.style.marginBottom = `${-gap}px`;
+          }
+        });
+      }
+
+      fixShopCards();
+      window.addEventListener('resize', fixShopCards);
+
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(fixShopCards);
+        cards.forEach(card => {
+          if (card.querySelector('.shop-card-media')) ro.observe(card);
+        });
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 

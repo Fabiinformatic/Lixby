@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+  <meta charset="UTF-8">
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
@@ -10,7 +11,7 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/es/centro-ayuda/faq">
+  <link rel="canonical" href="https://lixby.es/pl/help-center/faq">
   <link rel="alternate" href="https://lixby.es/bg/help-center/faq" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/help-center/faq" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/help-center/faq" hreflang="da-DK">
@@ -37,99 +38,182 @@
   <link rel="alternate" href="https://lixby.es/sv/help-center/faq" hreflang="sv-SE">
   <link rel="alternate" href="https://lixby.es/en/help-center/faq" hreflang="x-default">
 
-          <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Często zadawane pytania | Lixby</title>
-  <meta name="description" content="Szybkie odpowiedzi na najczęstsze pytania dotyczące Lixby.">
+  <title>Lixby FAQ | Pomoc i zakupy</title>
+  <meta name="description" content="Znajdź odpowiedzi na temat produktów Lixby, płatności, wysyłki, zwrotów, gwarancji i zarządzania kontem w naszych często zadawanych pytaniach.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://lixby.es/pl/help-center/faq">
+  <meta property="og:title" content="Lixby FAQ | pomoc i zakupy">
+  <meta property="og:description" content="Znajdź odpowiedzi na temat produktów Lixby, płatności, wysyłki, zwrotów, gwarancji i zarządzania kontem w naszych często zadawanych pytaniach.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Produkty i usługi Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lixby FAQ | pomoc i zakupy">
+  <meta name="twitter:description" content="Znajdź odpowiedzi na temat produktów Lixby, płatności, wysyłki, zwrotów, gwarancji i zarządzania kontem w naszych często zadawanych pytaniach.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Produkty i usługi Lixby">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <style>
-    html, body { margin: 0; padding: 0; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pl/style.css">
+    <style>
+html, body { margin: 0; padding: 0; }
     .help-hero {
-      min-height: 45vh;
+      position: relative;
+      min-height: 60vh;
+      min-height: 60svh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, #0f4c81 0%, #1a7cc0 55%, #6cc4ff 100%);
-      color: var(--color-white);
+      padding: calc(6rem) var(--spacing-6) var(--spacing-24);
       text-align: center;
+      overflow: hidden;
     }
-    .help-hero h1 { font-size: var(--font-size-5xl); margin-bottom: var(--spacing-4); }
-    .help-hero p { font-size: var(--font-size-xl); opacity: 0.9; max-width: 720px; margin: 0 auto; }
-    .faq-section {
-      padding: var(--spacing-24) var(--spacing-6);
-      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
-    }
-    .faq-container {
-      max-width: 800px;
+    .help-hero-inner {
+      position: relative;
+      max-width: 760px;
       margin: 0 auto;
+      z-index: 1;
     }
-    .faq-container h2 {
-      font-size: var(--font-size-4xl);
-      font-weight: 600;
-      margin-bottom: var(--spacing-6);
-      text-align: center;
-    }
-    .faq-item {
-      margin-bottom: 16px;
-      background: white;
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      overflow: hidden;
-    }
-    .faq-question {
-      padding: 22px 26px;
-      width: 100%;
-      border: none;
-      background: white;
-      font-size: 18px;
-      font-weight: 600;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
+    .help-hero .badge {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      margin-bottom: var(--spacing-6);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
     }
-    .faq-question:hover {
-      background: #f9fafb;
+    .help-hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: var(--spacing-8);
+      color: var(--text, #111827);
     }
-    .faq-question::after {
-      content: "+";
-      font-size: 20px;
-      transition: transform 0.25s ease;
+    .help-hero h1 .grad {
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .faq-question[aria-expanded="true"]::after {
-      content: "×";
-      transform: rotate(0deg);
-    }
-    .faq-answer {
-      padding: 0 26px;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition:
-        max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.45s ease,
-        padding 0.45s ease,
-        transform 0.45s ease;
-      color: #4b5563;
+    .help-hero p.lead {
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+      color: var(--muted, #5f6b7a);
+      max-width: 680px;
+      margin: 0 auto;
       line-height: 1.7;
     }
-    .faq-answer.active {
-      padding: 18px 26px 24px;
-      max-height: 420px;
-      opacity: 1;
-      transform: translateY(0);
+    .help-section { padding: var(--spacing-12) var(--spacing-6) var(--spacing-20); }
+    .help-container { max-width: 1120px; margin: 0 auto; }
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--spacing-12);
     }
+    .help-section .section-head::after { display: none; }
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-intro {
+      text-align: center;
+      font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+      max-width: 560px;
+      margin: 0 auto var(--spacing-10);
+    }
+    .step-list {
+      display: grid;
+      gap: var(--spacing-4);
+      margin: 0 0 var(--spacing-10);
+    }
+    .step-item {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-6);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+    }
+    .step-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .step-item p { margin: 0; color: var(--muted, #5f6b7a); }
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .help-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      transition: opacity 0.6s var(--ease-lix), transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      color: inherit;
+    }
+    .help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .help-grid .help-card.reveal { opacity: 0; transform: none; }
+    .help-grid .help-card.reveal.visible { opacity: 1; }
+    .help-card h3 { margin: 0 0 var(--spacing-3); font-size: var(--font-size-xl); }
+    .help-card p { margin: 0 0 var(--spacing-4); color: var(--muted, #5f6b7a); }
+    .help-card .btn { margin-top: auto; align-self: flex-start; }
+    .note-box {
+      margin-top: var(--spacing-10);
+      padding: var(--spacing-6);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      color: var(--text);
+    }
+    .note-box strong { color: var(--primary); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--spacing-6); }
     @media (max-width: 768px) {
       .help-hero { padding: var(--spacing-16) var(--spacing-4); }
+      .help-section { padding: var(--spacing-10) var(--spacing-4) var(--spacing-16); }
     }
+    .faq-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .faq-container .section-head::after { display: none; }
+    .faq .faq-item { transition: opacity 0.7s var(--ease-lix), transform 0.7s var(--ease-lix), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1); }
   </style>
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icon.png">
@@ -145,16 +229,348 @@
       ]
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Start",
+          "item": "https://lixby.es/pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Centrum pomocy",
+          "item": "https://lixby.es/pl/help-center/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Często zadawane pytania",
+          "item": "https://lixby.es/pl/help-center/faq"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jaka jest żywotność baterii LixBuds One?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LixBuds One posiada baterię wystarczającą na 6 godzin ciągłego odtwarzania. Dzięki etui ładującemu masz łącznie do 60 godzin odtwarzania."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy LixBuds One są wodoodporne?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, LixBuds One posiada certyfikat IPX6, co oznacza, że ​​jest odporny na pot i zachlapania. Nie są całkowicie zanurzalne."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Z jakimi urządzeniami jest kompatybilny Lixney?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lixney działa na Androidzie 6.0 lub nowszym. Twoje dane są zapisywane na urządzeniu i możesz je wyeksportować lub zaimportować w formacie json."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy moje dane są bezpieczne w Lixney?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak. Lixney zapisuje Twoje dane na Twoim urządzeniu i nie synchronizuje ich z chmurą, dzięki czemu masz kontrolę nad swoimi informacjami. Możesz go eksportować lub importować, kiedy tylko chcesz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zwrócić zakup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Z przysługującego Ci zgodnie z prawem prawa odstąpienia od umowy możesz skorzystać w ciągu 14 dni kalendarzowych od otrzymania zamówienia, bez podawania przyczyny. Sprawdź warunki i koszty zwrotu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak zgłosić problem techniczny?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Możesz skontaktować się z naszym zespołem pomocy technicznej za pomocą poniższego formularza kontaktowego lub wysyłając wiadomość e-mail na adres info@lixby.es."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "jak długo trwa wysyłka?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Szacowany czas standardowej wysyłki wynosi od 8 do 15 dni roboczych."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co obejmuje gwarancja?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Produkty fizyczne objęte są 3-letnią gwarancją prawną od daty dostawy. Nie obejmuje uszkodzeń powstałych w wyniku niewłaściwego użytkowania lub wypadków."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jakie metody płatności akceptujecie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Akceptujemy karty kredytowe i debetowe, oprócz innych metod dostępnych przy kasie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "jak zresetować mój LixBuds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Naciśnij i przytrzymaj przycisk parowania przez 10 sekund, aż dioda LED zacznie migać, i połącz się ponownie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zmienić adres dostawy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, możesz poprosić o zmianę w ciągu pierwszych 12 godzin od zakupu ze swojego konta lub kontaktując się z pomocą techniczną."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co mam zrobić, jeśli zamówienie dotrze niekompletne?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Napisz do nas podając numer zamówienia i dołącz zdjęcia paczki. Rozwiązujemy go w ciągu 24-48 godzin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak aktywować redukcję szumów?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Naciśnij i przytrzymaj przez 2 sekundy panel dotykowy prawej słuchawki."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy oferujecie faktury dla firm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, podczas realizacji transakcji możesz podać swoje dane podatkowe. Możesz także poprosić o to ze swojego konta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gdzie mogę zobaczyć status mojego zamówienia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Możesz sprawdzić śledzenie na stronie śledzenia, wprowadzając numer zamówienia lub ze swojego konta Lixby."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co mam zrobić, jeśli mój LixBuds nie ładuje się?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Delikatnie wyczyść styki ładujące, wypróbuj inny kabel USB-C i pozostaw obudowę podłączoną na 20 minut, zanim spróbujesz ponownie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak sparować LixBuds z nowym telefonem komórkowym?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Otwórz obudowę, naciśnij i przytrzymaj przycisk parowania, aż dioda LED zacznie migać, a następnie wybierz LixBuds One w ustawieniach Bluetooth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę anulować zamówienie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Możesz poprosić o anulowanie zamówienia, jeśli zamówienie nie zostało jeszcze przygotowane. Napisz do nas jak najszybciej, podając numer zamówienia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "kiedy otrzymam zwrot pieniędzy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zwrot środków dokonamy niezwłocznie po otrzymaniu i sprawdzeniu Twojego zwrotu, ale zawsze w ciągu 14 dni kalendarzowych od momentu powiadomienia nas o odstąpieniu od umowy. Po wydaniu przelewu może minąć od 5 do 10 dni roboczych, zanim Twój bank odzwierciedli go na Twoim koncie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy Lixney działa w trybie offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lixney działa w trybie offline: Twoje dane są zapisywane na urządzeniu. Do zarządzania kontem potrzebujesz jedynie Internetu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak zmienić adres e-mail konta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zaloguj się na swoje konto, otwórz ustawienia profilu i zaktualizuj swój adres e-mail. konieczne może być potwierdzenie zmiany w obu wiadomościach e-mail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co zawiera pudełko LixBuds One?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zawiera słuchawki, etui ładujące, kabel USB-C, zapasowe nauszniki i podstawową dokumentację użytkowania."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę używać tylko jednej słuchawki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, możesz używać lewej lub prawej słuchawki niezależnie do rozmów, słuchania muzyki lub korzystania z asystentów głosowych."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak czyścić słuchawki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "używaj suchej ściereczki i miękkich wacików bawełnianych. Nie używaj bezpośrednio wody, alkoholu ani produktów ściernych na kratkach lub stykach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zmienić hasło dla Lixby?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, możesz to zrobić na stronie zmiany hasła lub korzystając z funkcji odzyskiwania hasła, jeśli nie pamiętasz swojego obecnego."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co się stanie, jeśli nie otrzymam e-maila weryfikacyjnego?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sprawdź, czy nie ma spamu lub promocji, potwierdź, że wiadomość e-mail została napisana poprawnie i poproś o ponowne wysłanie wiadomości z ekranu konta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę poprosić o pomoc przy zakupie dokonanym jako gość?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, podaj adres e-mail użyty do zakupu i numer zamówienia, abyśmy mogli je zlokalizować."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Skąd mam wiedzieć, czy mój produkt jest objęty gwarancją?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sprawdź datę zakupu i rodzaj zdarzenia. Gwarancja obejmuje wady produkcyjne, a nie przypadkowe uszkodzenie lub niewłaściwe użycie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy LixBuds One jest kompatybilny z urządzeniami iPhone i iOS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak. LixBuds One łączy się przez Bluetooth z iPhonem, iPadem i komputerem Mac oraz obsługuje Siri."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mają aktywną redukcję szumów?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, LixBuds One obejmuje aktywną redukcję szumów w trybie przezroczystym. Tryby można przełączać za pomocą panelu dotykowego."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak zaktualizować oprogramowanie sprzętowe LixBuds One?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aktualizacje oprogramowania sprzętowego są zarządzane przez Lixby i ogłaszane w sekcji aktualności i aktualizacji."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę je podłączyć do dwóch urządzeń jednocześnie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, LixBuds One obsługuje połączenie wielopunktowe: możesz je połączyć jednocześnie z telefonem komórkowym i komputerem i automatycznie przełączać się z jednego urządzenia na drugie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co mam zrobić, jeśli zgubię słuchawkę lub etui?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skontaktuj się z pomocą techniczną, podając numer zamówienia. Możemy zaoferować części zamienne lub specjalne warunki wymiany utraconego zestawu słuchawkowego lub etui."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "jak wyeksportować moje dane z Lixney?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Możesz wyeksportować dane z ustawień aplikacji w formacie json lub csv. Plik jest generowany lokalnie na Twoim urządzeniu i możesz go pobrać lub udostępnić."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zmienić adres dostawy po zakupie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, o ile zamówienie nie opuściło jeszcze naszego magazynu. Napisz do nas, podając numer zamówienia i nowy adres, a my zaktualizujemy go najszybciej, jak to możliwe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak działają kupony rabatowe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wpisz kod w sekcji kuponu podczas realizacji transakcji. Każdy kupon wskazuje na stronie każdej oferty rabat, datę ważności oraz produkty, których dotyczy."
+          }
+        }
+      ]
+    }
+  </script>
+  <noscript>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
 </head>
 <body>
 
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="/pl/" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Główne">
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
         <a href="/pl/shop/" class="nav-link">Sklep</a>
-        <a href="/pl/#productos" class="nav-link">Produkty</a>
-        <a href="/pl/#apps" class="nav-link">Aplikacje</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
         <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
       <div class="nav-actions">
@@ -164,320 +580,573 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/pl/shop/" method="get">
+        <form id="navSearchForm" action="/pl/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Szukaj produktu..."
-            aria-label="Szukaj produktu"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
           >
         </form>
         <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
-          <img src="../images/Bolsa.png" alt="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
         </a>
         <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="../images/cuenta.png" alt="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
-  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/pl/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Szukaj"
-          aria-label="Szukaj produktu"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Zamknij menu">
-        <span aria-hidden="true">X</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Główne (mobile)">
-      <a href="/pl/shop/">Sklep</a>
-      <a href="/pl/#productos">Produkty</a>
-      <a href="/pl/#apps">Aplikacje</a>
-      <a href="/pl/support/">Wsparcie</a>
+    <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Sklep</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkty</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Wsparcie</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/pl/cart/">Koszyk</a>
-      <a href="/pl/account/">Konto</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Koszyk</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+        </div>
+      </div>
     </div>
   </div>
+
+
   <section class="help-hero">
-    <div>
+    <div class="help-hero-inner reveal" data-delay="0s">
       <span class="badge">Centrum pomocy</span>
-      <h1>Centrum pomocy Lixby</h1>
-      <p>Znajdź przewodniki, rozwiązanie problemów i bezpośredni kontakt z naszym zespołem.</p>
+      <h1>pytania <span class="grad">częsty</span></h1>
+      <p class="lead">Zapoznaj się z najczęściej zadawanymi pytaniami dotyczącymi produktów, wysyłki i gwarancji.</p>
     </div>
   </section>
-  <section class="faq-section" id="faq">
+  
+    <section class="help-section">
     <div class="faq-container">
-      <h2>Najczęściej zadawane pytania</h2>
-      <p style="text-align: center; color: var(--color-gray-600); margin-top: -12px; margin-bottom: var(--spacing-8);">
-        Szybkie odpowiedzi na typowe pytania.
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Wsparcie</p>
+        <h2>Często zadawane pytania</h2>
+      </div>
+      <p class="section-intro">
+        Szybkie odpowiedzi na często zadawane pytania.
       </p>
 
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1">
-          <span>Jaka jest żywotność baterii?</span>
+      
+      <div class="faq faq-list">
+      <div class="faq-item reveal" data-delay="0.00s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq1" aria-labelledby="faq1-label">
+          <span id="faq1-label">Jaka jest żywotność baterii LixBuds One?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a1">LixBuds oferuje do 6 godzin odtwarzania i 60 godzin z etui ładującym.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2">
-          <span>Jak długo trwa dostawa?</span>
-        </button>
-        <div class="faq-answer" id="faq-a2">Standardowa dostawa trwa od 5 do 7 dni roboczych.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3">
-          <span>Jak dokonać zwrotu?</span>
-        </button>
-        <div class="faq-answer" id="faq-a3">Rozpocznij proces na stronie zwrotów i dołącz numer zamówienia.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4">
-          <span>Co obejmuje gwarancja?</span>
-        </button>
-        <div class="faq-answer" id="faq-a4">Obejmuje wady fabryczne przez 3 lata od daty zakupu.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5">
-          <span>Czy LixBuds są wodoodporne?</span>
-        </button>
-        <div class="faq-answer" id="faq-a5">Tak, posiadają certyfikat IPX6 odporności na pot i zachlapania. Nie są przystosowane do zanurzania.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6">
-          <span>Z jakimi urządzeniami jest kompatybilny Lixney?</span>
-        </button>
-        <div class="faq-answer" id="faq-a6">Działa na Androidzie 6.0+. Możesz synchronizować wiele urządzeń ze swoim kontem.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a7">
-          <span>Jak zgłosić problem techniczny?</span>
-        </button>
-        <div class="faq-answer" id="faq-a7">Skorzystaj ze strony kontaktowej i opisz problem, dołączając numer zamówienia, jeśli dotyczy.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a8">
-          <span>Jakie metody płatności akceptujecie?</span>
-        </button>
-        <div class="faq-answer" id="faq-a8">Akceptujemy karty kredytowe i debetowe, a także inne metody dostępne przy kasie.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a9">
-          <span>Jak zresetować LixBuds?</span>
-        </button>
-        <div class="faq-answer" id="faq-a9">Przytrzymaj przycisk parowania przez 10 sekund, aż dioda LED zacznie migać.</div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a10">
-          <span>Czy mogę zmienić adres dostawy?</span>
-        </button>
-        <div class="faq-answer" id="faq-a10">Tak, możesz poprosić o zmianę w ciągu pierwszych 12 godzin ze swojego konta lub poprzez wsparcie.</div>
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
+          <p class="faq-answer-text">LixBuds One posiada baterię wystarczającą na 6 godzin ciągłego odtwarzania. Dzięki etui ładującemu masz łącznie do 60 godzin odtwarzania.</p>
+        </div>
       </div>
 
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a11">
-          <span>Jak włączyć redukcję szumów?</span>
+      <div class="faq-item reveal" data-delay="0.05s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq2" aria-labelledby="faq2-label">
+          <span id="faq2-label">Czy LixBuds One są wodoodporne?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a11">Przytrzymaj prawy panel dotykowy przez 2 sekundy lub włącz w aplikacji Lixney.</div>
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
+          <p class="faq-answer-text">Tak, LixBuds One posiada certyfikat IPX6, co oznacza, że ​​jest odporny na pot i zachlapania. Nie są całkowicie zanurzalne.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a12">
-          <span>Czy można używać tylko jednej słuchawki?</span>
+
+      <div class="faq-item reveal" data-delay="0.10s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq3" aria-labelledby="faq3-label">
+          <span id="faq3-label">Z jakimi urządzeniami jest kompatybilny Lixney?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a12">Tak, możesz używać lewej lub prawej słuchawki niezależnie w trybie mono.</div>
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
+          <p class="faq-answer-text">Lixney działa na Androidzie 6.0 lub nowszym. Twoje dane są zapisywane na urządzeniu i możesz je wyeksportować lub zaimportować w formacie json.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a13">
-          <span>Jak długo trwa zwrot pieniędzy?</span>
+
+      <div class="faq-item reveal" data-delay="0.15s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq4" aria-labelledby="faq4-label">
+          <span id="faq4-label">Czy moje dane są bezpieczne w Lixney?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a13">Zwroty są przetwarzane w ciągu 2-3 dni roboczych po otrzymaniu produktu.</div>
+        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
+          <p class="faq-answer-text">Tak. Lixney zapisuje Twoje dane na Twoim urządzeniu i nie synchronizuje ich z chmurą, dzięki czemu masz kontrolę nad swoimi informacjami. Możesz go eksportować lub importować, kiedy tylko chcesz.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a14">
-          <span>Co zrobić, jeśli zamówienie jest niekompletne?</span>
+
+      <div class="faq-item reveal" data-delay="0.20s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq5" aria-labelledby="faq5-label">
+          <span id="faq5-label">Czy mogę zwrócić zakup?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a14">Napisz do nas z numerem zamówienia i zdjęciami paczki. Rozwiążemy problem w ciągu 24-48 godzin.</div>
+        <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
+          <p class="faq-answer-text">Z przysługującego Ci zgodnie z prawem prawa odstąpienia od umowy możesz skorzystać w ciągu 14 dni kalendarzowych od otrzymania zamówienia, bez podawania przyczyny. Sprawdź warunki i koszty zwrotu.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a15">
-          <span>Czy mogę anulować zamówienie?</span>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq6" aria-labelledby="faq6-label">
+          <span id="faq6-label">Jak zgłosić problem techniczny?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a15">Możesz je anulować, jeśli nie zostało jeszcze wysłane. Napisz do nas jak najszybciej.</div>
+        <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-label">
+          <p class="faq-answer-text">Możesz skontaktować się z naszym zespołem pomocy technicznej za pomocą poniższego formularza kontaktowego lub wysyłając wiadomość e-mail na adres info@lixby.es.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a16">
-          <span>Jak zaktualizować oprogramowanie?</span>
+
+        <div class="faq-item reveal" data-delay="0.00s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq7" aria-labelledby="faq7-label">
+          <span id="faq7-label">jak długo trwa wysyłka?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a16">Otwórz aplikację Lixby i postępuj zgodnie z powiadomieniem o aktualizacji, gdy słuchawki są podłączone.</div>
+        <div class="faq-answer" id="faq7" role="region" aria-labelledby="faq7-label">
+          <p class="faq-answer-text">Szacowany czas standardowej wysyłki wynosi od 8 do 15 dni roboczych.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a17">
-          <span>Czy są zniżki dla studentów?</span>
+
+        <div class="faq-item reveal" data-delay="0.05s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq8" aria-labelledby="faq8-label">
+          <span id="faq8-label">Co obejmuje gwarancja?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a17">Tak, oferujemy okazjonalne zniżki. Sprawdź newsletter lub aktualne promocje.</div>
+        <div class="faq-answer" id="faq8" role="region" aria-labelledby="faq8-label">
+          <p class="faq-answer-text">Produkty fizyczne objęte są 3-letnią gwarancją prawną od daty dostawy. Nie obejmuje uszkodzeń powstałych w wyniku niewłaściwego użytkowania lub wypadków.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a18">
-          <span>Jak czyścić LixBuds?</span>
+
+        <div class="faq-item reveal" data-delay="0.10s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq9" aria-labelledby="faq9-label">
+          <span id="faq9-label">Jakie metody płatności akceptujecie?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a18">Użyj suchej ściereczki i miękkiego patyczka higienicznego. Unikaj bezpośredniego kontaktu z płynami.</div>
+        <div class="faq-answer" id="faq9" role="region" aria-labelledby="faq9-label">
+          <p class="faq-answer-text">Akceptujemy karty kredytowe i debetowe, oprócz innych metod dostępnych przy kasie.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a19">
-          <span>Czy LixBuds nadają się do rozmów?</span>
+
+        <div class="faq-item reveal" data-delay="0.15s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq10" aria-labelledby="faq10-label">
+          <span id="faq10-label">jak zresetować mój LixBuds?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a19">Tak, posiadają mikrofony z redukcją szumów zapewniające czyste rozmowy.</div>
+        <div class="faq-answer" id="faq10" role="region" aria-labelledby="faq10-label">
+          <p class="faq-answer-text">Naciśnij i przytrzymaj przycisk parowania przez 10 sekund, aż dioda LED zacznie migać, i połącz się ponownie.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a20">
-          <span>Gdzie mogę pobrać instrukcję?</span>
+
+        <div class="faq-item reveal" data-delay="0.20s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq11" aria-labelledby="faq11-label">
+          <span id="faq11-label">Czy mogę zmienić adres dostawy?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer" id="faq-a20">Poproś o nią ze strony kontaktowej, a wyślemy Ci aktualny plik PDF.</div>
+        <div class="faq-answer" id="faq11" role="region" aria-labelledby="faq11-label">
+          <p class="faq-answer-text">Tak, możesz poprosić o zmianę w ciągu pierwszych 12 godzin od zakupu ze swojego konta lub kontaktując się z pomocą techniczną.</p>
+        </div>
       </div>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq12" aria-labelledby="faq12-label">
+          <span id="faq12-label">Co mam zrobić, jeśli zamówienie dotrze niekompletne?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq12" role="region" aria-labelledby="faq12-label">
+          <p class="faq-answer-text">Napisz do nas podając numer zamówienia i dołącz zdjęcia paczki. Rozwiązujemy go w ciągu 24-48 godzin.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.00s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq13" aria-labelledby="faq13-label">
+          <span id="faq13-label">Jak aktywować redukcję szumów?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq13" role="region" aria-labelledby="faq13-label">
+          <p class="faq-answer-text">Naciśnij i przytrzymaj przez 2 sekundy panel dotykowy prawej słuchawki.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.05s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq14" aria-labelledby="faq14-label">
+          <span id="faq14-label">Czy oferujecie faktury dla firm?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq14" role="region" aria-labelledby="faq14-label">
+          <p class="faq-answer-text">Tak, podczas realizacji transakcji możesz podać swoje dane podatkowe. Możesz także poprosić o to ze swojego konta.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.10s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq15" aria-labelledby="faq15-label">
+          <span id="faq15-label">Gdzie mogę zobaczyć status mojego zamówienia?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq15" role="region" aria-labelledby="faq15-label">
+          <p class="faq-answer-text">Możesz sprawdzić śledzenie na stronie śledzenia, wprowadzając numer zamówienia lub ze swojego konta Lixby.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.15s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq16" aria-labelledby="faq16-label">
+          <span id="faq16-label">Co mam zrobić, jeśli mój LixBuds nie ładuje się?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq16" role="region" aria-labelledby="faq16-label">
+          <p class="faq-answer-text">Delikatnie wyczyść styki ładujące, wypróbuj inny kabel USB-C i pozostaw obudowę podłączoną na 20 minut, zanim spróbujesz ponownie.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.20s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq17" aria-labelledby="faq17-label">
+          <span id="faq17-label">Jak sparować LixBuds z nowym telefonem komórkowym?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq17" role="region" aria-labelledby="faq17-label">
+          <p class="faq-answer-text">Otwórz obudowę, naciśnij i przytrzymaj przycisk parowania, aż dioda LED zacznie migać, a następnie wybierz LixBuds One w ustawieniach Bluetooth.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq18" aria-labelledby="faq18-label">
+          <span id="faq18-label">Czy mogę anulować zamówienie?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq18" role="region" aria-labelledby="faq18-label">
+          <p class="faq-answer-text">Możesz poprosić o anulowanie zamówienia, jeśli zamówienie nie zostało jeszcze przygotowane. Napisz do nas jak najszybciej, podając numer zamówienia.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.00s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq19" aria-labelledby="faq19-label">
+          <span id="faq19-label">kiedy otrzymam zwrot pieniędzy?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq19" role="region" aria-labelledby="faq19-label">
+          <p class="faq-answer-text">Zwrot środków dokonamy niezwłocznie po otrzymaniu i sprawdzeniu Twojego zwrotu, ale zawsze w ciągu 14 dni kalendarzowych od momentu powiadomienia nas o odstąpieniu od umowy. Po wydaniu przelewu może minąć od 5 do 10 dni roboczych, zanim Twój bank odzwierciedli go na Twoim koncie.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.05s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq20" aria-labelledby="faq20-label">
+          <span id="faq20-label">Czy Lixney działa w trybie offline?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq20" role="region" aria-labelledby="faq20-label">
+          <p class="faq-answer-text">Lixney działa w trybie offline: Twoje dane są zapisywane na urządzeniu. Do zarządzania kontem potrzebujesz jedynie Internetu.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.10s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq21" aria-labelledby="faq21-label">
+          <span id="faq21-label">Jak zmienić adres e-mail konta?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq21" role="region" aria-labelledby="faq21-label">
+          <p class="faq-answer-text">Zaloguj się na swoje konto, otwórz ustawienia profilu i zaktualizuj swój adres e-mail. konieczne może być potwierdzenie zmiany w obu wiadomościach e-mail.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.15s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq22" aria-labelledby="faq22-label">
+          <span id="faq22-label">Co zawiera pudełko LixBuds One?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq22" role="region" aria-labelledby="faq22-label">
+          <p class="faq-answer-text">Zawiera słuchawki, etui ładujące, kabel USB-C, zapasowe nauszniki i podstawową dokumentację użytkowania.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.20s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq23" aria-labelledby="faq23-label">
+          <span id="faq23-label">Czy mogę używać tylko jednej słuchawki?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq23" role="region" aria-labelledby="faq23-label">
+          <p class="faq-answer-text">Tak, możesz używać lewej lub prawej słuchawki niezależnie do rozmów, słuchania muzyki lub korzystania z asystentów głosowych.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq24" aria-labelledby="faq24-label">
+          <span id="faq24-label">Jak czyścić słuchawki?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq24" role="region" aria-labelledby="faq24-label">
+          <p class="faq-answer-text">używaj suchej ściereczki i miękkich wacików bawełnianych. Nie używaj bezpośrednio wody, alkoholu ani produktów ściernych na kratkach lub stykach.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.00s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq25" aria-labelledby="faq25-label">
+          <span id="faq25-label">Czy mogę zmienić hasło dla Lixby?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq25" role="region" aria-labelledby="faq25-label">
+          <p class="faq-answer-text">Tak, możesz to zrobić na stronie zmiany hasła lub korzystając z funkcji odzyskiwania hasła, jeśli nie pamiętasz swojego obecnego.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.05s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq26" aria-labelledby="faq26-label">
+          <span id="faq26-label">Co się stanie, jeśli nie otrzymam e-maila weryfikacyjnego?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq26" role="region" aria-labelledby="faq26-label">
+          <p class="faq-answer-text">Sprawdź, czy nie ma spamu lub promocji, potwierdź, że wiadomość e-mail została napisana poprawnie i poproś o ponowne wysłanie wiadomości z ekranu konta.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.10s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq27" aria-labelledby="faq27-label">
+          <span id="faq27-label">Czy mogę poprosić o pomoc przy zakupie dokonanym jako gość?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq27" role="region" aria-labelledby="faq27-label">
+          <p class="faq-answer-text">Tak, podaj adres e-mail użyty do zakupu i numer zamówienia, abyśmy mogli je zlokalizować.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.15s">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq28" aria-labelledby="faq28-label">
+          <span id="faq28-label">Skąd mam wiedzieć, czy mój produkt jest objęty gwarancją?</span>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer" id="faq28" role="region" aria-labelledby="faq28-label">
+          <p class="faq-answer-text">Sprawdź datę zakupu i rodzaj zdarzenia. Gwarancja obejmuje wady produkcyjne, a nie przypadkowe uszkodzenie lub niewłaściwe użycie.</p>
+        </div>
+      </div>
+
+        <div class="faq-item reveal" data-delay="0.20s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq29" aria-labelledby="faq29-label">
+            <span id="faq29-label">Czy LixBuds One jest kompatybilny z urządzeniami iPhone i iOS?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq29" role="region" aria-labelledby="faq29-label">
+            <p class="faq-answer-text">Tak. LixBuds One łączy się przez Bluetooth z iPhonem, iPadem i komputerem Mac oraz obsługuje Siri.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq30" aria-labelledby="faq30-label">
+            <span id="faq30-label">Czy mają aktywną redukcję szumów?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq30" role="region" aria-labelledby="faq30-label">
+            <p class="faq-answer-text">Tak, LixBuds One obejmuje aktywną redukcję szumów w trybie przezroczystym. Tryby można przełączać za pomocą panelu dotykowego.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.00s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq31" aria-labelledby="faq31-label">
+            <span id="faq31-label">Jak zaktualizować oprogramowanie sprzętowe LixBuds One?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq31" role="region" aria-labelledby="faq31-label">
+            <p class="faq-answer-text">Aktualizacje oprogramowania sprzętowego są zarządzane przez Lixby i ogłaszane w sekcji aktualności i aktualizacji.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.05s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq32" aria-labelledby="faq32-label">
+            <span id="faq32-label">Czy mogę je podłączyć do dwóch urządzeń jednocześnie?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq32" role="region" aria-labelledby="faq32-label">
+            <p class="faq-answer-text">Tak, LixBuds One obsługuje połączenie wielopunktowe: możesz je połączyć jednocześnie z telefonem komórkowym i komputerem i automatycznie przełączać się z jednego urządzenia na drugie.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.10s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq33" aria-labelledby="faq33-label">
+            <span id="faq33-label">Co mam zrobić, jeśli zgubię słuchawkę lub etui?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq33" role="region" aria-labelledby="faq33-label">
+            <p class="faq-answer-text">Skontaktuj się z pomocą techniczną, podając numer zamówienia. Możemy zaoferować części zamienne lub specjalne warunki wymiany utraconego zestawu słuchawkowego lub etui.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.15s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq34" aria-labelledby="faq34-label">
+            <span id="faq34-label">jak wyeksportować moje dane z Lixney?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq34" role="region" aria-labelledby="faq34-label">
+            <p class="faq-answer-text">Możesz wyeksportować dane z ustawień aplikacji w formacie json lub csv. Plik jest generowany lokalnie na Twoim urządzeniu i możesz go pobrać lub udostępnić.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.20s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq35" aria-labelledby="faq35-label">
+            <span id="faq35-label">Czy mogę zmienić adres dostawy po zakupie?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq35" role="region" aria-labelledby="faq35-label">
+            <p class="faq-answer-text">Tak, o ile zamówienie nie opuściło jeszcze naszego magazynu. Napisz do nas, podając numer zamówienia i nowy adres, a my zaktualizujemy go najszybciej, jak to możliwe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-delay="0.25s">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq36" aria-labelledby="faq36-label">
+            <span id="faq36-label">Jak działają kupony rabatowe?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq36" role="region" aria-labelledby="faq36-label">
+            <p class="faq-answer-text">Wpisz kod w sekcji kuponu podczas realizacji transakcji. Każdy kupon wskazuje na stronie każdej oferty rabat, datę ważności oraz produkty, których dotyczy.</p>
+          </div>
+        </div>
+      </div>
+      <a class="back-link btn btn-secondary" href="/pl/help-center/">Wróć do centrum pomocy</a>
     </div>
   </section>
   <script>
+    const closeFaqItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.closest('.faq-item').classList.remove('open');
+      if (answer) answer.style.maxHeight = '0px';
+    };
+    const openFaqItem = (btn) => {
+      const answer = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', 'true');
+      btn.closest('.faq-item').classList.add('open');
+      if (answer) {
+        answer.style.maxHeight = '0px';
+        requestAnimationFrame(() => { answer.style.maxHeight = answer.scrollHeight + 'px'; });
+      }
+    };
     document.querySelectorAll('.faq-question').forEach((button) => {
       button.addEventListener('click', () => {
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        const answer = button.nextElementSibling;
-        button.setAttribute('aria-expanded', String(!isExpanded));
-        answer.classList.toggle('active');
+        document.querySelectorAll('.faq-question').forEach((btn) => closeFaqItem(btn));
+        if (!isExpanded) openFaqItem(button);
       });
     });
   </script>
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Przeglądaj i kupuj</h3>
+        <h3>Zobacz i kup</h3>
         <ul>
           <li><a href="/pl/shop/">Sklep</a></li>
           <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/pl/#apps">Aplikacje</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
           <li><a href="/pl/support/">Wsparcie</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
         <h3>Wsparcie</h3>
         <ul>
           <li><a href="/pl/support/">Strona główna wsparcia</a></li>
-          <li><a href="/pl/support/#faq">FAQ sklepu internetowego</a></li>
-          <li><a href="/pl/pages/legal/returns/">Informacje gwarancyjne</a></li>
-          <li><a href="mailto:info@lixby.es">E-mail</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
+          <li><a href="/pl/help-center/warranty/">Informacje o gwarancji</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
         <h3>Konto</h3>
         <ul>
           <li><a href="/pl/track/">Zamówienia</a></li>
           <li><a href="/pl/account/">Moje konto</a></li>
           <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
         <h3>O Lixby</h3>
         <ul>
-          <li><a href="/pl/about/">Newsroom</a></li>
-          <li><a href="/pl/pages/legal/returns/">Gwarancja</a></li>
-          <li><a href="/pl/about/">Wydarzenia</a></li>
-          <li><a href="/pl/support/">Kontakt</a></li>
+          <li><a href="/pl/about/">O nas</a></li>
+          <li><a href="/pl/help-center/warranty/">Gwarancja</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
+          <li><a href="/pl/help-center/contact/">Kontakt</a></li>
         </ul>
       </section>
     </div>
+
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
       <div class="footer-legal-links">
         <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
-        <a href="/pl/pages/legal/cookies/">Używanie plików cookie</a>
-        <a href="/pl/pages/legal/terms/">Warunki użytkowania</a>
-        <a href="/pl/support/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
         <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
       </div>
     </div>
   </footer>
-  <script>
-    const nav = document.getElementById("nav");
-    const searchForm = document.getElementById("navSearchForm");
-    const searchInput = document.getElementById("navSearch");
-    const mobileSearchForm = document.getElementById("navSearchFormMobile");
-    const mobileSearchInput = document.getElementById("navSearchMobile");
-    const mobilePanel = document.getElementById("navMobilePanel");
-    const searchToggle = document.querySelector(".nav-search-toggle");
-    const menuToggle = document.querySelector(".nav-menu-toggle");
-
-    const closeNav = () => {
-      document.body.classList.remove("nav-open", "menu-open");
-      nav?.classList.remove("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "true");
-      searchToggle?.setAttribute("aria-expanded", "false");
-      menuToggle?.setAttribute("aria-expanded", "false");
-    };
-
-    const openNav = (focusSearch = false) => {
-      document.body.classList.add("nav-open", "menu-open");
-      nav?.classList.add("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "false");
-      searchToggle?.setAttribute("aria-expanded", "true");
-      menuToggle?.setAttribute("aria-expanded", "true");
-      if (focusSearch && mobileSearchInput) {
-        setTimeout(() => mobileSearchInput.focus(), 80);
-      }
-    };
-
-    const toggleNav = (focusSearch = false) => {
-      if (nav?.classList.contains("nav-open")) {
-        closeNav();
-      } else {
-        openNav(focusSearch);
-      }
-    };
-
-    searchToggle?.addEventListener("click", () => toggleNav(true));
-    menuToggle?.addEventListener("click", () => toggleNav(false));
-
-    const mobileClose = document.querySelector(".nav-mobile-close");
-    mobileClose?.addEventListener("click", () => closeNav());
-
-    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
-      link.addEventListener("click", () => closeNav());
-    });
-
-    if (searchForm && searchInput) {
-      searchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = searchInput.value.trim();
-        const url = query ? `/pl/shop/?q=${encodeURIComponent(query)}` : "/pl/shop/";
-        window.location.href = url;
-      });
-    }
-
-    if (mobileSearchForm && mobileSearchInput) {
-      mobileSearchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = mobileSearchInput.value.trim();
-        const url = query ? `/pl/shop/?q=${encodeURIComponent(query)}` : "/pl/shop/";
-        window.location.href = url;
-      });
-    }
-  </script>
-  <script src="../script.js"></script>
+  <script src="../main.js" defer></script>
 </body>
 </html>
+

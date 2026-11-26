@@ -10,7 +10,7 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/es/verificacion-2-pasos">
+  <link rel="canonical" href="https://lixby.es/pl/two-step-verification">
   <link rel="alternate" href="https://lixby.es/bg/two-step-verification" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/two-step-verification" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/two-step-verification" hreflang="da-DK">
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/pl/style.css">
   <style>
     .twofa-page {
       padding: 34px 0 84px;
@@ -116,7 +119,7 @@
     .field select {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 9px 11px;
       font: inherit;
       background: #f8fafc;
@@ -178,12 +181,12 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Główne">
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
         <a href="/pl/shop/" class="nav-link">Sklep</a>
-        <a href="#productos" class="nav-link">Produkty</a>
-        <a href="#apps" class="nav-link">Aplikacje</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
         <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
       <div class="nav-actions">
@@ -193,57 +196,107 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/pl/shop/" method="get">
+        <form id="navSearchForm" action="/pl/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Szukaj produktu..."
-            aria-label="Szukaj produktu"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
           >
         </form>
         <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
-          <img src="images/Bolsa.png" alt="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
         </a>
         <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
-          <img src="images/cuenta.png" alt="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/pl/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Szukaj"
-          aria-label="Szukaj produktu"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Zamknij menu">
-        <span aria-hidden="true">x</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Główne - urządzenia mobilne">
-      <a href="/pl/shop/">Sklep</a>
-      <a href="#productos">Produkty</a>
-      <a href="#apps">Aplikacje</a>
-      <a href="/pl/support/">Wsparcie</a>
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Sklep</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkty</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Wsparcie</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/pl/cart/">Koszyk</a>
-      <a href="/pl/account/">Konto</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Koszyk</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -252,36 +305,125 @@
 
     <section class="twofa-card">
       <h1>Weryfikacja dwuetapowa</h1>
-      <p class="helper">Aktywuj dodatkową warstwę zabezpieczeń dla swojego konta za pomocą SMS.</p>
+      <p class="helper">Aktywuj dodatkową warstwę zabezpieczeń swojego konta za pomocą wiadomości SMS.</p>
 
       <div class="field-grid">
         <div class="field">
-          <label for="phoneNumber">Numer telefonu</label>
-          <input id="phoneNumber" type="tel" placeholder="+48 600 000 000">
+          <label for="phoneNumber">numer telefonu</label>
+          <input id="phoneNumber" type="tel" placeholder="+34 600 000 000">
         </div>
         <div class="field">
-          <label for="currentPassword">Aktualne hasło</label>
+          <label for="currentPassword">aktualne hasło</label>
           <input id="currentPassword" type="password" autocomplete="current-password">
         </div>
         <div class="field">
-          <label for="smsCode">Kod SMS</label>
+          <label for="smsCode">kod smsowy</label>
           <input id="smsCode" type="text" inputmode="numeric" maxlength="6" placeholder="123456">
         </div>
       </div>
 
       <div class="recaptcha-wrap">
         <div id="recaptcha-container"></div>
-        <p class="inline-note">Musisz rozwiązać reCAPTCHA, aby wysłać SMS.</p>
+        <p class="inline-note">musisz rozwiązać recaptcha, aby wysłać SMS.</p>
       </div>
 
       <div class="actions">
-        <button id="sendCodeBtn" class="btn btn-secondary" type="button">Wyślij kod</button>
-        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">Zweryfikuj i aktywuj</button>
-        <a class="btn btn-secondary" href="/pl/account/">Wróć do mojego konta</a>
+        <button id="sendCodeBtn" class="btn btn-secondary" type="button">wyślij kod</button>
+        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">sprawdź i aktywuj</button>
+        <a class="btn btn-secondary" href="/pl/account/">wróć do mojego konta</a>
       </div>
     </section>
   </main>
 
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import {
@@ -339,11 +481,11 @@
     async function reauthUser(user) {
       const password = currentPassword.value.trim();
       if (!password) {
-        showStatus("Wprowadź aktualne hasło, aby kontynuować.", "error");
+        showStatus("Wprowadź swoje obecne hasło, aby kontynuować.", "error");
         throw new Error("missing-password");
       }
       if (!user.email) {
-        showStatus("Użytkownik nie ma adresu e-mail do ponownego uwierzytelnienia.", "error");
+        showStatus("Użytkownik nie posiada adresu e-mail umożliwiającego ponowne uwierzytelnienie.", "error");
         throw new Error("missing-email");
       }
       const credential = EmailAuthProvider.credential(user.email, password);
@@ -363,15 +505,15 @@
       }
       initRecaptcha();
       if (!user.emailVerified) {
-        showStatus("Zweryfikuj swój adres e-mail przed aktywacją 2FA.", "error");
+        showStatus("Przed aktywacją 2fa zweryfikuj swój adres e-mail.", "error");
         sendCodeBtn.disabled = true;
         verifyEnrollBtn.disabled = true;
       }
       const factor = getPhoneFactor(user);
       if (factor) {
-        showStatus(`2FA aktywne z ${factor.phoneNumber || "telefonem"}.`, "success");
+        showStatus(`2FA aktywny z ${factor.phoneNumber || "twój telefon"}.`, "success");
       } else {
-        showStatus("2FA nie jest aktywowane na tym koncie.");
+        showStatus("2fa nie jest aktywowane na tym koncie.");
       }
     });
 
@@ -386,26 +528,26 @@
     sendCodeBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesja nieprawidłowa.", "error");
+        showStatus("nieważna sesja.", "error");
         return;
       }
 
       if (!user.emailVerified) {
-        showStatus("Zweryfikuj swój adres e-mail przed aktywacją 2FA.", "error");
+        showStatus("Przed aktywacją 2fa zweryfikuj swój adres e-mail.", "error");
         return;
       }
 
       const phone = normalizePhone(phoneNumber.value);
       if (!phone) {
-        showStatus("Wprowadź numer w formacie międzynarodowym (+48...).", "error");
+        showStatus("Wprowadź numer w formacie międzynarodowym (+34...).", "error");
         return;
       }
 
       try {
         sendCodeBtn.disabled = true;
         const originalText = sendCodeBtn.textContent;
-        sendCodeBtn.textContent = "Wysyłanie...";
-        showStatus("Wysyłanie kodu...", "info");
+        sendCodeBtn.textContent = "przesyłka...";
+        showStatus("wysyłam kod...", "info");
         await reauthUser(user);
         const multiFactorSession = await multiFactor(user).getSession();
         const phoneInfoOptions = {
@@ -414,24 +556,24 @@
         };
         const phoneAuthProvider = new PhoneAuthProvider(auth);
         verificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, recaptchaVerifier);
-        showStatus("Kod wysłany przez SMS.", "success");
+        showStatus("kod wysłany smsem.", "success");
       } catch (error) {
         recaptchaVerifier?.clear();
         recaptchaVerifier = null;
         initRecaptcha();
         const message = error?.message || error?.code || String(error);
         console.error("SMS error:", error);
-        showStatus(`Nie udało się wysłać SMS: ${message}`, "error");
+        showStatus(`Nie można wysłać SMS-a: ${message}`, "error");
       } finally {
         sendCodeBtn.disabled = false;
-        sendCodeBtn.textContent = "Wyślij kod";
+        sendCodeBtn.textContent = "wyślij kod";
       }
     });
 
     verifyEnrollBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Sesja nieprawidłowa.", "error");
+        showStatus("nieważna sesja.", "error");
         return;
       }
 
@@ -449,12 +591,12 @@
       try {
         verifyEnrollBtn.disabled = true;
         const originalText = verifyEnrollBtn.textContent;
-        verifyEnrollBtn.textContent = "Weryfikowanie...";
-        showStatus("Weryfikowanie kodu...", "info");
+        verifyEnrollBtn.textContent = "kontrola...";
+        showStatus("weryfikacja kodu...", "info");
         const cred = PhoneAuthProvider.credential(verificationId, code);
         const assertion = PhoneMultiFactorGenerator.assertion(cred);
         await multiFactor(user).enroll(assertion, "Telefon");
-        showStatus("Weryfikacja dwuetapowa aktywowana.", "success");
+        showStatus("Aktywowano weryfikację dwuetapową.", "success");
         verificationId = "";
         smsCode.value = "";
         toggleVerifyButton();
@@ -464,16 +606,19 @@
       } catch (error) {
         const message = error?.message || error?.code || String(error);
         console.error("2FA enroll error:", error);
-        showStatus(`Nie udało się aktywować 2FA: ${message}`, "error");
+        showStatus(`nie można aktywować 2fa: ${message}`, "error");
       } finally {
         verifyEnrollBtn.disabled = false;
-        verifyEnrollBtn.textContent = "Zweryfikuj i aktywuj";
+        verifyEnrollBtn.textContent = "sprawdź i aktywuj";
       }
     });
 
-    // Przycisk dezaktywacji usunięty na żądanie.
+    // Boton de desactivar eliminado por solicitud.
   </script>
 </body>
 </html>
+
+
+
 
 

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pl">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
-  <base href="/es/centro-ayuda/">
+  <base href="/pl/help-center/">
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/es/centro-ayuda/pedidos-envios">
+  <link rel="canonical" href="https://lixby.es/pl/help-center/orders-shipping">
   <link rel="alternate" href="https://lixby.es/bg/help-center/orders-shipping" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/help-center/orders-shipping" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/help-center/orders-shipping" hreflang="da-DK">
@@ -39,21 +39,21 @@
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedidos y envíos Lixby | Seguimiento y entregas</title>
-  <meta name="description" content="Consulta el estado de tu pedido, plazos de entrega y seguimiento de envíos Lixby.">
+  <title>Zamówienia i wysyłki Lixby | Śledzenie i dostawy</title>
+  <meta name="description" content="Sprawdź status swojego zamówienia, terminy dostaw i śledzenie przesyłki Lixby.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lixby">
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:url" content="https://lixby.es/es/centro-ayuda/pedidos-envios">
-  <meta property="og:title" content="Pedidos y envíos Lixby | Seguimiento y entregas">
-  <meta property="og:description" content="Consulta el estado de tu pedido, plazos de entrega y seguimiento de envíos Lixby.">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://lixby.es/pl/help-center/orders-shipping">
+  <meta property="og:title" content="zamówienia i wysyłki Lixby | śledzenie i dostawy">
+  <meta property="og:description" content="Sprawdź status swojego zamówienia, terminy dostaw i śledzenie przesyłki Lixby.">
   <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
-  <meta property="og:image:alt" content="Productos y servicios de Lixby">
+  <meta property="og:image:alt" content="Produkty i usługi Lixby">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pedidos y envíos Lixby | Seguimiento y entregas">
-  <meta name="twitter:description" content="Consulta el estado de tu pedido, plazos de entrega y seguimiento de envíos Lixby.">
+  <meta name="twitter:title" content="zamówienia i wysyłki Lixby | śledzenie i dostawy">
+  <meta name="twitter:description" content="Sprawdź status swojego zamówienia, terminy dostaw i śledzenie przesyłki Lixby.">
   <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
-  <meta name="twitter:image:alt" content="Productos y servicios de Lixby">
+  <meta name="twitter:image:alt" content="Produkty i usługi Lixby">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
   <link rel="stylesheet" href="/globalheader.css">
 <link rel="stylesheet" href="/globalfooter.css">
 <link rel="stylesheet" href="/localnav.css">
-<link rel="stylesheet" href="/es/style.css">
+<link rel="stylesheet" href="/pl/style.css">
     <style>
 html, body { margin: 0; padding: 0; }
     .help-hero {
@@ -235,37 +235,37 @@ html, body { margin: 0; padding: 0; }
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="/es/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/es/tienda/" class="nav-link">Tienda</a>
-        <a href="/es/productos/" class="nav-link">Productos</a>
-        <a href="/es/apps/" class="nav-link">Apps</a>
-        <a href="/es/support/" class="nav-link">Soporte</a>
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
+        <a href="/pl/shop/" class="nav-link">Sklep</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
+        <a href="/pl/support/" class="nav-link">Wsparcie</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/es/buscar/" method="get">
+        <form id="navSearchForm" action="/pl/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar en Lixby..."
-            aria-label="Buscar en Lixby"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
           >
         </form>
-        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
-          <img src="/es/images/Bolsa.png" alt="Cesta">
+        <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
         </a>
-        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="/es/images/cuenta.png" alt="Cuenta">
+        <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="8" x2="21" y2="8"></line>
             <line x1="3" y1="16" x2="21" y2="16"></line>
@@ -275,30 +275,30 @@ html, body { margin: 0; padding: 0; }
     </div>
   </header>
     <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
+    <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
-          <span id="sub-tienda-label">Tienda</span>
+          <span id="sub-tienda-label">Sklep</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-tienda">
-          <p class="nav-mobile-answer-text"><a href="/es/tienda/">Entrar a tienda</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">Auriculares LixBuds One</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/comprar-cascos/lixbuds-one/">Comprar ahora</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/novedades/">Novedades</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
-          <span id="sub-productos-label">Productos</span>
+          <span id="sub-productos-label">Produkty</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-productos">
-          <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -307,47 +307,47 @@ html, body { margin: 0; padding: 0; }
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
-          <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
-          <span id="sub-soporte-label">Soporte</span>
+          <span id="sub-soporte-label">Wsparcie</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-soporte">
-          <p class="nav-mobile-answer-text"><a href="/es/support/">Ir a soporte</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/contacto/">Contacto</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/devoluciones/">Devoluciones</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
         </div>
       </div>
     </nav>
     <div class="nav-mobile-actions">
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
-          <span id="sub-cesta-label">Cesta</span>
+          <span id="sub-cesta-label">Koszyk</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-cesta">
-          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Ver cesta</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Finalizar compra</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
-          <span id="sub-cuenta-label">Cuenta</span>
+          <span id="sub-cuenta-label">Konto</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-cuenta">
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Entrar a mi cuenta</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mis pedidos</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mi perfil</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Configuración</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/iniciar-sesion/">Iniciar sesión</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/verificacion-2-pasos/">Verificación en 2 pasos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
         </div>
       </div>
     </div>
@@ -356,102 +356,102 @@ html, body { margin: 0; padding: 0; }
 
   <section class="help-hero">
     <div class="help-hero-inner reveal" data-delay="0s">
-      <span class="badge">Centro de ayuda</span>
-      <h1>Pedidos y <span class="grad">envíos</span></h1>
-      <p class="lead">Estado del pedido, plazos de entrega y seguimiento de tus compras Lixby.</p>
+      <span class="badge">Centrum pomocy</span>
+      <h1>zamówienia i <span class="grad">Wysyłki</span></h1>
+      <p class="lead">status zamówienia, czas dostawy i śledzenie zakupów Lixby.</p>
     </div>
   </section>
   <section class="help-section">
     <div class="help-container">
       <div class="section-head reveal" data-delay="0s">
-        <p class="eyebrow">Pedidos</p>
-        <h2>Seguimiento de pedidos</h2>
+        <p class="eyebrow">Zamówienia</p>
+        <h2>śledzenie zamówień</h2>
       </div>
       <div class="step-list">
         <div class="step-item reveal" data-delay="0.05s">
-          <strong>1. Consultar estado</strong>
-          <p>Inicia sesión en tu cuenta y ve a "Mis pedidos". Allí verás el estado actualizado de cada compra.</p>
+          <strong>1. sprawdź status</strong>
+          <p>Zaloguj się na swoje konto i przejdź do zakładki „moje zamówienia”. Tam zobaczysz aktualny status każdego zakupu.</p>
         </div>
         <div class="step-item reveal" data-delay="0.10s">
-          <strong>2. Plazos de entrega</strong>
-          <p>El envío estándar es gratuito en todos los pedidos. El plazo estimado de entrega es de 8 a 15 días hábiles.</p>
+          <strong>2. terminy dostaw</strong>
+          <p>Standardowa wysyłka jest bezpłatna dla wszystkich zamówień. Szacowany czas dostawy wynosi od 8 do 15 dni roboczych.</p>
         </div>
         <div class="step-item reveal" data-delay="0.15s">
-          <strong>3. Seguimiento</strong>
-          <p>Una vez enviado, recibirás un enlace de seguimiento por correo electrónico para rastrear tu paquete.</p>
+          <strong>3. śledzenie</strong>
+          <p>Po wysłaniu otrzymasz e-mail z linkiem do śledzenia przesyłki.</p>
         </div>
       </div>
       <div class="help-grid">
         <div class="help-card reveal" data-delay="0.05s">
-          <h3>Problemas de entrega</h3>
-          <p>Si no recibes tu pedido en el plazo estimado, contacta con soporte con tu número de pedido.</p>
+          <h3>problemy z dostawą</h3>
+          <p>Jeśli nie otrzymasz zamówienia w przewidywanym czasie, skontaktuj się z obsługą klienta, podając numer zamówienia.</p>
         </div>
         <div class="help-card reveal" data-delay="0.10s">
-          <h3>Dirección incorrecta</h3>
-          <p>Si el pedido aún no se ha enviado, puedes modificar la dirección desde "Mis pedidos".</p>
+          <h3>zły adres</h3>
+          <p>Jeśli zamówienie nie zostało jeszcze wysłane, możesz zmienić adres w zakładce „Moje zamówienia”.</p>
         </div>
         <div class="help-card reveal" data-delay="0.15s">
-          <h3>Paquete perdido</h3>
-          <p>Si el seguimiento muestra como entregado pero no lo has recibido, abre una reclamación en 48 horas.</p>
+          <h3>zagubiona paczka</h3>
+          <p>Jeśli śledzenie wskazuje, że przesyłka została dostarczona, ale jej nie otrzymałeś, zgłoś reklamację w ciągu 48 godzin.</p>
         </div>
       </div>
       <div class="note-box reveal" data-delay="0.15s">
-        ¿Necesitas ayuda con un pedido? <a href="/es/centro-ayuda/contacto/">Contacta con nuestro equipo</a>.
+        Potrzebujesz pomocy przy zamówieniu? <a href="/pl/help-center/contact/">skontaktuj się z naszym zespołem</a>.
       </div>
-      <a class="back-link btn btn-secondary" href="/es/centro-ayuda/">Volver al centro de ayuda</a>
+      <a class="back-link btn btn-secondary" href="/pl/help-center/">Wróć do centrum pomocy</a>
     </div>
   </section>
 <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Zobacz i kup</h3>
         <ul>
-          <li><a href="/es/tienda/">Tienda</a></li>
-          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/es/apps/">Apps</a></li>
-          <li><a href="/es/support/">Soporte</a></li>
+          <li><a href="/pl/shop/">Sklep</a></li>
+          <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
+          <li><a href="/pl/support/">Wsparcie</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Wsparcie</h3>
         <ul>
-          <li><a href="/es/support/">Página inicial soporte</a></li>
-          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+          <li><a href="/pl/support/">Strona główna wsparcia</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
+          <li><a href="/pl/support/">Informacje o gwarancji</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Konto</h3>
         <ul>
-          <li><a href="/es/track/">Pedidos</a></li>
-          <li><a href="/es/cuenta/">Mi cuenta</a></li>
-          <li><a href="/es/cuenta/">Cupones</a></li>
-          <li><a href="/es/comunidad/">Comunidad</a></li>
+          <li><a href="/pl/track/">Zamówienia</a></li>
+          <li><a href="/pl/account/">Moje konto</a></li>
+          <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>O Lixby</h3>
         <ul>
-          <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
-          <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/pl/about/">O nas</a></li>
+          <li><a href="/pl/support/">Gwarancja</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
+          <li><a href="/pl/support/">Kontakt</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
       <div class="footer-legal-links">
-        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
-        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
-        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
-        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+        <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
       </div>
     </div>
   </footer>

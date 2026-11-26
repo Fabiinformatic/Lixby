@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl-PL" lang="pl-PL" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl-PL" lang="pl" prefix="og: http://ogp.me/ns#" class="no-js" data-layout-name="layout-updates">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -46,33 +46,46 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icon.png" />
 
-  <title>Karta Podarunkowa Lixby | Podaruj premiumową technologię</title>
+  <title>Karta podarunkowa Lixby | Rozdawaj technologię premium</title>
 
-  <meta property="analytics-track" content="lixby - gift/tab" />
+  <meta property="analytics-track" content="Lixby - regalo/tab" />
   <meta property="analytics-s-channel" content="gift" />
   <meta property="analytics-s-bucket-0" content="lixbyww" />
   <meta property="analytics-s-bucket-1" content="lixbyww" />
   <meta property="analytics-s-bucket-2" content="lixbyww" />
 
-  <meta name="Description" content="Podaruj doświadczenie Lixby. Cyfrowe karty podarunkowe od 5€ — dostarczane w kilka minut emailem. Idealne na każdą okazję." />
-  <meta name="keywords" content="karta podarunkowa, prezent Lixby, słuchawki w prezencie, prezent cyfrowy, gift card, prezent technologiczny" />
+  <meta name="Description" content="podaruj doświadczenie Lixby. Cyfrowe karty podarunkowe od 5 € — dostarczane e-mailem w ciągu kilku minut. idealne na każdą okazję." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://lixby.es/pl/gift">
+  <meta property="og:title" content="karta podarunkowa Lixby | rozdawaj technologię premium">
+  <meta property="og:description" content="podaruj doświadczenie Lixby. Cyfrowe karty podarunkowe od 5 € — dostarczane e-mailem w ciągu kilku minut. idealne na każdą okazję.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Produkty i usługi Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="karta podarunkowa Lixby | rozdawaj technologię premium">
+  <meta name="twitter:description" content="podaruj doświadczenie Lixby. Cyfrowe karty podarunkowe od 5 € — dostarczane e-mailem w ciągu kilku minut. idealne na każdą okazję.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Produkty i usługi Lixby">
+  <meta name="keywords" content="Karta podarunkowa, prezent Lixby, słuchawki na prezent, prezent cyfrowy, gift card, prezent technologiczny" />
   <meta name="author" content="Lixby" />
-  <meta property="og:title" content="Karta Podarunkowa Lixby | Podaruj premiumową technologię" />
-  <meta property="og:description" content="Podaruj doświadczenie Lixby z naszymi cyfrowymi kartami podarunkowymi. Błyskawiczne i elastyczne." />
-  <meta property="og:site_name" content="Lixby (Hiszpania)" />
-  <meta property="og:locale" content="pl_PL" />
+  
+  
+  
+  
   <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png" />
-  <meta property="og:url" content="https://lixby.es/pl/gift" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Karta Podarunkowa Lixby" />
-  <meta name="twitter:description" content="Podaruj premiumową technologię z naszymi cyfrowymi kartami podarunkowymi." />
-  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png" />
+  
+  
+  
+  
+  
+  
+  
 
   
   <script type="application/ld+json">
@@ -343,7 +356,7 @@
       margin-top: 8px;
     }
 
-    /* RECIPIENT */
+    /* DESTINATARIO */
     .recipient-toggle {
       display: flex;
       gap: 10px;
@@ -514,52 +527,88 @@
       padding: 0 20px;
     }
 
+    /* FAQ */
     .faq-title {
-      font-size: 1.3rem;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
       font-weight: 800;
-      margin-bottom: 16px;
       letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 24px;
     }
 
-    .faq-item {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .faq-question {
-      padding: 16px 20px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-    }
-
-    .faq-question::after {
-      content: '+';
-      font-size: 1.2rem;
-      color: var(--green);
-      transition: transform 0.2s;
-    }
-
-    .faq-item.open .faq-question::after { transform: rotate(45deg); }
-
-    .faq-answer {
+    .faq-section.faq {
+      max-width: 680px;
+      margin: 0 auto 80px;
       padding: 0 20px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq .faq-item {
+      background: var(--surface, #ffffff);
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(15, 61, 255, 0.06);
+      overflow: hidden;
+      transition: box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open {
+      box-shadow: 0 12px 28px rgba(15, 61, 255, 0.08);
+    }
+
+    .faq .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text, #111827);
+      text-align: left;
+      transition: color 200ms ease;
+    }
+
+    .faq .faq-question:hover {
+      color: var(--primary, #0f3dff);
+    }
+
+    .faq .faq-chevron {
+      flex-shrink: 0;
+      color: var(--green, #1f4fd8);
+      width: 22px;
+      height: 22px;
+      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.2s;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
+      transition: max-height 250ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .faq-item.open .faq-answer { max-height: 200px; padding: 0 20px 16px; }
+    .faq .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq .faq-answer-text {
+      padding: 14px 28px 24px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted, #6b7280);
+    }
 
     @media (max-width: 600px) {
       .regalo-section { padding: 20px 16px; }
@@ -575,88 +624,138 @@
 <div id="scroll-progress"></div>
 
 <header class="nav" id="nav">
-  <div class="container nav-container">
-    <a href="./" class="nav-brand">Lixby</a>
-    <nav class="nav-links" aria-label="Główne">
-      <a href="/pl/shop/" class="nav-link">Sklep</a>
-      <a href="#productos" class="nav-link">Produkty</a>
-      <a href="#apps" class="nav-link">Aplikacje</a>
-      <a href="/pl/support/" class="nav-link">Pomoc</a>
-    </nav>
-    <div class="nav-actions">
-      <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle>
-          <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-        </svg>
-      </button>
-      <form id="navSearchForm" action="/pl/shop/" method="get">
-        <input
-          type="search"
-          id="navSearch"
-          name="q"
-          class="nav-search"
-          placeholder="Szukaj produktu..."
-          aria-label="Szukaj produktu"
-        >
-      </form>
-      <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
-        <img src="images/Bolsa.png" alt="Koszyk">
-      </a>
-      <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
-        <img src="images/cuenta.png" alt="Konto">
-      </a>
-      <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
+    <div class="container nav-container">
+      <a href="/pl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Nawigacja główna">
+        <a href="/pl/shop/" class="nav-link">Sklep</a>
+        <a href="/pl/products/" class="nav-link">Produkty</a>
+        <a href="/pl/apps/" class="nav-link">Apps</a>
+        <a href="/pl/support/" class="nav-link">Wsparcie</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Szukaj" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/pl/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Szukaj w Lixby..."
+            aria-label="Szukaj w Lixby"
+          >
+        </form>
+        <a href="/pl/cart/" class="nav-icon-link" aria-label="Koszyk">
+          <img src="/pl/images/Bolsa.png" alt="Koszyk">
+        </a>
+        <a href="/pl/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/pl/images/cuenta.png" alt="Konto">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-  <div class="nav-mobile-top">
-    <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/pl/shop/" method="get">
-      <input
-        type="search"
-        id="navSearchMobile"
-        name="q"
-        class="nav-search-mobile"
-        placeholder="Szukaj"
-        aria-label="Szukaj produktu"
-      >
-    </form>
-    <button type="button" class="nav-mobile-close" aria-label="Zamknij menu">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <nav class="nav-mobile-links" aria-label="Menu główne mobilne">
-    <a href="/pl/shop/">Sklep</a>
-    <a href="#productos">Produkty</a>
-    <a href="#apps">Aplikacje</a>
-    <a href="/pl/support/">Pomoc</a>
+  <nav class="nav-mobile-links" aria-label="Nawigacja główna mobilna">
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+        <span id="sub-tienda-label">Sklep</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-tienda">
+        <p class="nav-mobile-answer-text"><a href="/pl/shop/">Przejdź do sklepu</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/buy-headphones/lixbuds-one/">Kup teraz</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/news/">Aktualności</a></p>
+      </div>
+    </div>
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+        <span id="sub-productos-label">Produkty</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-productos">
+        <p class="nav-mobile-answer-text"><a href="/pl/products/">Zobacz produkty</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/pl/lixsafe/">LixSafe i zakres ochrony</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixney/">Lixney</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/pages/apps/lixfly/">Lixfly</a></p>
+      </div>
+    </div>
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+        <span id="sub-apps-label">Apps</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-apps">
+        <p class="nav-mobile-answer-text"><a href="/pl/apps/">Zobacz aplikacje</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixney/">Wsparcie Lixney</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/help-center/lixfly/">Wsparcie Lixfly</a></p>
+      </div>
+    </div>
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+        <span id="sub-soporte-label">Wsparcie</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-soporte">
+        <p class="nav-mobile-answer-text"><a href="/pl/support/">Przejdź do wsparcia</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/help-center/faq/">Często zadawane pytania</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/help-center/contact/">Kontakt</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/help-center/returns/">Zwroty</a></p>
+      </div>
+    </div>
   </nav>
   <div class="nav-mobile-actions">
-    <a href="/pl/cart/">Koszyk</a>
-    <a href="/pl/account/">Konto</a>
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+        <span id="sub-cesta-label">Koszyk</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-cesta">
+        <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zobacz koszyk</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/cart/">Zakończ zakupy</a></p>
+      </div>
+    </div>
+    <div class="nav-mobile-item">
+      <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+        <span id="sub-cuenta-label">Konto</span>
+        <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="nav-mobile-answer" id="sub-cuenta">
+        <p class="nav-mobile-answer-text"><a href="/pl/account/">Przejdź do mojego konta</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/account/">Moje zamówienia</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/account/">Mój profil</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/account/">Ustawienia</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/login/">Zaloguj się</a></p>
+        <p class="nav-mobile-answer-text"><a href="/pl/two-step-verification/">Weryfikacja dwuetapowa</a></p>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- HERO -->
 <section class="regalo-hero">
   <div class="container regalo-hero-content">
-    <div class="regalo-eyebrow">🎁 Cyfrowa Karta Podarunkowa</div>
-    <h1 class="regalo-title">Idealny prezent.</h1>
-    <p class="regalo-subtitle">Podaruj doświadczenie Lixby. Dostarczana w几分钟 emailem, używana bezpośrednio w sklepie.</p>
+    <div class="regalo-eyebrow">🎁 cyfrowa karta podarunkowa</div>
+    <h1 class="regalo-title">idealny prezent.</h1>
+    <p class="regalo-subtitle">podaruj doświadczenie Lixby. Przychodzi w ciągu kilku minut e-mailem, jest używany bezpośrednio w sklepie.</p>
     <div class="card-preview-wrap">
       <div class="card-preview">
         <div class="card-brand">Lixby</div>
         <div class="card-amount-preview" id="cardAmountPreview">—</div>
         <div class="card-bottom">
-          <div class="card-label">Karta Podarunkowa</div>
-          <div class="card-code-preview">LIXBY-XXXX-XXXX</div>
+          <div class="card-label">karta podarunkowa</div>
+          <div class="card-code-preview">Lixby-XXXX-XXXX</div>
         </div>
       </div>
     </div>
@@ -666,11 +765,11 @@
 <!-- FORM -->
 <main class="regalo-main">
 
-  <!-- KROK 1: KWOTA -->
+  <!-- PASO 1: IMPORTE -->
   <div class="regalo-section">
     <div class="section-title">
       <span class="section-number">1</span>
-      Wybierz kwotę
+      wybierz kwotę
     </div>
 
     <div class="amount-grid">
@@ -681,54 +780,54 @@
       <button class="amount-btn" data-amount="100" type="button">100 €</button>
       <button class="amount-btn" data-amount="200" type="button">200 €</button>
     </div>
-    <button class="amount-btn" data-amount="custom" type="button" style="width:100%;margin-bottom:10px">✏️ Inna kwota</button>
+    <button class="amount-btn" data-amount="custom" type="button" style="width:100%;margin-bottom:10px">✏️ kolejna ilość</button>
 
     <div class="custom-amount-wrap" id="customAmountWrap">
       <span class="custom-prefix">€</span>
-      <input type="number" class="custom-amount-input" id="customAmountInput" placeholder="Wprowadź kwotę" min="10" max="200">
+      <input type="number" class="custom-amount-input" id="customAmountInput" placeholder="wprowadź kwotę" min="10" max="200">
     </div>
-    <div class="amount-hint" id="amountHint">Minimum 10 € · Maksimum 200 €</div>
+    <div class="amount-hint" id="amountHint">minimum 10 € · maksymalnie 200 €</div>
   </div>
 
-  <!-- KROK 2: DLA KOGO? -->
+  <!-- PASO 2: DESTINATARIO -->
   <div class="regalo-section">
     <div class="section-title">
       <span class="section-number">2</span>
-      Dla kogo jest?
+      dla kogo to jest?
     </div>
 
     <div class="recipient-toggle">
-      <button class="toggle-btn selected" id="toggleSelf" type="button">🙋 Dla mnie</button>
-      <button class="toggle-btn" id="toggleOther" type="button">🎁 Dla kogoś innego</button>
+      <button class="toggle-btn selected" id="toggleSelf" type="button">🙋 dla mnie</button>
+      <button class="toggle-btn" id="toggleOther" type="button">🎁 dla kogoś innego</button>
     </div>
 
     <div class="recipient-fields" id="recipientFields">
       <div class="field-row" style="margin-bottom:12px">
         <div class="field-group">
-          <label class="field-label">Imię obdarowanego</label>
+          <label class="field-label">nazwa odbiorcy</label>
           <input type="text" class="field-input" id="recipientName" placeholder="Imię">
         </div>
         <div class="field-group">
-          <label class="field-label">Email obdarowanego</label>
-          <input type="email" class="field-input" id="recipientEmail" placeholder="email@przyklad.pl">
+          <label class="field-label">e-mail odbiorcy</label>
+          <input type="email" class="field-input" id="recipientEmail" placeholder="e-mail@przyklad.pl">
         </div>
       </div>
 
       <div class="field-group">
-        <label class="field-label">Wiadomość osobista <span style="color:var(--muted);font-weight:400">(opcjonalna)</span></label>
+        <label class="field-label">spersonalizowana wiadomość <span style="color:var(--muted);font-weight:400">(fakultatywny)</span></label>
         <div class="message-options">
-          <span class="msg-chip" data-msg="Wszystkiego najlepszego! 🎂">Urodziny</span>
+          <span class="msg-chip" data-msg="Wszystkiego najlepszego! 🎂">urodziny</span>
           <span class="msg-chip" data-msg="Wesołych Świąt! 🎄">Boże Narodzenie</span>
-          <span class="msg-chip" data-msg="Szczęśliwej rocznicy! 💕">Rocznica</span>
+          <span class="msg-chip" data-msg="Szczęśliwej rocznicy! 💕">rocznica</span>
           <span class="msg-chip" data-msg="Gratulacje! 🎉">Gratulacje</span>
-          <span class="msg-chip selected" data-msg="">Brak wiadomości</span>
+          <span class="msg-chip selected" data-msg="">żadnej wiadomości</span>
         </div>
-        <textarea class="field-textarea" id="giftMessage" placeholder="Wpisz tutaj swoją wiadomość..."></textarea>
+        <textarea class="field-textarea" id="giftMessage" placeholder="napisz tutaj swoją wiadomość..."></textarea>
       </div>
     </div>
   </div>
 
-  <!-- KROK 3: TWOJE DANE -->
+  <!-- PASO 3: TUS DATOS -->
   <div class="regalo-section">
     <div class="section-title">
       <span class="section-number">3</span>
@@ -736,110 +835,138 @@
     </div>
     <div class="field-row">
       <div class="field-group">
-        <label class="field-label">Twoje imię</label>
+        <label class="field-label">twoje imię</label>
         <input type="text" class="field-input" id="senderName" placeholder="Imię">
       </div>
       <div class="field-group">
-        <label class="field-label">Twój email</label>
-        <input type="email" class="field-input" id="senderEmail" placeholder="email@przyklad.pl">
+        <label class="field-label">Twój e-mail</label>
+        <input type="email" class="field-input" id="senderEmail" placeholder="e-mail@przyklad.pl">
       </div>
     </div>
     <p style="font-size:0.78rem;color:var(--muted);margin-top:4px">
-      ⏱ Otrzymasz kod na swój email w ciągu godziny.
+      ⏱ Kod otrzymasz na swój adres e-mail w niecałą godzinę.
     </p>
   </div>
 
-  <!-- PODSUMOWANIE + ZAPŁAĆ -->
+  <!-- RESUMEN + PAGAR -->
   <div class="summary-card" id="summaryCard" style="display:none">
-    <div class="summary-row"><span>Karta podarunkowa Lixby</span><span id="summaryAmount">—</span></div>
-    <div class="summary-row"><span>Wysyłka</span><span style="color:var(--green);font-weight:700">Darmowa</span></div>
-    <div class="summary-row summary-total"><span>Razem</span><span id="summaryTotal">—</span></div>
+    <div class="summary-row"><span>karta podarunkowa Lixby</span><span id="summaryAmount">—</span></div>
+    <div class="summary-row"><span>Wysyłka</span><span style="color:var(--green);font-weight:700">Za darmo</span></div>
+    <div class="summary-row summary-total"><span>Total</span><span id="summaryTotal">—</span></div>
   </div>
 
-  <button class="buy-btn" id="buyBtn" type="button" disabled>Wybierz kwotę, aby kontynuować</button>
-  <p class="buy-note">🔒 Bezpieczna płatność Stripe · Dostawa w ciągu godziny</p>
+  <button class="buy-btn" id="buyBtn" type="button" disabled>wybierz kwotę, aby kontynuować</button>
+  <p class="buy-note">🔒 bezpieczna płatność z paskiem · dociera w niecałą godzinę</p>
 
 </main>
 
 <!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-title">Najczęstsze pytania</div>
+<section class="faq faq-section">
+  <div class="faq-title">Często zadawane pytania</div>
+  <div class="faq-list">
 
   <div class="faq-item">
-    <div class="faq-question">Kiedy otrzymam kartę podarunkową?</div>
-    <div class="faq-answer">W ciągu godziny od płatności. Jeśli podałeś email innej osoby, zostanie ona dostarczona bezpośrednio tej osobie.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>Kiedy karta podarunkowa dotrze?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">w niecałą godzinę po dokonaniu płatności. Jeśli podałeś adres e-mail innej osoby, zostanie on przesłany bezpośrednio do tej osoby.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">Jak użyć kodu?</div>
-    <div class="faq-answer">W koszyku sklepu Lixby zobaczysz pole do wprowadzenia kodu. Zostanie on automatycznie zastosowany jako rabat.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>jak skorzystać z kodu?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">W koszyku sklepu Lixby zobaczysz pole do wpisania kodu. Jest automatycznie naliczany jako rabat.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">Czy karta podarunkowa wygasa?</div>
-    <div class="faq-answer">Karty podarunkowe Lixby nie mają daty ważności. Można ich używać w dowolnym momencie.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>Czy karta podarunkowa traci ważność?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Karty podarunkowe Lixby nie mają daty ważności. Można z nich skorzystać w dowolnym momencie.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">Czy można użyć jej przy więcej niż jednym zakupie?</div>
-    <div class="faq-answer">Tak. Jeśli saldo karty jest wyższe niż wartość zamówienia, pozostałe saldo pozostaje dostępne na przyszłe zakupy.</div>
-  </div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>Czy można go wykorzystać przy więcej niż jednym zakupie?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Tak. Jeśli saldo karty jest większe niż zamówienie, pozostałe saldo jest dostępne na przyszłe zakupy.</p>
+      </div>
+    </div>
   <div class="faq-item">
-    <div class="faq-question">Co zrobić, jeśli pomylę się w adresie email?</div>
-    <div class="faq-answer">Napisz na info@lixby.es z numerem zamówienia, a rozwiążemy problem.</div>
+      <button type="button" class="faq-question" aria-expanded="false">
+        <span>Co się stanie, jeśli popełnię błąd w wiadomości e-mail?</span>
+        <svg class="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Napisz do info@lixby.es, podając numer zamówienia, a my go rozwiążemy.</p>
+      </div>
+</div>
   </div>
 </section>
 
 <footer class="footer footer-mega">
-  <div class="container footer-mega-grid">
-    <section class="footer-section">
-      <h3>Przeglądaj i kupuj</h3>
-      <ul>
-        <li><a href="/pl/shop/">Sklep</a></li>
-        <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
-        <li><a href="#apps">Aplikacje</a></li>
-        <li><a href="/pl/support/">Pomoc</a></li>
-      </ul>
-    </section>
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Zobacz i kup</h3>
+        <ul>
+          <li><a href="/pl/shop/">Sklep</a></li>
+          <li><a href="/pl/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/pl/apps/">Apps</a></li>
+          <li><a href="/pl/support/">Wsparcie</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>Pomoc</h3>
-      <ul>
-        <li><a href="/pl/support/">Strona główna pomocy</a></li>
-        <li><a href="/pl/support/#faq">FAQ Sklep internetowy</a></li>
-        <li><a href="/pl/support/">Informacje o gwarancji</a></li>
-        <li><a href="mailto:info@lixby.es">Email do CEO</a></li>
-      </ul>
-    </section>
+      <section class="footer-section">
+        <h3>Wsparcie</h3>
+        <ul>
+          <li><a href="/pl/support/">Strona główna wsparcia</a></li>
+          <li><a href="/pl/support/#faq">Często zadawane pytania sklepu internetowego</a></li>
+          <li><a href="/pl/support/">Informacje o gwarancji</a></li>
+          <li><a href="mailto:info@lixby.es">E-mail do CEO</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>Konto</h3>
-      <ul>
-        <li><a href="/pl/track/">Zamówienia</a></li>
-        <li><a href="/pl/account/">Moje konto</a></li>
-        <li><a href="/pl/account/">Kupony</a></li>
-      </ul>
-    </section>
+      <section class="footer-section">
+        <h3>Konto</h3>
+        <ul>
+          <li><a href="/pl/track/">Zamówienia</a></li>
+          <li><a href="/pl/account/">Moje konto</a></li>
+          <li><a href="/pl/account/">Kupony</a></li>
+          <li><a href="/pl/community/">Społeczność</a></li>
+        </ul>
+      </section>
 
-    <section class="footer-section">
-      <h3>O Lixby</h3>
-      <ul>
-        <li><a href="/pl/about/">O nas</a></li>
-        <li><a href="/pl/support/">Gwarancja</a></li>
-        <li><a href="#">Wydarzenia</a></li>
-        <li><a href="/pl/support/">Kontakt</a></li>
-      </ul>
-    </section>
-  </div>
-
-  <div class="container footer-meta">
-    <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
-    <div class="footer-legal-links">
-      <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
-      <a href="/pl/pages/legal/cookies/">Użycie plików cookie</a>
-      <a href="/pl/pages/legal/terms/">Warunki użytkowania</a>
-      <a href="/pl/support/">Sprzedaż i zwroty</a>
-      <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
+      <section class="footer-section">
+        <h3>O Lixby</h3>
+        <ul>
+          <li><a href="/pl/about/">O nas</a></li>
+          <li><a href="/pl/support/">Gwarancja</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
+          <li><a href="/pl/support/">Kontakt</a></li>
+        </ul>
+      </section>
     </div>
-  </div>
-</footer>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Wszelkie prawa zastrzeżone.</p>
+      <div class="footer-legal-links">
+        <a href="/pl/pages/legal/privacy/">Polityka prywatności</a>
+        <a href="/pl/pages/legal/cookies/">Polityka plików cookie</a>
+        <a href="/pl/pages/legal/terms/">Warunki korzystania</a>
+        <a href="/pl/pages/legal/sales-refunds/">Sprzedaż i zwroty</a>
+        <a href="/pl/pages/legal/legal-notice/">Informacje prawne</a>
+      </div>
+    </div>
+  </footer>
 
 <script>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
@@ -867,68 +994,106 @@
     searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const query = searchInput.value.trim();
-      const url = query ? `/pl/shop/?q=${encodeURIComponent(query)}` : "/pl/shop/";
+      const url = query ? `/pl/search/?q=${encodeURIComponent(query)}` : "/pl/shop/";
       window.location.href = url;
     });
   }
+</script>
+<script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var mobilePanel = document.getElementById("navMobilePanel");
+    var searchToggle = document.querySelector(".nav-search-toggle");
+    var menuToggle = document.querySelector(".nav-menu-toggle");
+    var searchInput = document.getElementById("navSearch");
 
-  const mobileSearchForm = document.getElementById("navSearchFormMobile");
-  const mobileSearchInput = document.getElementById("navSearchMobile");
-  if (mobileSearchForm && mobileSearchInput) {
-    mobileSearchForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const query = mobileSearchInput.value.trim();
-      const url = query ? `/pl/shop/?q=${encodeURIComponent(query)}` : "/pl/shop/";
-      window.location.href = url;
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
+    var closeNav = function () {
+      if (document.body) document.body.classList.remove("nav-open", "menu-open");
+      if (nav) nav.classList.remove("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+            setIconState(false);
+    };
+    var openNav = function () {
+      if (document.body) document.body.classList.add("nav-open", "menu-open");
+      if (nav) nav.classList.add("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+            setIconState(true);
+    };
+    var toggleNav = function () {
+      if (nav && nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+    if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+    document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+      var btn = item.querySelector(".nav-mobile-question");
+      var answer = item.querySelector(".nav-mobile-answer");
+      if (!btn || !answer) return;
+
+      btn.addEventListener("click", function () {
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+          var ob = other.querySelector(".nav-mobile-question");
+          var oa = other.querySelector(".nav-mobile-answer");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          other.classList.remove("open");
+          if (oa) {
+            oa.classList.remove("active");
+            oa.style.maxHeight = "0px";
+          }
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          item.classList.add("open");
+          answer.classList.add("active");
+          answer.style.maxHeight = "0px";
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          });
+        }
+      });
     });
-  }
 
-  const mobilePanel = document.getElementById("navMobilePanel");
-  const searchToggle = document.querySelector(".nav-search-toggle");
-  const menuToggle = document.querySelector(".nav-menu-toggle");
-
-  const closeNav = () => {
-    document.body.classList.remove("nav-open", "menu-open");
-    nav?.classList.remove("nav-open");
-    mobilePanel?.setAttribute("aria-hidden", "true");
-    searchToggle?.setAttribute("aria-expanded", "false");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  };
-
-  const openNav = (focusSearch = false) => {
-    document.body.classList.add("nav-open", "menu-open");
-    nav?.classList.add("nav-open");
-    mobilePanel?.setAttribute("aria-hidden", "false");
-    searchToggle?.setAttribute("aria-expanded", "true");
-    menuToggle?.setAttribute("aria-expanded", "true");
-    if (focusSearch && mobileSearchInput) {
-      setTimeout(() => mobileSearchInput.focus(), 80);
-    }
-  };
-
-  const toggleNav = (focusSearch = false) => {
-    if (nav?.classList.contains("nav-open")) {
-      closeNav();
-    } else {
-      openNav(focusSearch);
-    }
-  };
-
-  searchToggle?.addEventListener("click", () => toggleNav(true));
-  menuToggle?.addEventListener("click", () => toggleNav(false));
-
-  const mobileClose = document.querySelector(".nav-mobile-close");
-  mobileClose?.addEventListener("click", () => closeNav());
-
-  document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
-    link.addEventListener("click", () => closeNav());
-  });
-
+    document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
+    });
+  })();
+</script>
+<script>
   let selectedAmount = null;
   let isCustom = false;
   let sendToOther = false;
 
-  // ── PRZYCISKI KWOT ──
+  // ── AMOUNT BUTTONS ──
   document.querySelectorAll('.amount-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
@@ -965,7 +1130,7 @@
     updateBuyBtn();
   });
 
-  // ── PRZEŁĄCZNIK ODBIORCY ──
+  // ── RECIPIENT TOGGLE ──
   document.getElementById('toggleSelf').addEventListener('click', () => {
     sendToOther = false;
     document.getElementById('toggleSelf').classList.add('selected');
@@ -980,7 +1145,7 @@
     document.getElementById('recipientFields').classList.add('visible');
   });
 
-  // ── GOTOWE WIADOMOŚCI ──
+  // ── MESSAGE CHIPS ──
   document.querySelectorAll('.msg-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       document.querySelectorAll('.msg-chip').forEach(c => c.classList.remove('selected'));
@@ -990,7 +1155,7 @@
     });
   });
 
-  // ── PODGLĄD ──
+  // ── PREVIEW ──
   function updatePreview(amount) {
     const el = document.getElementById('cardAmountPreview');
     el.textContent = amount ? amount.toFixed(2).replace('.', ',') + ' €' : '—';
@@ -1006,15 +1171,15 @@
       document.getElementById('summaryTotal').textContent = formatted;
       summary.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = `Kup kartę podarunkową · ${formatted}`;
+      btn.textContent = `kup kartę podarunkową · ${formatted}`;
     } else {
       summary.style.display = 'none';
       btn.disabled = true;
-      btn.textContent = 'Wybierz kwotę, aby kontynuować';
+      btn.textContent = 'wybierz kwotę, aby kontynuować';
     }
   }
 
-  // ── WERYFIKACJA ──
+  // ── VALIDATE ──
   function validate() {
     let ok = true;
 
@@ -1036,7 +1201,7 @@
     return ok;
   }
 
-  // ── ZAKUP ──
+  // ── BUY ──
   document.getElementById('buyBtn').addEventListener('click', async () => {
     if (!selectedAmount) return;
     if (!validate()) {
@@ -1046,7 +1211,7 @@
 
     const btn = document.getElementById('buyBtn');
     btn.disabled = true;
-    btn.textContent = 'Przetwarzanie...';
+    btn.textContent = 'przetwarzanie...';
 
     const payload = {
       amount: selectedAmount,
@@ -1069,12 +1234,12 @@
       if (data.url) {
         window.location.href = data.url;
       } else {
-        throw new Error(data.error || 'Nieznany błąd');
+        throw new Error(data.error || 'nieznany błąd');
       }
     } catch (e) {
-      alert('Błąd podczas przetwarzania płatności: ' + e.message);
+      alert('błąd przetwarzania płatności:' + e.message);
       btn.disabled = false;
-      btn.textContent = `Kup kartę podarunkową · ${selectedAmount.toFixed(2).replace('.', ',')} €`;
+      btn.textContent = `kup kartę podarunkową · ${selectedAmount.toFixed(2).replace('.', ',')} €`;
     }
   });
 
@@ -1082,11 +1247,21 @@
   document.querySelectorAll('.faq-question').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.parentElement;
-      item.classList.toggle('open');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        const ob = o.querySelector('.faq-question');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 </script>
 </body>
 </html>
+
 
 
