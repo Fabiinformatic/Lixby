@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>rastreamento de pedidos | Lixby</title>
+  <title>Rastreamento de pedidos | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -630,14 +630,14 @@
 
   <!-- Búsqueda -->
   <div class="search-card">
-    <h1>rastreamento de pedidos</h1>
+    <h1>Rastreamento de pedidos</h1>
     <p>Insira o número do teu pedido para ver o status da tua remessa.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
-        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="número do pedido">
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Número do pedido">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">consultar</button>
+      <button class="btn-search" id="searchBtn" type="button">Consultar</button>
     </div>
   </div>
 
@@ -646,7 +646,7 @@
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>procurando teu pedido...</p>
+        <p>Procurando teu pedido...</p>
       </div>
     </div>
   </div>
@@ -654,17 +654,17 @@
   <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
-    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">pedido não encontrado</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Pedido não encontrado</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
       Não encontramos nenhum pedido com esse número.<br>
       Verifique se o número está correto – tu o encontrará no e-mail de confirmação.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:info@lixby.es" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        entre em contacto com o suporte
+        Entre em contacto com o suporte
       </a>
       <a href="/pt/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        volte para a loja
+        Volte para a loja
       </a>
     </div>
   </div>
@@ -676,20 +676,20 @@
     <div class="order-header">
       <div>
         <div class="order-number-badge">
-          <span>ordem</span>
+          <span>Ordem</span>
           <strong id="resOrderNumber">—</strong>
         </div>
         <div class="order-date" id="resDate"></div>
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        pagamento confirmado
+        Pagamento confirmado
       </div>
     </div>
 
     <!-- Progreso -->
     <div class="progress-section">
-      <h3>status de envio</h3>
+      <h3>Status de envio</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
@@ -701,7 +701,7 @@
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div class="tracking-details">
-        <label>número de rastreamento</label>
+        <label>Número de rastreamento</label>
         <strong id="trackingNumber">—</strong>
         <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
       </div>
@@ -709,7 +709,7 @@
 
     <!-- Info cliente -->
     <div class="info-section" id="resCustomerSection" style="display:none">
-      <h3>informações de entrega</h3>
+      <h3>Informações de entrega</h3>
       <div class="info-grid">
         <div class="info-item">
           <label>Nome</label>
@@ -720,7 +720,7 @@
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>morada para correspondência</label>
+          <label>Morada para correspondência</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
@@ -732,7 +732,7 @@
         <h3>Produtos</h3>
         <div id="resProductsList"></div>
         <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
-          <span>total pago</span>
+          <span>Total pago</span>
           <strong id="resTotalValue">—</strong>
         </div>
       </div>
@@ -740,8 +740,8 @@
 
     <!-- Acciones -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="/pt/shop/" class="btn-primary">continuar comprando</a>
-      <a href="mailto:info@lixby.es" class="btn-secondary">entre em contacto com o suporte</a>
+      <a href="/pt/shop/" class="btn-primary">Continuar comprando</a>
+      <a href="mailto:info@lixby.es" class="btn-secondary">Entre em contacto com o suporte</a>
     </div>
   </div>
 </div>

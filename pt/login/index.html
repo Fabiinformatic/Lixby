@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>fazer login | Lixby</title>
+  <title>Fazer login | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -646,17 +646,17 @@
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
-        <div id="authStatus" class="auth-status info">pronto para autenticar.</div>
+        <div id="authStatus" class="auth-status info">Pronto para autenticar.</div>
         <div id="authConfigHint" class="auth-config-hint">
           O Firebase precisa ser configurado. editar o objeto <code>firebaseConfig</code> nesta página com as credenciais do teu projeto.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>faça login no Lixby</h1>
+            <h1>Faça login no Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">e-mail ou número de telefone</label>
+            <label for="loginIdentifier">E-mail ou número de telefone</label>
             <input id="loginIdentifier" type="text" required placeholder="nome@exemplo.com" autocomplete="username">
 
             <label for="loginPassword">Palavra-passe</label>
@@ -665,39 +665,39 @@
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                lembre-me
+                Lembre-me
               </label>
             </div>
 
-            <a href="/pt/forget-password/" class="auth-link">tu esqueceu tua palavra-passe?</a>
+            <a href="/pt/forget-password/" class="auth-link">Tu esqueceu tua palavra-passe?</a>
 
             <button class="btn btn-primary login-primary-btn" type="submit">Iniciar sessão</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              continuar com o Google
+              Continuar com o Google
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
             <strong>Verificação em duas etapas necessária</strong>
             <p id="mfaHint" class="auth-note">Enviaremos um código SMS para o telefone associado.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">enviar código</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="código SMS">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">verificar</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Enviar código</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Código SMS">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificar</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
             Não tem uma conta Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">crie tua conta Lixby</a>
+            <a href="#" id="showRegisterLink" class="auth-link">Crie tua conta Lixby</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
-            <h1>crie tua conta Lixby</h1>
+            <h1>Crie tua conta Lixby</h1>
             <p>Tu só precisa de uma conta Lixby para acessar todos os serviços Lixby.</p>
             <p class="auth-note">
               Tu já tem uma conta Lixby?
@@ -712,14 +712,14 @@
                 <input id="firstName" type="text" required>
               </div>
               <div>
-                <label for="lastName">sobrenomes</label>
+                <label for="lastName">Sobrenomes</label>
                 <input id="lastName" type="text" required>
               </div>
             </div>
 
             <div class="register-grid">
               <div>
-                <label for="country">país/região</label>
+                <label for="country">País/região</label>
                 <select id="country" required>
                   <option value="DE">Alemanha</option>
                   <option value="AT">Austria</option>
@@ -750,7 +750,7 @@
                   <option value="HN">Honduras</option>
                   <option value="IE">Irlanda</option>
                   <option value="IT">Itália</option>
-                  <option value="LV">letônia</option>
+                  <option value="LV">Letônia</option>
                   <option value="LT">Lituânia</option>
                   <option value="LU">Luxemburgo</option>
                   <option value="MT">Malta</option>
@@ -772,23 +772,23 @@
                 </select>
               </div>
               <div>
-                <label for="birthHelp">ajuda (aniversário)</label>
-                <input id="birthHelp" type="text" placeholder="data de nascimento">
+                <label for="birthHelp">Ajuda (aniversário)</label>
+                <input id="birthHelp" type="text" placeholder="Data de nascimento">
               </div>
             </div>
 
-            <label>data de nascimento</label>
+            <label>Data de nascimento</label>
             <div class="birth-grid">
               <div>
-                <label for="birthDay">dia</label>
+                <label for="birthDay">Dia</label>
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">mês</label>
+                <label for="birthMonth">Mês</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">ano</label>
+                <label for="birthYear">Ano</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
@@ -798,7 +798,7 @@
 
             <div class="email-verify" id="emailVerifySection" style="display:none;">
               <div class="sms-row">
-                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">verificar e-mail</button>
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Verificar e-mail</button>
                 <span class="auth-note">Enviaremos a ti um e-mail de verificação.</span>
               </div>
               <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
@@ -842,16 +842,16 @@
                   <option value="+36">+36 (Hungria)</option>
                   <option value="+353">+353 (Irlanda)</option>
                   <option value="+39">+39 (Itália)</option>
-                  <option value="+371">+371 (letônia)</option>
+                  <option value="+371">+371 (Letônia)</option>
                   <option value="+370">+370 (Lituânia)</option>
-                  <option value="+352">+352 (luxemburgo)</option>
+                  <option value="+352">+352 (Luxemburgo)</option>
                   <option value="+356">+356 (Malta)</option>
                   <option value="+52">+52 (México)</option>
                   <option value="+505">+505 (Nicaragua)</option>
                   <option value="+31">+31 (Holanda)</option>
                   <option value="+507">+507 (Panamá)</option>
                   <option value="+595">+595 (Paraguay)</option>
-                  <option value="+51">+51 (perú)</option>
+                  <option value="+51">+51 (Perú)</option>
                   <option value="+48">+48 (Polônia)</option>
                   <option value="+351">+351 (Portugal)</option>
                   <option value="+44">+44 (Reino Unido)</option>
@@ -863,7 +863,7 @@
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">número de telefone</label>
+                <label for="phoneNumber">Número de telefone</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
@@ -875,18 +875,18 @@
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">enviar código</button>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Enviar código</button>
                 <span class="auth-note">Enviaremos a ti um SMS de verificação.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="código SMS">
-                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">verificar</button>
+                <input id="code" type="text" placeholder="Código SMS">
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Verificar</button>
               </div>
             </div>
 
             <div class="pref-row">
               <div class="pref-info">
-                <div class="pref-title">anúncios</div>
+                <div class="pref-title">Anúncios</div>
                 <div class="pref-desc">Receba e-mails da Lixby sobre anúncios, marketing e recomendações de produtos.</div>
               </div>
               <label class="toggle-switch">
@@ -897,7 +897,7 @@
 
             <div class="pref-row">
               <div class="pref-info">
-                <div class="pref-title">aplicações, músicas e muito mais</div>
+                <div class="pref-title">Aplicações, músicas e muito mais</div>
                 <div class="pref-desc">Receba e-mails sobre novos lançamentos, conteúdos exclusivos e ofertas especiais.</div>
               </div>
               <label class="toggle-switch">
@@ -907,26 +907,26 @@
             </div>
 
             <div class="captcha-box">
-              <label>imagem de verificação</label>
+              <label>Imagem de verificação</label>
               <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
-              <label for="captchaInput">introduza o código da imagem</label>
+              <label for="captchaInput">Introduza o código da imagem</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">novo código</a>
-                <span class="auth-note">não diferencia maiúsculas de minúsculas</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">Novo código</a>
+                <span class="auth-note">Não diferencia maiúsculas de minúsculas</span>
               </div>
             </div>
 
             <p class="auth-note">
-              ícone de privacidade: as informações da tua conta Lixby são usadas para que tu possa fazer login com segurança e acessar teus dados. Lixby registra certos dados de uso para fins de segurança, suporte e relatórios. Se tu concordar, a Lixby poderá usar as informações da tua conta para enviar comunicações de marketing e e-mails. Veja como teus dados são geredos.
+              Ícone de privacidade: as informações da tua conta Lixby são usadas para que tu possa fazer login com segurança e acessar teus dados. Lixby registra certos dados de uso para fins de segurança, suporte e relatórios. Se tu concordar, a Lixby poderá usar as informações da tua conta para enviar comunicações de marketing e e-mails. Veja como teus dados são geredos.
             </p>
 
-            <button class="btn btn-primary login-primary-btn" type="submit">criar uma conta</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Criar uma conta</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              registre-se no google
+              Registre-se no google
             </button>
           </form>
         </section>
@@ -934,7 +934,7 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="/pt/account/" class="btn btn-primary">vá para minha conta</a>
+            <a href="/pt/account/" class="btn btn-primary">Vá para minha conta</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Terminar sessão</button>
           </div>
         </div>

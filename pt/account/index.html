@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>minha conta | Lixby</title>
+  <title>Minha conta | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -823,7 +823,7 @@
 
   <div id="loadingScreen">
     <div class="loading-spinner"></div>
-    <p class="loading-text">carregando tua conta...</p>
+    <p class="loading-text">Carregando tua conta...</p>
   </div>
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
@@ -953,37 +953,37 @@
   <main class="container account-page">
     <section id="accountLayout" class="account-layout hidden">
       <aside class="account-side">
-        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="foto do perfil">
-        <h1 id="sideName">tua conta Lixby</h1>
+        <img id="profilePhoto" class="avatar" src="images/cuenta.png" alt="Foto do perfil">
+        <h1 id="sideName">Tua conta Lixby</h1>
         <p id="sideEmail">-</p>
         <div class="side-actions">
-          <a class="btn btn-secondary" href="/pt/cart/">ver pedidos</a>
+          <a class="btn btn-secondary" href="/pt/cart/">Ver pedidos</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Terminar sessão</button>
         </div>
       </aside>
 
       <section id="profileForm" class="account-main">
         <section class="account-section">
-          <h2>dados pessoais</h2>
+          <h2>Dados pessoais</h2>
           <div class="field-grid">
             <div class="field">
               <label for="firstName">Nome</label>
               <input id="firstName" type="text">
             </div>
             <div class="field">
-              <label for="lastName">sobrenomes</label>
+              <label for="lastName">Sobrenomes</label>
               <input id="lastName" type="text">
             </div>
             <div class="field">
-              <label for="region">país/região</label>
+              <label for="region">País/região</label>
               <select id="region"></select>
             </div>
             <div class="field">
-              <label for="birthDate">data de nascimento</label>
+              <label for="birthDate">Data de nascimento</label>
               <input id="birthDate" type="text">
             </div>
             <div class="field">
-              <label for="language">linguagem</label>
+              <label for="language">Linguagem</label>
               <select id="language">
                 <option value="bg-BG">Български</option>
                 <option value="cs-CZ">Čeština</option>
@@ -1012,18 +1012,18 @@
               </select>
             </div>
             <div class="field">
-              <label for="timezone">fuso horário</label>
+              <label for="timezone">Fuso horário</label>
               <input id="timezone" type="text">
             </div>
             <div class="field full">
-              <label>foto do perfil</label>
+              <label>Foto do perfil</label>
               <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-                <img id="photoPreview" src="images/cuenta.png" alt="visualização"
+                <img id="photoPreview" src="images/cuenta.png" alt="Visualização"
                   style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--line)">
                 <div>
                   <input id="photoFile" type="file" accept="image/*" style="display:none">
                   <button id="uploadPhotoBtn" class="btn btn-secondary" type="button" style="font-size:0.85rem">
-                    carregar foto
+                    Carregar foto
                   </button>
                   <div id="uploadPhotoMsg" style="font-size:0.78rem;color:var(--muted);margin-top:4px"></div>
                 </div>
@@ -1041,7 +1041,7 @@
               <input id="email" type="email">
             </div>
             <div class="field">
-              <label for="phone">número de telefone</label>
+              <label for="phone">Número de telefone</label>
               <input id="phone" type="text">
             </div>
             <div class="field">
@@ -1053,7 +1053,7 @@
               <textarea id="address"></textarea>
             </div>
             <div class="field">
-              <label for="city">cidade</label>
+              <label for="city">Cidade</label>
               <input id="city" type="text">
             </div>
             <div class="field">
@@ -1064,19 +1064,19 @@
         </section>
 
         <section class="account-section">
-          <h2>preferências</h2>
+          <h2>Preferências</h2>
           <div class="check-list">
             <label class="check-row">
               <input id="prefAds" type="checkbox">
               <span class="check-text">
-                <strong>anúncios</strong>
+                <strong>Anúncios</strong>
                 <span>Receba e-mails da Lixby sobre anúncios, marketing e recomendações de produtos.</span>
               </span>
             </label>
             <label class="check-row">
               <input id="prefOffers" type="checkbox">
               <span class="check-text">
-                <strong>aplicações, músicas e muito mais</strong>
+                <strong>Aplicações, músicas e muito mais</strong>
                 <span>Receba e-mails sobre novos lançamentos, conteúdos exclusivos e ofertas especiais.</span>
               </span>
             </label>
@@ -1084,66 +1084,66 @@
         </section>
 
         <section class="account-section">
-          <h2>segurança</h2>
+          <h2>Segurança</h2>
           <div class="action-list">
-            <div class="action-item"><span>alterar a palavra-passe</span><a class="btn btn-secondary" href="/pt/change-password/">gerir</a></div>
-            <div class="action-item"><span>visualizar sessões ativas</span><button id="viewSessionsBtn" class="btn btn-secondary" type="button">ver</button></div>
-            <div class="action-item"><span>sair de outros dispositivos</span><button id="closeOtherSessionsBtn" class="btn btn-secondary btn-danger" type="button">Fechar</button></div>
-            <div class="action-item"><span>ativar a verificação em duas etapas</span><a id="twoFactorBtn" class="btn btn-secondary" href="/pt/two-step-verification/">configurar</a></div>
-            <div class="action-item"><span>verificar e-mail</span><button id="verifyEmailBtn" class="btn btn-verified" type="button">Enviar</button></div>
-            <div class="action-item"><span>histórico de login</span><button id="loginHistoryBtn" class="btn btn-secondary" type="button">ver histórico</button></div>
+            <div class="action-item"><span>Alterar a palavra-passe</span><a class="btn btn-secondary" href="/pt/change-password/">Gerir</a></div>
+            <div class="action-item"><span>Visualizar sessões ativas</span><button id="viewSessionsBtn" class="btn btn-secondary" type="button">Ver</button></div>
+            <div class="action-item"><span>Sair de outros dispositivos</span><button id="closeOtherSessionsBtn" class="btn btn-secondary btn-danger" type="button">Fechar</button></div>
+            <div class="action-item"><span>Ativar a verificação em duas etapas</span><a id="twoFactorBtn" class="btn btn-secondary" href="/pt/two-step-verification/">Configurar</a></div>
+            <div class="action-item"><span>Verificar e-mail</span><button id="verifyEmailBtn" class="btn btn-verified" type="button">Enviar</button></div>
+            <div class="action-item"><span>Histórico de login</span><button id="loginHistoryBtn" class="btn btn-secondary" type="button">Ver histórico</button></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Pedidos</h2>
-          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">carregando pedidos...</div>
+          <div id="ordersLoading" style="color:var(--muted);font-size:0.9rem">Carregando pedidos...</div>
           <div id="ordersList" style="display:none;display:grid;gap:10px"></div>
           <div id="ordersEmpty" style="display:none">
             <article class="order-card">
-              <strong>ainda não tens pedidos</strong>
+              <strong>Ainda não tens pedidos</strong>
               <span>Quando fizeres uma compra, ele aparecerá aqui.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/pt/shop/">vá até a loja</a>
+                <a class="btn btn-primary" href="/pt/shop/">Vá até a loja</a>
               </div>
             </article>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>cartões-presente</h2>
-          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">carregando cartões...</div>
+          <h2>Cartões-presente</h2>
+          <div id="giftCardsLoading" style="color:var(--muted);font-size:0.9rem">Carregando cartões...</div>
           <div id="giftCardsList" style="display:none;gap:10px"></div>
           <div id="giftCardsEmpty" style="display:none">
             <article class="order-card">
-              <strong>não tens cartões-presente</strong>
+              <strong>Não tens cartões-presente</strong>
               <span>Compre um vale-presente para ti ou para alguém especial.</span>
               <div class="order-actions">
-                <a class="btn btn-primary" href="/pt/gift/">veja vales-presente</a>
+                <a class="btn btn-primary" href="/pt/gift/">Veja vales-presente</a>
               </div>
             </article>
           </div>
         </section>
 
         <section class="account-section">
-          <h2>pagamentos</h2>
+          <h2>Pagamentos</h2>
           <div class="payment-panel" id="paymentsSection">
-            <h3>cartões salvos</h3>
+            <h3>Cartões salvos</h3>
             <form id="paymentForm" onsubmit="return false" autocomplete="off">
             <div class="payment-grid">
               <div class="payment-field">
-                <label for="payCardholder">titular</label>
-                <input id="payCardholder" type="text" placeholder="nome e sobrenome">
+                <label for="payCardholder">Titular</label>
+                <input id="payCardholder" type="text" placeholder="Nome e sobrenome">
               </div>
               <div class="payment-field">
-                <label for="payCardNumber">número do cartão</label>
+                <label for="payCardNumber">Número do cartão</label>
                 <div class="card-input">
-                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="cartão">
+                  <img id="cardBrandIcon" class="card-icon" src="images/icono-de.tarjeta/card.svg" alt="Cartão">
                   <input id="payCardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
                 </div>
               </div>
               <div class="payment-field">
-                <label for="payExpiry">expiração (MM/AA)</label>
+                <label for="payExpiry">Expiração (MM/AA)</label>
                 <input id="payExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="08/29">
               </div>
               <div class="payment-field">
@@ -1152,7 +1152,7 @@
               </div>
             </div>
             <div class="order-actions">
-              <button id="addPaymentBtn" class="btn btn-primary" type="button">adicionar forma de pagamento</button>
+              <button id="addPaymentBtn" class="btn btn-primary" type="button">Adicionar forma de pagamento</button>
             </div>
             </form>
             <div id="paymentMethods" class="payment-methods"></div>
@@ -1162,11 +1162,11 @@
         <section class="account-section">
           <h2>Morada de Faturação</h2>
           <div class="payment-panel">
-            <h3>detalhes de faturamento</h3>
+            <h3>Detalhes de faturamento</h3>
             <div class="payment-grid two">
               <div class="payment-field">
-                <label for="billName">nome fiscal</label>
-                <input id="billName" type="text" placeholder="nome completo">
+                <label for="billName">Nome fiscal</label>
+                <input id="billName" type="text" placeholder="Nome completo">
               </div>
               <div class="payment-field">
                 <label for="billCountry">País</label>
@@ -1174,10 +1174,10 @@
               </div>
               <div class="payment-field full">
                 <label for="billAddress">Morada</label>
-                <input id="billAddress" type="text" placeholder="rua, número, cidade">
+                <input id="billAddress" type="text" placeholder="Rua, número, cidade">
               </div>
               <div class="payment-field">
-                <label for="billCity">cidade</label>
+                <label for="billCity">Cidade</label>
                 <input id="billCity" type="text" placeholder="Madrid">
               </div>
               <div class="payment-field">
@@ -1186,7 +1186,7 @@
               </div>
             </div>
             <div class="order-actions">
-              <button id="saveBillingBtn" class="btn btn-primary" type="button">salvar morada de faturação</button>
+              <button id="saveBillingBtn" class="btn btn-primary" type="button">Salvar morada de faturação</button>
             </div>
             <div id="billingSummary" class="billing-summary"></div>
           </div>
@@ -1195,18 +1195,18 @@
         <section class="account-section">
           <h2>Suporte</h2>
           <div class="action-list">
-            <div class="action-item"><span>entre em contacto com o suporte</span><a class="btn btn-primary" href="/pt/help-center/contact/">abrir</a></div>
-            <div class="action-item"><span>reportar problema</span><a class="btn btn-secondary" href="/pt/help-center/troubleshooting/">relatório</a></div>
-            <div class="action-item"><span>manual do utilizador</span><a class="btn btn-secondary" href="/pt/help-center/">ver</a></div>
-            <div class="action-item"><span>garantia do produto</span><a class="btn btn-secondary" href="/pt/help-center/warranty/">consultar</a></div>
+            <div class="action-item"><span>Entre em contacto com o suporte</span><a class="btn btn-primary" href="/pt/help-center/contact/">Abrir</a></div>
+            <div class="action-item"><span>Reportar problema</span><a class="btn btn-secondary" href="/pt/help-center/troubleshooting/">Relatório</a></div>
+            <div class="action-item"><span>Manual do utilizador</span><a class="btn btn-secondary" href="/pt/help-center/">Ver</a></div>
+            <div class="action-item"><span>Garantia do produto</span><a class="btn btn-secondary" href="/pt/help-center/warranty/">Consultar</a></div>
           </div>
         </section>
 
         <section class="account-section">
           <h2>Privacidade</h2>
           <div class="action-list">
-            <div class="action-item"><span>Política de privacidade</span><a class="btn btn-secondary" href="/pt/pages/legal/privacy/">ver</a></div>
-            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="/pt/pages/legal/cookies/">ver</a></div>
+            <div class="action-item"><span>Política de privacidade</span><a class="btn btn-secondary" href="/pt/pages/legal/privacy/">Ver</a></div>
+            <div class="action-item"><span>Cookies</span><a class="btn btn-secondary" href="/pt/pages/legal/cookies/">Ver</a></div>
           </div>
         </section>
 
@@ -1214,7 +1214,7 @@
           <h2>Conta</h2>
           <div class="action-list">
             <div class="action-item"><span>Terminar sessão</span><button id="logoutBtnSecondary" class="btn btn-primary" type="button">Fechar</button></div>
-            <div class="action-item"><span>excluir conta</span><button id="deleteAccountBtn" class="btn btn-secondary btn-danger" type="button">eliminar</button></div>
+            <div class="action-item"><span>Excluir conta</span><button id="deleteAccountBtn" class="btn btn-secondary btn-danger" type="button">Eliminar</button></div>
           </div>
         </section>
       </section>
@@ -1222,18 +1222,18 @@
   </main>
 
   <!-- Barra inferior: solo aparece cuando hay cambios sin guardar -->
-  <div id="saveBar" class="save-bar" role="region" aria-live="polite" aria-label="alterações não salvas">
-    <span class="save-bar-text">tens alterações não salvas</span>
+  <div id="saveBar" class="save-bar" role="region" aria-live="polite" aria-label="Alterações não salvas">
+    <span class="save-bar-text">Tens alterações não salvas</span>
     <div class="save-bar-actions">
-      <button id="discardChangesBtn" class="btn btn-ghost" type="button">descartar alterações</button>
-      <button id="saveChangesBtn" class="btn btn-primary" type="button">salvar alterações</button>
+      <button id="discardChangesBtn" class="btn btn-ghost" type="button">Descartar alterações</button>
+      <button id="saveChangesBtn" class="btn btn-primary" type="button">Salvar alterações</button>
     </div>
   </div>
 
   <!-- Sesiones activas -->
   <div id="sessionsModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="sessionsTitle">
     <div class="account-modal-panel">
-      <h3 id="sessionsTitle">sessões ativas</h3>
+      <h3 id="sessionsTitle">Sessões ativas</h3>
       <div id="sessionsBody" class="session-list"></div>
       <div class="account-modal-actions">
         <button id="sessionsCloseBtn" class="btn btn-secondary" type="button">Fechar</button>
