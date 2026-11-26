@@ -542,6 +542,8 @@ mt/community/community.js:gcp-api-key:26
 mt/js/community-client.js:gcp-api-key:21
 nl/community/community.js:gcp-api-key:26
 nl/js/community-client.js:gcp-api-key:21
+nl/verified/index.html:gcp-api-key:345
+nl/two-step-verification/index.html:gcp-api-key:441
 pl/community/community.js:gcp-api-key:26
 pl/js/community-client.js:gcp-api-key:21
 pt/community/community.js:gcp-api-key:26

@@ -320,19 +320,19 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -344,7 +344,7 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -368,31 +368,31 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -410,13 +410,13 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -428,7 +428,7 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -440,37 +440,37 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -482,13 +482,13 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -506,7 +506,7 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -518,37 +518,37 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/cs/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -584,7 +584,7 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -602,7 +602,7 @@
   </url>
   <url>
     <loc>https://lixby.es/cs/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -650,19 +650,19 @@
   </url>
   <url>
     <loc>https://lixby.es/da/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -674,7 +674,7 @@
   </url>
   <url>
     <loc>https://lixby.es/da/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -698,31 +698,31 @@
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -740,13 +740,13 @@
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -758,7 +758,7 @@
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -770,37 +770,37 @@
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -812,13 +812,13 @@
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -836,7 +836,7 @@
   </url>
   <url>
     <loc>https://lixby.es/da/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -848,37 +848,37 @@
   </url>
   <url>
     <loc>https://lixby.es/da/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/da/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -914,7 +914,7 @@
   </url>
   <url>
     <loc>https://lixby.es/da/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -932,7 +932,7 @@
   </url>
   <url>
     <loc>https://lixby.es/da/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1274,19 +1274,19 @@
   </url>
   <url>
     <loc>https://lixby.es/el/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1298,7 +1298,7 @@
   </url>
   <url>
     <loc>https://lixby.es/el/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1322,31 +1322,31 @@
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1364,13 +1364,13 @@
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1382,7 +1382,7 @@
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1394,37 +1394,37 @@
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1436,13 +1436,13 @@
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1460,7 +1460,7 @@
   </url>
   <url>
     <loc>https://lixby.es/el/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1472,37 +1472,37 @@
   </url>
   <url>
     <loc>https://lixby.es/el/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/el/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1538,7 +1538,7 @@
   </url>
   <url>
     <loc>https://lixby.es/el/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1556,7 +1556,7 @@
   </url>
   <url>
     <loc>https://lixby.es/el/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1670,7 +1670,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/help-center/faq/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1742,7 +1742,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/help-center/returns/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1766,7 +1766,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/help-center/warranty/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1814,7 +1814,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/pages/apps/lixney/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1838,7 +1838,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/pages/legal/returns/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1874,7 +1874,7 @@
   </url>
   <url>
     <loc>https://lixby.es/en/support/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2192,19 +2192,19 @@
   </url>
   <url>
     <loc>https://lixby.es/et/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2216,7 +2216,7 @@
   </url>
   <url>
     <loc>https://lixby.es/et/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2240,31 +2240,31 @@
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2282,13 +2282,13 @@
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2300,7 +2300,7 @@
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2312,37 +2312,37 @@
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2354,13 +2354,13 @@
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2378,7 +2378,7 @@
   </url>
   <url>
     <loc>https://lixby.es/et/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2390,37 +2390,37 @@
   </url>
   <url>
     <loc>https://lixby.es/et/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/et/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2456,7 +2456,7 @@
   </url>
   <url>
     <loc>https://lixby.es/et/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2474,7 +2474,7 @@
   </url>
   <url>
     <loc>https://lixby.es/et/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2522,19 +2522,19 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2546,7 +2546,7 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2570,31 +2570,31 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2612,13 +2612,13 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2630,7 +2630,7 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2642,37 +2642,37 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2684,13 +2684,13 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2708,7 +2708,7 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2720,37 +2720,37 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/fi/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2786,7 +2786,7 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2804,7 +2804,7 @@
   </url>
   <url>
     <loc>https://lixby.es/fi/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3140,13 +3140,13 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3164,7 +3164,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3182,31 +3182,31 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3224,13 +3224,13 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3242,7 +3242,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3254,37 +3254,37 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3296,13 +3296,13 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3320,43 +3320,43 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ga/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3392,7 +3392,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3410,7 +3410,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ga/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3446,19 +3446,19 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3470,7 +3470,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3494,31 +3494,31 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3536,13 +3536,13 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3554,7 +3554,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3566,37 +3566,37 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3608,13 +3608,13 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3632,7 +3632,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3644,37 +3644,37 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hr/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3710,7 +3710,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3728,7 +3728,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hr/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3776,19 +3776,19 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3800,7 +3800,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3824,31 +3824,31 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3866,13 +3866,13 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3884,7 +3884,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3896,37 +3896,37 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3938,13 +3938,13 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3962,7 +3962,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3974,37 +3974,37 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/hu/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4040,7 +4040,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4058,7 +4058,7 @@
   </url>
   <url>
     <loc>https://lixby.es/hu/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4400,19 +4400,19 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4424,7 +4424,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4448,31 +4448,31 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4490,13 +4490,13 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4508,7 +4508,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4520,37 +4520,37 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4562,13 +4562,13 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4586,7 +4586,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4598,37 +4598,37 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lt/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4664,7 +4664,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4682,7 +4682,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lt/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4730,19 +4730,19 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4754,7 +4754,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4778,31 +4778,31 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4820,13 +4820,13 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4838,7 +4838,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4850,37 +4850,37 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4892,13 +4892,13 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4916,7 +4916,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4928,37 +4928,37 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/lv/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4994,7 +4994,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5012,7 +5012,7 @@
   </url>
   <url>
     <loc>https://lixby.es/lv/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5060,19 +5060,19 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5084,7 +5084,7 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5108,31 +5108,31 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5150,13 +5150,13 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5168,7 +5168,7 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5180,37 +5180,37 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5222,13 +5222,13 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5246,7 +5246,7 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5258,37 +5258,37 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/mt/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5324,7 +5324,7 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5342,7 +5342,7 @@
   </url>
   <url>
     <loc>https://lixby.es/mt/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5372,331 +5372,295 @@
   </url>
   <url>
     <loc>https://lixby.es/nl/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/about/</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://lixby.es/nl/account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/buy-headphones/lixbuds-one/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lixby.es/nl/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://lixby.es/nl/change-password/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://lixby.es/nl/gift/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/contact/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/faq/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/lixbuds/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/returns/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/troubleshooting/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/help-center/warranty/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://lixby.es/nl/login/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/apps/lixney/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/cookies/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/legal-notice/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/privacy/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/returns/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/legal/terms/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/pages/products/lixbuds-one/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/shop/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/nl/support/</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://lixby.es/nl/two-step%20verification/</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://lixby.es/nl/verified/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5714,19 +5678,19 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5738,7 +5702,7 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5756,31 +5720,31 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5798,13 +5762,13 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5816,7 +5780,7 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5828,37 +5792,37 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5870,13 +5834,13 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5894,43 +5858,43 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/pl/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5966,7 +5930,7 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5984,7 +5948,7 @@
   </url>
   <url>
     <loc>https://lixby.es/pl/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6314,19 +6278,19 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6338,7 +6302,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6362,31 +6326,31 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6404,13 +6368,13 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6422,7 +6386,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6434,37 +6398,37 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6476,13 +6440,13 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6500,7 +6464,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6512,37 +6476,37 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/ro/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6578,7 +6542,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6596,7 +6560,7 @@
   </url>
   <url>
     <loc>https://lixby.es/ro/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6644,19 +6608,19 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6668,7 +6632,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6692,31 +6656,31 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6734,13 +6698,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6752,7 +6716,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6764,37 +6728,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6806,13 +6770,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -6830,7 +6794,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6842,37 +6806,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sk/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6908,7 +6872,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6926,7 +6890,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sk/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6974,19 +6938,19 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6998,7 +6962,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7022,31 +6986,31 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7064,13 +7028,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7082,7 +7046,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7094,37 +7058,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7136,13 +7100,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7160,7 +7124,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7172,37 +7136,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sl/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7238,7 +7202,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7256,7 +7220,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sl/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7304,19 +7268,19 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/apps/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/beta-lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/beta-lixney/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7328,7 +7292,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/buy/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7352,31 +7316,31 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/accessibility/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/bluetooth-sync/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/cancellations/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/care-cleaning/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/community/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7394,13 +7358,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/firmware-updates/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/gift-cards/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7412,7 +7376,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7424,37 +7388,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/my-account/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/orders-shipping/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/payment-methods/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/privacy-data/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/release-notes/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7466,13 +7430,13 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/subscriptions/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/help-center/system-status/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -7490,7 +7454,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/lixsafe/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7502,37 +7466,37 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/news/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/news/1/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/news/2/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/news/3/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/news/4/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://lixby.es/sv/pages/apps/lixfly/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7568,7 +7532,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/pages/legal/sales-refunds/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7586,7 +7550,7 @@
   </url>
   <url>
     <loc>https://lixby.es/sv/products/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
