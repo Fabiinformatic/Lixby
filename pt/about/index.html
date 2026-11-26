@@ -1037,7 +1037,7 @@
     <section class="about-hero">
       <div class="about-hero-inner">
         <p class="eyebrow">Tecnologia projetada para ti</p>
-        <h1><span class="typewriter" data-text="sobre">Sobre</span> <span class="grad">Lixby</span></h1>
+        <h1><span class="typewriter" data-text="Sobre">Sobre</span> <span class="grad">Lixby</span></h1>
         <p class="lead">Criamos tecnologia para te acompanhar em todas as partes do teu dia. Projetado na Espanha, criado com paixão.</p>
 
         <div class="about-stats">
@@ -1471,7 +1471,7 @@
         if (sb && gr) {
           /* ocultar "Lixby" mientras se escribe "sobre"; aparece 1 s después */
           gsap.set(gr, { autoAlpha: 0 });
-          typeInto(sb, sb.getAttribute("data-text") || "sobre", 140, function () {
+          typeInto(sb, sb.getAttribute("data-text") || "Sobre", 140, function () {
             setTimeout(appearBrand, 1000);
           });
         } else {
