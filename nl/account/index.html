@@ -1807,7 +1807,7 @@
 
       details.appendChild(el("strong", { text: billing.name || "belasting naam" }));
       details.appendChild(el("span", { text: billing.address || "Adres" }));
-      details.appendChild(el("span", { text: `${billing.city || "ciudad"} ${billing.postalcode || ""}`.trim() }));
+      details.appendChild(el("span", { text: `${billing.city || "stad"} ${billing.postalCode || ""}`.trim() }));
       details.appendChild(el("span", { text: billing.country || "Land" }));
       actions.appendChild(el("button", {
         id: "editBillingBtn",
@@ -2133,7 +2133,7 @@
     }
 
     function formatEuro(value) {
-      return value ? `${number(value).tofixed(2).replace(".", ",")} €` : "—";
+      return value ? `${Number(value).toFixed(2).replace(".", ",")} €` : "—";
     }
 
     function renderOrderCard(order) {
@@ -2178,7 +2178,7 @@
       const actions = el("div", { className: "order-actions" });
       actions.appendChild(el("a", {
         className: "btn btn-secondary",
-        href: `/nl/track/?orderid=${encodeuricomponent(order.id || "")}`,
+        href: `/nl/track/?orderId=${encodeURIComponent(order.id || "")}`,
         text: "volg de bestelling",
         style: { fontSize: "0.85rem" }
       }));
@@ -2212,14 +2212,14 @@
         style: { fontSize: "0.85rem", color: "var(--muted)" }
       }));
       balanceRow.appendChild(el("strong", {
-        text: `${number(card.balance || 0).tofixed(2).replace(".", ",")} €`,
+        text: `${Number(card.balance || 0).toFixed(2).replace(".", ",")} €`,
         style: { color: "#458500" }
       }));
       article.appendChild(balanceRow);
 
       if (card.recipientName) {
         article.appendChild(el("span", {
-          text: `aan: ${card.recipientname}`,
+          text: `aan: ${card.recipientName}`,
           style: { fontSize: "0.82rem", color: "var(--muted)" }
         }));
       }
@@ -2614,11 +2614,11 @@
         const isCurrent = docSnap.id === currentId;
         const item = el("div", { className: "session-item" });
         item.appendChild(el("strong", {
-          text: isCurrent ? "dit apparaat" : `${s.tipo || "dispositivo"} · ${s.os || "desconocido"}`
+          text: isCurrent ? "dit apparaat" : `${s.tipo || "apparaat"} · ${s.os || "onbekend"}`
         }));
-        item.appendChild(el("span", { text: `${s.browser || "navegador"} · ${s.os || ""} · ${s.tipo || ""}` }));
-        item.appendChild(el("span", { text: `laatste activiteit: ${formatwhen(s.lastactiveat)}` }));
-        item.appendChild(el("span", { text: `begin: ${formatwhen(s.createdat)}` }));
+        item.appendChild(el("span", { text: `${s.browser || "browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `laatste activiteit: ${formatWhen(s.lastActiveAt)}` }));
+        item.appendChild(el("span", { text: `begin: ${formatWhen(s.createdAt)}` }));
 
         if (isCurrent) {
           item.appendChild(el("span", { className: "session-badge", text: "activeer nu" }));
@@ -2736,8 +2736,8 @@
         const s = docSnap.data();
         const item = el("div", { className: "session-item" });
         item.appendChild(el("strong", { text: formatWhen(s.createdAt) }));
-        item.appendChild(el("span", { text: `${s.browser || "navegador"} · ${s.os || ""} · ${s.tipo || ""}` }));
-        item.appendChild(el("span", { text: `methode: ${method_labels[s.method] || s.method || "—"}` }));
+        item.appendChild(el("span", { text: `${s.browser || "browser"} · ${s.os || ""} · ${s.tipo || ""}` }));
+        item.appendChild(el("span", { text: `methode: ${METHOD_LABELS[s.method] || s.method || "—"}` }));
         return item;
       });
 

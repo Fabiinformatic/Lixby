@@ -1294,7 +1294,7 @@
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phonenumber || "tu teléfono"}.`;
+            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phoneNumber || "tu teléfono"}.`;
             mfaPanel.classList.add("active");
             setStatus("È richiesta la verifica in due passaggi.", "info");
             return;
@@ -1467,7 +1467,7 @@
             } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
               setStatus("finestra di Google chiusa.", "info");
             } else {
-              setStatus(`errore con Google: ${popuperror.message}`, "error");
+              setStatus(`errore con Google: ${popupError.message}`, "error");
             }
           }
         } catch (error) {

@@ -1689,7 +1689,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/nl/search/?q=${encodeuricomponent(query)}` : "/nl/shop/";
+        const url = query ? `/nl/search/?q=${encodeURIComponent(query)}` : "/nl/shop/";
         window.location.href = url;
       });
     }
@@ -1861,7 +1861,7 @@
 
       swatch.addEventListener("mouseleave", () => {
         if (colorLabel) {
-          colorLabel.textContent = `kleur - ${selectedcolorname}`;
+          colorLabel.textContent = `kleur - ${selectedColorName}`;
         }
       });
 
@@ -1870,7 +1870,7 @@
         swatch.classList.add("active");
         if (colorLabel) {
           selectedColorName = swatch.dataset.color || "Blanco";
-          colorLabel.textContent = `kleur - ${selectedcolorname}`;
+          colorLabel.textContent = `kleur - ${selectedColorName}`;
         }
         if (swatch.dataset.image) {
           selectedImageForCart = swatch.dataset.image;

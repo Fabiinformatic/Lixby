@@ -552,7 +552,7 @@
   // Número de pedido
   if (orderId) {
     document.getElementById('orderNumber').textContent = orderId;
-    document.getElementById('trackBtn').href = `/it/traccia/?orderid=${orderid}`;
+    document.getElementById('trackBtn').href = `/it/traccia/?orderId=${orderId}`;
   }
 
   // Intentar cargar desde Railway (datos reales de Stripe)

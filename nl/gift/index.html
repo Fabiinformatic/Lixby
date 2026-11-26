@@ -994,7 +994,7 @@
     searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const query = searchInput.value.trim();
-      const url = query ? `/nl/search/?q=${encodeuricomponent(query)}` : "/nl/shop/";
+      const url = query ? `/nl/search/?q=${encodeURIComponent(query)}` : "/nl/shop/";
       window.location.href = url;
     });
   }
@@ -1239,7 +1239,7 @@
     } catch (e) {
       alert('Fout bij verwerken betaling:' + e.message);
       btn.disabled = false;
-      btn.textContent = `cadeaubon kopen · ${selectedamount.tofixed(2).replace('.', ',')} €`;
+      btn.textContent = `cadeaubon kopen · ${selectedAmount.toFixed(2).replace('.', ',')} €`;
     }
   });
 
