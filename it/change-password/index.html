@@ -10,7 +10,7 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/it/cambia-password">
+  <link rel="canonical" href="https://lixby.es/it/change-password">
   <link rel="alternate" href="https://lixby.es/bg/change-password" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/change-password" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/change-password" hreflang="da-DK">
@@ -35,6 +35,7 @@
   <link rel="alternate" href="https://lixby.es/sk/change-password" hreflang="sk-SK">
   <link rel="alternate" href="https://lixby.es/sl/change-password" hreflang="sl-SI">
   <link rel="alternate" href="https://lixby.es/sv/change-password" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/change-password" hreflang="x-default">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -54,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/it/style.css">
   <style>
     .password-page {
       padding: 34px 0 84px;
@@ -108,7 +112,7 @@
     .field input {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 9px 11px;
       font: inherit;
       background: #f8fafc;
@@ -126,8 +130,6 @@
       flex-wrap: wrap;
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -144,12 +146,12 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principale">
+    <div class="container nav-container">
+      <a href="/it/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Navigazione principale">
         <a href="/it/shop/" class="nav-link">Negozio</a>
-        <a href="#productos" class="nav-link">Prodotti</a>
-        <a href="#apps" class="nav-link">App</a>
+        <a href="/it/products/" class="nav-link">Prodotti</a>
+        <a href="/it/apps/" class="nav-link">Apps</a>
         <a href="/it/support/" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
@@ -159,57 +161,107 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/it/shop/" method="get">
+        <form id="navSearchForm" action="/it/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Cerca prodotto..."
-            aria-label="Cerca prodotto"
+            placeholder="Cerca in Lixby..."
+            aria-label="Cerca in Lixby"
           >
         </form>
         <a href="/it/cart/" class="nav-icon-link" aria-label="Carrello">
-          <img src="images/Bolsa.png" alt="Carrello">
+          <img src="/it/images/Bolsa.png" alt="Carrello">
         </a>
         <a href="/it/account/" class="nav-icon-link" aria-label="Account">
-          <img src="images/cuenta.png" alt="Account">
+          <img src="/it/images/cuenta.png" alt="Account">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/it/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Cerca"
-          aria-label="Cerca prodotto"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Chiudi menu">
-        <span aria-hidden="true">✕</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Principale mobile">
-      <a href="/it/shop/">Negozio</a>
-      <a href="#productos">Prodotti</a>
-      <a href="#apps">App</a>
-      <a href="/it/support/">Supporto</a>
+    <nav class="nav-mobile-links" aria-label="Navigazione principale mobile">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Negozio</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/it/shop/">Entra nel negozio</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/products/lixbuds-one/">Cuffie LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/buy-headphones/lixbuds-one/">Acquista ora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/news/">Novità</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Prodotti</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/it/products/">Vedi prodotti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/lixsafe/">LixSafe e copertura</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/it/apps/">Vedi app</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/lixney/">Lixney supporto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/lixfly/">Lixfly supporto</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Supporto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/it/support/">Vai al supporto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/faq/">Domande frequenti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/contact/">Contatti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/returns/">Resi</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/it/cart/">Carrello</a>
-      <a href="/it/account/">Account</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Carrello</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/it/cart/">Vedi carrello</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/cart/">Concludi acquisto</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Accedi al tuo account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">I miei ordini</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Il mio profilo</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Impostazioni</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/login/">Accedi</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/two-step-verification/">Verifica in due passaggi</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -217,8 +269,8 @@
     <div id="statusMsg" class="status-msg" hidden></div>
 
     <section class="password-card">
-      <h1>Cambia password</h1>
-      <p class="helper">Per sicurezza, ti chiediamo la password attuale.</p>
+      <h1>Cambiare la password</h1>
+      <p class="helper">Per sicurezza, ti chiediamo la tua password attuale.</p>
 
       <div class="field">
         <label for="currentPassword">Password attuale</label>
@@ -229,7 +281,7 @@
         <input id="newPassword" type="password" autocomplete="new-password">
       </div>
       <div class="field">
-        <label for="confirmPassword">Conferma nuova password</label>
+        <label for="confirmPassword">Confermare la nuova password</label>
         <input id="confirmPassword" type="password" autocomplete="new-password">
       </div>
 
@@ -241,7 +293,7 @@
       <div id="recaptchaContainer"></div>
 
       <div class="actions">
-        <button id="savePasswordBtn" class="btn btn-primary" type="button">Salva modifiche</button>
+        <button id="savePasswordBtn" class="btn btn-primary" type="button">Salvare le modifiche</button>
         <a class="btn btn-secondary" href="/it/account/">Torna al mio account</a>
       </div>
     </section>
@@ -254,7 +306,7 @@
         <ul>
           <li><a href="/it/shop/">Negozio</a></li>
           <li><a href="/it/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="#apps">App</a></li>
+          <li><a href="/it/apps/">Apps</a></li>
           <li><a href="/it/support/">Supporto</a></li>
         </ul>
       </section>
@@ -262,8 +314,8 @@
       <section class="footer-section">
         <h3>Supporto</h3>
         <ul>
-          <li><a href="/it/support/">Pagina iniziale supporto</a></li>
-          <li><a href="/it/support/#faq">FAQ Negozio online</a></li>
+          <li><a href="/it/support/">Pagina iniziale del supporto</a></li>
+          <li><a href="/it/support/#faq">FAQ del negozio online</a></li>
           <li><a href="/it/support/">Informazioni sulla garanzia</a></li>
           <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
         </ul>
@@ -275,16 +327,17 @@
           <li><a href="/it/track/">Ordini</a></li>
           <li><a href="/it/account/">Il mio account</a></li>
           <li><a href="/it/account/">Coupon</a></li>
+          <li><a href="/it/community/">Community</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Chi è Lixby</h3>
+        <h3>Informazioni su Lixby</h3>
         <ul>
-          <li><a href="/it/about/">Noi</a></li>
+          <li><a href="/it/about/">Chi siamo</a></li>
           <li><a href="/it/support/">Garanzia</a></li>
-          <li><a href="#">Eventi</a></li>
-          <li><a href="/it/support/">Contatto</a></li>
+          <li><a href="/it/news/">Novità</a></li>
+          <li><a href="/it/support/">Contatti</a></li>
         </ul>
       </section>
     </div>
@@ -292,15 +345,104 @@
     <div class="container footer-meta">
       <p class="footer-bottom">Copyright © 2026 Lixby. Tutti i diritti riservati.</p>
       <div class="footer-legal-links">
-        <a href="/it/pages/legal/privacy/">Politica sulla privacy</a>
-        <a href="/it/pages/legal/cookies/">Utilizzo dei cookie</a>
-        <a href="/it/pages/legal/terms/">Condizioni d'uso</a>
-        <a href="/it/support/">Vendite e rimborsi</a>
+        <a href="/it/pages/legal/privacy/">Informativa sulla privacy</a>
+        <a href="/it/pages/legal/cookies/">Informativa sui cookie</a>
+        <a href="/it/pages/legal/terms/">Termini e condizioni</a>
+        <a href="/it/pages/legal/sales-refunds/">Vendite e rimborsi</a>
         <a href="/it/pages/legal/legal-notice/">Note legali</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential, getMultiFactorResolver, PhoneAuthProvider, PhoneMultiFactorGenerator, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
@@ -352,12 +494,12 @@
     const ERRORS = {
       "auth/wrong-password": "La password attuale non è corretta.",
       "auth/invalid-credential": "La password attuale non è corretta.",
-      "auth/too-many-requests": "Troppi tentativi. Riprova più tardi.",
+      "auth/too-many-requests": "Troppi tentativi. Per favore riprova più tardi.",
       "auth/weak-password": "La nuova password è troppo debole.",
-      "auth/invalid-verification-code": "Il codice SMS non è corretto.",
-      "auth/code-expired": "Il codice è scaduto. Ricomincia.",
-      "auth/requires-recent-login": "Accedi di nuovo per cambiare la password.",
-      "auth/network-request-failed": "Errore di rete. Controlla la connessione."
+      "auth/invalid-verification-code": "Il codice dell'sms non è corretto.",
+      "auth/code-expired": "Il codice è scaduto. ricominciare.",
+      "auth/requires-recent-login": "Effettua nuovamente l'accesso per modificare la password.",
+      "auth/network-request-failed": "Errore di rete. controlla la tua connessione."
     };
 
     function friendlyError(error) {
@@ -370,7 +512,7 @@
       pendingPassword = null;
       mfaBlock.style.display = "none";
       smsCode.value = "";
-      savePasswordBtn.textContent = "Salva modifiche";
+      savePasswordBtn.textContent = "salvare le modifiche";
       if (recaptchaVerifier) {
         try { recaptchaVerifier.clear(); } catch (e) {}
         recaptchaVerifier = null;
@@ -379,19 +521,19 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/it/login/";
+        window.location.href = "/it/sessione-di-accesso/";
         return;
       }
       const hasPassword = user.providerData.some((p) => p.providerId === "password");
       if (!hasPassword) {
         savePasswordBtn.disabled = true;
-        showStatus("Il tuo account accede con Google o un altro provider e non ha una password propria.", "error");
+        showStatus("Il tuo account accede con Google o un altro provider e non ha una propria password.", "error");
       }
     });
 
     async function sendSms(resolver) {
       const hint = resolver.hints.find((h) => h.factorId === PhoneMultiFactorGenerator.FACTOR_ID);
-      if (!hint) throw new Error("Nessun numero di telefono configurato per la verifica.");
+      if (!hint) throw new Error("Non esiste un telefono impostato per la verifica.");
 
       if (!recaptchaVerifier) {
         recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", { size: "invisible" });
@@ -401,7 +543,7 @@
         { multiFactorHint: hint, session: resolver.session },
         recaptchaVerifier
       );
-      mfaHint.textContent = `Abbiamo inviato un codice al ${hint.phoneNumber}.`;
+      mfaHint.textContent = `Ti abbiamo inviato un codice a ${hint.phonenumber}.`;
     }
 
     async function finish(user, next) {
@@ -418,7 +560,7 @@
 
       if (!current) return showStatus("Inserisci la password attuale.", "error");
       if (!isStrongEnough(next)) return showStatus("La nuova password deve contenere almeno 8 caratteri.", "error");
-      if (next !== confirm) return showStatus("Le password non coincidono.", "error");
+      if (next !== confirm) return showStatus("Le password non corrispondono.", "error");
 
       try {
         await reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, current));
@@ -428,7 +570,7 @@
           mfaResolver = getMultiFactorResolver(auth, error);
           await sendSms(mfaResolver);
           mfaBlock.style.display = "grid";
-          savePasswordBtn.textContent = "Conferma codice e cambia";
+          savePasswordBtn.textContent = "Confermare il codice e modificarlo";
           showStatus("Inserisci il codice SMS che ti abbiamo inviato.", "info");
           return;
         }

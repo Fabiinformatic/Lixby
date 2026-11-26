@@ -10,7 +10,7 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://lixby.es/it/accesso">
+  <link rel="canonical" href="https://lixby.es/it/login">
   <link rel="alternate" href="https://lixby.es/bg/login" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/login" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/login" hreflang="da-DK">
@@ -35,6 +35,7 @@
   <link rel="alternate" href="https://lixby.es/sk/login" hreflang="sk-SK">
   <link rel="alternate" href="https://lixby.es/sl/login" hreflang="sl-SI">
   <link rel="alternate" href="https://lixby.es/sv/login" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/login" hreflang="x-default">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -54,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/it/style.css">
   <style>
     .account-page {
       padding: 40px 0 80px;
@@ -267,9 +271,51 @@
       flex-wrap: wrap;
     }
 
+    .email-verify {
+      display: grid;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+
+    .email-verify .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-verify .sms-row button {
+      flex-shrink: 0;
+      padding: 0 18px;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
     .sms-row input {
       flex: 1 1 180px;
       min-width: 180px;
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .sms-row #verifySmsBtn {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 18px !important;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .captcha-box {
@@ -298,6 +344,139 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+    }
+
+    .btn {
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sms-sent {
+      animation: smsSentPulse 0.5s ease forwards;
+      background-color: #16a34a !important;
+      border-color: #15803d !important;
+      color: white !important;
+    }
+
+    @keyframes smsSentPulse {
+      0% { transform: scale(1); box-shadow: none; }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toggle-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 26px;
+      background: #d1d5db;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+      position: relative;
+      display: block;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-track {
+      background: #1d4ed8;
+    }
+
+    .toggle-switch input:checked + .toggle-track .toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .toggle-switch input:focus-visible + .toggle-track {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .pref-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pref-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pref-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .pref-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+
+    .pref-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SMS verification animations */
+    .sms-success {
+      animation: smsSuccessPulse 0.6s ease forwards;
+    }
+
+    .sms-error {
+      animation: smsErrorShake 0.4s ease;
+    }
+
+    @keyframes smsSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes smsErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .login-primary-btn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .login-primary-btn:hover {
+      transform: none;
     }
 
     .google-icon {
@@ -329,8 +508,6 @@
       }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -347,31 +524,131 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principale">
+    <div class="container nav-container">
+      <a href="/it/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Navigazione principale">
         <a href="/it/shop/" class="nav-link">Negozio</a>
-        <a href="/it/#productos" class="nav-link">Prodotti</a>
-        <a href="/it/#apps" class="nav-link">App</a>
+        <a href="/it/products/" class="nav-link">Prodotti</a>
+        <a href="/it/apps/" class="nav-link">Apps</a>
         <a href="/it/support/" class="nav-link">Supporto</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cerca" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/it/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cerca in Lixby..."
+            aria-label="Cerca in Lixby"
+          >
+        </form>
         <a href="/it/cart/" class="nav-icon-link" aria-label="Carrello">
-          <img src="images/Bolsa.png" alt="Carrello">
+          <img src="/it/images/Bolsa.png" alt="Carrello">
         </a>
         <a href="/it/account/" class="nav-icon-link" aria-label="Account">
-          <img src="images/cuenta.png" alt="Account">
+          <img src="/it/images/cuenta.png" alt="Account">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Navigazione principale mobile">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Negozio</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/it/shop/">Entra nel negozio</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/products/lixbuds-one/">Cuffie LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/buy-headphones/lixbuds-one/">Acquista ora</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/news/">Novità</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Prodotti</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/it/products/">Vedi prodotti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/lixsafe/">LixSafe e copertura</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/it/apps/">Vedi app</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/lixney/">Lixney supporto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/lixfly/">Lixfly supporto</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Supporto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/it/support/">Vai al supporto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/faq/">Domande frequenti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/contact/">Contatti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/help-center/returns/">Resi</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Carrello</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/it/cart/">Vedi carrello</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/cart/">Concludi acquisto</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Account</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Accedi al tuo account</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">I miei ordini</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Il mio profilo</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/account/">Impostazioni</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/login/">Accedi</a></p>
+          <p class="nav-mobile-answer-text"><a href="/it/two-step-verification/">Verifica in due passaggi</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Pronto per l'autenticazione.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Configurazione Firebase mancante. Modifica l'oggetto <code>firebaseConfig</code> in <code>login.html</code> con le tue credenziali del progetto.
+          Firebase deve essere configurato. Modificare l'oggetto <code>firebaseConfig</code> in questa pagina con le credenziali del tuo progetto.
         </div>
 
         <section id="loginSection" class="auth-section active">
@@ -380,21 +657,21 @@
           </div>
           <form id="loginForm" class="account-form">
             <label for="loginIdentifier">Email o numero di telefono</label>
-            <input id="loginIdentifier" type="text" required placeholder="nome@esempio.com">
+            <input id="loginIdentifier" type="text" required placeholder="nome@esempio.it" autocomplete="username">
 
             <label for="loginPassword">Password</label>
-            <input id="loginPassword" type="password" required placeholder="********">
+            <input id="loginPassword" type="password" required placeholder="********" autocomplete="current-password">
 
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                Ricordami
+                Ricordamelo
               </label>
             </div>
 
             <a href="/it/forget-password/" class="auth-link">Hai dimenticato la password?</a>
 
-            <button class="btn btn-primary" type="submit">Accedi</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Accedi</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
@@ -403,12 +680,12 @@
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Verifica in 2 passaggi richiesta</strong>
+            <strong>È richiesta la verifica in due passaggi</strong>
             <p id="mfaHint" class="auth-note">Invieremo un codice SMS al telefono associato.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Invia codice</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Inviare codice</button>
               <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Codice SMS">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verifica</button>
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Verificare</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
@@ -421,10 +698,10 @@
         <section id="registerSection" class="auth-section">
           <div class="account-head">
             <h1>Crea il tuo account Lixby</h1>
-            <p>Hai bisogno solo di un account Lixby per accedere a tutti i servizi Lixby.</p>
+            <p>Hai bisogno di un solo account Lixby per accedere a tutti i servizi Lixby.</p>
             <p class="auth-note">
               Hai già un account Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">Accedi</a>
+              <a href="#" id="showLoginLink" class="auth-link">Login</a>
             </p>
           </div>
 
@@ -435,7 +712,7 @@
                 <input id="firstName" type="text" required>
               </div>
               <div>
-                <label for="lastName">Cognome</label>
+                <label for="lastName">Cognomi</label>
                 <input id="lastName" type="text" required>
               </div>
             </div>
@@ -444,32 +721,54 @@
               <div>
                 <label for="country">Paese/regione</label>
                 <select id="country" required>
-                  <option value="ES" selected>Spagna</option>
-                  <option value="MX">Messico</option>
+                  <option value="DE">Germania</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">Belgio</option>
                   <option value="AR">Argentina</option>
-                  <option value="CO">Colombia</option>
-                  <option value="CL">Cile</option>
-                  <option value="PE">Perù</option>
-                  <option value="EC">Ecuador</option>
-                  <option value="VE">Venezuela</option>
-                  <option value="UY">Uruguay</option>
-                  <option value="PY">Paraguay</option>
                   <option value="BO">Bolivia</option>
                   <option value="BR">Brasile</option>
-                  <option value="DO">Repubblica Dominicana</option>
-                  <option value="PA">Panama</option>
-                  <option value="CR">Costa Rica</option>
-                  <option value="GT">Guatemala</option>
-                  <option value="SV">El Salvador</option>
-                  <option value="HN">Honduras</option>
-                  <option value="NI">Nicaragua</option>
+                  <option value="BG">Bulgaria</option>
                   <option value="CA">Canada</option>
-                  <option value="US">Stati Uniti</option>
-                  <option value="PT">Portogallo</option>
+                  <option value="CL">Chile</option>
+                  <option value="CY">Cipro</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croazia</option>
+                  <option value="DK">Danimarca</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="SK">Slovacchia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="ES" selected>Spagna</option>
+                  <option value="US">U.S.A.</option>
+                  <option value="EE">Estonia</option>
+                  <option value="FI">Finlandia</option>
                   <option value="FR">Francia</option>
-                  <option value="DE">Germania</option>
+                  <option value="GR">Grecia</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="HU">Ungheria</option>
+                  <option value="HN">Honduras</option>
+                  <option value="IE">Irlanda</option>
                   <option value="IT">Italia</option>
+                  <option value="LV">Lettonia</option>
+                  <option value="LT">Lituania</option>
+                  <option value="LU">Lussemburgo</option>
+                  <option value="MT">Malta</option>
+                  <option value="MX">Messico</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NL">Paesi Bassi</option>
+                  <option value="PA">Panama</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Perù</option>
+                  <option value="PL">Polonia</option>
+                  <option value="PT">Portugal</option>
                   <option value="GB">Regno Unito</option>
+                  <option value="CZ">Repubblica ceca</option>
+                  <option value="DO">Repubblica Dominicana</option>
+                  <option value="RO">Romania</option>
+                  <option value="SE">Svezia</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="VE">Venezuela</option>
                 </select>
               </div>
               <div>
@@ -494,43 +793,73 @@
               </div>
             </div>
 
-            <label for="registerEmail">nome@esempio.com</label>
+            <label for="registerEmail">nome@esempio.it</label>
             <input id="registerEmail" type="email" required>
 
+            <div class="email-verify" id="emailVerifySection" style="display:none;">
+              <div class="sms-row">
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Verificare l'email</button>
+                <span class="auth-note">Ti invieremo un'email di verifica.</span>
+              </div>
+              <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
+                <input id="emailVerifyConfirmInput" type="text" readonly autocomplete="username">
+              </div>
+            </div>
+
             <label for="registerPassword">Password</label>
-            <input id="registerPassword" type="password" required minlength="6">
+            <input id="registerPassword" type="password" required minlength="6" autocomplete="new-password">
 
             <label for="registerPasswordConfirm">Conferma password</label>
-            <input id="registerPasswordConfirm" type="password" required minlength="6">
+            <input id="registerPasswordConfirm" type="password" required minlength="6" autocomplete="new-password">
 
             <div class="register-grid">
               <div>
                 <label for="phoneCountry">Paese</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (Spagna)</option>
-                  <option value="+52">+52 (Messico)</option>
+                  <option value="+49">+49 (Germania)</option>
+                  <option value="+43">+43 (Austria)</option>
+                  <option value="+32">+32 (Belgio)</option>
                   <option value="+54">+54 (Argentina)</option>
-                  <option value="+57">+57 (Colombia)</option>
-                  <option value="+56">+56 (Cile)</option>
-                  <option value="+51">+51 (Perù)</option>
-                  <option value="+593">+593 (Ecuador)</option>
-                  <option value="+58">+58 (Venezuela)</option>
-                  <option value="+598">+598 (Uruguay)</option>
-                  <option value="+595">+595 (Paraguay)</option>
                   <option value="+591">+591 (Bolivia)</option>
                   <option value="+55">+55 (Brasile)</option>
+                  <option value="+359">+359 (Bulgaria)</option>
                   <option value="+1">+1 (Stati Uniti/Canada)</option>
-                  <option value="+507">+507 (Panama)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+357">+357 (Cipro)</option>
+                  <option value="+57">+57 (Colombia)</option>
                   <option value="+506">+506 (Costa Rica)</option>
-                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+385">+385 (Croazia)</option>
+                  <option value="+45">+45 (Danimarca)</option>
+                  <option value="+593">+593 (Ecuador)</option>
                   <option value="+503">+503 (El Salvador)</option>
-                  <option value="+504">+504 (Honduras)</option>
-                  <option value="+505">+505 (Nicaragua)</option>
-                  <option value="+351">+351 (Portogallo)</option>
+                  <option value="+34" selected>+34 (Spagna)</option>
+                  <option value="+372">+372 (Estonia)</option>
+                  <option value="+358">+358 (Finlandia)</option>
                   <option value="+33">+33 (Francia)</option>
-                  <option value="+49">+49 (Germania)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+30">+30 (Grecia)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+36">+36 (Ungheria)</option>
+                  <option value="+353">+353 (Irlanda)</option>
                   <option value="+39">+39 (Italia)</option>
+                  <option value="+371">+371 (Lettonia)</option>
+                  <option value="+370">+370 (Lituania)</option>
+                  <option value="+352">+352 (Lussemburgo)</option>
+                  <option value="+356">+356 (Malta)</option>
+                  <option value="+52">+52 (Messico)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+31">+31 (Paesi Bassi)</option>
+                  <option value="+507">+507 (Panama)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+51">+51 (Perù)</option>
+                  <option value="+48">+48 (Polonia)</option>
+                  <option value="+351">+351 (Portugal)</option>
                   <option value="+44">+44 (Regno Unito)</option>
+                  <option value="+420">+420 (Repubblica Ceca)</option>
+                  <option value="+40">+40 (Romania)</option>
+                  <option value="+46">+46 (Svezia)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+58">+58 (Venezuela)</option>
                 </select>
               </div>
               <div>
@@ -540,49 +869,64 @@
             </div>
 
             <p class="auth-note">
-              Assicurati di inserire un numero di telefono a cui puoi accedere sempre. Questo numero verrà utilizzato per verificare la tua identità ogni volta che accedi da un nuovo dispositivo o browser web. Potrebbero essere applicate tariffe per dati o messaggi.
+              Assicurati di inserire un numero di telefono a cui puoi accedere in qualsiasi momento. Questo numero verrà utilizzato per verificare la tua identità ogni volta che accedi su un nuovo dispositivo o browser web. Potrebbero essere applicate tariffe per dati o messaggistica.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Invia codice</button>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Inviare codice</button>
                 <span class="auth-note">Ti invieremo un SMS di verifica.</span>
               </div>
               <div class="sms-row">
                 <input id="code" type="text" placeholder="Codice SMS">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Verifica</button>
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Verificare</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Annunci</label>
-            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come annunci, marketing, raccomandazioni e aggiornamenti su prodotti, servizi e software Lixby.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Annunci pubblicitari</div>
+                <div class="pref-desc">Ricevi email da Lixby su pubblicità, marketing e consigli sui prodotti.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="adsOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
-            <label><input type="checkbox" id="mediaOptIn"> App, musica, TV e molto altro</label>
-            <p class="auth-note">Ricevi email e comunicazioni da Lixby, come nuovi lanci, contenuti esclusivi e offerte speciali.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">App, musica e molto altro</div>
+                <div class="pref-desc">Ricevi email su nuove uscite, contenuti esclusivi e offerte speciali.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="mediaOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
             <div class="captcha-box">
               <label>Immagine di verifica</label>
-              <div id="captchaImage" class="captcha-image">------</div>
+              <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
               <label for="captchaInput">Inserisci il codice dell'immagine</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">Nuovo codice</a>
-                <span class="auth-note">Visione limitata</span>
+                <span class="auth-note">Non fa distinzione tra maiuscole e minuscole</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Icona privacy: Le informazioni del tuo account Lixby vengono utilizzate per consentirti di accedere in modo sicuro e accedere ai tuoi dati. Lixby registra alcuni dati di utilizzo per scopi relativi alla sicurezza, al supporto e alla generazione di report. Se accetti, Lixby potrebbe utilizzare le informazioni del tuo account per inviarti comunicazioni ed email di marketing. Scopri come vengono gestiti i tuoi dati.
+              Icona Privacy: le informazioni del tuo account Lixby vengono utilizzate per consentirti di accedere in modo sicuro e accedere ai tuoi dati. Lixby registra determinati dati di utilizzo per scopi di sicurezza, supporto e reporting. Se accetti, Lixby può utilizzare le informazioni del tuo account per inviarti comunicazioni ed email di marketing. Scopri come vengono gestiti i tuoi dati.
             </p>
 
-            <button class="btn btn-primary" type="submit">Crea account</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Verifica email</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Creare un account</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Registrati con Google
+              Registrati con google
             </button>
           </form>
         </section>
@@ -600,6 +944,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
     import {
       getAuth,
       setPersistence,
@@ -613,13 +958,22 @@
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
       signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
+
+    // 5a: destino tras el login con lista blanca (solo /it/community/**).
+    function nextUrl(fallback = "/it/conto/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
 
      const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -643,7 +997,11 @@
     const rememberMe = document.getElementById("rememberMe");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
-    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const sendEmailVerifyBtn = document.getElementById("sendEmailVerifyBtn");
+    const emailVerifySection = document.getElementById("emailVerifySection");
+    const emailVerifyConfirmRow = document.getElementById("emailVerifyConfirmRow");
+    const emailVerifyConfirmInput = document.getElementById("emailVerifyConfirmInput");
+    const registerEmail = document.getElementById("registerEmail");
     const mfaPanel = document.getElementById("mfaPanel");
     const mfaHint = document.getElementById("mfaHint");
     const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
@@ -654,7 +1012,7 @@
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    const captchaImage = document.getElementById("captchaImage");
+    const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -695,8 +1053,8 @@
       }
 
       const months = [
-        "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
-        "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
+        "Gennaio", "Febbraio", "Marzo", "aprile", "Maggio", "Giugno",
+        "Luglio", "agosto", "settembre", "ottobre", "novembre", "Dicembre"
       ];
       months.forEach((month, index) => {
         const option = document.createElement("option");
@@ -714,13 +1072,77 @@
       }
     }
 
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function generateCaptcha() {
       const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       let code = "";
       for (let i = 0; i < 6; i += 1) {
         code += chars[Math.floor(Math.random() * chars.length)];
       }
-      captchaImage.textContent = code;
+
+      const ctx = captchaCanvas.getContext("2d");
+      const w = captchaCanvas.width;
+      const h = captchaCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = `rgb(${rand(220, 245)}, ${rand(220, 245)}, ${rand(220, 245)})`;
+      ctx.fillRect(0, 0, w, h);
+
+      // Ruido de puntos
+      for (let i = 0; i < 120; i += 1) {
+        ctx.fillStyle = `rgba(${rand(100, 180)}, ${rand(100, 180)}, ${rand(100, 180)}, ${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(rand(0, w), rand(0, h), rand(1, 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Líneas de distorsión
+      for (let i = 0; i < 6; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(40, 90)}, ${rand(40, 90)}, ${rand(40, 90)}, 0.2)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
+      const charW = w / 6;
+      code.split("").forEach((char, i) => {
+        ctx.save();
+        ctx.translate(charW * i + charW / 2, h / 2 + rand(-6, 6));
+        ctx.rotate((rand(-35, 35) * Math.PI) / 180);
+
+        ctx.shadowColor = `rgba(${rand(0, 100)}, ${rand(0, 100)}, ${rand(0, 100)}, 0.6)`;
+        ctx.shadowBlur = rand(2, 5);
+        ctx.shadowOffsetX = rand(-3, 3);
+        ctx.shadowOffsetY = rand(-3, 3);
+
+        const bold = rand(0, 1) ? "bold " : "900 ";
+        ctx.font = `${bold}${rand(22, 32)}px Inter, sans-serif`;
+        ctx.fillStyle = `rgb(${rand(10, 70)}, ${rand(10, 70)}, ${rand(30, 90)})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = `rgba(${rand(150, 220)}, ${rand(150, 220)}, ${rand(150, 220)}, 0.4)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.strokeText(char, 0, 0);
+        ctx.fillText(char, 0, 0);
+        ctx.restore();
+      });
+
+      // Capa de ruido final encima de las letras
+      for (let i = 0; i < 18; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(120, 180)}, ${rand(120, 180)}, ${rand(120, 180)}, 0.15)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.lineTo(rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
       return code;
     }
 
@@ -735,7 +1157,7 @@
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Configura Firebase per attivare registrazione e accesso.", "error");
+      setStatus("Configurare Firebase per abilitare la registrazione e l'accesso.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -743,16 +1165,67 @@
       googleRegisterBtn.disabled = true;
     } else {
       const app = initializeApp(firebaseConfig);
+      await initializeLixbyAppCheck(app);
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      auth.languageCode = "È";
+      const db = getFirestore(app);
+      const functions = getFunctions(app, "europe-west1");
+      const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
+
+      // Capturar el resultado de Google (popup o redirect) y finalizar sesion
+      let googleRedirectHandled = false;
+
+      async function handleGoogleResult(result) {
+        if (!result?.user) return;
+
+        // Marcar que estamos procesando un login de Google
+        sessionStorage.setItem("lixby_google_redirect", "1");
+
+        const user = result.user;
+
+        const createdAt = new Date(user.metadata.creationTime).getTime();
+        const isNewUser = (Date.now() - createdAt) < 10000;
+
+        if (isNewUser) {
+          const displayName = user.displayName || "usuario";
+          try {
+            await sendWelcomeEmail({ name: displayName, email: user.email });
+            console.log("email di benvenuto inviata a:", user.email);
+          } catch (err) {
+            console.error("errore nell'invio dell'email:", err);
+          }
+        }
+
+        googleRedirectHandled = true;
+        setStatus("effettuato l'accesso con google.", "success");
+        try {
+          await transferSessionToApp(user);
+        } catch (error) {
+          console.warn("Impossibile trasferire la sessione all'app:", error);
+        } finally {
+          window.location.href = nextUrl();
+        }
+      }
+
+      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
+        sessionStorage.removeItem("lixby_google_redirect");
+        const code = error?.code || "";
+        if (code === "auth/no-current-user" || code === "auth/no-redirect-data" || code === "auth/null-user") return;
+        setStatus(`Errore con Google: ${error.message}`, "error");
+      });
+
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
 
       function getRecaptcha() {
         if (!recaptchaVerifier) {
-          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible"
+          recaptchaVerifier = new RecaptchaVerifier(auth, "sendSmsBtn", {
+            size: "invisible",
+            callback: () => {},
+            "expired-callback": () => {
+              recaptchaVerifier = null;
+            }
           });
         }
         return recaptchaVerifier;
@@ -789,6 +1262,9 @@
 
       document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
       document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+      registerEmail.addEventListener("input", () => {
+        emailVerifySection.style.display = registerEmail.value.trim() ? "grid" : "none";
+      });
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -798,34 +1274,39 @@
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Per accedere usa un indirizzo email valido.", "error");
+          setStatus("Per accedere utilizza una email valida.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Accesso effettuato con successo.", "success");
+          setStatus("Sessione effettuata con successo.", "success");
           loginForm.reset();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/it/account/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Impossibile trasferire la sessione all'app:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phoneNumber || "il tuo telefono"}.`;
+            mfaHint.textContent = `Invieremo un codice SMS a ${hint.phonenumber || "tu teléfono"}.`;
             mfaPanel.classList.add("active");
-            setStatus("Verifica in 2 passaggi richiesta.", "info");
+            setStatus("È richiesta la verifica in due passaggi.", "info");
             return;
           }
-          setStatus(`Errore durante l'accesso: ${error.message}`, "error");
+          setStatus(`errore di accesso: ${error.message}`, "error");
         }
       });
 
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Nessuna verifica in 2 passaggi in sospeso.", "error");
+          setStatus("non è presente alcuna verifica in due passaggi in sospeso.", "error");
           return;
         }
 
@@ -840,18 +1321,18 @@
           setStatus("Codice SMS inviato.", "success");
         } catch (error) {
           getMfaRecaptcha().clear();
-          setStatus(`Impossibile inviare l'SMS: ${error.message}`, "error");
+          setStatus(`Impossibile inviare SMS: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Nessuna verifica in 2 passaggi in sospeso.", "error");
+          setStatus("non è presente alcuna verifica in due passaggi in sospeso.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Invia prima il codice SMS.", "error");
+          setStatus("Inviare prima il codice SMS.", "error");
           return;
         }
 
@@ -869,16 +1350,21 @@
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Accesso effettuato con successo.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/it/account/";
+          setStatus("Sessione effettuata con successo.", "success");
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Impossibile trasferire la sessione all'app:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Codice non valido: ${error.message}`, "error");
+          setStatus(`codice non valido: ${error.message}`, "error");
         }
       });
 
       const emailActionSettings = {
-        url: `${window.location.origin}/it//it/verified/`,
+        url: `${window.location.origin}/it/verified/`,
         handleCodeInApp: false
       };
 
@@ -901,7 +1387,7 @@
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("Le password non coincidono.", "error");
+          setStatus("Le password non corrispondono.", "error");
           return;
         }
 
@@ -914,10 +1400,23 @@
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
+            // Primero el email de bienvenida
+            console.log("provo a mandare un'email di benvenuto...");
+            try {
+              const result = await sendWelcomeEmail({
+                name: firstName,
+                email: email
+              });
+              console.log("email inviata:", result);
+            } catch (err) {
+              console.error("errore nell'invio dell'email:", err);
+            }
+
+            // Luego verificación y base de datos
             await sendEmailVerification(userCredential.user, emailActionSettings);
             
-            // Save profile to Firebase Realtime Database
-            await set(ref(database, `users/${userCredential.user.uid}/profile`), {
+            // Guardar el perfil en Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
               firstName,
               lastName,
               email,
@@ -928,60 +1427,72 @@
               phoneCountry: phoneCountryValue,
               phoneNumber,
               adsOptIn,
-              mediaOptIn
-            });
+              mediaOptIn,
+              createdAt: serverTimestamp()
+            }, { merge: true });
           }
-          setStatus("Account creato con successo.", "success");
+          setStatus("account creato con successo.", "success");
           registerForm.reset();
+          sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/it/account/";
+          // La redirección siempre al final
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Impossibile trasferire la sessione all'app:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Errore durante la registrazione: ${error.message}`, "error");
+          setStatus(`errore durante la registrazione: ${error.message}`, "error");
         }
       });
 
-      verifyEmailBtn.addEventListener("click", async () => {
+      async function startGoogleSignIn() {
+        try {
+          await setPersistence(auth, browserLocalPersistence);
+          try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await handleGoogleResult(result);
+          } catch (popupError) {
+            const code = popupError?.code || "";
+            if (
+              code === "auth/popup-blocked" ||
+              code === "auth/popup-request-failed" ||
+              code === "auth/cancelled-popup-request" ||
+              code === "auth/operation-not-supported-in-this-environment"
+            ) {
+              // Fallback: redireccion completa cuando el navegador bloquea el popup
+              await signInWithRedirect(auth, googleProvider);
+            } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
+              setStatus("finestra di Google chiusa.", "info");
+            } else {
+              setStatus(`errore con Google: ${popuperror.message}`, "error");
+            }
+          }
+        } catch (error) {
+          setStatus(`Errore con Google: ${error.message}`, "error");
+        }
+      }
+
+      googleAuthBtn.addEventListener("click", startGoogleSignIn);
+
+      googleRegisterBtn.addEventListener("click", startGoogleSignIn);
+
+      sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Accedi per verificare la tua email.", "error");
+          setStatus("il pulsante è pronto. Quando crei il tuo account, l'email di verifica verrà inviata automaticamente.", "info");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Email inviata. Controlla Spam e Promozioni.", "success");
+          saveFormState();
+          setStatus("email di verifica inviata. controlla la tua casella di posta e lo spam.", "success");
+          emailVerifyConfirmInput.value = user.email || "posta inviata";
+          emailVerifyConfirmRow.style.display = "flex";
         } catch (error) {
           setStatus(`Impossibile inviare: ${error.message}`, "error");
-        }
-      });
-
-      googleAuthBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Accesso effettuato con Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/it/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Accesso con Google annullato.", "error");
-            return;
-          }
-          setStatus(`Errore con Google: ${error.message}`, "error");
-        }
-      });
-
-      googleRegisterBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Registrazione completata con Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/it/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Accesso con Google annullato.", "error");
-            return;
-          }
-          setStatus(`Errore con Google: ${error.message}`, "error");
         }
       });
 
@@ -994,9 +1505,20 @@
         try {
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
-          setStatus("SMS inviato. Controlla il tuo telefono.", "success");
+          setStatus("SMS inviato. controlla il tuo telefono.", "success");
+          const originalText = sendSmsBtn.textContent;
+          sendSmsBtn.textContent = "SMS inviato!";
+          sendSmsBtn.classList.add("sms-sent");
+          setTimeout(() => {
+            sendSmsBtn.classList.remove("sms-sent");
+            sendSmsBtn.textContent = originalText;
+          }, 1600);
         } catch (error) {
-          setStatus(`Impossibile inviare l'SMS: ${error.message}`, "error");
+          if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+          }
+          setStatus(`Impossibile inviare SMS: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -1004,31 +1526,94 @@
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Invia prima il codice SMS.", "error");
+          setStatus("Inviare prima il codice SMS.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Inserisci il codice SMS.", "error");
+          setStatus("Scrivere il codice dell'sms.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
           setStatus("Telefono verificato con successo.", "success");
+          smsCodeInput.classList.add("sms-success");
+          setTimeout(() => {
+            smsCodeInput.disabled = true;
+            verifySmsBtn.style.display = "none";
+          }, 300);
         } catch (error) {
-          setStatus("Codice errato. Riprova.", "error");
+          setStatus("codice sbagliato. riprova.", "error");
+          smsCodeInput.classList.add("sms-error");
+          setTimeout(() => {
+            smsCodeInput.classList.remove("sms-error");
+          }, 400);
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Sessione chiusa.", "info");
+        setStatus("sessione chiusa.", "info");
       });
+
+      function saveFormState() {
+        // Solo se persiste estado de UI sin datos personales; nunca texto introducido por el usuario (PII).
+        const fields = {
+          adsOptIn: document.getElementById("adsOptIn")?.checked || false,
+          mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
+          activeSection: registerSection.classList.contains("active") ? "register" : "login"
+        };
+        sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
+      }
+
+      function restoreFormState() {
+        const raw = sessionStorage.getItem("lixby_register_draft");
+        if (!raw) return;
+        try {
+          const f = JSON.parse(raw);
+          document.getElementById("adsOptIn").checked = !!f.adsOptIn;
+          document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
+          if (f.activeSection === "register") openRegister(null);
+        } catch (e) {
+          console.warn("impossibile ripristinare la bozza:", e);
+        }
+      }
+
+      registerForm.addEventListener("input", saveFormState);
+      registerForm.addEventListener("change", saveFormState);
+
+      // Purga única de borradores legacy que puedan contener datos sensibles (contraseñas, emails, teléfonos).
+      const DRAFT_SCHEMA = "3";
+      if (sessionStorage.getItem("lixby_register_draft_schema") !== DRAFT_SCHEMA) {
+        sessionStorage.removeItem("lixby_register_draft");
+        sessionStorage.setItem("lixby_register_draft_schema", DRAFT_SCHEMA);
+      }
+
+      restoreFormState();
+      const urlParams = new URLSearchParams(window.location.search);
+      const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
+      if (sessionStorage.getItem("lixby_email_verified") === "1") {
+        sessionStorage.removeItem("lixby_email_verified");
+      }
+      if (returningFromVerification) {
+        setStatus("email verificata. puoi continuare con il tuo account.", "success");
+        if (registerEmail.value) {
+          emailVerifySection.style.display = "grid";
+          emailVerifyConfirmInput.value = registerEmail.value;
+          emailVerifyConfirmRow.style.display = "flex";
+        }
+        urlParams.delete("verified");
+        const cleanedUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanedUrl);
+      }
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Connesso come ${user.email}`;
+          userEmail.textContent = `connesso come ${user.email}`;
+          if (!googleRedirectHandled && sessionStorage.getItem("lixby_google_redirect") !== "1") {
+            window.location.href = nextUrl();
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
@@ -1036,7 +1621,97 @@
       });
     }
   </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
+
 
 
