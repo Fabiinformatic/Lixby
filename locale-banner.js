@@ -11,6 +11,9 @@
  *      muestra una barra inferior con un dropdown de los 24 idiomas
  *      (preseleccionado el sugerido) y un boton "Continuar" que redirige
  *      al idioma elegido, manteniendo el resto de la ruta intacto.
+ *      Los textos de la barra se muestran en el idioma detectado por el
+ *      navegador (navigator.languages), no en el idioma de la pagina,
+ *      para que la sugerencia siempre se pueda leer.
  *   4. El cierre/interaccion se guarda en sessionStorage (NO localStorage):
  *      la sugerencia reaparece en una nueva sesion/pestaña.
  *
@@ -46,8 +49,8 @@
     PL: "pl", PT: "pt", RO: "ro", SE: "sv"
   };
 
-  /* Textos por idioma de la pagina actual ({country} y {lang} se
-     rellenan con Intl.DisplayNames cuando esta disponible). */
+  /* Textos por idioma del navegador ({country} y {lang} se rellenan
+     con Intl.DisplayNames cuando esta disponible). */
   var TEXTS = {
     es: { title: "Parece que estás en {country}. ¿Quieres ver Lixby en {lang}?", generic: "¿Quieres ver Lixby en {lang}?", action: "Continuar", close: "Cerrar", choose: "Elegir idioma", aria: "Sugerencia de idioma" },
     en: { title: "It looks like you're in {country}. Would you like to browse Lixby in {lang}?", generic: "Would you like to browse Lixby in {lang}?", action: "Continue", close: "Close", choose: "Choose language", aria: "Language suggestion" },
@@ -96,6 +99,25 @@
     var segs = String(pathname || location.pathname).split("/");
     var seg = (segs[1] || "").toLowerCase();
     return LANGS.indexOf(seg) !== -1 ? seg : DEFAULT_LANG;
+  }
+
+  /* ---------- Idioma del navegador (para los textos del banner) ---------- */
+
+  /* navigator.languages esta ordenado por preferencia del usuario; se
+     usa el primer idioma que el sitio soporta ("es-ES" -> "es"). */
+  function browserLang() {
+    var list = [];
+    if (typeof navigator !== "undefined") {
+      if (navigator.languages && navigator.languages.length) list = navigator.languages;
+      else if (navigator.language) list = [navigator.language];
+      else if (navigator.userLanguage) list = [navigator.userLanguage];
+    }
+    for (var i = 0; i < list.length; i++) {
+      var tag = String(list[i] || "").toLowerCase().replace(/_/g, "-");
+      var base = tag.split("-")[0];
+      if (LANGS.indexOf(base) !== -1) return base;
+    }
+    return null;
   }
 
   /* ---------- Deteccion de pais ---------- */
@@ -212,14 +234,14 @@
 
   /* ---------- Banner ---------- */
 
-  function showBanner(country, sug, cur) {
+  function showBanner(country, sug, uiLang) {
     ensureStyles();
     if (document.getElementById("lixby-locale-banner")) return;
 
-    var T = textsFor(cur);
+    var T = textsFor(uiLang);
     var msg = (country ? T.title : (T.generic || T.title))
-      .replace("{country}", countryLabel(country, cur))
-      .replace("{lang}", langLabel(sug, cur));
+      .replace("{country}", countryLabel(country, uiLang))
+      .replace("{lang}", langLabel(sug, uiLang));
 
     var bar = document.createElement("div");
     bar.id = "lixby-locale-banner";
@@ -240,7 +262,7 @@
     for (var i = 0; i < LANGS.length; i++) {
       var opt = document.createElement("option");
       opt.value = LANGS[i];
-      var name = langLabel(LANGS[i], cur);
+      var name = langLabel(LANGS[i], uiLang);
       opt.textContent = name.charAt(0).toUpperCase() + name.slice(1);
       if (LANGS[i] === sug) opt.selected = true;
       sel.appendChild(opt);
@@ -293,6 +315,11 @@
     return TEXTS[lang] || TEXTS.en || TEXTS.es;
   }
 
+  /* Preferencia: navegador -> idioma sugerido por pais -> ingles. */
+  function uiLangFor(sug, cur) {
+    return browserLang() || (TEXTS[sug] ? sug : null) || (TEXTS[cur] ? cur : null) || "en";
+  }
+
   /* ---------- Arranque ---------- */
 
   function init() {
@@ -310,7 +337,7 @@
         country = fb.country;
       }
       if (hit === cur) return;
-      showBanner(country, hit, cur);
+      showBanner(country, hit, uiLangFor(hit, cur));
     });
   }
 
