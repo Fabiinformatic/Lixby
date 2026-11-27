@@ -52,7 +52,7 @@ const CFG = (() => {
   const lang = document.documentElement.lang || "en";
   return {
     lang,
-    base: `/${lang}/comunidad/`,
+    base: `/${lang}/community/`,
     login: `/${lang}/login/`,
     verified: `/${lang}/verified/`,
     t: {},
@@ -198,7 +198,7 @@ function buildVerifyNotice(user, text) {
 
 // Lleva el foco al aviso de verificación. Si la página no tiene compositor ni
 // formulario de comentario (inicio, normas, buscar), lo inserta al principio
-// del contenido para que el botón "Verifica tu correo" del nav siempre haga algo.
+// del contenido para que el botón "Επαλήθευσε το email σου" del nav siempre haga algo.
 function focusVerifyNotice(user) {
   let host =
     document.getElementById("lx-composer") ||
