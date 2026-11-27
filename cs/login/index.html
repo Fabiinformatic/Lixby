@@ -646,17 +646,17 @@
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
-        <div id="authStatus" class="auth-status info">připraven k ověření.</div>
+        <div id="authStatus" class="auth-status info">Připraven k ověření.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Firebase je třeba nakonfigurovat. upravit objekt <code>firebaseConfig</code> na této stránce s přihlašovacími údaji k projektu.
+          Firebase je třeba nakonfigurovat. Upravit objekt <code>firebaseConfig</code> na této stránce s přihlašovacími údaji k projektu.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>přihlaste se do Lixby</h1>
+            <h1>Přihlaste se do Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">email nebo telefonní číslo</label>
+            <label for="loginIdentifier">Email nebo telefonní číslo</label>
             <input id="loginIdentifier" type="text" required placeholder="jmeno@priklad.cz" autocomplete="username">
 
             <label for="loginPassword">Heslo</label>
@@ -665,43 +665,43 @@
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                připomeňte mi
+                Připomeňte mi
               </label>
             </div>
 
-            <a href="/cs/forget-password/" class="auth-link">zapomněli jste heslo?</a>
+            <a href="/cs/forget-password/" class="auth-link">Zapomněli jste heslo?</a>
 
             <button class="btn btn-primary login-primary-btn" type="submit">Přihlásit se</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              pokračuj s googlem
+              Pokračuj s googlem
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
             <strong>Vyžaduje se dvoufázové ověření</strong>
             <p id="mfaHint" class="auth-note">Na přidružený telefon zašleme SMS kód.</p>
             <div class="mfa-row">
-              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">poslat kód</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="sms kód">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">ověřit</button>
+              <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Poslat kód</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Sms kód">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Ověřit</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
             Nemáte účet Lixby?
-            <a href="#" id="showRegisterLink" class="auth-link">vytvořte si účet Lixby</a>
+            <a href="#" id="showRegisterLink" class="auth-link">Vytvořte si účet Lixby</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
-            <h1>vytvořte si účet Lixby</h1>
+            <h1>Vytvořte si účet Lixby</h1>
             <p>Pro přístup ke všem službám Lixby potřebujete pouze jeden účet Lixby.</p>
             <p class="auth-note">
               Už máte účet Lixby?
-              <a href="#" id="showLoginLink" class="auth-link">přihlásit se</a>
+              <a href="#" id="showLoginLink" class="auth-link">Přihlásit se</a>
             </p>
           </div>
 
@@ -719,7 +719,7 @@
 
             <div class="register-grid">
               <div>
-                <label for="country">země/oblast</label>
+                <label for="country">Země/oblast</label>
                 <select id="country" required>
                   <option value="DE">Německo</option>
                   <option value="AT">Austria</option>
@@ -772,23 +772,23 @@
                 </select>
               </div>
               <div>
-                <label for="birthHelp">pomoc (narozeniny)</label>
-                <input id="birthHelp" type="text" placeholder="datum narození">
+                <label for="birthHelp">Pomoc (narozeniny)</label>
+                <input id="birthHelp" type="text" placeholder="Datum narození">
               </div>
             </div>
 
-            <label>datum narození</label>
+            <label>Datum narození</label>
             <div class="birth-grid">
               <div>
-                <label for="birthDay">den</label>
+                <label for="birthDay">Den</label>
                 <select id="birthDay" required></select>
               </div>
               <div>
-                <label for="birthMonth">měsíc</label>
+                <label for="birthMonth">Měsíc</label>
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">rok</label>
+                <label for="birthYear">Rok</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
@@ -798,7 +798,7 @@
 
             <div class="email-verify" id="emailVerifySection" style="display:none;">
               <div class="sms-row">
-                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">ověřit email</button>
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Ověřit email</button>
                 <span class="auth-note">Zašleme vám ověřovací e-mail.</span>
               </div>
               <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
@@ -825,7 +825,7 @@
                   <option value="+359">+359 (Bulgaria)</option>
                   <option value="+1">+1 (Spojené státy americké/Kanada)</option>
                   <option value="+56">+56 (Chile)</option>
-                  <option value="+357">+357 (kypr)</option>
+                  <option value="+357">+357 (Kypr)</option>
                   <option value="+57">+57 (Colombia)</option>
                   <option value="+506">+506 (Costa Rica)</option>
                   <option value="+385">+385 (Chorvatsko)</option>
@@ -851,10 +851,10 @@
                   <option value="+31">+31 (Nizozemsko)</option>
                   <option value="+507">+507 (Panama)</option>
                   <option value="+595">+595 (Paraguay)</option>
-                  <option value="+51">+51 (peru)</option>
+                  <option value="+51">+51 (Peru)</option>
                   <option value="+48">+48 (Polsko)</option>
                   <option value="+351">+351 (Portugal)</option>
-                  <option value="+44">+44 (uk)</option>
+                  <option value="+44">+44 (Uk)</option>
                   <option value="+420">+420 (Česká republika)</option>
                   <option value="+40">+40 (Rumunsko)</option>
                   <option value="+46">+46 (Švédsko)</option>
@@ -863,7 +863,7 @@
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">telefonní číslo</label>
+                <label for="phoneNumber">Telefonní číslo</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
@@ -875,19 +875,19 @@
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
-                <button id="sendSmsBtn" class="btn btn-secondary" type="button">poslat kód</button>
+                <button id="sendSmsBtn" class="btn btn-secondary" type="button">Poslat kód</button>
                 <span class="auth-note">Zašleme vám ověřovací SMS.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="sms kód">
-                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">ověřit</button>
+                <input id="code" type="text" placeholder="Sms kód">
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Ověřit</button>
               </div>
             </div>
 
             <div class="pref-row">
               <div class="pref-info">
-                <div class="pref-title">reklamy</div>
-                <div class="pref-desc">přijímat e-maily od Lixby o reklamách, marketingu a doporučeních produktů.</div>
+                <div class="pref-title">Reklamy</div>
+                <div class="pref-desc">Přijímat e-maily od Lixby o reklamách, marketingu a doporučeních produktů.</div>
               </div>
               <label class="toggle-switch">
                 <input type="checkbox" id="adsOptIn">
@@ -897,7 +897,7 @@
 
             <div class="pref-row">
               <div class="pref-info">
-                <div class="pref-title">aplikace, hudba a mnoho dalšího</div>
+                <div class="pref-title">Aplikace, hudba a mnoho dalšího</div>
                 <div class="pref-desc">Dostávejte e-maily o nových verzích, exkluzivním obsahu a speciálních nabídkách.</div>
               </div>
               <label class="toggle-switch">
@@ -907,26 +907,26 @@
             </div>
 
             <div class="captcha-box">
-              <label>ověřovací obrázek</label>
+              <label>Ověřovací obrázek</label>
               <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
-              <label for="captchaInput">zadejte kód obrázku</label>
+              <label for="captchaInput">Zadejte kód obrázku</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
-                <a href="#" id="newCaptchaLink" class="auth-link">nový kód</a>
-                <span class="auth-note">nerozlišuje velká a malá písmena</span>
+                <a href="#" id="newCaptchaLink" class="auth-link">Nový kód</a>
+                <span class="auth-note">Nerozlišuje velká a malá písmena</span>
               </div>
             </div>
 
             <p class="auth-note">
-              ikona ochrany osobních údajů: Informace o vašem účtu Lixby se používají, abyste se mohli bezpečně přihlásit a přistupovat ke svým datům. Lixby zaznamenává určité údaje o používání pro účely zabezpečení, podpory a hlášení. Pokud souhlasíte, může Lixby používat informace o vašem účtu k zasílání marketingových sdělení a e-mailů. Podívejte se, jak jsou vaše data spravována.
+              Ikona ochrany osobních údajů: Informace o vašem účtu Lixby se používají, abyste se mohli bezpečně přihlásit a přistupovat ke svým datům. Lixby zaznamenává určité údaje o používání pro účely zabezpečení, podpory a hlášení. Pokud souhlasíte, může Lixby používat informace o vašem účtu k zasílání marketingových sdělení a e-mailů. Podívejte se, jak jsou vaše data spravována.
             </p>
 
-            <button class="btn btn-primary login-primary-btn" type="submit">vytvořit účet</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Vytvořit účet</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              zaregistrujte se u google
+              Zaregistrujte se u google
             </button>
           </form>
         </section>
@@ -934,7 +934,7 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="/cs/account/" class="btn btn-primary">přejít na můj účet</a>
+            <a href="/cs/account/" class="btn btn-primary">Přejít na můj účet</a>
             <button id="logoutBtn" class="btn btn-secondary" type="button">Odhlásit se</button>
           </div>
         </div>
