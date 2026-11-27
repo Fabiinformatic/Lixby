@@ -10,158 +10,715 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://www.lixby.es/da/thank-you">
+  <link rel="canonical" href="https://lixby.es/da/thank-you">
+  <link rel="alternate" href="https://lixby.es/bg/thank-you" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/da/thank-you" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/thank-you" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/thank-you" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/thank-you" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/thank-you" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/gracias" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/thank-you" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/thank-you" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/thank-you" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/thank-you" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/thank-you" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/thank-you" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/thank-you" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/thank-you" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/thank-you" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/thank-you" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/thank-you" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/thank-you" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/thank-you" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/thank-you" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/thank-you" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/thank-you" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/thank-you" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/thank-you" hreflang="x-default">
 
-          <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Tak | Lixby</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
+
+  <title>Tak for dit køb | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/da/style.css">
+
   <style>
-    .thank-you {
-      padding: 64px 0 80px;
+    :root {
+      --green: #458500;
+      --green-light: #f0f7e6;
+      --line: #e5e7eb;
+      --muted: #6b7280;
+      --shadow-soft: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    body {
+      background: #f5f7fa;
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .thank-you-page {
+      padding: 48px 0 80px;
+    }
+
+    /* Check animado */
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: drawCheck 0.4s 0.4s ease forwards;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
     }
 
     .thank-card {
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px;
+      border-radius: 20px;
+      padding: 36px 32px;
       box-shadow: var(--shadow-soft);
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
+      animation: slideUp 0.5s 0.1s ease both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .thank-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
     }
 
     .thank-title {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
       letter-spacing: -0.03em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .order-pill {
+    .thank-sub {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    /* Número de pedido */
+    .order-number-badge {
       display: inline-flex;
-      gap: 10px;
       align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
       border-radius: 999px;
+      padding: 8px 18px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--green);
+      margin-bottom: 28px;
+    }
+
+    .order-number-badge span {
+      font-weight: 400;
+      color: #555;
+    }
+
+    /* Sección de info del cliente */
+    .info-section {
+      background: #f9fafb;
       border: 1px solid var(--line);
-      padding: 6px 14px;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-section h3 {
+      font-size: 0.75rem;
       font-weight: 700;
-      margin: 10px 0 18px;
-      background: rgba(15, 23, 42, 0.04);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
-    .order-list {
-      margin-top: 16px;
+    .info-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
     }
 
-    .order-item {
+    .info-item label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    /* Productos */
+    .products-section {
+      margin-bottom: 20px;
+    }
+
+    .products-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .product-item {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      align-items: center;
+      padding: 12px 16px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: #fff;
     }
 
-    .order-total {
-      margin-top: 16px;
+    .product-item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .product-item-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .product-item-price {
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Total */
+    .order-total-row {
       display: flex;
       justify-content: space-between;
-      font-weight: 800;
+      align-items: center;
+      padding: 14px 16px;
+      background: var(--green-light);
+      border: 1px solid #c3e6a0;
+      border-radius: 12px;
+      margin-bottom: 24px;
     }
 
+    .order-total-row span { font-weight: 700; }
+    .order-total-row strong { font-size: 1.2rem; font-weight: 800; color: var(--green); }
+
+    /* Acciones */
     .thank-actions {
-      margin-top: 22px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
+    .thank-actions .btn {
+      flex: 1;
+      min-width: 160px;
+      text-align: center;
+      min-height: 46px;
+      font-size: 0.95rem;
+    }
+
+    /* Loading state */
+    .loading-shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+      border-radius: 8px;
+      height: 18px;
+      width: 60%;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 600px) {
+      .thank-card { padding: 24px 18px; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
 </head>
 <body>
 
-  <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
+
+<canvas id="confetti-canvas"></canvas>
+
+<header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/da/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Hovedmenu">
+        <a href="/da/shop/" class="nav-link">Butik</a>
+        <a href="/da/products/" class="nav-link">Produkter</a>
+        <a href="/da/apps/" class="nav-link">Apps</a>
+        <a href="/da/support/" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Søg" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/da/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Søg i Lixby..."
+            aria-label="Søg i Lixby"
+          >
+        </form>
+        <a href="/da/cart/" class="nav-icon-link" aria-label="Kurv">
+          <img src="/da/images/Bolsa.png" alt="Kurv">
+        </a>
+        <a href="/da/account/" class="nav-icon-link" aria-label="Konto">
+          <img src="/da/images/cuenta.png" alt="Konto">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
-
-  <main class="container thank-you">
-    <section class="thank-card">
-      <p class="eyebrow">Ordre bekr?ftet</p>
-      <h1 class="thank-title">Tak for dit k?b</h1>
-      <p id="thankMessage">Vi forbereder din ordre og sender dig en bekr?ftelse via e-mail snart.</p>
-      <div class="order-pill" id="orderIdPill" hidden>
-        <span>Ordre</span>
-        <strong id="orderIdValue">LX-XXXX</strong>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobilmenu">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Butik</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/da/shop/">Gå til butikken</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/buy-headphones/lixbuds-one/">Køb nu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/news/">Nyheder</a></p>
+        </div>
       </div>
-      <div id="orderItems" class="order-list"></div>
-      <div id="orderTotal" class="order-total" hidden>
-        <span>I alt</span>
-        <span id="orderTotalValue">0 EUR</span>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkter</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/da/products/">Se produkter</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/lixsafe/">LixSafe og dækning</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
       </div>
-      <div class="thank-actions">
-        <a class="btn btn-primary" href="./">Hjem</a>
-        <a class="btn btn-secondary" href="/da/track/">Spor ordre</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/da/apps/">Se apps</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/help-center/lixney/">Support til Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/help-center/lixfly/">Support til Lixfly</a></p>
+        </div>
       </div>
-    </section>
-  </main>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Support</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/da/support/">Gå til support</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/help-center/faq/">Ofte stillede spørgsmål</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/help-center/returns/">Retur</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Kurv</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/da/cart/">Se kurven</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/cart/">Gennemfør køb</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konto</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/da/account/">Gå til min konto</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/account/">Mine ordrer</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/account/">Min profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/account/">Indstillinger</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/login/">Log ind</a></p>
+          <p class="nav-mobile-answer-text"><a href="/da/two-step-verification/">Totrinsverifikation</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    const LAST_ORDER_KEY = "lixbyLastOrder";
-    const orderIdEl = document.getElementById("orderIdValue");
-    const orderPill = document.getElementById("orderIdPill");
-    const orderItems = document.getElementById("orderItems");
-    const orderTotal = document.getElementById("orderTotal");
-    const orderTotalValue = document.getElementById("orderTotalValue");
+<main class="container thank-you-page">
+  <div class="thank-card">
+    <!-- Check animado -->
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
 
-    const params = new URLSearchParams(window.location.search);
-    const orderOverride = params.get("orderId") || params.get("order");
+    <p class="thank-eyebrow">Bekræftet ordre</p>
+    <h1 class="thank-title">Tak for dit køb!</h1>
+    <p class="thank-sub">Vi sender dig en bekræftelse på e-mail. Du kan spore din ordre til enhver tid.</p>
 
-    function money(value) {
-      return `${value} EUR`;
+    <!-- Número de pedido -->
+    <div class="order-number-badge">
+      <span>Bestille</span>
+      <strong id="orderNumber">—</strong>
+    </div>
+
+    <!-- Info del cliente -->
+    <div class="info-section" id="customerSection" style="display:none">
+      <h3>Leveringsoplysninger</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Navn</label>
+          <strong id="customerName">—</strong>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <strong id="customerEmail">—</strong>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1">
+          <label>Postadresse</label>
+          <strong id="customerAddress">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Productos -->
+    <div class="products-section" id="productsSection" style="display:none">
+      <h3>Din ordre</h3>
+      <div id="productsList"></div>
+    </div>
+
+    <!-- Total -->
+    <div class="order-total-row" id="totalRow" style="display:none">
+      <span>Samlet betalt</span>
+      <strong id="totalValue">—</strong>
+    </div>
+
+    <!-- Acciones -->
+    <div class="thank-actions">
+      <a class="btn btn-primary" href="/da/shop/">Fortsætte med at handle</a>
+      <a class="btn btn-secondary" id="trackBtn" href="/da/track/">Følge ordre</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ── Confetti ──────────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#458500', '#8bc34a', '#ffeb3b', '#ff9800', '#2196f3', '#e91e63'];
+    const pieces = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: 8 + Math.random() * 8,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: 2 + Math.random() * 4,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.2,
+      drift: (Math.random() - 0.5) * 1.5
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        p.y += p.speed;
+        p.x += p.drift;
+        p.angle += p.spin;
+        if (p.y > canvas.height) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      frame++;
+      if (frame < 180) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+    draw();
+  })();
 
-    function renderOrder(order) {
-      if (!order) return;
-      orderPill.hidden = false;
-      orderIdEl.textContent = order.orderId || orderOverride || "LX";
+  // ── Datos del pedido ──────────────────────────────────────
+  const LAST_ORDER_KEY = 'lixbyCart';
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get('orderId');
 
-      if (Array.isArray(order.items) && order.items.length) {
-        orderItems.innerHTML = order.items.map((item) => `
-          <div class="order-item">
-            <span>${item.name} ? ${item.qty}</span>
-            <strong>${money(item.lineTotal)}</strong>
-          </div>
-        `).join("");
-        orderTotal.hidden = false;
-        orderTotalValue.textContent = money(order.subtotal || 0);
-      }
-    }
+  function money(v) {
+    const n = Number(v) || 0;
+    return n.toFixed(2).replace('.', ',') + ' €';
+  }
 
+  function show(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = '';
+  }
+
+  // Número de pedido
+  if (orderId) {
+    document.getElementById('orderNumber').textContent = orderId;
+    document.getElementById('trackBtn').href = `/da/track/?orderId=${orderId}`;
+  }
+
+  // Intentar cargar desde Railway (datos reales de Stripe)
+  async function loadOrderFromServer(orderId) {
     try {
-      const cached = JSON.parse(localStorage.getItem(LAST_ORDER_KEY) || "null");
-      if (cached) {
-        renderOrder(cached);
-      } else if (orderOverride) {
-        renderOrder({ orderId: orderOverride, items: [] });
-      }
-    } catch (error) {
-      if (orderOverride) {
-        renderOrder({ orderId: orderOverride, items: [] });
-      }
+      const res = await fetch(`https://lixby-production.up.railway.app/track-order/${orderId}`);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function init() {
+    let order = null;
+
+    if (orderId) {
+      order = await loadOrderFromServer(orderId);
     }
+
+    // Fallback al localStorage
+    if (!order) {
+      try {
+        const cached = JSON.parse(localStorage.getItem('lixbyLastOrder') || 'null');
+        if (cached) order = cached;
+      } catch {}
+    }
+
+    if (!order) return;
+
+    // Número de pedido
+    if (order.orderNumber || order.orderId) {
+      document.getElementById('orderNumber').textContent = order.orderNumber || order.orderId;
+    }
+
+    // Info del cliente
+    const name = order.customerName || order.email;
+    const email = order.email;
+    const address = order.address;
+
+    if (name || email || address) {
+      if (name) document.getElementById('customerName').textContent = name;
+      if (email) document.getElementById('customerEmail').textContent = email;
+      if (address) document.getElementById('customerAddress').textContent = address;
+      show('customerSection');
+    }
+
+    // Productos
+    const items = order.items || [];
+    if (items.length) {
+      const list = document.getElementById('productsList');
+      list.innerHTML = items.map(item => {
+        const name = item.productName || item.name || 'produkt';
+        const qty = item.quantity || item.qty || 1;
+        const price = item.unitAmount
+          ? money(item.unitAmount / 100)
+          : item.lineTotal
+            ? money(item.lineTotal)
+            : '—';
+        return `<div class="product-item"> <div> <div class="product-item-name">${name}</div> <div class="product-item-sub">mængde: ${qty}</div> </div> <div class="product-item-price">${price}</div> </div>`;
+      }).join('');
+      show('productsSection');
+    }
+
+    // Total
+    const total = order.amountTotal || order.subtotal;
+    if (total) {
+      document.getElementById('totalValue').textContent = money(total);
+      show('totalRow');
+    }
+
+    // Limpiar carrito tras compra exitosa
+    localStorage.removeItem('lixbyCart');
+    localStorage.removeItem('lixbyLastOrder');
+  }
+
+  init();
+</script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
   </script>
 </body>
 </html>
-
-
 
 
