@@ -126,13 +126,13 @@ function formatRelative(ts) {
   if (!date) return "";
   const diff = Date.now() - date.getTime();
   const min = Math.round(diff / 60000);
-  if (min < 1) return "ahora";
-  if (min < 60) return `hace ${min} min`;
+  if (min < 1) return "τώρα";
+  if (min < 60) return `Πριν από ${min} λεπτά`;
   const hours = Math.round(min / 60);
-  if (hours < 24) return `hace ${hours} h`;
+  if (hours < 24) return `${hours} ώρα πριν`;
   const days = Math.round(hours / 24);
-  if (days < 7) return `hace ${days} d`;
-  return date.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" });
+  if (days < 7) return `πριν ${days} d`;
+  return date.toLocaleDateString("el-GR", { day: "numeric", month: "short", year: "numeric" });
 }
 
 let toastTimer = null;
@@ -152,7 +152,7 @@ function isMod() {
 }
 
 function posterUrl(postId) {
-  return `/es/comunidad/?hilo=${encodeURIComponent(postId)}`;
+  return `/el/community/?hilo=${encodeURIComponent(postId)}`;
 }
 
 /* ------------------------------ espacios ---------------------------- */
@@ -164,22 +164,22 @@ async function loadSpaces() {
     renderSpaces();
     fillSpaceSelect();
   } catch (error) {
-    console.error("Error cargando espacios:", error);
+    console.error("Σφάλμα φόρτωσης χώρων:", error);
     el.spaceList.innerHTML =
-      '<p class="community-status">No se pudieron cargar los espacios.</p>';
+      '<p class="community-status">Δεν ήταν δυνατή η φόρτωση των χώρων.</p>';
   }
 }
 
 function renderSpaces() {
   const total = state.spaces.reduce((sum, s) => sum + (s.postCount || 0), 0);
   const items = [
-    `<a class="space-link${state.spaceSlug ? "" : " is-active"}" href="/es/comunidad/" data-space="">
-      <span class="space-emoji" aria-hidden="true">🏠</span> Todos
+    `<a class="space-link${state.spaceSlug ? "" : " is-active"}" href="/el/community/" data-space="">
+      <span class="space-emoji" aria-hidden="true">🏠</span> Όλα
       <span class="space-count">${total}</span>
     </a>`,
     ...state.spaces.map((s) => `
       <a class="space-link${state.spaceSlug === s.slug ? " is-active" : ""}"
-         href="/es/comunidad/?espacio=${encodeURIComponent(s.slug)}" data-space="${esc(s.slug)}">
+         href="/el/community/?espacio=${encodeURIComponent(s.slug)}" data-space="${esc(s.slug)}">
         <span class="space-emoji" aria-hidden="true">${esc(s.icon || "💬")}</span>
         ${esc(s.name)}
         <span class="space-count">${Number(s.postCount || 0)}</span>
@@ -206,7 +206,7 @@ async function loadFeed({ append = false } = {}) {
   state.loading = true;
   el.loadMoreBtn.disabled = true;
   if (!append) {
-    el.feedStatus.textContent = "Cargando hilos…";
+    el.feedStatus.textContent = "Φόρτωση νημάτων…";
     el.postList.innerHTML = "";
   }
 
@@ -224,8 +224,8 @@ async function loadFeed({ append = false } = {}) {
     state.posts = append ? state.posts.concat(fetched) : fetched;
     renderFeed();
   } catch (error) {
-    console.error("Error cargando hilos:", error);
-    el.feedStatus.textContent = "No se pudieron cargar los hilos. Inténtalo de nuevo.";
+    console.error("Σφάλμα φόρτωσης νημάτων:", error);
+    el.feedStatus.textContent = "Δεν ήταν δυνατή η φόρτωση των νημάτων. Προσπαθήστε ξανά.";
   } finally {
     state.loading = false;
     el.loadMoreBtn.disabled = false;
@@ -235,13 +235,12 @@ async function loadFeed({ append = false } = {}) {
 
 function renderFeed() {
   const space = currentSpace();
-  el.feedTitle.textContent = space ? space.name : "Todos los hilos";
+  el.feedTitle.textContent = space ? space.name : "Ολα τα νήματα";
   if (!state.posts.length) {
-    el.feedStatus.innerHTML = `
-      <div class="community-empty">
+    el.feedStatus.innerHTML = `<div class="community-empty">
         <span class="empty-emoji" aria-hidden="true">🌱</span>
-        Todavía no hay hilos aquí. ${
-          state.user ? "Sé el primero en publicar." : "Inicia sesión y publica el primero."
+        Δεν υπάρχουν ακόμα θέματα εδώ. ${
+          state.user ? "Γίνε ο πρώτος που θα δημοσιεύσει." : "Συνδέσου και δημοσίευσε πρώτος."
         }
       </div>`;
     el.postList.innerHTML = "";
@@ -255,8 +254,7 @@ function postCardHtml(post) {
   const tags = (post.tags || [])
     .map((t) => `<span class="post-tag">${esc(t)}</span>`)
     .join("");
-  return `
-    <article class="post-card" data-post-id="${esc(post.id)}">
+  return `<article class="post-card" data-post-id="${esc(post.id)}">
       <div class="vote-control" data-vote-control data-for-post="${esc(post.id)}">
         <button class="vote-btn" type="button" data-vote="up" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto positivo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -276,8 +274,8 @@ function postCardHtml(post) {
           <span class="dot" aria-hidden="true"></span>
           <span>${formatRelative(post.lastActivityAt || post.createdAt)}</span>
           <span class="dot" aria-hidden="true"></span>
-          <span>${Number(post.commentCount || 0)} comentarios</span>
-          ${tags ? `<span class="dot" aria-hidden="true"></span>${tags}` : ""}
+          <span>${Number(post.commentCount || 0)} σχόλια</span>
+          ${ετικέτες ?`<span class="dot" aria-hidden="true"></span>${tags}` : ""}
         </div>
       </div>
     </article>`;
@@ -303,7 +301,7 @@ function voteKey(targetType, postId, commentId) {
 
 async function handleVote(targetType, postId, commentId, direction) {
   if (!state.user) {
-    toast("Inicia sesión para votar.", "error");
+    toast("Συνδέσου για να ψηφίσεις.", "error");
     return;
   }
   const uid = state.user.uid;
@@ -335,8 +333,8 @@ async function handleVote(targetType, postId, commentId, direction) {
       applyVote(targetType, postId, commentId, value, value - current);
     }
   } catch (error) {
-    console.error("Error al votar:", error);
-    toast("No se pudo registrar tu voto.", "error");
+    console.error("Σφάλμα ψηφοφορίας:", error);
+    toast("Δεν ήταν δυνατή η εγγραφή της ψήφου σας.", "error");
   }
 }
 
@@ -360,7 +358,7 @@ function applyVote(targetType, postId, commentId, value, scoreDelta) {
 async function openPost(postId) {
   el.viewFeed.hidden = true;
   el.viewPost.hidden = false;
-  el.postDetail.innerHTML = '<p class="community-status">Cargando hilo…</p>';
+  el.postDetail.innerHTML = '<p class="community-status">Φόρτωση νήματος…</p>';
   el.commentList.innerHTML = "";
   state.replyTo = null;
   updateReplyHint();
@@ -368,7 +366,7 @@ async function openPost(postId) {
   try {
     const snap = await getDoc(doc(db, "posts", postId));
     if (!snap.exists() || (snap.data().status !== "published" && !isMod())) {
-      el.postDetail.innerHTML = '<p class="community-status">Este hilo no está disponible.</p>';
+      el.postDetail.innerHTML = '<p class="community-status">Αυτό το νήμα δεν είναι διαθέσιμο.</p>';
       return;
     }
     state.currentPost = { id: snap.id, ...snap.data() };
@@ -383,8 +381,8 @@ async function openPost(postId) {
 
     await loadComments(postId);
   } catch (error) {
-    console.error("Error cargando hilo:", error);
-    el.postDetail.innerHTML = '<p class="community-status">No se pudo cargar el hilo.</p>';
+    console.error("Σφάλμα φόρτωσης νήματος:", error);
+    el.postDetail.innerHTML = '<p class="community-status">Δεν ήταν δυνατή η φόρτωση του νήματος.</p>';
   }
 }
 
@@ -392,8 +390,7 @@ function renderPostDetail() {
   const post = state.currentPost;
   if (!post) return;
   const tags = (post.tags || []).map((t) => `<span class="post-tag">${esc(t)}</span>`).join("");
-  el.postDetail.innerHTML = `
-    <div class="post-detail-grid">
+  el.postDetail.innerHTML = `<div class="post-detail-grid">
       <div class="vote-control" data-vote-control data-for-post="${esc(post.id)}">
         <button class="vote-btn" type="button" data-vote="up" data-target-type="post" data-post-id="${esc(post.id)}" aria-label="Voto positivo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -410,11 +407,11 @@ function renderPostDetail() {
           <span class="dot" aria-hidden="true"></span>
           <span>${formatRelative(post.createdAt)}</span>
           ${post.editedAt ? '<span class="dot" aria-hidden="true"></span><span>editado</span>' : ""}
-          ${tags ? `<span class="dot" aria-hidden="true"></span>${tags}` : ""}
+          ${ετικέτες ?`<span class="dot" aria-hidden="true"></span>${tags}`: ""}
         </div>
         <div class="post-body" style="margin-top:16px">${esc(post.body || "")}</div>
         <div class="post-detail-actions">
-          <button class="comment-action-link" type="button" data-report data-target-type="post" data-post-id="${esc(post.id)}">Reportar</button>
+          <button class="comment-action-link" type="button" data-report data-target-type="post" data-post-id="${esc(post.id)}">Report</button>
         </div>
       </div>
     </div>`;
@@ -432,8 +429,8 @@ async function loadComments(postId) {
     state.comments = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
     renderComments();
   } catch (error) {
-    console.error("Error cargando comentarios:", error);
-    el.commentList.innerHTML = '<p class="community-status">No se pudieron cargar los comentarios.</p>';
+    console.error("Σφάλμα φόρτωσης σχολίων:", error);
+    el.commentList.innerHTML = '<p class="community-status">Δεν ήταν δυνατή η φόρτωση σχολίων.</p>';
   }
 }
 
@@ -454,7 +451,7 @@ function buildCommentTree(comments) {
 function renderComments() {
   const roots = buildCommentTree(state.comments);
   if (!roots.length) {
-    el.commentList.innerHTML = '<p class="community-status">Todavía no hay comentarios.</p>';
+    el.commentList.innerHTML = '<p class="community-status">Δεν υπάρχουν ακόμη σχόλια.</p>';
     return;
   }
   el.commentList.innerHTML = roots.map(commentHtml).join("");
@@ -464,8 +461,7 @@ function commentHtml(node) {
   const children = node.children.length
     ? `<div class="comment-children">${node.children.map(commentHtml).join("")}</div>`
     : "";
-  return `
-    <article class="comment" data-comment-id="${esc(node.id)}">
+  return `<article class="comment" data-comment-id="${esc(node.id)}">
       <div class="comment-header">
         <strong>${esc(node.authorName || "Usuario")}</strong>
         <span>·</span>
@@ -483,8 +479,8 @@ function commentHtml(node) {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
-        <button class="comment-action-link" type="button" data-reply data-comment-id="${esc(node.id)}" data-author="${esc(node.authorName || "")}">Responder</button>
-        <button class="comment-action-link" type="button" data-report data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}">Reportar</button>
+        <button class="comment-action-link" type="button" data-reply data-comment-id="${esc(node.id)}" data-author="${esc(node.authorName || "")}">Reply</button>
+        <button class="comment-action-link" type="button" data-report data-target-type="comment" data-post-id="${esc(node.postId)}" data-comment-id="${esc(node.id)}">Αναφορά</button>
       </div>
       ${children}
     </article>`;
@@ -494,7 +490,7 @@ function updateReplyHint() {
   if (state.replyTo) {
     el.replyToHint.hidden = false;
     el.cancelReplyBtn.hidden = false;
-    el.replyToHint.textContent = `Respondiendo a ${state.replyTo.author || "un comentario"}`;
+    el.replyToHint.textContent = `Απάντηση σε ${state.replyTo.author || "un comentario"}`;
   } else {
     el.replyToHint.hidden = true;
     el.cancelReplyBtn.hidden = true;
@@ -505,7 +501,7 @@ async function submitComment() {
   const body = el.commentBody.value.trim();
   el.commentError.hidden = true;
   if (!body) {
-    el.commentError.textContent = "Escribe algo antes de comentar.";
+    el.commentError.textContent = "Γράψε κάτι πριν σχολιάσεις.";
     el.commentError.hidden = false;
     return;
   }
@@ -520,10 +516,10 @@ async function submitComment() {
     state.replyTo = null;
     updateReplyHint();
     await loadComments(state.currentPost.id);
-    toast("Comentario publicado.", "success");
+    toast("Σχόλιο δημοσιεύτηκε.", "success");
   } catch (error) {
-    console.error("Error al comentar:", error);
-    el.commentError.textContent = error?.message || "No se pudo publicar el comentario.";
+    console.error("Σφάλμα σχολιασμού:", error);
+    el.commentError.textContent = error?.message || "Δεν ήταν δυνατή η δημοσίευση του σχολίου.";
     el.commentError.hidden = false;
   } finally {
     el.submitComment.disabled = false;
@@ -552,10 +548,10 @@ async function submitReport(event) {
       note: el.reportNote.value.trim(),
     });
     el.reportDialog.close();
-    toast("Gracias, hemos recibido tu reporte.", "success");
+    toast("Σας ευχαριστούμε, λάβαμε την αναφορά σας.", "success");
   } catch (error) {
-    console.error("Error al reportar:", error);
-    el.reportError.textContent = error?.message || "No se pudo enviar el reporte.";
+    console.error("Αναφορά σφάλματος:", error);
+    el.reportError.textContent = error?.message || "Δεν ήταν δυνατή η αποστολή της αναφοράς.";
     el.reportError.hidden = false;
   }
 }
@@ -573,7 +569,7 @@ async function loadReports() {
       limit(20)
     ));
     if (snap.empty) {
-      el.reportList.innerHTML = '<p class="community-status">Sin reportes abiertos.</p>';
+      el.reportList.innerHTML = '<p class="community-status">Δεν υπάρχουν ανοιχτές αναφορές.</p>';
       return;
     }
     el.reportList.innerHTML = snap.docs.map((d) => {
@@ -584,42 +580,42 @@ async function loadReports() {
         <div class="report-item" data-report-id="${esc(d.id)}">
           <div class="report-reason">${esc(r.reason)}</div>
           <div>${esc(r.targetType)} · ${formatRelative(r.createdAt)}</div>
-          ${r.note ? `<div class="community-status">${esc(r.note)}</div>` : ""}
+          ${r.note ? `<div class="community-status">${esc(r.note)}</div>`: ""}
           <div class="report-actions">
             <button type="button" data-moderate="remove"
               data-target-type="${esc(r.targetType)}"
               data-target-id="${esc(r.targetId)}"
-              data-post-id="${esc(r.targetType === "comment" ? parentPostId : "")}">Ocultar</button>
-            <button type="button" data-resolve="resolved">Resolver</button>
-            <button type="button" data-resolve="dismissed">Descartar</button>
+              data-post-id="${esc(r.targetType === "comment" ? parentPostId : "")}">Απόκρυψη</button>
+            <button type="button" data-resolve="resolved">Λύση</button>
+            <button type="button" data-resolve="dismissed">Απορρίψτε</button>
           </div>
         </div>`;
     }).join("");
   } catch (error) {
-    console.error("Error cargando reportes:", error);
-    el.reportList.innerHTML = '<p class="community-status">No se pudieron cargar los reportes.</p>';
+    console.error("Σφάλμα φόρτωσης αναφορών:", error);
+    el.reportList.innerHTML = '<p class="community-status">Δεν ήταν δυνατή η φόρτωση αναφορών.</p>';
   }
 }
 
 async function handleResolve(reportId, status) {
   try {
     await resolveReport({ reportId, status });
-    toast("Reporte actualizado.", "success");
+    toast("Ενημερωμένη αναφορά.", "success");
     await loadReports();
   } catch (error) {
     console.error(error);
-    toast("No se pudo actualizar el reporte.", "error");
+    toast("Δεν ήταν δυνατή η ενημέρωση της αναφοράς.", "error");
   }
 }
 
 async function handleModerate(targetType, targetId, postId, action) {
   try {
     await moderateContent({ targetType, targetId, postId: postId || null, action });
-    toast("Contenido ocultado.", "success");
+    toast("Κρυφό περιεχόμενο.", "success");
     await loadReports();
   } catch (error) {
     console.error(error);
-    toast("No se pudo moderar el contenido.", "error");
+    toast("Δεν ήταν δυνατή η εποπτεία του περιεχομένου.", "error");
   }
 }
 
@@ -643,7 +639,7 @@ onAuthStateChanged(auth, async (user) => {
       const token = await user.getIdTokenResult();
       state.role = token.claims.role || null;
     } catch (error) {
-      console.error("No se pudieron leer los claims:", error);
+      console.error("Δεν ήταν δυνατή η ανάγνωση των αξιώσεων:", error);
     }
   }
   updateAuthUi();
@@ -661,12 +657,12 @@ async function submitNewPost(event) {
   const tags = Array.from(el.newPostForm.querySelectorAll('input[name="tags"]:checked')).map((i) => i.value);
 
   if (title.length < 3) {
-    el.newPostError.textContent = "El título es demasiado corto.";
+    el.newPostError.textContent = "Ο τίτλος είναι πολύ μικρός.";
     el.newPostError.hidden = false;
     return;
   }
   if (!body) {
-    el.newPostError.textContent = "El contenido no puede estar vacío.";
+    el.newPostError.textContent = "Το περιεχόμενο δεν μπορεί να είναι κενό.";
     el.newPostError.hidden = false;
     return;
   }
@@ -679,10 +675,10 @@ async function submitNewPost(event) {
     el.newPostForm.reset();
     await loadSpaces();
     navigate({ postId: res.data.id });
-    toast("Hilo publicado.", "success");
+    toast("Δημοσιεύτηκε νήμα.", "success");
   } catch (error) {
-    console.error("Error al publicar:", error);
-    el.newPostError.textContent = error?.message || "No se pudo publicar el hilo.";
+    console.error("Σφάλμα δημοσίευσης:", error);
+    el.newPostError.textContent = error?.message || "Δεν ήταν δυνατή η δημοσίευση του νήματος.";
     el.newPostError.hidden = false;
   } finally {
     submitBtn.disabled = false;
@@ -696,7 +692,7 @@ function navigate({ space, postId, replace = false } = {}) {
   if (space !== undefined) state.spaceSlug = space || null;
   if (state.spaceSlug) params.set("espacio", state.spaceSlug);
   if (postId) params.set("hilo", postId);
-  const url = `/es/comunidad/${params.toString() ? `?${params}` : ""}`;
+  const url = `/el/community/${params.toString() ? `?${params}` : ""}`;
   if (replace) history.replaceState({ space: state.spaceSlug, postId }, "", url);
   else history.pushState({ space: state.spaceSlug, postId }, "", url);
 
@@ -758,7 +754,7 @@ document.addEventListener("click", (event) => {
   const reportBtn = event.target.closest("[data-report]");
   if (reportBtn) {
     if (!state.user) {
-      toast("Inicia sesión para reportar.", "error");
+      toast("Συνδέσου για να αναφέρεις.", "error");
       return;
     }
     openReportDialog({
