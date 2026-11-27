@@ -6,13 +6,16 @@
  * Modo basico (AEPD-friendly):
  *   1. Consentimiento DENEGADO por defecto (Consent Mode v2).
  *   2. Si el usuario ya decidio (localStorage), se aplica su decision.
- *   3. GTM solo se carga tras un "Aceptar" explícito.
+ *   3. GTM solo se carga tras un "Aceptar" explicito.
  *      Con "Rechazar" GTM nunca llega a cargar.
- *   4. Sin decision previa se muestra un mini-banner (ES si la pagina
- *      esta en espanol, EN como neutro para el resto de idiomas),
- *      con boton "Configurar" que despliega un panel de preferencias.
- *   5. El enlace "Configurar cookies" del pie abre el mismo panel
+ *   4. Sin decision previa se muestra el aviso de cookies en el idioma
+ *      del pais detectado (Cloudflare /cdn-cgi/trace, con respaldo en
+ *      navigator.language -> navegador -> idioma de la pagina -> en).
+ *      El boton "Configurar" abre un modal centrado con preferencias.
+ *   5. El enlace "Configurar cookies" del pie abre el mismo modal
  *      reflejando la decision guardada; al guardar cambia y recarga.
+ *   6. El banner de idioma espera a que se resuelva el consentimiento
+ *      (window.lixbyConsent) para no superponerse a este aviso.
  *
  * Diseno: reutiliza las variables CSS del sitio (--primary, --line,
  * --radius-lg, --font-family...) con valores de respaldo iguales.
@@ -23,6 +26,7 @@
   var GTM_ID = "GTM-KB2GQBDR";
   var STORAGE_KEY = "lixby-consent";
   var STYLE_ID = "lixby-consent-css";
+  var TRACE_TIMEOUT = 2500;
 
   /* dataLayer debe existir antes que nada */
   window.dataLayer = window.dataLayer || [];
@@ -41,9 +45,336 @@
     wait_for_update: 500
   });
 
-  /* El banner solo solicita analítica: no autoriza publicidad ni personalización. */
+  /* El banner solo solicita analitica: no autoriza publicidad ni personalizacion. */
   var GRANTED = {
     analytics_storage: "granted"
+  };
+
+  /* Pais ISO -> prefijo de idioma (el mismo mapa que locale-banner.js). */
+  var COUNTRY_TO_LANG = {
+    DE: "de", AT: "de", CH: "de",
+    BG: "bg", CZ: "cs", HR: "hr", DK: "da", SK: "sk", SI: "sl",
+    ES: "es", EE: "et", FI: "fi", FR: "fr", GR: "el", HU: "hu",
+    GB: "en", IE: "en",
+    IT: "it", LV: "lv", LT: "lt", MT: "mt",
+    NL: "nl", BE: "fr", LU: "fr",
+    PL: "pl", PT: "pt", RO: "ro", SE: "sv"
+  };
+
+  /* Textos del aviso y del modal de preferencias, por idioma del pais. */
+  var I18N = {
+    es: {
+      aria: "Aviso de cookies",
+      msg: "Usamos cookies de analítica para mejorar Lixby. ¿Las aceptas?",
+      more: "Más info", accept: "Aceptar", reject: "Rechazar", settings: "Configurar",
+      settingsTitle: "Preferencias de cookies",
+      settingsSub: "Elige qué cookies permites. Puedes cambiar tu decisión en cualquier momento.",
+      strictName: "Cookies estrictamente necesarias", strictBadge: "Siempre activas",
+      strictDesc: "Necesarias para el funcionamiento del sitio.", on: "Activas",
+      analyticsLabel: "Cookies analíticas", optionalBadge: "Opcional",
+      analyticsDesc: "Nos ayudan a entender cómo usas Lixby para mejorarlo.", off: "Desactivadas",
+      save: "Guardar preferencias", acceptAll: "Aceptar todas", rejectAll: "Rechazar todas",
+      close: "Cerrar", footerSettings: "Configurar cookies"
+    },
+    en: {
+      aria: "Cookie notice",
+      msg: "We use analytics cookies to improve Lixby. Do you accept them?",
+      more: "More info", accept: "Accept", reject: "Reject", settings: "Configure",
+      settingsTitle: "Cookie preferences",
+      settingsSub: "Choose which cookies you allow. You can change your mind at any time.",
+      strictName: "Strictly necessary cookies", strictBadge: "Always on",
+      strictDesc: "Required for the site to work.", on: "On",
+      analyticsLabel: "Analytics cookies", optionalBadge: "Optional",
+      analyticsDesc: "Help us understand how you use Lixby to improve it.", off: "Off",
+      save: "Save preferences", acceptAll: "Accept all", rejectAll: "Reject all",
+      close: "Close", footerSettings: "Cookie settings"
+    },
+    de: {
+      aria: "Cookie-Hinweis",
+      msg: "Wir verwenden Analytik-Cookies, um Lixby zu verbessern. Möchtest du sie akzeptieren?",
+      more: "Mehr Infos", accept: "Akzeptieren", reject: "Ablehnen", settings: "Einstellungen",
+      settingsTitle: "Cookie-Einstellungen",
+      settingsSub: "Wähle, welche Cookies du erlaubst. Du kannst deine Entscheidung jederzeit ändern.",
+      strictName: "Streng notwendige Cookies", strictBadge: "Immer aktiv",
+      strictDesc: "Erforderlich für den Betrieb der Website.", on: "An",
+      analyticsLabel: "Analytik-Cookies", optionalBadge: "Optional",
+      analyticsDesc: "Helfen uns zu verstehen, wie du Lixby nutzt, um es zu verbessern.", off: "Aus",
+      save: "Einstellungen speichern", acceptAll: "Alle akzeptieren", rejectAll: "Alle ablehnen",
+      close: "Schließen", footerSettings: "Cookie-Einstellungen"
+    },
+    fr: {
+      aria: "Avis sur les cookies",
+      msg: "Nous utilisons des cookies d’analyse pour améliorer Lixby. Les acceptez-vous ?",
+      more: "Plus d’infos", accept: "Accepter", reject: "Refuser", settings: "Configurer",
+      settingsTitle: "Préférences de cookies",
+      settingsSub: "Choisissez les cookies que vous autorisez. Vous pouvez modifier votre choix à tout moment.",
+      strictName: "Cookies strictement nécessaires", strictBadge: "Toujours actifs",
+      strictDesc: "Nécessaires au fonctionnement du site.", on: "Activés",
+      analyticsLabel: "Cookies d’analyse", optionalBadge: "Facultatif",
+      analyticsDesc: "Nous aident à comprendre comment vous utilisez Lixby pour l’améliorer.", off: "Désactivés",
+      save: "Enregistrer les préférences", acceptAll: "Tout accepter", rejectAll: "Tout refuser",
+      close: "Fermer", footerSettings: "Paramètres des cookies"
+    },
+    it: {
+      aria: "Avviso sui cookie",
+      msg: "Usiamo cookie di analisi per migliorare Lixby. Vuoi accettarli?",
+      more: "Maggiori info", accept: "Accetta", reject: "Rifiuta", settings: "Configura",
+      settingsTitle: "Preferenze sui cookie",
+      settingsSub: "Scegli quali cookie consentire. Puoi cambiare decisione in qualsiasi momento.",
+      strictName: "Cookie strettamente necessari", strictBadge: "Sempre attivi",
+      strictDesc: "Necessari al funzionamento del sito.", on: "Attivi",
+      analyticsLabel: "Cookie di analisi", optionalBadge: "Facoltativi",
+      analyticsDesc: "Ci aiutano a capire come usi Lixby per migliorarlo.", off: "Disattivati",
+      save: "Salva preferenze", acceptAll: "Accetta tutti", rejectAll: "Rifiuta tutti",
+      close: "Chiudi", footerSettings: "Impostazioni cookie"
+    },
+    pt: {
+      aria: "Aviso de cookies",
+      msg: "Usamos cookies de análise para melhorar a Lixby. Queres aceitá-los?",
+      more: "Mais info", accept: "Aceitar", reject: "Rejeitar", settings: "Configurar",
+      settingsTitle: "Preferências de cookies",
+      settingsSub: "Escolhe quais os cookies que permites. Podes alterar a tua decisão a qualquer momento.",
+      strictName: "Cookies estritamente necessários", strictBadge: "Sempre ativos",
+      strictDesc: "Necessários para o funcionamento do site.", on: "Ativos",
+      analyticsLabel: "Cookies de análise", optionalBadge: "Opcional",
+      analyticsDesc: "Ajudam-nos a perceber como usas a Lixby para a melhorar.", off: "Desativados",
+      save: "Guardar preferências", acceptAll: "Aceitar todos", rejectAll: "Rejeitar todos",
+      close: "Fechar", footerSettings: "Configurar cookies"
+    },
+    nl: {
+      aria: "Cookiemelding",
+      msg: "We gebruiken analytische cookies om Lixby te verbeteren. Wil je ze accepteren?",
+      more: "Meer info", accept: "Accepteren", reject: "Weigeren", settings: "Instellingen",
+      settingsTitle: "Cookievoorkeuren",
+      settingsSub: "Kies welke cookies je toestaat. Je kunt je keuze op elk moment wijzigen.",
+      strictName: "Strikt noodzakelijke cookies", strictBadge: "Altijd aan",
+      strictDesc: "Nodig om de website te laten werken.", on: "Aan",
+      analyticsLabel: "Analytische cookies", optionalBadge: "Optioneel",
+      analyticsDesc: "Helpen ons te begrijpen hoe je Lixby gebruikt om het te verbeteren.", off: "Uit",
+      save: "Voorkeuren opslaan", acceptAll: "Alles accepteren", rejectAll: "Alles weigeren",
+      close: "Sluiten", footerSettings: "Cookie-instellingen"
+    },
+    pl: {
+      aria: "Powiadomienie o plikach cookie",
+      msg: "Używamy plików cookie analitycznych, aby ulepszyć Lixby. Czy akceptujesz je?",
+      more: "Więcej informacji", accept: "Akceptuję", reject: "Odrzucam", settings: "Konfiguruj",
+      settingsTitle: "Preferencje plików cookie",
+      settingsSub: "Wybierz, które pliki cookie akceptujesz. Możesz zmienić decyzję w dowolnym momencie.",
+      strictName: "Bezwzględnie niezbędne pliki cookie", strictBadge: "Zawsze włączone",
+      strictDesc: "Niezbędne do działania strony.", on: "Włączone",
+      analyticsLabel: "Pliki cookie analityczne", optionalBadge: "Opcjonalne",
+      analyticsDesc: "Pomagają nam zrozumieć, jak korzystasz z Lixby, aby ją ulepszyć.", off: "Wyłączone",
+      save: "Zapisz preferencje", acceptAll: "Akceptuj wszystkie", rejectAll: "Odrzuć wszystkie",
+      close: "Zamknij", footerSettings: "Ustawienia plików cookie"
+    },
+    sv: {
+      aria: "Cookie-meddelande",
+      msg: "Vi använder analyscookies för att förbättra Lixby. Vill du acceptera dem?",
+      more: "Mer info", accept: "Acceptera", reject: "Avvisa", settings: "Konfigurera",
+      settingsTitle: "Cookie-inställningar",
+      settingsSub: "Välj vilka cookies du tillåter. Du kan ändra dig när som helst.",
+      strictName: "Nödvändiga cookies", strictBadge: "Alltid på",
+      strictDesc: "Krävs för att webbplatsen ska fungera.", on: "På",
+      analyticsLabel: "Analyscookies", optionalBadge: "Valfria",
+      analyticsDesc: "Hjälper oss att förstå hur du använder Lixby för att förbättra det.", off: "Av",
+      save: "Spara inställningar", acceptAll: "Acceptera alla", rejectAll: "Avvisa alla",
+      close: "Stäng", footerSettings: "Cookieinställningar"
+    },
+    da: {
+      aria: "Cookie-besked",
+      msg: "Vi bruger analysecookies for at forbedre Lixby. Vil du acceptere dem?",
+      more: "Mere info", accept: "Accepter", reject: "Afvis", settings: "Konfigurer",
+      settingsTitle: "Cookie-præferencer",
+      settingsSub: "Vælg, hvilke cookies du tillader. Du kan ændre din beslutning når som helst.",
+      strictName: "Strengt nødvendige cookies", strictBadge: "Altid på",
+      strictDesc: "Nødvendige for at websitet fungerer.", on: "Til",
+      analyticsLabel: "Analysecookies", optionalBadge: "Valgfri",
+      analyticsDesc: "Hjælper os med at forstå, hvordan du bruger Lixby, så vi kan forbedre det.", off: "Fra",
+      save: "Gem præferencer", acceptAll: "Accepter alle", rejectAll: "Afvis alle",
+      close: "Luk", footerSettings: "Cookieindstillinger"
+    },
+    fi: {
+      aria: "Evästeilmoitus",
+      msg: "Käytämme analytiikkaevästeitä Lixbyn parantamiseen. Haluatko hyväksyä ne?",
+      more: "Lisätietoja", accept: "Hyväksy", reject: "Hylkää", settings: "Määritä",
+      settingsTitle: "Evästeasetukset",
+      settingsSub: "Valitse, mitä evästeitä sallit. Voit muuttaa valintaa milloin tahansa.",
+      strictName: "Välttämättömät evästeet", strictBadge: "Aina käytössä",
+      strictDesc: "Tarvitaan sivuston toimintaan.", on: "Käytössä",
+      analyticsLabel: "Analytiikkaevästeet", optionalBadge: "Valinnainen",
+      analyticsDesc: "Auttavat meitä ymmärtämään, miten käytät Lixbyä sen parantamiseksi.", off: "Ei käytössä",
+      save: "Tallenna asetukset", acceptAll: "Hyväksy kaikki", rejectAll: "Hylkää kaikki",
+      close: "Sulje", footerSettings: "Evästeasetukset"
+    },
+    el: {
+      aria: "Ειδοποίηση cookies",
+      msg: "Χρησιμοποιούμε cookies ανάλυσης για να βελτιώσουμε το Lixby. Τα αποδέχεστε;",
+      more: "Περισσότερες πληροφορίες", accept: "Αποδοχή", reject: "Απόρριψη", settings: "Ρύθμιση",
+      settingsTitle: "Προτιμήσεις cookies",
+      settingsSub: "Επιλέξτε ποια cookies επιτρέπετε. Μπορείτε να αλλάξετε την απόφασή σας ανά πάσα στιγμή.",
+      strictName: "Απολύτως απαραίτητα cookies", strictBadge: "Πάντα ενεργά",
+      strictDesc: "Απαιτούνται για τη λειτουργία του ιστότοπου.", on: "Ενεργά",
+      analyticsLabel: "Cookies ανάλυσης", optionalBadge: "Προαιρετικά",
+      analyticsDesc: "Μας βοηθούν να κατανοήσουμε πώς χρησιμοποιείτε το Lixby για να το βελτιώσουμε.", off: "Ανενεργά",
+      save: "Αποθήκευση προτιμήσεων", acceptAll: "Αποδοχή όλων", rejectAll: "Απόρριψη όλων",
+      close: "Κλείσιμο", footerSettings: "Ρυθμίσεις cookies"
+    },
+    hu: {
+      aria: "Cookie-értesítés",
+      msg: "Analitikai cookie-kat használunk a Lixby fejlesztéséhez. Elfogadod őket?",
+      more: "Több információ", accept: "Elfogadom", reject: "Elutasítom", settings: "Beállítás",
+      settingsTitle: "Cookie-beállítások",
+      settingsSub: "Válaszd ki, mely cookie-kat engedélyezed. Döntésed bármikor módosítható.",
+      strictName: "Szigorúan szükséges cookie-k", strictBadge: "Mindig bekapcsolva",
+      strictDesc: "A weboldal működéséhez szükségesek.", on: "Bekapcsolva",
+      analyticsLabel: "Analitikai cookie-k", optionalBadge: "Opcionális",
+      analyticsDesc: "Segítenek megérteni, hogyan használod a Lixbyt, hogy fejleszthessük.", off: "Kikapcsolva",
+      save: "Beállítások mentése", acceptAll: "Összes elfogadása", rejectAll: "Összes elutasítása",
+      close: "Bezárás", footerSettings: "Cookie-beállítások"
+    },
+    cs: {
+      aria: "Oznámení o cookies",
+      msg: "Používáme analytické cookies ke zlepšení Lixby. Souhlasíte s nimi?",
+      more: "Více informací", accept: "Přijmout", reject: "Odmítnout", settings: "Nastavit",
+      settingsTitle: "Nastavení cookies",
+      settingsSub: "Vyberte, které cookies povolíte. Rozhodnutí můžete kdykoliv změnit.",
+      strictName: "Nezbytně nutné cookies", strictBadge: "Vždy zapnuto",
+      strictDesc: "Potřebné pro fungování webu.", on: "Zapnuto",
+      analyticsLabel: "Analytické cookies", optionalBadge: "Volitelné",
+      analyticsDesc: "Pomáhají nám pochopit, jak Lixby používáte, a vylepšit ho.", off: "Vypnuto",
+      save: "Uložit nastavení", acceptAll: "Přijmout vše", rejectAll: "Odmítnout vše",
+      close: "Zavřít", footerSettings: "Nastavení cookies"
+    },
+    sk: {
+      aria: "Oznámenie o cookies",
+      msg: "Používame analytické cookies na zlepšenie Lixby. Súhlasíte s nimi?",
+      more: "Viac informácií", accept: "Prijať", reject: "Odmietnuť", settings: "Nastaviť",
+      settingsTitle: "Nastavenia cookies",
+      settingsSub: "Vyberte, ktoré cookies povolíte. Rozhodnutie môžete kedykoľvek zmeniť.",
+      strictName: "Nevyhnutne potrebné cookies", strictBadge: "Vždy zapnuté",
+      strictDesc: "Potrebné na fungovanie webu.", on: "Zapnuté",
+      analyticsLabel: "Analytické cookies", optionalBadge: "Voliteľné",
+      analyticsDesc: "Pomáhajú nám pochopiť, ako používate Lixby, a vylepšiť ho.", off: "Vypnuté",
+      save: "Uložiť nastavenia", acceptAll: "Prijať všetky", rejectAll: "Odmietnuť všetky",
+      close: "Zavrieť", footerSettings: "Nastavenia cookies"
+    },
+    sl: {
+      aria: "Obvestilo o piškotkih",
+      msg: "Za izboljšanje Lixby uporabljamo analitične piškotke. Jih sprejemate?",
+      more: "Več informacij", accept: "Sprejmi", reject: "Zavrni", settings: "Nastavi",
+      settingsTitle: "Nastavitve piškotkov",
+      settingsSub: "Izberite, katere piškotke dovolite. Odločitev lahko kadarkoli spremenite.",
+      strictName: "Strogo potrebni piškotki", strictBadge: "Vedno vklopljeni",
+      strictDesc: "Potrebni za delovanje spletnega mesta.", on: "Vklopljeni",
+      analyticsLabel: "Analitični piškotki", optionalBadge: "Izbirni",
+      analyticsDesc: "Pomagajo nam razumeti, kako uporabljate Lixby, da ga izboljšamo.", off: "Izklopljeni",
+      save: "Shrani nastavitve", acceptAll: "Sprejmi vse", rejectAll: "Zavrni vse",
+      close: "Zapri", footerSettings: "Nastavitve piškotkov"
+    },
+    hr: {
+      aria: "Obavijest o kolačićima",
+      msg: "Koristimo analitičke kolačiće kako bismo poboljšali Lixby. Želite li ih prihvatiti?",
+      more: "Više informacija", accept: "Prihvati", reject: "Odbij", settings: "Postavi",
+      settingsTitle: "Postavke kolačića",
+      settingsSub: "Odaberite koje kolačiće dopuštate. Odluku možete promijeniti u bilo kojem trenutku.",
+      strictName: "Strogo nužni kolačići", strictBadge: "Uvijek uključeni",
+      strictDesc: "Potrebni su za rad web stranice.", on: "Uključeni",
+      analyticsLabel: "Analitički kolačići", optionalBadge: "Neobavezni",
+      analyticsDesc: "Pomažu nam razumjeti kako koristite Lixby kako bismo ga poboljšali.", off: "Isključeni",
+      save: "Spremi postavke", acceptAll: "Prihvati sve", rejectAll: "Odbij sve",
+      close: "Zatvori", footerSettings: "Postavke kolačića"
+    },
+    ro: {
+      aria: "Notificare privind cookie-urile",
+      msg: "Folosim cookie-uri analitice pentru a îmbunătăți Lixby. Le accepți?",
+      more: "Mai multe informații", accept: "Accept", reject: "Refuz", settings: "Configurează",
+      settingsTitle: "Preferințe cookie",
+      settingsSub: "Alege ce cookie-uri permiți. Îți poți schimba decizia în orice moment.",
+      strictName: "Cookie-uri strict necesare", strictBadge: "Întotdeauna active",
+      strictDesc: "Necesare pentru funcționarea site-ului.", on: "Active",
+      analyticsLabel: "Cookie-uri analitice", optionalBadge: "Opționale",
+      analyticsDesc: "Ne ajută să înțelegem cum folosești Lixby ca să îl îmbunătățim.", off: "Inactive",
+      save: "Salvează preferințele", acceptAll: "Acceptă tot", rejectAll: "Refuză tot",
+      close: "Închide", footerSettings: "Setări cookie"
+    },
+    bg: {
+      aria: "Известие за бисквитки",
+      msg: "Използваме аналитични бисквитки, за да подобрим Lixby. Приемате ли ги?",
+      more: "Повече информация", accept: "Приемам", reject: "Отхвърлям", settings: "Настройки",
+      settingsTitle: "Предпочитания за бисквитки",
+      settingsSub: "Изберете кои бисквитки разрешавате. Можете да промените решението си по всяко време.",
+      strictName: "Строго необходими бисквитки", strictBadge: "Винаги включени",
+      strictDesc: "Необходими за работата на сайта.", on: "Включени",
+      analyticsLabel: "Аналитични бисквитки", optionalBadge: "По избор",
+      analyticsDesc: "Помагат ни да разберем как използвате Lixby, за да го подобрим.", off: "Изключени",
+      save: "Запази предпочитанията", acceptAll: "Приеми всички", rejectAll: "Отхвърли всички",
+      close: "Затвори", footerSettings: "Настройки на бисквитките"
+    },
+    et: {
+      aria: "Küpsiste teade",
+      msg: "Kasutame Lixby parendamiseks analüütikaküpsiseid. Kas nõustud nendega?",
+      more: "Lisateave", accept: "Nõustun", reject: "Keeldu", settings: "Seadista",
+      settingsTitle: "Küpsiste eelistused",
+      settingsSub: "Vali, milliseid küpsiseid lubad. Otsust saad igal ajal muuta.",
+      strictName: "Hädavajalikud küpsised", strictBadge: "Alati sisse lülitatud",
+      strictDesc: "Vajalikud veebilehe toimimiseks.", on: "Sisse lülitatud",
+      analyticsLabel: "Analüütikaküpsised", optionalBadge: "Valikuline",
+      analyticsDesc: "Aitavad meil mõista, kuidas sa Lixbyt kasutad, et seda parendada.", off: "Välja lülitatud",
+      save: "Salvesta eelistused", acceptAll: "Nõustu kõikidega", rejectAll: "Keeldu kõikidest",
+      close: "Sulge", footerSettings: "Küpsiste seaded"
+    },
+    lv: {
+      aria: "Sīkdatņu paziņojums",
+      msg: "Mēs izmantojam analītiskās sīkdatnes, lai uzlabotu Lixby. Vai tās pieņemat?",
+      more: "Vairāk informācijas", accept: "Pieņemt", reject: "Noraidīt", settings: "Konfigurēt",
+      settingsTitle: "Sīkdatņu preferences",
+      settingsSub: "Izvēlies, kuras sīkdatnes atļaut. Lēmumu var mainīt jebkurā laikā.",
+      strictName: "Stingri nepieciešamās sīkdatnes", strictBadge: "Vienmēr ieslēgtas",
+      strictDesc: "Nepieciešamas vietnes darbībai.", on: "Ieslēgtas",
+      analyticsLabel: "Analītiskās sīkdatnes", optionalBadge: "Neobligātas",
+      analyticsDesc: "Palīdz mums saprast, kā tu lieto Lixby, lai to uzlabotu.", off: "Izslēgtas",
+      save: "Saglabāt preferences", acceptAll: "Pieņemt visas", rejectAll: "Noraidīt visas",
+      close: "Aizvērt", footerSettings: "Sīkdatņu iestatījumi"
+    },
+    lt: {
+      aria: "Slapukų pranešimas",
+      msg: "Analitinius slapukus naudojame Lixby tobulinimui. Ar juos priimate?",
+      more: "Daugiau informacijos", accept: "Priimti", reject: "Atmesti", settings: "Nustatyti",
+      settingsTitle: "Slapukų nuostatos",
+      settingsSub: "Pasirinkite, kuriuos slapukus leidžiate. Sprendimą galite pakeisti bet kada.",
+      strictName: "Būtiniausi slapukai", strictBadge: "Visada įjungti",
+      strictDesc: "Būtini svetainės veikimui.", on: "Įjungti",
+      analyticsLabel: "Analitiniai slapukai", optionalBadge: "Nebūtini",
+      analyticsDesc: "Padeda mums suprasti, kaip naudojate Lixby, kad jį patobulintume.", off: "Išjungti",
+      save: "Išsaugoti nuostatas", acceptAll: "Priimti visus", rejectAll: "Atmesti visus",
+      close: "Uždaryti", footerSettings: "Slapukų nustatymai"
+    },
+    ga: {
+      aria: "Fógra faoi fhianáin",
+      msg: "Úsáidimid fianáin anailíse chun Lixby a fheabhsú. An nglacann tú leo?",
+      more: "Tuilleadh eolais", accept: "Glac", reject: "Diúltaigh", settings: "Cumraigh",
+      settingsTitle: "Roghanna fianán",
+      settingsSub: "Roghnaigh na fianáin a cheadaíonn tú. Is féidir do chinneadh a athrú am ar bith.",
+      strictName: "Fianáin riachtanacha", strictBadge: "Ar i gcónaí",
+      strictDesc: "Riachtanach chun an suíomh a oibriú.", on: "Ar",
+      analyticsLabel: "Fianáin anailíse", optionalBadge: "Roghnach",
+      analyticsDesc: "Cabhraíonn siad linn a thuiscint conas a úsáideann tú Lixby chun é a fheabhsú.", off: "As",
+      save: "Sábháil roghanna", acceptAll: "Glac le gach ceann", rejectAll: "Diúltaigh do gach ceann",
+      close: "Dún", footerSettings: "Socruithe fianán"
+    },
+    mt: {
+      aria: "Avviż dwar il-cookies",
+      msg: "Nużaw cookies analitiċi biex intejbu Lixby. Taċċettahom?",
+      more: "Aktar informazzjoni", accept: "Aċċetta", reject: "Irrifjuta", settings: "Ikkonfigura",
+      settingsTitle: "Preferenzi tal-cookies",
+      settingsSub: "Agħżel liema cookies tippermetti. Tista' tbiddel id-deċiżjoni tiegħek fi kwalunkwe ħin.",
+      strictName: "Cookies strettament meħtieġa", strictBadge: "Dejjem mixgħula",
+      strictDesc: "Meħtieġa biex is-sit jaħdem.", on: "Mixgħula",
+      analyticsLabel: "Cookies analitiċi", optionalBadge: "Mhux obbligatorji",
+      analyticsDesc: "Jgħinuna nifhmu kif tuża Lixby biex intejbuha.", off: "Mitfija",
+      save: "Issejvja l-preferenzi", acceptAll: "Aċċetta kollha", rejectAll: "Irrifjuta kollha",
+      close: "Agħlaq", footerSettings: "Settings tal-cookies"
+    }
   };
 
   function readChoice() {
@@ -81,43 +412,109 @@
   /* 2. Decision previa del usuario */
   var stored = readChoice();
   var needsBanner = false;
-  if (stored === "granted") {
-    applyDecision("granted");
-  } else if (stored === "denied") {
-    applyDecision("denied");
+  if (stored === "granted" || stored === "denied") {
+    applyDecision(stored);
   } else {
     needsBanner = true;
   }
 
-  /* 3. Textos (ES si la pagina es española, EN como neutro) */
-  var isSpanish = (document.documentElement.lang || "").toLowerCase().slice(0, 2) === "es";
-  var T = isSpanish
-    ? {
-        aria: "Aviso de cookies",
-        msg: "Usamos cookies de anal\u00EDtica para mejorar Lixby. \u00BFLas aceptas?",
-        more: "M\u00E1s info",
-        link: "/es/pages/legal/cookies/",
-        accept: "Aceptar",
-        reject: "Rechazar",
-        settings: "Configurar",
-        settingsTitle: "Preferencias de cookies",
-        analyticsLabel: "Cookies anal\u00EDticas",
-        save: "Guardar preferencias"
-      }
-    : {
-        aria: "Cookie notice",
-        msg: "We use analytics cookies to improve Lixby. Do you accept them?",
-        more: "More info",
-        link: "/en/pages/legal/cookies/",
-        accept: "Accept",
-        reject: "Reject",
-        settings: "Configure",
-        settingsTitle: "Cookie preferences",
-        analyticsLabel: "Analytics cookies",
-        save: "Save preferences"
-      };
+  /* Senal para que locale-banner.js no se superponga al aviso de cookies. */
+  var consentResolved = !needsBanner;
+  var consentWaiters = [];
+  window.lixbyConsent = {
+    isPending: function () { return needsBanner && !consentResolved; },
+    onResolved: function (cb) {
+      if (typeof cb !== "function") return;
+      if (!needsBanner || consentResolved) { cb(); return; }
+      consentWaiters.push(cb);
+    }
+  };
+  function signalConsentResolved() {
+    if (consentResolved) return;
+    consentResolved = true;
+    var waiters = consentWaiters.slice();
+    consentWaiters.length = 0;
+    for (var i = 0; i < waiters.length; i++) {
+      try { waiters[i](); } catch (e) { /* noop */ }
+    }
+    try {
+      document.dispatchEvent(new Event("lixby:consent-resolved"));
+    } catch (e) { /* noop */ }
+  }
 
-  /* Estilos propios, alineados con el design system de la web */
+  /* 3. Idioma del aviso: pais -> region del navegador -> idiomas del
+        navegador -> idioma de la pagina -> en (una sola lectura de trace). */
+  function parseTrace(text) {
+    var m = /(^|\n)loc=([A-Za-z]{2})(\r?\n|$)/.exec(String(text || ""));
+    return m ? m[2].toUpperCase() : null;
+  }
+
+  function getCountry() {
+    if (window.__lixbyCountryPromise) return window.__lixbyCountryPromise;
+    var promise;
+    if (window.__lixbyCountry) {
+      promise = Promise.resolve(window.__lixbyCountry);
+    } else {
+      promise = new Promise(function (resolve) {
+        function done(cc) {
+          window.__lixbyCountry = cc || null;
+          resolve(window.__lixbyCountry);
+        }
+        if (typeof fetch !== "function") { done(null); return; }
+        var opts = {};
+        var timer = null;
+        if (typeof AbortController !== "undefined") {
+          var ctrl = new AbortController();
+          opts.signal = ctrl.signal;
+          timer = setTimeout(function () { ctrl.abort(); }, TRACE_TIMEOUT);
+        }
+        fetch("/cdn-cgi/trace", opts)
+          .then(function (r) { return r.ok ? r.text() : ""; })
+          .then(function (t) { if (timer !== null) clearTimeout(timer); done(parseTrace(t)); })
+          .catch(function () { if (timer !== null) clearTimeout(timer); done(null); });
+      });
+    }
+    window.__lixbyCountryPromise = promise;
+    return promise;
+  }
+
+  function resolveLang(cb) {
+    getCountry().then(function (cc) {
+      var lang = (cc && COUNTRY_TO_LANG[cc]) || null;
+
+      if (!lang && typeof navigator !== "undefined") {
+        var tag = String(navigator.language || "").toLowerCase().replace(/_/g, "-");
+        var region = tag.split("-").pop();
+        if (region && COUNTRY_TO_LANG[region]) lang = COUNTRY_TO_LANG[region];
+      }
+
+      if (!lang && typeof navigator !== "undefined") {
+        var list = (navigator.languages && navigator.languages.length)
+          ? navigator.languages : [navigator.language];
+        for (var i = 0; i < list.length; i++) {
+          var base = String(list[i] || "").toLowerCase().replace(/_/g, "-").split("-")[0];
+          if (I18N[base]) { lang = base; break; }
+        }
+      }
+
+      if (!lang) {
+        var page = String(document.documentElement.lang || "").toLowerCase().split("-")[0];
+        if (I18N[page]) lang = page;
+      }
+
+      var code = I18N[lang] ? lang : "en";
+      var texts = {};
+      for (var key in I18N[code]) {
+        if (Object.prototype.hasOwnProperty.call(I18N[code], key)) texts[key] = I18N[code][key];
+      }
+      texts.link = "/" + code + "/pages/legal/cookies/";
+      cb(texts);
+    });
+  }
+
+  var T = null;
+
+  /* 4. Estilos propios, alineados con el design system de la web */
   function ensureStyles() {
     if (document.getElementById(STYLE_ID)) return;
     var css = [
@@ -127,8 +524,7 @@
       "font-family:var(--font-family,\"Inter\"),\"Manrope\",system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;",
       "font-size:14px;line-height:1.45;padding:18px 22px;",
       "border:1px solid var(--line,#dbe3ef);border-radius:var(--radius-lg,18px);",
-      "box-shadow:var(--shadow-lg,0 20px 50px rgba(16,24,40,.12));z-index:2147483647;}",
-      ".lixby-card.lixby-col{flex-direction:column;align-items:stretch;}",
+      "box-shadow:var(--shadow-lg,0 20px 50px rgba(16,24,40,.12));z-index:2147483646;}",
       ".lixby-text{flex:1 1 auto;min-width:0;}",
       ".lixby-actions{display:flex;gap:10px;flex-shrink:0;}",
       "@media (max-width:520px){",
@@ -148,15 +544,10 @@
       ".lixby-btn-solid:hover{box-shadow:0 16px 30px rgba(15,61,255,.38);}",
       ".lixby-btn-outline{color:var(--text,#111827);background:var(--surface,#ffffff);",
       "border:1px solid var(--line,#dbe3ef);}",
-      ".lixby-panel{flex-basis:100%;display:none;flex-direction:column;gap:12px;",
-      "padding-top:14px;border-top:1px solid var(--line,#dbe3ef);}",
-      ".lixby-panel-title{font-weight:700;}",
-      ".lixby-row{display:flex;align-items:center;gap:10px;cursor:pointer;}",
-      ".lixby-box{width:18px;height:18px;accent-color:var(--primary,#0f3dff);cursor:pointer;margin:0;}",
       ".lixby-close{position:absolute;top:10px;right:14px;border:none;background:transparent;",
       "font-size:20px;line-height:1;color:var(--muted,#5f6b7a);padding:4px 8px;cursor:pointer;}",
       ".lixby-close:hover{transform:none;color:var(--text,#111827);}",
-      ".lixby-backdrop{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;",
+      ".lixby-backdrop{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;",
       "background:rgba(15,23,42,.45);backdrop-filter:blur(4px);",
       "-webkit-backdrop-filter:blur(4px);animation:lixbyFade .25s ease;}",
       "@keyframes lixbyFade{from{opacity:0}to{opacity:1}}",
@@ -184,6 +575,7 @@
       ".lixby-settings .lixby-option .lixby-badge{display:inline-block;font-size:.65rem;font-weight:700;",
       "letter-spacing:.05em;text-transform:uppercase;color:var(--primary,#0f3dff);",
       "background:rgba(15,61,255,.1);padding:2px 8px;border-radius:999px;align-self:flex-start;}",
+      ".lixby-settings .lixby-option .lixby-state{align-self:center;white-space:nowrap;}",
       ".lixby-settings .lixby-option.lixby-locked{opacity:.95;}",
       ".lixby-settings .lixby-switch{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:26px;",
       "flex-shrink:0;margin:0;cursor:pointer;border-radius:999px;outline:none;",
@@ -193,7 +585,7 @@
       ".lixby-settings .lixby-switch:checked{background:linear-gradient(120deg,var(--primary,#0f3dff),var(--primary-2,#16a7ff));}",
       ".lixby-settings .lixby-switch:checked::after{transform:translateX(20px);}",
       ".lixby-settings .lixby-switch:focus-visible{box-shadow:0 0 0 3px rgba(15,61,255,.25);}",
-      ".lixby-settings .lixby-settings-foot{display:flex;justify-content:flex-end;gap:10px;}",
+      ".lixby-settings .lixby-settings-foot{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}",
       "@media (max-width:520px){",
       ".lixby-settings .lixby-settings-foot{flex-direction:column;}",
       ".lixby-settings .lixby-settings-foot .lixby-btn{width:100%;}",
@@ -225,21 +617,19 @@
     strictLabel.className = "lixby-opt-label";
     var strictName = document.createElement("span");
     strictName.className = "lixby-opt-name";
-    strictName.textContent = isSpanish ? "Cookies estrictamente necesarias" : "Strictly necessary cookies";
+    strictName.textContent = T.strictName;
     var strictBadge = document.createElement("span");
     strictBadge.className = "lixby-badge";
-    strictBadge.textContent = isSpanish ? "Siempre activas" : "Always on";
+    strictBadge.textContent = T.strictBadge;
     var strictDesc = document.createElement("span");
     strictDesc.className = "lixby-opt-desc";
-    strictDesc.textContent = isSpanish
-      ? "Necesarias para el funcionamiento del sitio."
-      : "Required for the site to work.";
+    strictDesc.textContent = T.strictDesc;
     strictLabel.appendChild(strictName);
     strictLabel.appendChild(strictBadge);
     strictLabel.appendChild(strictDesc);
     var strictOn = document.createElement("span");
-    strictOn.className = "lixby-badge";
-    strictOn.textContent = isSpanish ? "Activas" : "On";
+    strictOn.className = "lixby-badge lixby-state";
+    strictOn.textContent = T.on;
     strict.appendChild(strictLabel);
     strict.appendChild(strictOn);
     options.appendChild(strict);
@@ -253,12 +643,10 @@
     name.textContent = T.analyticsLabel;
     var badge = document.createElement("span");
     badge.className = "lixby-badge";
-    badge.textContent = isSpanish ? "Opcional" : "Optional";
+    badge.textContent = T.optionalBadge;
     var desc = document.createElement("span");
     desc.className = "lixby-opt-desc";
-    desc.textContent = isSpanish
-      ? "Nos ayudan a entender c\u00F3mo usas Lixby para mejorarlo."
-      : "Help us understand how you use Lixby to improve it.";
+    desc.textContent = T.analyticsDesc;
     label.appendChild(name);
     label.appendChild(badge);
     label.appendChild(desc);
@@ -269,50 +657,29 @@
     box.checked = !!initialChecked;
     box.setAttribute("aria-label", T.analyticsLabel);
 
+    var state = document.createElement("span");
+    state.className = "lixby-badge lixby-state";
+    state.textContent = box.checked ? T.on : T.off;
+    box.addEventListener("change", function () {
+      state.textContent = box.checked ? T.on : T.off;
+    });
+
     option.appendChild(label);
+    option.appendChild(state);
     option.appendChild(box);
     options.appendChild(option);
 
     return { options: options, box: box };
   }
 
-  /* Panel de preferencias reutilizable (banner y pie) */
-  function buildSettingsPanel(initialChecked, onSave) {
-    var panel = document.createElement("div");
-    panel.className = "lixby-panel";
-
-    var title = document.createElement("div");
-    title.className = "lixby-panel-title";
-    title.textContent = T.settingsTitle;
-    panel.appendChild(title);
-
-    var built = buildOptions(initialChecked);
-    panel.appendChild(built.options);
-
-    var save = button(T.save, true);
-    save.addEventListener("click", function () {
-      onSave(built.box.checked);
-    });
-    panel.appendChild(save);
-
-    return {
-      el: panel,
-      toggle: function () {
-        panel.style.display = panel.style.display === "none" ? "flex" : "none";
-      }
-    };
-  }
-
   /* Enlace "Configurar cookies" en el pie de pagina:
-     abre el panel mostrando la decision real guardada.
-     Soporta dos layouts: columna "Legal" con ul.footer-links
-     y fila plana .footer-legal-links (sin titulo ni lista). */
+     abre el modal centrado mostrando la decision real guardada. */
   function addFooterSettingsLink() {
     function makeLink() {
       var a = document.createElement("a");
       a.href = "#";
       a.setAttribute("data-lixby-cookie-settings", "");
-      a.textContent = T.settings === "Configurar" ? "Configurar cookies" : "Cookie settings";
+      a.textContent = T.footerSettings;
       a.addEventListener("click", function (e) {
         e.preventDefault();
         openStandaloneSettings();
@@ -342,15 +709,14 @@
     }
   }
 
+  /* Modal centrado de preferencias (banner y pie de pagina). */
   function openStandaloneSettings() {
     ensureStyles();
     if (document.getElementById("lixby-cookie-settings")) return;
 
-    /* Fondo oscuro */
     var backdrop = document.createElement("div");
     backdrop.className = "lixby-backdrop";
 
-    /* Contenedor centrado con scroll */
     var outer = document.createElement("div");
     outer.className = "lixby-panel-outer";
 
@@ -361,7 +727,6 @@
     card.setAttribute("aria-modal", "true");
     card.setAttribute("aria-label", T.settingsTitle);
 
-    /* Cabecera con icono y titulo */
     var head = document.createElement("div");
     head.className = "lixby-head";
 
@@ -380,19 +745,15 @@
     title.textContent = T.settingsTitle;
     var sub = document.createElement("div");
     sub.className = "lixby-sub";
-    sub.textContent = isSpanish
-      ? "Elige qu\u00E9 cookies permites. Puedes cambiar tu decisi\u00F3n en cualquier momento."
-      : "Choose which cookies you allow. You can change your mind at any time.";
+    sub.textContent = T.settingsSub;
     headText.appendChild(title);
     headText.appendChild(sub);
     head.appendChild(headText);
 
     var close = button("\u00D7", false);
     close.className = "lixby-close";
-    close.setAttribute("aria-label", isSpanish ? "Cerrar" : "Close");
-    close.addEventListener("click", function () {
-      backdrop.remove();
-    });
+    close.setAttribute("aria-label", T.close);
+    close.addEventListener("click", function () { backdrop.remove(); });
 
     card.appendChild(head);
     card.appendChild(close);
@@ -400,22 +761,34 @@
     var built = buildOptions(readChoice() === "granted");
     card.appendChild(built.options);
 
-    var foot = document.createElement("div");
-    foot.className = "lixby-settings-foot";
-    foot.appendChild(button(T.save, true));
-    foot.lastChild.addEventListener("click", function () {
-      var decision = built.box.checked ? "granted" : "denied";
+    function decide(decision) {
       var changed = decision !== readChoice();
       applyDecision(decision);
+      var banner = document.getElementById("lixby-cookie-banner");
+      if (banner) banner.remove();
       backdrop.remove();
+      signalConsentResolved();
       if (changed) window.location.reload();
+    }
+
+    var foot = document.createElement("div");
+    foot.className = "lixby-settings-foot";
+    var rejectAll = button(T.rejectAll, false);
+    var acceptAll = button(T.acceptAll, false);
+    var save = button(T.save, true);
+    rejectAll.addEventListener("click", function () { decide("denied"); });
+    acceptAll.addEventListener("click", function () { decide("granted"); });
+    save.addEventListener("click", function () {
+      decide(built.box.checked ? "granted" : "denied");
     });
+    foot.appendChild(rejectAll);
+    foot.appendChild(acceptAll);
+    foot.appendChild(save);
     card.appendChild(foot);
 
     outer.appendChild(card);
     backdrop.appendChild(outer);
 
-    /* Cerrar al pulsar fuera del panel o con Escape */
     backdrop.addEventListener("click", function (e) {
       if (e.target === backdrop) backdrop.remove();
     });
@@ -432,6 +805,7 @@
   function showBanner() {
     ensureStyles();
     var bar = document.createElement("div");
+    bar.id = "lixby-cookie-banner";
     bar.className = "lixby-card";
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", T.aria);
@@ -454,10 +828,12 @@
     function finish(choice) {
       applyDecision(choice);
       bar.remove();
+      signalConsentResolved();
     }
 
     yes.addEventListener("click", function () { finish("granted"); });
     no.addEventListener("click", function () { finish("denied"); });
+    cfg.addEventListener("click", openStandaloneSettings);
 
     var actions = document.createElement("div");
     actions.className = "lixby-actions";
@@ -465,14 +841,8 @@
     actions.appendChild(no);
     actions.appendChild(cfg);
 
-    var panel = buildSettingsPanel(false, function (checked) {
-      finish(checked ? "granted" : "denied");
-    });
-    cfg.addEventListener("click", panel.toggle);
-
     bar.appendChild(text);
     bar.appendChild(actions);
-    bar.appendChild(panel.el);
 
     if (document.body) {
       document.body.appendChild(bar);
@@ -484,8 +854,11 @@
   }
 
   function init() {
-    addFooterSettingsLink();
-    if (needsBanner) showBanner();
+    resolveLang(function (texts) {
+      T = texts;
+      addFooterSettingsLink();
+      if (needsBanner) showBanner();
+    });
   }
 
   if (document.readyState === "loading") {

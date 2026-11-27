@@ -14,7 +14,9 @@
  *      Los textos de la barra se muestran en el idioma detectado por el
  *      navegador (navigator.languages), no en el idioma de la pagina,
  *      para que la sugerencia siempre se pueda leer.
- *   4. El cierre/interaccion se guarda en sessionStorage (NO localStorage):
+ *   4. El banner espera a que el aviso de cookies de gtm.js desaparezca
+ *      (window.lixbyConsent), de modo que nunca se superponen.
+ *   5. El cierre/interaccion se guarda en sessionStorage (NO localStorage):
  *      la sugerencia reaparece en una nueva sesion/pestaña.
  *
  * Escape hatch: anyadir data-lixby-locale-off="1" a <html> desactiva
@@ -320,24 +322,54 @@
     return browserLang() || (TEXTS[sug] ? sug : null) || (TEXTS[cur] ? cur : null) || "en";
   }
 
+  /* ---------- Orden con el aviso de cookies ---------- */
+
+  /* gtm.js expone window.lixbyConsent antes de este script (se carga
+     sin defer). Si el aviso sigue pendiente, esperamos a que el usuario
+     acepte, rechace o guarde preferencias antes de mostrar la sugerencia. */
+  function whenCookiesAreGone(cb) {
+    function afterConsent() {
+      var bar = document.getElementById("lixby-cookie-banner");
+      if (!bar) { cb(); return; }
+      if (typeof MutationObserver === "undefined") { setTimeout(cb, 300); return; }
+      var obs = new MutationObserver(function () {
+        if (!document.getElementById("lixby-cookie-banner")) {
+          obs.disconnect();
+          cb();
+        }
+      });
+      obs.observe(document.documentElement, { childList: true, subtree: true });
+    }
+
+    var consent = window.lixbyConsent;
+    if (consent && consent.isPending && consent.isPending()) {
+      if (consent.onResolved) consent.onResolved(afterConsent);
+      else document.addEventListener("lixby:consent-resolved", afterConsent, { once: true });
+      return;
+    }
+    afterConsent();
+  }
+
   /* ---------- Arranque ---------- */
 
   function init() {
     if (readDismissed()) return;
     if ((document.documentElement.getAttribute("data-lixby-locale-off") || "") === "1") return;
 
-    var cur = currentLang(location.pathname);
-    detectCountry().then(function (cc) {
-      var hit = cc && COUNTRY_TO_LANG[cc] ? COUNTRY_TO_LANG[cc] : null;
-      var country = hit ? cc : "";
-      if (!hit) {
-        var fb = fallbackFromNavigator();
-        if (!fb) return;
-        hit = fb.lang;
-        country = fb.country;
-      }
-      if (hit === cur) return;
-      showBanner(country, hit, uiLangFor(hit, cur));
+    whenCookiesAreGone(function () {
+      var cur = currentLang(location.pathname);
+      detectCountry().then(function (cc) {
+        var hit = cc && COUNTRY_TO_LANG[cc] ? COUNTRY_TO_LANG[cc] : null;
+        var country = hit ? cc : "";
+        if (!hit) {
+          var fb = fallbackFromNavigator();
+          if (!fb) return;
+          hit = fb.lang;
+          country = fb.country;
+        }
+        if (hit === cur) return;
+        showBanner(country, hit, uiLangFor(hit, cur));
+      });
     });
   }
 
