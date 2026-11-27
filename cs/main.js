@@ -1,22 +1,3 @@
-const cookieBanner = document.getElementById("cookieBanner");
-const acceptCookiesButton = document.getElementById("acceptCookies");
-const rejectCookiesButton = document.getElementById("rejectCookies");
-
-const cookieChoice = localStorage.getItem("cookiesChoice");
-if (cookieChoice === "accepted" || cookieChoice === "rejected") {
-  cookieBanner.style.display = "none";
-}
-
-acceptCookiesButton.addEventListener("click", () => {
-  localStorage.setItem("cookiesChoice", "accepted");
-  cookieBanner.style.display = "none";
-});
-
-rejectCookiesButton.addEventListener("click", () => {
-  localStorage.setItem("cookiesChoice", "rejected");
-  cookieBanner.style.display = "none";
-});
-
 const nav = document.getElementById("nav");
 const progressBar = document.getElementById("scroll-progress");
 
@@ -25,8 +6,8 @@ const updateScrollUI = () => {
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const progress = height > 0 ? (top / height) * 100 : 0;
 
-  if(progressBar)progressBar.style.width = progress + "%";
-  if(nav)nav.classList.toggle("nav-scrolled", top > 20);
+  if (progressBar) progressBar.style.width = progress + "%";
+  if (nav) nav.classList.toggle("nav-scrolled", top > 20);
 };
 
 window.addEventListener("scroll", updateScrollUI, { passive: true });
@@ -67,18 +48,7 @@ if (searchForm && searchInput) {
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const query = searchInput.value.trim();
-    const url = query ? `/cs/shop/?q=${encodeURIComponent(query)}` : "/cs/shop/";
-    window.location.href = url;
-  });
-}
-
-const mobileSearchForm = document.getElementById("navSearchFormMobile");
-const mobileSearchInput = document.getElementById("navSearchMobile");
-if (mobileSearchForm && mobileSearchInput) {
-  mobileSearchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const query = mobileSearchInput.value.trim();
-    const url = query ? `/cs/shop/?q=${encodeURIComponent(query)}` : "/cs/shop/";
+    const url = query ? `/cs/search/?q=${encodeURIComponent(query)}` : "/cs/search/";
     window.location.href = url;
   });
 }
@@ -86,22 +56,28 @@ if (mobileSearchForm && mobileSearchInput) {
 const mobilePanel = document.getElementById("navMobilePanel");
 const searchToggle = document.querySelector(".nav-search-toggle");
 const menuToggle = document.querySelector(".nav-menu-toggle");
+const setIconState = (open) => {
+  [searchToggle, menuToggle].forEach((btn) => {
+    if (!btn) return;
+    btn.classList.toggle("nav-open-x", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+};
+
 const closeNav = () => {
   document.body.classList.remove("nav-open", "menu-open");
   nav.classList.remove("nav-open");
   mobilePanel?.setAttribute("aria-hidden", "true");
-  searchToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-expanded", "false");
+  setIconState(false);
 };
 
 const openNav = (focusSearch = false) => {
   document.body.classList.add("nav-open", "menu-open");
   nav.classList.add("nav-open");
   mobilePanel?.setAttribute("aria-hidden", "false");
-  searchToggle?.setAttribute("aria-expanded", "true");
-  menuToggle?.setAttribute("aria-expanded", "true");
-  if (focusSearch && mobileSearchInput) {
-    setTimeout(() => mobileSearchInput.focus(), 80);
+  setIconState(true);
+  if (focusSearch && searchInput) {
+    setTimeout(() => searchInput.focus(), 270);
   }
 };
 
@@ -116,10 +92,38 @@ const toggleNav = (focusSearch = false) => {
 searchToggle?.addEventListener("click", () => toggleNav(true));
 menuToggle?.addEventListener("click", () => toggleNav(false));
 
-const mobileClose = document.querySelector(".nav-mobile-close");
-mobileClose?.addEventListener("click", () => closeNav());
+document.querySelectorAll(".nav-mobile-item").forEach((item) => {
+  const btn = item.querySelector(".nav-mobile-question");
+  const answer = item.querySelector(".nav-mobile-answer");
+  if (!btn || !answer) return;
 
-document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
+  btn.addEventListener("click", () => {
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+    document.querySelectorAll(".nav-mobile-item.open").forEach((other) => {
+      const ob = other.querySelector(".nav-mobile-question");
+      const oa = other.querySelector(".nav-mobile-answer");
+      if (ob) ob.setAttribute("aria-expanded", "false");
+      other.classList.remove("open");
+      if (oa) {
+        oa.classList.remove("active");
+        oa.style.maxHeight = "0px";
+      }
+    });
+
+    if (!isOpen) {
+      btn.setAttribute("aria-expanded", "true");
+      item.classList.add("open");
+      answer.classList.add("active");
+      answer.style.maxHeight = "0px";
+      requestAnimationFrame(() => {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      });
+    }
+  });
+});
+
+document.querySelectorAll(".nav-mobile-answer a").forEach((link) => {
   link.addEventListener("click", () => closeNav());
 });
 
@@ -156,7 +160,7 @@ if (addToCartButtons.length) {
 }
 
 const texto = document.getElementById("texto");
-const typedString = "Diseño limpio,\nsonido potente y\ncontrol total de tu día.";
+const typedString = "S vámi v každé části vašeho dne, ať jste kdekoli.";
 let typedIndex = 0;
 
 function typeNext() {
@@ -167,7 +171,7 @@ function typeNext() {
   setTimeout(typeNext, 25);
 }
 
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (texto && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   texto.textContent = "";
   typeNext();
 }
@@ -218,4 +222,3 @@ if (statNumbers.length) {
 
   statNumbers.forEach((el) => statsObserver.observe(el));
 }
-

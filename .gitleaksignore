@@ -559,3 +559,5 @@ sv/js/community-client.js:gcp-api-key:21
 pt/verified/index.html:gcp-api-key:345
 it/verified/index.html:gcp-api-key:345
 pl/verified/index.html:gcp-api-key:345
+cs/two-step-verification/index.html:gcp-api-key:441
+cs/verified/index.html:gcp-api-key:345
