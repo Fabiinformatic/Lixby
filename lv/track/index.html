@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="lv">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -10,16 +10,56 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seguimiento de pedido | Lixby</title>
-  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://lixby.es/lv/track">
+  <link rel="alternate" href="https://lixby.es/bg/track" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/track" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/track" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/track" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/track" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/track" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/track" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/track" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/track" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/track" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/track" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/track" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/track" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/track" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/track" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/track" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/track" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/track" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/track" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/track" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/track" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/track" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/track" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/track" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/track" hreflang="x-default">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
+
+  <title>Pasūtījumu izsekošana | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/lv/style.css">
 
   <style>
     :root {
@@ -32,7 +72,7 @@
 
     body {
       background: #f5f7fa;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       margin: 0;
       color: #1a1a1a;
       min-height: 100vh;
@@ -112,7 +152,7 @@
       padding: 12px 14px;
       border: none;
       font-size: 1rem;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       outline: none;
       min-width: 0;
     }
@@ -125,7 +165,7 @@
       color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
@@ -460,8 +500,6 @@
 <body>
 
 
-  <div id="scroll-progress"></div>
-
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -470,71 +508,121 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/lv/shop/" class="nav-link">Tienda</a>
-        <a href="/lv/#productos" class="nav-link">Productos</a>
-        <a href="/lv/#apps" class="nav-link">Apps</a>
-        <a href="/lv/support/" class="nav-link">Soporte</a>
+      <a href="/lv/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Galvenā izvēlne">
+        <a href="/lv/shop/" class="nav-link">Veikals</a>
+        <a href="/lv/products/" class="nav-link">Produkti</a>
+        <a href="/lv/apps/" class="nav-link">Apps</a>
+        <a href="/lv/support/" class="nav-link">Atbalsts</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Meklēt" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/lv/shop/" method="get">
+        <form id="navSearchForm" action="/lv/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Meklēt Lixby..."
+            aria-label="Meklēt Lixby"
           >
         </form>
-        <a href="/lv/cart/" class="nav-icon-link" aria-label="Cesta">
-          <img src="images/Bolsa.png" alt="Cesta">
+        <a href="/lv/cart/" class="nav-icon-link" aria-label="Grozs">
+          <img src="/lv/images/Bolsa.png" alt="Grozs">
         </a>
-        <a href="/lv/account/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="images/cuenta.png" alt="Cuenta">
+        <a href="/lv/account/" class="nav-icon-link" aria-label="Konts">
+          <img src="/lv/images/cuenta.png" alt="Konts">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Izvēlne" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/lv/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar menú">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
-      <a href="/lv/shop/">Tienda</a>
-      <a href="/lv/#productos">Productos</a>
-      <a href="/lv/#apps">Apps</a>
-      <a href="/lv/support/">Soporte</a>
+    <nav class="nav-mobile-links" aria-label="Mobilā izvēlne">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Veikals</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/lv/shop/">Doties uz veikalu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/buy-headphones/lixbuds-one/">Pirkt tagad</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/news/">Ziņas</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produkti</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/lv/products/">Skatīt produktus</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/lixsafe/">LixSafe un apdrošināšanas segums</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/lv/apps/">Skatīt lietotnes</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/help-center/lixney/">Lixney atbalsts</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/help-center/lixfly/">Lixfly atbalsts</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Atbalsts</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/lv/support/">Doties uz atbalstu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/help-center/faq/">Bieži uzdotie jautājumi</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/help-center/contact/">Kontakti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/help-center/returns/">Atgriešana</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/lv/cart/">Cesta</a>
-      <a href="/lv/account/">Cuenta</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Grozs</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/lv/cart/">Skatīt grozu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/cart/">Pabeigt pirkumu</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Konts</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/lv/account/">Doties uz manu kontu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/account/">Mani pasūtījumi</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/account/">Mans profils</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/account/">Iestatījumi</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/login/">Pieteikties</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lv/two-step-verification/">Divpakāpju verifikācija</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -542,14 +630,14 @@
 
   <!-- Búsqueda -->
   <div class="search-card">
-    <h1>Seguimiento de pedido</h1>
-    <p>Introduce tu número de pedido para ver el estado de tu envío.</p>
+    <h1>Pasūtījumu izsekošana</h1>
+    <p>Ievadiet pasūtījuma numuru, lai redzētu sūtījuma statusu.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
-        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Número de pedido">
+        <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Pasūtījuma numurs">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">Consultar</button>
+      <button class="btn-search" id="searchBtn" type="button">Konsultēties</button>
     </div>
   </div>
 
@@ -558,7 +646,7 @@
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Buscando tu pedido...</p>
+        <p>Meklē tavu pasūtījumu...</p>
       </div>
     </div>
   </div>
@@ -566,17 +654,17 @@
   <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
-    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Pedido no encontrado</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Pasūtījums nav atrasts</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
-      No hemos encontrado ningún pedido con ese número.<br>
-      Comprueba que el número es correcto — lo encontrarás en el email de confirmación.
+      Mēs neesam atraduši nevienu pasūtījumu ar šo numuru.<br>
+      Pārbaudiet, vai numurs ir pareizs — to atradīsit apstiprinājuma e-pastā.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:info@lixby.es" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Contactar soporte
+        Sazinieties ar atbalsta dienestu
       </a>
       <a href="/lv/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Volver a la tienda
+        Ej atpakaļ uz veikalu
       </a>
     </div>
   </div>
@@ -588,20 +676,20 @@
     <div class="order-header">
       <div>
         <div class="order-number-badge">
-          <span>Pedido</span>
+          <span>Pasūtījums</span>
           <strong id="resOrderNumber">—</strong>
         </div>
         <div class="order-date" id="resDate"></div>
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        Pago confirmado
+        Apstiprināts maksājums
       </div>
     </div>
 
     <!-- Progreso -->
     <div class="progress-section">
-      <h3>Estado del envío</h3>
+      <h3>Piegādes statuss</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
@@ -613,7 +701,7 @@
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div class="tracking-details">
-        <label>Número de seguimiento</label>
+        <label>Izsekošanas numurs</label>
         <strong id="trackingNumber">—</strong>
         <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
       </div>
@@ -621,10 +709,10 @@
 
     <!-- Info cliente -->
     <div class="info-section" id="resCustomerSection" style="display:none">
-      <h3>Información de entrega</h3>
+      <h3>Piegādes informācija</h3>
       <div class="info-grid">
         <div class="info-item">
-          <label>Nombre</label>
+          <label>Vārds</label>
           <strong id="resName">—</strong>
         </div>
         <div class="info-item">
@@ -632,7 +720,7 @@
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Dirección de envío</label>
+          <label>Pasta adrese</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
@@ -641,10 +729,10 @@
     <!-- Productos -->
     <div id="resProductsSection" style="display:none">
       <div class="info-section" style="background:#fff">
-        <h3>Productos</h3>
+        <h3>Produkti</h3>
         <div id="resProductsList"></div>
         <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
-          <span>Total pagado</span>
+          <span>Kopā samaksāts</span>
           <strong id="resTotalValue">—</strong>
         </div>
       </div>
@@ -652,8 +740,8 @@
 
     <!-- Acciones -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="/lv/shop/" class="btn-primary">Seguir comprando</a>
-      <a href="mailto:info@lixby.es" class="btn-secondary">Contactar soporte</a>
+      <a href="/lv/shop/" class="btn-primary">Turpināt iepirkties</a>
+      <a href="mailto:info@lixby.es" class="btn-secondary">Sazinieties ar atbalsta dienestu</a>
     </div>
   </div>
 </div>
@@ -661,66 +749,156 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Skatīt un pirkt</h3>
         <ul>
-          <li><a href="/lv/shop/">Tienda</a></li>
+          <li><a href="/lv/shop/">Veikals</a></li>
           <li><a href="/lv/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/lv/#apps">Apps</a></li>
-          <li><a href="/lv/support/">Soporte</a></li>
+          <li><a href="/lv/apps/">Apps</a></li>
+          <li><a href="/lv/support/">Atbalsts</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Atbalsts</h3>
         <ul>
-          <li><a href="/lv/support/">Página inicial soporte</a></li>
-          <li><a href="/lv/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/lv/support/">Información de Garantía</a></li>
-          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+          <li><a href="/lv/support/">Atbalsta sākumlapa</a></li>
+          <li><a href="/lv/support/#faq">Tiešsaistes veikala BUJ</a></li>
+          <li><a href="/lv/support/">Informācija par garantiju</a></li>
+          <li><a href="mailto:info@lixby.es">E-pasts izpilddirektoram</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Konts</h3>
         <ul>
-          <li><a href="/lv/track/">Pedidos</a></li>
-          <li><a href="/lv/account/">Mi cuenta</a></li>
-          <li><a href="/lv/account/">Cupones</a></li>
+          <li><a href="/lv/track/">Pasūtījumi</a></li>
+          <li><a href="/lv/account/">Mans konts</a></li>
+          <li><a href="/lv/account/">Kuponi</a></li>
+          <li><a href="/lv/community/">Kopiena</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>Par Lixby</h3>
         <ul>
-          <li><a href="/lv/about/">Nosotros</a></li>
-          <li><a href="/lv/support/">Garantía</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="/lv/support/">Contacto</a></li>
+          <li><a href="/lv/about/">Mēs</a></li>
+          <li><a href="/lv/support/">Garantija</a></li>
+          <li><a href="/lv/news/">Ziņas</a></li>
+          <li><a href="/lv/support/">Kontakti</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Visas tiesības rezervētas.</p>
       <div class="footer-legal-links">
-        <a href="/lv/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/lv/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/lv/pages/legal/terms/">Condiciones de uso</a>
-        <a href="/lv/support/">Ventas y reembolsos</a>
-        <a href="/lv/pages/legal/legal-notice/">Avisos legales</a>
+        <a href="/lv/pages/legal/privacy/">Privātuma politika</a>
+        <a href="/lv/pages/legal/cookies/">Sīkdatņu politika</a>
+        <a href="/lv/pages/legal/terms/">Noteikumi un nosacījumi</a>
+        <a href="/lv/pages/legal/sales-refunds/">Pārdošana un naudas atmaksa</a>
+        <a href="/lv/pages/legal/legal-notice/">Juridiskie paziņojumi</a>
       </div>
     </div>
   </footer>
 
 <script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var mobilePanel = document.getElementById("navMobilePanel");
+    var searchToggle = document.querySelector(".nav-search-toggle");
+    var menuToggle = document.querySelector(".nav-menu-toggle");
+    var searchInput = document.getElementById("navSearch");
+
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
+    var closeNav = function () {
+      if (document.body) document.body.classList.remove("nav-open", "menu-open");
+      if (nav) nav.classList.remove("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+            setIconState(false);
+    };
+    var openNav = function () {
+      if (document.body) document.body.classList.add("nav-open", "menu-open");
+      if (nav) nav.classList.add("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+            setIconState(true);
+    };
+    var toggleNav = function () {
+      if (nav && nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+    if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+    document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+      var btn = item.querySelector(".nav-mobile-question");
+      var answer = item.querySelector(".nav-mobile-answer");
+      if (!btn || !answer) return;
+
+      btn.addEventListener("click", function () {
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+          var ob = other.querySelector(".nav-mobile-question");
+          var oa = other.querySelector(".nav-mobile-answer");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          other.classList.remove("open");
+          if (oa) {
+            oa.classList.remove("active");
+            oa.style.maxHeight = "0px";
+          }
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          item.classList.add("open");
+          answer.classList.add("active");
+          answer.style.maxHeight = "0px";
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
+    });
+  })();
+</script>
+<script>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Recibido',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Preparando', icon: '🔧' },
-    { key: 'Enviado',           label: 'Enviado',     icon: '🚚' },
-    { key: 'En reparto',        label: 'En reparto',  icon: '📍' },
-    { key: 'Entregado',         label: 'Entregado',   icon: '✅' }
+    { key: 'Pedido recibido',   label: 'saņemts',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'sagatavošanās', icon: '🔧' },
+    { key: 'Enviado',           label: 'nosūtīts',     icon: '🚚' },
+    { key: 'En reparto',        label: 'izplatīšanā',  icon: '📍' },
+    { key: 'Entregado',         label: 'piegādāts',   icon: '✅' }
   ];
 
   function money(v) {
@@ -730,7 +908,7 @@
   function formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso);
-    return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('lv-LV', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   function show(id, display = 'block') { document.getElementById(id).style.display = display; }
@@ -777,7 +955,7 @@
     document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
     const dateEl = document.getElementById('resDate');
     if (data.paidAt || data.createdAt) {
-      dateEl.textContent = 'Realizado el ' + formatDate(data.paidAt || data.createdAt);
+      dateEl.textContent = 'izgatavots uz' + formatDate(data.paidAt || data.createdAt);
     }
 
     // Progreso
@@ -808,18 +986,10 @@
     if (items.length) {
       const list = document.getElementById('resProductsList');
       list.innerHTML = items.map(item => {
-        const name = item.productName || item.name || 'Producto';
+        const name = item.productName || item.name || 'Produkts';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
-        return `
-          <div class="product-item">
-            <div>
-              <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Cantidad: ${qty}</div>
-            </div>
-            <div class="product-item-price">${price}</div>
-          </div>
-        `;
+        return `<div class="product-item"> <div> <div class="product-item-name">${name}</div> <div class="product-item-sub">daudzums: ${qty}</div> </div> <div class="product-item-price">${price}</div></div>`;
       }).join('');
 
       if (data.amountTotal) {
@@ -887,7 +1057,6 @@
 </script>
 </body>
 </html>
-
 
 
 
