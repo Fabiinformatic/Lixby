@@ -1,11 +1,9 @@
 export async function transferSessionToApp(user) {
-  if (!user) return false;
+  // Siirrä istunto vain natiivisovelluksen sisällä suoritettaessa;
+  // en la web la sesion de Firebase persiste por si sola.
+  if (!user || !isNativeApp()) return false;
 
   try {
-    if (!isNativeApp()) {
-      return false;
-    }
-
     const idToken = await user.getIdToken();
 
     const res = await fetch("/auth/custom-token", {
@@ -23,7 +21,7 @@ export async function transferSessionToApp(user) {
     redirectToApp(data.customToken);
     return true;
   } catch (error) {
-    console.warn("No se pudo transferir la sesión a la app:", error);
+    console.warn("Istunnon siirto sovellukseen epäonnistui:", error);
     return false;
   }
 }
