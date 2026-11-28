@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="nojs ga-ga lixby tomhaltóir eu ga" lang="ga">
+<html class="nojs es-es lixby consumer eu es" lang="ga">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -15,15 +15,15 @@ window.LIXBY_CONFIG = {
     metadata: {
         environment: "production",
         region: "eu",
-        country: "GA",
-        locale: "ga-ga",
+        country: "ES",
+        locale: "ga-IE",
         brand: "Lixby",
         page: "store",
         referer: document.referrer
     },
     config: {
         pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
-        app: "com.lixby.web",
+        app: "com.Lixby.web",
         sendPageViewData: true,
         sendErrors: true,
         performanceTracking: true,
@@ -118,26 +118,43 @@ document.addEventListener('readystatechange', () => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Siopa | Lixby</title>
-<meta name="description" content="Siopa oifigiúil Lixby. Faigh amach LixBuds One agus Lixney.">
+<meta name="description" content="Lixby siopa oifigiúil. Faigh amach LixBuds One agus Lixney.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="ga_IE">
+  <meta property="og:url" content="https://lixby.es/ga/shop">
+  <meta property="og:title" content="Siopa | Lixby">
+  <meta property="og:description" content="Lixby siopa oifigiúil. Faigh amach LixBuds One agus Lixney.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Cluasáin LixBuds One ó Lixby">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Siopa | Lixby">
+  <meta name="twitter:description" content="Lixby siopa oifigiúil. Faigh amach LixBuds One agus Lixney.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Cluasáin LixBuds One ó Lixby">
 
 <link rel="preconnect" href="https://lixby.es">
 <link rel="dns-prefetch" href="https://lixby.es">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
 <style>
-    body.shop-page {
-      background: #f5f5f7;
-    }
+      body.shop-page {
+        background: #f5f5f7;
+        overflow-x: hidden;
+      }
 
     .shop-hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      gap: 28px;
       padding: 56px 0 20px;
     }
 
@@ -145,52 +162,137 @@ document.addEventListener('readystatechange', () => {
       font-size: clamp(2.2rem, 7vw, 5rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
+      text-align: left;
     }
 
     .shop-hero-side {
-      justify-self: end;
-      text-align: right;
-      max-width: 420px;
+      justify-self: start;
+      text-align: left;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .shop-hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px 28px;
+      width: 100%;
     }
 
     .shop-hero-side h2 {
-      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-size: clamp(1.25rem, 2.4vw, 2.1rem);
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 14px;
+      margin-bottom: 0;
     }
 
     .shop-hero-side a {
-      display: block;
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      margin-top: 6px;
+    }
+
+    .shop-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-left: auto;
+    }
+
+    .shop-hero-side a.shop-hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 61, 255, 0.24);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 8px 20px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1), background-color 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-top: 1.6px solid currentColor;
+      border-right: 1.6px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15, 61, 255, 0.14);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover::after {
+      transform: rotate(45deg) translate(2px, -2px);
+    }
+
+    .shop-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 24px);
+      z-index: 1200;
+      max-width: min(92vw, 460px);
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: #111827;
+      color: #fff;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 240ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1), visibility 240ms ease;
+    }
+
+    .shop-toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .shop-toast.is-warning {
+      background: #b42318;
     }
 
     .shop-categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
       padding: 24px 0 56px;
-      max-width: 540px;
     }
 
     .shop-category {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       padding: 18px;
       text-align: center;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+      min-width: 0;
+      flex: 1;
     }
 
     .shop-category:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
     }
 
     .shop-category-icon {
@@ -232,17 +334,88 @@ document.addEventListener('readystatechange', () => {
     .shop-latest h3 strong { color: #111827; }
     .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
-    .shop-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+    .shop-cards-wrapper {
+      position: relative;
+      overflow: visible;
     }
+    .shop-cards,
+    .trust-cards {
+      --gutter: calc((100vw - min(1120px, 92vw)) / 2);
+
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      margin-left: calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+      scroll-padding-left: var(--gutter);
+      scroll-padding-right: var(--gutter);
+      overflow-anchor: none;
+    }
+
+
+    .shop-cards::-webkit-scrollbar { display: none; }
+
+    .shop-cards > .shop-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(50% - 11px);
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .shop-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229,231,235,0.5);
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #111827;
+      font-size: 1.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .shop-arrow-left  { left: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+    .shop-arrow-right { right: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+
+    .shop-arrow:active { transform: translateY(-50%) scale(0.92); }
+
+    .shop-cards-wrapper:hover .shop-arrow:not(.arrow-hidden) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .shop-arrow.arrow-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
 
     .shop-card {
       border-radius: 28px;
       padding: 30px;
       min-height: 430px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -279,19 +452,25 @@ document.addEventListener('readystatechange', () => {
       margin-top: auto;
       padding-top: 18px;
       display: flex;
-      align-items: end;
+      flex: 1 1 0%;
+      align-items: flex-end;
       justify-content: center;
+      min-height: 0;
     }
 
     .shop-card-media img {
-      width: min(85%, 320px);
-      border-radius: 20px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      display: block;
+      width: auto;
+      height: 230px;
+      max-width: 100%;
       object-fit: contain;
+      object-position: center bottom;
+      border-radius: 20px 20px 28px 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     .shop-card-product {
-      background: linear-gradient(165deg, #ffffff, #e5edf9);
+      background: linear-gradient(165deg, rgba(255,255,255,.85), rgba(229,237,249,.65));
     }
 
     .shop-card-app {
@@ -303,19 +482,102 @@ document.addEventListener('readystatechange', () => {
     .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
     .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
 
+    .shop-card-Lixfly {
+      background: linear-gradient(165deg, #0c1220, #1e3a8a);
+      color: #fff;
+      border-color: rgba(96, 165, 250, 0.2);
+    }
+
+    .shop-card-Lixfly .shop-card-eyebrow { color: #60a5fa; }
+    .shop-card-Lixfly small { color: rgba(148, 163, 184, 0.9); }
+
     .shop-card.card-white-solid {
-      background: #ffffff;
-      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ── Trust section ─────────────────────────── */
+    .trust-section {
+      padding: 20px 0 80px;
+    }
+    .trust-section h3 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .trust-section h3 strong { color: #111827; }
+    .trust-section h3 span   { color: #6b7280; font-weight: 600; }
+    .trust-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      scroll-snap-align: start;
+      flex: 0 0 calc(33.33% - 15px);
+      min-width: 0;
+      min-height: 240px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+    }
+    .trust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-card p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    button.trust-card {
+      font: inherit;
+      text-align: left;
+      align-items: stretch;
+      cursor: pointer;
+    }
+    @media (max-width: 980px) { .trust-card { flex: 0 0 50%; } }
+    @media (max-width: 640px) { .trust-card { flex: 0 0 85%; } }
+
+    @media (min-width: 981px) {
+      .shop-hero-side h2 { white-space: nowrap; }
     }
 
     @media (max-width: 980px) {
-      .shop-hero { grid-template-columns: 1fr; }
-      .shop-hero-side { text-align: left; justify-self: start; }
+      .shop-hero { gap: 20px; }
+      .shop-hero-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 760px) {
-      .shop-categories,
-      .shop-cards { grid-template-columns: 1fr; }
+      .shop-categories { flex-direction: column; }
+      .shop-cards > .shop-card { flex: 0 0 85%; }
+      .shop-arrow { width: 46px; height: 46px; font-size: 1.3rem; }
+      .shop-arrow-left  { left: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
+      .shop-arrow-right { right: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
     }
   </style>
 
@@ -327,7 +589,7 @@ document.addEventListener('readystatechange', () => {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Lixby",
-  "url": "https://lixby.es",
+  "url": "https://lixby.es/ga/shop",
   "logo": "https://lixby.es/logo.png",
   "sameAs": ["https://github.com/lixby"]
 }
@@ -351,78 +613,300 @@ document.documentElement.classList.replace("nojs", "js");
   <div id="scroll-progress"></div>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Príomhroghanna">
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
         <a href="/ga/shop/" class="nav-link">Siopa</a>
-        <a href="/ga/#productos" class="nav-link">Táirgí</a>
-        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
-      <a href="/ga/#productos" class="btn btn-primary nav-cta">Féach ar chatalóg</a>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/ga/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
+          >
+        </form>
+        <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
+        </a>
+        <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container">
     <section class="shop-hero">
       <h1>Siopa</h1>
       <div class="shop-hero-side">
-        <h2>An bealach is fearr chun do chuid táirgí is fearr a cheannach.</h2>
-        <a href="/ga/support/">Labhair le speisialtóir</a>
-        <a href="/ga/support/">Faigh cabhair</a>
-        <p id="shopSearchStatus"></p>
+        <div class="shop-hero-row">
+          <h2>Ar fad Lixby, in aon áit amháin.</h2>
+          <div class="shop-hero-actions">
+<a class="shop-hero-link" href="/ga/support/">Labhairt le speisialtóir</a>
+          <a class="shop-hero-link" href="/ga/track/">Lean d'ordú</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="shop-categories" aria-label="Catagóirí">
-      <a class="shop-category" data-searchable="lixbuds one cluasáin cinn mixmax" href="/ga/pages/products/lixbuds-one/">
+      <a class="shop-category" data-searchable="LixBuds One auriculares cascos mixmax" href="/ga/pages/products/lixbuds-one/">
         <div class="shop-category-icon">
           <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
-      <a class="shop-category" data-searchable="lixney app airgeadas" href="/ga/pages/apps/lixney/">
+      <a class="shop-category" data-searchable="Lixney app finanzas" href="/ga/pages/apps/lixney/">
         <div class="shop-category-icon">
-          <img class="shop-category-icon-contain" src="images/LixneyIcon.png" alt="App Lixney">
+          <img class="shop-category-icon-contain" src="images/lixneyicon2.webp" alt="Aip Lixney">
         </div>
         <span>Lixney</span>
+      </a>
+      <a class="shop-category" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/ga/pages/apps/lixfly/">
+        <div class="shop-category-icon">
+          <img class="shop-category-icon-contain" src="images/lixflyicon2.webp" alt="Aip Lixfly">
+        </div>
+        <span>Lixfly</span>
       </a>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>Na rudaí is déanaí.</strong> <span>Féach ar na nuachtáin.</span></h3>
-      <div class="shop-cards">
-        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one cluasáin cinn mixmax" href="/ga/pages/products/lixbuds-one/">
-          <p class="shop-card-eyebrow">Ar fáil anois</p>
-          <h4>LixBuds One</h4>
-          <p>Fuaim préimhe le cealú cliste torainn.</p>
-          <small>Ó 99 EUR</small>
-          <div class="shop-card-media">
-            <img src="images/lixbuds-one-white.png" alt="Cluasáin LixBuds One">
-          </div>
-        </a>
+      <h3><strong>Is déanaí.</strong> <span>Féach ar cad atá nua.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left" aria-label="Iar">‹</button>
+        <button class="shop-arrow shop-arrow-right" aria-label="Leanas">›</button>
+        <div class="shop-cards">
+          <a class="shop-card shop-card-product card-white-solid" data-searchable="LixBuds One auriculares cascos mixmax" href="/ga/pages/products/lixbuds-one/">
+            <p class="shop-card-eyebrow">Ar fáil anois</p>
+            <h4>LixBuds One</h4>
+            <p>Fuaim préimhe le cealú torainn Chliste.</p>
+            <small>Ó 99 euro</small>
+            <div class="shop-card-media">
+              <img src="images/lixbuds-one-white.png" alt="LixBuds One">
+            </div>
+          </a>
 
-        <a class="shop-card shop-card-app" data-searchable="lixney app airgeadas" href="/ga/pages/apps/lixney/">
-          <p class="shop-card-eyebrow">Leagan nua</p>
-          <h4>Lixney</h4>
-          <p>D'aip chun airgead a shábháil, pleanáil agus do chuid caiteachas a thuiscint.</p>
-          <small>Íoslódáil saor in aisce</small>
+          <a class="shop-card shop-card-app" data-searchable="Lixney app finanzas" href="/ga/pages/apps/lixney/">
+            <p class="shop-card-eyebrow">Athdhéanamh</p>
+            <h4>Lixney</h4>
+            <p>D’aip chun do chostais a shábháil, a phleanáil agus a thuiscint.</p>
+            <small>Íoslódáil saor in aisce</small>
+            <div class="shop-card-media">
+              <img src="images/lixneyicon2.webp" alt="Lixney iarratas">
+            </div>
+          </a>
+
+        <a class="shop-card shop-card-lixfly" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/ga/pages/apps/lixfly/">
+          <p class="shop-card-eyebrow">Béite oscailte</p>
+          <h4>Lixfly</h4>
+          <p>Do EFB do MSFS2020/2024: réamheitilt, plean eitilte, feidhmíocht, loingseoireacht, eqrh agus go leor eile.</p>
+          <small>Beta saor in aisce,</small>
           <div class="shop-card-media">
-            <img src="images/lixney1.png" alt="Aip Lixney">
+            <img src="images/lixflyicon2.webp" alt="Lixfly iarratas">
           </div>
         </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Seo mar a thugaimid aire do do cheannach.</strong> <span>Simplí, sábháilte agus gan iontas.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Iar">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Leanas">›</button>
+        <div class="shop-cards trust-cards">
+          <a class="trust-card" href="/ga/support/#faq">
+            <div class="trust-icon" style="background:#059669">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+            </div>
+            <p><strong style="color:#059669">Loingseoireachta saor in aisce.</strong> Tagann d'orduithe go léir sa bhaile <strong style="color:#059669">gan aon chostas breise</strong>, beag beann ar an méid.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/returns/">
+            <div class="trust-icon" style="background:#d97706">
+              <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
+            </div>
+            <p><strong style="color:#d97706">Ar ais i 14 lá féilire.</strong> Is féidir leat do cheart chun tarraingt siar a fheidhmiú <strong style="color:#d97706">gan an chúis a lua</strong>.</p>
+          </a>
+          <a class="trust-card" href="/ga/support/#faq">
+            <div class="trust-icon" style="background:#2563eb">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p><strong style="color:#2563eb">Íocaíocht slán.</strong> Tá gach idirbheart <strong style="color:#2563eb">criptithe agus cosanta</strong> ionas gur féidir leat a cheannach le suaimhneas intinne iomlán.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/contact/">
+            <div class="trust-icon" style="background:#7c3aed">
+              <svg viewBox="0 0 24 24"><path d="M3 11v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3"/><path d="M21 12v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+            </div>
+            <p><strong style="color:#7c3aed">Tacaíocht i Spáinnis.</strong> Tá ár bhfoireann anseo chun cabhrú leat, <strong style="color:#7c3aed">i do theanga</strong> agus nuair is gá duit é.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/warranty/">
+            <div class="trust-icon" style="background:#16a34a">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <p><strong style="color:#16a34a">Ráthaíocht oifigiúil.</strong> Tá táirgí fisiceacha <strong style="color:#16a34a">ráthaíocht dhlíthiúil trí bliana</strong> ó sheachadadh.</p>
+          </a>
+          <a class="trust-card" href="/ga/apps/">
+            <div class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A9 9 0 1 0 4.16 7.51"/></svg>
+            </div>
+            <p><strong style="color:#6366f1">Nuashonruithe saor in aisce.</strong> D'iarratais suas chun dáta i gcónaí, <strong style="color:#6366f1">gan aon chostas breise</strong> agus go deo.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Táimid anseo.</strong> <span>Cabhrú le cathain agus conas a theastaíonn uait é.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Iar">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Leanas">›</button>
+        <div class="shop-cards trust-cards">
+          <button type="button" class="trust-card" data-open-bot>
+            <span class="trust-icon" style="background:#0ea5e9">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <p><strong style="color:#0ea5e9">Labhair leis an gcúntóir.</strong> Réiteach do amhras láithreach, <strong style="color:#0ea5e9">24 uair sa lá</strong>, ó aon leathanach sa siopa.</p>
+          </button>
+          <a class="trust-card" href="/ga/news/">
+            <span class="trust-icon" style="background:#f59e0b">
+              <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+            </span>
+            <p><strong style="color:#f59e0b">Nuacht.</strong> Amach <strong style="color:#f59e0b">eisiúintí, nuashonruithe agus fógraí</strong> Lixby oifigigh.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/returns/">
+            <span class="trust-icon" style="background:#10b981">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            </span>
+            <p><strong style="color:#10b981">Ceart aistarraingthe.</strong> Bhfuil <strong style="color:#10b981">14 lá féilire ó sheachadadh</strong> é a iarraidh. Seiceáil na coinníollacha agus na costais ar ais.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/contact/">
+            <span class="trust-icon" style="background:#8b5cf6">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <p><strong style="color:#8b5cf6">Scríobh chugainn.</strong> Freagraimid duit <strong style="color:#8b5cf6">chomh luath agus is féidir, ar laethanta gnó</strong>.</p>
+          </a>
+          <a class="trust-card" href="/ga/help-center/faq/">
+            <span class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </span>
+            <p><strong style="color:#6366f1">Ceisteanna coitianta.</strong> Freagraí a fháil faoi <strong style="color:#6366f1">loingseoireachta, íocaíochtaí, ráthaíocht</strong> agus i bhfad níos mó.</p>
+          </a>
+          <a class="trust-card" href="/ga/apps/">
+            <span class="trust-icon" style="background:#ec4899">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </span>
+            <p><strong style="color:#ec4899">Cabhrú le d'aipeanna.</strong> Treoracha agus tacaíocht do <strong style="color:#ec4899">Lixney agus Lixfly</strong>, i Spáinnis i gcónaí.</p>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
         <h3>Féach agus ceannaigh</h3>
         <ul>
           <li><a href="/ga/shop/">Siopa</a></li>
           <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/ga/#apps">Aipeanna</a></li>
+          <li><a href="/ga/apps/">Apps</a></li>
           <li><a href="/ga/support/">Tacaíocht</a></li>
         </ul>
       </section>
@@ -430,49 +914,64 @@ document.documentElement.classList.replace("nojs", "js");
       <section class="footer-section">
         <h3>Tacaíocht</h3>
         <ul>
-          <li><a href="/ga/support/">Leathanach tosaigh tacaíochta</a></li>
-          <li><a href="/ga/support/#faq">CCanna Siopa ar líne</a></li>
-          <li><a href="/ga/support/">Eolas ar Bharántas</a></li>
-          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an POF</a></li>
+          <li><a href="/ga/support/">Leathanach baile na tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">Ceisteanna Coitianta an tsiopa ar líne</a></li>
+          <li><a href="/ga/support/">Faisnéis bharántais</a></li>
+          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an bPríomhfheidhmeannach</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Cuntas</h3>
         <ul>
-          <li><a href="/ga/cart/">Orduithe</a></li>
+          <li><a href="/ga/track/">Orduithe</a></li>
           <li><a href="/ga/account/">Mo chuntas</a></li>
           <li><a href="/ga/account/">Cúpóin</a></li>
+          <li><a href="/ga/community/">Pobal</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Maidir le Lixby</h3>
+        <h3>Faoi Lixby</h3>
         <ul>
-          <li><a href="#">Seomra Nuachta</a></li>
+          <li><a href="/ga/about/">Muid</a></li>
           <li><a href="/ga/support/">Barántas</a></li>
-          <li><a href="#">Imeachtaí</a></li>
+          <li><a href="/ga/news/">Nuacht</a></li>
           <li><a href="/ga/support/">Teagmháil</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Cóipcheart © 2026 Lixby. Gach ceart ar cosaint.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Gach ceart ar cosaint.</p>
       <div class="footer-legal-links">
-        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachais</a>
-        <a href="/ga/pages/legal/cookies/">Úsáid fianáin</a>
-        <a href="/ga/pages/legal/terms/">Téarmaí úsáide</a>
-        <a href="/ga/support/">Díolacháin agus aisíocaíochtaí</a>
-        <a href="/ga/pages/legal/legal-notice/">Fógraí dlíthiúla</a>
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachta</a>
+        <a href="/ga/pages/legal/cookies/">Polasaí Fianán</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí agus Coinníollacha</a>
+        <a href="/ga/pages/legal/sales-refunds/">Díolacháin agus Aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/legal-notice/">Fógraí Dlíthiúla</a>
       </div>
     </div>
   </footer>
 
+  <div class="shop-toast" id="shopToast" role="status" aria-live="polite"></div>
+
   <script>
     const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
-    const statusEl = document.getElementById("shopSearchStatus");
+    const toastEl = document.getElementById("shopToast");
+    let toastTimer = null;
+
+    function showShopToast(message, variant) {
+      if (!toastEl) return;
+      toastEl.textContent = message;
+      toastEl.classList.toggle("is-warning", variant === "warning");
+      toastEl.classList.add("is-visible");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toastEl.classList.remove("is-visible");
+      }, 3800);
+    }
 
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
@@ -485,6 +984,78 @@ document.documentElement.classList.replace("nojs", "js");
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
 
+    const shopCards = document.querySelector(".shop-cards");
+    const leftArrow = document.querySelector(".shop-arrow-left");
+    const rightArrow = document.querySelector(".shop-arrow-right");
+
+    if (shopCards && leftArrow && rightArrow) {
+      const scrollAmount = () => {
+        const card = shopCards.querySelector(".shop-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      leftArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const updateArrows = () => {
+        const maxScroll = shopCards.scrollWidth - shopCards.clientWidth;
+        leftArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft <= 4);
+        rightArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft >= maxScroll - 4);
+      };
+
+      shopCards.addEventListener("scroll", () => {
+        updateArrows();
+      }, { passive: true });
+      updateArrows();
+    }
+
+    document.querySelectorAll(".trust-cards").forEach((trustCards) => {
+      const trustSection = trustCards.closest(".trust-section");
+      const trustArrowLeft = trustSection && trustSection.querySelector(".trust-arrow-left");
+      const trustArrowRight = trustSection && trustSection.querySelector(".trust-arrow-right");
+
+      if (!trustSection || !trustCards || !trustArrowLeft || !trustArrowRight) return;
+
+      const trustScrollAmount = () => {
+        const card = trustCards.querySelector(".trust-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      trustArrowLeft.addEventListener("click", () => {
+        trustCards.scrollBy({ left: -trustScrollAmount(), behavior: "smooth" });
+      });
+
+      trustArrowRight.addEventListener("click", () => {
+        trustCards.scrollBy({ left: trustScrollAmount(), behavior: "smooth" });
+      });
+
+      const updateTrustArrows = () => {
+        const maxScroll = trustCards.scrollWidth - trustCards.clientWidth;
+        trustArrowLeft.classList.toggle("arrow-hidden", trustCards.scrollLeft <= 4);
+        trustArrowRight.classList.toggle("arrow-hidden", trustCards.scrollLeft >= maxScroll - 4);
+      };
+
+      trustCards.addEventListener("scroll", () => {
+        updateTrustArrows();
+      }, { passive: true });
+      updateTrustArrows();
+    });
+
+    document.querySelectorAll("[data-open-bot]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const botWindow = document.getElementById("lixbot-window");
+        const botToggle = document.getElementById("lixbot-toggle");
+        if (botWindow && botToggle && botWindow.classList.contains("lixbot-hidden")) {
+          botToggle.click();
+        }
+      });
+    });
+
     const query = new URLSearchParams(window.location.search).get("q");
     if (query) {
       const normalizedQuery = query.toLowerCase().trim();
@@ -495,18 +1066,16 @@ document.documentElement.classList.replace("nojs", "js");
         item.style.display = match ? "" : "none";
         if (match) matches += 1;
       });
-      if (statusEl) {
-        if (matches > 0) {
-          statusEl.textContent = `Torthaí le haghaidh: ${query}`;
-        } else {
-          statusEl.textContent = `Níl aon toradh le haghaidh: ${query}`;
-        }
+      if (matches > 0) {
+        showShopToast(`torthaí do: ${query}`);
+      } else {
+        showShopToast(`gan torthaí do: ${query}`, "warning");
       }
     }
   </script>
 
   <!-- =====================================================
-       MINIBOT LIXBY
+       MINIBOT Lixby
   ====================================================== -->
   <style>
     #lixbot-toggle {
@@ -531,7 +1100,7 @@ document.documentElement.classList.replace("nojs", "js");
       box-shadow: 0 12px 44px rgba(15,23,42,0.14);
       display: flex; flex-direction: column;
       overflow: hidden; z-index: 9998;
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif;
       transition: opacity 0.2s, transform 0.2s;
     }
     #lixbot-window.lixbot-hidden { opacity: 0; pointer-events: none; transform: translateY(14px); }
@@ -601,7 +1170,7 @@ document.documentElement.classList.replace("nojs", "js");
       flex: 1; border: none; outline: none;
       padding: 12px 6px; font-size: 13px;
       background: transparent; color: #111827;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
     }
     #lixbot-input::placeholder { color: #c4c9d4; }
     #lixbot-clearbtn {
@@ -616,7 +1185,7 @@ document.documentElement.classList.replace("nojs", "js");
     }
   </style>
 
-  <button id="lixbot-toggle" aria-label="Oscail cúntóir Lixby">
+  <button id="lixbot-toggle" aria-label="Oscail Lixby draoi">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
          stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -627,14 +1196,14 @@ document.documentElement.classList.replace("nojs", "js");
   <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Cúntóir Lixby">
     <div id="lixbot-header">
       <div class="lixbot-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
              stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
       </div>
       <div>
         <div class="lixbot-title">Cúntóir Lixby</div>
-        <div class="lixbot-sub">Freagraí láithreach</div>
+        <div class="lixbot-sub">Freagraí toirt</div>
       </div>
       <button id="lixbot-close" aria-label="Dún">✕</button>
     </div>
@@ -642,19 +1211,19 @@ document.documentElement.classList.replace("nojs", "js");
     <div id="lixbot-messages"></div>
 
     <div id="lixbot-cats">
-      <button class="lixbot-cat" data-cat="envios">📦 Loingsiú</button>
-      <button class="lixbot-cat" data-cat="devoluciones">↩️ Tuairisceáin</button>
+      <button class="lixbot-cat" data-cat="envios">📦 Lastais</button>
+      <button class="lixbot-cat" data-cat="devoluciones">Filleann ↩️</button>
       <button class="lixbot-cat" data-cat="pagos">💳 Íocaíochtaí</button>
       <button class="lixbot-cat" data-cat="pedidos">🛒 Orduithe</button>
       <button class="lixbot-cat" data-cat="productos">🎧 Táirgí</button>
-      <button class="lixbot-cat" data-cat="faq">❓ CC</button>
+      <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
     </div>
 
     <div id="lixbot-qs"></div>
 
     <div id="lixbot-footer">
       <span id="lixbot-search-icon">🔍</span>
-      <input id="lixbot-input" type="text" placeholder="Cuardaigh do cheist..." autocomplete="off" maxlength="120" />
+      <input id="lixbot-input" type="text" placeholder="Cuardach do cheist..." autocomplete="off" maxlength="120" />
       <button id="lixbot-clearbtn" aria-label="Glan">✕</button>
     </div>
   </div>
@@ -663,76 +1232,74 @@ document.documentElement.classList.replace("nojs", "js");
   (function () {
     var KB = {
       envios: { items: [
-        { q: 'Cé chomh fada a thógann an loingsiú caighdeánach?',
-          a: 'Tógann an loingsiú caighdeánach idir 5 agus 10 lá gnó. Gheobhaidh tú ríomhphost le huimhir rianaithe a luaithe a fhágann sé ár stór.' },
-        { q: 'An dtugann sibh loingsiú expréis?',
-          a: 'Sea, loingsiú expréis i 24-48 h d\'orduithe roimh 13:00 (laethanta oibre). Ar fáil ar an leithinis. Roghnaigh é agus tú ag críochnú an cheannaigh.' },
-        { q: 'An bhfuil an loingsiú saor in aisce?',
-          a: 'Loingsiú saor in aisce go hiomlán.' },
-        { q: 'An seolann sibh chuig na hOileáin Chanáracha agus na Baléaraigh?',
-          a: 'Sea, seolaimid chuig an gcríoch ar fad. Féadfaidh na hamanna do na hOileáin Chanáracha, na Baléaraigh, Ceuta agus Melilla a bheith idir 5 agus 8 lá gnó.' },
-        { q: 'An seolann sibh lasmuigh den Spáinn?',
-          a: 'Sea, déanaimid loingsiú chuig an Aontas Eorpach ar fad. Ríomhtar an costas agus an t-am go huathoibríoch nuair a chuir tú isteach do sheoladh.' }
+        { q: 'Cé chomh fada a thógann an loingseoireacht chaighdeánach?',
+          a: 'Tógann loingseoireachta caighdeánach 8-15 lá gnó. Gheobhaidh tú ríomhphost le huimhir rianaithe a luaithe a fhágann sé ár stóras.' },
+        { q: 'An bhfuil an seoladh saor in aisce?',
+          a: 'loingseoireachta go hiomlán saor in aisce.' },
+        { q: 'An bhfuil tú ag seoladh chuig na hOileáin Chanáracha agus na hOileáin Bhailéaracha?',
+          a: 'Sea, sheolaimid chuig an gcríoch náisiúnta ar fad. Is é an t-am seachadta measta ná 8 go 15 lá gnó.' },
+        { q: 'An bhfuil tú ag seoladh lasmuigh den Spáinn?',
+          a: 'Sea, sheolaimid chuig an Aontas Eorpach ar fad. Tá loingseoireacht saor in aisce agus is é 8 go 15 lá gnó an t-am seachadta measta.' }
       ]},
       devoluciones: { items: [
-        { q: 'Cé mhéad lá atá agam le tuairisceán a dhéanamh?',
-          a: 'Tá 14 lá féilire agat ón bhfáil chun tuairisceán nó malartú a iarraidh, gan gá le bonn cirt.' },
-        { q: 'Conas a thionscnaím tuairisceán?',
-          a: 'Faigh rochtain ar "Mo chuntas → Mo chuid orduithe", roghnaigh an mhír agus brúigh "Iarr tuairisceán". Gheobhaidh tú lipéad loingsiú saor in aisce i gceann níos lú ná 24 h.' },
-        { q: 'Cad iad na coinníollacha inar cheart dom an mhír a thabhairt ar ais?',
-          a: 'Caithfidh an táirge a bheith nár úsáideadh, le gach lipéad agus ina phacáistiú bunaidh. Ní ghlacaimid le hearraí a bhfuil comharthaí úsáide orthu.' },
-        { q: 'Cathain a gheobhaidh mé an t-aisíoc?',
-          a: 'Tar éis an mhír a fháil agus a athbhreithniú (1-2 lá), déantar an t-aisíoc a phróiseáil i 5-7 lá gnó chuig an modh íocaíochta céanna.' },
-        { q: 'An féidir liom méid nó dath a mhalartú?',
-          a: 'Sea, déanaimid malartuithe má tá stoc ann. Iarr é mar a bheadh tuairisceán agus luaigh "malartú" mar chúis. Gan costas breise.' }
+        { q: 'Cé mhéad lá a chaithfidh mé filleadh?',
+          a: 'Tá 14 lá féilire agat ón dáta a fhaightear é chun do cheart aistarraingthe a fheidhmiú, gan an chúis a chur in iúl.' },
+        { q: 'Conas is féidir liom tuairisceán a thionscnamh?',
+          a: 'cuir do chinneadh tarraingt siar go info@Lixby.es in iúl agus léirigh d\'uimhir ordaithe. Is ortsa atá an fhreagracht na costais aischuir dhíreacha, ach amháin má tá an táirge lochtach nó go raibh an lastas mícheart.' },
+        { q: 'Cad iad na coinníollacha faoinar cheart dom an t-earra a thabhairt ar ais?',
+          a: 'Is féidir leat an táirge a scrúdú mar a dhéanfá i siopa. Tá eisceachtaí dlí ag baint leis an gceart chun tarraingt siar, mar shampla, táirgí áirithe atá séalaithe le haghaidh sláinteachais agus nach bhfuil séalaithe.' },
+        { q: 'cathain a gheobhaidh mé an aisíocaíocht?',
+          a: 'Eisímid an aisíocaíocht chomh luath agus a fhaighimid agus athbhreithnímid do thuairisceán, agus i gcónaí laistigh de 14 lá féilire ón uair a chuireann tú in iúl dúinn faoin aistarraingt. Nuair a eisítear é, féadfaidh sé idir 5 agus 10 lá gnó a thógáil ar do bhanc é a léiriú i do chuntas.' },
+        { q: 'An féidir liom méid nó dath a athrú?',
+          a: 'Is é an ceart dlíthiúil tarraingt siar ar feadh 14 lá féilire. Má mian leat leagan eile, is féidir leat ordú nua a dhéanamh tar éis duit do tharraingt siar a chur in iúl.' }
       ]},
       pagos: { items: [
-        { q: 'Cé na modhanna íocaíochta a nglacann sibh leo?',
+        { q: 'Cad iad na modhanna íocaíochta a nglacann tú leo?',
           a: 'Glacaimid le cárta (Visa, Mastercard, Amex), PayPal, Bizum agus aistriú bainc. Tá gach íocaíocht slán le criptiú SSL.' },
         { q: 'An bhfuil CBL san áireamh sna praghsanna?',
-          a: 'Sea, tá CBL san áireamh cheana féin i ngach praghas sa siopa. Gan aon iontas nuair a shroicheann tú an tseiceáil amach.' },
-        { q: 'An bhfuil lascainí nó cóid promóisin agaibh?',
-          a: 'Foilsímid tairiscintí sa rannóg "Tairiscintí" agus seolaimid cóid eisiacha sa nuachtlitir. Liostáil gan aon cheann a chailleadh!' },
-        { q: 'An féidir liom íoc i dtráthchodanna?',
-          a: 'Ní hea, ní féidir ach íocaíochtaí aonuaire.' },
-        { q: 'An dtugann sibh cártaí bronntanais?',
-          a: 'Sea, cártaí bronntanais ó 10 € go 200 €. Seachadtar iad ar ríomhphost láithreach agus bíonn siad bailí ar feadh 1 bhliain.' }
+          a: 'Sea, tá CBL san áireamh i ngach praghas sa siopa cheana féin. Ní bheidh aon iontas ort nuair a shroicheann tú an tseiceáil amach.' },
+        { q: 'An bhfuil lascainí nó cóid chur chun cinn agat?',
+          a: 'Foilsímid tairiscintí sa rannán "tairiscintí" agus cuirimid cóid eisiacha chuig an nuachtlitir. Liostáil ionas nach gcaillfidh tú ceann ar bith!' },
+        { q: 'An féidir liom íoc ina thráthchodanna?',
+          a: 'ní hea, níl ann ach íocaíochtaí aonuaire' },
+        { q: 'An dtugann tú cártaí bronntanais?',
+          a: 'Sea, cártaí bronntanais ó €10 go €200. Déantar iad a sheachadadh trí ríomhphost láithreach agus tá siad bailí ar feadh 1 bhliain.' }
       ]},
       pedidos: { items: [
-        { q: 'Cá bhfeicim stádas mo ordaithe?',
-          a: 'I "Mo chuntas → Mo chuid orduithe" is féidir leat an stádas a fheiceáil i bhfíor-am. Gheobhaidh tú ríomhphoist uathoibríocha freisin ag gach athrú stádais.' },
-        { q: 'Conas a dhéanaim rianú?',
-          a: 'Nuair a fhágann an t-ordú an stór, gheobhaidh tú ríomhphost le huimhir rianaithe agus nasc díreach chuig an iompróir.' },
-        { q: 'An féidir liom mo ordú a mhodhnú nó a chealú?',
-          a: 'Is féidir leat é a chealú nó a mhodhnú laistigh den chéad 2 uair an chloig. Scríobh chugainn ag info@lixby.es a luaithe is féidir.' },
-        { q: 'Cad a dhéanaim má thagann sé damáistithe?',
-          a: 'Seol grianghraf den mhír agus den phacáistiú chugainn ag info@lixby.es laistigh de 48 h. Seolfaimid athsholáthar duit nó déanfaimid aisíoc iomlán gan aon chostas.' },
-        { q: 'An féidir liom táirgí a chur le hordú atá déanta cheana?',
-          a: 'Ní féidir táirgí a chur le hordú atá ar siúl. Mura bhfuil sé á ullmhú go fóill, is féidir leat é a chealú agus ceann nua a dhéanamh.' }
+        { q: 'Cá bhfeicim stádas m’ordaithe?',
+          a: 'I "mo chuntas → mo orduithe" is féidir leat an stádas a fheiceáil i bhfíor-am. Gheobhaidh tú ríomhphoist uathoibríocha freisin le gach athrú stádais.' },
+        { q: 'Conas is féidir liom a rianú?',
+          a: 'Nuair a fhágann an t-ordú an stóras gheobhaidh tú ríomhphost leis an uimhir rianaithe agus nasc díreach chuig an iompróir.' },
+        { q: 'An féidir liom m\'ordú a mhodhnú nó a chealú?',
+          a: 'Is féidir leat é a chur ar ceal nó a mhodhnú le linn na chéad 2 uair an chloig. scríobh chugainn ag info@Lixby.es chomh luath agus is féidir.' },
+        { q: 'Cad a dhéanfaidh mé má thagann damáiste dó?',
+          a: 'Má thagann damáiste don phacáiste le linn iompair nó má tá mír mhícheart ann, scríobh chugainn ag info@Lixby.es, b\'fhearr laistigh de 48 uair an chloig, agus ceangail grianghraif chun an phróiseáil a bhrostú. Ní laghdaíonn an fógra seo an bharántas dlíthiúil 3 bliana.' },
+        { q: 'An féidir liom táirgí a chur le hordú a cuireadh cheana?',
+          a: 'Ní féidir táirgí a chur le hordú atá ar siúl. Mura bhfuil sé á ullmhú fós is féidir leat é a chur ar ceal agus ceann nua a dhéanamh.' }
       ]},
       productos: { items: [
-        { q: 'Cad é LixBuds One?',
-          a: 'Is iad LixBuds One ár gcluasáin préimhe le cealú cliste torainn. Ar fáil ó 99 €.' },
+        { q: 'cad é LixBuds One?',
+          a: 'Is iad LixBuds One ár gcluasáin chealaithe torainn cliste préimhe. ar fáil ó €99.00.' },
         { q: 'Cad é an aip Lixney?',
-          a: 'Is aip saor in aisce í Lixney chun airgead a shábháil, pleanáil agus do chuid caiteachas pearsanta a thuiscint. Ar fáil ar iOS agus Android.' },
-        { q: 'An bhfuil barántas ar na táirgí?',
-          a: 'Sea, tá barántas oifigiúil 3 bhliain ar gach táirge. Tuilleadh eolais sa rannóg Barántas den tacaíocht.' },
+          a: 'Is é Lixney ár bhfeidhmchlár saor in aisce chun do chostais phearsanta a shábháil, a phleanáil agus a thuiscint. ar fáil le haghaidh android.' },
+        { q: 'An bhfuil ráthaíocht ar na táirgí?',
+          a: 'Tá barántas dlíthiúil 3 bliana ag táirgí fisiceacha ó sheachadadh. Tuilleadh faisnéise sa chuid bharántas den tacaíocht.' },
         { q: 'An bhfuil LixBuds One comhoiriúnach le gach gléas?',
-          a: 'Sea, tá LixBuds One comhoiriúnach le haon ghléas a bhfuil Bluetooth 5.0 nó níos airde aige: iOS, Android, Windows agus macOS.' },
-        { q: 'Cathain a thiocfaidh táirgí nua?',
-          a: 'Fógraímid nuachtáin inár nuachtlitir agus ar na meáin shóisialta. Liostáil le bheith ar an gcéad duine a bhfaighidh tú amach.' }
+          a: 'Sea, tá an LixBuds One comhoiriúnach le haon fheiste le Bluetooth 6.0 nó níos airde: iOS, Android, Windows agus Macos.' },
+        { q: 'cathain a thagann táirgí nua?',
+          a: 'Fógraímid nuacht inár nuachtlitir agus líonraí sóisialta. Liostáil chun an chéad cheann a fháil amach.' }
       ]},
       faq: { items: [
-        { q: 'An bhfuil cuntas uaim le ceannach?',
-          a: 'Ní hea, is féidir leat ceannach mar aoi. Le cuntas, beidh tú in ann orduithe a rianú, seoltaí a shábháil agus do stair a fheiceáil go héasca.' },
-        { q: 'An bhfuil sé sábháilte ceannach ar Lixby?',
-          a: 'Sea. Úsáidimid criptiú SSL ar fud an ghréasáin agus ní stórálaimid sonraí cárta. Íocaíochtaí próiseáilte le hardáin deimhnithe PCI-DSS.' },
-        { q: 'An bhfuil siopa fisiciúil agaibh?',
-          a: 'Faoi láthair táimid 100% ar líne. Is féidir leat teagmháil a dhéanamh linn trí chomhrá, ríomhphost nó teileafón lenár n-uaireanta oscailte.' },
+        { q: 'An dteastaíonn cuntas uaim le ceannach?',
+          a: 'Ní féidir, is féidir leat a cheannach mar aoi. Le cuntas is féidir leat orduithe a rianú go héasca, seoltaí a shábháil agus féachaint ar do stair.' },
+        { q: 'An bhfuil sé sábháilte é a cheannach ó Lixby?',
+          a: 'Sea. Bainimid úsáid as criptiú SSL ar fud an tsuímh Ghréasáin agus ní stórálaimid sonraí cártaí. Íocaíochtaí a phróiseáiltear le hardáin dheimhnithe PCI-DSS.' },
+        { q: 'An bhfuil stór fisiciúil agat?',
+          a: 'Táimid 100% ar líne faoi láthair. Is féidir leat teagmháil a dhéanamh linn le comhrá, ríomhphost nó teileafón le linn ár n-uaireanta gnó.' },
         { q: 'Cad iad na huaireanta oscailte?',
-          a: 'Dé Luain go hAoine ó 9:00 go 18:00. Trí ríomhphost freagraímid laistigh de 24 h. Tá an cúntóir seo ar fáil 24/7.' },
+          a: 'Luan go hAoine ó 9:00 r.n. go 6:00 i.n. Freagraimid trí ríomhphost i níos lú ná 24 uair an chloig. Tá an cúntóir seo ar fáil 24/7.' },
         { q: 'Conas a dhéanaim teagmháil le Lixby?',
-          a: 'Scríobh chugainn ag info@lixby.es nó bain úsáid as an bhfoirm ar pages/support.html. Freagraimid laistigh de 24 uair an chloig.' }
+          a: 'scríobh chugainn ag info@Lixby.es nó úsáid an fhoirm in /ga/support/. Freagraimid i níos lú ná 24 uair an chloig.' }
       ]}
     };
 
@@ -750,7 +1317,7 @@ document.documentElement.classList.replace("nojs", "js");
     function openBot() {
       win.classList.remove('lixbot-hidden');
       badge.style.display = 'none';
-      if (!opened) { addMsg('Dia duit! 👉 Roghnaigh catagóir nó scríobh do cheist sa chuardach.', 'lixbot-bot'); opened = true; }
+      if (!opened) { addMsg('dia duit! 👋 Roghnaigh catagóir nó scríobh do cheist san inneall cuardaigh.', 'lixbot-bot'); opened = true; }
       input.focus();
     }
 
@@ -805,7 +1372,7 @@ document.documentElement.classList.replace("nojs", "js");
       if (!results.length) {
         var p = document.createElement('p');
         p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
-        p.textContent = 'Gan toradh. Bain triail as focail eile.';
+        p.textContent = 'gan torthaí. Bain triail as focail eile.';
         qsDiv.appendChild(p);
         return;
       }
@@ -821,8 +1388,128 @@ document.documentElement.classList.replace("nojs", "js");
     });
   })();
   </script>
-  <!-- CRÍOCH MINIBOT LIXBY -->
+  <!-- FIN MINIBOT Lixby -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.shop-card');
+
+      function fixShopCards() {
+        cards.forEach(card => {
+          const media = card.querySelector('.shop-card-media');
+          if (!media) return;
+
+          const cardRect = card.getBoundingClientRect();
+          const mediaRect = media.getBoundingClientRect();
+
+          const gap = cardRect.bottom - mediaRect.bottom;
+
+          if (Math.abs(gap) > 0.5) {
+            media.style.marginBottom = `${-gap}px`;
+          }
+        });
+      }
+
+      fixShopCards();
+      window.addEventListener('resize', fixShopCards);
+
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(fixShopCards);
+        cards.forEach(card => {
+          if (card.querySelector('.shop-card-media')) ro.observe(card);
+        });
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 

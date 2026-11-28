@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Fíorú 2 chéim | Lixby</title>
+  <title>Fíorú 2-chéim | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
   <style>
     .twofa-page {
       padding: 34px 0 84px;
@@ -116,7 +119,7 @@
     .field select {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 9px 11px;
       font: inherit;
       background: #f8fafc;
@@ -167,7 +170,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://lixby.es",
+      "url": "https://lixby.es/ga/two-step-verification",
       "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
@@ -178,12 +181,12 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
         <a href="/ga/shop/" class="nav-link">Siopa</a>
-        <a href="#productos" class="nav-link">Táirgí</a>
-        <a href="#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
@@ -193,57 +196,107 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/ga/shop/" method="get">
+        <form id="navSearchForm" action="/ga/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Cuardaigh táirge..."
-            aria-label="Cuardaigh táirge"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
           >
         </form>
         <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
-          <img src="images/Bolsa.png" alt="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
         </a>
         <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
-          <img src="images/cuenta.png" alt="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/ga/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Cuardaigh"
-          aria-label="Cuardaigh táirge"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Dún roghchlár">
-        <span aria-hidden="true">x</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Príomhroghchlár soghluaiste">
-      <a href="/ga/shop/">Siopa</a>
-      <a href="#productos">Táirgí</a>
-      <a href="#apps">Aipeanna</a>
-      <a href="/ga/support/">Tacaíocht</a>
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/ga/cart/">Ciseán</a>
-      <a href="/ga/account/">Cuntas</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -251,37 +304,126 @@
     <div id="statusMsg" class="status-msg"></div>
 
     <section class="twofa-card">
-      <h1>Fíorú 2 chéim</h1>
-      <p class="helper">Gníomhachtaigh sraith bhreise slándála do chuntas le SMS.</p>
+      <h1>Fíorú Dhá Chéim</h1>
+      <p class="helper">Gníomhachtaigh sraith bhreise slándála do do chuntas le SMS.</p>
 
       <div class="field-grid">
         <div class="field">
           <label for="phoneNumber">Uimhir theileafóin</label>
-          <input id="phoneNumber" type="tel" placeholder="+353 87 123 4567">
+          <input id="phoneNumber" type="tel" placeholder="+34 600 000 000">
         </div>
         <div class="field">
           <label for="currentPassword">Pasfhocal reatha</label>
           <input id="currentPassword" type="password" autocomplete="current-password">
         </div>
         <div class="field">
-          <label for="smsCode">Cód SMS</label>
+          <label for="smsCode">Cód sms</label>
           <input id="smsCode" type="text" inputmode="numeric" maxlength="6" placeholder="123456">
         </div>
       </div>
 
       <div class="recaptcha-wrap">
         <div id="recaptcha-container"></div>
-        <p class="inline-note">Ní mór duit an reCAPTCHA a réiteach chun an SMS a sheoladh.</p>
+        <p class="inline-note">Ní mór duit an recaptcha a réiteach chun an SMS a sheoladh.</p>
       </div>
 
       <div class="actions">
         <button id="sendCodeBtn" class="btn btn-secondary" type="button">Seol cód</button>
-        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">Fíoraigh agus gníomhachtaigh</button>
-        <a class="btn btn-secondary" href="/ga/account/">Fill ar mo chuntas</a>
+        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">A fhíorú agus a ghníomhachtú</button>
+        <a class="btn btn-secondary" href="/ga/account/">Dul ar ais go dtí mo chuntas</a>
       </div>
     </section>
   </main>
 
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import {
@@ -339,11 +481,11 @@
     async function reauthUser(user) {
       const password = currentPassword.value.trim();
       if (!password) {
-        showStatus("Cuir isteach do phasfhocal reatha le leanúint ar aghaidh.", "error");
+        showStatus("Cuir isteach do phasfhocal reatha chun leanúint ar aghaidh.", "error");
         throw new Error("missing-password");
       }
       if (!user.email) {
-        showStatus("Níl ríomhphost ag an úsáideoir le hathfhíordú.", "error");
+        showStatus("Níl ríomhphost ag an úsáideoir le haghaidh athdheimhnithe.", "error");
         throw new Error("missing-email");
       }
       const credential = EmailAuthProvider.credential(user.email, password);
@@ -358,20 +500,20 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/ga/login/";
+        window.location.href = "/ga/logáil-seisiún/";
         return;
       }
       initRecaptcha();
       if (!user.emailVerified) {
-        showStatus("Fíoraigh do ríomhphost sula ngníomhachtóidh tú 2FA.", "error");
+        showStatus("Fíoraigh do ríomhphost roimh ghníomhachtú 2fa.", "error");
         sendCodeBtn.disabled = true;
         verifyEnrollBtn.disabled = true;
       }
       const factor = getPhoneFactor(user);
       if (factor) {
-        showStatus(`2FA gníomhach le ${factor.phoneNumber || "uimhir theileafóin"}.`, "success");
+        showStatus(`2fa gníomhach le ${factor.phonenumber || "telefono"}.`, "success");
       } else {
-        showStatus("Níl 2FA gníomhach ar an gcuntas seo.");
+        showStatus("Níl 2fa gníomhachtaithe ar an gcuntas seo.");
       }
     });
 
@@ -386,26 +528,26 @@
     sendCodeBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Seisiún neamhbhailí.", "error");
+        showStatus("seisiún neamhbhailí.", "error");
         return;
       }
 
       if (!user.emailVerified) {
-        showStatus("Fíoraigh do ríomhphost sula ngníomhachtóidh tú 2FA.", "error");
+        showStatus("Fíoraigh do ríomhphost roimh ghníomhachtú 2fa.", "error");
         return;
       }
 
       const phone = normalizePhone(phoneNumber.value);
       if (!phone) {
-        showStatus("Cuir isteach uimhir i bhformáid idirnáisiúnta (+353...).", "error");
+        showStatus("Cuir isteach uimhir i bhformáid idirnáisiúnta (+34...).", "error");
         return;
       }
 
       try {
         sendCodeBtn.disabled = true;
         const originalText = sendCodeBtn.textContent;
-        sendCodeBtn.textContent = "Ag seoladh...";
-        showStatus("Ag seoladh an chóid...", "info");
+        sendCodeBtn.textContent = "ag seoladh...";
+        showStatus("cód á sheoladh...", "info");
         await reauthUser(user);
         const multiFactorSession = await multiFactor(user).getSession();
         const phoneInfoOptions = {
@@ -414,24 +556,24 @@
         };
         const phoneAuthProvider = new PhoneAuthProvider(auth);
         verificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, recaptchaVerifier);
-        showStatus("Cód seolta trí SMS.", "success");
+        showStatus("cód seolta ag sms.", "success");
       } catch (error) {
         recaptchaVerifier?.clear();
         recaptchaVerifier = null;
         initRecaptcha();
         const message = error?.message || error?.code || String(error);
         console.error("SMS error:", error);
-        showStatus(`Níorbh fhéidir an SMS a sheoladh: ${message}`, "error");
+        showStatus(`Níorbh fhéidir SMS a sheoladh: ${message}`, "error");
       } finally {
         sendCodeBtn.disabled = false;
-        sendCodeBtn.textContent = "Seol cód";
+        sendCodeBtn.textContent = "seol cód";
       }
     });
 
     verifyEnrollBtn.addEventListener("click", async () => {
       const user = auth.currentUser;
       if (!user) {
-        showStatus("Seisiún neamhbhailí.", "error");
+        showStatus("seisiún neamhbhailí.", "error");
         return;
       }
 
@@ -449,25 +591,25 @@
       try {
         verifyEnrollBtn.disabled = true;
         const originalText = verifyEnrollBtn.textContent;
-        verifyEnrollBtn.textContent = "Ag fíorú...";
-        showStatus("Ag fíorú an chóid...", "info");
+        verifyEnrollBtn.textContent = "ag seiceáil...";
+        showStatus("cód á fhíorú...", "info");
         const cred = PhoneAuthProvider.credential(verificationId, code);
         const assertion = PhoneMultiFactorGenerator.assertion(cred);
         await multiFactor(user).enroll(assertion, "Teileafón");
-        showStatus("Fíorú 2 chéim gníomhachtaithe.", "success");
+        showStatus("Fíorú 2-chéim gníomhachtaithe.", "success");
         verificationId = "";
         smsCode.value = "";
         toggleVerifyButton();
         setTimeout(() => {
-          window.location.href = "/ga/account/";
+          window.location.href = "/ga/cuntas/";
         }, 900);
       } catch (error) {
         const message = error?.message || error?.code || String(error);
         console.error("2FA enroll error:", error);
-        showStatus(`Níorbh fhéidir 2FA a ghníomhachtú: ${message}`, "error");
+        showStatus(`níorbh fhéidir 2fa a ghníomhachtú: ${message}`, "error");
       } finally {
         verifyEnrollBtn.disabled = false;
-        verifyEnrollBtn.textContent = "Fíoraigh agus gníomhachtaigh";
+        verifyEnrollBtn.textContent = "a fhíorú agus a ghníomhachtú";
       }
     });
 
@@ -475,5 +617,8 @@
   </script>
 </body>
 </html>
+
+
+
 
 

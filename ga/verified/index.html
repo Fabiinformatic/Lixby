@@ -6,9 +6,6 @@
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
-  <base href="/ga/">
-  <script src="/gtm.js"></script>
-  <script src="/locale-banner.js" defer></script>
 
   <link rel="canonical" href="https://lixby.es/ga/verified">
   <link rel="alternate" href="https://lixby.es/bg/verified" hreflang="bg-BG">
@@ -55,84 +52,441 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/ga/style.css">
   <style>
-    .verify-page {
-      padding: 40px 0 84px;
-      min-height: 70vh;
-      display: grid;
-      place-items: center;
-    }
+  .verified-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
 
-    .verify-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
-      max-width: 520px;
-      text-align: center;
-      display: grid;
-      gap: 12px;
-    }
+  .verified-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 48px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+  }
 
-    .verify-card p {
-      color: var(--muted);
-    }
+  .verified-icon {
+    width: 72px;
+    height: 72px;
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
 
-    .verify-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .verified-icon svg {
+    width: 36px;
+    height: 36px;
+    color: #16a34a;
+  }
+
+  .verified-card h1 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    color: #0f172a;
+  }
+
+  .verified-card p {
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .verified-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .error-card .verified-icon {
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+
+  .error-card .verified-icon svg {
+    color: #dc2626;
+  }
+
+  .login-primary-btn {
+    width: 100%;
+    border: 0;
+    font: inherit;
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .login-primary-btn:hover {
+    transform: none;
+  }
   </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://lixby.es",
+      "url": "https://lixby.es/ga/verified",
       "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
       ]
     }
   </script>
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
 </head>
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Príomhroghanna">
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
         <a href="/ga/shop/" class="nav-link">Siopa</a>
-        <a href="/ga/#productos" class="nav-link">Táirgí</a>
-        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/ga/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
+          >
+        </form>
         <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
-          <img src="images/Bolsa.png" alt="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
         </a>
         <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
-          <img src="images/cuenta.png" alt="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <main class="container verify-page">
-    <section class="verify-card">
-      <h1>Ríomhphost fíoraithe</h1>
-      <p>Fíoraíodh do ríomhphost go rathúil.</p>
-      <div class="verify-actions">
-        <a class="btn btn-primary" href="/ga/account/">Téigh go dtí mo chuntas</a>
-        <a class="btn btn-secondary" href="/ga/login/">Logáil isteach</a>
+  <main class="container verified-page">
+    <section id="verifiedCard" class="verified-card">
+      <div class="verified-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+      </div>
+      <h1>Ríomhphost deimhnithe</h1>
+      <p>D'éirigh le do sheoladh ríomhphoist a fhíorú. Is féidir leat rochtain a fháil anois ar gach seirbhís Lixby.</p>
+      <div class="verified-actions">
+        <button id="backBtn" class="btn btn-primary login-primary-btn" type="button">Dul ar ais</button>
+        <a class="btn btn-secondary" href="/ga/">Ar ais chuig an leathanach baile</a>
       </div>
     </section>
   </main>
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Féach agus ceannaigh</h3>
+        <ul>
+          <li><a href="/ga/shop/">Siopa</a></li>
+          <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/ga/apps/">Apps</a></li>
+          <li><a href="/ga/support/">Tacaíocht</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Tacaíocht</h3>
+        <ul>
+          <li><a href="/ga/support/">Leathanach baile na tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">Ceisteanna Coitianta an tsiopa ar líne</a></li>
+          <li><a href="/ga/support/">Faisnéis bharántais</a></li>
+          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an bPríomhfheidhmeannach</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Cuntas</h3>
+        <ul>
+          <li><a href="/ga/track/">Orduithe</a></li>
+          <li><a href="/ga/account/">Mo chuntas</a></li>
+          <li><a href="/ga/account/">Cúpóin</a></li>
+          <li><a href="/ga/community/">Pobal</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Faoi Lixby</h3>
+        <ul>
+          <li><a href="/ga/about/">Muid</a></li>
+          <li><a href="/ga/support/">Barántas</a></li>
+          <li><a href="/ga/news/">Nuacht</a></li>
+          <li><a href="/ga/support/">Teagmháil</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Gach ceart ar cosaint.</p>
+      <div class="footer-legal-links">
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachta</a>
+        <a href="/ga/pages/legal/cookies/">Polasaí Fianán</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí agus Coinníollacha</a>
+        <a href="/ga/pages/legal/sales-refunds/">Díolacháin agus Aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/legal-notice/">Fógraí Dlíthiúla</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAuth, applyActionCode, reload } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+    authDomain: "lixby0.firebaseapp.com",
+    projectId: "lixby0",
+    storageBucket: "lixby0.firebasestorage.app",
+    messagingSenderId: "1058088945026",
+    appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode");
+  const oobCode = params.get("oobCode");
+  const card = document.getElementById("verifiedCard");
+
+  function showError(msg) {
+    card.classList.add("error-card");
+    card.querySelector(".verified-icon svg").innerHTML = '';
+    card.querySelector("h1").textContent = "chuaigh rud éigin mícheart";
+    card.querySelector("p").textContent = msg;
+  }
+
+  if (mode === "verifyEmail" && oobCode) {
+    applyActionCode(auth, oobCode)
+      .then(async () => {
+        sessionStorage.setItem("lixby_email_verified", "1");
+        const user = auth.currentUser;
+        if (user) await reload(user);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-action-code") {
+          showError("Baineadh úsáid as an nasc cheana féin nó tá sé imithe in éag. iarr ceann nua ó do chuntas.");
+        } else {
+          showError(`Níorbh fhéidir an ríomhphost a fhíorú: ${error.message}`);
+        }
+      });
+  } else if (mode) {
+    showError("nasc neamhbhailí.");
+  }
+
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes("/ga/login-seisiún")) {
+        window.history.back();
+      } else {
+        window.location.href = "/ga/login-session/?verified=1";
+      }
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    document.getElementById("nav").classList.toggle("nav-scrolled", window.scrollY > 20);
+  }, { passive: true });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 

@@ -260,7 +260,7 @@ Texto secundario mínimo: 14 px
 Nunca utilizar tamaños inferiores a 12 px
 
 Liquid Glass
-Liquid Glass es uno de los elementos más distintivos de Lix Design.
+Liquid Glass es uno de los elementos má distintivos de Lix Design.
 Tokens Light
 Token
 Valor

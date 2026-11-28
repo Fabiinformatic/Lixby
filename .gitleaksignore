@@ -572,3 +572,11 @@ et/verified/index.html:gcp-api-key:345
 et/js/comunidad-client.js:gcp-api-key:21
 fi/two-step-verification/index.html:gcp-api-key:441
 fi/verified/index.html:gcp-api-key:345
+ga/change-password/index.html:gcp-api-key:451
+ga/forget-password/index.html:gcp-api-key:421
+ga/cart/index.html:gcp-api-key:396
+ga/js/comunidad-client.js:gcp-api-key:21
+ga/verified/index.html:gcp-api-key:345
+ga/login/index.html:gcp-api-key:979
+ga/two-step-verification/index.html:gcp-api-key:441
+ga/account/index.html:gcp-api-key:1311

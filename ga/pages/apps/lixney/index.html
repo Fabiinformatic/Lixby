@@ -39,13 +39,29 @@
 
           <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lixney - Aip Airgeadais Phearsanta | Lixby</title>
-  <meta name="description" content="Lixney: Aip airgeadais phearsanta a chuidíonn leat airgead a bhainistiú, speansais a rianú agus sábháil go cliste. Ar fáil ar iOS agus Android.">
-  <meta name="keywords" content="aip airgeadais, bainisteoir speansais, buiséad pearsanta, sábháil, airgead, Lixney">
+  <title>Lixney - app airgeadas pearsanta | Lixby</title>
+  <meta name="description" content="Lixney: aip airgeadas pearsanta do Android a chuidíonn leat airgead a bhainistiú, costais a rianú agus coigilt go cliste.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="ga_IE">
+  <meta property="og:url" content="https://lixby.es/ga/pages/apps/lixney">
+  <meta property="og:title" content="Lixney - app airgeadas pearsanta | Lixby">
+  <meta property="og:description" content="Lixney: aip airgeadas pearsanta do Android a chuidíonn leat airgead a bhainistiú, costais a rianú agus coigilt go cliste.">
+  <meta property="og:image" content="https://lixby.es/ga/images/lixneyicon2.webp">
+  <meta property="og:image:alt" content="Lixney, aip airgeadas pearsanta">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lixney - app airgeadas pearsanta | Lixby">
+  <meta name="twitter:description" content="Lixney: aip airgeadas pearsanta do Android a chuidíonn leat airgead a bhainistiú, costais a rianú agus coigilt go cliste.">
+  <meta name="twitter:image" content="https://lixby.es/ga/images/lixneyicon2.webp">
+  <meta name="twitter:image:alt" content="Lixney, aip airgeadas pearsanta">
+  <meta name="keywords" content="aip airgeadas, bainisteoir caiteachais, buiséad pearsanta, coigilteas, airgead, Lixney">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
   <style>
     .app-hero {
       min-height: 80vh;
@@ -211,7 +227,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://lixby.es",
+      "url": "https://lixby.es/ga/pages/apps/lixney",
       "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
@@ -221,30 +237,136 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
   
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/ga/" class="nav-brand">Lixby</a>
-      <div class="nav-links">
-        <a href="/ga/#productos" class="nav-link">Táirgí</a>
-        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
+        <a href="/ga/shop/" class="nav-link">Siopa</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/ga/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
+          >
+        </form>
+        <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
+        </a>
+        <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
-      <div class="nav-right"></div>
     </div>
-  </nav>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="app-hero">
     <div class="app-hero-content">
       <div class="app-info">
         <h1>Lixney</h1>
-        <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);;">Rialaigh do chuid airgid go simplí agus go cliste.</p>
-        <p style="font-size: var(--font-size-lg); color: var(--color-gray-700); margin-bottom: var(--spacing-6); line-height: 1.8;">Cuidíonn Lixney leat do chuid airgeadais phearsanta a bhainistiú le huirlisí cumhachtacha agus comhéadan iomasach. Rianaigh speansais, socraigh buiséid agus bain amach do spriocanna airgeadais.</p>
+        <p style="font-size: var(--font-size-xl); color: var(--color-gray-600); margin-bottom: var(--spacing-6);">Do chuid airgid a rialú ar bhealach simplí agus cliste.</p>
+        <p style="font-size: var(--font-size-lg); color: var(--color-gray-700); margin-bottom: var(--spacing-6); line-height: 1.8;">Cuidíonn Lixney leat d’airgeadas pearsanta a bhainistiú le huirlisí cumhachtacha agus comhéadan iomasach. Rianaigh speansais, socraigh buiséid agus bain amach do spriocanna airgeadais.</p>
         <div class="app-downloads">
-          <a href="#" class="download-badge">
-            <span>🍎</span>
-            <span>Siopa App</span>
-          </a>
           <a href="#" class="download-badge">
             <span>🤖</span>
             <span>Google Play</span>
@@ -253,29 +375,29 @@
       </div>
       <div style="width: 100%;">
         <picture>
-          <img src="../../images/lixbuds-hero.jpg" alt="Aip Lixney" style="width: 100%; max-width: 300px; margin: 0 auto; display: block;">
+          <img src="../../images/lixbuds-hero.jpg" alt="Lixney App" style="width: 100%; max-width: 300px; margin: 0 auto; display: block;">
         </picture>
       </div>
     </div>
   </section>
 
   <section class="features-detail">
-    <h2>Príomhfheidhmiúlachtaí</h2>
+    <h2>Príomhfheidhmeanna</h2>
 
     <div class="feature-row">
       <div class="feature-content">
-        <h3>💰 Rianú speansais</h3>
-        <p>Taifead go huathoibríoch do chuid speansais agus déan iad a chatagóiriú. Amharc ar a dtéann d'airgead le graif mhionsonraithe agus tuairiscí.</p>
+        <h3>💰 Rianú costas</h3>
+        <p>Déan do chostais a thaifeadadh go huathoibríoch agus iad a chatagóiriú. Amharc ar an áit a dtéann do chuid airgid le graif agus tuarascálacha mionsonraithe.</p>
       </div>
       <div class="feature-image">
-        <img src="../../images/lixbuds-hero.jpg" alt="Rianú speansais">
+        <img src="../../images/lixbuds-hero.jpg" alt="Rianú costas">
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-content">
         <h3>📊 Bainistíocht buiséid</h3>
-        <p>Cruthaigh buiséid phearsantaithe agus faigh foláirimh nuair a bhíonn tú ag druidim leis an teorainn. Rialaigh do chuid speansais go réamhghníomhach.</p>
+        <p>Cruthaigh buiséid saincheaptha agus faigh foláirimh nuair a thagann tú gar don teorainn. Rialú do chostais go réamhghníomhach.</p>
       </div>
       <div class="feature-image">
         <img src="../../images/lixbuds-hero.jpg" alt="Bainistíocht buiséid">
@@ -285,7 +407,7 @@
     <div class="feature-row">
       <div class="feature-content">
         <h3>📈 Anailís airgeadais</h3>
-        <p>Faigh léargais dhomhain ar do chuid nósanna caiteachais. Aithnigh patrúin agus feabhsaigh do chinntí airgeadais.</p>
+        <p>Faigh léargais dhomhain ar do nósanna caiteachais. Patrúin a aithint agus do chinntí airgeadais a fheabhsú.</p>
       </div>
       <div class="feature-image">
         <img src="../../images/lixbuds-hero.jpg" alt="Anailís airgeadais">
@@ -295,7 +417,7 @@
     <div class="feature-row">
       <div class="feature-content">
         <h3>🎯 Spriocanna coigiltis</h3>
-        <p>Socraigh spriocanna coigiltis agus lean do dhul chun cinn. Spreagann Lixney tú chun do spriocanna airgeadais a bhaint amach.</p>
+        <p>Socraigh spriocanna coigiltis agus rianaigh do dhul chun cinn. Spreagann Lixney tú chun do spriocanna airgeadais a bhaint amach.</p>
       </div>
       <div class="feature-image">
         <img src="../../images/lixbuds-hero.jpg" alt="Spriocanna coigiltis">
@@ -305,12 +427,12 @@
 
   <section class="security-section">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Is tosaíocht í do shlándáil</h2>
+      <h2 style="font-size: var(--font-size-4xl); font-weight: 600; margin-bottom: var(--spacing-12); text-align: center;">Tá do shábháilteacht mar thosaíocht</h2>
       <div class="security-grid">
         <div class="security-item">
           <div class="security-item-icon">🔒</div>
-          <h3>Criptiú ceann go ceann</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Tá do shonraí cosanta leis an bpríobháideacht is mó.</p>
+          <h3>Príobháideacht trí dhearadh</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Sábháiltear do shonraí ar do ghléas, ní sa scamall.</p>
         </div>
         <div class="security-item">
           <div class="security-item-icon">🔐</div>
@@ -319,8 +441,8 @@
         </div>
         <div class="security-item">
           <div class="security-item-icon">✅</div>
-          <h3>Deimhnithe RGPD</h3>
-          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Comhlíonann sé rialacháin phríobháideachta Eorpacha.</p>
+          <h3>Comhlíonadh GDPR</h3>
+          <p style="color: var(--color-gray-600); font-size: var(--font-size-sm);">Leanaimid rialacháin príobháideachais na hEorpa.</p>
         </div>
       </div>
     </div>
@@ -328,8 +450,8 @@
 
   <section style="padding: var(--spacing-16) var(--spacing-6); background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%); text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Tosaigh ag sábháil inniu</h2>
-      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);;">Íoslódáil Lixney saor in aisce ar do ghuthán</p>
+      <h2 style="font-size: var(--font-size-3xl); font-weight: 600; color: var(--color-white); margin-bottom: var(--spacing-6);">Tús a shábháil inniu</h2>
+      <p style="color: var(--color-white); opacity: 0.9; margin-bottom: var(--spacing-8);">Íosluchtaigh _LIX0__ saor in aisce ar do ghuthán</p>
       <div class="app-downloads">
         <a href="#" class="btn btn-primary" style="background-color: var(--color-white); color: var(--color-blue);">Íoslódáil Lixney</a>
       </div>
@@ -345,34 +467,135 @@
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Aipeanna</h3>
+        <h3>Apps</h3>
         <ul class="footer-links">
           <li><a href="/ga/pages/apps/lixney/">Lixney</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Cuideachta</h3>
+        <h3>Empresa</h3>
         <ul class="footer-links">
           <li><a href="/ga/about/">Faoi Lixby</a></li>
           <li><a href="/ga/support/">Teagmháil</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Dlíthiúil</h3>
+        <h3>Legal</h3>
         <ul class="footer-links">
           <li><a href="/ga/pages/legal/privacy/">Príobháideacht</a></li>
           <li><a href="/ga/pages/legal/terms/">Téarmaí</a></li>
-          <li><a href="/ga/pages/legal/cookies/">Fianáin</a></li>
-          <li><a href="/ga/pages/legal/legal-notice/">Fógra Dlíthiúil</a></li>
+          <li><a href="/ga/pages/legal/sales-refunds/">Díolacháin agus Aisíocaíochtaí</a></li>
+          <li><a href="/ga/pages/legal/cookies/">Cookies</a></li>
+          <li><a href="/ga/pages/legal/legal-notice/">Fógra dlíthiúil</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Lixby. Gach ceart ar cosaint. Deartha in Éirinn.</p>
+      <p>©2026 Lixby. Gach ceart ar cosaint. Deartha sa Spáinn.</p>
     </div>
   </footer>
 
   <script src="/js/gsap.min.js"></script>
   <script src="../../script.js"></script>
+<script>
+  const progressBar = document.getElementById("scroll-progress");
+  const updateScrollUI = () => {
+    const top = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = height > 0 ? (top / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + "%";
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>

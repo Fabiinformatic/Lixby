@@ -388,7 +388,7 @@ Todas las animaciones respetan:
 
 Todas las animaciones son responsive y se adaptan a:
 - Desktop (sin restricciones)
-- Tablet (animaciones más suaves)
+- Tablet (animaciones má suaves)
 - Mobile (optimizadas, pueden desactivarse)
 
 ---
@@ -805,7 +805,7 @@ Todas las animaciones respetan:
 
 Todas las animaciones son responsive y se adaptan a:
 - Desktop (sin restricciones)
-- Tablet (animaciones más suaves)
+- Tablet (animaciones má suaves)
 - Mobile (optimizadas, pueden desactivarse)
 
 ---
