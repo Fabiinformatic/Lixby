@@ -1069,7 +1069,7 @@
         .replace(/"/g, '&quot;');
 
       const items = (window.LIXBY_SEARCH_INDEX || [])
-        .filter((page) => (page.url || '').startsWith('/lt/pagalbos centras'))
+        .filter((page) => (page.url || '').startsWith('/lt/help-center'))
         .map((page) => ({
           ...page,
           nTitle: normalize(page.title),

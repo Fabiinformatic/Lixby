@@ -1689,7 +1689,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/mt/search/?q=${encodeURIComponent(query)}` : "/mt/maħżen/";
+        const url = query ? `/mt/search/?q=${encodeURIComponent(query)}` : "/mt/shop/";
         window.location.href = url;
       });
     }
@@ -1756,7 +1756,7 @@
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "/mt/basket/";
+          window.location.href = "/mt/buy-headphones/lixbuds-one";
         }, 1200);
       });
     }

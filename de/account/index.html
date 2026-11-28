@@ -1318,7 +1318,7 @@
     };
 
     // 5a: destino tras el login con lista blanca (solo /de/community/**).
-    function nextUrl(fallback = "/de/konto/") {
+    function nextUrl(fallback = "/de/account/") {
       const n = new URLSearchParams(location.search).get("next");
       return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
     }
@@ -2456,12 +2456,12 @@ const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
 
       if (!activeUser) {
         hideLoadingScreen();
-        window.location.href = "/de/login-sitzung/";
+        window.location.href = "/de/login/";
         return;
       }
 
       const next = nextUrl();
-      if (next !== "/de/konto/") {
+      if (next !== "/de/account/") {
         window.location.href = next;
         return;
       }
@@ -2558,7 +2558,7 @@ const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
       }
       localStorage.removeItem(SESSION_KEY);
       await signOut(auth);
-      window.location.href = "/de/login-sitzung/";
+      window.location.href = "/de/login/";
     }
 
     function describeDevice() {
@@ -2773,7 +2773,7 @@ const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
         }
       }
       await signOut(auth);
-      window.location.href = "/de/login-sitzung/";
+      window.location.href = "/de/login/";
     }
 
     logoutBtn.addEventListener("click", doLogout);
@@ -2817,7 +2817,7 @@ const s = map[status] || { bg: "#f9fafb", color: "#374151", border: "#e5e7eb" };
       try {
         await deleteUser(user);
         showStatus("Konto erfolgreich gelöscht.", "success");
-        window.location.href = "/de/login-sitzung/";
+        window.location.href = "/de/login/";
       } catch (error) {
         showStatus(`Konto konnte nicht gelöscht werden: ${error.message}`, "error");
       }
