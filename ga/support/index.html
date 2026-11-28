@@ -1524,7 +1524,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/ga/cuardaigh/?q=${encodeURIComponent(query)}` : "/ga/siopa/";
+        const url = query ? `/ga/cuardaigh/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }

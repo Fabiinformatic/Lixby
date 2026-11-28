@@ -1318,7 +1318,7 @@
     };
 
     // 5a: destino tras el login con lista blanca (solo /ga/community/**).
-    function nextUrl(fallback = "/ga/cuntas/") {
+    function nextUrl(fallback = "/ga/account/") {
       const n = new URLSearchParams(location.search).get("next");
       return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
     }
@@ -2456,12 +2456,12 @@ const labels = {
 
       if (!activeUser) {
         hideLoadingScreen();
-        window.location.href = "/ga/logáil-seisiún/";
+        window.location.href = "/ga/login/";
         return;
       }
 
       const next = nextUrl();
-      if (next !== "/ga/cuntas/") {
+      if (next !== "/ga/account/") {
         window.location.href = next;
         return;
       }
@@ -2558,7 +2558,7 @@ const labels = {
       }
       localStorage.removeItem(SESSION_KEY);
       await signOut(auth);
-      window.location.href = "/ga/logáil-seisiún/";
+      window.location.href = "/ga/login/";
     }
 
     function describeDevice() {
@@ -2773,7 +2773,7 @@ const labels = {
         }
       }
       await signOut(auth);
-      window.location.href = "/ga/logáil-seisiún/";
+      window.location.href = "/ga/login/";
     }
 
     logoutBtn.addEventListener("click", doLogout);
@@ -2817,7 +2817,7 @@ const labels = {
       try {
         await deleteUser(user);
         showStatus("d'éirigh leis an gcuntas a scriosadh.", "success");
-        window.location.href = "/ga/logáil-seisiún/";
+        window.location.href = "/ga/login/";
       } catch (error) {
         showStatus(`Níorbh fhéidir an cuntas a scriosadh: ${error.message}`, "error");
       }

@@ -382,7 +382,7 @@
 
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/fZubIU2Hz3Ob1B12LV4ZG00";
     const CHECKOUT_ENDPOINT = "https://lixby-production.up.railway.app/create-checkout-session";
-    const SUCCESS_URL = new URL("/de/Danke/", window.location.href).toString();
+    const SUCCESS_URL = new URL("/de/thank-you/", window.location.href).toString();
     const CANCEL_URL = window.location.href;
 
     const PRICES = {
@@ -792,7 +792,7 @@
         checkoutBtn.removeAttribute("aria-disabled");
         checkoutBtn.classList.remove("disabled");
         checkoutBtn.textContent = originalCheckoutLabel;
-        window.location.href = "/de/login-sitzung/";
+        window.location.href = "/de/login/";
         return;
       }
 

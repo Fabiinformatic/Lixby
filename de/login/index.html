@@ -970,7 +970,7 @@
     import { transferSessionToApp } from "./auth-bridge.js";
 
     // 5a: destino tras el login con lista blanca (solo /de/community/**).
-    function nextUrl(fallback = "/de/konto/") {
+    function nextUrl(fallback = "/de/account/") {
       const n = new URLSearchParams(location.search).get("next");
       return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
     }

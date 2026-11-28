@@ -386,10 +386,10 @@
   const backBtn = document.getElementById("backBtn");
   if (backBtn) {
     backBtn.addEventListener("click", () => {
-      if (window.history.length > 1 && document.referrer && document.referrer.includes("/de/login-session")) {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes("/de/login")) {
         window.history.back();
       } else {
-        window.location.href = "/en/login-session/?verified=1";
+        window.location.href = "/de/login/?verified=1";
       }
     });
   }

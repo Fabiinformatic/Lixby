@@ -1689,7 +1689,7 @@
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const query = searchInput.value.trim();
-        const url = query ? `/ga/cuardaigh/?q=${encodeURIComponent(query)}` : "/ga/siopa/";
+        const url = query ? `/ga/cuardaigh/?q=${encodeURIComponent(query)}` : "/ga/shop/";
         window.location.href = url;
       });
     }
@@ -1756,7 +1756,7 @@
 
         writeCart(cart);
         setTimeout(() => {
-          window.location.href = "/ga/ciseán/";
+          window.location.href = "/ga/buy-headphones/lixbuds-one";
         }, 1200);
       });
     }

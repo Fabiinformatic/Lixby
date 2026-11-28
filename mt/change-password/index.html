@@ -521,7 +521,7 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/mt/sessjoni-login/";
+        window.location.href = "/mt/login/";
         return;
       }
       const hasPassword = user.providerData.some((p) => p.providerId === "password");

@@ -386,7 +386,7 @@
   const backBtn = document.getElementById("backBtn");
   if (backBtn) {
     backBtn.addEventListener("click", () => {
-      if (window.history.length > 1 && document.referrer && document.referrer.includes("/hr/sesija-prijave")) {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes("/hr/login")) {
         window.history.back();
       } else {
         window.location.href = "/hr/login/?verified=1";

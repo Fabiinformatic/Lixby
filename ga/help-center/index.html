@@ -1069,7 +1069,7 @@
         .replace(/"/g, '&quot;');
 
       const items = (window.LIXBY_SEARCH_INDEX || [])
-        .filter((page) => (page.url || '').startsWith('/ga/ionad cabhrach'))
+        .filter((page) => (page.url || '').startsWith('/ga/help-center'))
         .map((page) => ({
           ...page,
           nTitle: normalize(page.title),
@@ -1155,7 +1155,7 @@
           window.location.href = first.getAttribute('href');
           return;
         }
-        window.location.href = '/ga/ionad cabhrach/faq/';
+        window.location.href = '/ga/help-center/faq/';
       });
 
       document.addEventListener('click', (event) => {

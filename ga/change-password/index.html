@@ -521,7 +521,7 @@
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/ga/logáil-seisiún/";
+        window.location.href = "/ga/login/";
         return;
       }
       const hasPassword = user.providerData.some((p) => p.providerId === "password");

@@ -1069,7 +1069,7 @@
         .replace(/"/g, '&quot;');
 
       const items = (window.LIXBY_SEARCH_INDEX || [])
-        .filter((page) => (page.url || '').startsWith('/it/centro-aiuto'))
+        .filter((page) => (page.url || '').startsWith('/it/help-center'))
         .map((page) => ({
           ...page,
           nTitle: normalize(page.title),
@@ -1155,7 +1155,7 @@
           window.location.href = first.getAttribute('href');
           return;
         }
-        window.location.href = '/it/centro-aiuto/faq/';
+        window.location.href = '/it/help-center/faq/';
       });
 
       document.addEventListener('click', (event) => {
