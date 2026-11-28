@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Síniú Isteach | Lixby</title>
+  <title>Logáil isteach | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
   <style>
     .account-page {
       padding: 40px 0 80px;
@@ -268,9 +271,51 @@
       flex-wrap: wrap;
     }
 
+    .email-verify {
+      display: grid;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+
+    .email-verify .sms-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-verify .sms-row button {
+      flex-shrink: 0;
+      padding: 0 18px;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
     .sms-row input {
       flex: 1 1 180px;
       min-width: 180px;
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .sms-row #verifySmsBtn {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 18px !important;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      min-height: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .captcha-box {
@@ -299,6 +344,139 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+    }
+
+    .btn {
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .sms-sent {
+      animation: smsSentPulse 0.5s ease forwards;
+      background-color: #16a34a !important;
+      border-color: #15803d !important;
+      color: white !important;
+    }
+
+    @keyframes smsSentPulse {
+      0% { transform: scale(1); box-shadow: none; }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toggle-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-track {
+      width: 44px;
+      height: 26px;
+      background: #d1d5db;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+      position: relative;
+      display: block;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-track {
+      background: #1d4ed8;
+    }
+
+    .toggle-switch input:checked + .toggle-track .toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .toggle-switch input:focus-visible + .toggle-track {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .pref-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pref-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pref-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .pref-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+
+    .pref-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SMS verification animations */
+    .sms-success {
+      animation: smsSuccessPulse 0.6s ease forwards;
+    }
+
+    .sms-error {
+      animation: smsErrorShake 0.4s ease;
+    }
+
+    @keyframes smsSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34,197,94,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes smsErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .login-primary-btn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .login-primary-btn:hover {
+      transform: none;
     }
 
     .google-icon {
@@ -335,7 +513,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://lixby.es",
+      "url": "https://lixby.es/ga/login",
       "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
@@ -346,91 +524,191 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Príomh">
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
         <a href="/ga/shop/" class="nav-link">Siopa</a>
-        <a href="/ga/#productos" class="nav-link">Táirgí</a>
-        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/ga/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
+          >
+        </form>
         <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
-          <img src="images/Bolsa.png" alt="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
         </a>
         <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
-          <img src="images/cuenta.png" alt="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
         </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container account-page">
     <section class="account-wrap">
       <article class="account-card">
         <div id="authStatus" class="auth-status info">Réidh le fíordheimhniú.</div>
         <div id="authConfigHint" class="auth-config-hint">
-          Níl Firebase cumraithe. Cuir isteach do chuid dintiúir san réad <code>firebaseConfig</code> i <code>login.html</code>.
+          Ní mór Firebase a chumrú. An réad a chur in eagar <code>firebaseConfig</code> ar an leathanach seo le do dhintiúir tionscadail.
         </div>
 
         <section id="loginSection" class="auth-section active">
           <div class="account-head">
-            <h1>Sínigh isteach ar Lixby</h1>
+            <h1>Logáil isteach go Lixby</h1>
           </div>
           <form id="loginForm" class="account-form">
-            <label for="loginIdentifier">Ríomhphost nó uimhir ghutháin</label>
-            <input id="loginIdentifier" type="text" required placeholder="ainm@sampla.com">
+            <label for="loginIdentifier">Ríomhphost nó uimhir theileafóin</label>
+            <input id="loginIdentifier" type="text" required placeholder="ainm@sampla.ie" autocomplete="username">
 
             <label for="loginPassword">Pasfhocal</label>
-            <input id="loginPassword" type="password" required placeholder="********">
+            <input id="loginPassword" type="password" required placeholder="********" autocomplete="current-password">
 
             <div class="auth-inline">
               <label>
                 <input type="checkbox" id="rememberMe">
-                Cuimhnigh orm
+                Cuir i gcuimhne dom
               </label>
             </div>
 
-            <a href="/ga/forget-password/" class="auth-link">Ar dhearmad tú d'fhocal faire?</a>
+            <a href="/ga/forget-password/" class="auth-link">An ndearna tú dearmad ar do phasfhocal?</a>
 
-            <button class="btn btn-primary" type="submit">Sínigh isteach</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Logáil Isteach</button>
             <button id="googleAuthBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Leanúint ar aghaidh le Google
+              Ar aghaidh le google
             </button>
           </form>
           <div id="mfaPanel" class="mfa-panel" aria-live="polite">
-            <strong>Fíordheimhniú 2-chéim ag teastáil</strong>
-            <p id="mfaHint" class="auth-note">Seolfaimid cód SMS chuig an uimhir ghutháin a bhaineann le do chuntas.</p>
+            <strong>Fíorú 2-chéim ag teastáil</strong>
+            <p id="mfaHint" class="auth-note">Seolfaimid cód SMS chuig an bhfón gaolmhar.</p>
             <div class="mfa-row">
               <button id="mfaSendCodeBtn" class="btn btn-secondary" type="button">Seol cód</button>
-              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Cód SMS">
-              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Fíoraigh</button>
+              <input id="mfaCodeInput" type="text" inputmode="numeric" maxlength="6" placeholder="Cód sms">
+              <button id="mfaVerifyBtn" class="btn btn-primary" type="button">Fhíorú</button>
             </div>
             <div id="mfa-recaptcha-container"></div>
           </div>
           <p class="auth-note" style="margin-top: 10px;">
-            Níl cuntas Lixby agat?
-            <a href="#" id="showRegisterLink" class="auth-link">Cruthaigh cuntas Lixby</a>
+            Nach bhfuil cuntas Lixby agat?
+            <a href="#" id="showRegisterLink" class="auth-link">Cruthaigh do chuntas Lixby</a>
           </p>
         </section>
 
         <section id="registerSection" class="auth-section">
           <div class="account-head">
             <h1>Cruthaigh do chuntas Lixby</h1>
-            <p>Níl uait ach cuntas Lixby amháin chun rochtain a fháil ar sheirbhísí uile Lixby.</p>
+            <p>Níl uait ach cuntas Lixby amháin chun rochtain a fháil ar gach seirbhís Lixby.</p>
             <p class="auth-note">
-              An bhfuil cuntas Lixby agat cheana?
-              <a href="#" id="showLoginLink" class="auth-link">Sínigh isteach</a>
+              An bhfuil cuntas Lixby agat cheana féin?
+              <a href="#" id="showLoginLink" class="auth-link">Logáil isteach</a>
             </p>
           </div>
 
           <form id="registerForm" class="account-form">
             <div class="register-grid">
               <div>
-                <label for="firstName">Céadainm</label>
+                <label for="firstName">Ainm</label>
                 <input id="firstName" type="text" required>
               </div>
               <div>
@@ -443,36 +721,58 @@
               <div>
                 <label for="country">Tír/réigiún</label>
                 <select id="country" required>
-                  <option value="ES" selected>An Spáinn</option>
-                  <option value="MX">Meicsiceo</option>
-                  <option value="AR">An Airgintín</option>
-                  <option value="CO">An Cholóim</option>
-                  <option value="CL">An tSile</option>
-                  <option value="PE">Peiriú</option>
-                  <option value="EC">Eacuadór</option>
-                  <option value="VE">Veiniséala</option>
-                  <option value="UY">Urugua</option>
-                  <option value="PY">Paragua</option>
-                  <option value="BO">An Bholaiv</option>
-                  <option value="BR">An Bhrasaíl</option>
-                  <option value="DO">An Phoblacht Dhoiminiceach</option>
-                  <option value="PA">Panama</option>
-                  <option value="CR">Cósta Ríce</option>
-                  <option value="GT">Guatamala</option>
-                  <option value="SV">An tSalvadóir</option>
-                  <option value="HN">Hondúras</option>
-                  <option value="NI">Nicearagua</option>
-                  <option value="CA">Ceanada</option>
-                  <option value="US">Stáit Aontaithe</option>
-                  <option value="PT">An Phortaingéil</option>
-                  <option value="FR">An Fhrainc</option>
                   <option value="DE">An Ghearmáin</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">An Bheilg</option>
+                  <option value="AR">Argentina</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BR">An Bhrasaíl</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="CA">Ceanada</option>
+                  <option value="CL">Chile</option>
+                  <option value="CY">An Chipir</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">An Chróit</option>
+                  <option value="DK">An Danmhairg</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="SK">An tSlóvaic</option>
+                  <option value="SI">An tSlóivéin</option>
+                  <option value="ES" selected>An Spáinn</option>
+                  <option value="US">Stáit Aontaithe Mheiriceá</option>
+                  <option value="EE">Estonia</option>
+                  <option value="FI">An Fhionlainn</option>
+                  <option value="FR">Fhrainc</option>
+                  <option value="GR">An Ghréig</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="HU">An Ungáir</option>
+                  <option value="HN">Honduras</option>
+                  <option value="IE">Éire</option>
                   <option value="IT">An Iodáil</option>
+                  <option value="LV">Laitvia</option>
+                  <option value="LT">An Liotuáin</option>
+                  <option value="LU">Lucsamburg</option>
+                  <option value="MT">Malta</option>
+                  <option value="MX">Meicsiceo</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NL">Ísiltír</option>
+                  <option value="PA">Panama</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peiriú</option>
+                  <option value="PL">An Pholainn</option>
+                  <option value="PT">Portugal</option>
                   <option value="GB">An Ríocht Aontaithe</option>
+                  <option value="CZ">Poblacht na Seice</option>
+                  <option value="DO">An Phoblacht Dhoiminiceach</option>
+                  <option value="RO">Rómáin</option>
+                  <option value="SE">An tSualainn</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="VE">Venezuela</option>
                 </select>
               </div>
               <div>
-                <label for="birthHelp">Cabhair (lá breithe)</label>
+                <label for="birthHelp">Cúnamh (breithlá)</label>
                 <input id="birthHelp" type="text" placeholder="Dáta breithe">
               </div>
             </div>
@@ -488,100 +788,145 @@
                 <select id="birthMonth" required></select>
               </div>
               <div>
-                <label for="birthYear">Bliain</label>
+                <label for="birthYear">Bhliain</label>
                 <select id="birthYear" required></select>
               </div>
             </div>
 
-            <label for="registerEmail">ainm@sampla.com</label>
+            <label for="registerEmail">ainm@sampla.ie</label>
             <input id="registerEmail" type="email" required>
 
-            <label for="registerPassword">Pasfhocal</label>
-            <input id="registerPassword" type="password" required minlength="6">
+            <div class="email-verify" id="emailVerifySection" style="display:none;">
+              <div class="sms-row">
+                <button id="sendEmailVerifyBtn" class="btn btn-primary login-primary-btn" type="button">Ríomhphost a fhíorú</button>
+                <span class="auth-note">Seolfaimid ríomhphost fíorúcháin chugat.</span>
+              </div>
+              <div id="emailVerifyConfirmRow" class="sms-row" style="display:none;">
+                <input id="emailVerifyConfirmInput" type="text" readonly autocomplete="username">
+              </div>
+            </div>
 
-            <label for="registerPasswordConfirm">Deimhnigh pasfhocal</label>
-            <input id="registerPasswordConfirm" type="password" required minlength="6">
+            <label for="registerPassword">Pasfhocal</label>
+            <input id="registerPassword" type="password" required minlength="6" autocomplete="new-password">
+
+            <label for="registerPasswordConfirm">Deimhnigh Pasfhocal</label>
+            <input id="registerPasswordConfirm" type="password" required minlength="6" autocomplete="new-password">
 
             <div class="register-grid">
               <div>
                 <label for="phoneCountry">Tír</label>
                 <select id="phoneCountry" required>
-                  <option value="+34" selected>+34 (An Spáinn)</option>
-                  <option value="+52">+52 (Meicsiceo)</option>
-                  <option value="+54">+54 (An Airgintín)</option>
-                  <option value="+57">+57 (An Cholóim)</option>
-                  <option value="+56">+56 (An tSile)</option>
-                  <option value="+51">+51 (Peiriú)</option>
-                  <option value="+593">+593 (Eacuadór)</option>
-                  <option value="+58">+58 (Veiniséala)</option>
-                  <option value="+598">+598 (Urugua)</option>
-                  <option value="+595">+595 (Paragua)</option>
-                  <option value="+591">+591 (An Bholaiv)</option>
-                  <option value="+55">+55 (An Bhrasaíl)</option>
-                  <option value="+1">+1 (Stáit Aontaithe/Ceanada)</option>
-                  <option value="+507">+507 (Panama)</option>
-                  <option value="+506">+506 (Cósta Ríce)</option>
-                  <option value="+502">+502 (Guatamala)</option>
-                  <option value="+503">+503 (An tSalvadóir)</option>
-                  <option value="+504">+504 (Hondúras)</option>
-                  <option value="+505">+505 (Nicearagua)</option>
-                  <option value="+351">+351 (An Phortaingéil)</option>
-                  <option value="+33">+33 (An Fhrainc)</option>
                   <option value="+49">+49 (An Ghearmáin)</option>
+                  <option value="+43">+43 (Austria)</option>
+                  <option value="+32">+32 (An Bheilg)</option>
+                  <option value="+54">+54 (Argentina)</option>
+                  <option value="+591">+591 (Bolivia)</option>
+                  <option value="+55">+55 (An Bhrasaíl)</option>
+                  <option value="+359">+359 (Bulgaria)</option>
+                  <option value="+1">+1 (Stáit Aontaithe Mheiriceá/Ceanada)</option>
+                  <option value="+56">+56 (Chile)</option>
+                  <option value="+357">+357 (An Chipir)</option>
+                  <option value="+57">+57 (Colombia)</option>
+                  <option value="+506">+506 (Costa Rica)</option>
+                  <option value="+385">+385 (An Chróit)</option>
+                  <option value="+45">+45 (An Danmhairg)</option>
+                  <option value="+593">+593 (Ecuador)</option>
+                  <option value="+503">+503 (El Salvador)</option>
+                  <option value="+34" selected>+34 (An Spáinn)</option>
+                  <option value="+372">+372 (Estonia)</option>
+                  <option value="+358">+358 (An Fhionlainn)</option>
+                  <option value="+33">+33 (An Fhrainc)</option>
+                  <option value="+502">+502 (Guatemala)</option>
+                  <option value="+30">+30 (An Ghréig)</option>
+                  <option value="+504">+504 (Honduras)</option>
+                  <option value="+36">+36 (An Ungáir)</option>
+                  <option value="+353">+353 (Éire)</option>
                   <option value="+39">+39 (An Iodáil)</option>
-                  <option value="+44">+44 (An Ríocht Aontaithe)</option>
+                  <option value="+371">+371 (An Laitvia)</option>
+                  <option value="+370">+370 (An Liotuáin)</option>
+                  <option value="+352">+352 (Lucsamburg)</option>
+                  <option value="+356">+356 (Malta)</option>
+                  <option value="+52">+52 (Meicsiceo)</option>
+                  <option value="+505">+505 (Nicaragua)</option>
+                  <option value="+31">+31 (An Ísiltír)</option>
+                  <option value="+507">+507 (Panama)</option>
+                  <option value="+595">+595 (Paraguay)</option>
+                  <option value="+51">+51 (Peiriú)</option>
+                  <option value="+48">+48 (An Pholainn)</option>
+                  <option value="+351">+351 (Portugal)</option>
+                  <option value="+44">+44 (Uk)</option>
+                  <option value="+420">+420 (Poblacht na Seice)</option>
+                  <option value="+40">+40 (An Rómáin)</option>
+                  <option value="+46">+46 (An tSualainn)</option>
+                  <option value="+598">+598 (Uruguay)</option>
+                  <option value="+58">+58 (Venezuela)</option>
                 </select>
               </div>
               <div>
-                <label for="phoneNumber">Uimhir ghutháin</label>
+                <label for="phoneNumber">Uimhir theileafóin</label>
                 <input id="phoneNumber" type="tel" required>
               </div>
             </div>
 
             <p class="auth-note">
-              Cinntigh go gcuireann tú isteach uimhir ghutháin ar féidir leat rochtain a fháil uirthi i gcónaí. Úsáidfear an uimhir seo chun d'aitheantas a fhíorú gach uair a shíníonn tú isteach ar ghléas nua nó ar bhrabhsálaí gréasáin nua. D'fhéadfadh táillí sonraí nó teachtaireachtaí a bheith i gceist.
+              Déan cinnte go gcuireann tú uimhir theileafóin isteach ar féidir leat rochtain a fháil uirthi i gcónaí. Úsáidfear an uimhir seo chun d’aitheantas a fhíorú gach uair a shíníonn tú isteach ar ghléas nua nó brabhsálaí gréasáin. Féadfaidh rátaí sonraí nó teachtaireachtaí a bheith i bhfeidhm.
             </p>
 
             <div class="phone-verify" id="phoneVerify">
               <div id="recaptcha-container"></div>
               <div class="sms-row">
                 <button id="sendSmsBtn" class="btn btn-secondary" type="button">Seol cód</button>
-                <span class="auth-note">Seolfaimid SMS fíoraithe chugat.</span>
+                <span class="auth-note">Seolfaimid SMS fíorúcháin chugat.</span>
               </div>
               <div class="sms-row">
-                <input id="code" type="text" placeholder="Cód SMS">
-                <button id="verifySmsBtn" class="btn btn-primary" type="button">Fíoraigh</button>
+                <input id="code" type="text" placeholder="Cód sms">
+                <button id="verifySmsBtn" class="btn btn-primary login-primary-btn" type="button">Fhíorú</button>
               </div>
             </div>
 
-            <label><input type="checkbox" id="adsOptIn"> Fógraí</label>
-            <p class="auth-note">Faigh ríomhphoist agus cumarsáidí ó Lixby, mar fhógraí, margaíocht, moltaí agus nuashonruithe ar tháirgí, seirbhísí agus bogearraí Lixby.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Fógraí</div>
+                <div class="pref-desc">Ríomhphoist a fháil ó Lixby maidir le fógraí, margaíocht agus moltaí táirgí.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="adsOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
-            <label><input type="checkbox" id="mediaOptIn"> Aipeanna, ceol, teilifís agus go leor eile</label>
-            <p class="auth-note">Faigh ríomhphoist agus cumarsáidí ó Lixby, mar eisiúintí nua, ábhar eisiach agus tairiscintí speisialta.</p>
+            <div class="pref-row">
+              <div class="pref-info">
+                <div class="pref-title">Aipeanna, ceol agus go leor eile</div>
+                <div class="pref-desc">Faigh ríomhphoist faoi eisiúintí nua, ábhar eisiach agus tairiscintí speisialta.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="mediaOptIn">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
 
             <div class="captcha-box">
               <label>Íomhá fíoraithe</label>
-              <div id="captchaImage" class="captcha-image">------</div>
-              <label for="captchaInput">Cuir isteach cód na híomhá</label>
+              <canvas id="captchaCanvas" width="240" height="80" style="border-radius:8px; width:100%; max-width:240px; height:auto;"></canvas>
+              <label for="captchaInput">Cuir isteach an cód íomhá</label>
               <input id="captchaInput" type="text" required>
               <div class="auth-inline">
                 <a href="#" id="newCaptchaLink" class="auth-link">Cód nua</a>
-                <span class="auth-note">Fís theoranta</span>
+                <span class="auth-note">Nach bhfuil cás íogair</span>
               </div>
             </div>
 
             <p class="auth-note">
-              Deilbhín Príobháideachta: Úsáidtear faisnéis do chuntais Lixby chun gur féidir leat sínigh isteach go slán agus rochtain a fháil ar do shonraí. Taifeadann Lixby sonraí úsáide áirithe chun críocha a bhaineann le slándáil, tacaíocht agus tuairisciú. Má aontaíonn tú, d'fhéadfadh Lixby úsáid a bhaint as faisnéis do chuntais chun cumarsáidí agus ríomhphoist mhargaíochta a sheoladh chugat. Féach conas a dhéantar bainistiú ar do shonraí.
+              Deilbhín príobháideachta: Úsáidtear do chuid faisnéise cuntais Lixby ionas gur féidir leat logáil isteach go slán agus rochtain a fháil ar do shonraí. Taifeadann Lixby sonraí úsáide áirithe chun críocha slándála, tacaíochta agus tuairiscithe. Má aontaíonn tú, féadfaidh Lixby eolas do chuntais a úsáid chun cumarsáidí margaíochta agus ríomhphoist a sheoladh chugat. Féach ar an gcaoi a ndéantar do shonraí a bhainistiú.
             </p>
 
-            <button class="btn btn-primary" type="submit">Cruthaigh cuntas</button>
-            <button id="verifyEmailBtn" class="btn btn-secondary" type="button">Fíoraigh ríomhphost</button>
+            <button class="btn btn-primary login-primary-btn" type="submit">Cuntas a chruthú</button>
             <button id="googleRegisterBtn" class="btn btn-secondary google-btn" type="button">
               <span class="google-badge" aria-hidden="true">
                 <img class="google-icon" src="images/google.png" alt="">
               </span>
-              Cláraigh le Google
+              Clárú le google
             </button>
           </form>
         </section>
@@ -589,8 +934,8 @@
         <div id="userPanel" class="user-panel">
           <span id="userEmail"></span>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="/ga/account/" class="btn btn-primary">Téigh go mo chuntas</a>
-            <button id="logoutBtn" class="btn btn-secondary" type="button">Dún seisiún</button>
+            <a href="/ga/account/" class="btn btn-primary">Téigh go dtí mo chuntas</a>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Logáil Amach</button>
           </div>
         </div>
       </article>
@@ -599,6 +944,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { initializeLixbyAppCheck } from "/js/firebase-app-check.js?v=1";
     import {
       getAuth,
       setPersistence,
@@ -612,13 +958,22 @@
       PhoneMultiFactorGenerator,
       signInWithPhoneNumber,
       signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
       onAuthStateChanged,
       signOut,
       sendEmailVerification,
       getMultiFactorResolver
     } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
     import { transferSessionToApp } from "./auth-bridge.js";
+
+    // 5a: destino tras el login con lista blanca (solo /ga/community/**).
+    function nextUrl(fallback = "/ga/cuntas/") {
+      const n = new URLSearchParams(location.search).get("next");
+      return n && /^\/es\/comunidad\/[A-Za-z0-9\/_?=&.-]*$/.test(n) ? n : fallback;
+    }
 
      const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -642,7 +997,11 @@
     const rememberMe = document.getElementById("rememberMe");
     const googleAuthBtn = document.getElementById("googleAuthBtn");
     const googleRegisterBtn = document.getElementById("googleRegisterBtn");
-    const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+    const sendEmailVerifyBtn = document.getElementById("sendEmailVerifyBtn");
+    const emailVerifySection = document.getElementById("emailVerifySection");
+    const emailVerifyConfirmRow = document.getElementById("emailVerifyConfirmRow");
+    const emailVerifyConfirmInput = document.getElementById("emailVerifyConfirmInput");
+    const registerEmail = document.getElementById("registerEmail");
     const mfaPanel = document.getElementById("mfaPanel");
     const mfaHint = document.getElementById("mfaHint");
     const mfaSendCodeBtn = document.getElementById("mfaSendCodeBtn");
@@ -653,7 +1012,7 @@
     const userEmail = document.getElementById("userEmail");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    const captchaImage = document.getElementById("captchaImage");
+    const captchaCanvas = document.getElementById("captchaCanvas");
     const captchaInput = document.getElementById("captchaInput");
     const newCaptchaLink = document.getElementById("newCaptchaLink");
 
@@ -713,13 +1072,77 @@
       }
     }
 
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function generateCaptcha() {
       const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       let code = "";
       for (let i = 0; i < 6; i += 1) {
         code += chars[Math.floor(Math.random() * chars.length)];
       }
-      captchaImage.textContent = code;
+
+      const ctx = captchaCanvas.getContext("2d");
+      const w = captchaCanvas.width;
+      const h = captchaCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = `rgb(${rand(220, 245)}, ${rand(220, 245)}, ${rand(220, 245)})`;
+      ctx.fillRect(0, 0, w, h);
+
+      // Ruido de puntos
+      for (let i = 0; i < 120; i += 1) {
+        ctx.fillStyle = `rgba(${rand(100, 180)}, ${rand(100, 180)}, ${rand(100, 180)}, ${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(rand(0, w), rand(0, h), rand(1, 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Líneas de distorsión
+      for (let i = 0; i < 6; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(40, 90)}, ${rand(40, 90)}, ${rand(40, 90)}, 0.2)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
+      const charW = w / 6;
+      code.split("").forEach((char, i) => {
+        ctx.save();
+        ctx.translate(charW * i + charW / 2, h / 2 + rand(-6, 6));
+        ctx.rotate((rand(-35, 35) * Math.PI) / 180);
+
+        ctx.shadowColor = `rgba(${rand(0, 100)}, ${rand(0, 100)}, ${rand(0, 100)}, 0.6)`;
+        ctx.shadowBlur = rand(2, 5);
+        ctx.shadowOffsetX = rand(-3, 3);
+        ctx.shadowOffsetY = rand(-3, 3);
+
+        const bold = rand(0, 1) ? "bold " : "900 ";
+        ctx.font = `${bold}${rand(22, 32)}px Inter, sans-serif`;
+        ctx.fillStyle = `rgb(${rand(10, 70)}, ${rand(10, 70)}, ${rand(30, 90)})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = `rgba(${rand(150, 220)}, ${rand(150, 220)}, ${rand(150, 220)}, 0.4)`;
+        ctx.lineWidth = rand(1, 2);
+        ctx.strokeText(char, 0, 0);
+        ctx.fillText(char, 0, 0);
+        ctx.restore();
+      });
+
+      // Capa de ruido final encima de las letras
+      for (let i = 0; i < 18; i += 1) {
+        ctx.strokeStyle = `rgba(${rand(120, 180)}, ${rand(120, 180)}, ${rand(120, 180)}, 0.15)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(rand(0, w), rand(0, h));
+        ctx.lineTo(rand(0, w), rand(0, h));
+        ctx.stroke();
+      }
+
       return code;
     }
 
@@ -734,7 +1157,7 @@
     const hasConfig = Object.values(firebaseConfig).every((value) => String(value || "").trim() !== "");
 
     if (!hasConfig) {
-      setStatus("Cumraigh Firebase chun clárú agus sínithe isteach a chumasú.", "error");
+      setStatus("cumraigh firebase chun clárú agus logáil isteach a chumasú.", "error");
       configHintEl.style.display = "block";
       loginForm.querySelector("button").disabled = true;
       registerForm.querySelector("button").disabled = true;
@@ -742,16 +1165,67 @@
       googleRegisterBtn.disabled = true;
     } else {
       const app = initializeApp(firebaseConfig);
+      await initializeLixbyAppCheck(app);
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      auth.languageCode = "tá";
+      const db = getFirestore(app);
+      const functions = getFunctions(app, "europe-west1");
+      const sendWelcomeEmail = httpsCallable(functions, "sendWelcomeEmail");
       const googleProvider = new GoogleAuthProvider();
+
+      // Capturar el resultado de Google (popup o redirect) y finalizar sesion
+      let googleRedirectHandled = false;
+
+      async function handleGoogleResult(result) {
+        if (!result?.user) return;
+
+        // Marcar que estamos procesando un login de Google
+        sessionStorage.setItem("lixby_google_redirect", "1");
+
+        const user = result.user;
+
+        const createdAt = new Date(user.metadata.creationTime).getTime();
+        const isNewUser = (Date.now() - createdAt) < 10000;
+
+        if (isNewUser) {
+          const displayName = user.displayName || "usuario";
+          try {
+            await sendWelcomeEmail({ name: displayName, email: user.email });
+            console.log("ríomhphost fáilte seolta chuig:", user.email);
+          } catch (err) {
+            console.error("earráid agus ríomhphost á sheoladh:", err);
+          }
+        }
+
+        googleRedirectHandled = true;
+        setStatus("logáilte isteach le google.", "success");
+        try {
+          await transferSessionToApp(user);
+        } catch (error) {
+          console.warn("Níorbh fhéidir an seisiún a aistriú go haip:", error);
+        } finally {
+          window.location.href = nextUrl();
+        }
+      }
+
+      getRedirectResult(auth).then((result) => handleGoogleResult(result)).catch((error) => {
+        sessionStorage.removeItem("lixby_google_redirect");
+        const code = error?.code || "";
+        if (code === "auth/no-current-user" || code === "auth/no-redirect-data" || code === "auth/null-user") return;
+        setStatus(`earráid le google: ${error.message}`, "error");
+      });
+
       let recaptchaVerifier = null;
       let mfaRecaptchaVerifier = null;
 
       function getRecaptcha() {
         if (!recaptchaVerifier) {
-          recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible"
+          recaptchaVerifier = new RecaptchaVerifier(auth, "sendSmsBtn", {
+            size: "invisible",
+            callback: () => {},
+            "expired-callback": () => {
+              recaptchaVerifier = null;
+            }
           });
         }
         return recaptchaVerifier;
@@ -788,6 +1262,9 @@
 
       document.getElementById("phoneNumber").addEventListener("input", togglePhoneVerify);
       document.getElementById("phoneCountry").addEventListener("change", togglePhoneVerify);
+      registerEmail.addEventListener("input", () => {
+        emailVerifySection.style.display = registerEmail.value.trim() ? "grid" : "none";
+      });
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -797,34 +1274,39 @@
         const persistence = rememberMe.checked ? browserLocalPersistence : browserSessionPersistence;
 
         if (!identifier.includes("@")) {
-          setStatus("Úsáid seoladh ríomhphoist bailí chun sínigh isteach.", "error");
+          setStatus("Úsáid ríomhphost bailí chun logáil isteach.", "error");
           return;
         }
 
         try {
           await setPersistence(auth, persistence);
           const userCredential = await signInWithEmailAndPassword(auth, identifier, password);
-          setStatus("Sínithe isteach go rathúil.", "success");
+          setStatus("seisiún logáilte isteach go rathúil.", "success");
           loginForm.reset();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/ga/account/";
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Níorbh fhéidir an seisiún a aistriú go haip:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
           if (error.code === "auth/multi-factor-auth-required") {
             mfaResolver = getMultiFactorResolver(auth, error);
             const hint = mfaResolver.hints[0];
-            mfaHint.textContent = `Seolfaimid cód SMS chuig ${hint.phoneNumber || "d'uimhir ghutháin"}.`;
+            mfaHint.textContent = `Seolfaimid cód SMS chuig ${hint.phonenumber || "d'uimhir theileafóin"}.`;
             mfaPanel.classList.add("active");
-            setStatus("Fíordheimhniú 2-chéim ag teastáil.", "info");
+            setStatus("Fíorú 2-chéim ag teastáil.", "info");
             return;
           }
-          setStatus(`Earráid ag sínithe isteach: ${error.message}`, "error");
+          setStatus(`earráid logáil isteach: ${error.message}`, "error");
         }
       });
 
 
       mfaSendCodeBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Níl aon fhíordheimhniú 2-chéim ar feitheamh.", "error");
+          setStatus("níl aon fhíorú 2-chéim ar feitheamh.", "error");
           return;
         }
 
@@ -839,18 +1321,18 @@
           setStatus("Cód SMS seolta.", "success");
         } catch (error) {
           getMfaRecaptcha().clear();
-          setStatus(`Níorbh fhéidir an SMS a sheoladh: ${error.message}`, "error");
+          setStatus(`Níorbh fhéidir SMS a sheoladh: ${error.message}`, "error");
         }
       });
 
       mfaVerifyBtn.addEventListener("click", async () => {
         if (!mfaResolver) {
-          setStatus("Níl aon fhíordheimhniú 2-chéim ar feitheamh.", "error");
+          setStatus("níl aon fhíorú 2-chéim ar feitheamh.", "error");
           return;
         }
 
         if (!mfaVerificationId) {
-          setStatus("Seol an cód SMS ar dtús.", "error");
+          setStatus("seol an cód sms ar dtús.", "error");
           return;
         }
 
@@ -868,16 +1350,21 @@
           mfaResolver = null;
           mfaVerificationId = "";
           mfaCodeInput.value = "";
-          setStatus("Sínithe isteach go rathúil.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/ga/account/";
+          setStatus("seisiún logáilte isteach go rathúil.", "success");
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Níorbh fhéidir an seisiún a aistriú go haip:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Cód neamhbhailí: ${error.message}`, "error");
+          setStatus(`cód neamhbhailí: ${error.message}`, "error");
         }
       });
 
       const emailActionSettings = {
-        url: `/ga/verified/`,
+        url: `${window.location.origin}/ga/fíoraithe/`,
         handleCodeInApp: false
       };
 
@@ -900,12 +1387,12 @@
         const captchaValue = captchaInput.value.trim().toUpperCase();
 
         if (password !== confirm) {
-          setStatus("Ní hionann na pasfhocail.", "error");
+          setStatus("ní hionann na pasfhocail.", "error");
           return;
         }
 
         if (captchaValue !== currentCaptcha) {
-          setStatus("Ní hionann cód na híomhá.", "error");
+          setStatus("Ní mheaitseálann an cód íomhá.", "error");
           currentCaptcha = generateCaptcha();
           return;
         }
@@ -913,10 +1400,23 @@
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential.user) {
+            // Primero el email de bienvenida
+            console.log("ag iarraidh ríomhphost fáilte a sheoladh...");
+            try {
+              const result = await sendWelcomeEmail({
+                name: firstName,
+                email: email
+              });
+              console.log("ríomhphost seolta:", result);
+            } catch (err) {
+              console.error("earráid agus ríomhphost á sheoladh:", err);
+            }
+
+            // Luego verificación y base de datos
             await sendEmailVerification(userCredential.user, emailActionSettings);
-          }
-            // Save profile to Firebase Realtime Database
-            await set(ref(database, `users/${auth.currentUser.uid}/profile`), {
+            
+            // Guardar el perfil en Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
               firstName,
               lastName,
               email,
@@ -927,74 +1427,98 @@
               phoneCountry: phoneCountryValue,
               phoneNumber,
               adsOptIn,
-              mediaOptIn
-            });
-          setStatus("Cuntas cruthaithe go rathúil.", "success");
+              mediaOptIn,
+              createdAt: serverTimestamp()
+            }, { merge: true });
+          }
+          setStatus("cuntas cruthaithe go rathúil.", "success");
           registerForm.reset();
+          sessionStorage.removeItem("lixby_register_draft");
           currentCaptcha = generateCaptcha();
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/ga/account/";
+          // La redirección siempre al final
+          try {
+            await transferSessionToApp(userCredential.user);
+          } catch (error) {
+            console.warn("Níorbh fhéidir an seisiún a aistriú go haip:", error);
+          } finally {
+            window.location.href = nextUrl();
+          }
         } catch (error) {
-          setStatus(`Earráid ag clárú: ${error.message}`, "error");
+          setStatus(`earráid ag clárú: ${error.message}`, "error");
         }
       });
 
-      verifyEmailBtn.addEventListener("click", async () => {
+      async function startGoogleSignIn() {
+        try {
+          await setPersistence(auth, browserLocalPersistence);
+          try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await handleGoogleResult(result);
+          } catch (popupError) {
+            const code = popupError?.code || "";
+            if (
+              code === "auth/popup-blocked" ||
+              code === "auth/popup-request-failed" ||
+              code === "auth/cancelled-popup-request" ||
+              code === "auth/operation-not-supported-in-this-environment"
+            ) {
+              // Fallback: redireccion completa cuando el navegador bloquea el popup
+              await signInWithRedirect(auth, googleProvider);
+            } else if (code === "auth/popup-closed-by-user" || code === "auth/user-cancelled") {
+              setStatus("fuinneog google dúnta.", "info");
+            } else {
+              setStatus(`earráid le google: ${popuperror.message}`, "error");
+            }
+          }
+        } catch (error) {
+          setStatus(`earráid le google: ${error.message}`, "error");
+        }
+      }
+
+      googleAuthBtn.addEventListener("click", startGoogleSignIn);
+
+      googleRegisterBtn.addEventListener("click", startGoogleSignIn);
+
+      sendEmailVerifyBtn.addEventListener("click", async () => {
         const user = auth.currentUser;
         if (!user) {
-          setStatus("Sínigh isteach chun do ríomhphost a fhíorú.", "error");
+          setStatus("tá an cnaipe réidh. Nuair a chruthaíonn tú do chuntas, seolfar an ríomhphost fíorúcháin go huathoibríoch.", "info");
           return;
         }
         try {
           await sendEmailVerification(user, emailActionSettings);
-          setStatus("Ríomhphost seolta. Seiceáil Turscar agus Cuid Promotions.", "success");
+          saveFormState();
+          setStatus("seoladh ríomhphost fíorúcháin. seiceáil do bhosca isteach agus turscar.", "success");
+          emailVerifyConfirmInput.value = user.email || "ríomhphost seolta";
+          emailVerifyConfirmRow.style.display = "flex";
         } catch (error) {
-          setStatus(`Níorbh fhéidir é a sheoladh: ${error.message}`, "error");
-        }
-      });
-
-      googleAuthBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Sínithe isteach le Google.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/ga/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Síniú le Google cealaithe.", "error");
-            return;
-          }
-          setStatus(`Earráid le Google: ${error.message}`, "error");
-        }
-      });
-
-      googleRegisterBtn.addEventListener("click", async () => {
-        try {
-          const userCredential = await signInWithPopup(auth, googleProvider);
-          setStatus("Clárú le Google críochnaithe.", "success");
-          await transferSessionToApp(userCredential.user);
-          window.location.href = "/ga/account/";
-        } catch (error) {
-          if (error.code === "auth/popup-closed-by-user") {
-            setStatus("Síniú le Google cealaithe.", "error");
-            return;
-          }
-          setStatus(`Earráid le Google: ${error.message}`, "error");
+          setStatus(`níorbh fhéidir é a sheoladh: ${error.message}`, "error");
         }
       });
 
       sendSmsBtn.addEventListener("click", async () => {
         const phone = buildPhoneNumber();
         if (!phone) {
-          setStatus("Cuir isteach uimhir ghutháin sula seolann tú an cód.", "error");
+          setStatus("Cuir isteach uimhir theileafóin roimh duit an cód a sheoladh.", "error");
           return;
         }
         try {
           sendSmsBtn.disabled = true;
           confirmationResult = await signInWithPhoneNumber(auth, phone, getRecaptcha());
-          setStatus("SMS seolta. Seiceáil do ghuthán.", "success");
+          setStatus("SMS seolta. seiceáil ar do ghuthán.", "success");
+          const originalText = sendSmsBtn.textContent;
+          sendSmsBtn.textContent = "SMS seolta!";
+          sendSmsBtn.classList.add("sms-sent");
+          setTimeout(() => {
+            sendSmsBtn.classList.remove("sms-sent");
+            sendSmsBtn.textContent = originalText;
+          }, 1600);
         } catch (error) {
-          setStatus(`Níorbh fhéidir an SMS a sheoladh: ${error.message}`, "error");
+          if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+          }
+          setStatus(`Níorbh fhéidir SMS a sheoladh: ${error.message}`, "error");
         } finally {
           sendSmsBtn.disabled = false;
         }
@@ -1002,31 +1526,94 @@
 
       verifySmsBtn.addEventListener("click", async () => {
         if (!confirmationResult) {
-          setStatus("Seol an cód SMS ar dtús.", "error");
+          setStatus("seol an cód sms ar dtús.", "error");
           return;
         }
         const code = smsCodeInput.value.trim();
         if (!code) {
-          setStatus("Scríobh an cód SMS.", "error");
+          setStatus("scríobh an cód sms.", "error");
           return;
         }
         try {
           await confirmationResult.confirm(code);
-          setStatus("Guthán fíoraithe go rathúil.", "success");
+          setStatus("d'éirigh leis an bhfón a fhíorú.", "success");
+          smsCodeInput.classList.add("sms-success");
+          setTimeout(() => {
+            smsCodeInput.disabled = true;
+            verifySmsBtn.style.display = "none";
+          }, 300);
         } catch (error) {
-          setStatus("Cód mícheart. Déan iarracht arís.", "error");
+          setStatus("cód mícheart. bain triail eile as.", "error");
+          smsCodeInput.classList.add("sms-error");
+          setTimeout(() => {
+            smsCodeInput.classList.remove("sms-error");
+          }, 400);
         }
       });
 
       logoutBtn.addEventListener("click", async () => {
         await signOut(auth);
-        setStatus("Seisiún dúnta.", "info");
+        setStatus("seisiún dúnta.", "info");
       });
+
+      function saveFormState() {
+        // Solo se persiste estado de UI sin datos personales; nunca texto introducido por el usuario (PII).
+        const fields = {
+          adsOptIn: document.getElementById("adsOptIn")?.checked || false,
+          mediaOptIn: document.getElementById("mediaOptIn")?.checked || false,
+          activeSection: registerSection.classList.contains("active") ? "register" : "login"
+        };
+        sessionStorage.setItem("lixby_register_draft", JSON.stringify(fields));
+      }
+
+      function restoreFormState() {
+        const raw = sessionStorage.getItem("lixby_register_draft");
+        if (!raw) return;
+        try {
+          const f = JSON.parse(raw);
+          document.getElementById("adsOptIn").checked = !!f.adsOptIn;
+          document.getElementById("mediaOptIn").checked = !!f.mediaOptIn;
+          if (f.activeSection === "register") openRegister(null);
+        } catch (e) {
+          console.warn("níorbh fhéidir an dréacht a chur ar ais:", e);
+        }
+      }
+
+      registerForm.addEventListener("input", saveFormState);
+      registerForm.addEventListener("change", saveFormState);
+
+      // Glanadh amháin ar dhréachtaí sean a d'fhéadfadh faisnéis íogair a bheith iontu (pasfhocail, ríomhphoist, uimhreacha gutháin).
+      const DRAFT_SCHEMA = "3";
+      if (sessionStorage.getItem("lixby_register_draft_schema") !== DRAFT_SCHEMA) {
+        sessionStorage.removeItem("lixby_register_draft");
+        sessionStorage.setItem("lixby_register_draft_schema", DRAFT_SCHEMA);
+      }
+
+      restoreFormState();
+      const urlParams = new URLSearchParams(window.location.search);
+      const returningFromVerification = urlParams.get("verified") === "1" || sessionStorage.getItem("lixby_email_verified") === "1";
+      if (sessionStorage.getItem("lixby_email_verified") === "1") {
+        sessionStorage.removeItem("lixby_email_verified");
+      }
+      if (returningFromVerification) {
+        setStatus("ríomhphost deimhnithe. is féidir leat leanúint ar aghaidh le do chuntas.", "success");
+        if (registerEmail.value) {
+          emailVerifySection.style.display = "grid";
+          emailVerifyConfirmInput.value = registerEmail.value;
+          emailVerifyConfirmRow.style.display = "flex";
+        }
+        urlParams.delete("verified");
+        const cleanedUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanedUrl);
+      }
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userPanel.classList.add("show");
-          userEmail.textContent = `Ceangailte mar ${user.email}`;
+          userEmail.textContent = `ceangailte mar ${user.email}`;
+          if (!googleRedirectHandled && sessionStorage.getItem("lixby_google_redirect") !== "1") {
+            window.location.href = nextUrl();
+          }
         } else {
           userPanel.classList.remove("show");
           userEmail.textContent = "";
@@ -1034,7 +1621,97 @@
       });
     }
   </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
+
 
 

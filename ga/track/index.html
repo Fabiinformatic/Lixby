@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Rianú Orduithe | Lixby</title>
+  <title>Rianú ordú | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
 
   <style>
     :root {
@@ -69,7 +72,7 @@
 
     body {
       background: #f5f7fa;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       margin: 0;
       color: #1a1a1a;
       min-height: 100vh;
@@ -149,7 +152,7 @@
       padding: 12px 14px;
       border: none;
       font-size: 1rem;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       outline: none;
       min-width: 0;
     }
@@ -162,7 +165,7 @@
       color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
@@ -497,8 +500,6 @@
 <body>
 
 
-  <div id="scroll-progress"></div>
-
   <div class="background-orb orb-1" aria-hidden="true"></div>
   <div class="background-orb orb-2" aria-hidden="true"></div>
   <div class="background-orb orb-3" aria-hidden="true"></div>
@@ -507,11 +508,11 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Príomh">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
         <a href="/ga/shop/" class="nav-link">Siopa</a>
-        <a href="/ga/#productos" class="nav-link">Táirgí</a>
-        <a href="/ga/#apps" class="nav-link">Aipeanna</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
         <a href="/ga/support/" class="nav-link">Tacaíocht</a>
       </nav>
       <div class="nav-actions">
@@ -521,107 +522,157 @@
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/ga/shop/" method="get">
+        <form id="navSearchForm" action="/ga/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Cuardaigh táirge..."
-            aria-label="Cuardaigh táirge"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
           >
         </form>
         <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
-          <img src="images/Bolsa.png" alt="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
         </a>
         <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
-          <img src="images/cuenta.png" alt="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
         </a>
         <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/ga/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Cuardaigh"
-          aria-label="Cuardaigh táirge"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Dún roghchlár">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Príomh soghluaiste">
-      <a href="/ga/shop/">Siopa</a>
-      <a href="/ga/#productos">Táirgí</a>
-      <a href="/ga/#apps">Aipeanna</a>
-      <a href="/ga/support/">Tacaíocht</a>
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/ga/cart/">Ciseán</a>
-      <a href="/ga/account/">Cuntas</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
 <div class="track-page">
 
-  <!-- Cuardaigh -->
+  <!-- Búsqueda -->
   <div class="search-card">
-    <h1>Rianú Orduithe</h1>
-    <p>Cuir isteach d'uimhir ordaithe chun stádas do loingseoireachta a fheiceáil.</p>
+    <h1>Rianú ordú</h1>
+    <p>Cuir isteach d'uimhir ordaithe chun stádas do lastais a fheiceáil.</p>
     <div class="search-row">
       <div class="search-input-wrap">
         <span class="search-prefix">LXB-</span>
         <input type="text" id="orderInput" placeholder="XXXXXXXX" autocomplete="off" inputmode="text" aria-label="Uimhir ordaithe">
       </div>
-      <button class="btn-search" id="searchBtn" type="button">Fiosraigh</button>
+      <button class="btn-search" id="searchBtn" type="button">Dul i gcomhairle</button>
     </div>
   </div>
 
-  <!-- Luchtú -->
+  <!-- Loading -->
   <div id="loadingEl" style="display:none">
     <div class="result-card" style="display:block">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Ag cuardach d'ordú...</p>
+        <p>Ag lorg d'ordú...</p>
       </div>
     </div>
   </div>
 
-  <!-- Earráid -->
+  <!-- Error -->
   <div class="result-card error-card" id="errorCard">
     <p style="font-size:2.5rem;margin:0 0 12px">😕</p>
-    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Ordú Níor Aimsíodh</p>
+    <p style="font-weight:800;font-size:1.2rem;color:#b91c1c;margin:0 0 8px">Níor aimsíodh an t-ordú</p>
     <p style="color:#6b7280;margin:0 0 20px;font-size:0.9rem;line-height:1.6">
-      Níor aimsíomar aon ordú leis an uimhir sin.<br>
-      Deimhnigh go bhfuil an uimhir ceart — gheobhaidh tú í san ríomhphost deimhnithe.
+      Ní bhfuaireamar aon orduithe leis an uimhir sin.<br>
+      Seiceáil go bhfuil an uimhir ceart - gheobhaidh tú í sa ríomhphost deimhnithe.
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a href="mailto:info@lixby.es" style="padding:10px 20px;background:#b91c1c;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Déan teagmháil le tacaíocht
+        Tacaíocht teagmhála
       </a>
       <a href="/ga/shop/" style="padding:10px 20px;background:#fff;color:#374151;border:1.5px solid #e5e7eb;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem">
-        Fill ar an siopa
+        Dul ar ais go dtí an siopa
       </a>
     </div>
   </div>
 
-  <!-- Toradh -->
+  <!-- Resultado -->
   <div class="result-card" id="resultCard">
 
-    <!-- Ceanntásc -->
+    <!-- Header -->
     <div class="order-header">
       <div>
         <div class="order-number-badge">
@@ -632,65 +683,65 @@
       </div>
       <div class="payment-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        Íocaíocht deimhnithe
+        Íocaíocht dheimhnithe
       </div>
     </div>
 
-    <!-- Dul chun cinn -->
+    <!-- Progreso -->
     <div class="progress-section">
-      <h3>Stádas Loingseoireachta</h3>
+      <h3>Stádas loingseoireachta</h3>
       <div class="progress-steps" id="progressSteps">
         <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
       </div>
     </div>
 
-    <!-- Uimhir rianaithe -->
+    <!-- Número de seguimiento -->
     <div class="tracking-info" id="trackingInfo" style="display:none">
       <div class="tracking-icon">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div class="tracking-details">
-        <label>Uimhir Rianaithe</label>
+        <label>Uimhir rianaithe</label>
         <strong id="trackingNumber">—</strong>
         <div style="font-size:0.8rem;color:#6b7280;margin-top:2px" id="trackingCarrier"></div>
       </div>
     </div>
 
-    <!-- Eolas cliant -->
+    <!-- Info cliente -->
     <div class="info-section" id="resCustomerSection" style="display:none">
-      <h3>Eolas Seachadta</h3>
+      <h3>Faisnéis seachadta</h3>
       <div class="info-grid">
         <div class="info-item">
           <label>Ainm</label>
           <strong id="resName">—</strong>
         </div>
         <div class="info-item">
-          <label>Ríomhphost</label>
+          <label>Email</label>
           <strong id="resEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Seoladh Loingseoireachta</label>
+          <label>Seoladh poist</label>
           <strong id="resAddress">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Táirgí -->
+    <!-- Productos -->
     <div id="resProductsSection" style="display:none">
       <div class="info-section" style="background:#fff">
         <h3>Táirgí</h3>
         <div id="resProductsList"></div>
         <div class="total-row" id="resTotalRow" style="display:none;margin-top:12px;margin-bottom:0">
-          <span>Iomlán Íoctha</span>
+          <span>Iomlán íoctha</span>
           <strong id="resTotalValue">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Gníomhartha -->
+    <!-- Acciones -->
     <div class="track-actions" style="margin-top:20px">
-      <a href="/ga/shop/" class="btn-primary">Lean ar aghaidh ag siopadóireacht</a>
-      <a href="mailto:info@lixby.es" class="btn-secondary">Déan teagmháil le tacaíocht</a>
+      <a href="/ga/shop/" class="btn-primary">Leanúint ar aghaidh ag siopadóireacht</a>
+      <a href="mailto:info@lixby.es" class="btn-secondary">Tacaíocht teagmhála</a>
     </div>
   </div>
 </div>
@@ -698,11 +749,11 @@
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Féach agus Ceannaigh</h3>
+        <h3>Féach agus ceannaigh</h3>
         <ul>
           <li><a href="/ga/shop/">Siopa</a></li>
           <li><a href="/ga/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/ga/#apps">Aipeanna</a></li>
+          <li><a href="/ga/apps/">Apps</a></li>
           <li><a href="/ga/support/">Tacaíocht</a></li>
         </ul>
       </section>
@@ -710,10 +761,10 @@
       <section class="footer-section">
         <h3>Tacaíocht</h3>
         <ul>
-          <li><a href="/ga/support/">Leathanach tosaigh tacaíochta</a></li>
-          <li><a href="/ga/support/#faq">CCanna Siopa Ar Líne</a></li>
-          <li><a href="/ga/support/">Faisnéis Baránta</a></li>
-          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an POF</a></li>
+          <li><a href="/ga/support/">Leathanach baile na tacaíochta</a></li>
+          <li><a href="/ga/support/#faq">Ceisteanna Coitianta an tsiopa ar líne</a></li>
+          <li><a href="/ga/support/">Faisnéis bharántais</a></li>
+          <li><a href="mailto:info@lixby.es">Ríomhphost chuig an bPríomhfheidhmeannach</a></li>
         </ul>
       </section>
 
@@ -721,43 +772,133 @@
         <h3>Cuntas</h3>
         <ul>
           <li><a href="/ga/track/">Orduithe</a></li>
-          <li><a href="/ga/account/">Mo Chuntas</a></li>
+          <li><a href="/ga/account/">Mo chuntas</a></li>
           <li><a href="/ga/account/">Cúpóin</a></li>
+          <li><a href="/ga/community/">Pobal</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Maidir le Lixby</h3>
+        <h3>Faoi Lixby</h3>
         <ul>
-          <li><a href="/ga/about/">Sinn</a></li>
+          <li><a href="/ga/about/">Muid</a></li>
           <li><a href="/ga/support/">Barántas</a></li>
-          <li><a href="#">Imeachtaí</a></li>
+          <li><a href="/ga/news/">Nuacht</a></li>
           <li><a href="/ga/support/">Teagmháil</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Cóipcheart © 2026 Lixby. Gach ceart ar cosaint.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Gach ceart ar cosaint.</p>
       <div class="footer-legal-links">
-        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachais</a>
-        <a href="/ga/pages/legal/cookies/">Úsáid Fianán</a>
-        <a href="/ga/pages/legal/terms/">Téarmaí Úsáide</a>
-        <a href="/ga/support/">Díolacháin agus Aisíocaíochtaí</a>
+        <a href="/ga/pages/legal/privacy/">Polasaí Príobháideachta</a>
+        <a href="/ga/pages/legal/cookies/">Polasaí Fianán</a>
+        <a href="/ga/pages/legal/terms/">Téarmaí agus Coinníollacha</a>
+        <a href="/ga/pages/legal/sales-refunds/">Díolacháin agus Aisíocaíochtaí</a>
         <a href="/ga/pages/legal/legal-notice/">Fógraí Dlíthiúla</a>
       </div>
     </div>
   </footer>
 
 <script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var mobilePanel = document.getElementById("navMobilePanel");
+    var searchToggle = document.querySelector(".nav-search-toggle");
+    var menuToggle = document.querySelector(".nav-menu-toggle");
+    var searchInput = document.getElementById("navSearch");
+
+    var setIconState = function (open) {
+
+
+      [searchToggle, menuToggle].forEach(function (btn) {
+
+
+        if (!btn) return;
+
+
+        btn.classList.toggle("nav-open-x", open);
+
+
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+      });
+
+
+    };
+
+
+
+    var closeNav = function () {
+      if (document.body) document.body.classList.remove("nav-open", "menu-open");
+      if (nav) nav.classList.remove("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+            setIconState(false);
+    };
+    var openNav = function () {
+      if (document.body) document.body.classList.add("nav-open", "menu-open");
+      if (nav) nav.classList.add("nav-open");
+      if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+            setIconState(true);
+    };
+    var toggleNav = function () {
+      if (nav && nav.classList.contains("nav-open")) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+    if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+    document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+      var btn = item.querySelector(".nav-mobile-question");
+      var answer = item.querySelector(".nav-mobile-answer");
+      if (!btn || !answer) return;
+
+      btn.addEventListener("click", function () {
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+          var ob = other.querySelector(".nav-mobile-question");
+          var oa = other.querySelector(".nav-mobile-answer");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          other.classList.remove("open");
+          if (oa) {
+            oa.classList.remove("active");
+            oa.style.maxHeight = "0px";
+          }
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          item.classList.add("open");
+          answer.classList.add("active");
+          answer.style.maxHeight = "0px";
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
+    });
+  })();
+</script>
+<script>
   const RAILWAY_URL = 'https://lixby-production.up.railway.app';
 
   const STATUS_STEPS = [
-    { key: 'Pedido recibido',   label: 'Recibido',   icon: '📦' },
-    { key: 'Preparando pedido', label: 'Preparando', icon: '🔧' },
-    { key: 'Enviado',           label: 'Enviado',     icon: '🚚' },
-    { key: 'En reparto',        label: 'En reparto',  icon: '📍' },
-    { key: 'Entregado',         label: 'Entregado',   icon: '✅' }
+    { key: 'Pedido recibido',   label: 'faighte',   icon: '📦' },
+    { key: 'Preparando pedido', label: 'ag ullmhú', icon: '🔧' },
+    { key: 'Enviado',           label: 'seolta',     icon: '🚚' },
+    { key: 'En reparto',        label: 'i ndáileadh',  icon: '📍' },
+    { key: 'Entregado',         label: 'seachadta',   icon: '✅' }
   ];
 
   function money(v) {
@@ -767,7 +908,7 @@
   function formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso);
-    return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('ga-IE', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   function show(id, display = 'block') { document.getElementById(id).style.display = display; }
@@ -814,7 +955,7 @@
     document.getElementById('resOrderNumber').textContent = data.orderNumber || data.id || '—';
     const dateEl = document.getElementById('resDate');
     if (data.paidAt || data.createdAt) {
-      dateEl.textContent = 'Realizado el ' + formatDate(data.paidAt || data.createdAt);
+      dateEl.textContent = 'déanta ar' + formatDate(data.paidAt || data.createdAt);
     }
 
     // Progreso
@@ -845,18 +986,10 @@
     if (items.length) {
       const list = document.getElementById('resProductsList');
       list.innerHTML = items.map(item => {
-        const name = item.productName || item.name || 'Producto';
+        const name = item.productName || item.name || 'táirge';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount ? money(item.unitAmount / 100) : '—';
-        return `
-          <div class="product-item">
-            <div>
-              <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Cantidad: ${qty}</div>
-            </div>
-            <div class="product-item-price">${price}</div>
-          </div>
-        `;
+        return `<div class="product-item"> <div> <div class="product-item-name">${name}</div> <div class="product-item-sub">cainníocht: ${qty}</div> </div> <div class="product-item-price">${price}</div> </div>`;
       }).join('');
 
       if (data.amountTotal) {
@@ -924,5 +1057,13 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 

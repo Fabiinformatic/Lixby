@@ -45,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Go raibh maith agat as do cheannachán | Lixby</title>
+  <title>Go raibh maith agat as do cheannach | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -55,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/ga/style.css">
 
   <style>
     :root {
@@ -308,24 +311,124 @@
 <canvas id="confetti-canvas"></canvas>
 
 <header class="nav" id="nav">
-  <div class="container nav-container">
-    <a href="./" class="nav-brand">Lixby</a>
-    <nav class="nav-links" aria-label="Príomhroghanna">
-      <a href="/ga/shop/" class="nav-link">Siopa</a>
-      <a href="/ga/#productos" class="nav-link">Táirgí</a>
-      <a href="/ga/#apps" class="nav-link">Aipeanna</a>
-      <a href="/ga/support/" class="nav-link">Tacaíocht</a>
+    <div class="container nav-container">
+      <a href="/ga/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Príomhroghchlár">
+        <a href="/ga/shop/" class="nav-link">Siopa</a>
+        <a href="/ga/products/" class="nav-link">Táirgí</a>
+        <a href="/ga/apps/" class="nav-link">Apps</a>
+        <a href="/ga/support/" class="nav-link">Tacaíocht</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Cuardaigh" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/ga/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Cuardaigh Lixby..."
+            aria-label="Cuardaigh Lixby"
+          >
+        </form>
+        <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
+          <img src="/ga/images/Bolsa.png" alt="Ciseán">
+        </a>
+        <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
+          <img src="/ga/images/cuenta.png" alt="Cuntas">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Roghchlár" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Roghchlár soghluaiste">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Siopa</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/ga/shop/">Téigh chuig an siopa</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/buy-headphones/lixbuds-one/">Ceannaigh Anois</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/news/">Nuacht</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Táirgí</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/ga/products/">Féach ar tháirgí</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/lixsafe/">LixSafe agus clúdach árachais</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/ga/apps/">Féach ar aipeanna</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixney/">Tacaíocht Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/lixfly/">Tacaíocht Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Tacaíocht</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/ga/support/">Téigh chuig tacaíocht</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/faq/">Ceisteanna Coitianta</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/contact/">Teagmháil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/help-center/returns/">Tuairisceáin</a></p>
+        </div>
+      </div>
     </nav>
-    <div class="nav-actions">
-      <a href="/ga/cart/" class="nav-icon-link" aria-label="Ciseán">
-        <img src="images/Bolsa.png" alt="Ciseán">
-      </a>
-      <a href="/ga/account/" class="nav-icon-link" aria-label="Cuntas">
-        <img src="images/cuenta.png" alt="Cuntas">
-      </a>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Ciseán</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Féach ar an gciseán</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/cart/">Críochnaigh an Ceannach</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Cuntas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Téigh chuig mo chuntas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo chuid orduithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Mo phróifíl</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/account/">Socruithe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/login/">Logáil Isteach</a></p>
+          <p class="nav-mobile-answer-text"><a href="/ga/two-step-verification/">Fíorú Dhá Chéim</a></p>
+        </div>
+      </div>
     </div>
   </div>
-</header>
 
 <main class="container thank-you-page">
   <div class="thank-card">
@@ -336,9 +439,9 @@
       </svg>
     </div>
 
-    <p class="thank-eyebrow">Ordú deimhnithe</p>
-    <h1 class="thank-title">Go raibh maith agat as do cheannachán!</h1>
-    <p class="thank-sub">Seolfaimid an deimhniú ríomhphoist chugat. Is féidir leat do ordú a leanúint ag am ar bith.</p>
+    <p class="thank-eyebrow">Ordú daingnithe</p>
+    <h1 class="thank-title">Go raibh maith agat as do cheannach!</h1>
+    <p class="thank-sub">Seolfaimid deimhniú chugat trí ríomhphost. Is féidir leat d'ordú a rianú ag am ar bith.</p>
 
     <!-- Número de pedido -->
     <div class="order-number-badge">
@@ -348,18 +451,18 @@
 
     <!-- Info del cliente -->
     <div class="info-section" id="customerSection" style="display:none">
-      <h3>Eolas seachadta</h3>
+      <h3>Faisnéis seachadta</h3>
       <div class="info-grid">
         <div class="info-item">
           <label>Ainm</label>
           <strong id="customerName">—</strong>
         </div>
         <div class="info-item">
-          <label>Ríomhphost</label>
+          <label>Email</label>
           <strong id="customerEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Seoladh seachadta</label>
+          <label>Seoladh poist</label>
           <strong id="customerAddress">—</strong>
         </div>
       </div>
@@ -367,7 +470,7 @@
 
     <!-- Productos -->
     <div class="products-section" id="productsSection" style="display:none">
-      <h3>Do ordú</h3>
+      <h3>D'ordú</h3>
       <div id="productsList"></div>
     </div>
 
@@ -380,7 +483,7 @@
     <!-- Acciones -->
     <div class="thank-actions">
       <a class="btn btn-primary" href="/ga/shop/">Leanúint ar aghaidh ag siopadóireacht</a>
-      <a class="btn btn-secondary" id="trackBtn" href="/ga/track/">Lean ordú</a>
+      <a class="btn btn-secondary" id="trackBtn" href="/ga/track/">Leanúint ordú</a>
     </div>
   </div>
 </main>
@@ -449,7 +552,7 @@
   // Número de pedido
   if (orderId) {
     document.getElementById('orderNumber').textContent = orderId;
-    document.getElementById('trackBtn').href = `/ga/track/?orderId=${orderId}`;
+    document.getElementById('trackBtn').href = `/ga/rian/?ordú=${orderId}`;
   }
 
   // Intentar cargar desde Railway (datos reales de Stripe)
@@ -500,22 +603,14 @@
     if (items.length) {
       const list = document.getElementById('productsList');
       list.innerHTML = items.map(item => {
-        const name = item.productName || item.name || 'Táirge';
+        const name = item.productName || item.name || 'táirge';
         const qty = item.quantity || item.qty || 1;
         const price = item.unitAmount
           ? money(item.unitAmount / 100)
           : item.lineTotal
             ? money(item.lineTotal)
             : '—';
-        return `
-          <div class="product-item">
-            <div>
-              <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Cainníocht: ${qty}</div>
-            </div>
-            <div class="product-item-price">${price}</div>
-          </div>
-        `;
+        return `<div class="product-item"> <div> <div class="product-item-name">${name}</div> <div class="product-item-sub">cainníocht: ${qty}</div> </div> <div class="product-item-price">${price}</div> </div>`;
       }).join('');
       show('productsSection');
     }
@@ -534,6 +629,95 @@
 
   init();
 </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 
