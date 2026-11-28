@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "deploy:hosting": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-hosting.ps1",
     "sitemap:generate": "node scripts/generate-sitemap-assets.js",
     "seed:spaces": "node scripts/seed-community-spaces.js",
     "test:firestore-rules": "firebase emulators:exec --only firestore --project demo-lixby \"node --test tests/firestore.rules.test.js\"",
