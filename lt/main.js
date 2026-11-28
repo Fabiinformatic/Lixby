@@ -160,7 +160,7 @@ if (addToCartButtons.length) {
 }
 
 const texto = document.getElementById("texto");
-const typedString = "Veled minden nap, bárhol is vagy.";
+const typedString = "Su tavimi kiekvieną dieną, kad ir kur būtum.";
 let typedIndex = 0;
 
 function typeNext() {

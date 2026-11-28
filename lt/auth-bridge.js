@@ -21,7 +21,7 @@ export async function transferSessionToApp(user) {
     redirectToApp(data.customToken);
     return true;
   } catch (error) {
-    console.warn("Nem sikerült átirányítani a munkamenetet az alkalmazásba:", error);
+    console.warn("Nepavyko perduoti sesijos programėlei:", error);
     return false;
   }
 }
