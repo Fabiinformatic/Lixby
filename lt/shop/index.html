@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html class="nojs es-es lixby consumer eu es" lang="lt">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -10,51 +10,151 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-<!-- Google žymų tvarkyklės pabaiga -->
-  <link rel="canonical" href="https://www.lixby.es/lt/shop">
-  <link rel="alternate" href="https://www.lixby.es/bg/shop" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/shop" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/shop" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/shop" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/shop" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/shop" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/tienda" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/shop" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/shop" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/shop" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/shop" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/shop" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/shop" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/shop" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/shop" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/shop" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/shop" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/shop" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/shop" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/shop" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/shop" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/shop" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/shop" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/shop" hreflang="sv-SE">
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parduotuvė | Lixby</title>
-  <meta name="description" content="Oficiali Lixby parduotuvė. Atraskite LixBuds One ir Lixney.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body.shop-page {
-      background: #f5f5f7;
+<script>
+window.LIXBY_CONFIG = {
+    metadata: {
+        environment: "production",
+        region: "eu",
+        country: "ES",
+        locale: "lt-LT",
+        brand: "Lixby",
+        page: "store",
+        referer: document.referrer
+    },
+    config: {
+        pageViewId: Math.random().toString(36).substring(2, 12) + '-' + Date.now().toString(36),
+        app: "com.Lixby.web",
+        sendPageViewData: true,
+        sendErrors: true,
+        performanceTracking: true,
+        delay: 300
     }
+};
+
+window.LIXBY_CONFIG.preLoadErrors = [];
+window.addEventListener("error", e => {
+    window.LIXBY_CONFIG.preLoadErrors.push(e);
+});
+</script>
+
+<script>
+document.addEventListener('readystatechange', () => {
+    if (document.readyState === "interactive" && window.IntersectionObserver) {
+        let lastVisibleTime = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lastVisibleTime = performance.now();
+                }
+            });
+
+            observer.disconnect();
+
+            window.dispatchEvent(new CustomEvent("lixbyPerformance", {
+                detail: {
+                    type: "viewportLoad",
+                    time: lastVisibleTime
+                }
+            }));
+        });
+
+        document.querySelectorAll("*").forEach(el => observer.observe(el));
+    }
+});
+</script>
+
+<script>
+(function () {
+    try {
+        const { app, pageViewId } = window.LIXBY_CONFIG.config;
+        const url = new URL(window.location);
+        const cleanPath = url.pathname.split('%')[0];
+
+        const trackingURL = `https://lixby.es/api/track?app=${app}&id=${pageViewId}&url=${url.origin + cleanPath}`;
+
+        const img = new Image();
+        img.src = trackingURL;
+
+    } catch (e) {
+        console.error(e);
+    }
+})();
+</script>
+
+<noscript>
+    <img src="https://lixby.es/api/track?nojs=true" width="1" height="1">
+</noscript>
+
+
+  <link rel="canonical" href="https://lixby.es/lt/shop">
+  <link rel="alternate" href="https://lixby.es/bg/shop" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/shop" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/shop" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/shop" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/shop" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/shop" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/tienda" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/shop" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/shop" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/shop" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/shop" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/shop" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/shop" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/shop" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/shop" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/shop" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/shop" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/shop" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/shop" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/shop" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/shop" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/shop" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/shop" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/shop" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/shop" hreflang="x-default">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Parduotuvė | Lixby</title>
+<meta name="description" content="Lixby oficiali parduotuvė. Atrasti LixBuds One ir Lixney.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="lt_LT">
+  <meta property="og:url" content="https://lixby.es/lt/shop">
+  <meta property="og:title" content="Parduotuvė | Lixby">
+  <meta property="og:description" content="Lixby oficiali parduotuvė. Atrasti LixBuds One ir Lixney.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Lixby LixBuds One ausinės">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parduotuvė | Lixby">
+  <meta name="twitter:description" content="Lixby oficiali parduotuvė. Atrasti LixBuds One ir Lixney.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Lixby LixBuds One ausinės">
+
+<link rel="preconnect" href="https://lixby.es">
+<link rel="dns-prefetch" href="https://lixby.es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/lt/style.css">
+<style>
+      body.shop-page {
+        background: #f5f5f7;
+        overflow-x: hidden;
+      }
 
     .shop-hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      gap: 28px;
       padding: 56px 0 20px;
     }
 
@@ -62,52 +162,137 @@
       font-size: clamp(2.2rem, 7vw, 5rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
+      text-align: left;
     }
 
     .shop-hero-side {
-      justify-self: end;
-      text-align: right;
-      max-width: 420px;
+      justify-self: start;
+      text-align: left;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .shop-hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px 28px;
+      width: 100%;
     }
 
     .shop-hero-side h2 {
-      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-size: clamp(1.25rem, 2.4vw, 2.1rem);
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 14px;
+      margin-bottom: 0;
     }
 
     .shop-hero-side a {
-      display: block;
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      margin-top: 6px;
+    }
+
+    .shop-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-left: auto;
+    }
+
+    .shop-hero-side a.shop-hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 61, 255, 0.24);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      font-size: var(--font-size-sm);
+      box-shadow: 0 8px 20px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1), background-color 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-top: 1.6px solid currentColor;
+      border-right: 1.6px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15, 61, 255, 0.14);
+    }
+
+    .shop-hero-side a.shop-hero-link:hover::after {
+      transform: rotate(45deg) translate(2px, -2px);
+    }
+
+    .shop-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 24px);
+      z-index: 1200;
+      max-width: min(92vw, 460px);
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: #111827;
+      color: #fff;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 240ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1), visibility 240ms ease;
+    }
+
+    .shop-toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .shop-toast.is-warning {
+      background: #b42318;
     }
 
     .shop-categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
       gap: 22px;
       padding: 24px 0 56px;
-      max-width: 540px;
     }
 
     .shop-category {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       padding: 18px;
       text-align: center;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+      min-width: 0;
+      flex: 1;
     }
 
     .shop-category:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
     }
 
     .shop-category-icon {
@@ -120,15 +305,18 @@
       display: grid;
       place-items: center;
     }
+
     .shop-category-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    .shop-category-icon img.shop-category-icon-contain {
-      object-fit: contain;
+ .shop-category-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
     .shop-category span {
       font-weight: 700;
     }
@@ -146,17 +334,88 @@
     .shop-latest h3 strong { color: #111827; }
     .shop-latest h3 span   { color: #6b7280; font-weight: 600; }
 
-    .shop-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+    .shop-cards-wrapper {
+      position: relative;
+      overflow: visible;
     }
+    .shop-cards,
+    .trust-cards {
+      --gutter: calc((100vw - min(1120px, 92vw)) / 2);
+
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      margin-left: calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+      scroll-padding-left: var(--gutter);
+      scroll-padding-right: var(--gutter);
+      overflow-anchor: none;
+    }
+
+
+    .shop-cards::-webkit-scrollbar { display: none; }
+
+    .shop-cards > .shop-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(50% - 11px);
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .shop-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229,231,235,0.5);
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #111827;
+      font-size: 1.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .shop-arrow-left  { left: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+    .shop-arrow-right { right: calc(24px - (100vw - min(1120px, 92vw)) / 2); }
+
+    .shop-arrow:active { transform: translateY(-50%) scale(0.92); }
+
+    .shop-cards-wrapper:hover .shop-arrow:not(.arrow-hidden) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .shop-arrow.arrow-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
 
     .shop-card {
       border-radius: 28px;
       padding: 30px;
       min-height: 430px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -193,19 +452,25 @@
       margin-top: auto;
       padding-top: 18px;
       display: flex;
-      align-items: end;
+      flex: 1 1 0%;
+      align-items: flex-end;
       justify-content: center;
+      min-height: 0;
     }
 
     .shop-card-media img {
-      width: min(85%, 320px);
-      border-radius: 20px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      display: block;
+      width: auto;
+      height: 230px;
+      max-width: 100%;
       object-fit: contain;
+      object-position: center bottom;
+      border-radius: 20px 20px 28px 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     .shop-card-product {
-      background: linear-gradient(165deg, #ffffff, #e5edf9);
+      background: linear-gradient(165deg, rgba(255,255,255,.85), rgba(229,237,249,.65));
     }
 
     .shop-card-app {
@@ -217,111 +482,431 @@
     .shop-card-app .shop-card-eyebrow { color: #fbbf24; }
     .shop-card-app small { color: rgba(255, 255, 255, 0.8); }
 
+    .shop-card-Lixfly {
+      background: linear-gradient(165deg, #0c1220, #1e3a8a);
+      color: #fff;
+      border-color: rgba(96, 165, 250, 0.2);
+    }
+
+    .shop-card-Lixfly .shop-card-eyebrow { color: #60a5fa; }
+    .shop-card-Lixfly small { color: rgba(148, 163, 184, 0.9); }
+
     .shop-card.card-white-solid {
-      background: #ffffff;
-      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ── Trust section ─────────────────────────── */
+    .trust-section {
+      padding: 20px 0 80px;
+    }
+    .trust-section h3 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .trust-section h3 strong { color: #111827; }
+    .trust-section h3 span   { color: #6b7280; font-weight: 600; }
+    .trust-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 61, 255, 0.08);
+      scroll-snap-align: start;
+      flex: 0 0 calc(33.33% - 15px);
+      min-width: 0;
+      min-height: 240px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 250ms cubic-bezier(.22,1,.36,1), box-shadow 250ms cubic-bezier(.22,1,.36,1);
+    }
+    .trust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 50px rgba(15, 61, 255, 0.12);
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-card p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    button.trust-card {
+      font: inherit;
+      text-align: left;
+      align-items: stretch;
+      cursor: pointer;
+    }
+    @media (max-width: 980px) { .trust-card { flex: 0 0 50%; } }
+    @media (max-width: 640px) { .trust-card { flex: 0 0 85%; } }
+
+    @media (min-width: 981px) {
+      .shop-hero-side h2 { white-space: nowrap; }
     }
 
     @media (max-width: 980px) {
-      .shop-hero { grid-template-columns: 1fr; }
-      .shop-hero-side { text-align: left; justify-self: start; }
+      .shop-hero { gap: 20px; }
+      .shop-hero-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 760px) {
-      .shop-categories,
-      .shop-cards { grid-template-columns: 1fr; }
+      .shop-categories { flex-direction: column; }
+      .shop-cards > .shop-card { flex: 0 0 85%; }
+      .shop-arrow { width: 46px; height: 46px; font-size: 1.3rem; }
+      .shop-arrow-left  { left: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
+      .shop-arrow-right { right: calc(12px - (100vw - min(1120px, 92vw)) / 2); }
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
-      "sameAs": ["https://github.com/lixby"]
-    }
-  </script>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lixby",
+  "url": "https://lixby.es/lt/shop",
+  "logo": "https://lixby.es/logo.png",
+  "sameAs": ["https://github.com/lixby"]
+}
+</script>
+
+<script>
+window.LIXBY_UI = {
+    theme: "light",
+    animations: true,
+    version: "1.0.0"
+};
+</script>
+
+<script>
+document.documentElement.classList.replace("nojs", "js");
+</script>
+
 </head>
 <body class="shop-page">
 
   <div id="scroll-progress"></div>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Pagrindinis">
+    <div class="container nav-container">
+      <a href="/lt/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Pagrindinis meniu">
         <a href="/lt/shop/" class="nav-link">Parduotuvė</a>
-        <a href="/lt/#productos" class="nav-link">Produktai</a>
-        <a href="/lt/#apps" class="nav-link">Programėlės</a>
+        <a href="/lt/products/" class="nav-link">Produktai</a>
+        <a href="/lt/apps/" class="nav-link">Apps</a>
         <a href="/lt/support/" class="nav-link">Palaikymas</a>
       </nav>
-      <a href="/lt/#productos" class="btn btn-primary nav-cta">Peržiūrėti katalogą</a>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Ieškoti" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/lt/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Ieškoti Lixby..."
+            aria-label="Ieškoti Lixby"
+          >
+        </form>
+        <a href="/lt/cart/" class="nav-icon-link" aria-label="Krepšelis">
+          <img src="/lt/images/Bolsa.png" alt="Krepšelis">
+        </a>
+        <a href="/lt/account/" class="nav-icon-link" aria-label="Paskyra">
+          <img src="/lt/images/cuenta.png" alt="Paskyra">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meniu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobilusis meniu">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Parduotuvė</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/lt/shop/">Eiti į parduotuvę</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/buy-headphones/lixbuds-one/">Pirkti dabar</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/news/">Naujienos</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produktai</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/lt/products/">Peržiūrėti produktus</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/lixsafe/">LixSafe ir draudimo apsauga</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/lt/apps/">Peržiūrėti programėles</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/lixney/">Lixney palaikymas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/lixfly/">Lixfly palaikymas</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Palaikymas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/lt/support/">Eiti į palaikymą</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/faq/">Dažniausiai užduodami klausimai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/contact/">Kontaktai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/returns/">Grąžinimas</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Krepšelis</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/lt/cart/">Peržiūrėti krepšelį</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/cart/">Baigti pirkti</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Paskyra</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Eiti į mano paskyrą</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Mano užsakymai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Mano profilis</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Nustatymai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/login/">Prisijungti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/two-step-verification/">Patvirtinimas dviem veiksmais</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="container">
     <section class="shop-hero">
       <h1>Parduotuvė</h1>
       <div class="shop-hero-side">
-        <h2>Geriausias būdas įsigyti mėgstamiausius produktus.</h2>
-        <a href="/lt/support/">Kalbėkite su specialistu</a>
-        <a href="/lt/support/">Raskite pagalbą</a>
-        <p id="shopSearchStatus"></p>
+        <div class="shop-hero-row">
+          <h2>Visi Lixby, vienoje vietoje.</h2>
+          <div class="shop-hero-actions">
+<a class="shop-hero-link" href="/lt/support/">Pasikalbėti su specialistu</a>
+          <a class="shop-hero-link" href="/lt/track/">Vykdykite savo užsakymą</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="shop-categories" aria-label="Kategorijos">
-      <a class="shop-category" data-searchable="lixbuds one ausinės mixmax" href="/lt/pages/products/lixbuds-one/">
+    <section class="shop-categories" aria-label="Kategorijas">
+      <a class="shop-category" data-searchable="LixBuds One auriculares cascos mixmax" href="/lt/pages/products/lixbuds-one/">
         <div class="shop-category-icon">
-          <img class="shop-category-icon-contain" src="images/lixbuds-one-black.png" alt="LixBuds One">
+          <img src="images/lixbuds-one-black.png" alt="LixBuds One">
         </div>
         <span>LixBuds One</span>
       </a>
-      <a class="shop-category" data-searchable="lixney app finansai" href="/lt/pages/apps/lixney/">
+      <a class="shop-category" data-searchable="Lixney app finanzas" href="/lt/pages/apps/lixney/">
         <div class="shop-category-icon">
-          <img src="images/LixneyIcon.png" alt="Lixney programėlė">
+          <img class="shop-category-icon-contain" src="images/lixneyicon2.webp" alt="Programa Lixney">
         </div>
         <span>Lixney</span>
+      </a>
+      <a class="shop-category" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/lt/pages/apps/lixfly/">
+        <div class="shop-category-icon">
+          <img class="shop-category-icon-contain" src="images/lixflyicon2.webp" alt="Programa Lixfly">
+        </div>
+        <span>Lixfly</span>
       </a>
     </section>
 
     <section class="shop-latest">
-      <h3><strong>Naujausia.</strong> <span>Peržiūrėkite naujienas.</span></h3>
-      <div class="shop-cards">
-        <a class="shop-card shop-card-product card-white-solid" data-searchable="lixbuds one ausinės mixmax" href="/lt/pages/products/lixbuds-one/">
-          <p class="shop-card-eyebrow">Galima dabar</p>
-          <h4>LixBuds One</h4>
-          <p>Aukščiausios kokybės garsas su išmaniu triukšmo slopinimu.</p>
-          <small>Nuo 99 EUR</small>
-          <div class="shop-card-media">
-            <img src="images/lixbuds-one-white.png" alt="LixBuds One ausinės">
-          </div>
-        </a>
+      <h3><strong>Naujausias.</strong> <span>Pažiūrėk, kas naujo.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left" aria-label="Buvęs">‹</button>
+        <button class="shop-arrow shop-arrow-right" aria-label="Sekantis">›</button>
+        <div class="shop-cards">
+          <a class="shop-card shop-card-product card-white-solid" data-searchable="LixBuds One auriculares cascos mixmax" href="/lt/pages/products/lixbuds-one/">
+            <p class="shop-card-eyebrow">Galima dabar</p>
+            <h4>LixBuds One</h4>
+            <p>Aukščiausios kokybės garsas su išmaniu triukšmo slopinimu.</p>
+            <small>Nuo 99 eur</small>
+            <div class="shop-card-media">
+              <img src="images/lixbuds-one-white.png" alt="LixBuds One">
+            </div>
+          </a>
 
-        <a class="shop-card shop-card-app" data-searchable="lixney app finansai" href="/lt/pages/apps/lixney/">
-          <p class="shop-card-eyebrow">Nauja versija</p>
-          <h4>Lixney</h4>
-          <p>Jūsų programa taupymui, planavimui ir išlaidų supratimui.</p>
-          <small>Nemokamas atsisiuntimas</small>
+          <a class="shop-card shop-card-app" data-searchable="Lixney app finanzas" href="/lt/pages/apps/lixney/">
+            <p class="shop-card-eyebrow">Perdaryti</p>
+            <h4>Lixney</h4>
+            <p>Savo programą, kad sutaupytumėte, planuotumėte ir suprastumėte savo išlaidas.</p>
+            <small>Atsisiųsti nemokamai</small>
+            <div class="shop-card-media">
+              <img src="images/lixneyicon2.webp" alt="Lixney programa">
+            </div>
+          </a>
+
+        <a class="shop-card shop-card-lixfly" data-searchable="Lixfly EFB msfs preflight flight plan performance" href="/lt/pages/apps/lixfly/">
+          <p class="shop-card-eyebrow">Atvira beta versija</p>
+          <h4>Lixfly</h4>
+          <p>Jūsų EFB, skirtas MSFS2020/2024: išankstinis skrydis, skrydžio planas, našumas, navigacija, eqrh ir daug daugiau.</p>
+          <small>Nemokama beta versija</small>
           <div class="shop-card-media">
-            <img src="images/lixney1.png" alt="Lixney programa">
+            <img src="images/lixflyicon2.webp" alt="Lixfly programa">
           </div>
         </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Taip pasirūpiname jūsų pirkimu.</strong> <span>Paprasta, saugi ir be staigmenų.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Buvęs">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Sekantis">›</button>
+        <div class="shop-cards trust-cards">
+          <a class="trust-card" href="/lt/support/#faq">
+            <div class="trust-icon" style="background:#059669">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+            </div>
+            <p><strong style="color:#059669">Nemokamas pristatymas.</strong> Visi jūsų užsakymai atvyksta į namus <strong style="color:#059669">jokių papildomų išlaidų</strong>, nepriklausomai nuo sumos.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/returns/">
+            <div class="trust-icon" style="background:#d97706">
+              <svg viewBox="0 0 24 24"><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/><polyline points="8 10 12 14 16 10"/><line x1="12" y1="4" x2="12" y2="14"/></svg>
+            </div>
+            <p><strong style="color:#d97706">Grąžinti per 14 kalendorinių dienų.</strong> Galite pasinaudoti savo teise atsisakyti sutarties <strong style="color:#d97706">nenurodydamas priežasties</strong>.</p>
+          </a>
+          <a class="trust-card" href="/lt/support/#faq">
+            <div class="trust-icon" style="background:#2563eb">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p><strong style="color:#2563eb">Saugus mokėjimas.</strong> Kiekvienas sandoris yra <strong style="color:#2563eb">užšifruotas ir apsaugotas</strong> todėl galite visiškai ramiai pirkti.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/contact/">
+            <div class="trust-icon" style="background:#7c3aed">
+              <svg viewBox="0 0 24 24"><path d="M3 11v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3"/><path d="M21 12v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+            </div>
+            <p><strong style="color:#7c3aed">Parama ispanų kalba.</strong> Mūsų komanda yra čia, kad padėtų jums, <strong style="color:#7c3aed">tavo kalba</strong> ir kai tau to reikia.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/warranty/">
+            <div class="trust-icon" style="background:#16a34a">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <p><strong style="color:#16a34a">Oficiali garantija.</strong> Fiziniai produktai turi <strong style="color:#16a34a">trejų metų teisinė garantija</strong> nuo pristatymo.</p>
+          </a>
+          <a class="trust-card" href="/lt/apps/">
+            <div class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A9 9 0 1 0 4.16 7.51"/></svg>
+            </div>
+            <p><strong style="color:#6366f1">Nemokami atnaujinimai.</strong> Jūsų paraiškos visada atnaujinamos, <strong style="color:#6366f1">jokių papildomų išlaidų</strong> ir amžinai.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <h3><strong>Mes čia.</strong> <span>Padėti kada ir kaip tau to reikia.</span></h3>
+      <div class="shop-cards-wrapper">
+        <button class="shop-arrow shop-arrow-left trust-arrow-left" aria-label="Buvęs">‹</button>
+        <button class="shop-arrow shop-arrow-right trust-arrow-right" aria-label="Sekantis">›</button>
+        <div class="shop-cards trust-cards">
+          <button type="button" class="trust-card" data-open-bot>
+            <span class="trust-icon" style="background:#0ea5e9">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <p><strong style="color:#0ea5e9">Pasikalbėkite su asistentu.</strong> Akimirksniu išspręskite savo abejones, <strong style="color:#0ea5e9">24 valandas per parą</strong>, iš bet kurio parduotuvės puslapio.</p>
+          </button>
+          <a class="trust-card" href="/lt/news/">
+            <span class="trust-icon" style="background:#f59e0b">
+              <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+            </span>
+            <p><strong style="color:#f59e0b">Naujienos.</strong> Atrasti <strong style="color:#f59e0b">leidimai, atnaujinimai ir pranešimai</strong> Lixby pareigūnai.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/returns/">
+            <span class="trust-icon" style="background:#10b981">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            </span>
+            <p><strong style="color:#10b981">Teisę atsisakyti sutarties.</strong> Turėti <strong style="color:#10b981">14 kalendorinių dienų nuo pristatymo</strong> to prašyti. Patikrinkite sąlygas ir grąžinimo išlaidas.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/contact/">
+            <span class="trust-icon" style="background:#8b5cf6">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <p><strong style="color:#8b5cf6">Parašyk mums.</strong> Mes jums atsakome <strong style="color:#8b5cf6">kuo greičiau, darbo dienomis</strong>.</p>
+          </a>
+          <a class="trust-card" href="/lt/help-center/faq/">
+            <span class="trust-icon" style="background:#6366f1">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </span>
+            <p><strong style="color:#6366f1">Dažnai užduodami klausimai.</strong> Rasti atsakymus apie <strong style="color:#6366f1">siuntimas, apmokėjimai, garantija</strong> ir daug daugiau.</p>
+          </a>
+          <a class="trust-card" href="/lt/apps/">
+            <span class="trust-icon" style="background:#ec4899">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </span>
+            <p><strong style="color:#ec4899">Pagalba su programomis.</strong> Vadovus ir paramą <strong style="color:#ec4899">Lixney ir Lixfly</strong>, visada ispaniškai.</p>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer footer-mega">
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Peržiūrėti ir įsigyti</h3>
+        <h3>Peržiūrėti ir pirkti</h3>
         <ul>
           <li><a href="/lt/shop/">Parduotuvė</a></li>
           <li><a href="/lt/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/lt/#apps">Programėlės</a></li>
+          <li><a href="/lt/apps/">Apps</a></li>
           <li><a href="/lt/support/">Palaikymas</a></li>
         </ul>
       </section>
@@ -329,49 +914,64 @@
       <section class="footer-section">
         <h3>Palaikymas</h3>
         <ul>
-          <li><a href="/lt/support/">Pagrindinis palaikymo puslapis</a></li>
-          <li><a href="/lt/support/#faq">DUK apie internetinę parduotuvę</a></li>
-          <li><a href="/lt/support/">Garantijos informacija</a></li>
-          <li><a href="mailto:info@lixby.es">El. paštas generaliniam direktoriui</a></li>
+          <li><a href="/lt/support/">Palaikymo pradinis puslapis</a></li>
+          <li><a href="/lt/support/#faq">Internetinės parduotuvės DUK</a></li>
+          <li><a href="/lt/support/">Informacija apie garantiją</a></li>
+          <li><a href="mailto:info@lixby.es">El. laiškas generaliniam direktoriui</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Paskyra</h3>
         <ul>
-          <li><a href="/lt/cart/">Užsakymai</a></li>
+          <li><a href="/lt/track/">Užsakymai</a></li>
           <li><a href="/lt/account/">Mano paskyra</a></li>
           <li><a href="/lt/account/">Kuponai</a></li>
+          <li><a href="/lt/community/">Bendruomenė</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
         <h3>Apie Lixby</h3>
         <ul>
-          <li><a href="#">Naujienų kambarys</a></li>
+          <li><a href="/lt/about/">Mes</a></li>
           <li><a href="/lt/support/">Garantija</a></li>
-          <li><a href="#">Renginiai</a></li>
+          <li><a href="/lt/news/">Naujienos</a></li>
           <li><a href="/lt/support/">Kontaktai</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Autoriaus teisės © 2026 Lixby. Visos teisės saugomos.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Visos teisės saugomos.</p>
       <div class="footer-legal-links">
         <a href="/lt/pages/legal/privacy/">Privatumo politika</a>
-        <a href="/lt/pages/legal/cookies/">Slapukų naudojimas</a>
-        <a href="/lt/pages/legal/terms/">Naudojimo sąlygos</a>
-        <a href="/lt/support/">Pardavimai ir grąžinimai</a>
+        <a href="/lt/pages/legal/cookies/">Slapukų politika</a>
+        <a href="/lt/pages/legal/terms/">Taisyklės ir sąlygos</a>
+        <a href="/lt/pages/legal/sales-refunds/">Pardavimas ir pinigų grąžinimas</a>
         <a href="/lt/pages/legal/legal-notice/">Teisiniai pranešimai</a>
       </div>
     </div>
   </footer>
 
+  <div class="shop-toast" id="shopToast" role="status" aria-live="polite"></div>
+
   <script>
     const nav = document.getElementById("nav");
     const progressBar = document.getElementById("scroll-progress");
-    const statusEl = document.getElementById("shopSearchStatus");
+    const toastEl = document.getElementById("shopToast");
+    let toastTimer = null;
+
+    function showShopToast(message, variant) {
+      if (!toastEl) return;
+      toastEl.textContent = message;
+      toastEl.classList.toggle("is-warning", variant === "warning");
+      toastEl.classList.add("is-visible");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toastEl.classList.remove("is-visible");
+      }, 3800);
+    }
 
     const updateScrollUI = () => {
       const top = document.documentElement.scrollTop;
@@ -384,6 +984,78 @@
     window.addEventListener("scroll", updateScrollUI, { passive: true });
     updateScrollUI();
 
+    const shopCards = document.querySelector(".shop-cards");
+    const leftArrow = document.querySelector(".shop-arrow-left");
+    const rightArrow = document.querySelector(".shop-arrow-right");
+
+    if (shopCards && leftArrow && rightArrow) {
+      const scrollAmount = () => {
+        const card = shopCards.querySelector(".shop-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      leftArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        shopCards.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const updateArrows = () => {
+        const maxScroll = shopCards.scrollWidth - shopCards.clientWidth;
+        leftArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft <= 4);
+        rightArrow.classList.toggle("arrow-hidden", shopCards.scrollLeft >= maxScroll - 4);
+      };
+
+      shopCards.addEventListener("scroll", () => {
+        updateArrows();
+      }, { passive: true });
+      updateArrows();
+    }
+
+    document.querySelectorAll(".trust-cards").forEach((trustCards) => {
+      const trustSection = trustCards.closest(".trust-section");
+      const trustArrowLeft = trustSection && trustSection.querySelector(".trust-arrow-left");
+      const trustArrowRight = trustSection && trustSection.querySelector(".trust-arrow-right");
+
+      if (!trustSection || !trustCards || !trustArrowLeft || !trustArrowRight) return;
+
+      const trustScrollAmount = () => {
+        const card = trustCards.querySelector(".trust-card");
+        return card ? card.offsetWidth + 22 : 300;
+      };
+
+      trustArrowLeft.addEventListener("click", () => {
+        trustCards.scrollBy({ left: -trustScrollAmount(), behavior: "smooth" });
+      });
+
+      trustArrowRight.addEventListener("click", () => {
+        trustCards.scrollBy({ left: trustScrollAmount(), behavior: "smooth" });
+      });
+
+      const updateTrustArrows = () => {
+        const maxScroll = trustCards.scrollWidth - trustCards.clientWidth;
+        trustArrowLeft.classList.toggle("arrow-hidden", trustCards.scrollLeft <= 4);
+        trustArrowRight.classList.toggle("arrow-hidden", trustCards.scrollLeft >= maxScroll - 4);
+      };
+
+      trustCards.addEventListener("scroll", () => {
+        updateTrustArrows();
+      }, { passive: true });
+      updateTrustArrows();
+    });
+
+    document.querySelectorAll("[data-open-bot]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const botWindow = document.getElementById("lixbot-window");
+        const botToggle = document.getElementById("lixbot-toggle");
+        if (botWindow && botToggle && botWindow.classList.contains("lixbot-hidden")) {
+          botToggle.click();
+        }
+      });
+    });
+
     const query = new URLSearchParams(window.location.search).get("q");
     if (query) {
       const normalizedQuery = query.toLowerCase().trim();
@@ -394,18 +1066,16 @@
         item.style.display = match ? "" : "none";
         if (match) matches += 1;
       });
-      if (statusEl) {
-        if (matches > 0) {
-          statusEl.textContent = `Rezultatai pagal užklausą: ${query}`;
-        } else {
-          statusEl.textContent = `Nėra rezultatų pagal užklausą: ${query}`;
-        }
+      if (matches > 0) {
+        showShopToast(`rezultatai pagal: ${query}`);
+      } else {
+        showShopToast(`nėra rezultatų: ${query}`, "warning");
       }
     }
   </script>
 
   <!-- =====================================================
-       MINIBOT LIXBY (LIETUVIŲ KALBA)
+       MINIBOT Lixby
   ====================================================== -->
   <style>
     #lixbot-toggle {
@@ -430,7 +1100,7 @@
       box-shadow: 0 12px 44px rgba(15,23,42,0.14);
       display: flex; flex-direction: column;
       overflow: hidden; z-index: 9998;
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif;
       transition: opacity 0.2s, transform 0.2s;
     }
     #lixbot-window.lixbot-hidden { opacity: 0; pointer-events: none; transform: translateY(14px); }
@@ -500,7 +1170,7 @@
       flex: 1; border: none; outline: none;
       padding: 12px 6px; font-size: 13px;
       background: transparent; color: #111827;
-      font-family: 'Manrope', sans-serif;
+      font-family: 'Inter, sans-serif;
     }
     #lixbot-input::placeholder { color: #c4c9d4; }
     #lixbot-clearbtn {
@@ -515,7 +1185,7 @@
     }
   </style>
 
-  <button id="lixbot-toggle" aria-label="Atidaryti Lixby asistentą">
+  <button id="lixbot-toggle" aria-label="Atidaryti Lixby vedlį">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
          stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -523,17 +1193,17 @@
     <span id="lixbot-badge"></span>
   </button>
 
-  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Lixby asistentas">
+  <div id="lixbot-window" class="lixbot-hidden" role="dialog" aria-label="Asistentas Lixby">
     <div id="lixbot-header">
       <div class="lixbot-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
              stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
       </div>
       <div>
-        <div class="lixbot-title">Lixby asistentas</div>
-        <div class="lixbot-sub">Atsakymai akimirksniu</div>
+        <div class="lixbot-title">Asistentas Lixby</div>
+        <div class="lixbot-sub">Momentiniai atsakymai</div>
       </div>
       <button id="lixbot-close" aria-label="Uždaryti">✕</button>
     </div>
@@ -541,20 +1211,20 @@
     <div id="lixbot-messages"></div>
 
     <div id="lixbot-cats">
-      <button class="lixbot-cat" data-cat="envios">📦 Siuntimai</button>
-      <button class="lixbot-cat" data-cat="devoluciones">↩️ Grąžinimai</button>
+      <button class="lixbot-cat" data-cat="envios">📦 Siuntos</button>
+      <button class="lixbot-cat" data-cat="devoluciones">↩️ Grįžta</button>
       <button class="lixbot-cat" data-cat="pagos">💳 Mokėjimai</button>
       <button class="lixbot-cat" data-cat="pedidos">🛒 Užsakymai</button>
       <button class="lixbot-cat" data-cat="productos">🎧 Produktai</button>
-      <button class="lixbot-cat" data-cat="faq">❓ DUK</button>
+      <button class="lixbot-cat" data-cat="faq">❓ FAQ</button>
     </div>
 
     <div id="lixbot-qs"></div>
 
     <div id="lixbot-footer">
       <span id="lixbot-search-icon">🔍</span>
-      <input id="lixbot-input" type="text" placeholder="Ieškokite klausimo..." autocomplete="off" maxlength="120" />
-      <button id="lixbot-clearbtn" aria-label="Išvalyti">✕</button>
+      <input id="lixbot-input" type="text" placeholder="Ieškok savo klausimo..." autocomplete="off" maxlength="120" />
+      <button id="lixbot-clearbtn" aria-label="Švarus">✕</button>
     </div>
   </div>
 
@@ -562,76 +1232,74 @@
   (function () {
     var KB = {
       envios: { items: [
-        { q: 'Kiek laiko trunka standartinis siuntimas?',
-          a: 'Standartinis siuntimas trunka 5-10 darbo dienų. Kai tik prekė iškeliauja iš mūsų sandėlio, gausite el. laišką su sekimo numeriu.' },
-        { q: 'Ar siūlote greitąjį siuntimą?',
-          a: 'Taip, greitasis siuntimas 24-48 val. užsakymams prieš 13:00 val. (darbo dienomis). Galimas pusiasalyje. Pasirinkite užbaigdami pirkimą.' },
+        { q: 'Kiek laiko trunka standartinis pristatymas?',
+          a: 'Standartinis pristatymas trunka 8-15 darbo dienų. Kai tik jis paliks mūsų sandėlį, gausite el. laišką su sekimo numeriu.' },
         { q: 'Ar siuntimas nemokamas?',
-          a: 'Siuntimas visiškai nemokamas.' },
+          a: 'visiškai nemokamas pristatymas.' },
         { q: 'Ar siunčiate į Kanarų salas ir Balearų salas?',
-          a: 'Taip, siunčiame į visą šalies teritoriją. Kanarų, Balearų, Seutos ir Melilijos terminai gali būti 5-8 darbo dienos.' },
+          a: 'Taip, siunčiame į visą šalies teritoriją. Numatomas pristatymo laikas yra nuo 8 iki 15 darbo dienų.' },
         { q: 'Ar siunčiate už Ispanijos ribų?',
-          a: 'Taip, siunčiame į visą Europos Sąjungą. Kaina ir terminas apskaičiuojami automatiškai įvedus adresą.' }
+          a: 'Taip, siunčiame į visą Europos Sąjungą. Pristatymas nemokamas, o numatomas pristatymo laikas nuo 8 iki 15 darbo dienų.' }
       ]},
       devoluciones: { items: [
-        { q: 'Kiek dienų turiu grąžinti prekę?',
-          a: 'Turite 30 kalendorinių dienų nuo gavimo datos prašyti grąžinimo arba keitimo be papildomo pagrindimo.' },
-        { q: 'Kaip pradėti grąžinimą?',
-          a: 'Prisijunkite prie "Mano paskyra → Mano užsakymai", pasirinkite prekę ir spauskite "Prašyti grąžinimo". Nemokamą siuntimo etiketę gausite per 24 val.' },
-        { q: 'Kokiomis sąlygomis turiu grąžinti prekę?',
-          a: 'Produktas turi būti nenaudotas, su visomis etiketėmis ir originalioje pakuotėje. Nepriimame prekių su naudojimo požymiais.' },
-        { q: 'Kada gausiu pinigų grąžinimą?',
-          a: 'Gavę ir patikrinę prekę (1-2 dienos), pinigų grąžinimas atliekamas per 5-7 darbo dienas tuo pačiu mokėjimo būdu.' },
+        { q: 'Kiek dienų turiu grįžti?',
+          a: 'Jūs turite 14 kalendorinių dienų nuo gavimo dienos pasinaudoti savo teise atsisakyti sutarties, nenurodydami priežasties.' },
+        { q: 'Kaip inicijuoti grąžinimą?',
+          a: 'praneškite savo sprendimą atsisakyti info@Lixby.es ir nurodykite savo užsakymo numerį. Tiesiogines grąžinimo išlaidas prisiimate jūs, nebent prekė yra brokuota arba siunta buvo neteisinga.' },
+        { q: 'Kokiomis sąlygomis turėčiau grąžinti prekę?',
+          a: 'Prekę galite apžiūrėti taip pat, kaip parduotuvėje. Sutarties atsisakymo teisei taikomos teisinės išimtys, pavyzdžiui, tam tikri produktai, užplombuoti higienos tikslais, kurie buvo neplombuoti.' },
+        { q: 'kada gausiu pinigus?',
+          a: 'Grąžiname pinigus iš karto, kai tik gauname ir peržiūrime jūsų grąžinimą, ir visada per 14 kalendorinių dienų nuo tada, kai pranešate apie atsisakymą. Išdavus gali praeiti nuo 5 iki 10 darbo dienų, kol bankas tai parodys jūsų sąskaitoje.' },
         { q: 'Ar galiu pakeisti dydį ar spalvą?',
-          a: 'Taip, tvarkome keitimus, jei yra sandėlyje. Prašykite kaip grąžinimo ir nurodykite "keitimas" kaip priežastį. Be papildomų išlaidų.' }
+          a: 'Įstatyminė teisė yra atsisakyti 14 kalendorinių dienų. Jeigu norite kito varianto, pranešę apie atsisakymą galite pateikti naują užsakymą.' }
       ]},
       pagos: { items: [
-        { q: 'Kokius mokėjimo būdus priimate?',
-          a: 'Priimame kortelę (Visa, Mastercard, Amex), PayPal, Bizum ir banko pavedimą. Visi mokėjimai yra saugūs su SSL šifravimu.' },
-        { q: 'Ar kainos įskaičiuoja PVM?',
-          a: 'Taip, visos parduotuvėje nurodytos kainos jau įskaičiuoja PVM. Jokių netikėtumų atsiskaitant.' },
-        { q: 'Ar turite nuolaidų ar akcijų kodų?',
-          a: 'Skelbiame pasiūlymus skiltyje "Pasiūlymai" ir siunčiame išskirtinius kodus naujienlaiškyje. Prenumeruokite, kad nieko nepraleistumėte!' },
-        { q: 'Ar galiu mokėti išsimokėtinai?',
-          a: 'Ne, galimi tik vienkartiniai mokėjimai' },
+        { q: 'Kokius mokėjimo būdus sutinkate?',
+          a: 'Priimame korteles (Visa, Mastercard, Amex), PayPal, Bizum ir banko pavedimą. Visi mokėjimai yra saugūs naudojant SSL šifravimą.' },
+        { q: 'Ar kainos nurodytos su PVM?',
+          a: 'Taip, visos kainos parduotuvėje jau yra su PVM. Atvykus prie kasos nebus jokių staigmenų.' },
+        { q: 'Ar turite nuolaidų ar reklamos kodų?',
+          a: 'Skiltyje „pasiūlymai“ skelbiame pasiūlymus, naujienlaiškiui siunčiame išskirtinius kodus. Prenumeruokite, kad nieko nepraleistumėte!' },
+        { q: 'Ar galiu mokėti dalimis?',
+          a: 'ne, yra tik vienkartiniai mokėjimai' },
         { q: 'Ar siūlote dovanų korteles?',
-          a: 'Taip, dovanų korteles nuo 10 € iki 200 €. Jos išsiunčiamos el. paštu akimirksniu ir galioja 1 metus.' }
+          a: 'taip, dovanų kortelės nuo 10 € iki 200 €. Jie iš karto pristatomi el. paštu ir galioja 1 metus.' }
       ]},
       pedidos: { items: [
-        { q: 'Kur galiu matyti savo užsakymo būseną?',
-          a: 'Skiltyje "Mano paskyra → Mano užsakymai" galite matyti būseną realiu laiku. Taip pat gausite automatinius el. laiškus prie kiekvieno būsenos pakeitimo.' },
-        { q: 'Kaip sekti užsakymą?',
-          a: 'Kai užsakymas iškeliauja iš sandėlio, gausite el. laišką su sekimo numeriu ir tiesiogine nuoroda į vežėją.' },
-        { q: 'Ar galiu pakeisti ar atšaukti užsakymą?',
-          a: 'Galite atšaukti ar pakeisti per pirmąsias 2 valandas. Rašykite mums info@lixby.es kuo greičiau.' },
-        { q: 'Ką daryti, jei prekė atkeliauja pažeista?',
-          a: 'Per 48 valandas atsiųskite prekės ir pakuotės nuotrauką el. paštu info@lixby.es. Išsiųsime pakeitimą arba atliksime visišką pinigų grąžinimą be papildomų išlaidų.' },
+        { q: 'Kur galiu pamatyti savo užsakymo būseną?',
+          a: '„Mano paskyra → mano užsakymai“ galite pamatyti būseną realiuoju laiku. Taip pat gausite automatinius el. laiškus su kiekvienu būsenos pasikeitimu.' },
+        { q: 'Kaip man sekti?',
+          a: 'Kai užsakymas iškeliaus iš sandėlio, gausite el. laišką su sekimo numeriu ir tiesiogine nuoroda į vežėją.' },
+        { q: 'Ar galiu pakeisti arba atšaukti savo užsakymą?',
+          a: 'Jį galite atšaukti arba pakeisti per pirmąsias 2 valandas. kuo greičiau parašykite mums adresu info@Lixby.es.' },
+        { q: 'Ką daryti, jei jis atkeliauja sugadintas?',
+          a: 'Jei siunta atkeliauja sugadinta transportavimo metu arba joje yra netinkama prekė, parašykite mums info@Lixby.es, pageidautina per 48 valandas ir pridėkite nuotraukas, kad pagreitintumėte apdorojimą. Šis pranešimas nesumažina 3 metų teisinės garantijos.' },
         { q: 'Ar galiu pridėti produktų prie jau pateikto užsakymo?',
-          a: 'Negalima pridėti produktų prie vykdomo užsakymo. Jei jis dar nėra ruošiamas, galite jį atšaukti ir pateikti naują.' }
+          a: 'Neįmanoma pridėti produktų prie vykdomo užsakymo. Jei jis dar nerengiamas, galite jį atšaukti ir sukurti naują.' }
       ]},
       productos: { items: [
-        { q: 'Kas yra LixBuds One?',
-          a: 'LixBuds One yra mūsų aukščiausios kokybės ausinės su išmaniu triukšmo slopinimu. Galimos nuo 99 €.' },
-        { q: 'Kas yra Lixney programėlė?',
-          a: 'Lixney yra mūsų nemokama programėlė, skirta taupymui, planavimui ir asmeninių išlaidų supratimui. Prieinama iOS ir Android.' },
-        { q: 'Ar produktams yra garantija?',
-          a: 'Taip, visiems mūsų produktams suteikiama 3 metų oficiali garantija. Daugiau informacijos skiltyje Garantija palaikymo skyriuje.' },
-        { q: 'Ar LixBuds One suderinami su visais įrenginiais?',
-          a: 'Taip, LixBuds One suderinami su bet kokiu Bluetooth 5.0 ar naujesnės versijos įrenginiu: iOS, Android, Windows ir macOS.' },
-        { q: 'Kada pasirodo nauji produktai?',
-          a: 'Apie naujienas pranešame savo naujienlaiškyje ir socialiniuose tinkluose. Prenumeruokite, kad sužinotumėte pirmieji.' }
+        { q: 'kas yra LixBuds One?',
+          a: 'LixBuds One yra mūsų aukščiausios kokybės išmaniosios triukšmą slopinančios ausinės. galima įsigyti nuo 99,00 €.' },
+        { q: 'Kas yra Lixney programa?',
+          a: 'Lixney yra nemokama programa, skirta taupyti, planuoti ir suprasti savo asmenines išlaidas. galima android.' },
+        { q: 'Ar gaminiams suteikiama garantija?',
+          a: 'Fiziniams gaminiams suteikiama 3 metų garantija nuo pristatymo. Daugiau informacijos rasite pagalbos skyriuje „Garantija“.' },
+        { q: 'Ar LixBuds One suderinamas su visais įrenginiais?',
+          a: 'Taip, LixBuds One yra suderinami su bet kuriuo įrenginiu su Bluetooth 6.0 ar naujesne versija: iOS, Android, Windows ir Macos.' },
+        { q: 'kada ateina nauji produktai?',
+          a: 'Naujienas skelbiame naujienlaiškyje ir socialiniuose tinkluose. Prenumeruokite, kad sužinotumėte pirmąjį.' }
       ]},
       faq: { items: [
         { q: 'Ar man reikia paskyros norint pirkti?',
-          a: 'Ne, galite pirkti kaip svečias. Su paskyra galėsite lengvai sekti užsakymus, išsaugoti adresus ir matyti savo istoriją.' },
-        { q: 'Ar saugu pirkti Lixby?',
+          a: 'ne, galite nusipirkti kaip svečias. Naudodami paskyrą galite lengvai sekti užsakymus, išsaugoti adresus ir peržiūrėti istoriją.' },
+        { q: 'Ar saugu pirkti iš Lixby?',
           a: 'Taip. Visoje svetainėje naudojame SSL šifravimą ir nesaugome kortelės duomenų. Mokėjimai apdorojami naudojant PCI-DSS sertifikuotas platformas.' },
         { q: 'Ar turite fizinę parduotuvę?',
-          a: 'Šiuo metu esame 100% internetu. Galite susisiekti su mumis per pokalbių langelį, el. paštą ar telefonu mūsų darbo valandomis.' },
-        { q: 'Koks yra darbo laikas?',
-          a: 'Pirmadieniais–penktadieniais nuo 9:00 iki 18:00 val. El. paštu atsakome per mažiau nei 24 valandas. Šis asistentas prieinamas 24/7.' },
+          a: 'Šiuo metu esame 100% prisijungę. Su mumis galite susisiekti pokalbių metu, el. paštu arba telefonu mūsų darbo valandomis.' },
+        { q: 'Kokios darbo valandos?',
+          a: 'Nuo pirmadienio iki penktadienio nuo 9:00 iki 18:00 val. El. paštu atsakome per mažiau nei 24 valandas. Šis asistentas yra pasiekiamas 24 valandas per parą, 7 dienas per savaitę.' },
         { q: 'Kaip susisiekti su Lixby?',
-          a: 'Rašykite mums el. paštu info@lixby.es arba naudokite formą support.html. Atsakome per mažiau nei 24 valandas.' }
+          a: 'parašykite mums adresu info@Lixby.es arba naudokite formą /lt/support/. Atsakome per mažiau nei 24 valandas.' }
       ]}
     };
 
@@ -649,7 +1317,7 @@
     function openBot() {
       win.classList.remove('lixbot-hidden');
       badge.style.display = 'none';
-      if (!opened) { addMsg('Sveiki! 👋 Pasirinkite kategoriją arba įrašykite klausimą paieškos laukelyje.', 'lixbot-bot'); opened = true; }
+      if (!opened) { addMsg('labas! 👋 Pasirinkite kategoriją arba parašykite savo klausimą paieškos sistemoje.', 'lixbot-bot'); opened = true; }
       input.focus();
     }
 
@@ -704,7 +1372,7 @@
       if (!results.length) {
         var p = document.createElement('p');
         p.style.cssText = 'font-size:12px;color:#9ca3af;padding:6px 4px;margin:0;';
-        p.textContent = 'Rezultatų nėra. Pabandykite su kitais žodžiais.';
+        p.textContent = 'jokių rezultatų. Išbandykite kitus žodžius.';
         qsDiv.appendChild(p);
         return;
       }
@@ -720,12 +1388,129 @@
     });
   })();
   </script>
-  <!-- MINIBOT LIXBY PABAIGA -->
+  <!-- FIN MINIBOT Lixby -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.shop-card');
+
+      function fixShopCards() {
+        cards.forEach(card => {
+          const media = card.querySelector('.shop-card-media');
+          if (!media) return;
+
+          const cardRect = card.getBoundingClientRect();
+          const mediaRect = media.getBoundingClientRect();
+
+          const gap = cardRect.bottom - mediaRect.bottom;
+
+          if (Math.abs(gap) > 0.5) {
+            media.style.marginBottom = `${-gap}px`;
+          }
+        });
+      }
+
+      fixShopCards();
+      window.addEventListener('resize', fixShopCards);
+
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(fixShopCards);
+        cards.forEach(card => {
+          if (card.querySelector('.shop-card-media')) ro.observe(card);
+        });
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
-
 
 

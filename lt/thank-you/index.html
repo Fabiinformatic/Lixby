@@ -10,17 +10,56 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://www.lixby.es/lt/thank-you">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ačiū už pirkinį | Lixby</title>
-  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://lixby.es/lt/thank-you">
+  <link rel="alternate" href="https://lixby.es/bg/thank-you" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/thank-you" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/thank-you" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/thank-you" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/thank-you" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/thank-you" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/gracias" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/thank-you" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/thank-you" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/thank-you" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/thank-you" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/thank-you" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/thank-you" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/thank-you" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/thank-you" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/thank-you" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/thank-you" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/thank-you" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/thank-you" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/thank-you" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/thank-you" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/thank-you" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/thank-you" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/thank-you" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/thank-you" hreflang="x-default">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
+
+  <title>Ačiū, kad pirkote | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/lt/style.css">
 
   <style>
     :root {
@@ -48,7 +87,7 @@
       padding: 48px 0 80px;
     }
 
-    /* Animuotas ženklas */
+    /* Check animado */
     .success-icon {
       width: 72px;
       height: 72px;
@@ -118,7 +157,7 @@
       font-size: 0.95rem;
     }
 
-    /* Užsakymo numeris */
+    /* Número de pedido */
     .order-number-badge {
       display: inline-flex;
       align-items: center;
@@ -138,7 +177,7 @@
       color: #555;
     }
 
-    /* Kliento informacijos sekcija */
+    /* Sección de info del cliente */
     .info-section {
       background: #f9fafb;
       border: 1px solid var(--line);
@@ -174,7 +213,7 @@
       font-weight: 700;
     }
 
-    /* Produktai */
+    /* Productos */
     .products-section {
       margin-bottom: 20px;
     }
@@ -215,7 +254,7 @@
       white-space: nowrap;
     }
 
-    /* Bendra suma */
+    /* Total */
     .order-total-row {
       display: flex;
       justify-content: space-between;
@@ -230,7 +269,7 @@
     .order-total-row span { font-weight: 700; }
     .order-total-row strong { font-size: 1.2rem; font-weight: 800; color: var(--green); }
 
-    /* Veiksmai */
+    /* Acciones */
     .thank-actions {
       display: flex;
       gap: 10px;
@@ -245,7 +284,7 @@
       font-size: 0.95rem;
     }
 
-    /* Krovimo būsena */
+    /* Loading state */
     .loading-shimmer {
       background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
       background-size: 200% 100%;
@@ -272,45 +311,145 @@
 <canvas id="confetti-canvas"></canvas>
 
 <header class="nav" id="nav">
-  <div class="container nav-container">
-    <a href="./" class="nav-brand">Lixby</a>
-    <nav class="nav-links" aria-label="Pagrindinis">
-      <a href="/lt/shop/" class="nav-link">Parduotuvė</a>
-      <a href="/lt/#productos" class="nav-link">Produktai</a>
-      <a href="/lt/#apps" class="nav-link">Programėlės</a>
-      <a href="/lt/support/" class="nav-link">Pagalba</a>
+    <div class="container nav-container">
+      <a href="/lt/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Pagrindinis meniu">
+        <a href="/lt/shop/" class="nav-link">Parduotuvė</a>
+        <a href="/lt/products/" class="nav-link">Produktai</a>
+        <a href="/lt/apps/" class="nav-link">Apps</a>
+        <a href="/lt/support/" class="nav-link">Palaikymas</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Ieškoti" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/lt/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Ieškoti Lixby..."
+            aria-label="Ieškoti Lixby"
+          >
+        </form>
+        <a href="/lt/cart/" class="nav-icon-link" aria-label="Krepšelis">
+          <img src="/lt/images/Bolsa.png" alt="Krepšelis">
+        </a>
+        <a href="/lt/account/" class="nav-icon-link" aria-label="Paskyra">
+          <img src="/lt/images/cuenta.png" alt="Paskyra">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meniu" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobilusis meniu">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Parduotuvė</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/lt/shop/">Eiti į parduotuvę</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/buy-headphones/lixbuds-one/">Pirkti dabar</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/news/">Naujienos</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Produktai</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/lt/products/">Peržiūrėti produktus</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/lixsafe/">LixSafe ir draudimo apsauga</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/lt/apps/">Peržiūrėti programėles</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/lixney/">Lixney palaikymas</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/lixfly/">Lixfly palaikymas</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Palaikymas</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/lt/support/">Eiti į palaikymą</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/faq/">Dažniausiai užduodami klausimai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/contact/">Kontaktai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/help-center/returns/">Grąžinimas</a></p>
+        </div>
+      </div>
     </nav>
-    <div class="nav-actions">
-      <a href="/lt/cart/" class="nav-icon-link" aria-label="Krepšelis">
-        <img src="images/Bolsa.png" alt="Krepšelis">
-      </a>
-      <a href="/lt/account/" class="nav-icon-link" aria-label="Paskyra">
-        <img src="images/cuenta.png" alt="Paskyra">
-      </a>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Krepšelis</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/lt/cart/">Peržiūrėti krepšelį</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/cart/">Baigti pirkti</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Paskyra</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Eiti į mano paskyrą</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Mano užsakymai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Mano profilis</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/account/">Nustatymai</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/login/">Prisijungti</a></p>
+          <p class="nav-mobile-answer-text"><a href="/lt/two-step-verification/">Patvirtinimas dviem veiksmais</a></p>
+        </div>
+      </div>
     </div>
   </div>
-</header>
 
 <main class="container thank-you-page">
   <div class="thank-card">
-    <!-- Animuotas ženklas -->
+    <!-- Check animado -->
     <div class="success-icon">
       <svg viewBox="0 0 24 24" fill="none">
         <polyline points="20 6 9 17 4 12"/>
       </svg>
     </div>
 
-    <p class="thank-eyebrow">Užsakymas patvirtintas</p>
+    <p class="thank-eyebrow">Patvirtino užsakymą</p>
     <h1 class="thank-title">Ačiū už pirkinį!</h1>
-    <p class="thank-sub">Patvirtinimą atsiųsime el. paštu. Savo užsakymo būseną galite sekti bet kada.</p>
+    <p class="thank-sub">Patvirtinimą atsiųsime el. paštu. bet kuriuo metu galite stebėti savo užsakymą.</p>
 
-    <!-- Užsakymo numeris -->
+    <!-- Número de pedido -->
     <div class="order-number-badge">
-      <span>Užsakymas</span>
+      <span>Tvarka</span>
       <strong id="orderNumber">—</strong>
     </div>
 
-    <!-- Kliento informacija -->
+    <!-- Info del cliente -->
     <div class="info-section" id="customerSection" style="display:none">
       <h3>Pristatymo informacija</h3>
       <div class="info-grid">
@@ -319,38 +458,38 @@
           <strong id="customerName">—</strong>
         </div>
         <div class="info-item">
-          <label>El. paštas</label>
+          <label>Email</label>
           <strong id="customerEmail">—</strong>
         </div>
         <div class="info-item" style="grid-column: 1 / -1">
-          <label>Pristatymo adresas</label>
+          <label>Pašto adresą</label>
           <strong id="customerAddress">—</strong>
         </div>
       </div>
     </div>
 
-    <!-- Produktai -->
+    <!-- Productos -->
     <div class="products-section" id="productsSection" style="display:none">
-      <h3>Jūsų užsakymas</h3>
+      <h3>Jūsų užsakymą</h3>
       <div id="productsList"></div>
     </div>
 
-    <!-- Bendra suma -->
+    <!-- Total -->
     <div class="order-total-row" id="totalRow" style="display:none">
-      <span>Bendra suma</span>
+      <span>Viso sumokėta</span>
       <strong id="totalValue">—</strong>
     </div>
 
-    <!-- Veiksmai -->
+    <!-- Acciones -->
     <div class="thank-actions">
-      <a class="btn btn-primary" href="/lt/shop/">Tęsti apsipirkimą</a>
-      <a class="btn btn-secondary" id="trackBtn" href="/lt/track/">Sekti užsakymą</a>
+      <a class="btn btn-primary" href="/lt/shop/">Toliau apsipirkti</a>
+      <a class="btn btn-secondary" id="trackBtn" href="/lt/track/">Laikytis tvarkos</a>
     </div>
   </div>
 </main>
 
 <script>
-  // ── Konfeti ──────────────────────────────────────────────
+  // ── Confetti ──────────────────────────────────────────────
   (function() {
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
@@ -395,7 +534,7 @@
     draw();
   })();
 
-  // ── Užsakymo duomenys ──────────────────────────────────────
+  // ── Datos del pedido ──────────────────────────────────────
   const LAST_ORDER_KEY = 'lixbyCart';
   const params = new URLSearchParams(window.location.search);
   const orderId = params.get('orderId');
@@ -410,13 +549,13 @@
     if (el) el.style.display = '';
   }
 
-  // Užsakymo numeris
+  // Número de pedido
   if (orderId) {
     document.getElementById('orderNumber').textContent = orderId;
     document.getElementById('trackBtn').href = `/lt/track/?orderId=${orderId}`;
   }
 
-  // Bandyti įkelti iš Railway (tikri Stripe duomenys)
+  // Intentar cargar desde Railway (datos reales de Stripe)
   async function loadOrderFromServer(orderId) {
     try {
       const res = await fetch(`https://lixby-production.up.railway.app/track-order/${orderId}`);
@@ -432,7 +571,7 @@
       order = await loadOrderFromServer(orderId);
     }
 
-    // Atsarginis variantas iš localStorage
+    // Fallback al localStorage
     if (!order) {
       try {
         const cached = JSON.parse(localStorage.getItem('lixbyLastOrder') || 'null');
@@ -442,12 +581,12 @@
 
     if (!order) return;
 
-    // Užsakymo numeris
+    // Número de pedido
     if (order.orderNumber || order.orderId) {
       document.getElementById('orderNumber').textContent = order.orderNumber || order.orderId;
     }
 
-    // Kliento informacija
+    // Info del cliente
     const name = order.customerName || order.email;
     const email = order.email;
     const address = order.address;
@@ -459,7 +598,7 @@
       show('customerSection');
     }
 
-    // Produktai
+    // Productos
     const items = order.items || [];
     if (items.length) {
       const list = document.getElementById('productsList');
@@ -471,33 +610,114 @@
           : item.lineTotal
             ? money(item.lineTotal)
             : '—';
-        return `
-          <div class="product-item">
-            <div>
-              <div class="product-item-name">${name}</div>
-              <div class="product-item-sub">Kiekis: ${qty}</div>
-            </div>
-            <div class="product-item-price">${price}</div>
-          </div>
-        `;
+        return `<div class="product-item"> <div> <div class="product-item-name">${name}</div> <div class="product-item-sub">kiekis: ${qty}</div> </div> <div class="product-item-price">${price}</div></div>`;
       }).join('');
       show('productsSection');
     }
 
-    // Bendra suma
+    // Total
     const total = order.amountTotal || order.subtotal;
     if (total) {
       document.getElementById('totalValue').textContent = money(total);
       show('totalRow');
     }
 
-    // Išvalyti krepšelį po sėkmingo pirkimo
+    // Limpiar carrito tras compra exitosa
     localStorage.removeItem('lixbyCart');
     localStorage.removeItem('lixbyLastOrder');
   }
 
   init();
 </script>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
 </body>
 </html>
 
