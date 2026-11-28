@@ -588,3 +588,11 @@ hr/verified/index.html:gcp-api-key:345
 hr/login/index.html:gcp-api-key:979
 hr/two-step-verification/index.html:gcp-api-key:441
 hr/account/index.html:gcp-api-key:1311
+hu/change-password/index.html:gcp-api-key:451
+hu/forget-password/index.html:gcp-api-key:421
+hu/cart/index.html:gcp-api-key:396
+hu/js/comunidad-client.js:gcp-api-key:21
+hu/verified/index.html:gcp-api-key:345
+hu/login/index.html:gcp-api-key:979
+hu/two-step-verification/index.html:gcp-api-key:441
+hu/account/index.html:gcp-api-key:1311
