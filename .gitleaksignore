@@ -596,3 +596,11 @@ hu/verified/index.html:gcp-api-key:345
 hu/login/index.html:gcp-api-key:979
 hu/two-step-verification/index.html:gcp-api-key:441
 hu/account/index.html:gcp-api-key:1311
+lt/change-password/index.html:gcp-api-key:451
+lt/forget-password/index.html:gcp-api-key:421
+lt/cart/index.html:gcp-api-key:396
+lt/js/comunidad-client.js:gcp-api-key:21
+lt/verified/index.html:gcp-api-key:345
+lt/login/index.html:gcp-api-key:979
+lt/two-step-verification/index.html:gcp-api-key:441
+lt/account/index.html:gcp-api-key:1311
