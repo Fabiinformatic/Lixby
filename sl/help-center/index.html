@@ -1,143 +1,482 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="sl">
 <head>
+  <meta charset="UTF-8">
 <script>
   if (location.pathname.endsWith('/index.html')) {
     location.replace(location.href.replace('/index.html', '/'));
   }
 </script>
 
-  <link rel="canonical" href="https://www.lixby.es/sl/help-center/">
-  <link rel="alternate" href="https://www.lixby.es/bg/help-center/" hreflang="bg-BG">
-  <link rel="alternate" href="https://www.lixby.es/cs/help-center/" hreflang="cs-CZ">
-  <link rel="alternate" href="https://www.lixby.es/da/help-center/" hreflang="da-DK">
-  <link rel="alternate" href="https://www.lixby.es/de/help-center/" hreflang="de-DE">
-  <link rel="alternate" href="https://www.lixby.es/el/help-center/" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/help-center/" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/centro-ayuda/" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/et/help-center/" hreflang="et-EE">
-  <link rel="alternate" href="https://www.lixby.es/fi/help-center/" hreflang="fi-FI">
-  <link rel="alternate" href="https://www.lixby.es/fr/help-center/" hreflang="fr-FR">
-  <link rel="alternate" href="https://www.lixby.es/ga/help-center/" hreflang="ga-IE">
-  <link rel="alternate" href="https://www.lixby.es/hr/help-center/" hreflang="hr-HR">
-  <link rel="alternate" href="https://www.lixby.es/hu/help-center/" hreflang="hu-HU">
-  <link rel="alternate" href="https://www.lixby.es/it/help-center/" hreflang="it-IT">
-  <link rel="alternate" href="https://www.lixby.es/lt/help-center/" hreflang="lt-LT">
-  <link rel="alternate" href="https://www.lixby.es/lv/help-center/" hreflang="lv-LV">
-  <link rel="alternate" href="https://www.lixby.es/mt/help-center/" hreflang="mt-MT">
-  <link rel="alternate" href="https://www.lixby.es/nl/help-center/" hreflang="nl-NL">
-  <link rel="alternate" href="https://www.lixby.es/pl/help-center/" hreflang="pl-PL">
-  <link rel="alternate" href="https://www.lixby.es/pt/help-center/" hreflang="pt-PT">
-  <link rel="alternate" href="https://www.lixby.es/ro/help-center/" hreflang="ro-RO">
-  <link rel="alternate" href="https://www.lixby.es/sk/help-center/" hreflang="sk-SK">
-  <link rel="alternate" href="https://www.lixby.es/sl/help-center/" hreflang="sl-SI">
-  <link rel="alternate" href="https://www.lixby.es/sv/help-center/" hreflang="sv-SE">
+  <link rel="canonical" href="https://lixby.es/sl/help-center/">
+  <link rel="alternate" href="https://lixby.es/bg/help-center/" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/help-center/" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/help-center/" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/help-center/" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/help-center/" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/help-center/" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/centro-ayuda/" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/help-center/" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/help-center/" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/help-center/" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/help-center/" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/help-center/" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/help-center/" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/help-center/" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/help-center/" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/help-center/" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/help-center/" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/help-center/" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/help-center/" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/help-center/" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/help-center/" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/help-center/" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/help-center/" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/help-center/" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/help-center/" hreflang="x-default">
 
-        <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro de ayuda | Lixby</title>
-  <meta name="description" content="Accede a gu?as, soporte y recursos de Lixby.">
+  <title>Center za pomoč Lixby | Vodnike in podporo</title>
+  <meta name="description" content="Poiščite vodnike za izdelke in rešitve za naročila, pošiljanje, plačila, vračila in garancije. Dostopajte do podpore za Lixby z enega mesta.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lixby">
+  <meta property="og:locale" content="sl_SI">
+  <meta property="og:url" content="https://lixby.es/sl/help-center/">
+  <meta property="og:title" content="Center za pomoč Lixby | vodnike in podporo">
+  <meta property="og:description" content="Poiščite vodnike za izdelke in rešitve za naročila, pošiljanje, plačila, vračila in garancije. Dostopajte do podpore za Lixby z enega mesta.">
+  <meta property="og:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta property="og:image:alt" content="Lixbyjevi izdelki in storitve">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Center za pomoč Lixby | vodnike in podporo">
+  <meta name="twitter:description" content="Poiščite vodnike za izdelke in rešitve za naročila, pošiljanje, plačila, vračila in garancije. Dostopajte do podpore za Lixby z enega mesta.">
+  <meta name="twitter:image" content="https://lixby.es/images/lixbuds-one-white.png">
+  <meta name="twitter:image:alt" content="Lixbyjevi izdelki in storitve">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Lixby">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/sl/style.css">
   <style>
     html, body { margin: 0; padding: 0; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .help-hero {
-      min-height: 45vh;
+      position: relative;
+      min-height: 72vh;
+      min-height: 72svh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: var(--spacing-20) var(--spacing-6);
-      background: linear-gradient(135deg, #0f4c81 0%, #1a7cc0 55%, #6cc4ff 100%);
-      color: var(--color-white);
+      padding: calc(7rem) var(--spacing-6) var(--spacing-20);
       text-align: center;
+      overflow: visible;
     }
-    .help-hero h1 { font-size: var(--font-size-5xl); margin-bottom: var(--spacing-4); }
-    .help-hero p { font-size: var(--font-size-xl); opacity: 0.9; max-width: 720px; margin: 0 auto; }
-    .help-section { padding: var(--spacing-20) var(--spacing-6); }
-    .help-container { max-width: 1100px; margin: 0 auto; }
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: var(--spacing-6);
-      margin-top: var(--spacing-8);
+    .help-hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
     }
-    .help-card {
-      background: var(--color-gray-50);
-      border-radius: var(--radius-2xl);
-      padding: var(--spacing-8);
-      border: 1px solid var(--color-gray-200);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .help-card h3 { margin: 0 0 var(--spacing-3); font-size: var(--font-size-xl); }
-    .help-card p { margin: 0 0 var(--spacing-4); color: var(--color-gray-600); }
-    .step-list {
-      display: grid;
-      gap: var(--spacing-4);
-      margin: var(--spacing-8) 0 0;
-    }
-    .step-item {
-      background: #ffffff;
-      border: 1px solid var(--color-gray-200);
-      border-radius: var(--radius-xl);
-      padding: var(--spacing-6);
-    }
-    .badge {
+    .help-hero .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      margin-bottom: var(--spacing-12);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+    }
+    .help-hero h1 {
+      width: 100%;
+      font-size: clamp(3rem, 7.5vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: var(--spacing-12);
+      color: var(--text, #111827);
+    }
+    .help-hero h1 .grad {
+      background: linear-gradient(120deg, var(--primary, #0f3dff), var(--primary-2, #16a7ff));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .help-hero p.lead {
+      width: 100%;
+      font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+      color: var(--muted, #5f6b7a);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .hero-search {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      margin: var(--spacing-10) auto 0;
+      z-index: 5;
+    }
+    .hero-search form { position: relative; }
+    .hero-search input[type="search"] {
+      width: 100%;
+      padding: 18px 22px 18px 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.96);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F3DFF' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.65' y1='16.65' x2='21' y2='21'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 20px center;
+      box-shadow: var(--shadow-card), 0 10px 30px rgba(15, 61, 255, 0.12);
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .hero-search input[type="search"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 4px 24px rgba(15, 61, 255, 0.22);
+    }
+    .hero-search-hint {
+      margin: var(--spacing-3) 0 0;
+      font-size: 0.9rem;
+      color: var(--muted, #5f6b7a);
+    }
+    .hero-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(15, 61, 255, 0.16);
+      padding: 6px;
+      text-align: left;
+      overflow: hidden;
+      z-index: 20;
+    }
+    .hero-search-results[hidden] { display: none; }
+    .help-search-item {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s var(--ease-lix);
+    }
+    .help-search-item:hover,
+    .help-search-item:focus-visible {
+      background: #eef3ff;
+      outline: none;
+    }
+    .help-search-item-title {
+      display: block;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .help-search-item-desc {
+      display: block;
+      color: var(--muted, #5f6b7a);
+      font-size: 0.86rem;
+      margin-top: 2px;
+    }
+    .help-search-empty {
+      padding: 14px;
+      color: var(--muted, #5f6b7a);
+      font-size: 0.92rem;
+    }
+    .help-search-empty a { color: var(--primary); font-weight: 600; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: var(--spacing-8);
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform 0.2s var(--ease-lix), box-shadow 0.2s var(--ease-lix);
+    }
+    .status-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .status-pill .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #94a3b8;
+      box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.2);
+    }
+    .status-pill .status-link { color: var(--primary); }
+    .help-section {
+      position: relative;
+      padding: var(--spacing-12) var(--spacing-6) var(--spacing-20);
+    }
+    .help-section + .help-section::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, 80%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, transparent);
+    }
+    .help-container { max-width: 1120px; margin: 0 auto; }
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--spacing-12);
+    }
+    .help-section .section-head::after {
+      display: none;
+    }
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-head p:not(.eyebrow) {
+      font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+      margin-top: var(--spacing-4);
+    }
+    .section-intro {
+      text-align: center;
+      font-size: var(--font-size-lg);
+      color: var(--muted, #5f6b7a);
+      max-width: 560px;
+      margin: 0 auto var(--spacing-10);
+    }
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .help-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      transition: opacity 0.6s var(--ease-lix), transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      color: inherit;
+    }
+    .help-grid .help-card.reveal {
+      opacity: 0;
+      transform: none;
+    }
+    .help-grid .help-card.reveal.visible {
+      opacity: 1;
+    }
+    .help-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .help-card h3 { margin: 0 0 var(--spacing-3); font-size: var(--font-size-xl); }
+    .help-card p { margin: 0 0 var(--spacing-4); color: var(--muted, #5f6b7a); }
+    .help-card .btn { margin-top: auto; align-self: flex-start; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+    }
+    .product-card h3 { margin: 0; font-size: var(--font-size-xl); }
+    .product-card p { margin: 0; color: var(--muted, #5f6b7a); }
+    .product-card .btn { align-self: flex-start; margin-top: auto; }
+    .module-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
       padding: 6px 12px;
       border-radius: 999px;
-      font-weight: 600;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
       font-size: 0.85rem;
-      background: rgba(255,255,255,0.2);
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s var(--ease-lix), border-color 0.2s var(--ease-lix);
     }
-    .note-box {
-      margin-top: var(--spacing-8);
-      padding: var(--spacing-6);
-      border-radius: var(--radius-xl);
-      background: #f0f7ff;
-      border: 1px solid #cfe6ff;
-      color: #1b3f62;
+    .chip:hover { background: #eaf0ff; border-color: rgba(15, 61, 255, 0.35); }
+    .popular-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-10);
     }
-    .faq-item {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-gray-200);
-      background: #fff;
-      margin-bottom: var(--spacing-4);
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%;
-      text-align: left;
-      border: none;
-      background: #fff;
-      padding: var(--spacing-5) var(--spacing-6);
-      font-weight: 600;
-      cursor: pointer;
+    .popular-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: var(--spacing-4);
+      padding: var(--spacing-6);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      transition: transform 250ms var(--ease-lix), box-shadow 250ms var(--ease-lix);
     }
-    .faq-question::after { content: "?"; transition: transform 0.25s ease; }
-    .faq-question[aria-expanded="true"]::after { transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0;
+    .popular-link:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .popular-link .arrow { color: var(--primary); font-weight: 800; }
+    .start-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-10);
+    }
+    .start-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-8);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow-card);
+    }
+    .start-card h3 { margin: 0; font-size: var(--font-size-xl); }
+    .start-card .btn { align-self: flex-start; margin-top: auto; }
+    .start-card .step-list { margin: 0; }
+    .step-list {
+      display: grid;
+      gap: var(--spacing-3);
+    }
+    .step-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-6);
+      box-shadow: var(--shadow-card);
+    }
+    .step-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .step-item p { margin: 0; color: var(--muted, #5f6b7a); }
+    .contact-band {
+      position: relative;
       overflow: hidden;
-      opacity: 0;
-      padding: 0 var(--spacing-6);
-      transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-      color: var(--color-gray-600);
-      line-height: 1.7;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-8);
+      padding: clamp(2rem, 4vw, 3rem);
+      border-radius: var(--radius-2xl);
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      box-shadow: 0 24px 50px rgba(15, 61, 255, 0.28);
     }
-    .faq-answer.active { max-height: 220px; opacity: 1; padding: 0 var(--spacing-6) var(--spacing-5); }
+    .contact-band-main { max-width: 560px; }
+    .contact-band .eyebrow { color: rgba(255, 255, 255, 0.85); }
+    .contact-band h2 {
+      margin: 0 0 var(--spacing-3);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .contact-band p { margin: 0; color: rgba(255, 255, 255, 0.92); line-height: 1.6; }
+    .contact-band p a { color: #fff; font-weight: 700; text-decoration: underline; }
+    .contact-band-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-3);
+    }
+    .contact-band .btn-secondary {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+    .contact-band .btn-secondary:hover { background: rgba(255, 255, 255, 0.26); }
+    .contact-band .btn-primary {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+    .contact-band .btn-primary:hover { background: #f2f6ff; }
+    .note-box {
+      margin-top: var(--spacing-10);
+      padding: var(--spacing-6);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        var(--shadow-card);
+      color: var(--text);
+    }
+    .note-box strong { color: var(--primary); }
+    .note-box a { color: var(--primary); font-weight: 600; }
     @media (max-width: 768px) {
-      .help-hero { padding: var(--spacing-16) var(--spacing-4); }
+      .help-hero { padding: var(--spacing-16) var(--spacing-4) var(--spacing-12); }
+      .help-section { padding: var(--spacing-10) var(--spacing-4) var(--spacing-16); }
+      .contact-band { flex-direction: column; align-items: flex-start; }
+      .contact-band-actions { width: 100%; }
     }
   </style>
   <link rel="icon" href="/favicon.ico">
@@ -147,261 +486,685 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
+      "url": "https://lixby.es/sl/help-center/",
+      "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
       ]
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Domov",
+          "item": "https://lixby.es/sl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Center za pomoč",
+          "item": "https://lixby.es/sl/help-center/"
+        }
+      ]
+    }
+  </script>
+  <noscript>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 </head>
 <body>
 
+  <div id="scroll-progress"></div>
+  <div class="background-orb orb-1" aria-hidden="true"></div>
+  <div class="background-orb orb-2" aria-hidden="true"></div>
+  <div class="background-orb orb-3" aria-hidden="true"></div>
+  <div class="background-orb orb-4" aria-hidden="true"></div>
+  <div class="background-orb orb-5" aria-hidden="true"></div>
+
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="/sl/" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/sl/shop/" class="nav-link">Tienda</a>
-        <a href="/sl/#productos" class="nav-link">Productos</a>
-        <a href="/sl/#apps" class="nav-link">Apps</a>
-        <a href="/sl/support/" class="nav-link">Soporte</a>
+    <div class="container nav-container">
+      <a href="/sl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Glavni meni">
+        <a href="/sl/shop/" class="nav-link">Trgovina</a>
+        <a href="/sl/products/" class="nav-link">Izdelki</a>
+        <a href="/sl/apps/" class="nav-link">Apps</a>
+        <a href="/sl/support/" class="nav-link">Podpora</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Iskanje" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/sl/shop/" method="get">
+        <form id="navSearchForm" action="/sl/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar producto..."
-            aria-label="Buscar producto"
+            placeholder="Išči v Lixby..."
+            aria-label="Išči v Lixby"
           >
         </form>
-        <a href="/sl/cart/" class="nav-icon-link" aria-label="Cesta">
-          <img src="../images/Bolsa.png" alt="Cesta">
+        <a href="/sl/cart/" class="nav-icon-link" aria-label="Košarica">
+          <img src="/sl/images/Bolsa.png" alt="Košarica">
         </a>
-        <a href="/sl/account/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="../images/cuenta.png" alt="Cuenta">
+        <a href="/sl/account/" class="nav-icon-link" aria-label="Račun">
+          <img src="/sl/images/cuenta.png" alt="Račun">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Men?" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meni" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
-  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/sl/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Buscar"
-          aria-label="Buscar producto"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Cerrar men?">
-        <span aria-hidden="true">�</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Principal m?vil">
-      <a href="/sl/shop/">Tienda</a>
-      <a href="/sl/#productos">Productos</a>
-      <a href="/sl/#apps">Apps</a>
-      <a href="/sl/support/">Soporte</a>
+    <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobilni meni">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Trgovina</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/sl/shop/">Vstopi v trgovino</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/products/lixbuds-one/">Slušalke LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/buy-headphones/lixbuds-one/">Kupi zdaj</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/news/">Novice</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Izdelki</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/sl/products/">Oglej si izdelke</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/lixsafe/">LixSafe in kritja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/sl/apps/">Oglej si aplikacije</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/lixney/">Podpora za Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/lixfly/">Podpora za Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Podpora</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/sl/support/">Pojdi na podporo</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/faq/">Pogosta vprašanja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/returns/">Vračila</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/sl/cart/">Cesta</a>
-      <a href="/sl/account/">Cuenta</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Košarica</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/sl/cart/">Oglej si košarico</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/cart/">Zaključi nakup</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Račun</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Pojdi v moj račun</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Moja naročila</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Moj profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Nastavitve</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/login/">Prijavi se</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/two-step-verification/">Dvostopenjsko preverjanje</a></p>
+        </div>
+      </div>
     </div>
   </div>
+
+
   <section class="help-hero">
-    <div>
-      <span class="badge">Centro de ayuda</span>
-      <h1>Centro de ayuda Lixby</h1>
-      <p>Encuentra gu?as, resoluci?n de problemas y contacto directo con nuestro equipo.</p>
+    <div class="help-hero-inner reveal" data-delay="0s">
+      <span class="badge">Center za pomoč</span>
+      <h1>Center za pomoč <span class="grad">Lixby</span></h1>
+      <p class="lead">Iskanje vodnikov, odpravljanje težav in neposreden stik z našo ekipo.</p>
+      <div class="hero-search">
+        <form id="helpSearchForm" action="/sl/help-center/faq/" method="get" role="search">
+          <label class="visually-hidden" for="helpSearch">Poiščite center za pomoč</label>
+          <input
+            type="search"
+            id="helpSearch"
+            name="q"
+            placeholder="Kako vam lahko pomagamo?"
+            aria-label="Poiščite center za pomoč"
+            role="combobox"
+            aria-expanded="false"
+            aria-autocomplete="list"
+            aria-haspopup="listbox"
+            aria-controls="helpSearchResults"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </form>
+        <div class="hero-search-results" id="helpSearchResults" role="listbox" aria-label="Rezultati centra za pomoč" hidden></div>
+        <p class="hero-search-hint">Iščite samo v centru za pomoč: vodniki, članki in pogosta vprašanja.</p>
+      </div>
+      <a class="status-pill" href="/sl/help-center/system-status/">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Stanje sistema</span>
+        <span class="status-link">Glej stanje →</span>
+      </a>
     </div>
   </section>
-  <section class="help-section">
+
+  <section class="help-section" id="soporte-producto">
     <div class="help-container">
-      <h2>Accesos r?pidos</h2>
-      <p>Elige el tema que mejor se ajuste a tu consulta y te guiaremos paso a paso.</p>
-      <div class="help-grid">
-        <a class="help-card" href="/sl/help-center/lixbuds/">
-          <h3>Soporte LixBuds</h3>
-          <p>Emparejamiento, bater?a, sonido y limpieza.</p>
-          <span class="btn btn-primary">Ver gu?as</span>
-        </a>
-        <a class="help-card" href="/sl/help-center/lixney/">
-          <h3>Soporte Lixney</h3>
-          <p>Cuenta, sincronizaci?n y privacidad.</p>
-          <span class="btn btn-primary">Gestionar</span>
-        </a>
-        <a class="help-card" href="/sl/help-center/faq/">
-          <h3>Preguntas frecuentes</h3>
-          <p>Respuestas r?pidas a dudas comunes.</p>
-          <span class="btn btn-primary">Ir a FAQ</span>
-        </a>
-        <a class="help-card" href="/sl/help-center/troubleshooting/">
-          <h3>Soluci?n de problemas</h3>
-          <p>Diagn?sticos guiados en minutos.</p>
-          <span class="btn btn-primary">Empezar</span>
-        </a>
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Podpora za izdelke</p>
+        <h2>Izberite svoj izdelek</h2>
       </div>
-      <div class="note-box">
-        <strong>Estado del servicio:</strong> Todo operativo. Respuestas habituales en menos de 24 horas.
+      <p class="section-intro reveal" data-delay="0.05s">Neposreden dostop do vodnikov za izdelek, ki ga potrebujete.</p>
+      <div class="product-grid">
+        <article class="product-card reveal" data-delay="0.1s">
+          <h3>Podpora za LixBuds</h3>
+          <p>Seznanjanje, baterija, zvok, firmware in čiščenje slušalk.</p>
+          <div class="module-chips">
+            <a class="chip" href="/sl/help-center/bluetooth-sync/">Tekma</a>
+            <a class="chip" href="/sl/help-center/care-cleaning/">Čiščenje</a>
+            <a class="chip" href="/sl/help-center/firmware-updates/">Firmware</a>
+          </div>
+          <a class="btn btn-primary" href="/sl/help-center/lixbuds/">Glej vodnike</a>
+        </article>
+        <article class="product-card reveal" data-delay="0.15s">
+          <h3>Podpora Lixney</h3>
+          <p>Račun, upravljanje vaših lokalnih podatkov in zasebnost. Lixney shrani podatke v vašo napravo in jih lahko izvozite ali uvozite.</p>
+          <div class="module-chips">
+            <a class="chip" href="/sl/help-center/my-account/">Moj račun</a>
+            <a class="chip" href="/sl/help-center/subscriptions/">Naročnine</a>
+            <a class="chip" href="/sl/help-center/privacy-data/">Varstvo podatkov</a>
+          </div>
+          <a class="btn btn-primary" href="/sl/help-center/lixney/">Upravljati</a>
+        </article>
+        <article class="product-card reveal" data-delay="0.2s">
+          <h3>Podpora Lixfly</h3>
+          <p>Konfiguracija, EFB, načrti letenja in zmogljivost za Microsoft Flight Simulator.</p>
+          <div class="module-chips">
+            <a class="chip" href="/sl/help-center/lixfly/#preflight">Preflight</a>
+            <a class="chip" href="/sl/help-center/lixfly/#flight-plan">Flight Plan</a>
+            <a class="chip" href="/sl/help-center/lixfly/#performance">Performance</a>
+            <a class="chip" href="/sl/help-center/lixfly/#navegacion">Navigacijo</a>
+            <a class="chip" href="/sl/help-center/lixfly/#eqrh">eQRH</a>
+            <a class="chip" href="/sl/help-center/lixfly/#extras">Extras</a>
+          </div>
+          <a class="btn btn-primary" href="/sl/help-center/lixfly/">Raziskati</a>
+        </article>
       </div>
     </div>
   </section>
-  <section class="help-section" style="background: var(--color-gray-50);">
+
+  <section class="help-section" id="populares">
     <div class="help-container">
-      <h2>Tambi?n podemos ayudarte con</h2>
-      <div class="help-grid">
-        <a class="help-card" href="/sl/help-center/warranty/">
-          <h3>Garant?a</h3>
-          <p>Condiciones, cobertura y pasos para tramitarla.</p>
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Priljubljeni predmeti</p>
+        <h2>Najpogostejši dvomi</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Članki, ki so največ obiskani, z enim klikom.</p>
+      <div class="popular-list">
+        <a class="popular-link reveal" data-delay="0.05s" href="/sl/help-center/bluetooth-sync/">
+          <span>Kako ujemati LixBuds</span><span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="help-card" href="/sl/help-center/returns/">
-          <h3>Devoluciones</h3>
-          <p>Plazos, requisitos y seguimiento.</p>
+        <a class="popular-link reveal" data-delay="0.08s" href="/sl/help-center/lixney/">
+          <span>Kako narediti varnostno kopijo v Lixney</span><span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="help-card" href="/sl/help-center/contact/">
-          <h3>Contacto</h3>
-          <p>Escr?benos o solicita soporte personalizado.</p>
+        <a class="popular-link reveal" data-delay="0.11s" href="/sl/help-center/lixfly/">
+          <span>Kako uvoziti načrt leta v Lixfly</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.14s" href="/sl/help-center/firmware-updates/">
+          <span>Kako posodobiti vdelano programsko opremo LixBuds</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.17s" href="/sl/help-center/returns/">
+          <span>Kako obdelati vračilo ali povračilo</span><span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="popular-link reveal" data-delay="0.2s" href="/sl/help-center/my-account/">
+          <span>Kako ponovno pridobiti dostop do svojega računa</span><span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
-  <footer class="footer footer-mega">
+
+  <section class="help-section" id="primeros-pasos">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Prvi koraki</p>
+        <h2>Začnite uporabljati v nekaj minutah</h2>
+      </div>
+      <div class="start-grid">
+        <div class="start-card reveal" data-delay="0.05s">
+          <h3>Začne se z Lixney</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <strong>1. Prenesite in zaženite</strong>
+              <p>Namestite Lixney in začnite snemati svoje gibanje. Podatki so shranjeni na vaši napravi.</p>
+            </div>
+            <div class="step-item">
+              <strong>2. Izvozite svojo kopijo</strong>
+              <p>V nastavitvah lahko svoje podatke izvozite v datoteko json in jih shranite kamor koli želite.</p>
+            </div>
+            <div class="step-item">
+              <strong>3. Pomembno je, ko ga potrebujete</strong>
+              <p>Obnovite ali premaknite svoje podatke z uvozom datoteke json v aplikacijo.</p>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="/sl/help-center/lixney/">Glejte vodnik Lixney</a>
+        </div>
+        <div class="start-card reveal" data-delay="0.1s">
+          <h3>Začne se z Lixfly</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <strong>1. Namestite Lixfly</strong>
+              <p>Prenesite aplikacijo in ustvarite svoj pilotni profil.</p>
+            </div>
+            <div class="step-item">
+              <strong>2. Ustvarite svoj prvi načrt leta</strong>
+              <p>Za pripravo poti vnesite izvor, cilj in nadmorsko višino.</p>
+            </div>
+            <div class="step-item">
+              <strong>3. Poizvedi EFB</strong>
+              <p>Preglejte zemljevide, kontrolne sezname in letalsko dokumentacijo, ko jih potrebujete.</p>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="/sl/help-center/lixfly/">Glejte vodnik Lixfly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="compatibilidad">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Pred namestitvijo</p>
+        <h2>Zahteve in združljivost</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Preden začnete, preverite, ali je vaša naprava združljiva.</p>
+      <div class="help-grid">
+        <div class="help-card reveal" data-delay="0.1s">
+          <h3>Lixfly</h3>
+          <p>Združljivo z Microsoft Flight Simulator 2020 in Microsoft Flight Simulator 2024. Preverite zahteve in združljive platforme v vaši podpori.</p>
+          <a class="btn btn-secondary" href="/sl/help-center/lixfly/">Glej združljivost</a>
+        </div>
+        <div class="help-card reveal" data-delay="0.15s">
+          <h3>Lixney</h3>
+          <p>Pred namestitvijo aplikacije pri podpori Lixney preverite združljive naprave in različice.</p>
+          <a class="btn btn-secondary" href="/sl/help-center/lixney/">Glej združljivost</a>
+        </div>
+        <div class="help-card reveal" data-delay="0.2s">
+          <h3>LixBuds One</h3>
+          <p>Povezujejo se prek Bluetooth 6.0 in jih lahko seznanite z mobilnim telefonom, tablico ali računalnikom.</p>
+          <a class="btn btn-secondary" href="/sl/help-center/lixbuds/">Glej združljivost</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="explora">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Hiter dostop</p>
+        <h2>Raziščite center za pomoč</h2>
+      </div>
+      <p class="section-intro reveal" data-delay="0.05s">Izberite temo, ki najbolj ustreza vaši poizvedbi, in vodili vas bomo korak za korakom.</p>
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.1s" href="/sl/help-center/faq/">
+          <h3>Pogosta vprašanja</h3>
+          <p>Hitri odgovori na pogosta vprašanja.</p>
+          <span class="btn btn-primary">Pojdi na pogosta vprašanja</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="/sl/help-center/troubleshooting/">
+          <h3>Odpravljanje težav</h3>
+          <p>Vodena diagnostika v nekaj minutah.</p>
+          <span class="btn btn-primary">Začni</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.2s" href="/sl/help-center/bluetooth-sync/">
+          <h3>Sinhronizacija in bluetooth</h3>
+          <p>Seznanite, znova povežite in rešite težave s povezavo.</p>
+          <span class="btn btn-primary">Povezati</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.25s" href="/sl/help-center/care-cleaning/">
+          <h3>Nego in čiščenje</h3>
+          <p>Vzdrževanje in čiščenje LixBuds in ohišij.</p>
+          <span class="btn btn-primary">Glej vodnik</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.3s" href="/sl/help-center/firmware-updates/">
+          <h3>Posodobitve vdelane programske opreme</h3>
+          <p>Kako posodobiti vdelano programsko opremo LixBuds in aplikacij.</p>
+          <span class="btn btn-primary">Posodobitev</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="cuenta">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Račun in nakupi</p>
+        <h2>Upravljati svoj račun</h2>
+      </div>
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.1s" href="/sl/help-center/my-account/">
+          <h3>Moj račun</h3>
+          <p>Dostop, varnost in osebni podatki.</p>
+          <span class="btn btn-primary">Upravljati</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="/sl/help-center/orders-shipping/">
+          <h3>Naročila in pošiljke</h3>
+          <p>Stanje naročila, roki in sledenje.</p>
+          <span class="btn btn-primary">Nadaljevati</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.2s" href="/sl/help-center/payment-methods/">
+          <h3>Načini plačila</h3>
+          <p>Kartice, napake pri zaračunavanju in plačilu.</p>
+          <span class="btn btn-primary">Poglej več</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.25s" href="/sl/help-center/cancellations/">
+          <h3>Odpovedi</h3>
+          <p>Kako preklicati naročilo pred pošiljanjem.</p>
+          <span class="btn btn-primary">Vedeti kako</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.3s" href="/sl/help-center/subscriptions/">
+          <h3>Naročnine</h3>
+          <p>Načrta Lixney in Lixfly: aktiviraj, obnovi in ​​prekliči.</p>
+          <span class="btn btn-primary">Upravljati</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.35s" href="/sl/help-center/gift-cards/">
+          <h3>Darila in voščilnice</h3>
+          <p>Darilne kartice, menjave in personalizacija.</p>
+          <span class="btn btn-primary">Poglej več</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="confianza">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Zaupanja vreden in zakonit</p>
+        <h2>Vaš duševni mir je pomemben</h2>
+      </div>
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.1s" href="/sl/help-center/privacy-data/">
+          <h3>Zasebnosti in podatkov</h3>
+          <p>Kako uporabljamo vaše podatke, GDPR in pravice.</p>
+          <span class="btn btn-primary">Glej politiko</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="/sl/help-center/accessibility/">
+          <h3>Dostopnost</h3>
+          <p>Uporaba izdelkov Lixby s posebnimi potrebami.</p>
+          <span class="btn btn-primary">Vedeti več</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.2s" href="/sl/help-center/warranty/">
+          <h3>Garancija</h3>
+          <p>Pogoji, pokritost in koraki za njegovo obdelavo.</p>
+          <span class="btn btn-primary">Glej podrobnosti</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.25s" href="/sl/help-center/returns/">
+          <h3>Vračila</h3>
+          <p>Roki, zahteve in spremljanje.</p>
+          <span class="btn btn-primary">Kako se vrniti</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.3s" href="/sl/help-center/lixsafe/">
+          <h3>Podpora LixSafe</h3>
+          <p>Podaljšana garancija: kritje, registracija in reklamacije.</p>
+          <span class="btn btn-primary">Glej podrobnosti</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="mas-ayuda">
+    <div class="help-container">
+      <div class="section-head reveal" data-delay="0s">
+        <p class="eyebrow">Napredno podporo</p>
+        <h2>Več pomoči</h2>
+      </div>
+      <div class="help-grid">
+        <a class="help-card reveal" data-delay="0.1s" href="/sl/help-center/system-status/">
+          <h3>Stanje sistema</h3>
+          <p>Informacije o statusu storitev Lixby.</p>
+          <span class="btn btn-primary">Glej stanje</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.15s" href="/sl/help-center/community/">
+          <h3>Skupnost</h3>
+          <p>Forum, kjer si uporabniki pomagajo.</p>
+          <span class="btn btn-primary">Pridruži se</span>
+        </a>
+        <a class="help-card reveal" data-delay="0.2s" href="/sl/help-center/release-notes/">
+          <h3>Novice in posodobitve</h3>
+          <p>Dnevnik sprememb aplikacij in vdelane programske opreme.</p>
+          <span class="btn btn-primary">Glej novice</span>
+        </a>
+      </div>
+      <div class="note-box reveal" data-delay="0.15s">
+        <strong>Status storitve:</strong> preberite informacije, ki so na voljo v <a href="/sl/help-center/system-status/">stran s stanjem</a>.
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section" id="contacto">
+    <div class="help-container">
+      <div class="contact-band reveal" data-delay="0s">
+        <div class="contact-band-main">
+          <p class="eyebrow">Ne najdete svojega dvoma?</p>
+          <h2>Kontaktirajte podporo</h2>
+          <p>Pišite nam na <a href="mailto:info@lixby.es">info@lixby.es</a>. Običajno odgovorimo v manj kot 24 urah (od ponedeljka do petka).</p>
+        </div>
+        <div class="contact-band-actions">
+          <a class="btn btn-primary" href="mailto:info@lixby.es?subject=Pro%C5%A1nja%20za%20podporo%20-%20Lixby">Napiši e-pošto</a>
+          <a class="btn btn-secondary" href="mailto:info@lixby.es?subject=Prijavi%20te%C5%BEavo%20-%20Lixby&amp;body=Povej%20mi%2C%20kaj%20se%20je%20zgodilo%3A%0A%0AIzdelek%20ali%20aplikacija%3A%0ARazli%C4%8Dica%3A%0AKoraki%20za%20ponovitev%20te%C5%BEave%3A%0A%0A">Prijavi težavo</a>
+          <a class="btn btn-secondary" href="mailto:info@lixby.es?subject=Predlogi%20za%20izbolj%C5%A1ave%20-%20Lixby&amp;body=Deli%20svojo%20zamisel%2C%20kako%20izbolj%C5%A1ati%20Lixby%3A%0A%0A">Predlagati izboljšavo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Oglej si in kupi</h3>
         <ul>
-          <li><a href="/sl/shop/">Tienda</a></li>
+          <li><a href="/sl/shop/">Trgovina</a></li>
           <li><a href="/sl/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/sl/#apps">Apps</a></li>
-          <li><a href="/sl/support/">Soporte</a></li>
+          <li><a href="/sl/apps/">Apps</a></li>
+          <li><a href="/sl/support/">Podpora</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Podpora</h3>
         <ul>
-          <li><a href="/sl/support/">P?gina inicial soporte</a></li>
-          <li><a href="/sl/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/sl/pages/legal/returns/">Informaci?n de Garant?a</a></li>
-          <li><a href="mailto:info@lixby.es">Email</a></li>
+          <li><a href="/sl/support/">Domača stran podpore</a></li>
+          <li><a href="/sl/support/#faq">Pogosta vprašanja o spletni trgovini</a></li>
+          <li><a href="/sl/help-center/warranty/">Informacije o garanciji</a></li>
+          <li><a href="mailto:info@lixby.es">E-pošta izvršnemu direktorju</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Račun</h3>
         <ul>
-          <li><a href="/sl/track/">Pedidos</a></li>
-          <li><a href="/sl/account/">Mi cuenta</a></li>
-          <li><a href="/sl/account/">Cupones</a></li>
+          <li><a href="/sl/track/">Naročila</a></li>
+          <li><a href="/sl/account/">Moj račun</a></li>
+          <li><a href="/sl/account/">Kuponi</a></li>
+          <li><a href="/sl/community/">Skupnost</a></li>
         </ul>
       </section>
+
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>O Lixby</h3>
         <ul>
-          <li><a href="/sl/about/">Newsroom</a></li>
-          <li><a href="/sl/pages/legal/returns/">Garant?a</a></li>
-          <li><a href="/sl/about/">Eventos</a></li>
-          <li><a href="/sl/support/">Contacto</a></li>
+          <li><a href="/sl/about/">O nas</a></li>
+          <li><a href="/sl/help-center/warranty/">Garancija</a></li>
+          <li><a href="/sl/news/">Novice</a></li>
+          <li><a href="/sl/help-center/contact/">Kontakt</a></li>
         </ul>
       </section>
     </div>
+
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright ? 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Vse pravice pridržane.</p>
       <div class="footer-legal-links">
-        <a href="/sl/pages/legal/privacy/">Pol?tica de privacidad</a>
-        <a href="/sl/pages/legal/cookies/">Uso de cookies</a>
-        <a href="/sl/pages/legal/terms/">Condiciones de uso</a>
-        <a href="/sl/support/">Ventas y reembolsos</a>
-        <a href="/sl/pages/legal/legal-notice/">Avisos legales</a>
+        <a href="/sl/pages/legal/privacy/">Pravilnik o zasebnosti</a>
+        <a href="/sl/pages/legal/cookies/">Pravilnik o piškotkih</a>
+        <a href="/sl/pages/legal/terms/">Splošni pogoji</a>
+        <a href="/sl/pages/legal/sales-refunds/">Prodaja in vračila denarja</a>
+        <a href="/sl/pages/legal/legal-notice/">Pravna obvestila</a>
       </div>
     </div>
   </footer>
+  <script src="/sl/search-index.js" defer></script>
+  <script src="../main.js" defer></script>
   <script>
-    const nav = document.getElementById("nav");
-    const searchForm = document.getElementById("navSearchForm");
-    const searchInput = document.getElementById("navSearch");
-    const mobileSearchForm = document.getElementById("navSearchFormMobile");
-    const mobileSearchInput = document.getElementById("navSearchMobile");
-    const mobilePanel = document.getElementById("navMobilePanel");
-    const searchToggle = document.querySelector(".nav-search-toggle");
-    const menuToggle = document.querySelector(".nav-menu-toggle");
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('helpSearchForm');
+      const input = document.getElementById('helpSearch');
+      const box = document.getElementById('helpSearchResults');
+      if (!form || !input || !box) return;
 
-    const closeNav = () => {
-      document.body.classList.remove("nav-open", "menu-open");
-      nav?.classList.remove("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "true");
-      searchToggle?.setAttribute("aria-expanded", "false");
-      menuToggle?.setAttribute("aria-expanded", "false");
-    };
+      const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
 
-    const openNav = (focusSearch = false) => {
-      document.body.classList.add("nav-open", "menu-open");
-      nav?.classList.add("nav-open");
-      mobilePanel?.setAttribute("aria-hidden", "false");
-      searchToggle?.setAttribute("aria-expanded", "true");
-      menuToggle?.setAttribute("aria-expanded", "true");
-      if (focusSearch && mobileSearchInput) {
-        setTimeout(() => mobileSearchInput.focus(), 80);
-      }
-    };
+      const escapeHtml = (value) => String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
 
-    const toggleNav = (focusSearch = false) => {
-      if (nav?.classList.contains("nav-open")) {
-        closeNav();
-      } else {
-        openNav(focusSearch);
-      }
-    };
+      const items = (window.LIXBY_SEARCH_INDEX || [])
+        .filter((page) => (page.url || '').startsWith('/sl/help-center'))
+        .map((page) => ({
+          ...page,
+          nTitle: normalize(page.title),
+          nDesc: normalize(page.description),
+          nKeywords: normalize(page.keywords)
+        }));
 
-    searchToggle?.addEventListener("click", () => toggleNav(true));
-    menuToggle?.addEventListener("click", () => toggleNav(false));
+      const close = () => {
+        box.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+      };
 
-    const mobileClose = document.querySelector(".nav-mobile-close");
-    mobileClose?.addEventListener("click", () => closeNav());
+      const render = (raw) => {
+        const term = raw.trim();
+        box.innerHTML = '';
+        if (term.length < 2) {
+          close();
+          return;
+        }
 
-    document.querySelectorAll(".nav-mobile-links a").forEach((link) => {
-      link.addEventListener("click", () => closeNav());
+        const phrase = normalize(term);
+        const words = phrase.split(' ').filter(Boolean);
+        const scored = [];
+
+        items.forEach((page) => {
+          let score = 0;
+          let matched = 0;
+          words.forEach((word) => {
+            let points = 0;
+            if (page.nTitle.includes(word)) points += 30;
+            if (page.nKeywords.includes(word)) points += 14;
+            if (page.nDesc.includes(word)) points += 8;
+            if (points > 0) matched += 1;
+            score += points;
+          });
+          if (matched === 0) return;
+          if (page.nTitle.includes(phrase)) score += 40;
+          scored.push({ page, score: score + matched * 15 });
+        });
+
+        scored.sort((a, b) => b.score - a.score);
+
+        if (!scored.length) {
+          box.innerHTML = '<div class="help-search-empty">za to iskanje nismo našli člankov. poskusite z drugo besedo ali <a href="/sl/help-center/contact/">se obrnite na podporo</a>.</div>';
+          box.hidden = false;
+          input.setAttribute('aria-expanded', 'true');
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        scored.slice(0, 6).forEach(({ page }) => {
+          const link = document.createElement('a');
+          link.className = 'help-search-item';
+          link.href = page.url;
+          link.setAttribute('role', 'option');
+          const title = document.createElement('span');
+          title.className = 'help-search-item-title';
+          title.textContent = page.title || page.url;
+          link.appendChild(title);
+          if (page.description) {
+            const desc = document.createElement('span');
+            desc.className = 'help-search-item-desc';
+            desc.textContent = page.description;
+            link.appendChild(desc);
+          }
+          fragment.appendChild(link);
+        });
+
+        box.appendChild(fragment);
+        box.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+      };
+
+      input.addEventListener('input', () => render(input.value));
+      input.addEventListener('focus', () => {
+        if (input.value.trim().length >= 2) render(input.value);
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const first = box.querySelector('a.help-search-item');
+        if (first) {
+          window.location.href = first.getAttribute('href');
+          return;
+        }
+        window.location.href = '/sl/help-center/faq/';
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!form.contains(event.target) && !box.contains(event.target)) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
     });
-
-    if (searchForm && searchInput) {
-      searchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = searchInput.value.trim();
-        const url = query ? `/sl/shop/?q=${encodeURIComponent(query)}` : "/sl/shop/";
-        window.location.href = url;
-      });
-    }
-
-    if (mobileSearchForm && mobileSearchInput) {
-      mobileSearchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const query = mobileSearchInput.value.trim();
-        const url = query ? `/sl/shop/?q=${encodeURIComponent(query)}` : "/sl/shop/";
-        window.location.href = url;
-      });
-    }
   </script>
-  <script src="../script.js"></script>
 </body>
 </html>
-
-
-
