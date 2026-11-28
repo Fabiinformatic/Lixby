@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 <head>
 <script>
   if (location.pathname.endsWith('/index.html')) {
@@ -10,11 +10,32 @@
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
 
-  <link rel="canonical" href="https://www.lixby.es/en/forget-password">
-  <link rel="alternate" href="https://www.lixby.es/el/forget-password" hreflang="el-GR">
-  <link rel="alternate" href="https://www.lixby.es/en/forget-password" hreflang="en-US">
-  <link rel="alternate" href="https://www.lixby.es/es/olvidar-contrasena" hreflang="es-ES">
-  <link rel="alternate" href="https://www.lixby.es/lt/forget-password" hreflang="lt-LT">
+  <link rel="canonical" href="https://lixby.es/sl/forget-password">
+  <link rel="alternate" href="https://lixby.es/bg/forget-password" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/forget-password" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/forget-password" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/forget-password" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/forget-password" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/forget-password" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/olvidar-contrasena" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/forget-password" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/forget-password" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/forget-password" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/forget-password" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/forget-password" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/forget-password" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/forget-password" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/forget-password" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/forget-password" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/forget-password" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/forget-password" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/forget-password" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/forget-password" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/forget-password" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/forget-password" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/forget-password" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/forget-password" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/en/forget-password" hreflang="x-default">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -24,7 +45,7 @@
   <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
   <link rel="stylesheet" type="text/css" href="/localnav.css" />
 
-  <title>Reset password | Lixby</title>
+  <title>Obnovi geslo | Lixby</title>
 
   <meta name="author" content="Lixby" />
 
@@ -34,8 +55,11 @@
   <link rel="apple-touch-icon" href="/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/sl/style.css">
   <style>
     .password-page {
       padding: 34px 0 84px;
@@ -67,18 +91,38 @@
       border-color: #fecaca;
       background: #fef2f2;
       color: #b91c1c;
+      animation: statusErrorShake 0.4s ease;
     }
 
     .status-msg.success {
       border-color: #a7f3d0;
       background: #ecfdf5;
       color: #047857;
+      animation: statusSuccessPulse 0.6s ease forwards;
     }
 
     .status-msg.info {
       border-color: #bfdbfe;
       background: #eff6ff;
       color: #1d4ed8;
+      animation: statusInfoSlide 0.4s ease forwards;
+    }
+
+    @keyframes statusSuccessPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(16,185,129,0.2); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+
+    @keyframes statusErrorShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    @keyframes statusInfoSlide {
+      0% { opacity: 0; transform: translateY(-8px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .field {
@@ -94,7 +138,7 @@
     .field input {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 9px 11px;
       font: inherit;
       background: #f8fafc;
@@ -107,20 +151,33 @@
     }
 
     .actions {
-      display: flex;
+      display: grid;
       gap: 10px;
-      flex-wrap: wrap;
+    }
+
+    #sendResetBtn {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    #sendResetBtn:hover {
+      transform: none;
+    }
+
+    .actions a {
+      width: 100%;
     }
   </style>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/icon.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lixby",
-      "url": "https://www.lixby.es",
-      "logo": "https://www.lixby.es/logo.png",
+      "url": "https://lixby.es/sl/forget-password",
+      "logo": "https://lixby.es/logo.png",
       "sameAs": [
         "https://github.com/lixby"
       ]
@@ -130,97 +187,235 @@
 <body>
 
   <header class="nav" id="nav">
-<div class="container nav-container">
-      <a href="./" class="nav-brand">Lixby</a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="/sl/shop/" class="nav-link">Store</a>
-        <a href="#productos" class="nav-link">Products</a>
-        <a href="#apps" class="nav-link">Apps</a>
-        <a href="/sl/support/" class="nav-link">Support</a>
+    <div class="container nav-container">
+      <a href="/sl/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Glavni meni">
+        <a href="/sl/shop/" class="nav-link">Trgovina</a>
+        <a href="/sl/products/" class="nav-link">Izdelki</a>
+        <a href="/sl/apps/" class="nav-link">Apps</a>
+        <a href="/sl/support/" class="nav-link">Podpora</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Search" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Iskanje" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/sl/shop/" method="get">
+        <form id="navSearchForm" action="/sl/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Search product..."
-            aria-label="Search product"
+            placeholder="Išči v Lixby..."
+            aria-label="Išči v Lixby"
           >
         </form>
-        <a href="/sl/cart/" class="nav-icon-link" aria-label="Cart">
-          <img src="images/Bolsa.png" alt="Cart">
+        <a href="/sl/cart/" class="nav-icon-link" aria-label="Košarica">
+          <img src="/sl/images/Bolsa.png" alt="Košarica">
         </a>
-        <a href="/sl/account/" class="nav-icon-link" aria-label="Account">
-          <img src="images/cuenta.png" alt="Account">
+        <a href="/sl/account/" class="nav-icon-link" aria-label="Račun">
+          <img src="/sl/images/cuenta.png" alt="Račun">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menu" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Meni" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
   <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <div class="nav-mobile-top">
-      <form id="navSearchFormMobile" class="nav-search-form-mobile" action="/sl/shop/" method="get">
-        <input
-          type="search"
-          id="navSearchMobile"
-          name="q"
-          class="nav-search-mobile"
-          placeholder="Search"
-          aria-label="Search product"
-        >
-      </form>
-      <button type="button" class="nav-mobile-close" aria-label="Close menu">
-        <span aria-hidden="true">✕</span>
-      </button>
-    </div>
-    <nav class="nav-mobile-links" aria-label="Mobile main">
-      <a href="/sl/shop/">Store</a>
-      <a href="#productos">Products</a>
-      <a href="#apps">Apps</a>
-      <a href="/sl/support/">Support</a>
+    <nav class="nav-mobile-links" aria-label="Mobilni meni">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Trgovina</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/sl/shop/">Vstopi v trgovino</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/products/lixbuds-one/">Slušalke LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/buy-headphones/lixbuds-one/">Kupi zdaj</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/news/">Novice</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Izdelki</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/sl/products/">Oglej si izdelke</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/lixsafe/">LixSafe in kritja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/sl/apps/">Oglej si aplikacije</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/lixney/">Podpora za Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/lixfly/">Podpora za Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Podpora</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/sl/support/">Pojdi na podporo</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/faq/">Pogosta vprašanja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/help-center/returns/">Vračila</a></p>
+        </div>
+      </div>
     </nav>
     <div class="nav-mobile-actions">
-      <a href="/sl/cart/">Cart</a>
-      <a href="/sl/account/">Account</a>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Košarica</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/sl/cart/">Oglej si košarico</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/cart/">Zaključi nakup</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Račun</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Pojdi v moj račun</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Moja naročila</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Moj profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/account/">Nastavitve</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/login/">Prijavi se</a></p>
+          <p class="nav-mobile-answer-text"><a href="/sl/two-step-verification/">Dvostopenjsko preverjanje</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
   <main class="container password-page">
-    <div id="statusMsg" class="status-msg"></div>
-
     <section class="password-card">
-      <h1>Forgot your password?</h1>
-      <p class="helper">Enter your email address and we'll send you a link to reset it.</p>
+      <div id="statusMsg" class="status-msg" style="display:none;"></div>
+      <h1>Ste pozabili geslo?</h1>
+      <p class="helper">Vnesite svoj e-poštni naslov in poslali vam bomo povezavo za ponastavitev.</p>
 
       <div class="field">
-        <label for="resetEmail">Email address</label>
-        <input id="resetEmail" type="email" autocomplete="email" placeholder="name@example.com">
+        <label for="resetEmail">E-poštni naslov</label>
+        <input id="resetEmail" type="email" autocomplete="email" placeholder="ainm@sampla.ie">
       </div>
 
       <div class="actions">
-        <button id="sendResetBtn" class="btn btn-primary" type="button">Send email</button>
-        <a class="btn btn-secondary" href="/sl/login/">Back to sign in</a>
+        <button id="sendResetBtn" class="btn btn-primary" type="button">Pošlji pošto</button>
+        <a class="btn btn-secondary" href="/sl/login/">Ponovno se prijavite</a>
       </div>
     </section>
   </main>
 
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
@@ -240,8 +435,10 @@
     const auth = getAuth(app);
 
     function showStatus(text, type = "") {
+      if (!statusMsg) return;
       statusMsg.textContent = text;
       statusMsg.className = `status-msg ${type}`.trim();
+      statusMsg.style.display = text ? "block" : "none";
     }
 
     function isValidEmail(value) {
@@ -250,31 +447,103 @@
 
     sendResetBtn.addEventListener("click", async () => {
       const email = resetEmail.value.trim();
-      if (!isValidEmail(email)) {
-        showStatus("Please enter a valid email address.", "error");
+
+      if (!email || !email.includes("@")) {
+        showStatus("Vnesite veljaven e-poštni naslov.", "error");
         return;
       }
 
       try {
         sendResetBtn.disabled = true;
-        const response = await fetch("https://sendpasswordreset-dtoucjpwkq-uc.a.run.app", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
+        showStatus("pošiljanje elektronske pošte ...", "info");
+
+        await sendPasswordResetEmail(auth, email, {
+          url: "https://Lixby.es/sl/login/",
+          handleCodeInApp: false
         });
 
-        if (!response.ok) {
-          const data = await response.json().catch(() => ({}));
-          throw new Error(data.error || "Could not send the email");
-        }
-        showStatus("We've sent you an email. Please check your inbox.", "success");
+        showStatus("Poslali smo vam e-pošto. preveri svoj nabiralnik in neželeno pošto.", "success");
+        resetEmail.value = "";
+
+        // Feedback visual en el botón
+        const originalText = sendResetBtn.textContent;
+        sendResetBtn.textContent = "pošta poslana!";
+        sendResetBtn.style.background = "#16a34a";
+        sendResetBtn.style.borderColor = "#15803d";
+        setTimeout(() => {
+          sendResetBtn.textContent = originalText;
+          sendResetBtn.style.background = "";
+          sendResetBtn.style.borderColor = "";
+        }, 3000);
+
       } catch (error) {
-        showStatus(`Could not send the email: ${error.message}`, "error");
+        // Firebase devuelve el mismo mensaje tanto si el email existe como si no
+        // por seguridad — no revelamos si el email está registrado
+        if (error.code === "auth/user-not-found" || error.code === "auth/invalid-email") {
+          showStatus("Poslali smo vam e-poštno sporočilo, če je ta e-poštni naslov registriran.", "success");
+        } else {
+          showStatus(`E-pošte ni bilo mogoče poslati: ${error.message}`, "error");
+        }
       } finally {
         sendResetBtn.disabled = false;
       }
     });
   </script>
+
+  <footer class="footer footer-mega">
+    <div class="container footer-mega-grid">
+      <section class="footer-section">
+        <h3>Oglej si in kupi</h3>
+        <ul>
+          <li><a href="/sl/shop/">Trgovina</a></li>
+          <li><a href="/sl/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/sl/apps/">Apps</a></li>
+          <li><a href="/sl/support/">Podpora</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Podpora</h3>
+        <ul>
+          <li><a href="/sl/support/">Domača stran podpore</a></li>
+          <li><a href="/sl/support/#faq">Pogosta vprašanja o spletni trgovini</a></li>
+          <li><a href="/sl/support/">Informacije o garanciji</a></li>
+          <li><a href="mailto:info@lixby.es">E-pošta izvršnemu direktorju</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>Račun</h3>
+        <ul>
+          <li><a href="/sl/track/">Naročila</a></li>
+          <li><a href="/sl/account/">Moj račun</a></li>
+          <li><a href="/sl/account/">Kuponi</a></li>
+          <li><a href="/sl/community/">Skupnost</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-section">
+        <h3>O Lixby</h3>
+        <ul>
+          <li><a href="/sl/about/">O nas</a></li>
+          <li><a href="/sl/support/">Garancija</a></li>
+          <li><a href="/sl/news/">Novice</a></li>
+          <li><a href="/sl/support/">Kontakt</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="container footer-meta">
+      <p class="footer-bottom">Copyright © 2026 Lixby. Vse pravice pridržane.</p>
+      <div class="footer-legal-links">
+        <a href="/sl/pages/legal/privacy/">Pravilnik o zasebnosti</a>
+        <a href="/sl/pages/legal/cookies/">Pravilnik o piškotkih</a>
+        <a href="/sl/pages/legal/terms/">Splošni pogoji</a>
+        <a href="/sl/pages/legal/sales-refunds/">Prodaja in vračila denarja</a>
+        <a href="/sl/pages/legal/legal-notice/">Pravna obvestila</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 
