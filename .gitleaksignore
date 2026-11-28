@@ -612,3 +612,11 @@ lv/verified/index.html:gcp-api-key:345
 lv/login/index.html:gcp-api-key:979
 lv/two-step-verification/index.html:gcp-api-key:441
 lv/account/index.html:gcp-api-key:1311
+mt/change-password/index.html:gcp-api-key:451
+mt/forget-password/index.html:gcp-api-key:421
+mt/cart/index.html:gcp-api-key:396
+mt/js/comunidad-client.js:gcp-api-key:21
+mt/verified/index.html:gcp-api-key:345
+mt/login/index.html:gcp-api-key:979
+mt/two-step-verification/index.html:gcp-api-key:441
+mt/account/index.html:gcp-api-key:1311
