@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<script>
+  if (location.pathname.endsWith('/index.html')) {
+    location.replace(location.href.replace('/index.html', '/'));
+  }
+</script>
+  <base href="/hr/">
+  <script src="/gtm.js"></script>
+  <script src="/locale-banner.js" defer></script>
+
+  <link rel="canonical" href="https://lixby.es/hr/two-step-verification">
+  <link rel="alternate" href="https://lixby.es/bg/two-step-verification" hreflang="bg-BG">
+  <link rel="alternate" href="https://lixby.es/cs/two-step-verification" hreflang="cs-CZ">
+  <link rel="alternate" href="https://lixby.es/da/two-step-verification" hreflang="da-DK">
+  <link rel="alternate" href="https://lixby.es/de/two-step-verification" hreflang="de-DE">
+  <link rel="alternate" href="https://lixby.es/el/two-step-verification" hreflang="el-GR">
+  <link rel="alternate" href="https://lixby.es/en/two-step-verification" hreflang="en-US">
+  <link rel="alternate" href="https://lixby.es/es/verificacion-2-pasos" hreflang="es-ES">
+  <link rel="alternate" href="https://lixby.es/et/two-step-verification" hreflang="et-EE">
+  <link rel="alternate" href="https://lixby.es/fi/two-step-verification" hreflang="fi-FI">
+  <link rel="alternate" href="https://lixby.es/fr/two-step%20verification" hreflang="fr-FR">
+  <link rel="alternate" href="https://lixby.es/ga/two-step-verification" hreflang="ga-IE">
+  <link rel="alternate" href="https://lixby.es/hr/two-step-verification" hreflang="hr-HR">
+  <link rel="alternate" href="https://lixby.es/hu/two-step-verification" hreflang="hu-HU">
+  <link rel="alternate" href="https://lixby.es/it/two-step-verification" hreflang="it-IT">
+  <link rel="alternate" href="https://lixby.es/lt/two-step-verification" hreflang="lt-LT">
+  <link rel="alternate" href="https://lixby.es/lv/two-step-verification" hreflang="lv-LV">
+  <link rel="alternate" href="https://lixby.es/mt/two-step-verification" hreflang="mt-MT">
+  <link rel="alternate" href="https://lixby.es/nl/two-step-verification" hreflang="nl-NL">
+  <link rel="alternate" href="https://lixby.es/pl/two-step-verification" hreflang="pl-PL">
+  <link rel="alternate" href="https://lixby.es/pt/two-step-verification" hreflang="pt-PT">
+  <link rel="alternate" href="https://lixby.es/ro/two-step-verification" hreflang="ro-RO">
+  <link rel="alternate" href="https://lixby.es/sk/two-step-verification" hreflang="sk-SK">
+  <link rel="alternate" href="https://lixby.es/sl/two-step-verification" hreflang="sl-SI">
+  <link rel="alternate" href="https://lixby.es/sv/two-step-verification" hreflang="sv-SE">
+  <link rel="alternate" href="https://lixby.es/es/verificacion-2-pasos" hreflang="x-default">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" type="text/css" href="/globalheader.css" />
+  <link rel="stylesheet" type="text/css" href="/globalfooter.css" />
+  <link rel="stylesheet" type="text/css" href="/localnav.css" />
+
+  <title>Provjera u 2 koraka | Lixby</title>
+
+  <meta name="author" content="Lixby" />
+
+  
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globalheader.css">
+<link rel="stylesheet" href="/globalfooter.css">
+<link rel="stylesheet" href="/localnav.css">
+<link rel="stylesheet" href="/hr/style.css">
+  <style>
+    .twofa-page {
+      padding: 34px 0 84px;
+      min-height: 70vh;
+    }
+
+    .twofa-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      max-width: 620px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .status-msg {
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .status-msg.error {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .status-msg.success {
+      border-color: #a7f3d0;
+      background: #ecfdf5;
+      color: #047857;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 11px;
+      font: inherit;
+      background: #f8fafc;
+      color: #111827;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .actions .btn {
+      min-width: 180px;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .recaptcha-wrap {
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      background: #f8fafc;
+    }
+
+    .inline-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 720px) {
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lixby",
+      "url": "https://lixby.es/hr/two-step-verification",
+      "logo": "https://lixby.es/logo.png",
+      "sameAs": [
+        "https://github.com/lixby"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="/hr/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Glavni izbornik">
+        <a href="/hr/shop/" class="nav-link">Trgovina</a>
+        <a href="/hr/products/" class="nav-link">Proizvodi</a>
+        <a href="/hr/apps/" class="nav-link">Apps</a>
+        <a href="/hr/support/" class="nav-link">Podrška</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Traži" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <form id="navSearchForm" action="/hr/search/" method="get">
+          <input
+            type="search"
+            id="navSearch"
+            name="q"
+            class="nav-search"
+            placeholder="Pretraži Lixby..."
+            aria-label="Pretraži Lixby"
+          >
+        </form>
+        <a href="/hr/cart/" class="nav-icon-link" aria-label="Košarica">
+          <img src="/hr/images/Bolsa.png" alt="Košarica">
+        </a>
+        <a href="/hr/account/" class="nav-icon-link" aria-label="Račun">
+          <img src="/hr/images/cuenta.png" alt="Račun">
+        </a>
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Izbornik" aria-controls="navMobilePanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="8" x2="21" y2="8"></line>
+            <line x1="3" y1="16" x2="21" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
+    <nav class="nav-mobile-links" aria-label="Mobilni izbornik">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
+          <span id="sub-tienda-label">Trgovina</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-tienda">
+          <p class="nav-mobile-answer-text"><a href="/hr/shop/">Idi u trgovinu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/buy-headphones/lixbuds-one/">Kupi odmah</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/news/">Novosti</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
+          <span id="sub-productos-label">Proizvodi</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-productos">
+          <p class="nav-mobile-answer-text"><a href="/hr/products/">Pogledaj proizvode</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/lixsafe/">LixSafe i pokrića osiguranja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/apps/lixfly/">Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-apps" aria-labelledby="sub-apps-label">
+          <span id="sub-apps-label">Apps</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-apps">
+          <p class="nav-mobile-answer-text"><a href="/hr/apps/">Pogledaj aplikacije</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/lixney/">Podrška za Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/lixfly/">Podrška za Lixfly</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
+          <span id="sub-soporte-label">Podrška</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-soporte">
+          <p class="nav-mobile-answer-text"><a href="/hr/support/">Idi na podršku</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/faq/">Česta pitanja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/returns/">Povrat robe</a></p>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile-actions">
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
+          <span id="sub-cesta-label">Košarica</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cesta">
+          <p class="nav-mobile-answer-text"><a href="/hr/cart/">Pogledaj košaricu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/cart/">Završi kupnju</a></p>
+        </div>
+      </div>
+      <div class="nav-mobile-item">
+        <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
+          <span id="sub-cuenta-label">Račun</span>
+          <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="nav-mobile-answer" id="sub-cuenta">
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Idi na moj račun</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Moje narudžbe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Moj profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Postavke</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/login/">Prijavi se</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/two-step-verification/">Dvostupanjska provjera</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container twofa-page">
+    <div id="statusMsg" class="status-msg"></div>
+
+    <section class="twofa-card">
+      <h1>Dvostupanjska provjera</h1>
+      <p class="helper">Aktivirajte dodatnu razinu sigurnosti za svoj račun SMS-om.</p>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="phoneNumber">Broj telefona</label>
+          <input id="phoneNumber" type="tel" placeholder="+34 600 000 000">
+        </div>
+        <div class="field">
+          <label for="currentPassword">Trenutna lozinka</label>
+          <input id="currentPassword" type="password" autocomplete="current-password">
+        </div>
+        <div class="field">
+          <label for="smsCode">Sms kod</label>
+          <input id="smsCode" type="text" inputmode="numeric" maxlength="6" placeholder="123456">
+        </div>
+      </div>
+
+      <div class="recaptcha-wrap">
+        <div id="recaptcha-container"></div>
+        <p class="inline-note">Morate riješiti recaptcha da biste poslali sms.</p>
+      </div>
+
+      <div class="actions">
+        <button id="sendCodeBtn" class="btn btn-secondary" type="button">Poslati kod</button>
+        <button id="verifyEnrollBtn" class="btn btn-primary" type="button">Potvrditi i aktivirati</button>
+        <a class="btn btn-secondary" href="/hr/account/">Vrati se na moj račun</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var mobilePanel = document.getElementById("navMobilePanel");
+      var searchToggle = document.querySelector(".nav-search-toggle");
+      var menuToggle = document.querySelector(".nav-menu-toggle");
+      var searchInput = document.getElementById("navSearch");
+
+      var setIconState = function (open) {
+
+
+        [searchToggle, menuToggle].forEach(function (btn) {
+
+
+          if (!btn) return;
+
+
+          btn.classList.toggle("nav-open-x", open);
+
+
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+
+        });
+
+
+      };
+
+
+
+      var closeNav = function () {
+        if (document.body) document.body.classList.remove("nav-open", "menu-open");
+        if (nav) nav.classList.remove("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "true");
+                setIconState(false);
+      };
+      var openNav = function () {
+        if (document.body) document.body.classList.add("nav-open", "menu-open");
+        if (nav) nav.classList.add("nav-open");
+        if (mobilePanel) mobilePanel.setAttribute("aria-hidden", "false");
+                setIconState(true);
+      };
+      var toggleNav = function () {
+        if (nav && nav.classList.contains("nav-open")) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      if (searchToggle) searchToggle.addEventListener("click", toggleNav);
+      if (menuToggle) menuToggle.addEventListener("click", toggleNav);
+
+      document.querySelectorAll(".nav-mobile-item").forEach(function (item) {
+        var btn = item.querySelector(".nav-mobile-question");
+        var answer = item.querySelector(".nav-mobile-answer");
+        if (!btn || !answer) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".nav-mobile-item.open").forEach(function (other) {
+            var ob = other.querySelector(".nav-mobile-question");
+            var oa = other.querySelector(".nav-mobile-answer");
+            if (ob) ob.setAttribute("aria-expanded", "false");
+            other.classList.remove("open");
+            if (oa) {
+              oa.classList.remove("active");
+              oa.style.maxHeight = "0px";
+            }
+          });
+
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            item.classList.add("open");
+            answer.classList.add("active");
+            answer.style.maxHeight = "0px";
+            requestAnimationFrame(function () {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-mobile-answer a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
+      });
+    })();
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      EmailAuthProvider,
+      reauthenticateWithCredential,
+      RecaptchaVerifier,
+      PhoneAuthProvider,
+      PhoneMultiFactorGenerator,
+      multiFactor
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPU-jsIupu3lsRrknmlv04A3YnBwXeePU",
+      authDomain: "lixby0.firebaseapp.com",
+      projectId: "lixby0",
+      storageBucket: "lixby0.firebasestorage.app",
+      messagingSenderId: "1058088945026",
+      appId: "1:1058088945026:web:c56eaa9c71f1ca625fbb9b",
+      measurementId: "G-689VDV93C2"
+    };
+
+    const statusMsg = document.getElementById("statusMsg");
+    const phoneNumber = document.getElementById("phoneNumber");
+    const currentPassword = document.getElementById("currentPassword");
+    const smsCode = document.getElementById("smsCode");
+    const sendCodeBtn = document.getElementById("sendCodeBtn");
+    const verifyEnrollBtn = document.getElementById("verifyEnrollBtn");
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    let recaptchaVerifier = null;
+    let verificationId = "";
+
+    function showStatus(text, type = "") {
+      statusMsg.textContent = text;
+      statusMsg.className = `status-msg ${type}`.trim();
+    }
+
+    function initRecaptcha() {
+      if (recaptchaVerifier) return;
+      recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+        size: "normal"
+      });
+      recaptchaVerifier.render();
+    }
+
+    function getPhoneFactor(user) {
+      const enrolled = multiFactor(user).enrolledFactors;
+      return enrolled.find((factor) => factor.factorId === PhoneMultiFactorGenerator.FACTOR_ID) || null;
+    }
+
+    async function reauthUser(user) {
+      const password = currentPassword.value.trim();
+      if (!password) {
+        showStatus("Unesite svoju trenutnu lozinku za nastavak.", "error");
+        throw new Error("missing-password");
+      }
+      if (!user.email) {
+        showStatus("Korisnik nema email za ponovnu autentifikaciju.", "error");
+        throw new Error("missing-email");
+      }
+      const credential = EmailAuthProvider.credential(user.email, password);
+      await reauthenticateWithCredential(user, credential);
+    }
+
+    function normalizePhone(value) {
+      const raw = value.trim();
+      if (!raw) return "";
+      return raw.startsWith("+") ? raw : "";
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "/hr/sesija-prijave/";
+        return;
+      }
+      initRecaptcha();
+      if (!user.emailVerified) {
+        showStatus("Potvrdite svoju e-poštu prije aktivacije 2fa.", "error");
+        sendCodeBtn.disabled = true;
+        verifyEnrollBtn.disabled = true;
+      }
+      const factor = getPhoneFactor(user);
+      if (factor) {
+        showStatus(`2fa aktivan s ${factor.phonenumber || "telefono"}.`, "success");
+      } else {
+        showStatus("2fa nije aktiviran na ovom računu.");
+      }
+    });
+
+    function toggleVerifyButton() {
+      const hasCode = smsCode.value.trim().length > 0;
+      verifyEnrollBtn.style.display = hasCode ? "inline-flex" : "none";
+    }
+
+    toggleVerifyButton();
+    smsCode.addEventListener("input", toggleVerifyButton);
+
+    sendCodeBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("nevažeća sesija.", "error");
+        return;
+      }
+
+      if (!user.emailVerified) {
+        showStatus("Potvrdite svoju e-poštu prije aktivacije 2fa.", "error");
+        return;
+      }
+
+      const phone = normalizePhone(phoneNumber.value);
+      if (!phone) {
+        showStatus("Unesite broj u međunarodnom formatu (+34...).", "error");
+        return;
+      }
+
+      try {
+        sendCodeBtn.disabled = true;
+        const originalText = sendCodeBtn.textContent;
+        sendCodeBtn.textContent = "slanje...";
+        showStatus("slanje koda...", "info");
+        await reauthUser(user);
+        const multiFactorSession = await multiFactor(user).getSession();
+        const phoneInfoOptions = {
+          phoneNumber: phone,
+          session: multiFactorSession
+        };
+        const phoneAuthProvider = new PhoneAuthProvider(auth);
+        verificationId = await phoneAuthProvider.verifyPhoneNumber(phoneInfoOptions, recaptchaVerifier);
+        showStatus("šifra poslana sms-om.", "success");
+      } catch (error) {
+        recaptchaVerifier?.clear();
+        recaptchaVerifier = null;
+        initRecaptcha();
+        const message = error?.message || error?.code || String(error);
+        console.error("SMS error:", error);
+        showStatus(`Nije moguće poslati sms: ${message}`, "error");
+      } finally {
+        sendCodeBtn.disabled = false;
+        sendCodeBtn.textContent = "poslati kod";
+      }
+    });
+
+    verifyEnrollBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+      if (!user) {
+        showStatus("nevažeća sesija.", "error");
+        return;
+      }
+
+      if (!verificationId) {
+        showStatus("Prvo pošaljite SMS kod.", "error");
+        return;
+      }
+
+      const code = smsCode.value.trim();
+      if (!code) {
+        showStatus("Unesite SMS kod.", "error");
+        return;
+      }
+
+      try {
+        verifyEnrollBtn.disabled = true;
+        const originalText = verifyEnrollBtn.textContent;
+        verifyEnrollBtn.textContent = "provjera...";
+        showStatus("kod za provjeru...", "info");
+        const cred = PhoneAuthProvider.credential(verificationId, code);
+        const assertion = PhoneMultiFactorGenerator.assertion(cred);
+        await multiFactor(user).enroll(assertion, "Telefon");
+        showStatus("Aktivirana potvrda u 2 koraka.", "success");
+        verificationId = "";
+        smsCode.value = "";
+        toggleVerifyButton();
+        setTimeout(() => {
+          window.location.href = "/hr/account/";
+        }, 900);
+      } catch (error) {
+        const message = error?.message || error?.code || String(error);
+        console.error("2FA enroll error:", error);
+        showStatus(`nije moguće aktivirati 2fa: ${message}`, "error");
+      } finally {
+        verifyEnrollBtn.disabled = false;
+        verifyEnrollBtn.textContent = "potvrditi i aktivirati";
+      }
+    });
+
+    // Boton de desactivar eliminado por solicitud.
+  </script>
+</body>
+</html>
+
+
+
+
+
