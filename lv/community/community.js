@@ -164,7 +164,7 @@ async function loadSpaces() {
     renderSpaces();
     fillSpaceSelect();
   } catch (error) {
-    console.error("Hiba a terek betöltésekor:", error);
+    console.error("Kļūda, ielādējot telpas:", error);
     el.spaceList.innerHTML =
       '<p class="community-status">Nevarēja ielādēt atstarpes.</p>';
   }
@@ -224,7 +224,7 @@ async function loadFeed({ append = false } = {}) {
     state.posts = append ? state.posts.concat(fetched) : fetched;
     renderFeed();
   } catch (error) {
-    console.error("Hiba a témák betöltésekor:", error);
+    console.error("Kļūda, ielādējot tēmas:", error);
     el.feedStatus.textContent = "Pavedienus nevarēja ielādēt. Mēģiniet vēlreiz.";
   } finally {
     state.loading = false;
@@ -240,7 +240,7 @@ function renderFeed() {
     el.feedStatus.innerHTML = `<div class="community-empty">
         <span class="empty-emoji" aria-hidden="true">🌱</span>
         Šeit vēl nav neviena pavediena. ${
-          state.user ? "Legyél az első, aki közzéteszi." : "Jelentkezz be, és előbb tegyél közzé."
+          state.user ? "Esi pirmais, kas publicēs." : "Pieslēdzies un vispirms publicē."
         }
       </div>`;
     el.postList.innerHTML = "";
@@ -301,7 +301,7 @@ function voteKey(targetType, postId, commentId) {
 
 async function handleVote(targetType, postId, commentId, direction) {
   if (!state.user) {
-    toast("Jelentkezz be a szavazáshoz.", "error");
+    toast("Pieslēdzies, lai balsotu.", "error");
     return;
   }
   const uid = state.user.uid;
@@ -381,7 +381,7 @@ async function openPost(postId) {
 
     await loadComments(postId);
   } catch (error) {
-    console.error("Hiba a témák betöltésekor:", error);
+    console.error("Kļūda, ielādējot tēmas:", error);
     el.postDetail.innerHTML = '<p class="community-status">Nevarēja ielādēt pavedienu.</p>';
   }
 }
@@ -430,7 +430,7 @@ async function loadComments(postId) {
     state.comments = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
     renderComments();
   } catch (error) {
-    console.error("Hiba a hozzászólások betöltésekor:", error);
+    console.error("Kļūda, ielādējot komentārus:", error);
     el.commentList.innerHTML = '<p class="community-status">Komentārus nevarēja ielādēt.</p>';
   }
 }
@@ -593,7 +593,7 @@ async function loadReports() {
         </div>`;
     }).join("");
   } catch (error) {
-    console.error("Hiba a jelentések betöltésekor:", error);
+    console.error("Kļūda, ielādējot ziņojumus:", error);
     el.reportList.innerHTML = '<p class="community-status">Nevarēja ielādēt pārskatus.</p>';
   }
 }
@@ -658,12 +658,12 @@ async function submitNewPost(event) {
   const tags = Array.from(el.newPostForm.querySelectorAll('input[name="tags"]:checked')).map((i) => i.value);
 
   if (title.length < 3) {
-    el.newPostError.textContent = "A cím túl rövid.";
+    el.newPostError.textContent = "Nosaukums ir pārāk īss.";
     el.newPostError.hidden = false;
     return;
   }
   if (!body) {
-    el.newPostError.textContent = "A tartalom nem lehet üres.";
+    el.newPostError.textContent = "Saturs nedrīkst būt tukšs.";
     el.newPostError.hidden = false;
     return;
   }
@@ -755,7 +755,7 @@ document.addEventListener("click", (event) => {
   const reportBtn = event.target.closest("[data-report]");
   if (reportBtn) {
     if (!state.user) {
-      toast("Jelentkezz be a jelentés küldéséhez.", "error");
+      toast("Pieslēdzies, lai iesniegtu ziņojumu.", "error");
       return;
     }
     openReportDialog({

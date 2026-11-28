@@ -164,7 +164,7 @@ async function loadSpaces() {
     renderSpaces();
     fillSpaceSelect();
   } catch (error) {
-    console.error("Hiba a terek betöltésekor:", error);
+    console.error("Klaida įkeliant erdves:", error);
     el.spaceList.innerHTML =
       '<p class="community-status">Nepavyko įkelti tarpų.</p>';
   }
@@ -224,7 +224,7 @@ async function loadFeed({ append = false } = {}) {
     state.posts = append ? state.posts.concat(fetched) : fetched;
     renderFeed();
   } catch (error) {
-    console.error("Hiba a témák betöltésekor:", error);
+    console.error("Klaida įkeliant temas:", error);
     el.feedStatus.textContent = "Nepavyko įkelti gijų. Bandykite dar kartą.";
   } finally {
     state.loading = false;
@@ -240,7 +240,7 @@ function renderFeed() {
     el.feedStatus.innerHTML = `<div class="community-empty">
         <span class="empty-emoji" aria-hidden="true">🌱</span>
         Čia dar nėra gijų. ${
-          state.user ? "Legyél az első, aki közzéteszi." : "Jelentkezz be, és előbb tegyél közzé."
+          state.user ? "Būk pirmasis, kuris paskelbs." : "Prisijunk ir pirmiausia paskelbk."
         }
       </div>`;
     el.postList.innerHTML = "";
@@ -301,7 +301,7 @@ function voteKey(targetType, postId, commentId) {
 
 async function handleVote(targetType, postId, commentId, direction) {
   if (!state.user) {
-    toast("Jelentkezz be a szavazáshoz.", "error");
+    toast("Prisijunk, kad balsuotum.", "error");
     return;
   }
   const uid = state.user.uid;
@@ -381,7 +381,7 @@ async function openPost(postId) {
 
     await loadComments(postId);
   } catch (error) {
-    console.error("Hiba a témák betöltésekor:", error);
+    console.error("Klaida įkeliant temas:", error);
     el.postDetail.innerHTML = '<p class="community-status">Nepavyko įkelti gijos.</p>';
   }
 }
@@ -430,7 +430,7 @@ async function loadComments(postId) {
     state.comments = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
     renderComments();
   } catch (error) {
-    console.error("Hiba a hozzászólások betöltésekor:", error);
+    console.error("Klaida įkeliant komentarus:", error);
     el.commentList.innerHTML = '<p class="community-status">Komentarų įkelti nepavyko.</p>';
   }
 }
@@ -593,7 +593,7 @@ async function loadReports() {
         </div>`;
     }).join("");
   } catch (error) {
-    console.error("Hiba a jelentések betöltésekor:", error);
+    console.error("Klaida įkeliant pranešimus:", error);
     el.reportList.innerHTML = '<p class="community-status">Nepavyko įkelti ataskaitų.</p>';
   }
 }
@@ -658,12 +658,12 @@ async function submitNewPost(event) {
   const tags = Array.from(el.newPostForm.querySelectorAll('input[name="tags"]:checked')).map((i) => i.value);
 
   if (title.length < 3) {
-    el.newPostError.textContent = "A cím túl rövid.";
+    el.newPostError.textContent = "Pavadinimas per trumpas.";
     el.newPostError.hidden = false;
     return;
   }
   if (!body) {
-    el.newPostError.textContent = "A tartalom nem lehet üres.";
+    el.newPostError.textContent = "Turinys negali būti tuščias.";
     el.newPostError.hidden = false;
     return;
   }
@@ -755,7 +755,7 @@ document.addEventListener("click", (event) => {
   const reportBtn = event.target.closest("[data-report]");
   if (reportBtn) {
     if (!state.user) {
-      toast("Jelentkezz be a jelentés küldéséhez.", "error");
+      toast("Prisijunk, kad pateiktum pranešimą.", "error");
       return;
     }
     openReportDialog({
