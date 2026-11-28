@@ -193,38 +193,70 @@ function xmlEscape(value) {
     .replace(/'/g, "&apos;");
 }
 
-function buildSitemapEntries() {
-  const seenUrls = new Set();
-  const entries = [];
+/* Conserva el sitemap existente (incluidas las entradas legacy `buy` y
+   `two-step%20verification`) y añade las páginas canónicas que falten. */
+function readExistingEntries() {
+  const map = new Map();
+  if (!fs.existsSync(staticOutputPath)) return map;
 
-  for (const file of collectHtmlFiles(rootDir)) {
-    if (isExcludedFromSitemap(file.relativePath)) continue;
+  const xml = fs.readFileSync(staticOutputPath, "utf8");
+  for (const block of xml.match(/<url>[\s\S]*?<\/url>/g) || []) {
+    const get = (tag) => (block.match(new RegExp(`<${tag}>([^<]*)</${tag}>`)) || [])[1];
+    const loc = get("loc");
+    if (!loc) continue;
 
-    const html = fs.readFileSync(file.absolutePath, "utf8");
-    if (isNoindex(html)) continue;
+    map.set(loc, {
+      canonicalUrl: loc,
+      lastmod: get("lastmod") || "",
+      changefreq: get("changefreq") || "monthly",
+      priority: get("priority") || "0.5"
+    });
+  }
+  return map;
+}
 
-    const stat = fs.statSync(file.absolutePath);
-    const sitemapUrls = getSitemapUrlVariants(file.relativePath);
+/* Solo páginas reales: directorios con index.html. Los .html sueltos son
+   redirecciones y no deben generar URLs adicionales. */
+function collectIndexFiles(currentDir, relativeDir = "") {
+  const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+  const files = [];
 
-    for (const sitemapUrl of sitemapUrls) {
-      if (seenUrls.has(sitemapUrl)) continue;
+  for (const entry of entries) {
+    const relativePath = relativeDir ? path.posix.join(relativeDir, entry.name) : entry.name;
+    const absolutePath = path.join(currentDir, entry.name);
+    const topLevel = relativePath.split("/")[0];
 
-      seenUrls.add(sitemapUrl);
+    if (ignoredTopLevel.has(topLevel) || topLevel.startsWith(".")) continue;
 
-      const urlPath = new URL(sitemapUrl).pathname;
-      const meta = getSitemapMeta(urlPath);
-
-      entries.push({
-        canonicalUrl: sitemapUrl,
-        lastmod: stat.mtime.toISOString().slice(0, 10),
-        changefreq: meta.changefreq,
-        priority: meta.priority
-      });
+    if (entry.isDirectory()) {
+      files.push(...collectIndexFiles(absolutePath, relativePath));
+    } else if (entry.isFile() && entry.name === "index.html") {
+      files.push({ absolutePath, relativePath });
     }
   }
 
-  entries.sort((a, b) => a.canonicalUrl.localeCompare(b.canonicalUrl));
-  return entries;
+  return files;
+}
+
+function buildSitemapEntries() {
+  const entriesByUrl = readExistingEntries();
+
+  for (const file of collectIndexFiles(rootDir)) {
+    const sitemapUrl = toAbsoluteUrl(file.relativePath);
+    if (entriesByUrl.has(sitemapUrl)) continue;
+
+    const urlPath = new URL(sitemapUrl).pathname;
+    const meta = getSitemapMeta(urlPath);
+
+    entriesByUrl.set(sitemapUrl, {
+      canonicalUrl: sitemapUrl,
+      lastmod: fs.statSync(file.absolutePath).mtime.toISOString().slice(0, 10),
+      changefreq: meta.changefreq,
+      priority: meta.priority
+    });
+  }
+
+  return [...entriesByUrl.values()].sort((a, b) => a.canonicalUrl.localeCompare(b.canonicalUrl));
 }
 
 function buildXml(entries) {
