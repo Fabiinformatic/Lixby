@@ -580,3 +580,11 @@ ga/verified/index.html:gcp-api-key:345
 ga/login/index.html:gcp-api-key:979
 ga/two-step-verification/index.html:gcp-api-key:441
 ga/account/index.html:gcp-api-key:1311
+hr/change-password/index.html:gcp-api-key:451
+hr/forget-password/index.html:gcp-api-key:421
+hr/cart/index.html:gcp-api-key:396
+hr/js/comunidad-client.js:gcp-api-key:21
+hr/verified/index.html:gcp-api-key:345
+hr/login/index.html:gcp-api-key:979
+hr/two-step-verification/index.html:gcp-api-key:441
+hr/account/index.html:gcp-api-key:1311

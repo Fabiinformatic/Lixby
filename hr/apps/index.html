@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-ES" class="no-js">
+<html lang="hr" class="no-js">
 <head>
   <script>
     if (location.pathname.endsWith('/index.html')) {
@@ -8,7 +8,7 @@
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="canonical" href="https://lixby.es/es/apps">
+  <link rel="canonical" href="https://lixby.es/hr/apps">
   <link rel="alternate" href="https://lixby.es/bg/apps" hreflang="bg-BG">
   <link rel="alternate" href="https://lixby.es/cs/apps" hreflang="cs-CZ">
   <link rel="alternate" href="https://lixby.es/da/apps" hreflang="da-DK">
@@ -42,24 +42,24 @@
   <link rel="stylesheet" href="/globalheader.css">
   <link rel="stylesheet" href="/globalfooter.css">
   <link rel="stylesheet" href="/localnav.css">
-  <link rel="stylesheet" href="/es/style.css">
+  <link rel="stylesheet" href="/hr/style.css">
   <script src="/gtm.js"></script>
   <script src="/locale-banner.js" defer></script>
   <title>Apps | Lixby</title>
-  <meta name="description" content="Conoce las apps de Lixby: Lixney para tus finanzas personales y Lixfly para tus vuelos en Microsoft Flight Simulator.">
+  <meta name="description" content="Upoznajte Lixby aplikacije: Lixney za svoje osobne financije i Lixfly za svoje letove u Microsoft Flight Simulatoru.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lixby">
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:url" content="https://lixby.es/es/apps">
+  <meta property="og:locale" content="hr_HR">
+  <meta property="og:url" content="https://lixby.es/hr/apps">
   <meta property="og:title" content="Apps | Lixby">
-  <meta property="og:description" content="Conoce las apps de Lixby: Lixney para tus finanzas personales y Lixfly para tus vuelos en Microsoft Flight Simulator.">
-  <meta property="og:image" content="https://lixby.es/es/images/apps-og.png">
-  <meta property="og:image:alt" content="Lixney y Lixfly, las aplicaciones de Lixby">
+  <meta property="og:description" content="Upoznajte Lixby aplikacije: Lixney za svoje osobne financije i Lixfly za svoje letove u Microsoft Flight Simulatoru.">
+  <meta property="og:image" content="https://lixby.es/hr/images/apps-og.png">
+  <meta property="og:image:alt" content="Lixney i Lixfly, Lixby aplikacije">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Apps | Lixby">
-  <meta name="twitter:description" content="Conoce las apps de Lixby: Lixney para tus finanzas personales y Lixfly para tus vuelos en Microsoft Flight Simulator.">
-  <meta name="twitter:image" content="https://lixby.es/es/images/apps-og.png">
-  <meta name="twitter:image:alt" content="Lixney y Lixfly, las aplicaciones de Lixby">
+  <meta name="twitter:description" content="Upoznajte Lixby aplikacije: Lixney za svoje osobne financije i Lixfly za svoje letove u Microsoft Flight Simulatoru.">
+  <meta name="twitter:image" content="https://lixby.es/hr/images/apps-og.png">
+  <meta name="twitter:image:alt" content="Lixney i Lixfly, Lixby aplikacije">
   
   
   
@@ -91,7 +91,7 @@
     .apps-hero-media { min-height: 360px; display: grid; place-items: center; border-radius: var(--radius-xl); background: #f5f8ff; border: 1px solid rgba(15,61,255,.09); box-shadow: 0 24px 60px rgba(15,61,255,.14); overflow: hidden; }
     .apps-hero-media img { grid-area: 1 / 1; width: min(78%, 330px); height: 330px; object-fit: contain; filter: drop-shadow(0 24px 28px rgba(9,26,74,.28)); }
     .apps-hero-icon { opacity: 0; pointer-events: none; will-change: opacity, transform; animation: heroIconSwap 9s cubic-bezier(.45,0,.55,1) infinite; }
-    .apps-hero-icon.is-lixfly { animation-delay: -4.5s; }
+    .apps-hero-icon.is-Lixfly { animation-delay: -4.5s; }
 
     @keyframes heroIconSwap {
       0%, 38% { opacity: 1; transform: scale(1); }
@@ -177,37 +177,37 @@
 
   <header class="nav" id="nav">
     <div class="container nav-container">
-      <a href="/es/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="/es/tienda/" class="nav-link">Tienda</a>
-        <a href="/es/productos/" class="nav-link">Productos</a>
-        <a href="/es/apps/" class="nav-link">Apps</a>
-        <a href="/es/support/" class="nav-link">Soporte</a>
+      <a href="/hr/" class="nav-brand"><span class="nav-brand-full">Lixby</span><span class="nav-brand-short">LX</span></a>
+      <nav class="nav-links" aria-label="Glavni izbornik">
+        <a href="/hr/shop/" class="nav-link">Trgovina</a>
+        <a href="/hr/products/" class="nav-link">Proizvodi</a>
+        <a href="/hr/apps/" class="nav-link">Apps</a>
+        <a href="/hr/support/" class="nav-link">Podrška</a>
       </nav>
       <div class="nav-actions">
-        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Buscar" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-search-toggle" aria-label="Traži" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
-        <form id="navSearchForm" action="/es/buscar/" method="get">
+        <form id="navSearchForm" action="/hr/search/" method="get">
           <input
             type="search"
             id="navSearch"
             name="q"
             class="nav-search"
-            placeholder="Buscar en Lixby..."
-            aria-label="Buscar en Lixby"
+            placeholder="Pretraži Lixby..."
+            aria-label="Pretraži Lixby"
           >
         </form>
-        <a href="/es/cesta/" class="nav-icon-link" aria-label="Cesta">
-          <img src="/es/images/Bolsa.png" alt="Cesta">
+        <a href="/hr/cart/" class="nav-icon-link" aria-label="Košarica">
+          <img src="/hr/images/Bolsa.png" alt="Košarica">
         </a>
-        <a href="/es/cuenta/" class="nav-icon-link" aria-label="Cuenta">
-          <img src="/es/images/cuenta.png" alt="Cuenta">
+        <a href="/hr/account/" class="nav-icon-link" aria-label="Račun">
+          <img src="/hr/images/cuenta.png" alt="Račun">
         </a>
-        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Menú" aria-controls="navMobilePanel" aria-expanded="false">
+        <button type="button" class="nav-icon-button nav-menu-toggle" aria-label="Izbornik" aria-controls="navMobilePanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <line x1="3" y1="8" x2="21" y2="8"></line>
             <line x1="3" y1="16" x2="21" y2="16"></line>
@@ -217,30 +217,30 @@
     </div>
   </header>
     <div class="nav-mobile-panel" id="navMobilePanel" aria-hidden="true">
-    <nav class="nav-mobile-links" aria-label="Principal móvil">
+    <nav class="nav-mobile-links" aria-label="Mobilni izbornik">
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-tienda" aria-labelledby="sub-tienda-label">
-          <span id="sub-tienda-label">Tienda</span>
+          <span id="sub-tienda-label">Trgovina</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-tienda">
-          <p class="nav-mobile-answer-text"><a href="/es/tienda/">Entrar a tienda</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">Auriculares LixBuds One</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/comprar-cascos/lixbuds-one/">Comprar ahora</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/novedades/">Novedades</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/shop/">Idi u trgovinu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/buy-headphones/lixbuds-one/">Kupi odmah</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/news/">Novosti</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-productos" aria-labelledby="sub-productos-label">
-          <span id="sub-productos-label">Productos</span>
+          <span id="sub-productos-label">Proizvodi</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-productos">
-          <p class="nav-mobile-answer-text"><a href="/es/productos/">Ver productos</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/products/lixbuds-one/">LixBuds One</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/lixsafe/">LixSafe y coberturas</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixney/">Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/pages/apps/lixfly/">Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/products/">Pogledaj proizvode</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/products/lixbuds-one/">LixBuds One</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/lixsafe/">LixSafe i pokrića osiguranja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/apps/lixney/">Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/pages/apps/lixfly/">Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
@@ -249,47 +249,47 @@
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-apps">
-          <p class="nav-mobile-answer-text"><a href="/es/apps/">Ver apps</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixney/">Soporte de Lixney</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/lixfly/">Soporte de Lixfly</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/apps/">Pogledaj aplikacije</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/lixney/">Podrška za Lixney</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/lixfly/">Podrška za Lixfly</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-soporte" aria-labelledby="sub-soporte-label">
-          <span id="sub-soporte-label">Soporte</span>
+          <span id="sub-soporte-label">Podrška</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-soporte">
-          <p class="nav-mobile-answer-text"><a href="/es/support/">Ir a soporte</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/faq/">Preguntas frecuentes</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/contacto/">Contacto</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/centro-ayuda/devoluciones/">Devoluciones</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/support/">Idi na podršku</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/faq/">Česta pitanja</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/contact/">Kontakt</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/help-center/returns/">Povrat robe</a></p>
         </div>
       </div>
     </nav>
     <div class="nav-mobile-actions">
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cesta" aria-labelledby="sub-cesta-label">
-          <span id="sub-cesta-label">Cesta</span>
+          <span id="sub-cesta-label">Košarica</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-cesta">
-          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Ver cesta</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cesta/">Finalizar compra</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/cart/">Pogledaj košaricu</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/cart/">Završi kupnju</a></p>
         </div>
       </div>
       <div class="nav-mobile-item">
         <button type="button" class="nav-mobile-question" aria-expanded="false" aria-controls="sub-cuenta" aria-labelledby="sub-cuenta-label">
-          <span id="sub-cuenta-label">Cuenta</span>
+          <span id="sub-cuenta-label">Račun</span>
           <svg class="nav-mobile-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-mobile-answer" id="sub-cuenta">
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Entrar a mi cuenta</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mis pedidos</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Mi perfil</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/cuenta/">Configuración</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/iniciar-sesion/">Iniciar sesión</a></p>
-          <p class="nav-mobile-answer-text"><a href="/es/verificacion-2-pasos/">Verificación en 2 pasos</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Idi na moj račun</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Moje narudžbe</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Moj profil</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/account/">Postavke</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/login/">Prijavi se</a></p>
+          <p class="nav-mobile-answer-text"><a href="/hr/two-step-verification/">Dvostupanjska provjera</a></p>
         </div>
       </div>
     </div>
@@ -300,47 +300,47 @@
   <main>
     <section class="apps-hero container reveal" data-delay="0s">
       <div>
-        <p class="eyebrow">Apps Lixby</p>
-        <h1>Herramientas digitales para tu día a día.</h1>
-        <p>Aplicaciones claras, útiles y diseñadas para que tengas más control sobre lo que haces cada día.</p>
-        <div class="catalog-actions"><a class="btn btn-primary" href="#apps-disponibles">Ver nuestras apps</a><a class="btn btn-secondary" href="/es/">Volver al inicio</a></div>
+        <p class="eyebrow">Aplikacije Lixby</p>
+        <h1>Digitalne alate za vaš svakodnevni život.</h1>
+        <p>Jasne, korisne aplikacije dizajnirane da vam daju veću kontrolu nad onim što radite svaki dan.</p>
+        <div class="catalog-actions"><a class="btn btn-primary" href="#apps-disponibles">Pogledajte naše aplikacije</a><a class="btn btn-secondary" href="/hr/">Natrag na početnu</a></div>
       </div>
-      <div class="apps-hero-media"><img class="apps-hero-icon" src="/es/images/lixneyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixney"><img class="apps-hero-icon is-lixfly" src="/es/images/lixflyicon2.webp" width="1024" height="1024" alt="Icono de la app Lixfly"></div>
+      <div class="apps-hero-media"><img class="apps-hero-icon" src="/hr/images/lixneyicon2.webp" width="1024" height="1024" alt="Ikona aplikacije Lixney"><img class="apps-hero-icon is-lixfly" src="/hr/images/lixflyicon2.webp" width="1024" height="1024" alt="Ikona aplikacije Lixfly"></div>
     </section>
 
     <section id="apps-disponibles" class="apps-section container" aria-labelledby="apps-title">
-      <h2 id="apps-title">Encuentra la app para tu mundo</h2>
+      <h2 id="apps-title">Pronađite aplikaciju za svoj svijet</h2>
       <div class="apps-grid">
         <article class="app-card reveal" data-delay="0.05s">
-          <div class="app-card-media dark"><img src="/es/images/lixneyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixney"></div>
-          <span class="product-label">Finanzas personales</span>
+          <div class="app-card-media dark"><img src="/hr/images/lixneyicon2.webp" width="1024" height="1024" loading="lazy" alt="Lixney ikona"></div>
+          <span class="product-label">Osobne financije</span>
           <h3>Lixney</h3>
-          <p>Entiende mejor tu dinero, organiza tus gastos y crea hábitos de ahorro con una experiencia sencilla.</p>
-          <ul><li>Control de gastos</li><li>Presupuestos personales</li><li>Visión clara de tus finanzas</li></ul>
-          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/pages/apps/lixney/">Conocer Lixney</a><a class="btn btn-primary" href="/es/beta-lixney/">Unirme a la beta</a></div>
+          <p>Bolje razumjeti svoj novac, organizirati svoje troškove i stvoriti navike štednje uz jednostavno iskustvo.</p>
+          <ul><li>Kontrola troškova</li><li>Osobni proračuni</li><li>Jasan pogled na vaše financije</li></ul>
+          <div class="catalog-actions"><a class="btn btn-secondary" href="/hr/pages/apps/lixney/">Upoznati Lixney</a><a class="btn btn-primary" href="/hr/beta-lixney/">Pridružite se beti</a></div>
         </article>
         <article class="app-card reveal" data-delay="0.15s">
-          <div class="app-card-media dark"><img src="/es/images/lixflyicon2.webp" width="1024" height="1024" loading="lazy" alt="Icono de Lixfly"></div>
-          <span class="product-label">Simulación de vuelo</span>
+          <div class="app-card-media dark"><img src="/hr/images/lixflyicon2.webp" width="1024" height="1024" loading="lazy" alt="Lixfly ikona"></div>
+          <span class="product-label">Simulacija leta</span>
           <h3>Lixfly</h3>
-          <p>Tu EFB para Microsoft Flight Simulator: prepara el vuelo, consulta datos y mantén todo a mano.</p>
-          <ul><li>Preflight y Flight Plan</li><li>Performance y navegación</li><li>eQRH y herramientas de vuelo</li></ul>
-          <div class="catalog-actions"><a class="btn btn-secondary" href="/es/pages/apps/lixfly/">Conocer Lixfly</a><a class="btn btn-primary" href="/es/beta-lixfly/">Unirme a la beta</a></div>
+          <p>Vaš EFB za Microsoft Flight Simulator: pripremite svoj let, pregledajte podatke i držite sve pri ruci.</p>
+          <ul><li>Predpolet i plan leta</li><li>Performanse i navigaciju</li><li>eqrh i alati za letenje</li></ul>
+          <div class="catalog-actions"><a class="btn btn-secondary" href="/hr/pages/apps/lixfly/">Upoznati Lixfly</a><a class="btn btn-primary" href="/hr/beta-lixfly/">Pridružite se beti</a></div>
         </article>
       </div>
     </section>
 
 <section class="values" aria-labelledby="values-title">
       <div class="container values-intro reveal">
-        <p class="eyebrow">La filosofía Lixby</p>
-        <h2 id="values-title">Menos ruido. Más claridad.</h2>
-        <p>Construimos apps que hacen lo complejo más comprensible, con interfaces honestas y funciones que tienen un propósito.</p>
-        <p class="values-intro-note">Cuatro principios que se repiten en cada pantalla de Lixney y Lixfly.</p>
+        <p class="eyebrow">Lixby filozofija</p>
+        <h2 id="values-title">Manje buke. Više jasnoće.</h2>
+        <p>Gradimo aplikacije koje kompleks čine razumljivijim, s poštenim sučeljima i funkcijama koje imaju svrhu.</p>
+        <p class="values-intro-note">Četiri principa koji se ponavljaju na svakom ekranu Lixney i Lixfly.</p>
         <ol class="values-rail">
-          <li><span>01</span>Diseño intuitivo</li>
-          <li><span>02</span>Datos bajo tu control</li>
-          <li><span>03</span>Mejoras continuas</li>
-          <li><span>04</span>Soporte cercano</li>
+          <li><span>01</span>Intuitivan dizajn</li>
+          <li><span>02</span>Podataka pod vašom kontrolom</li>
+          <li><span>03</span>Stalna poboljšanja</li>
+          <li><span>04</span>Bliska podrška</li>
         </ol>
       </div>
       <div class="values-list">
@@ -348,18 +348,18 @@
           <span class="value-ghost" aria-hidden="true">01</span>
           <div class="container value-slide-inner">
             <div class="value-lead">
-              <span class="value-index">01 — Diseño</span>
-              <h3>Diseño intuitivo</h3>
-              <p class="value-text">Cada pantalla se lee de un vistazo: menos menús, menos capas y menos pasos entre tú y la información que buscas.</p>
-              <div class="value-tags"><span>Una acción por pantalla</span><span>Sin tutoriales</span><span>Legible a la primera</span></div>
+              <span class="value-index">01 — Dizajn</span>
+              <h3>Intuitivan dizajn</h3>
+              <p class="value-text">Svaki se zaslon čita na prvi pogled: manje izbornika, manje slojeva i manje koraka između vas i informacija koje tražite.</p>
+              <div class="value-tags"><span>Jedna radnja po ekranu</span><span>Nema tutorijala</span><span>Čitljiv na prvu</span></div>
             </div>
             <div class="value-panel">
-              <h4>En la práctica</h4>
+              <h4>U praksi</h4>
               <ul>
-                <li>Una sola acción principal en cada vista, siempre en el mismo sitio.</li>
-                <li>Sin wizards ni menús anidados: todo se llega en un par de toques.</li>
-                <li>Contrastes altos y tipografía grande, pensado también para el móvil en la mano.</li>
-                <li>Los estados vacíos explican qué hacer, no solo qué falta.</li>
+                <li>Jedna glavna radnja u svakom pogledu, uvijek na istom mjestu.</li>
+                <li>Bez čarobnjaka ili ugniježđenih izbornika: sve se radi u nekoliko dodira.</li>
+                <li>Visoki kontrasti i velika tipografija, također dizajnirani za mobilni telefon u ruci.</li>
+                <li>Prazna stanja objašnjavaju što učiniti, a ne samo ono što nedostaje.</li>
               </ul>
             </div>
           </div>
@@ -368,18 +368,18 @@
           <span class="value-ghost" aria-hidden="true">02</span>
           <div class="container value-slide-inner">
             <div class="value-lead">
-              <span class="value-index">02 — Privacidad</span>
-              <h3>Datos bajo tu control</h3>
-              <p class="value-text">Tus gastos y tus vuelos son tuyos. Exportarlos, borrarlos o simplemente entender qué guardamos debe ser fácil.</p>
-              <div class="value-tags"><span>Sin anuncios</span><span>Exportación en un clic</span><span>Borrado real</span></div>
+              <span class="value-index">02 — Privatnost</span>
+              <h3>Podataka pod vašom kontrolom</h3>
+              <p class="value-text">Vaši su troškovi i vaši letovi. Njihov izvoz, brisanje ili jednostavno razumijevanje onoga što spremamo trebalo bi biti jednostavno.</p>
+              <div class="value-tags"><span>Bez oglasa</span><span>Izvoz jednim klikom</span><span>Stvarno brisanje</span></div>
             </div>
             <div class="value-panel">
-              <h4>En la práctica</h4>
+              <h4>U praksi</h4>
               <ul>
-                <li>Puedes exportar tus datos cuando quieras y llevártelos a otro sitio.</li>
-                <li>Borrar la cuenta borra también la información guardada, no solo el acceso.</li>
-                <li>Sin perfiles publicitarios ni venta de datos a terceros.</li>
-                <li>Preferencias locales siempre que la app no necesite conexión.</li>
+                <li>Možete izvesti svoje podatke kad god želite i odnijeti ih negdje drugdje.</li>
+                <li>Brisanje računa također briše spremljene podatke, a ne samo pristup.</li>
+                <li>Bez oglašavanja profila ili prodaje podataka trećim stranama.</li>
+                <li>Lokalne postavke sve dok aplikaciji nije potrebna veza.</li>
               </ul>
             </div>
           </div>
@@ -388,18 +388,18 @@
           <span class="value-ghost" aria-hidden="true">03</span>
           <div class="container value-slide-inner">
             <div class="value-lead">
-              <span class="value-index">03 — Evolución</span>
-              <h3>Mejoras continuas</h3>
-              <p class="value-text">Publicamos versiones con regularidad y contamos qué cambia. Lo que no aporta, se queda fuera.</p>
-              <div class="value-tags"><span>Notas de versión</span><span>Roadmap en beta</span><span>Correcciones rápidas</span></div>
+              <span class="value-index">03 — Evolucija</span>
+              <h3>Stalna poboljšanja</h3>
+              <p class="value-text">Redovito izdajemo verzije i javljamo vam što se mijenja. Ono što ne doprinosi, izostavljeno je.</p>
+              <div class="value-tags"><span>Bilješke o izdanju</span><span>Putokaz u beta verziji</span><span>Brza rješenja</span></div>
             </div>
             <div class="value-panel">
-              <h4>En la práctica</h4>
+              <h4>U praksi</h4>
               <ul>
-                <li>Cada actualización viene con sus notas de versión, sin letra pequeña.</li>
-                <li>Lo que llega a la beta se decide con el feedback de quien la usa.</li>
-                <li>Un aviso claro cuando una mejora cambia algo de lo que ya usabas.</li>
-                <li>Si una función no aporta, se quita: menos opciones, menos ruido.</li>
+                <li>Svako ažuriranje dolazi sa svojim bilješkama o izdanju, bez sitnog tiska.</li>
+                <li>Što će dospjeti u beta verziju odlučuje se na temelju povratnih informacija onih koji ga koriste.</li>
+                <li>Jasno upozorenje kada poboljšanje mijenja nešto što ste već koristili.</li>
+                <li>Ako funkcija ne doprinosi, uklanja se: manje opcija, manje buke.</li>
               </ul>
             </div>
           </div>
@@ -408,18 +408,18 @@
           <span class="value-ghost" aria-hidden="true">04</span>
           <div class="container value-slide-inner">
             <div class="value-lead">
-              <span class="value-index">04 — Acompañamiento</span>
-              <h3>Soporte cercano</h3>
-              <p class="value-text">Responde una persona del equipo, sin tickets infinitos y sin respuestas copiadas. Personas antes que software.</p>
-              <div class="value-tags"><span>Personas reales</span><span>Sin bots</span><span>Beta con prioridad</span></div>
+              <span class="value-index">04 — Pratnja</span>
+              <h3>Bliska podrška</h3>
+              <p class="value-text">Odgovara osoba iz tima, bez beskonačnih listića i bez prepisanih odgovora. Ljudi prije softvera.</p>
+              <div class="value-tags"><span>Pravi ljudi</span><span>Bez botova</span><span>Prioritet beta</span></div>
             </div>
             <div class="value-panel">
-              <h4>En la práctica</h4>
+              <h4>U praksi</h4>
               <ul>
-                <li>Escribes a una persona del equipo, no a un formulario que nadie lee.</li>
-                <li>Sin bots ni respuestas automáticas: si hay que contestar a mano, se contesta.</li>
-                <li>Los problemas de la beta se atienden primero.</li>
-                <li>Documentación en el mismo idioma que la app.</li>
+                <li>Pišete osobi u timu, a ne na obrazac koji nitko ne čita.</li>
+                <li>Bez botova ili automatskih odgovora: ako morate odgovoriti rukom, odgovorite.</li>
+                <li>Prvo se rješavaju beta problemi.</li>
+                <li>Dokumentaciju na istom jeziku kao i aplikacija.</li>
               </ul>
             </div>
           </div>
@@ -427,63 +427,63 @@
       </div>
     </section>
 
-    <section class="apps-cta container reveal" data-delay="0s"><h2>¿Quieres probar lo próximo?</h2><p>Únete a las betas de Lixby y ayúdanos a construir herramientas cada vez más útiles.</p><div class="apps-cta-actions"><a class="btn btn-secondary" href="/es/beta-lixney/">Beta de Lixney</a><a class="btn btn-secondary" href="/es/beta-lixfly/">Beta de Lixfly</a></div></section>
+    <section class="apps-cta container reveal" data-delay="0s"><h2>Želite li isprobati sljedeću stvar?</h2><p>Pridružite se beta verzijama Lixby i pomozite nam da izgradimo sve korisnije alate.</p><div class="apps-cta-actions"><a class="btn btn-secondary" href="/hr/beta-lixney/">Lixney beta</a><a class="btn btn-secondary" href="/hr/beta-lixfly/">Lixfly beta</a></div></section>
   </main>
 
   <footer class="footer footer-mega">
     <div class="container footer-mega-grid">
       <section class="footer-section">
-        <h3>Ver y comprar</h3>
+        <h3>Pogledaj i kupi</h3>
         <ul>
-          <li><a href="/es/tienda/">Tienda</a></li>
-          <li><a href="/es/pages/products/lixbuds-one/">LixBuds</a></li>
-          <li><a href="/es/apps/">Apps</a></li>
-          <li><a href="/es/support/">Soporte</a></li>
+          <li><a href="/hr/shop/">Trgovina</a></li>
+          <li><a href="/hr/pages/products/lixbuds-one/">LixBuds</a></li>
+          <li><a href="/hr/apps/">Apps</a></li>
+          <li><a href="/hr/support/">Podrška</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Soporte</h3>
+        <h3>Podrška</h3>
         <ul>
-          <li><a href="/es/support/">Página inicial soporte</a></li>
-          <li><a href="/es/support/#faq">FAQs Tienda online</a></li>
-          <li><a href="/es/support/">Información de Garantía</a></li>
-          <li><a href="mailto:info@lixby.es">Email al CEO</a></li>
+          <li><a href="/hr/support/">Početna stranica podrške</a></li>
+          <li><a href="/hr/support/#faq">Česta pitanja online trgovine</a></li>
+          <li><a href="/hr/support/">Informacije o jamstvu</a></li>
+          <li><a href="mailto:info@lixby.es">E-pošta direktoru</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Cuenta</h3>
+        <h3>Račun</h3>
         <ul>
-          <li><a href="/es/track/">Pedidos</a></li>
-          <li><a href="/es/cuenta/">Mi cuenta</a></li>
-          <li><a href="/es/cuenta/">Cupones</a></li>
-          <li><a href="/es/comunidad/">Comunidad</a></li>
+          <li><a href="/hr/track/">Narudžbe</a></li>
+          <li><a href="/hr/account/">Moj račun</a></li>
+          <li><a href="/hr/account/">Kuponi</a></li>
+          <li><a href="/hr/community/">Zajednica</a></li>
         </ul>
       </section>
 
       <section class="footer-section">
-        <h3>Acerca de Lixby</h3>
+        <h3>O Lixbyju</h3>
         <ul>
-          <li><a href="/es/about/">Nosotros</a></li>
-          <li><a href="/es/support/">Garantía</a></li>
-          <li><a href="/es/novedades/">Novedades</a></li>
-          <li><a href="/es/support/">Contacto</a></li>
+          <li><a href="/hr/about/">Mi</a></li>
+          <li><a href="/hr/support/">Jamstvo</a></li>
+          <li><a href="/hr/news/">Novosti</a></li>
+          <li><a href="/hr/support/">Kontakt</a></li>
         </ul>
       </section>
     </div>
 
     <div class="container footer-meta">
-      <p class="footer-bottom">Copyright © 2026 Lixby. Todos los derechos reservados.</p>
+      <p class="footer-bottom">Copyright © 2026 Lixby. Sva prava pridržana.</p>
       <div class="footer-legal-links">
-        <a href="/es/pages/legal/privacy/">Política de privacidad</a>
-        <a href="/es/pages/legal/cookies/">Política de Cookies</a>
-        <a href="/es/pages/legal/terms/">Términos y Condiciones</a>
-        <a href="/es/pages/legal/ventas-reembolsos/">Ventas y reembolsos</a>
-        <a href="/es/pages/legal/legal-notice/">Avisos legales</a>
+        <a href="/hr/pages/legal/privacy/">Politika privatnosti</a>
+        <a href="/hr/pages/legal/cookies/">Politika kolačića</a>
+        <a href="/hr/pages/legal/terms/">Uvjeti i odredbe</a>
+        <a href="/hr/pages/legal/sales-refunds/">Prodaja i povrat novca</a>
+        <a href="/hr/pages/legal/legal-notice/">Pravne obavijesti</a>
       </div>
     </div>
   </footer>
-  <script src="/es/main.js" defer></script>
+  <script src="/hr/main.js" defer></script>
 </body>
 </html>
