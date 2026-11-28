@@ -628,3 +628,11 @@ ro/verified/index.html:gcp-api-key:345
 ro/login/index.html:gcp-api-key:979
 ro/two-step-verification/index.html:gcp-api-key:441
 ro/account/index.html:gcp-api-key:1311
+sk/forget-password/index.html:gcp-api-key:421
+sk/change-password/index.html:gcp-api-key:451
+sk/cart/index.html:gcp-api-key:396
+sk/js/comunidad-client.js:gcp-api-key:21
+sk/login/index.html:gcp-api-key:979
+sk/verified/index.html:gcp-api-key:345
+sk/two-step-verification/index.html:gcp-api-key:441
+sk/account/index.html:gcp-api-key:1311
