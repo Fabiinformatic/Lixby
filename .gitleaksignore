@@ -636,3 +636,11 @@ sk/login/index.html:gcp-api-key:979
 sk/verified/index.html:gcp-api-key:345
 sk/two-step-verification/index.html:gcp-api-key:441
 sk/account/index.html:gcp-api-key:1311
+sv/forget-password/index.html:gcp-api-key:421
+sv/change-password/index.html:gcp-api-key:451
+sv/js/comunidad-client.js:gcp-api-key:21
+sv/cart/index.html:gcp-api-key:396
+sv/verified/index.html:gcp-api-key:345
+sv/login/index.html:gcp-api-key:979
+sv/two-step-verification/index.html:gcp-api-key:441
+sv/account/index.html:gcp-api-key:1311
