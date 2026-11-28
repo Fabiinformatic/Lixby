@@ -620,3 +620,11 @@ mt/verified/index.html:gcp-api-key:345
 mt/login/index.html:gcp-api-key:979
 mt/two-step-verification/index.html:gcp-api-key:441
 mt/account/index.html:gcp-api-key:1311
+ro/change-password/index.html:gcp-api-key:451
+ro/forget-password/index.html:gcp-api-key:421
+ro/cart/index.html:gcp-api-key:396
+ro/js/comunidad-client.js:gcp-api-key:21
+ro/verified/index.html:gcp-api-key:345
+ro/login/index.html:gcp-api-key:979
+ro/two-step-verification/index.html:gcp-api-key:441
+ro/account/index.html:gcp-api-key:1311
